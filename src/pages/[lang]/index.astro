@@ -37,28 +37,30 @@ const t = getTranslations(lang);
                 <div
                     class="max-w-4xl animate-in fade-in slide-in-from-bottom-12 duration-1000 ease-out"
                 >
-                    <div class="flex flex-col -gap-[1.3rem] mb-2">
-                        <p
-                            class="font-serif text-[4rem] md:text-[6rem] font-medium text-white tracking-wide"
-                        >
-                            {t.home.hero.chaudandigadhi}
-                        </p>
-                        <p
-                            class="-mt-[1rem] font-serif text-[2rem] md:text-[2rem] font-medium text-white tracking-wide"
-                        >
-                            {t.home.hero.municipality}
-                        </p>
-                    </div>
+                    <div class="mb-16">
+                        <div class="flex flex-col -gap-[1.3rem] mb-2">
+                            <p
+                                class="font-serif text-[2.5rem] md:text-[4rem] font-medium text-white"
+                            >
+                                {t.home.hero.chaudandigadhi}
+                            </p>
+                            <p
+                                class="md:-mt-[1rem] font-serif text-[1rem] md:text-[2rem] font-medium text-white"
+                            >
+                                {t.home.hero.municipality}
+                            </p>
+                        </div>
 
-                    <div
-                        class="font-serif text-lg md:text-xl font-medium leading-relaxed text-slate-300 mb-6 md:mb-12 tracking-wider"
-                    >
-                        <p>{t.home.hero.office}</p>
-                        <p>{t.home.hero.location}</p>
+                        <div
+                            class="font-serif md:text-lg font-medium leading-relaxed text-slate-300 mb-6 md:mb-12"
+                        >
+                            <p>{t.home.hero.office}</p>
+                            <p>{t.home.hero.location}</p>
+                        </div>
                     </div>
                     <a
                         href="#story"
-                        class="inline-flex items-center justify-between w-64 md:w-64 bg-white text-slate-950 px-6 md:py-4 py-[0.8rem] text-xl font-bold uppercase font-serif transition-all duration-500 hover:bg-slate-100 hover:translate-x-2 hover:shadow-[20px_20px_60px_rgba(0,0,0,0.5)]"
+                        class="inline-flex items-center justify-between w-48 md:w-64 bg-white text-slate-950 px-6 md:py-4 py-[0.8rem] font-bold md:text-xlfont-serif transition-all duration-500 hover:bg-slate-100 hover:translate-x-2 hover:shadow-[20px_20px_60px_rgba(0,0,0,0.5)]"
                     >
                         <span>{t.home.hero.cta}</span>
                         <ArrowRight size={20} />
@@ -99,7 +101,7 @@ const t = getTranslations(lang);
                                 {t.home.story.households}
                             </h2>
                             <span
-                                class="text-slate-500 uppercase text-xs md:text-xl font-medium font-serif ml-2 md:ml-4"
+                                class="text-slate-500 text-xl md:text-xl font-medium font-serif ml-2 md:ml-4"
                             >
                                 {t.home.story.householdsLabel}
                             </span>
@@ -113,7 +115,7 @@ const t = getTranslations(lang);
                                 {t.home.story.residents}
                             </h2>
                             <span
-                                class="text-slate-500 uppercase text-xl md:text-xl font-medium font-serif ml-2 md:ml-4"
+                                class="text-slate-500 text-xl md:text-xl font-medium font-serif ml-2 md:ml-4"
                             >
                                 {t.home.story.residentsLabel}
                             </span>
@@ -127,7 +129,7 @@ const t = getTranslations(lang);
                                 {t.home.story.wards}
                             </h2>
                             <span
-                                class="text-slate-500 uppercase text-xs md:text-xl font-medium font-serif ml-2 md:ml-4"
+                                class="text-slate-500 text-xl md:text-xl font-medium font-serif ml-2 md:ml-4"
                             >
                                 {t.home.story.wardsLabel}
                             </span>
