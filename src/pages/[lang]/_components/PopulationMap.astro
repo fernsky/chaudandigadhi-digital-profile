@@ -4,7 +4,7 @@
 
 <div
     id="population-map-container"
-    class="relative w-full h-[500px] md:h-[700px] flex items-center justify-center"
+    class="relative w-full h-[500px] md:h-[700px] flex items-center justify-center px-4 md:px-8"
 >
     <svg
         id="population-map"
@@ -14,14 +14,12 @@
     <!-- Tooltip -->
     <div
         id="map-tooltip"
-        class="absolute pointer-events-none opacity-0 bg-slate-900/95 text-white px-4 py-3 rounded-xl border border-slate-700/50 backdrop-blur-xl text-sm transition-all duration-300 z-50 shadow-2xl"
+        class="absolute pointer-events-none opacity-0 bg-slate-800/40 text-white px-5 py-4 rounded-2xl border border-white/10 backdrop-blur-2xl text-sm transition-all duration-300 z-50 shadow-2xl"
+        style="box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);"
     >
-        <div
-            class="font-bold text-lg mb-1 text-slate-100"
-            data-label="ward-name"
-        >
+        <div class="font-bold text-xl mb-2 text-white" data-label="ward-name">
         </div>
-        <div class="text-slate-400 text-sm" data-label="population"></div>
+        <div class="text-slate-300 text-base" data-label="population"></div>
     </div>
 </div>
 
@@ -48,8 +46,8 @@
             return;
         }
 
-        const width = 900;
-        const height = 700;
+        const width = 1000;
+        const height = 800;
 
         // Clear existing content
         svg.selectAll("*").remove();
@@ -66,30 +64,35 @@
 
         const projection = geoMercator()
             .center([centerLon, centerLat])
-            .scale(180000) // Larger scale for bigger map
+            .scale(200000) // Even larger for more presence
             .translate([width / 2, height / 2]);
 
         const pathGenerator = geoPath().projection(projection);
 
-        // Main group with subtle 3D transform
+        // Main group with enhanced 3D transform
         const g = svg
             .append("g")
             .attr("class", "map-layers")
-            .attr("transform", "translate(0, 20) scale(1, 0.95)"); // Subtle 3D perspective
+            .attr("transform", "translate(0, 30) scale(1, 0.92)"); // More pronounced 3D
 
-        // Premium color scale - from dark teal to vibrant cyan/blue
+        // Premium color scale - sophisticated gradient
         const populations = wardsGeoJSON.features.map(
             (f) => f.properties.total_population,
         );
         const minPop = Math.min(...populations);
         const maxPop = Math.max(...populations);
 
-        // Premium gradient: dark slate-teal to bright cyan-blue
+        // Luxurious gradient: deep purple-slate to vibrant teal-cyan
         const colorScale = scaleSequential()
             .domain([minPop, maxPop])
-            .interpolator(interpolateRgb("#1e3a5f", "#60a5fa")); // Dark blue to light blue
+            .interpolator(
+                interpolateRgb(
+                    "rgba(71, 85, 105, 0.4)",
+                    "rgba(34, 211, 238, 0.8)",
+                ),
+            ); // Slate to cyan with transparency
 
-        // Function to clean the path by removing the bounding box
+        // Function to clean the path
         function cleanPath(pathString: string | null): string {
             if (!pathString) return "";
             const firstZIndex = pathString.indexOf("Z");
@@ -97,7 +100,21 @@
             return pathString.substring(0, firstZIndex + 1);
         }
 
-        // 1. Draw Shadows (3D depth effect)
+        // 1. Outer glow layer (for depth)
+        const outerGlow = g
+            .append("g")
+            .attr("class", "glow-layer")
+            .selectAll("path")
+            .data(wardsGeoJSON.features)
+            .join("path")
+            .attr("d", (d) => cleanPath(pathGenerator(d)))
+            .attr("fill", "none")
+            .attr("stroke", "rgba(34, 211, 238, 0.15)")
+            .attr("stroke-width", 8)
+            .attr("opacity", 0)
+            .style("filter", "blur(12px)");
+
+        // 2. Deep shadows (enhanced 3D)
         const shadows = g
             .append("g")
             .attr("class", "shadow-layer")
@@ -105,12 +122,12 @@
             .data(wardsGeoJSON.features)
             .join("path")
             .attr("d", (d) => cleanPath(pathGenerator(d)))
-            .attr("fill", "#0f172a") // Very dark blue-black
-            .attr("opacity", 0.4)
-            .attr("transform", "translate(6, 8)") // Shadow offset
-            .style("filter", "blur(4px)");
+            .attr("fill", "rgba(15, 23, 42, 0.6)") // Deep slate shadow
+            .attr("opacity", 0)
+            .attr("transform", "translate(8, 12)") // Deeper shadow offset
+            .style("filter", "blur(8px)");
 
-        // 2. Main Ward Layers
+        // 3. Main Ward Layers (Glassmorphic)
         const wards = g
             .append("g")
             .attr("class", "wards-layer")
@@ -119,11 +136,12 @@
             .join("path")
             .attr("d", (d) => cleanPath(pathGenerator(d)))
             .attr("fill", "none")
-            .attr("stroke", "rgba(148, 163, 184, 0.3)") // Subtle slate stroke
-            .attr("stroke-width", 1.5)
+            .attr("stroke", "rgba(148, 163, 184, 0.2)") // Very subtle stroke
+            .attr("stroke-width", 1)
             .attr("class", "ward-path cursor-pointer")
             .style("pointer-events", "all")
-            .attr("fill-opacity", 0);
+            .attr("fill-opacity", 0)
+            .style("backdrop-filter", "blur(10px)"); // Glass effect
 
         console.log("Ward paths created:", wards.size());
 
@@ -131,42 +149,76 @@
         function runAnimation() {
             console.log("🎬 Running animation...");
 
+            // Animate shadows first
+            shadows
+                .transition()
+                .duration(800)
+                .delay((d, i) => i * 150)
+                .attr("opacity", 1);
+
             wards.each(function (d, i) {
                 const node = this as SVGPathElement;
                 const length = node.getTotalLength();
+                const wardColor = colorScale(d.properties.total_population);
 
                 select(node)
                     .attr("stroke-dasharray", length)
                     .attr("stroke-dashoffset", length)
-                    .attr("stroke", "rgba(148, 163, 184, 0.5)")
+                    .attr("stroke", "rgba(148, 163, 184, 0.4)")
                     .attr("stroke-width", 2)
                     .transition()
-                    .duration(1800)
-                    .delay(i * 150)
+                    .duration(2000)
+                    .delay(i * 180)
                     .ease(easeCubicOut)
                     .attr("stroke-dashoffset", 0)
                     .transition()
-                    .delay(400)
-                    .duration(1200)
-                    .attr("fill", colorScale(d.properties.total_population))
-                    .attr("fill-opacity", 0.65) // Premium transparency
-                    .attr("stroke", "rgba(148, 163, 184, 0.4)")
+                    .delay(500)
+                    .duration(1500)
+                    .attr("fill", wardColor)
+                    .attr("fill-opacity", 0.5) // Subtle glass transparency
+                    .attr("stroke", "rgba(148, 163, 184, 0.3)")
                     .attr("stroke-width", 1.5);
             });
+
+            // Animate outer glow
+            outerGlow
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 180 + 1500)
+                .attr("opacity", 0.6);
         }
 
-        // Interactivity (Premium hover effects)
+        // Premium hover effects
         wards
             .on("mouseenter", function (event, d) {
                 const currentColor = colorScale(d.properties.total_population);
+                const wardIndex = wardsGeoJSON.features.indexOf(d);
 
+                // Enhance the ward
                 select(this)
                     .transition()
-                    .duration(250)
-                    .attr("fill-opacity", 0.9)
-                    .attr("stroke", "#60a5fa") // Bright blue highlight
-                    .attr("stroke-width", 2.5)
-                    .attr("filter", "brightness(1.2)");
+                    .duration(300)
+                    .attr("fill-opacity", 0.85) // More intense on hover
+                    .attr("stroke", "rgba(34, 211, 238, 0.8)") // Bright cyan
+                    .attr("stroke-width", 3)
+                    .style(
+                        "filter",
+                        "brightness(1.3) drop-shadow(0 0 20px rgba(34, 211, 238, 0.5))",
+                    );
+
+                // Enhance corresponding shadow
+                select(shadows.nodes()[wardIndex])
+                    .transition()
+                    .duration(300)
+                    .attr("opacity", 0.8)
+                    .attr("transform", "translate(10, 15)");
+
+                // Enhance corresponding glow
+                select(outerGlow.nodes()[wardIndex])
+                    .transition()
+                    .duration(300)
+                    .attr("opacity", 1)
+                    .attr("stroke-width", 12);
 
                 tooltip
                     .style("opacity", 1)
@@ -182,17 +234,31 @@
             .on("mousemove", function (event) {
                 const [x, y] = [event.pageX, event.pageY];
                 tooltip
-                    .style("left", x + 15 + "px")
-                    .style("top", y - 15 + "px");
+                    .style("left", x + 20 + "px")
+                    .style("top", y - 20 + "px");
             })
-            .on("mouseleave", function () {
+            .on("mouseleave", function (event, d) {
+                const wardIndex = wardsGeoJSON.features.indexOf(d);
+
                 select(this)
                     .transition()
-                    .duration(250)
-                    .attr("fill-opacity", 0.65)
-                    .attr("stroke", "rgba(148, 163, 184, 0.4)")
+                    .duration(300)
+                    .attr("fill-opacity", 0.5)
+                    .attr("stroke", "rgba(148, 163, 184, 0.3)")
                     .attr("stroke-width", 1.5)
-                    .attr("filter", "none");
+                    .style("filter", "none");
+
+                select(shadows.nodes()[wardIndex])
+                    .transition()
+                    .duration(300)
+                    .attr("opacity", 1)
+                    .attr("transform", "translate(8, 12)");
+
+                select(outerGlow.nodes()[wardIndex])
+                    .transition()
+                    .duration(300)
+                    .attr("opacity", 0.6)
+                    .attr("stroke-width", 8);
 
                 tooltip.style("opacity", 0);
             });
@@ -206,7 +272,7 @@
                     observer.unobserve(container);
                 }
             },
-            { threshold: 0.3 },
+            { threshold: 0.25 },
         );
 
         observer.observe(container);
@@ -229,11 +295,6 @@
 
 <style>
     .ward-path {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Premium glow effect on hover */
-    .ward-path:hover {
-        filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.4));
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 </style>
