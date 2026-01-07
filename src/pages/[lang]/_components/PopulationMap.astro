@@ -4,7 +4,7 @@
 
 <div
     id="population-map-container"
-    class="relative w-full h-[400px] md:h-[600px] flex items-center justify-center"
+    class="relative w-full h-[500px] md:h-[700px] flex items-center justify-center"
 >
     <svg
         id="population-map"
@@ -14,10 +14,14 @@
     <!-- Tooltip -->
     <div
         id="map-tooltip"
-        class="absolute pointer-events-none opacity-0 bg-slate-900/90 text-white p-3 rounded-lg border border-white/10 backdrop-blur-md text-sm transition-opacity duration-300 z-50"
+        class="absolute pointer-events-none opacity-0 bg-slate-900/95 text-white px-4 py-3 rounded-xl border border-slate-700/50 backdrop-blur-xl text-sm transition-all duration-300 z-50 shadow-2xl"
     >
-        <div class="font-bold text-lg mb-1" data-label="ward-name"></div>
-        <div class="text-slate-400" data-label="population"></div>
+        <div
+            class="font-bold text-lg mb-1 text-slate-100"
+            data-label="ward-name"
+        >
+        </div>
+        <div class="text-slate-400 text-sm" data-label="population"></div>
     </div>
 </div>
 
@@ -27,7 +31,7 @@
         geoPath,
         geoMercator,
         scaleSequential,
-        interpolateYlOrRd,
+        interpolateRgb,
         easeCubicOut,
     } from "d3";
     import { wardsGeoJSON } from "./wardsData";
@@ -44,8 +48,8 @@
             return;
         }
 
-        const width = 800;
-        const height = 600;
+        const width = 900;
+        const height = 700;
 
         // Clear existing content
         svg.selectAll("*").remove();
@@ -56,94 +60,72 @@
             "xMidYMid meet",
         );
 
-        // Manual bounds calculation from the GeoJSON data
-        // Longitude range: ~86.77 to 86.99
-        // Latitude range: ~26.69 to 26.91
-        const minLon = 86.77;
-        const maxLon = 86.99;
-        const minLat = 26.69;
-        const maxLat = 26.91;
+        // Manual projection configuration
+        const centerLon = 86.88;
+        const centerLat = 26.8;
 
-        const centerLon = (minLon + maxLon) / 2;
-        const centerLat = (minLat + maxLat) / 2;
-
-        console.log(`Center: [${centerLon}, ${centerLat}]`);
-
-        // Create projection with manual center and scale
         const projection = geoMercator()
             .center([centerLon, centerLat])
-            .scale(150000) // Large scale for small geographic area
+            .scale(180000) // Larger scale for bigger map
             .translate([width / 2, height / 2]);
 
-        console.log("Projection configured");
-
-        // Create path generator WITHOUT projection first to test
         const pathGenerator = geoPath().projection(projection);
 
-        // Test path
-        const testPath = pathGenerator(wardsGeoJSON.features[0]);
-        console.log("Test path:", testPath);
+        // Main group with subtle 3D transform
+        const g = svg
+            .append("g")
+            .attr("class", "map-layers")
+            .attr("transform", "translate(0, 20) scale(1, 0.95)"); // Subtle 3D perspective
 
-        // Main group
-        const g = svg.append("g").attr("class", "map-layers");
-
-        // Color Scale for Population
+        // Premium color scale - from dark teal to vibrant cyan/blue
         const populations = wardsGeoJSON.features.map(
             (f) => f.properties.total_population,
         );
         const minPop = Math.min(...populations);
         const maxPop = Math.max(...populations);
 
+        // Premium gradient: dark slate-teal to bright cyan-blue
         const colorScale = scaleSequential()
             .domain([minPop, maxPop])
-            .interpolator(interpolateYlOrRd);
+            .interpolator(interpolateRgb("#1e3a5f", "#60a5fa")); // Dark blue to light blue
 
         // Function to clean the path by removing the bounding box
         function cleanPath(pathString: string | null): string {
             if (!pathString) return "";
-
-            // The path has two parts separated by 'Z':
-            // 1. The actual ward shape (ends with Z)
-            // 2. The bounding box (starts with M and huge coordinates)
-            // We want to keep only the first part
-
-            // Find the first 'Z' which closes the ward polygon
             const firstZIndex = pathString.indexOf("Z");
             if (firstZIndex === -1) return pathString;
-
-            // Return everything up to and including the first Z
             return pathString.substring(0, firstZIndex + 1);
         }
 
-        // Draw ward paths
-        const wards = g
+        // 1. Draw Shadows (3D depth effect)
+        const shadows = g
+            .append("g")
+            .attr("class", "shadow-layer")
             .selectAll("path")
             .data(wardsGeoJSON.features)
             .join("path")
-            .attr("d", (d) => {
-                const fullPath = pathGenerator(d);
-                const cleaned = cleanPath(fullPath);
-                return cleaned;
-            })
+            .attr("d", (d) => cleanPath(pathGenerator(d)))
+            .attr("fill", "#0f172a") // Very dark blue-black
+            .attr("opacity", 0.4)
+            .attr("transform", "translate(6, 8)") // Shadow offset
+            .style("filter", "blur(4px)");
+
+        // 2. Main Ward Layers
+        const wards = g
+            .append("g")
+            .attr("class", "wards-layer")
+            .selectAll("path")
+            .data(wardsGeoJSON.features)
+            .join("path")
+            .attr("d", (d) => cleanPath(pathGenerator(d)))
             .attr("fill", "none")
-            .attr("stroke", "rgba(255, 255, 255, 0.4)")
-            .attr("stroke-width", 2)
+            .attr("stroke", "rgba(148, 163, 184, 0.3)") // Subtle slate stroke
+            .attr("stroke-width", 1.5)
             .attr("class", "ward-path cursor-pointer")
             .style("pointer-events", "all")
             .attr("fill-opacity", 0);
 
         console.log("Ward paths created:", wards.size());
-
-        // Log path lengths
-        wards.each(function (d) {
-            const node = this as SVGPathElement;
-            const length = node.getTotalLength();
-            const pathD = select(this).attr("d");
-            console.log(
-                `Ward ${d.properties.ward_number}: length=${length.toFixed(2)}`,
-            );
-            console.log(`  Path: ${pathD?.substring(0, 150)}`);
-        });
 
         // Animation Logic
         function runAnimation() {
@@ -156,29 +138,35 @@
                 select(node)
                     .attr("stroke-dasharray", length)
                     .attr("stroke-dashoffset", length)
+                    .attr("stroke", "rgba(148, 163, 184, 0.5)")
+                    .attr("stroke-width", 2)
                     .transition()
-                    .duration(1500)
-                    .delay(i * 120)
+                    .duration(1800)
+                    .delay(i * 150)
                     .ease(easeCubicOut)
                     .attr("stroke-dashoffset", 0)
                     .transition()
-                    .delay(300)
-                    .duration(1000)
+                    .delay(400)
+                    .duration(1200)
                     .attr("fill", colorScale(d.properties.total_population))
-                    .attr("fill-opacity", 0.75)
-                    .attr("stroke", "rgba(255, 255, 255, 0.6)");
+                    .attr("fill-opacity", 0.65) // Premium transparency
+                    .attr("stroke", "rgba(148, 163, 184, 0.4)")
+                    .attr("stroke-width", 1.5);
             });
         }
 
-        // Interactivity (Hover effects)
+        // Interactivity (Premium hover effects)
         wards
             .on("mouseenter", function (event, d) {
+                const currentColor = colorScale(d.properties.total_population);
+
                 select(this)
                     .transition()
-                    .duration(200)
-                    .attr("fill-opacity", 0.95)
-                    .attr("stroke", "white")
-                    .attr("stroke-width", 3);
+                    .duration(250)
+                    .attr("fill-opacity", 0.9)
+                    .attr("stroke", "#60a5fa") // Bright blue highlight
+                    .attr("stroke-width", 2.5)
+                    .attr("filter", "brightness(1.2)");
 
                 tooltip
                     .style("opacity", 1)
@@ -200,10 +188,11 @@
             .on("mouseleave", function () {
                 select(this)
                     .transition()
-                    .duration(200)
-                    .attr("fill-opacity", 0.75)
-                    .attr("stroke", "rgba(255, 255, 255, 0.6)")
-                    .attr("stroke-width", 2);
+                    .duration(250)
+                    .attr("fill-opacity", 0.65)
+                    .attr("stroke", "rgba(148, 163, 184, 0.4)")
+                    .attr("stroke-width", 1.5)
+                    .attr("filter", "none");
 
                 tooltip.style("opacity", 0);
             });
@@ -241,5 +230,10 @@
 <style>
     .ward-path {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Premium glow effect on hover */
+    .ward-path:hover {
+        filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.4));
     }
 </style>
