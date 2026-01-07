@@ -1,7 +1,7 @@
 ---
-import type { Language } from '../../i18n';
-import { getTranslations, allChapters } from '../../i18n';
-import LanguageSwitcher from './LanguageSwitcher.astro';
+import type { Language } from "../../lib/i18n";
+import { getTranslations, allChapters } from "../../lib/i18n";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
 
 interface Props {
   lang: Language;
@@ -16,124 +16,161 @@ const t = getTranslations(lang);
   <div class="container">
     <div class="flex items-center justify-between py-4">
       <!-- Logo and Title -->
-      <a href={`/${lang}/`} class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-        <div class="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+      <a
+        href={`/${lang}/`}
+        class="flex items-center gap-3 hover:opacity-80 transition-opacity"
+      >
+        <div
+          class="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center text-white font-bold text-xl"
+        >
           च
         </div>
         <div>
           <h1 class="text-lg font-bold text-gray-900 leading-tight">
-            {lang === 'ne' ? 'चौदण्डीगढी नगरपालिका' : 'Chaudandigadhi Municipality'}
+            {
+              lang === "ne"
+                ? "चौदण्डीगढी नगरपालिका"
+                : "Chaudandigadhi Municipality"
+            }
           </h1>
           <p class="text-xs text-gray-600">
-            {lang === 'ne' ? 'डिजिटल प्रोफाइल' : 'Digital Profile'}
+            {lang === "ne" ? "डिजिटल प्रोफाइल" : "Digital Profile"}
           </p>
         </div>
       </a>
-      
+
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-6">
-        <a 
-          href={`/${lang}/`} 
-          class={`font-medium transition-colors ${!currentChapter ? 'text-primary-600' : 'text-gray-700 hover:text-primary-600'}`}
+        <a
+          href={`/${lang}/`}
+          class={`font-medium transition-colors ${!currentChapter ? "text-primary-600" : "text-gray-700 hover:text-primary-600"}`}
         >
           {t.nav.home}
         </a>
-        
+
         <!-- Chapters Dropdown -->
         <div class="relative group">
-          <button class="font-medium text-gray-700 hover:text-primary-600 transition-colors flex items-center gap-1">
+          <button
+            class="font-medium text-gray-700 hover:text-primary-600 transition-colors flex items-center gap-1"
+          >
             {t.nav.chapters}
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
-          
-          <div class="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+
+          <div
+            class="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+          >
             <div class="p-2 max-h-96 overflow-y-auto">
-              {allChapters.map((num) => {
-                const chapter = t.chapters[num];
-                return (
-                  <a
-                    href={`/${lang}/${chapter.slug}`}
-                    class={`block px-4 py-3 rounded-md transition-colors ${
-                      currentChapter === num 
-                        ? 'bg-primary-50 text-primary-700' 
-                        : 'hover:bg-gray-50'
-                    }`}
-                  >
-                    <div class="font-semibold text-sm">{chapter.title}</div>
-                    <div class="text-xs text-gray-600 mt-1">{chapter.description}</div>
-                  </a>
-                );
-              })}
+              {
+                allChapters.map((num) => {
+                  const chapter = t.chapters[num];
+                  return (
+                    <a
+                      href={`/${lang}/${chapter.slug}`}
+                      class={`block px-4 py-3 rounded-md transition-colors ${
+                        currentChapter === num
+                          ? "bg-primary-50 text-primary-700"
+                          : "hover:bg-gray-50"
+                      }`}
+                    >
+                      <div class="font-semibold text-sm">{chapter.title}</div>
+                      <div class="text-xs text-gray-600 mt-1">
+                        {chapter.description}
+                      </div>
+                    </a>
+                  );
+                })
+              }
             </div>
           </div>
         </div>
-        
-        <a 
-          href={`/${lang}/annexures`} 
+
+        <a
+          href={`/${lang}/annexures`}
           class="font-medium text-gray-700 hover:text-primary-600 transition-colors"
         >
           {t.nav.annexures}
         </a>
-        
+
         <LanguageSwitcher lang={lang} currentPath={Astro.url.pathname} />
       </nav>
-      
+
       <!-- Mobile Menu Button -->
-      <button 
+      <button
         id="mobile-menu-button"
         class="md:hidden p-2 text-gray-700 hover:text-primary-600 transition-colors"
         aria-label="Toggle menu"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
   </div>
-  
+
   <!-- Mobile Menu -->
-  <div 
+  <div
     id="mobile-menu"
     class="md:hidden hidden bg-white border-t border-gray-200"
   >
     <div class="container py-4">
       <nav class="flex flex-col gap-2">
-        <a 
-          href={`/${lang}/`} 
-          class={`px-4 py-2 rounded-md transition-colors ${!currentChapter ? 'bg-primary-50 text-primary-700' : 'hover:bg-gray-50'}`}
+        <a
+          href={`/${lang}/`}
+          class={`px-4 py-2 rounded-md transition-colors ${!currentChapter ? "bg-primary-50 text-primary-700" : "hover:bg-gray-50"}`}
         >
           {t.nav.home}
         </a>
-        
+
         <div class="px-4 py-2 font-semibold text-gray-900 text-sm">
           {t.nav.chapters}
         </div>
-        
-        {allChapters.map((num) => {
-          const chapter = t.chapters[num];
-          return (
-            <a
-              href={`/${lang}/${chapter.slug}`}
-              class={`px-6 py-2 rounded-md transition-colors text-sm ${
-                currentChapter === num 
-                  ? 'bg-primary-50 text-primary-700' 
-                  : 'hover:bg-gray-50'
-              }`}
-            >
-              {chapter.title}
-            </a>
-          );
-        })}
-        
-        <a 
-          href={`/${lang}/annexures`} 
+
+        {
+          allChapters.map((num) => {
+            const chapter = t.chapters[num];
+            return (
+              <a
+                href={`/${lang}/${chapter.slug}`}
+                class={`px-6 py-2 rounded-md transition-colors text-sm ${
+                  currentChapter === num
+                    ? "bg-primary-50 text-primary-700"
+                    : "hover:bg-gray-50"
+                }`}
+              >
+                {chapter.title}
+              </a>
+            );
+          })
+        }
+
+        <a
+          href={`/${lang}/annexures`}
           class="px-4 py-2 rounded-md hover:bg-gray-50 transition-colors"
         >
           {t.nav.annexures}
         </a>
-        
+
         <div class="px-4 py-2 mt-2">
           <LanguageSwitcher lang={lang} currentPath={Astro.url.pathname} />
         </div>
@@ -143,10 +180,10 @@ const t = getTranslations(lang);
 </header>
 
 <script>
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  mobileMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  mobileMenuButton?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
   });
 </script>
