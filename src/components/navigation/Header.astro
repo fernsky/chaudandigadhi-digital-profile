@@ -16,7 +16,7 @@ const t = getTranslations(lang);
 
 // Check if we are on the home page
 const pathname = Astro.url.pathname;
-const isHomePage = pathname === `/${lang}` || pathname === `/${lang}/`;
+const isHomePage = pathname === `/${lang}` || pathname === `/${lang}/` || pathname === '/' || pathname === '';
 
 // Determine header classes based on page
 // On home page: absolute, transparent background initially (can add scroll listener later if needed)
@@ -70,7 +70,7 @@ const navLinkInactive = "text-slate-300 hover:text-white";
         <div class="flex items-center gap-6">
           <a
             href={`/${lang}/`}
-            class={`${navLinkClass} ${!currentChapter && Astro.url.pathname.endsWith(`/${lang}/`) ? navLinkActive : navLinkInactive}`}
+            class={`${navLinkClass} ${!currentChapter && (Astro.url.pathname.endsWith(`/${lang}/`) || Astro.url.pathname === '/' || Astro.url.pathname === '') ? navLinkActive : navLinkInactive}`}
           >
             {t.nav.home}
           </a>
@@ -109,7 +109,7 @@ const navLinkInactive = "text-slate-300 hover:text-white";
         <!-- Home Link -->
         <a
           href={`/${lang}/`}
-          class={`block text-lg font-serif ${!currentChapter && Astro.url.pathname.endsWith(`/${lang}/`) ? "text-primary-400" : "text-slate-300"}`}
+          class={`block text-lg font-serif ${!currentChapter && (Astro.url.pathname.endsWith(`/${lang}/`) || Astro.url.pathname === '/' || Astro.url.pathname === '') ? "text-primary-400" : "text-slate-300"}`}
         >
           {t.nav.home}
         </a>
