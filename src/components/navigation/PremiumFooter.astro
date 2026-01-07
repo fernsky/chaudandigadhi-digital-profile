@@ -1,0 +1,223 @@
+---
+import { Facebook, Twitter, Mail, MapPin, Phone, Globe } from "lucide-astro";
+import type { Language } from "../../lib/i18n";
+import { getTranslations } from "../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const currentYear = new Date().getFullYear();
+const nepaliYear = currentYear + 56; // Approx conversion
+---
+
+<footer
+    class="relative bg-slate-950 text-slate-300 py-20 overflow-hidden border-t border-slate-900/50"
+>
+    <!-- Background Elements -->
+    <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900/40 via-slate-950/0 to-slate-950/0 pointer-events-none"
+    >
+    </div>
+
+    <div class="container mx-auto px-8 relative z-10">
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16"
+        >
+            <!-- Brand & Description -->
+            <div class="lg:col-span-5 flex flex-col gap-6">
+                <div>
+                    <h3
+                        class="font-serif text-3xl text-white font-medium tracking-wide mb-2"
+                    >
+                        चौदण्डीगढी नगरपालिका
+                    </h3>
+                    <p class="text-slate-500 font-light text-lg">
+                        नगर कार्यपालिकाको कार्यालय
+                    </p>
+                    <p class="text-slate-500 font-light">
+                        बेल्टार, उदयपुर, कोशी प्रदेश, नेपाल
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-3 mt-4">
+                    <div class="flex items-start gap-4 group">
+                        <div
+                            class="p-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 group-hover:text-white group-hover:border-slate-600 transition-all duration-300"
+                        >
+                            <Phone size={18} />
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs text-slate-500 uppercase tracking-wider mb-1"
+                            >
+                                फोन नं.
+                            </p>
+                            <p class="text-slate-200 font-mono tracking-wide">
+                                ०३५-४४०२४६, २४७
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 group">
+                        <div
+                            class="p-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 group-hover:text-white group-hover:border-slate-600 transition-all duration-300"
+                        >
+                            <span class="font-bold text-sm">F</span>
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs text-slate-500 uppercase tracking-wider mb-1"
+                            >
+                                फ्याक्स नं.
+                            </p>
+                            <p class="text-slate-200 font-mono tracking-wide">
+                                ०३५-४४०२४७
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 group">
+                        <div
+                            class="p-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 group-hover:text-white group-hover:border-slate-600 transition-all duration-300"
+                        >
+                            <Mail size={18} />
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs text-slate-500 uppercase tracking-wider mb-1"
+                            >
+                                इमेल
+                            </p>
+                            <a
+                                href="mailto:chaudandigadhimun@gmail.com"
+                                class="text-slate-200 hover:text-white transition-colors block"
+                                >chaudandigadhimun@gmail.com</a
+                            >
+                            <a
+                                href="mailto:ito.chaudandigadhimun@gmail.com"
+                                class="text-slate-200 hover:text-white transition-colors block"
+                                >ito.chaudandigadhimun@gmail.com</a
+                            >
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 group">
+                        <div
+                            class="p-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 group-hover:text-white group-hover:border-slate-600 transition-all duration-300"
+                        >
+                            <span class="font-bold text-sm">A</span>
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs text-slate-500 uppercase tracking-wider mb-1"
+                            >
+                                ऑडियो नोटिस बोर्ड नम्बर
+                            </p>
+                            <p class="text-slate-200 font-mono tracking-wide">
+                                १६१८०३५४४०२४७
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 group">
+                        <div
+                            class="p-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 group-hover:text-white group-hover:border-slate-600 transition-all duration-300"
+                        >
+                            <Globe size={18} />
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs text-slate-500 uppercase tracking-wider mb-1"
+                            >
+                                वेबसाइट
+                            </p>
+                            <a
+                                href="https://chaudandigadhmun.gov.np"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-slate-200 hover:text-white font-mono tracking-wide transition-colors"
+                                >chaudandigadhmun.gov.np</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="lg:col-span-4 lg:col-start-9 flex flex-col gap-8">
+                <div>
+                    <h4
+                        class="text-white font-serif text-lg mb-6 border-l-2 border-slate-700 pl-3"
+                    >
+                        महत्वपूर्ण लिङ्कहरू
+                    </h4>
+                    <ul class="flex flex-col gap-4">
+                        <li>
+                            <a
+                                href="https://mofaga.gov.np/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="group flex items-center gap-3 text-slate-400 hover:text-white transition-all duration-300"
+                            >
+                                <span
+                                    class="w-1.5 h-1.5 bg-slate-700 rounded-full group-hover:bg-white group-hover:scale-125 transition-all"
+                                ></span>
+                                federal affairs and general administration
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://censusnepal.cbs.gov.np/results"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="group flex items-center gap-3 text-slate-400 hover:text-white transition-all duration-300"
+                            >
+                                <span
+                                    class="w-1.5 h-1.5 bg-slate-700 rounded-full group-hover:bg-white group-hover:scale-125 transition-all"
+                                ></span>
+                                National Census Result
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://nationaldata.gov.np/Province/Index/2"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="group flex items-center gap-3 text-slate-400 hover:text-white transition-all duration-300"
+                            >
+                                <span
+                                    class="w-1.5 h-1.5 bg-slate-700 rounded-full group-hover:bg-white group-hover:scale-125 transition-all"
+                                ></span>
+                                National Data Profile
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div
+            class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-600"
+        >
+            <div
+                class="flex flex-col md:flex-row gap-2 md:gap-8 text-center md:text-left"
+            >
+                <p>© 2026 Chaudandigadhi Municipality. All rights reserved.</p>
+                <p>© २०८२ चौदण्डीगढी नगरपालिका. सर्वाधिकार सुरक्षित.</p>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-slate-400 transition-colors"
+                    >Privacy Policy</a
+                >
+                <a href="#" class="hover:text-slate-400 transition-colors"
+                    >Terms of Service</a
+                >
+            </div>
+        </div>
+    </div>
+</footer>

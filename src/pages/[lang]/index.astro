@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PremiumHeader from "../../components/navigation/PremiumHeader.astro";
 import PopulationMap from "./_components/PopulationMap.astro";
+import PremiumFooter from "../../components/navigation/PremiumFooter.astro";
 import type { Language } from "../../lib/i18n";
 import { getTranslations } from "../../lib/i18n";
 import { ChevronDown, ArrowRight } from "lucide-astro";
@@ -19,6 +20,7 @@ const t = getTranslations(lang);
     title={t.meta.title}
     description={t.meta.description}
     hideHeader={true}
+    hideFooter={true}
 >
     <!-- Hero Section -->
     <section
@@ -179,4 +181,5 @@ const t = getTranslations(lang);
             }
         }
     </style>
+    <PremiumFooter lang={lang} />
 </BaseLayout>
