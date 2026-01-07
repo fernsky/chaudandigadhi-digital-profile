@@ -189,7 +189,3 @@ This nested structure makes it easy to:
 ## 🤝 Contributing
 
 This is a municipal government project. For inquiries, please contact the municipality office.
-
----
-
-**Built with ❤️ using Astro and Tailwind CSS**

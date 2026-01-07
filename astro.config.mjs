@@ -1,10 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://chaudandigadhi.gov.np',
+  site: process.env.DOMAIN_NAME || process.env.SITE_URL || 'https://chaudandigadhimun.digprofile.com',
   vite: {
     plugins: [tailwindcss()]
   },
@@ -15,6 +16,7 @@ export default defineConfig({
       prefixDefaultLocale: true
     }
   },
+  integrations: [sitemap()],
   build: {
     inlineStylesheets: 'auto'
   }, compressHTML: true

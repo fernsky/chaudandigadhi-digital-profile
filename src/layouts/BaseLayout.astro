@@ -33,6 +33,10 @@ const pageDescription = description || t.meta.description;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      name="google-site-verification"
+      content="google38d4d8fd76de146c.html"
+    />
 
     <SEOHead
       title={pageTitle}
@@ -41,6 +45,7 @@ const pageDescription = description || t.meta.description;
       ogImage={ogImage}
       currentPath={Astro.url.pathname}
     />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Preload Critical Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
