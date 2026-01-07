@@ -19,10 +19,12 @@
       "cta": "Explore"
     },
     "story": {
-      "title": "A Community of Heritage",
-      "p1": "Nestled in the heart of Koshi Province, Chaudandigadhi is home to a vibrant community of <span class=\"highlight\">53,631 residents</span> who call this remarkable municipality their own.",
-      "p2": "Across <span class=\"highlight\">10 distinct wards</span>, families have built their lives, creating a tapestry of culture and tradition that spans generations.",
-      "p3": "With <span class=\"highlight\">12,703 households</span>, each telling its own unique story, Chaudandigadhi stands as a testament to the enduring spirit of community and progress."
+      "residents": "53,631",
+      "residentsLabel": "Population",
+      "households": "12,703",
+      "householdsLabel": "Households",
+      "wards": "10",
+      "wardsLabel": "Wards"
     }
   },
   "chapters": {

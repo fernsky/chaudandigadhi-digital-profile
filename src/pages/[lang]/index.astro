@@ -48,7 +48,7 @@ const t = getTranslations(lang);
                     </div>
 
                     <div
-                        class="font-serif text-lg md:text-xl font-extralight leading-relaxed text-slate-300 mb-4 md:mb-12 tracking-wider"
+                        class="font-serif text-lg md:text-xl font-extralight leading-relaxed text-slate-300 mb-6 md:mb-12 tracking-wider"
                     >
                         <p>{t.home.hero.office}</p>
                         <p>{t.home.hero.location}</p>
@@ -75,47 +75,93 @@ const t = getTranslations(lang);
     <!-- Story Section -->
     <section
         id="story"
-        class="relative min-h-screen bg-[url('/images/yalambar-park.jpeg')] bg-cover bg-center bg-fixed flex items-center"
+        class="relative min-h-screen bg-[url('/images/yalambar-park.jpeg')] bg-cover bg-center bg-fixed flex items-center overflow-hidden"
     >
         <div
-            class="absolute inset-0 bg-linear-to-br from-slate-950/92 via-slate-900/88 to-slate-950/92"
+            class="absolute inset-0 bg-linear-to-br from-slate-950/94 via-slate-900/90 to-slate-950/94"
         >
         </div>
         <div class="relative z-10 w-full py-24">
-            <div class="container mx-auto px-8 h-full flex items-center">
-                <div class="max-w-3xl mx-auto text-center">
-                    <h2
-                        class="font-serif text-4xl md:text-6xl font-light leading-snug mb-12 text-white tracking-tight"
-                    >
-                        {t.home.story.title}
-                    </h2>
-                    <div class="max-w-(--spacing-80) mx-auto">
-                        <p
-                            class="text-lg md:text-2xl font-light leading-loose text-slate-300 my-8"
-                            set:html={t.home.story.p1}
-                        />
-                        <p
-                            class="text-lg md:text-2xl font-light leading-loose text-slate-300 my-8"
-                            set:html={t.home.story.p2}
-                        />
-                        <p
-                            class="text-lg md:text-2xl font-light leading-loose text-slate-300 my-8"
-                            set:html={t.home.story.p3}
-                        />
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto flex flex-col gap-12 md:gap-24">
+                    <!-- Residents Stat -->
+                    <div class="reveal-item flex flex-col -gap-1">
+                        <h2
+                            class="font-serif text-[clamp(4.5rem,8vw,6rem)] leading-[0.85] font-medium text-white tracking-tighter"
+                        >
+                            {t.home.story.residents}
+                        </h2>
+                        <span
+                            class="text-slate-500 uppercase text-xl md:text-3xl font-medium ml-2 md:ml-4"
+                        >
+                            {t.home.story.residentsLabel}
+                        </span>
+                    </div>
+
+                    <!-- Households Stat -->
+                    <div class="reveal-item flex flex-col -gap-1">
+                        <h2
+                            class="font-serif text-[clamp(4.5rem,8vw,6rem)] leading-[0.85] font-medium text-white tracking-tighter"
+                        >
+                            {t.home.story.households}
+                        </h2>
+                        <span
+                            class="text-slate-500 uppercase text-xs md:text-3xl font-medium ml-2 md:ml-4"
+                        >
+                            {t.home.story.householdsLabel}
+                        </span>
+                    </div>
+
+                    <!-- Wards Stat -->
+                    <div class="reveal-item flex flex-col -gap-1">
+                        <h2
+                            class="font-serif text-[clamp(4.5rem,8vw,6rem)] leading-[0.85] font-medium text-white tracking-tighter"
+                        >
+                            {t.home.story.wards}
+                        </h2>
+                        <span
+                            class="text-slate-500 uppercase text-xs md:text-3xl font-medium ml-2 md:ml-4"
+                        >
+                            {t.home.story.wardsLabel}
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -100px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll(".reveal-item").forEach((item) => {
+            observer.observe(item);
+        });
+    </script>
+
     <style>
-        /* Keep any global highlight specific logic if needed, but porting highlight too */
-        .story-content :global(.highlight) {
-            color: var(--color-accent-400);
-            font-weight: 400;
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* Fixed background support for mobile if needed */
+        .reveal-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fixed background support for mobile */
         @media (max-width: 768px) {
             section {
                 background-attachment: scroll !important;
