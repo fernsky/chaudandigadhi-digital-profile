@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PremiumHeader from "../../components/navigation/PremiumHeader.astro";
 import type { Language } from "../../lib/i18n";
 import { getTranslations } from "../../lib/i18n";
-
-import { Users, Map, Landmark, Home as HomeIcon } from "lucide-astro";
+import { ChevronDown } from "lucide-astro";
 
 export async function getStaticPaths() {
     return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
@@ -11,217 +11,106 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: Language };
 const t = getTranslations(lang);
-
-// Sample statistics
-const stats = [
-    {
-        label: { ne: "कुल जनसंख्या", en: "Total Population" },
-        value: "45,678",
-        icon: Users,
-    },
-    {
-        label: { ne: "क्षेत्रफल", en: "Area" },
-        value: "123.45 km²",
-        icon: Map,
-    },
-    {
-        label: { ne: "वडा संख्या", en: "Number of Wards" },
-        value: "8",
-        icon: Landmark,
-    },
-    {
-        label: { ne: "घरपरिवार", en: "Households" },
-        value: "10,234",
-        icon: HomeIcon,
-    },
-];
 ---
 
-<BaseLayout lang={lang} title={t.meta.title} description={t.meta.description}>
+<BaseLayout
+    lang={lang}
+    title={t.meta.title}
+    description={t.meta.description}
+    hideHeader={true}
+>
     <!-- Hero Section -->
     <section
-        class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-white py-20 md:py-32"
+        class="relative h-screen bg-[url('/images/sakuna-pokhari.jpeg')] bg-cover bg-center bg-fixed"
     >
-        <div class="absolute inset-0 bg-black opacity-20"></div>
-        <div class="container relative z-10">
-            <div class="max-w-4xl fade-in">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                    {
-                        lang === "ne"
-                            ? "चौदण्डीगढी नगरपालिका"
-                            : "Chaudandigadhi Municipality"
-                    }
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 text-slate-300">
-                    {
-                        lang === "ne"
-                            ? "डिजिटल प्रोफाइल २०८१"
-                            : "Digital Profile 2024"
-                    }
-                </p>
-                <p class="text-lg md:text-xl mb-12 text-slate-400 max-w-2xl">
-                    {t.meta.description}
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a
-                        href={`/${lang}/chapter-1`}
-                        class="btn btn-primary bg-slate-100 text-slate-900 hover:bg-slate-200 border border-slate-300"
+        <div
+            class="absolute inset-0 bg-linear-to-br from-slate-950/85 via-slate-900/75 to-slate-950/85"
+        >
+        </div>
+        <div class="relative z-10 h-full">
+            <div
+                class="container mx-auto px-8 h-full flex flex-col justify-center"
+            >
+                <div
+                    class="max-w-4xl border-l border-white/10 pl-8 md:pl-12 animate-in fade-in slide-in-from-bottom-12 duration-1000 ease-out"
+                >
+                    <h1
+                        class="font-serif text-6xl md:text-[10rem] font-extralight leading-[1.1] mb-6 text-white tracking-tighter"
                     >
-                        {
-                            lang === "ne"
-                                ? "प्रोफाइल हेर्नुहोस्"
-                                : "Explore Profile"
-                        }
-                    </a>
-                    <a
-                        href={`/${lang}/annexures`}
-                        class="btn glass text-white border-slate-600 hover:bg-slate-800"
+                        {t.home.hero.title}
+                    </h1>
+                    <div
+                        class="font-serif text-xl md:text-2xl font-extralight leading-relaxed text-slate-300 mb-12 tracking-wide space-y-3"
                     >
-                        {t.nav.annexures}
+                        <p>{t.home.hero.office}</p>
+                        <p>{t.home.hero.location}</p>
+                    </div>
+                    <a
+                        href="#story"
+                        class="inline-flex items-center justify-start bg-white text-slate-950 px-12 py-6 text-sm font-semibold tracking-[0.2em] uppercase transition-all duration-500 hover:bg-slate-100 hover:translate-x-2 hover:shadow-[20px_20px_60px_rgba(0,0,0,0.5)]"
+                    >
+                        {t.home.hero.cta}
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Decorative Wave -->
-        <div class="absolute bottom-0 left-0 right-0">
-            <svg
-                viewBox="0 0 1440 120"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <path
-                    d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
-                    fill="#020617"></path>
-            </svg>
+        <!-- Scroll Indicator -->
+        <div
+            class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/50 animate-bounce z-10"
+        >
+            <ChevronDown size={32} />
         </div>
     </section>
 
-    <!-- Quick Stats -->
-    <section class="section-spacing -mt-16 relative z-20">
-        <div class="container">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {
-                    stats.map((stat) => (
-                        <div class="card hover:scale-105 transition-transform">
-                            <div class="text-4xl mb-3 text-primary-400">
-                                <stat.icon size={40} strokeWidth={1.5} />
-                            </div>
-                            <div class="text-3xl font-bold text-primary-400 mb-2">
-                                {stat.value}
-                            </div>
-                            <div class="text-slate-400 font-medium">
-                                {stat.label[lang]}
-                            </div>
-                        </div>
-                    ))
-                }
+    <!-- Story Section -->
+    <section
+        id="story"
+        class="relative min-h-screen bg-[url('/images/yalambar-park.jpeg')] bg-cover bg-center bg-fixed flex items-center"
+    >
+        <div
+            class="absolute inset-0 bg-linear-to-br from-slate-950/92 via-slate-900/88 to-slate-950/92"
+        >
+        </div>
+        <div class="relative z-10 w-full py-24">
+            <div class="container mx-auto px-8 h-full flex items-center">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2
+                        class="font-serif text-4xl md:text-6xl font-light leading-snug mb-12 text-white tracking-tight"
+                    >
+                        {t.home.story.title}
+                    </h2>
+                    <div class="max-w-(--spacing-80) mx-auto">
+                        <p
+                            class="text-lg md:text-2xl font-light leading-loose text-slate-300 my-8"
+                            set:html={t.home.story.p1}
+                        />
+                        <p
+                            class="text-lg md:text-2xl font-light leading-loose text-slate-300 my-8"
+                            set:html={t.home.story.p2}
+                        />
+                        <p
+                            class="text-lg md:text-2xl font-light leading-loose text-slate-300 my-8"
+                            set:html={t.home.story.p3}
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Chapters Grid -->
-    <section class="section-spacing bg-slate-900">
-        <div class="container">
-            <div class="mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
-                    {t.nav.chapters}
-                </h2>
-                <p class="text-slate-400 text-lg max-w-2xl">
-                    {
-                        lang === "ne"
-                            ? "नगरपालिकाको विस्तृत जानकारीका लागि तलका परिच्छेदहरू हेर्नुहोस्"
-                            : "Explore detailed information about the municipality through the chapters below"
-                    }
-                </p>
-            </div>
+    <style>
+        /* Keep any global highlight specific logic if needed, but porting highlight too */
+        .story-content :global(.highlight) {
+            color: var(--color-accent-400);
+            font-weight: 400;
+        }
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {
-                    Object.entries(t.chapters).map(([num, chapter]) => {
-                        const colors = [
-                            "from-blue-500 to-blue-700",
-                            "from-green-500 to-green-700",
-                            "from-purple-500 to-purple-700",
-                            "from-orange-500 to-orange-700",
-                            "from-teal-500 to-teal-700",
-                            "from-emerald-500 to-emerald-700",
-                            "from-gray-500 to-gray-700",
-                            "from-indigo-500 to-indigo-700",
-                        ];
-                        const color = colors[parseInt(num) - 1];
-
-                        return (
-                            <a
-                                href={`/${lang}/${chapter.slug}`}
-                                class="card group hover:shadow-xl transition-all duration-300"
-                            >
-                                <div
-                                    class={`w-12 h-12 bg-gradient-to-br ${color} flex items-center justify-center text-white font-bold text-xl mb-4 group-hover:scale-110 transition-transform border border-slate-700`}
-                                >
-                                    {num}
-                                </div>
-                                <h3 class="text-xl font-bold mb-2 text-slate-100 group-hover:text-primary-400 transition-colors">
-                                    {chapter.title}
-                                </h3>
-                                <p class="text-slate-400 text-sm">
-                                    {chapter.description}
-                                </p>
-                                <div class="mt-4 flex items-center text-primary-400 font-medium text-sm group-hover:gap-2 transition-all">
-                                    <span>
-                                        {lang === "ne"
-                                            ? "विवरण हेर्नुहोस्"
-                                            : "View Details"}
-                                    </span>
-                                    <svg
-                                        class="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M9 5l7 7-7 7"
-                                        />
-                                    </svg>
-                                </div>
-                            </a>
-                        );
-                    })
-                }
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section-spacing">
-        <div class="container">
-            <div
-                class="card bg-gradient-to-br from-slate-800 to-slate-950 text-white max-w-3xl border border-slate-700"
-            >
-                <h2 class="text-3xl font-bold mb-4">
-                    {
-                        lang === "ne"
-                            ? "थप जानकारीका लागि"
-                            : "For More Information"
-                    }
-                </h2>
-                <p class="text-slate-300 mb-6 text-lg">
-                    {
-                        lang === "ne"
-                            ? "नगरपालिकाको सम्पूर्ण तथ्याङ्क र विवरणहरू हेर्नुहोस्"
-                            : "View complete statistics and details of the municipality"
-                    }
-                </p>
-                <a
-                    href={`/${lang}/annexures`}
-                    class="btn bg-slate-100 text-slate-900 hover:bg-slate-200 border border-slate-300"
-                >
-                    {lang === "ne" ? "अनुसूचीहरू हेर्नुहोस्" : "View Annexures"}
-                </a>
-            </div>
-        </div>
-    </section>
+        /* Fixed background support for mobile if needed */
+        @media (max-width: 768px) {
+            section {
+                background-attachment: scroll !important;
+            }
+        }
+    </style>
 </BaseLayout>

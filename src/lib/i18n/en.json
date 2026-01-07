@@ -10,6 +10,20 @@
     "annexures": "Annexures",
     "language": "Language"
   },
+  "home": {
+    "hero": {
+      "title": "Chaudandigadhi Municipality",
+      "office": "Office of the Municipal Executive",
+      "location": "Beltar, Udayapur, Koshi Province, Nepal",
+      "cta": "Explore"
+    },
+    "story": {
+      "title": "A Community of Heritage",
+      "p1": "Nestled in the heart of Koshi Province, Chaudandigadhi is home to a vibrant community of <span class=\"highlight\">53,631 residents</span> who call this remarkable municipality their own.",
+      "p2": "Across <span class=\"highlight\">10 distinct wards</span>, families have built their lives, creating a tapestry of culture and tradition that spans generations.",
+      "p3": "With <span class=\"highlight\">12,703 households</span>, each telling its own unique story, Chaudandigadhi stands as a testament to the enduring spirit of community and progress."
+    }
+  },
   "chapters": {
     "1": {
       "title": "Chapter 1: Introduction",
@@ -53,10 +67,6 @@
     }
   },
   "labels": {
-    "population": "Population",
-    "area": "Area",
-    "wards": "Wards",
-    "households": "Households",
     "male": "Male",
     "female": "Female",
     "total": "Total",

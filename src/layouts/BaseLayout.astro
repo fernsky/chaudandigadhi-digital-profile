@@ -12,6 +12,7 @@ interface Props {
   lang: Language;
   currentChapter?: number;
   ogImage?: string;
+  hideHeader?: boolean;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   lang = "ne",
   currentChapter,
   ogImage,
+  hideHeader = false,
 } = Astro.props;
 
 const t = getTranslations(lang);
@@ -65,7 +67,7 @@ const pageDescription = description || t.meta.description;
     />
   </head>
   <body lang={lang}>
-    <Header lang={lang} currentChapter={currentChapter} />
+    {!hideHeader && <Header lang={lang} currentChapter={currentChapter} />}
 
     <main id="main-content">
       <slot />

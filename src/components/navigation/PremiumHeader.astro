@@ -1,0 +1,61 @@
+---
+import type { Language } from "../../lib/i18n";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 premium-header">
+    <div class="container mx-auto px-8 py-6">
+        <div class="flex items-center justify-between">
+            <!-- Left: Logo + Profile -->
+            <div class="flex items-center gap-8">
+                <a href={`/${lang}/`} class="flex items-center gap-3 group">
+                    <img
+                        src="/images/logo.svg"
+                        alt="Chaudandigadhi Municipality"
+                        class="w-10 h-10 object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+                    />
+                </a>
+                <a
+                    href={`/${lang}/profile`}
+                    class="text-slate-200 font-light tracking-wide text-sm uppercase hover:text-white transition-colors"
+                >
+                    Profile
+                </a>
+            </div>
+
+            <!-- Right: Language Switcher -->
+            <div class="premium-lang-switcher">
+                <LanguageSwitcher
+                    lang={lang}
+                    currentPath={Astro.url.pathname}
+                />
+            </div>
+        </div>
+    </div>
+</header>
+
+<style>
+    .premium-header {
+        background: linear-gradient(
+            180deg,
+            rgba(2, 6, 23, 0.95) 0%,
+            rgba(2, 6, 23, 0.7) 50%,
+            rgba(2, 6, 23, 0) 100%
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .premium-lang-switcher :global(a) {
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-size: 0.875rem;
+    }
+</style>

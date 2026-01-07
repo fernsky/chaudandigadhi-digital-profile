@@ -1,5 +1,5 @@
 ---
-import type { Language } from "../../i18n";
+import type { Language } from "../../lib/i18n";
 
 interface Props {
   lang: Language;
@@ -13,30 +13,48 @@ const alternateLang = lang === "ne" ? "en" : "ne";
 const alternatePath = currentPath.replace(`/${lang}/`, `/${alternateLang}/`);
 ---
 
-<div class="flex items-center gap-2">
-  <span class="text-sm text-slate-400">
-    {lang === "ne" ? "भाषा:" : "Language:"}
-  </span>
-  <div class="flex bg-slate-800 p-1 border border-slate-700">
-    <a
-      href={currentPath}
-      class={`px-3 py-1 text-sm font-medium transition-all ${
-        lang === "ne"
-          ? "bg-slate-700 text-slate-100 shadow-sm border border-slate-600"
-          : "text-slate-400 hover:text-slate-200"
-      }`}
-    >
-      नेपाली
-    </a>
-    <a
-      href={alternatePath}
-      class={`px-3 py-1 text-sm font-medium transition-all ${
-        lang === "en"
-          ? "bg-slate-700 text-slate-100 shadow-sm border border-slate-600"
-          : "text-slate-400 hover:text-slate-200"
-      }`}
-    >
-      English
-    </a>
-  </div>
+<div class="premium-language-switcher">
+  <a href={currentPath} class={`lang-option ${lang === "ne" ? "active" : ""}`}>
+    NE
+  </a>
+  <span class="separator">/</span>
+  <a
+    href={alternatePath}
+    class={`lang-option ${lang === "en" ? "active" : ""}`}
+  >
+    EN
+  </a>
 </div>
+
+<style>
+  .premium-language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .lang-option {
+    font-size: 0.875rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0.25rem 0.5rem;
+  }
+
+  .lang-option:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .lang-option.active {
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  }
+
+  .separator {
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 200;
+  }
+</style>
