@@ -1,0 +1,118 @@
+---
+import type { Language } from "../../../i18n";
+
+interface Props {
+    id: string;
+    title: string;
+    labels: string[];
+    data: number[];
+    backgroundColor?: string;
+    lang: Language;
+}
+
+const {
+    id,
+    title,
+    labels,
+    data,
+    backgroundColor = "rgba(37, 99, 235, 0.8)",
+    lang,
+} = Astro.props;
+
+const chartData = {
+    labels,
+    datasets: [
+        {
+            label: title,
+            data,
+            backgroundColor,
+            borderColor: backgroundColor.replace("0.8", "1"),
+            borderWidth: 2,
+            borderRadius: 8,
+        },
+    ],
+};
+
+const chartConfig = {
+    type: "bar",
+    data: chartData,
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: {
+                display: false,
+            },
+            title: {
+                display: true,
+                text: title,
+                font: {
+                    size: 16,
+                    weight: "bold",
+                    family:
+                        lang === "ne"
+                            ? "'Noto Sans Devanagari', sans-serif"
+                            : "'Inter', sans-serif",
+                },
+            },
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    font: {
+                        family:
+                            lang === "ne"
+                                ? "'Noto Sans Devanagari', sans-serif"
+                                : "'Inter', sans-serif",
+                    },
+                },
+            },
+            x: {
+                ticks: {
+                    font: {
+                        family:
+                            lang === "ne"
+                                ? "'Noto Sans Devanagari', sans-serif"
+                                : "'Inter', sans-serif",
+                    },
+                },
+            },
+        },
+    },
+};
+---
+
+<div class="chart-container my-8">
+    <canvas id={id} class="max-w-full"></canvas>
+</div>
+
+<script is:inline define:vars={{ id, chartConfig }}>
+    // Load Chart.js from CDN if not already loaded
+    if (typeof Chart === "undefined") {
+        const script = document.createElement("script");
+        script.src =
+            "https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js";
+        script.onload = () => initChart();
+        document.head.appendChild(script);
+    } else {
+        initChart();
+    }
+
+    function initChart() {
+        const ctx = document.getElementById(id);
+        if (ctx && typeof Chart !== "undefined") {
+            new Chart(ctx, chartConfig);
+        }
+    }
+</script>
+
+<style>
+    .chart-container {
+        position: relative;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    }
+</style>

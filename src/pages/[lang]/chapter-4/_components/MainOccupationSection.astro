@@ -1,0 +1,66 @@
+---
+import PieChart from "../../../../components/charts/PieChart.astro";
+
+const { lang } = Astro.props;
+
+const content = {
+    ne: {
+        title: "मुख्य पेशा",
+        text: "नगरपालिकाको मुख्य पेशा कृषि रहेको छ। अधिकांश घरधुरी कृषिमा आश्रित छन्।",
+        chartTitle: "मुख्य पेशा अनुसार घरधुरी प्रतिशत",
+        chartLabels: [
+            "कृषि",
+            "व्यापार/व्यवसाय",
+            "नोकरी",
+            "बैदेशिक रोजगार",
+            "ज्याला मजदुरी",
+            "अन्य",
+        ],
+    },
+    en: {
+        title: "Main Occupation",
+        text: "Agriculture is the main occupation of the municipality. Most households depend on agriculture.",
+        chartTitle: "Households by Main Occupation (%)",
+        chartLabels: [
+            "Agriculture",
+            "Business",
+            "Service",
+            "Foreign Employment",
+            "Wage Labor",
+            "Others",
+        ],
+    },
+};
+
+const t = content[lang];
+---
+
+<div class="mb-16">
+    <h2
+        class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 border-b border-orange-200 pb-2"
+    >
+        4.1 {t.title}
+    </h2>
+
+    <p class="text-gray-700 text-lg leading-relaxed mb-8">
+        {t.text}
+    </p>
+
+    <div class="max-w-xl mx-auto w-full">
+        <PieChart
+            id="occupation-chart"
+            title={t.chartTitle}
+            labels={t.chartLabels}
+            data={[65, 12, 8, 10, 3, 2]}
+            backgroundColor={[
+                "rgba(34, 197, 94, 0.8)",
+                "rgba(59, 130, 246, 0.8)",
+                "rgba(168, 85, 247, 0.8)",
+                "rgba(249, 115, 22, 0.8)",
+                "rgba(239, 68, 68, 0.8)",
+                "rgba(107, 114, 128, 0.8)",
+            ]}
+            lang={lang}
+        />
+    </div>
+</div>

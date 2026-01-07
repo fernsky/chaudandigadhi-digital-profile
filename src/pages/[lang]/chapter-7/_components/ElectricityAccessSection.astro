@@ -1,0 +1,49 @@
+---
+import PieChart from "../../../../components/charts/PieChart.astro";
+
+const { lang } = Astro.props;
+
+const content = {
+    ne: {
+        title: "विद्युत पहुँच",
+        text: "९८% घरधुरीमा राष्ट्रिय प्रसारण लाइनको विद्युत पुगेको छ।",
+        chartTitle: "उर्जाको स्रोत",
+        chartLabels: ["विद्युत", "सौर्य उर्जा", "अन्य"],
+    },
+    en: {
+        title: "Electricity Access",
+        text: "98% of households have access to national grid electricity.",
+        chartTitle: "Source of Energy",
+        chartLabels: ["Electricity", "Solar Energy", "Others"],
+    },
+};
+
+const t = content[lang];
+---
+
+<div class="mb-16">
+    <h2
+        class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 border-b border-gray-200 pb-2"
+    >
+        7.2 {t.title}
+    </h2>
+
+    <p class="text-gray-700 text-lg leading-relaxed mb-8">
+        {t.text}
+    </p>
+
+    <div class="max-w-xl mx-auto w-full">
+        <PieChart
+            id="electricity-chart"
+            title={t.chartTitle}
+            labels={t.chartLabels}
+            data={[95, 4, 1]}
+            backgroundColor={[
+                "rgba(234, 179, 8, 0.8)",
+                "rgba(250, 204, 21, 0.8)",
+                "rgba(107, 114, 128, 0.8)",
+            ]}
+            lang={lang}
+        />
+    </div>
+</div>

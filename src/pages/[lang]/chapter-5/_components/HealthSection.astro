@@ -1,0 +1,73 @@
+---
+const { lang } = Astro.props;
+
+const content = {
+    ne: {
+        title: "स्वास्थ्य संस्था",
+        text: "नगरपालिकामा १५ शैय्याको नगर अस्पताल सहित विभिन्न स्वास्थ्य संस्थाहरू रहेका छन्।",
+        tableHeaders: ["स्वास्थ्य संस्थाको नाम", "प्रकार", "संख्या"],
+        tableRows: [
+            ["नगर अस्पताल", "अस्पताल", "१"],
+            ["स्वास्थ्य चौकी", "चौकी", "५"],
+            ["आधारभूत स्वास्थ्य केन्द्र", "केन्द्र", "४"],
+            ["सामुदायिक स्वास्थ्य इकाई", "इकाई", "३"],
+            ["आयुर्वेद औषधालय", "औषधालय", "१"],
+        ],
+    },
+    en: {
+        title: "Health Institutions",
+        text: "There are various health institutions including a 15-bed city hospital in the municipality.",
+        tableHeaders: ["Health Institution Name", "Type", "Count"],
+        tableRows: [
+            ["City Hospital", "Hospital", "1"],
+            ["Health Post", "Post", "5"],
+            ["Basic Health Center", "Center", "4"],
+            ["Community Health Unit", "Unit", "3"],
+            ["Ayurveda Dispensary", "Dispensary", "1"],
+        ],
+    },
+};
+
+const t = content[lang];
+---
+
+<div class="mb-16">
+    <h2
+        class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 border-b border-teal-100 pb-2"
+    >
+        5.2 {t.title}
+    </h2>
+
+    <p class="text-gray-700 text-lg leading-relaxed mb-8">
+        {t.text}
+    </p>
+
+    <div class="overflow-x-auto my-8 rounded-lg shadow border border-gray-200">
+        <table class="w-full text-left border-collapse">
+            <thead class="bg-teal-50">
+                <tr>
+                    {
+                        t.tableHeaders.map((header) => (
+                            <th class="p-4 font-bold text-gray-700 border-b border-teal-200 whitespace-nowrap">
+                                {header}
+                            </th>
+                        ))
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    t.tableRows.map((row) => (
+                        <tr class="hover:bg-gray-50 border-b border-gray-100 last:border-0 transition-colors">
+                            {row.map((cell) => (
+                                <td class="p-4 text-gray-700 border-b border-gray-100 font-medium">
+                                    {cell}
+                                </td>
+                            ))}
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

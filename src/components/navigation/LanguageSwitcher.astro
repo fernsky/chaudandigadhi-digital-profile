@@ -1,0 +1,42 @@
+---
+import type { Language } from '../../i18n';
+
+interface Props {
+  lang: Language;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+// Generate the alternate language path
+const alternateLang = lang === 'ne' ? 'en' : 'ne';
+const alternatePath = currentPath.replace(`/${lang}/`, `/${alternateLang}/`);
+---
+
+<div class="flex items-center gap-2">
+  <span class="text-sm text-gray-600">
+    {lang === 'ne' ? 'भाषा:' : 'Language:'}
+  </span>
+  <div class="flex bg-gray-100 rounded-lg p-1">
+    <a
+      href={currentPath}
+      class={`px-3 py-1 rounded-md text-sm font-medium transition-all ${
+        lang === 'ne' 
+          ? 'bg-white text-primary-700 shadow-sm' 
+          : 'text-gray-600 hover:text-gray-900'
+      }`}
+    >
+      नेपाली
+    </a>
+    <a
+      href={alternatePath}
+      class={`px-3 py-1 rounded-md text-sm font-medium transition-all ${
+        lang === 'en' 
+          ? 'bg-white text-primary-700 shadow-sm' 
+          : 'text-gray-600 hover:text-gray-900'
+      }`}
+    >
+      English
+    </a>
+  </div>
+</div>

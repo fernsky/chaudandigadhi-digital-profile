@@ -1,0 +1,225 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { Language } from "../../i18n";
+import { getTranslations } from "../../i18n";
+
+export async function getStaticPaths() {
+    return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Language };
+const t = getTranslations(lang);
+
+// Sample statistics
+const stats = [
+    {
+        label: { ne: "कुल जनसंख्या", en: "Total Population" },
+        value: "45,678",
+        icon: "👥",
+    },
+    {
+        label: { ne: "क्षेत्रफल", en: "Area" },
+        value: "123.45 km²",
+        icon: "🗺️",
+    },
+    {
+        label: { ne: "वडा संख्या", en: "Number of Wards" },
+        value: "8",
+        icon: "🏛️",
+    },
+    {
+        label: { ne: "घरपरिवार", en: "Households" },
+        value: "10,234",
+        icon: "🏠",
+    },
+];
+---
+
+<BaseLayout lang={lang} title={t.meta.title} description={t.meta.description}>
+    <!-- Hero Section -->
+    <section
+        class="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white py-20 md:py-32"
+    >
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container relative z-10">
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    {
+                        lang === "ne"
+                            ? "चौदण्डीगढी नगरपालिका"
+                            : "Chaudandigadhi Municipality"
+                    }
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-primary-100">
+                    {
+                        lang === "ne"
+                            ? "डिजिटल प्रोफाइल २०८१"
+                            : "Digital Profile 2024"
+                    }
+                </p>
+                <p
+                    class="text-lg md:text-xl mb-12 text-primary-50 max-w-2xl mx-auto"
+                >
+                    {t.meta.description}
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a
+                        href={`/${lang}/chapter-1`}
+                        class="btn btn-primary bg-white text-primary-700 hover:bg-primary-50"
+                    >
+                        {
+                            lang === "ne"
+                                ? "प्रोफाइल हेर्नुहोस्"
+                                : "Explore Profile"
+                        }
+                    </a>
+                    <a
+                        href={`/${lang}/annexures`}
+                        class="btn glass text-white border-white hover:bg-white hover:text-primary-700"
+                    >
+                        {t.nav.annexures}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Wave -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg
+                viewBox="0 0 1440 120"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
+                    fill="white"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="section-spacing -mt-16 relative z-20">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {
+                    stats.map((stat) => (
+                        <div class="card text-center hover:scale-105 transition-transform">
+                            <div class="text-4xl mb-3">{stat.icon}</div>
+                            <div class="text-3xl font-bold text-primary-700 mb-2">
+                                {stat.value}
+                            </div>
+                            <div class="text-gray-600 font-medium">
+                                {stat.label[lang]}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapters Grid -->
+    <section class="section-spacing bg-gray-50">
+        <div class="container">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+                    {t.nav.chapters}
+                </h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    {
+                        lang === "ne"
+                            ? "नगरपालिकाको विस्तृत जानकारीका लागि तलका परिच्छेदहरू हेर्नुहोस्"
+                            : "Explore detailed information about the municipality through the chapters below"
+                    }
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {
+                    Object.entries(t.chapters).map(([num, chapter]) => {
+                        const colors = [
+                            "from-blue-500 to-blue-700",
+                            "from-green-500 to-green-700",
+                            "from-purple-500 to-purple-700",
+                            "from-orange-500 to-orange-700",
+                            "from-teal-500 to-teal-700",
+                            "from-emerald-500 to-emerald-700",
+                            "from-gray-500 to-gray-700",
+                            "from-indigo-500 to-indigo-700",
+                        ];
+                        const color = colors[parseInt(num) - 1];
+
+                        return (
+                            <a
+                                href={`/${lang}/${chapter.slug}`}
+                                class="card group hover:shadow-xl transition-all duration-300"
+                            >
+                                <div
+                                    class={`w-12 h-12 rounded-lg bg-gradient-to-br ${color} flex items-center justify-center text-white font-bold text-xl mb-4 group-hover:scale-110 transition-transform`}
+                                >
+                                    {num}
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-primary-700 transition-colors">
+                                    {chapter.title}
+                                </h3>
+                                <p class="text-gray-600 text-sm">
+                                    {chapter.description}
+                                </p>
+                                <div class="mt-4 flex items-center text-primary-600 font-medium text-sm group-hover:gap-2 transition-all">
+                                    <span>
+                                        {lang === "ne"
+                                            ? "विवरण हेर्नुहोस्"
+                                            : "View Details"}
+                                    </span>
+                                    <svg
+                                        class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M9 5l7 7-7 7"
+                                        />
+                                    </svg>
+                                </div>
+                            </a>
+                        );
+                    })
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-spacing">
+        <div class="container">
+            <div
+                class="card bg-gradient-to-br from-primary-600 to-primary-800 text-white text-center max-w-3xl mx-auto"
+            >
+                <h2 class="text-3xl font-bold mb-4">
+                    {
+                        lang === "ne"
+                            ? "थप जानकारीका लागि"
+                            : "For More Information"
+                    }
+                </h2>
+                <p class="text-primary-100 mb-6 text-lg">
+                    {
+                        lang === "ne"
+                            ? "नगरपालिकाको सम्पूर्ण तथ्याङ्क र विवरणहरू हेर्नुहोस्"
+                            : "View complete statistics and details of the municipality"
+                    }
+                </p>
+                <a
+                    href={`/${lang}/annexures`}
+                    class="btn bg-white text-primary-700 hover:bg-primary-50"
+                >
+                    {lang === "ne" ? "अनुसूचीहरू हेर्नुहोस्" : "View Annexures"}
+                </a>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

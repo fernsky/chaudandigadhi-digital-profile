@@ -1,0 +1,81 @@
+---
+const { lang } = Astro.props;
+
+const content = {
+    ne: {
+        title: "राजनीतिक तथा प्रशासनिक विभाजन",
+        text: "यस नगरपालिकालाई १० वटा वडामा विभाजन गरिएको छ।",
+        tableHeaders: ["वडा नं.", "मुख्य स्थानहरू", "वडा कार्यालय", "जनसंख्या"],
+        tableRows: [
+            [1, "रानीबास, बसाहा", "रानीबास", "५,२३४"],
+            [2, "माझखर्क, शिखरपुर", "माझखर्क", "६,१२३"],
+            [3, "बेल्टार बजार", "बेल्टार", "५,६७८"],
+            [4, "पुष्पाञ्जली मार्ग", "बसाहा", "४,८९०"],
+            [5, "सुन्दरपुर, सिवाई", "सुन्दरपुर", "६,२३४"],
+            [6, "सातधारे, बेलही", "सातधारे", "५,१२३"],
+            [7, "टोकसेल, हडिया", "हडिया", "६,२३४"],
+            [8, "सिद्धिपुर", "सिद्धिपुर", "६,१६२"],
+            [9, "हडिया बजार", "हडिया", "४,५००"],
+            [10, "नारद पोखरी", "नारद", "३,९००"],
+        ],
+    },
+    en: {
+        title: "Political and Administrative Division",
+        text: "This municipality is divided into 10 wards.",
+        tableHeaders: ["Ward No.", "Main Places", "Ward Office", "Population"],
+        tableRows: [
+            [1, "Ranibas, Basaha", "Ranibas", "5,234"],
+            [2, "Majhkharka, Shikharpur", "Majhkharka", "6,123"],
+            [3, "Beltar Bazar", "Beltar", "5,678"],
+            [4, "Pushpanjali Marg", "Basaha", "4,890"],
+            [5, "Sundarpur, Siwai", "Sundarpur", "6,234"],
+            [6, "Satdhare, Belhi", "Satdhare", "5,123"],
+            [7, "Toksel, Hadiya", "Hadiya", "6,234"],
+            [8, "Siddhipur", "Siddhipur", "6,162"],
+            [9, "Hadiya Bazar", "Hadiya", "4,500"],
+            [10, "Narad Pokhari", "Narad", "3,900"],
+        ],
+    },
+};
+
+const t = content[lang];
+---
+
+<div class="mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+        2.3 {t.title}
+    </h2>
+
+    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+        {t.text}
+    </p>
+
+    <div class="overflow-x-auto my-8 rounded-lg shadow border border-gray-200">
+        <table class="w-full text-left border-collapse">
+            <thead class="bg-gray-100">
+                <tr>
+                    {
+                        t.tableHeaders.map((header) => (
+                            <th class="p-4 font-bold text-gray-700 border-b border-gray-200 whitespace-nowrap">
+                                {header}
+                            </th>
+                        ))
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    t.tableRows.map((row) => (
+                        <tr class="hover:bg-gray-50 border-b border-gray-100 last:border-0">
+                            {row.map((cell) => (
+                                <td class="p-4 text-gray-700 border-b border-gray-100">
+                                    {cell}
+                                </td>
+                            ))}
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

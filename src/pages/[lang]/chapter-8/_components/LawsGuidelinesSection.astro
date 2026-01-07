@@ -1,0 +1,73 @@
+---
+const { lang } = Astro.props;
+
+const content = {
+    ne: {
+        title: "कानुन तथा निर्देशिकाहरु",
+        text: "नगरपालिकाले निर्माण गरेका प्रमुख कानुनहरू।",
+        tableHeaders: ["सि.नं.", "कानुनको नाम", "प्रमाणीकरण मिति"],
+        tableRows: [
+            ["१", "स्थानीय राजपत्र प्रकाशन कार्यविधि", "२०७४/०६/१०"],
+            ["२", "नगरपालिकाको आर्थिक ऐन", "२०७५/०३/२५"],
+            ["३", "शिक्षा नियमावली", "२०७५/१२/१५"],
+            ["४", "सहकारी ऐन", "२०७६/०५/२०"],
+            ["५", "बजार अनुगमन निर्देशिका", "२०७७/०२/१०"],
+        ],
+    },
+    en: {
+        title: "Laws and Guidelines",
+        text: "Major laws formulated by the municipality.",
+        tableHeaders: ["S.N.", "Law Name", "Certification Date"],
+        tableRows: [
+            ["1", "Local Gazette Publication Procedure", "2074/06/10"],
+            ["2", "Municipality Finance Act", "2075/03/25"],
+            ["3", "Education Regulations", "2075/12/15"],
+            ["4", "Cooperative Act", "2076/05/20"],
+            ["5", "Market Monitoring Guidelines", "2077/02/10"],
+        ],
+    },
+};
+
+const t = content[lang];
+---
+
+<div class="mb-16">
+    <h2
+        class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 border-b border-indigo-200 pb-2"
+    >
+        8.2 {t.title}
+    </h2>
+
+    <p class="text-gray-700 text-lg leading-relaxed mb-8">
+        {t.text}
+    </p>
+
+    <div class="overflow-x-auto my-8 rounded-lg shadow border border-gray-200">
+        <table class="w-full text-left border-collapse">
+            <thead class="bg-indigo-50">
+                <tr>
+                    {
+                        t.tableHeaders.map((header) => (
+                            <th class="p-4 font-bold text-gray-700 border-b border-indigo-200 whitespace-nowrap">
+                                {header}
+                            </th>
+                        ))
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    t.tableRows.map((row) => (
+                        <tr class="hover:bg-gray-50 border-b border-gray-100 last:border-0 transition-colors">
+                            {row.map((cell) => (
+                                <td class="p-4 text-gray-700 border-b border-gray-100 font-medium">
+                                    {cell}
+                                </td>
+                            ))}
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

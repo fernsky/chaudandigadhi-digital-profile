@@ -1,0 +1,110 @@
+---
+interface Props {
+    id: string;
+    data: any; // GeoJSON data
+    center?: [number, number];
+    zoom?: number;
+    height?: string;
+    title: string;
+}
+
+const {
+    id,
+    data,
+    center = [26.8, 86.9], // Default to Chaudandigadhi approx coords
+    zoom = 11,
+    height = "400px",
+    title,
+} = Astro.props;
+
+// Pass props to client-side script
+const mapConfig = {
+    center,
+    zoom,
+    data,
+    id,
+};
+---
+
+<div class="map-container my-8">
+    <div
+        class="bg-gray-100 border-b border-gray-200 px-4 py-2 font-medium text-gray-700 flex justify-between items-center"
+    >
+        <span>{title}</span>
+        <span class="text-xs text-gray-500 bg-white px-2 py-1 rounded"
+            >Leaflet OpenStreetMap</span
+        >
+    </div>
+    <div id={id} class="w-full z-10" style={`height: ${height};`}></div>
+</div>
+
+<script is:inline define:vars={{ mapConfig }}>
+    // Load Leaflet if not already loaded
+    if (typeof L === "undefined") {
+        const script = document.createElement("script");
+        script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+        script.integrity =
+            "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=";
+        script.crossOrigin = "";
+        script.onload = () => initMap();
+        document.head.appendChild(script);
+    } else {
+        initMap();
+    }
+
+    function initMap() {
+        if (typeof L === "undefined") return;
+
+        // Check if map is already initialized
+        const container = document.getElementById(mapConfig.id);
+        if (!container) return;
+
+        // If container already has leaflet properties, it might be initialized.
+        // Leaflet adds '_leaflet_id' to the container.
+        if (container._leaflet_id) return;
+
+        const map = L.map(mapConfig.id).setView(
+            mapConfig.center,
+            mapConfig.zoom,
+        );
+
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution:
+                '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }).addTo(map);
+
+        if (mapConfig.data) {
+            // Add GeoJSON
+            L.geoJSON(mapConfig.data, {
+                style: function (feature) {
+                    return {
+                        color: "#2563eb",
+                        weight: 3,
+                        opacity: 0.8,
+                        fillColor: "#3b82f6",
+                        fillOpacity: 0.1,
+                    };
+                },
+                onEachFeature: function (feature, layer) {
+                    if (feature.properties && feature.properties.name) {
+                        layer.bindPopup(feature.properties.name);
+                    }
+                },
+            }).addTo(map);
+        }
+
+        // Fix for map rendering issues when inside hidden tabs or dynamic content
+        setTimeout(() => {
+            map.invalidateSize();
+        }, 200);
+    }
+</script>
+
+<style>
+    .map-container {
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    }
+</style>

@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Language } from "../../../i18n";
+import { getTranslations } from "../../../i18n";
+
+import PopulationDistributionSection from "./_components/PopulationDistributionSection.astro";
+import LinguisticProfileSection from "./_components/LinguisticProfileSection.astro";
+
+export async function getStaticPaths() {
+    return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Language };
+const t = getTranslations(lang);
+
+const pageTitle =
+    lang === "ne"
+        ? "परिच्छेद – ३: पारिवारिक तथा जनसांख्यिक विवरण"
+        : "Chapter 3: Family and Demographic Profile";
+---
+
+<BaseLayout
+    lang={lang}
+    title={pageTitle}
+    description={t.chapters[3].description}
+    currentChapter={3}
+>
+    <!-- Chapter Header -->
+    <section
+        class="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-16"
+    >
+        <div class="container">
+            <div class="max-w-4xl">
+                <div class="text-purple-200 mb-2 font-medium">
+                    {lang === "ne" ? "परिच्छेद ३" : "Chapter 3"}
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    {pageTitle}
+                </h1>
+                <p class="text-xl text-purple-100">
+                    {t.chapters[3].description}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="section-spacing">
+        <div class="container">
+            <div class="max-w-6xl mx-auto">
+                <PopulationDistributionSection lang={lang} />
+                <LinguisticProfileSection lang={lang} />
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter Navigation -->
+    <section class="border-t border-gray-200 py-8">
+        <div class="container">
+            <div class="flex justify-between items-center max-w-6xl mx-auto">
+                <a
+                    href={`/${lang}/chapter-2`}
+                    class="btn btn-secondary flex items-center gap-2"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    <span>{t.labels.previousChapter}</span>
+                </a>
+                <a
+                    href={`/${lang}/chapter-4`}
+                    class="btn btn-primary flex items-center gap-2"
+                >
+                    <span>{t.labels.nextChapter}</span>
+                    <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

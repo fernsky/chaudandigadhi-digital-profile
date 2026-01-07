@@ -1,0 +1,76 @@
+---
+import type { Language } from '../../i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Language;
+  ogImage?: string;
+  currentPath: string;
+}
+
+const { title, description, lang, ogImage, currentPath } = Astro.props;
+
+const siteUrl = Astro.site || 'https://chaudandigadhi.gov.np';
+const canonicalURL = new URL(currentPath, siteUrl);
+
+// Generate alternate language URLs
+const alternateLang = lang === 'ne' ? 'en' : 'ne';
+const alternateURL = currentPath.replace(`/${lang}/`, `/${alternateLang}/`);
+
+// Default OG image
+const defaultOgImage = '/images/hero/municipality-hero.jpg';
+const ogImageUrl = new URL(ogImage || defaultOgImage, siteUrl);
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Language Alternates -->
+<link rel="alternate" hreflang={lang} href={canonicalURL} />
+<link rel="alternate" hreflang={alternateLang} href={new URL(alternateURL, siteUrl)} />
+<link rel="alternate" hreflang="x-default" href={new URL(currentPath.replace(`/${lang}/`, '/en/'), siteUrl)} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content={lang === 'ne' ? 'ne_NP' : 'en_US'} />
+<meta property="og:locale:alternate" content={lang === 'ne' ? 'en_US' : 'ne_NP'} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImageUrl} />
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "GovernmentOrganization",
+  "name": lang === 'ne' ? "चौदण्डीगढी नगरपालिका" : "Chaudandigadhi Municipality",
+  "url": siteUrl,
+  "logo": new URL('/images/logo.png', siteUrl),
+  "description": description,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Chaudandigadhi",
+    "addressRegion": "Koshi Province",
+    "addressCountry": "NP"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Chaudandigadhi"
+  }
+})} />
+
+<!-- Additional SEO -->
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+<meta name="theme-color" content="#2563eb" />

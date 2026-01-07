@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Chaudandigadhi Municipality Digital Profile",
+    "description": "Comprehensive digital profile of Chaudandigadhi Municipality - demographics, economy, social status, and infrastructure",
+    "siteName": "Chaudandigadhi Municipality"
+  },
+  "nav": {
+    "home": "Home",
+    "chapters": "Chapters",
+    "annexures": "Annexures",
+    "language": "Language"
+  },
+  "chapters": {
+    "1": {
+      "title": "Chapter 1: Introduction",
+      "slug": "chapter-1",
+      "description": "Background, objectives, and legal framework of the municipality"
+    },
+    "2": {
+      "title": "Chapter 2: Municipal Identity",
+      "slug": "chapter-2",
+      "description": "Geographic location, history, administrative structure, and natural resources"
+    },
+    "3": {
+      "title": "Chapter 3: Family and Demographic Profile",
+      "slug": "chapter-3",
+      "description": "Population, households, language, religion, and ethnic distribution"
+    },
+    "4": {
+      "title": "Chapter 4: Economic Status",
+      "slug": "chapter-4",
+      "description": "Employment, agriculture, trade, and economic activities"
+    },
+    "5": {
+      "title": "Chapter 5: Social Status",
+      "slug": "chapter-5",
+      "description": "Education, health, water supply, and cultural heritage"
+    },
+    "6": {
+      "title": "Chapter 6: Forest and Environment",
+      "slug": "chapter-6",
+      "description": "Forest coverage, biodiversity, and disaster management"
+    },
+    "7": {
+      "title": "Chapter 7: Physical Infrastructure",
+      "slug": "chapter-7",
+      "description": "Roads, transportation, electricity, and communication infrastructure"
+    },
+    "8": {
+      "title": "Chapter 8: Institutional and Governance",
+      "slug": "chapter-8",
+      "description": "Organizational structure, service delivery, and policies"
+    }
+  },
+  "labels": {
+    "population": "Population",
+    "area": "Area",
+    "wards": "Wards",
+    "households": "Households",
+    "male": "Male",
+    "female": "Female",
+    "total": "Total",
+    "readMore": "Read More",
+    "viewChart": "View Chart",
+    "viewMap": "View Map",
+    "backToTop": "Back to Top",
+    "previousChapter": "Previous Chapter",
+    "nextChapter": "Next Chapter",
+    "tableOfContents": "Table of Contents"
+  },
+  "footer": {
+    "copyright": "© 2024 Chaudandigadhi Municipality. All rights reserved.",
+    "contact": "Contact",
+    "privacy": "Privacy Policy"
+  }
+}

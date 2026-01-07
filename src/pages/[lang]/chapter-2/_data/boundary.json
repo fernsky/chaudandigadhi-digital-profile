@@ -1,0 +1,24 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chaudandigadhi Municipality",
+        "ward": "Boundary"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [86.85, 26.85],
+            [86.95, 26.85],
+            [86.95, 26.75],
+            [86.85, 26.75],
+            [86.85, 26.85]
+          ]
+        ]
+      }
+    }
+  ]
+}

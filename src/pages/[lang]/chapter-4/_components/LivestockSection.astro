@@ -1,0 +1,51 @@
+---
+import BarChart from "../../../../components/charts/BarChart.astro";
+
+const { lang } = Astro.props;
+
+const content = {
+    ne: {
+        title: "पशुपालन",
+        text: "गायी, भैंसी र बाख्रा पालन यहाँको अर्को मुख्य आर्थिक स्रोत हो।",
+        chartTitle: "पशुपालन तथ्याङ्क",
+        chartLabels: [
+            "गायी/गोरु",
+            "भैंसी/राँगा",
+            "बाख्रा/खसी",
+            "सुँगुर/बंगुर",
+            "कुखुरा/हाँस",
+        ],
+    },
+    en: {
+        title: "Livestock",
+        text: "Cow, Buffalo and Goat farming is another major economic source.",
+        chartTitle: "Livestock Statistics",
+        chartLabels: ["Cow/Ox", "Buffalo", "Goat", "Pig", "Chicken/Duck"],
+    },
+};
+
+const t = content[lang];
+---
+
+<div class="mb-16">
+    <h2
+        class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 border-b border-orange-200 pb-2"
+    >
+        4.3 {t.title}
+    </h2>
+
+    <p class="text-gray-700 text-lg leading-relaxed mb-8">
+        {t.text}
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+        <BarChart
+            id="livestock-chart"
+            title={t.chartTitle}
+            labels={t.chartLabels}
+            data={[15400, 8200, 25600, 5400, 120000]}
+            backgroundColor="rgba(249, 115, 22, 0.8)"
+            lang={lang}
+        />
+    </div>
+</div>
