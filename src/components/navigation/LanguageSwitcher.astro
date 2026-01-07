@@ -8,26 +8,43 @@ interface Props {
 
 const { lang, currentPath } = Astro.props;
 
-// Generate the alternate language path
-const alternateLang = lang === "ne" ? "en" : "ne";
-const alternatePath = currentPath.replace(`/${lang}/`, `/${alternateLang}/`);
+// Helper to determine the path for a target language
+const getLanguagePath = (targetLang: Language) => {
+  if (targetLang === lang) return currentPath;
+
+  // Handle root URL case (assumes root is default language 'ne')
+  if (currentPath === "/") {
+    return `/${targetLang}/`;
+  }
+
+  // Handle standard /[lang]/... structure
+  if (currentPath.startsWith(`/${lang}`)) {
+    return currentPath.replace(`/${lang}`, `/${targetLang}`);
+  }
+
+  // Fallback for logic if path doesn't explicitly start with lang (shouldn't happen in this structure)
+  return `/${targetLang}${currentPath}`;
+};
+
+const nePath = getLanguagePath("ne");
+const enPath = getLanguagePath("en");
 ---
 
-<div class="language-switcher font-serif">
+<div class="language-switcher font-serif text-white">
   <a
-    href={currentPath}
-    class={`lang-link ${lang === "ne" ? "active pointer-events-none" : "opacity-50 hover:opacity-100"}`}
+    href={nePath}
+    class={`lang-link ${lang === "ne" ? "active pointer-events-none" : "opacity-70 hover:opacity-100"}`}
     aria-label="Switch to Nepali"
   >
-    NE
+    ने
   </a>
-  <span class="opacity-30 mx-1">|</span>
+  <span class="opacity-40 mx-1">|</span>
   <a
-    href={alternatePath}
-    class={`lang-link ${lang === "en" ? "active pointer-events-none" : "opacity-50 hover:opacity-100"}`}
+    href={enPath}
+    class={`lang-link ${lang === "en" ? "active pointer-events-none" : "opacity-70 hover:opacity-100"}`}
     aria-label="Switch to English"
   >
-    EN
+    En
   </a>
 </div>
 
@@ -40,8 +57,8 @@ const alternatePath = currentPath.replace(`/${lang}/`, `/${alternateLang}/`);
   .lang-link {
     font-weight: 500;
     letter-spacing: 0.05em;
-    transition: opacity 0.3s ease;
-    color: currentColor;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .active {

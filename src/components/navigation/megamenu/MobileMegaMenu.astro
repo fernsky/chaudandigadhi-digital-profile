@@ -1,0 +1,125 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { getTranslations, allChapters } from "../../../lib/i18n";
+import { ChevronDown, ChevronRight } from "lucide-astro";
+
+interface Props {
+  lang: Language;
+  currentChapter?: number;
+}
+
+const { lang, currentChapter } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<!-- Mobile Menu Chapter Section -->
+<div class="w-full">
+  <div class="mb-4">
+    <span class="text-xs uppercase tracking-widest text-slate-500 font-semibold px-2">
+      {t.nav.chapters}
+    </span>
+  </div>
+
+  <div class="space-y-2">
+    {
+      allChapters.map((num) => {
+        const chapter = t.chapters[num];
+        const sections = chapter.sections || [];
+        const isActive = currentChapter === num;
+
+        return (
+          <div class="mobile-chapter-accordion">
+            {/* Chapter Header (Accordion Trigger) */}
+            <button
+              class={`mobile-chapter-trigger w-full flex items-center justify-between px-4 py-3 rounded-md transition-all duration-200 ${
+                isActive
+                  ? "bg-primary-500/10 text-primary-300"
+                  : "bg-slate-800/30 text-slate-300 hover:bg-slate-800/50"
+              }`}
+              data-chapter={num}
+              aria-expanded="false"
+            >
+              <div class="flex-1 text-left">
+                <div class="font-serif text-sm font-medium line-clamp-2">
+                  {chapter.description}
+                </div>
+              </div>
+              <ChevronDown
+                size={16}
+                class="flex-shrink-0 ml-2 transform transition-transform duration-200 accordion-icon"
+              />
+            </button>
+
+            {/* Chapter Sections (Accordion Content) */}
+            <div class="mobile-chapter-content hidden mt-2 ml-4 space-y-1">
+              {sections.map((section: any) => (
+                <a
+                  href={`/${lang}/${chapter.slug}#${section.slug}`}
+                  class="block px-4 py-2.5 rounded-md text-sm text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 transition-all duration-200 border-l-2 border-transparent hover:border-primary-500/50"
+                >
+                  <span class="flex-1">{section.title}</span>
+                </a>
+              ))}
+
+              {/* View Full Chapter Link */}
+              <a
+                href={`/${lang}/${chapter.slug}`}
+                class="block px-4 py-2.5 text-sm text-primary-400 hover:text-primary-300 transition-colors font-medium mt-2"
+              >
+                <div class="flex items-center gap-2">
+                  <span>
+                    {lang === "ne"
+                      ? "पूर्ण परिच्छेद हेर्नुहोस्"
+                      : "View Full Chapter"}
+                  </span>
+                  <ChevronRight size={14} />
+                </div>
+              </a>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</div>
+
+<style>
+  .mobile-chapter-trigger[aria-expanded="true"] .accordion-icon {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  // Mobile accordion functionality
+  const triggers = document.querySelectorAll(".mobile-chapter-trigger");
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+      const content = trigger.nextElementSibling;
+
+      // Close all other accordions
+      triggers.forEach((otherTrigger) => {
+        if (otherTrigger !== trigger) {
+          otherTrigger.setAttribute("aria-expanded", "false");
+          const otherContent = otherTrigger.nextElementSibling;
+          if (otherContent) {
+            otherContent.classList.add("hidden");
+          }
+        }
+      });
+
+      // Toggle current accordion
+      trigger.setAttribute("aria-expanded", (!isExpanded).toString());
+      if (content) {
+        if (isExpanded) {
+          content.classList.add("hidden");
+        } else {
+          content.classList.remove("hidden");
+        }
+      }
+    });
+  });
+</script>

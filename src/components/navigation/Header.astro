@@ -1,8 +1,10 @@
 ---
 import type { Language } from "../../lib/i18n";
-import { getTranslations, allChapters } from "../../lib/i18n";
+import { getTranslations } from "../../lib/i18n";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
-import { ChevronDown, Menu, X } from "lucide-astro";
+import MegaMenu from "./megamenu/MegaMenu.astro";
+import MobileMegaMenu from "./megamenu/MobileMegaMenu.astro";
+import { Menu, X } from "lucide-astro";
 
 interface Props {
   lang: Language;
@@ -55,7 +57,7 @@ const navLinkInactive = "text-slate-300 hover:text-white";
             {t.home.hero.chaudandigadhi}
           </h1>
           <p
-            class="font-serif text-xs md:text-sm text-slate-400 tracking-wider uppercase group-hover:text-slate-300 transition-colors"
+            class="font-serif text-xs md:text-sm text-slate-400 tracking-wider group-hover:text-slate-300 transition-colors"
           >
             {t.home.hero.municipality}
           </p>
@@ -63,71 +65,21 @@ const navLinkInactive = "text-slate-300 hover:text-white";
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-8">
-        <a
-          href={`/${lang}/`}
-          class={`${navLinkClass} ${!currentChapter && Astro.url.pathname.endsWith(`/${lang}/`) ? navLinkActive : navLinkInactive}`}
-        >
-          {t.nav.home}
-        </a>
-
-        <!-- Chapters Dropdown -->
-        <div class="relative group">
-          <button
-            class={`${navLinkClass} ${currentChapter ? navLinkActive : navLinkInactive} flex items-center gap-1 group-hover:text-white`}
-            aria-expanded="false"
+      <nav class="hidden md:flex items-center justify-between flex-1 ml-8">
+        <!-- Left side: Home and Chapters -->
+        <div class="flex items-center gap-6">
+          <a
+            href={`/${lang}/`}
+            class={`${navLinkClass} ${!currentChapter && Astro.url.pathname.endsWith(`/${lang}/`) ? navLinkActive : navLinkInactive}`}
           >
-            {t.nav.chapters}
-            <ChevronDown
-              size={14}
-              class="transition-transform duration-300 group-hover:rotate-180"
-            />
-          </button>
+            {t.nav.home}
+          </a>
 
-          <!-- Dropdown Menu -->
-          <div
-            class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-80 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out pt-2"
-          >
-            <div
-              class="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl rounded-sm overflow-hidden ring-1 ring-white/5"
-            >
-              <div class="max-h-[70vh] overflow-y-auto py-2 custom-scrollbar">
-                {
-                  allChapters.map((num) => {
-                    const chapter = t.chapters[num];
-                    return (
-                      <a
-                        href={`/${lang}/${chapter.slug}`}
-                        class={`block px-5 py-3 transition-colors duration-200 border-l-2 ${
-                          currentChapter === num
-                            ? "bg-primary-500/10 border-primary-400 text-primary-300"
-                            : "border-transparent text-slate-400 hover:bg-white/5 hover:text-slate-200"
-                        }`}
-                      >
-                        <div class="font-serif font-medium text-sm">
-                          {chapter.title}
-                        </div>
-                        <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">
-                          {t.nav.chapters} {num}
-                        </div>
-                      </a>
-                    );
-                  })
-                }
-              </div>
-            </div>
-          </div>
+          <!-- Mega Menu for Chapters -->
+          <MegaMenu lang={lang} currentChapter={currentChapter} />
         </div>
 
-        <a
-          href={`/${lang}/annexures`}
-          class={`${navLinkClass} ${Astro.url.pathname.includes("/annexures") ? navLinkActive : navLinkInactive}`}
-        >
-          {t.nav.annexures}
-        </a>
-
-        <div class="h-4 w-px bg-slate-700/50 mx-2"></div>
-
+        <!-- Right side: Language Switcher -->
         <LanguageSwitcher lang={lang} currentPath={Astro.url.pathname} />
       </nav>
 
@@ -150,54 +102,47 @@ const navLinkInactive = "text-slate-300 hover:text-white";
   <!-- Mobile Menu Overlay -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-300 md:hidden"
+    class="fixed inset-0 bg-slate-950/98 backdrop-blur-xl z-40 opacity-0 pointer-events-none transition-all duration-300 md:hidden overflow-y-auto"
   >
-    <nav
-      class="flex flex-col items-center gap-8 p-6 w-full max-w-sm text-center"
-    >
-      <a
-        href={`/${lang}/`}
-        class={`text-xl font-serif ${!currentChapter && Astro.url.pathname.endsWith(`/${lang}/`) ? "text-primary-400" : "text-slate-300"}`}
-      >
-        {t.nav.home}
-      </a>
-
-      <div class="w-full h-px bg-slate-800"></div>
-
-      <div class="flex flex-col gap-4 w-full max-h-[40vh] overflow-y-auto">
-        <span class="text-xs uppercase tracking-widest text-slate-500 mb-2"
-          >{t.nav.chapters}</span
+    <div class="min-h-full flex flex-col">
+      <nav class="flex-1 px-6 py-8 space-y-6">
+        <!-- Home Link -->
+        <a
+          href={`/${lang}/`}
+          class={`block text-lg font-serif ${!currentChapter && Astro.url.pathname.endsWith(`/${lang}/`) ? "text-primary-400" : "text-slate-300"}`}
         >
-        {
-          allChapters.map((num) => {
-            const chapter = t.chapters[num];
-            return (
-              <a
-                href={`/${lang}/${chapter.slug}`}
-                class={`text-base font-serif transition-colors ${
-                  currentChapter === num ? "text-primary-400" : "text-slate-400"
-                }`}
-              >
-                {chapter.title}
-              </a>
-            );
-          })
-        }
-      </div>
+          {t.nav.home}
+        </a>
 
-      <div class="w-full h-px bg-slate-800"></div>
+        <div class="w-full h-px bg-slate-800"></div>
 
-      <a
-        href={`/${lang}/annexures`}
-        class={`text-xl font-serif ${Astro.url.pathname.includes("/annexures") ? "text-primary-400" : "text-slate-300"}`}
-      >
-        {t.nav.annexures}
-      </a>
+        <!-- Mobile Mega Menu (Accordion Style) -->
+        <div class="space-y-4">
+          <MobileMegaMenu lang={lang} currentChapter={currentChapter} />
+        </div>
 
-      <div class="mt-4 scale-125">
-        <LanguageSwitcher lang={lang} currentPath={Astro.url.pathname} />
-      </div>
-    </nav>
+        <div class="w-full h-px bg-slate-800"></div>
+
+        <!-- Annexures Link -->
+        <a
+          href={`/${lang}/annexures`}
+          class={`block text-base font-serif transition-colors ${
+            Astro.url.pathname.includes("/annexures")
+              ? "text-primary-400"
+              : "text-slate-400"
+          }`}
+        >
+          {t.nav.annexures}
+        </a>
+
+        <!-- Language Switcher -->
+        <div class="pt-6">
+          <div class="scale-110 origin-left">
+            <LanguageSwitcher lang={lang} currentPath={Astro.url.pathname} />
+          </div>
+        </div>
+      </nav>
+    </div>
   </div>
 </header>
 

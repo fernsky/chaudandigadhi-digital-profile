@@ -1,0 +1,152 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { getTranslations, allChapters } from "../../../lib/i18n";
+import { ChevronDown } from "lucide-astro";
+import MegaMenuCategoryNav from "./MegaMenuCategoryNav.astro";
+import MegaMenuContent from "./MegaMenuContent.astro";
+
+interface Props {
+  lang: Language;
+  currentChapter?: number;
+}
+
+const { lang, currentChapter } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<!-- Mega Menu Dropdown -->
+<div class="relative" id="mega-menu-container">
+  <button
+    class="font-serif tracking-wide text-sm md:text-base font-medium transition-all duration-300 flex items-center gap-1 text-slate-300 hover:text-white"
+    aria-expanded="false"
+    id="mega-menu-trigger"
+    type="button"
+  >
+    {t.nav.chapters}
+    <ChevronDown
+      size={14}
+      class="transition-transform duration-300 chevron-icon"
+    />
+  </button>
+
+  <!-- Full-Width Mega Menu Dropdown -->
+  <div
+    id="mega-menu-dropdown"
+    class="fixed left-0 right-0 opacity-0 invisible translate-y-2 transition-all duration-300 ease-out z-50 pointer-events-none"
+    style="top: 100%;"
+  >
+    <!-- Background overlay with gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/98 to-slate-950/95 backdrop-blur-xl border-t border-slate-800/70 shadow-2xl">
+      <!-- Subtle top highlight -->
+      <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent">
+      </div>
+    </div>
+
+    <!-- Container aligned with logo (same padding as header) -->
+    <div class="container mx-auto px-4 md:px-6 relative">
+      <div class="py-8">
+        <div class="flex gap-8">
+          <!-- Left: Categories Navigation -->
+          <MegaMenuCategoryNav
+            lang={lang}
+            currentChapter={currentChapter}
+            allChapters={allChapters}
+          />
+
+          <!-- Right: Content Area (Sections) -->
+          <MegaMenuContent lang={lang} currentChapter={currentChapter} />
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom fade edge -->
+    <div class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-slate-950/50 to-transparent pointer-events-none">
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Ensure mega menu spans full width */
+  #mega-menu-dropdown {
+    width: 100vw;
+  }
+
+  #mega-menu-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  #mega-menu-trigger:hover .chevron-icon,
+  #mega-menu-trigger.active .chevron-icon {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  // Mega menu hover functionality
+  const megaMenuContainer = document.getElementById("mega-menu-container");
+  const megaMenuTrigger = document.getElementById("mega-menu-trigger");
+  const megaMenuDropdown = document.getElementById("mega-menu-dropdown");
+  const header = document.querySelector("header");
+
+  let hideTimeout: number | null = null;
+
+  function showMenu() {
+    if (hideTimeout) {
+      clearTimeout(hideTimeout);
+      hideTimeout = null;
+    }
+
+    if (megaMenuDropdown && header) {
+      // Position the dropdown right below the header
+      const headerHeight = header.offsetHeight;
+      megaMenuDropdown.style.top = `${headerHeight}px`;
+
+      // Show dropdown
+      megaMenuDropdown.classList.add("show");
+      megaMenuTrigger?.classList.add("active");
+      megaMenuTrigger?.setAttribute("aria-expanded", "true");
+    }
+  }
+
+  function hideMenu() {
+    hideTimeout = window.setTimeout(() => {
+      if (megaMenuDropdown) {
+        megaMenuDropdown.classList.remove("show");
+        megaMenuTrigger?.classList.remove("active");
+        megaMenuTrigger?.setAttribute("aria-expanded", "false");
+      }
+    }, 150);
+  }
+
+  // Trigger hover events
+  if (megaMenuContainer && megaMenuTrigger && megaMenuDropdown) {
+    megaMenuTrigger.addEventListener("mouseenter", showMenu);
+    megaMenuContainer.addEventListener("mouseleave", hideMenu);
+
+    megaMenuDropdown.addEventListener("mouseenter", () => {
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+        hideTimeout = null;
+      }
+    });
+
+    megaMenuDropdown.addEventListener("mouseleave", hideMenu);
+
+    // Keyboard support
+    megaMenuTrigger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        const isExpanded = megaMenuTrigger.getAttribute("aria-expanded") === "true";
+
+        if (isExpanded) {
+          hideMenu();
+        } else {
+          showMenu();
+        }
+      }
+    });
+  }
+</script>

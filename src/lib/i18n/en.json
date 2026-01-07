@@ -31,42 +31,192 @@
     "1": {
       "title": "Chapter 1: Introduction",
       "slug": "chapter-1",
-      "description": "Background, objectives, and legal framework of the municipality"
+      "description": "Background, objectives, and legal framework of the municipality",
+      "sections": [
+        { "id": "1.1", "title": "Background", "slug": "background" },
+        { "id": "1.2", "title": "Objectives", "slug": "objectives" },
+        { "id": "1.3", "title": "Legal and Policy Framework", "slug": "legal-framework" },
+        { "id": "1.4", "title": "Preparation Stages", "slug": "preparation-stages" },
+        { "id": "1.4.1", "title": "Profile Format, Tools and Procedure Preparation", "slug": "template-preparation" },
+        { "id": "1.4.2", "title": "Profile Preparation Workshop", "slug": "preparation-workshop" },
+        { "id": "1.4.3", "title": "Data Collection", "slug": "data-collection" },
+        { "id": "1.4.4", "title": "Data Processing, Analysis and Resource Mapping", "slug": "data-analysis" },
+        { "id": "1.4.5", "title": "Draft Profile Preparation", "slug": "draft-preparation" },
+        { "id": "1.4.6", "title": "Feedback Collection", "slug": "feedback-collection" },
+        { "id": "1.4.7", "title": "Final Report Preparation", "slug": "final-report" },
+        { "id": "1.5", "title": "Scope of the Profile", "slug": "scope" }
+      ]
     },
     "2": {
       "title": "Chapter 2: Municipal Identity",
       "slug": "chapter-2",
-      "description": "Geographic location, history, administrative structure, and natural resources"
+      "description": "Geographic location, history, administrative structure, and natural resources",
+      "sections": [
+        { "id": "2.1", "title": "Geographic Location", "slug": "geographic-location" },
+        { "id": "2.2", "title": "Historical Background and Naming", "slug": "historical-background" },
+        { "id": "2.3", "title": "Political and Administrative Structure", "slug": "political-structure" },
+        { "id": "2.4", "title": "Topography", "slug": "topography" },
+        { "id": "2.5", "title": "Natural Heritage", "slug": "natural-heritage" },
+        { "id": "2.6", "title": "Cultural Excellence", "slug": "cultural-excellence" },
+        { "id": "2.7", "title": "Development Opportunities", "slug": "development-opportunities" },
+        { "id": "2.8", "title": "Domestic Production", "slug": "domestic-production" },
+        { "id": "2.9", "title": "Human Development Index", "slug": "human-development-index" }
+      ]
     },
     "3": {
       "title": "Chapter 3: Family and Demographic Profile",
       "slug": "chapter-3",
-      "description": "Population, households, language, religion, and ethnic distribution"
+      "description": "Population, households, language, religion, and ethnic distribution",
+      "sections": [
+        { "id": "3.1", "title": "Settlements and Households", "slug": "settlements-households" },
+        { "id": "3.1.1", "title": "Main Settlements", "slug": "main-settlements" },
+        { "id": "3.1.2", "title": "Household Details", "slug": "household-details" },
+        { "id": "3.2", "title": "Population Distribution", "slug": "population-distribution" },
+        { "id": "3.3", "title": "Age and Gender Distribution", "slug": "age-gender-distribution" },
+        { "id": "3.4", "title": "Mother Tongue", "slug": "mother-tongue" },
+        { "id": "3.5", "title": "Religion", "slug": "religion" },
+        { "id": "3.6", "title": "Ethnicity", "slug": "ethnicity" },
+        { "id": "3.7", "title": "Household Head", "slug": "household-head" },
+        { "id": "3.8", "title": "Occupation", "slug": "occupation" },
+        { "id": "3.9", "title": "Economically Active Population", "slug": "economically-active" },
+        { "id": "3.10", "title": "Disability Status", "slug": "disability" },
+        { "id": "3.11", "title": "Migration", "slug": "migration" },
+        { "id": "3.12", "title": "Vital Events", "slug": "vital-events" },
+        { "id": "3.13", "title": "Social Security Programs", "slug": "social-security" }
+      ]
     },
     "4": {
       "title": "Chapter 4: Economic Status",
       "slug": "chapter-4",
-      "description": "Employment, agriculture, trade, and economic activities"
+      "description": "Employment, agriculture, trade, and economic activities",
+      "sections": [
+        { "id": "4.1", "title": "Economic Overview", "slug": "economic-overview" },
+        { "id": "4.1.1", "title": "Industrial Classification", "slug": "industrial-classification" },
+        { "id": "4.1.2", "title": "Housing Structure", "slug": "housing-structure" },
+        { "id": "4.1.3", "title": "Import and Export", "slug": "import-export" },
+        { "id": "4.1.4", "title": "Raw Materials Production", "slug": "raw-materials" },
+        { "id": "4.1.5", "title": "Foreign Employment", "slug": "foreign-employment" },
+        { "id": "4.1.6", "title": "Landless Population", "slug": "landless" },
+        { "id": "4.2", "title": "Land Use and Ownership", "slug": "land-use" },
+        { "id": "4.2.1", "title": "Land Distribution", "slug": "land-distribution" },
+        { "id": "4.2.2", "title": "Agricultural Land", "slug": "agricultural-land" },
+        { "id": "4.2.3", "title": "Barren Land", "slug": "barren-land" },
+        { "id": "4.3", "title": "Agriculture and Livestock", "slug": "agriculture-livestock" },
+        { "id": "4.3.1", "title": "Crop Diseases and Pests", "slug": "crop-diseases" },
+        { "id": "4.3.2", "title": "Vegetable and Fruit Diseases", "slug": "vegetable-diseases" },
+        { "id": "4.3.3", "title": "Livestock Diseases", "slug": "livestock-diseases" },
+        { "id": "4.3.4", "title": "Commercial Farms", "slug": "commercial-farms" },
+        { "id": "4.3.5", "title": "Agriculture Human Resources", "slug": "agriculture-hr" },
+        { "id": "4.3.6", "title": "Agriculture Groups and Organizations", "slug": "agriculture-groups" },
+        { "id": "4.3.7", "title": "Collection Centers", "slug": "collection-centers" },
+        { "id": "4.4", "title": "Tourism Development", "slug": "tourism" },
+        { "id": "4.4.1", "title": "Tourist Sites", "slug": "tourist-sites" },
+        { "id": "4.4.2", "title": "Hospitality Services", "slug": "hospitality" },
+        { "id": "4.5", "title": "Industry, Trade and Banking", "slug": "industry-trade" },
+        { "id": "4.5.1", "title": "Industrial Development", "slug": "industrial-development" },
+        { "id": "4.5.2", "title": "Trade and Business", "slug": "trade-business" },
+        { "id": "4.5.3", "title": "Minerals and Mining", "slug": "minerals-mining" },
+        { "id": "4.5.4", "title": "Local Markets", "slug": "markets" },
+        { "id": "4.5.5", "title": "Banking and Financial Institutions", "slug": "banking" },
+        { "id": "4.5.6", "title": "Cooperatives", "slug": "cooperatives" }
+      ]
     },
     "5": {
       "title": "Chapter 5: Social Status",
       "slug": "chapter-5",
-      "description": "Education, health, water supply, and cultural heritage"
+      "description": "Education, health, water supply, and cultural heritage",
+      "sections": [
+        { "id": "5.1", "title": "Education and Human Resource Development", "slug": "education" },
+        { "id": "5.1.1", "title": "Literacy", "slug": "literacy" },
+        { "id": "5.1.2", "title": "Schools and Students by Level", "slug": "schools" },
+        { "id": "5.1.3", "title": "Student Enrollment", "slug": "students" },
+        { "id": "5.1.4", "title": "Teachers and Educational Staff", "slug": "teachers" },
+        { "id": "5.1.5", "title": "Model Schools with Internet", "slug": "model-schools" },
+        { "id": "5.1.6", "title": "Education Quality", "slug": "education-quality" },
+        { "id": "5.1.7", "title": "Child-Friendly Education", "slug": "child-friendly-education" },
+        { "id": "5.2", "title": "Health and Nutrition", "slug": "health-nutrition" },
+        { "id": "5.2.1", "title": "Health Institutions", "slug": "health-institutions" },
+        { "id": "5.2.2", "title": "Immunization Services", "slug": "immunization" },
+        { "id": "5.2.3", "title": "Child Health and Malnutrition", "slug": "child-health" },
+        { "id": "5.2.4", "title": "Major Diseases and Treatment", "slug": "diseases" },
+        { "id": "5.2.5", "title": "Safe Motherhood", "slug": "safe-motherhood" },
+        { "id": "5.2.6", "title": "Marital Status", "slug": "marital-status" },
+        { "id": "5.3", "title": "Water and Sanitation", "slug": "water-sanitation" },
+        { "id": "5.3.1", "title": "Water Sources", "slug": "water-sources" },
+        { "id": "5.3.2", "title": "Toilet Usage", "slug": "toilets" },
+        { "id": "5.3.3", "title": "Public Toilets", "slug": "public-toilets" },
+        { "id": "5.3.4", "title": "Waste Management", "slug": "waste-management" },
+        { "id": "5.3.5", "title": "Drainage and Landfill Sites", "slug": "drainage-landfill" },
+        { "id": "5.3.6", "title": "Homeless Children", "slug": "homeless-children" },
+        { "id": "5.4", "title": "Youth and Sports", "slug": "youth-sports" },
+        { "id": "5.4.1", "title": "Sports and Recreation Facilities", "slug": "sports-recreation" },
+        { "id": "5.4.2", "title": "Youth Clubs", "slug": "youth-clubs" },
+        { "id": "5.5", "title": "Art, Language and Culture", "slug": "art-culture" },
+        { "id": "5.5.1", "title": "Public Places and Rest Areas", "slug": "public-places" },
+        { "id": "5.5.2", "title": "Local Festivals and Fairs", "slug": "festivals" },
+        { "id": "5.6", "title": "Peace and Security", "slug": "peace-security" }
+      ]
     },
     "6": {
       "title": "Chapter 6: Forest and Environment",
       "slug": "chapter-6",
-      "description": "Forest coverage, biodiversity, and disaster management"
+      "description": "Forest coverage, biodiversity, and disaster management",
+      "sections": [
+        { "id": "6.1", "title": "Forest Area", "slug": "forest-area" },
+        { "id": "6.1.1", "title": "Forest Management", "slug": "forest-management" },
+        { "id": "6.1.2", "title": "Plantation Areas", "slug": "plantation-areas" },
+        { "id": "6.1.3", "title": "Medicinal Herbs", "slug": "herbs" },
+        { "id": "6.1.4", "title": "Forest Products", "slug": "forest-products" },
+        { "id": "6.2", "title": "Water Resources and Watersheds", "slug": "water-resources" },
+        { "id": "6.2.1", "title": "Major Rivers and Streams", "slug": "rivers" },
+        { "id": "6.3", "title": "Biodiversity and Environmental Services", "slug": "biodiversity" },
+        { "id": "6.3.1", "title": "Important Wildlife and Birds", "slug": "wildlife" },
+        { "id": "6.3.2", "title": "Important Flora", "slug": "flora" },
+        { "id": "6.4", "title": "Disaster Risk Management", "slug": "disaster-management" },
+        { "id": "6.4.1", "title": "Disaster Damages", "slug": "disaster-damages" },
+        { "id": "6.4.2", "title": "Disaster Risks by Type", "slug": "disaster-risks" },
+        { "id": "6.4.3", "title": "Disaster Preparedness", "slug": "disaster-preparedness" },
+        { "id": "6.4.4", "title": "Emergency Transportation", "slug": "emergency-transport" }
+      ]
     },
     "7": {
       "title": "Chapter 7: Physical Infrastructure",
       "slug": "chapter-7",
-      "description": "Roads, transportation, electricity, and communication infrastructure"
+      "description": "Roads, transportation, electricity, and communication infrastructure",
+      "sections": [
+        { "id": "7.1", "title": "Transportation Infrastructure", "slug": "transport-infrastructure" },
+        { "id": "7.1.1", "title": "Road Network Status", "slug": "road-network" },
+        { "id": "7.1.2", "title": "Vehicle Facilities and Routes", "slug": "vehicle-routes" },
+        { "id": "7.1.3", "title": "Vehicles in Municipality", "slug": "vehicles" },
+        { "id": "7.1.4", "title": "Bus Parks and Stops", "slug": "bus-parks" },
+        { "id": "7.2", "title": "Electricity and Alternative Energy", "slug": "electricity" },
+        { "id": "7.2.1", "title": "Cooking Fuel Usage", "slug": "cooking-fuel" },
+        { "id": "7.2.2", "title": "Lighting Fuel Usage", "slug": "lighting-fuel" },
+        { "id": "7.2.3", "title": "Alternative Energy Usage", "slug": "alternative-energy" },
+        { "id": "7.3", "title": "Communication and Technology", "slug": "communication" },
+        { "id": "7.3.1", "title": "Access to Modern Facilities", "slug": "modern-facilities" },
+        { "id": "7.4", "title": "Housing and Buildings", "slug": "housing" },
+        { "id": "7.4.1", "title": "Roof Types", "slug": "roof-types" },
+        { "id": "7.4.2", "title": "Government Buildings", "slug": "government-buildings" },
+        { "id": "7.4.3", "title": "Slaughterhouses", "slug": "slaughterhouses" },
+        { "id": "7.4.4", "title": "Crematoriums", "slug": "crematoriums" }
+      ]
     },
     "8": {
       "title": "Chapter 8: Institutional and Governance",
       "slug": "chapter-8",
-      "description": "Organizational structure, service delivery, and policies"
+      "description": "Organizational structure, service delivery, and policies",
+      "sections": [
+        { "id": "8.1", "title": "Organizational and Human Resources", "slug": "organization" },
+        { "id": "8.1.1", "title": "Organizational Structure", "slug": "organizational-structure" },
+        { "id": "8.2", "title": "Service Delivery and Management", "slug": "service-delivery" },
+        { "id": "8.2.1", "title": "Types of Services Available", "slug": "service-types" },
+        { "id": "8.2.2", "title": "Service Delivery Process and Feedback", "slug": "service-process" },
+        { "id": "8.2.3", "title": "Community Mediation Committee", "slug": "mediation-committee" },
+        { "id": "8.3", "title": "Laws, Policies and Procedures", "slug": "laws-policies" },
+        { "id": "8.3.1", "title": "Approved Laws and Regulations", "slug": "approved-laws" },
+        { "id": "8.3.2", "title": "Municipal Staff", "slug": "staff" }
+      ]
     }
   },
   "labels": {
