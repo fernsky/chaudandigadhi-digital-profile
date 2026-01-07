@@ -23,6 +23,7 @@ const t = getTranslations(lang);
     hideFooter={true}
 >
     <!-- Hero Section -->
+    <PremiumHeader lang={lang} />
     <section
         class="relative h-screen bg-[url('/images/sakuna-pokhari.jpeg')] bg-cover bg-center bg-fixed"
     >
@@ -40,19 +41,19 @@ const t = getTranslations(lang);
                     <div class="mb-16">
                         <div class="flex flex-col -gap-[1.3rem] mb-2">
                             <p
-                                class="font-serif text-[2.5rem] md:text-[4rem] font-medium text-white"
+                                class="font-serif text-[4rem] md:text-[8rem] font-medium text-white"
                             >
                                 {t.home.hero.chaudandigadhi}
                             </p>
                             <p
-                                class="md:-mt-[1rem] font-serif text-[1rem] md:text-[2rem] font-medium text-white"
+                                class="md:-mt-[1rem] font-serif text-[2rem] md:text-[3rem] font-medium text-white"
                             >
                                 {t.home.hero.municipality}
                             </p>
                         </div>
 
                         <div
-                            class="font-serif md:text-lg font-medium leading-relaxed text-slate-300 mb-6 md:mb-12"
+                            class="font-serif md:text-2xl text-xl font-medium leading-relaxed text-slate-300 mb-6 md:mb-12"
                         >
                             <p>{t.home.hero.office}</p>
                             <p>{t.home.hero.location}</p>
@@ -60,7 +61,7 @@ const t = getTranslations(lang);
                     </div>
                     <a
                         href="#story"
-                        class="inline-flex items-center justify-between w-48 md:w-64 bg-white text-slate-950 px-6 md:py-4 py-[0.8rem] font-bold md:text-xlfont-serif transition-all duration-500 hover:bg-slate-100 hover:translate-x-2 hover:shadow-[20px_20px_60px_rgba(0,0,0,0.5)]"
+                        class="inline-flex items-center justify-between w-52 md:w-64 bg-white text-slate-950 px-6 md:py-4 py-[0.8rem] font-bold text-xl font-serif transition-all duration-500 hover:bg-slate-100 hover:translate-x-2 hover:shadow-[20px_20px_60px_rgba(0,0,0,0.5)]"
                     >
                         <span>{t.home.hero.cta}</span>
                         <ArrowRight size={20} />
