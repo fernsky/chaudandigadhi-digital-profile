@@ -13,7 +13,9 @@ const t = getTranslations(lang);
 ---
 
 <!-- Category Navigation (Left Side) -->
-<nav class="flex-shrink-0 w-80 border-r border-slate-700 h-full overflow-y-auto scrollbar-hide">
+<nav
+  class="flex-shrink-0 w-80 border-r border-slate-700 h-full overflow-y-auto scrollbar-hide"
+>
   <div class="py-2">
     <ul class="space-y-0" role="menu">
       {
@@ -34,23 +36,8 @@ const t = getTranslations(lang);
               >
                 <div class="flex items-center justify-between gap-4">
                   <div class="flex-1 min-w-0">
-                    <p class="text-base leading-relaxed">
-                      {chapter.description}
-                    </p>
+                    <p class="text-base leading-relaxed">{chapter.title}</p>
                   </div>
-                  <svg
-                    class="flex-shrink-0 w-5 h-5 opacity-50 group-hover/cat:opacity-100 transition-all duration-150"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
                 </div>
               </button>
             </li>
@@ -82,7 +69,11 @@ const t = getTranslations(lang);
       button.addEventListener("mouseenter", () => {
         // Remove active state from all buttons
         categoryButtons.forEach((btn) => {
-          btn.classList.remove("bg-primary-500/10", "text-white", "font-medium");
+          btn.classList.remove(
+            "bg-primary-500/10",
+            "text-white",
+            "font-medium",
+          );
           btn.classList.add("text-slate-200");
         });
 
