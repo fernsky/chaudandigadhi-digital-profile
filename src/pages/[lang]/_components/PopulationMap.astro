@@ -64,7 +64,7 @@
 
         const projection = geoMercator()
             .center([centerLon, centerLat])
-            .scale(200000) // Even larger for more presence
+            .scale(320000) // SUPER LARGE scale for maximum area coverage
             .translate([width / 2, height / 2]);
 
         const pathGenerator = geoPath().projection(projection);
@@ -82,15 +82,15 @@
         const minPop = Math.min(...populations);
         const maxPop = Math.max(...populations);
 
-        // Luxurious gradient: deep purple-slate to vibrant teal-cyan
+        // Clean gradient: slate-blue to bright cyan - matches dark background
         const colorScale = scaleSequential()
             .domain([minPop, maxPop])
             .interpolator(
                 interpolateRgb(
-                    "rgba(71, 85, 105, 0.4)",
-                    "rgba(34, 211, 238, 0.8)",
+                    "rgba(71, 85, 105, 0.5)",
+                    "rgba(56, 189, 248, 0.75)",
                 ),
-            ); // Slate to cyan with transparency
+            ); // Slate to sky blue - clean and cohesive
 
         // Function to clean the path
         function cleanPath(pathString: string | null): string {
@@ -109,10 +109,10 @@
             .join("path")
             .attr("d", (d) => cleanPath(pathGenerator(d)))
             .attr("fill", "none")
-            .attr("stroke", "rgba(34, 211, 238, 0.15)")
-            .attr("stroke-width", 8)
+            .attr("stroke", "rgba(56, 189, 248, 0.3)")
+            .attr("stroke-width", 10)
             .attr("opacity", 0)
-            .style("filter", "blur(12px)");
+            .style("filter", "blur(15px)");
 
         // 2. Deep shadows (enhanced 3D)
         const shadows = g
@@ -136,7 +136,7 @@
             .join("path")
             .attr("d", (d) => cleanPath(pathGenerator(d)))
             .attr("fill", "none")
-            .attr("stroke", "rgba(148, 163, 184, 0.2)") // Very subtle stroke
+            .attr("stroke", "rgba(255, 255, 255, 0.2)") // Clean white borders
             .attr("stroke-width", 1)
             .attr("class", "ward-path cursor-pointer")
             .style("pointer-events", "all")
@@ -164,7 +164,7 @@
                 select(node)
                     .attr("stroke-dasharray", length)
                     .attr("stroke-dashoffset", length)
-                    .attr("stroke", "rgba(148, 163, 184, 0.4)")
+                    .attr("stroke", "rgba(255, 255, 255, 0.4)") // White stroke for animation
                     .attr("stroke-width", 2)
                     .transition()
                     .duration(2000)
@@ -175,8 +175,8 @@
                     .delay(500)
                     .duration(1500)
                     .attr("fill", wardColor)
-                    .attr("fill-opacity", 0.5) // Subtle glass transparency
-                    .attr("stroke", "rgba(148, 163, 184, 0.3)")
+                    .attr("fill-opacity", 0.65) // Clean transparency
+                    .attr("stroke", "rgba(255, 255, 255, 0.3)") // White borders
                     .attr("stroke-width", 1.5);
             });
 
@@ -198,12 +198,12 @@
                 select(this)
                     .transition()
                     .duration(300)
-                    .attr("fill-opacity", 0.85) // More intense on hover
-                    .attr("stroke", "rgba(34, 211, 238, 0.8)") // Bright cyan
+                    .attr("fill-opacity", 0.85) // Brighter on hover
+                    .attr("stroke", "rgba(255, 255, 255, 0.9)") // Bright white border
                     .attr("stroke-width", 3)
                     .style(
                         "filter",
-                        "brightness(1.3) drop-shadow(0 0 20px rgba(34, 211, 238, 0.5))",
+                        "brightness(1.3) drop-shadow(0 0 20px rgba(56, 189, 248, 0.6))",
                     );
 
                 // Enhance corresponding shadow
@@ -243,8 +243,8 @@
                 select(this)
                     .transition()
                     .duration(300)
-                    .attr("fill-opacity", 0.5)
-                    .attr("stroke", "rgba(148, 163, 184, 0.3)")
+                    .attr("fill-opacity", 0.65)
+                    .attr("stroke", "rgba(255, 255, 255, 0.3)")
                     .attr("stroke-width", 1.5)
                     .style("filter", "none");
 
