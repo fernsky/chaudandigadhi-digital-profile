@@ -2,6 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import type { Language } from "../../../lib/i18n";
 import { getTranslations } from "../../../lib/i18n";
+import { ChevronRight } from "lucide-astro";
 
 import BackgroundSection from "./_components/BackgroundSection.astro";
 import ObjectivesSection from "./_components/ObjectivesSection.astro";
@@ -66,18 +67,7 @@ const pageTitle =
                     class="btn btn-primary flex items-center gap-2"
                 >
                     <span>{t.labels.nextChapter}</span>
-                    <svg
-                        class="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M9 5l7 7-7 7"></path>
-                    </svg>
+                    <ChevronRight size={20} />
                 </a>
             </div>
         </div>
