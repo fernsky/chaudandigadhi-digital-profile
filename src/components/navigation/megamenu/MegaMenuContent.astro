@@ -15,120 +15,100 @@ const initialChapter = currentChapter || 1;
 ---
 
 <!-- Content Area (Right Side - Scrollable Sections) -->
-<div class="flex-1 min-w-0">
-  <div class="bg-slate-900/30 rounded-lg p-6 border border-slate-800/50 shadow-xl">
-    {
-      allChapters.map((num) => {
-        const chapter = t.chapters[num];
-        const sections = chapter.sections || [];
-        const isInitiallyVisible = num === initialChapter;
+<div class="flex-1 min-w-0 h-full flex flex-col">
+  {
+    allChapters.map((num) => {
+      const chapter = t.chapters[num];
+      const sections = chapter.sections || [];
+      const isInitiallyVisible = num === initialChapter;
 
-        return (
-          <div
-            data-chapter-content={num}
-            class={`mega-menu-content ${isInitiallyVisible ? "block" : "hidden"}`}
-          >
-            <div class="mb-6">
-              <h4 class="text-lg font-serif font-semibold text-slate-200 mb-2">
-                {chapter.title}
-              </h4>
-              <p class="text-sm text-slate-400">{chapter.description}</p>
-            </div>
+      return (
+        <div
+          data-chapter-content={num}
+          class={`mega-menu-content h-full flex flex-col ${isInitiallyVisible ? "flex" : "hidden"}`}
+        >
+          {/* Header */}
+          <div class="px-8 py-6 border-b border-slate-800">
+            <h4 class="text-xl font-serif font-semibold text-white">
+              {chapter.title}
+            </h4>
+          </div>
 
-            {/* Scrollable sections grid */}
-            <div class="max-h-[60vh] overflow-y-auto custom-scrollbar pr-2">
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {sections.map((section: any) => (
-                  <a
-                    href={`/${lang}/${chapter.slug}#${section.slug}`}
-                    class="group/item flex items-center gap-3 p-3 rounded-md hover:bg-slate-800/40 transition-all duration-200 border border-transparent hover:border-slate-700/50 hover:shadow-lg"
-                  >
-                    <div class="flex-1 min-w-0">
-                      <div class="font-medium text-sm text-slate-300 group-hover/item:text-white transition-colors line-clamp-2">
-                        {section.title}
-                      </div>
-                    </div>
-                    <svg
-                      class="flex-shrink-0 w-4 h-4 text-slate-600 opacity-0 group-hover/item:opacity-100 group-hover/item:text-primary-400 transition-all duration-200 transform group-hover/item:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* View Full Chapter Link */}
-            <div class="mt-6 pt-6 border-t border-slate-800">
-              <a
-                href={`/${lang}/${chapter.slug}`}
-                class="inline-flex items-center gap-2 text-sm font-medium text-primary-400 hover:text-primary-300 transition-colors group/link"
-              >
-                <span>
-                  {lang === "ne"
-                    ? "पूर्ण परिच्छेद हेर्नुहोस्"
-                    : "View Full Chapter"}
-                </span>
-                <svg
-                  class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+          {/* Scrollable sections */}
+          <div class="flex-1 overflow-y-auto px-8 py-6">
+            <div class="space-y-0">
+              {sections.map((section: any) => (
+                <a
+                  href={`/${lang}/${chapter.slug}#${section.slug}`}
+                  class="group/item flex items-center justify-between py-4 px-4 -mx-4 transition-all duration-150 border-l-4 border-transparent hover:border-primary-400 hover:bg-slate-900/30"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-base text-slate-300 group-hover/item:text-white transition-colors">
+                      {section.title}
+                    </div>
+                  </div>
+                  <svg
+                    class="flex-shrink-0 w-5 h-5 text-slate-600 opacity-0 group-hover/item:opacity-100 group-hover/item:text-primary-400 transition-all duration-150"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              ))}
             </div>
           </div>
-        );
-      })
-    }
-  </div>
+
+          {/* View Full Chapter Link */}
+          <div class="px-8 py-6 border-t border-slate-800">
+            <a
+              href={`/${lang}/${chapter.slug}`}
+              class="inline-flex items-center gap-2 text-base font-medium text-primary-400 hover:text-primary-300 transition-colors group/link"
+            >
+              <span>
+                {lang === "ne"
+                  ? "पूर्ण परिच्छेद हेर्नुहोस्"
+                  : "View Full Chapter"}
+              </span>
+              <svg
+                class="w-5 h-5 transform group-hover/link:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      );
+    })
+  }
 </div>
 
 <style>
-  /* Custom scrollbar for content area */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 3px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-
   /* Smooth transitions */
   .mega-menu-content {
-    animation: fadeIn 0.2s ease-out;
+    animation: fadeIn 0.15s ease-out;
   }
 
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(-8px);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
     }
   }
 </style>
@@ -144,7 +124,7 @@ const initialChapter = currentChapter || 1;
     const allContent = document.querySelectorAll(".mega-menu-content");
     allContent.forEach((content) => {
       content.classList.add("hidden");
-      content.classList.remove("block");
+      content.classList.remove("flex");
     });
 
     // Show selected chapter content
@@ -153,7 +133,7 @@ const initialChapter = currentChapter || 1;
     );
     if (selectedContent) {
       selectedContent.classList.remove("hidden");
-      selectedContent.classList.add("block");
+      selectedContent.classList.add("flex");
     }
   }) as EventListener);
 </script>

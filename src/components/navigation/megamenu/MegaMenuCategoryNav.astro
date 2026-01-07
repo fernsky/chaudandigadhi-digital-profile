@@ -13,11 +13,8 @@ const t = getTranslations(lang);
 ---
 
 <!-- Category Navigation (Left Side) -->
-<nav class="flex-shrink-0 w-64">
-  <h3 class="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-4 px-4">
-    {t.nav.chapters}
-  </h3>
-  <ul class="space-y-1" role="menu">
+<nav class="flex-shrink-0 w-80 border-r border-slate-800 h-full overflow-y-auto">
+  <ul class="space-y-0" role="menu">
     {
       allChapters.map((num) => {
         const chapter = t.chapters[num];
@@ -26,22 +23,22 @@ const t = getTranslations(lang);
           <li role="none">
             <button
               data-chapter={num}
-              class={`mega-menu-category group/cat w-full text-left px-4 py-3 rounded-md transition-all duration-200 border border-transparent ${
+              class={`mega-menu-category group/cat w-full text-left px-6 py-5 transition-all duration-150 border-l-4 ${
                 isActive
-                  ? "bg-primary-500/10 text-primary-300 font-medium border-primary-500/20"
-                  : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200 hover:border-slate-700/50"
+                  ? "bg-primary-500/5 text-white font-medium border-primary-400"
+                  : "text-slate-300 hover:bg-slate-900/50 hover:text-white border-transparent hover:border-slate-700"
               }`}
               role="menuitem"
               aria-current={isActive ? "page" : undefined}
             >
-              <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center justify-between gap-4">
                 <div class="flex-1 min-w-0">
-                  <p class="text-sm font-medium line-clamp-2">
+                  <p class="text-base leading-relaxed">
                     {chapter.description}
                   </p>
                 </div>
                 <svg
-                  class="flex-shrink-0 w-4 h-4 opacity-0 group-hover/cat:opacity-100 transition-all duration-200 transform group-hover/cat:translate-x-1"
+                  class="flex-shrink-0 w-5 h-5 opacity-40 group-hover/cat:opacity-100 transition-all duration-150"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
