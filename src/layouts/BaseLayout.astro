@@ -4,6 +4,7 @@ import { getTranslations } from "../lib/i18n";
 import "../styles/global.css";
 import SEOHead from "../components/seo/SEOHead.astro";
 import Header from "../components/navigation/Header.astro";
+import PremiumFooter from "../components/navigation/PremiumFooter.astro";
 import { ChevronUp } from "lucide-astro";
 
 interface Props {
@@ -75,32 +76,7 @@ const pageDescription = description || t.meta.description;
       <slot />
     </main>
 
-    {
-      !hideFooter && (
-        <footer class="bg-slate-950 text-white py-8 mt-16 no-print">
-          <div class="container">
-            <div class="text-center">
-              <p class="mb-2">{t.footer.copyright}</p>
-              <div class="flex justify-center gap-4 text-sm">
-                <a
-                  href={`/${lang}/contact`}
-                  class="hover:text-primary-400 transition-colors"
-                >
-                  {t.footer.contact}
-                </a>
-                <span>•</span>
-                <a
-                  href={`/${lang}/privacy`}
-                  class="hover:text-primary-400 transition-colors"
-                >
-                  {t.footer.privacy}
-                </a>
-              </div>
-            </div>
-          </div>
-        </footer>
-      )
-    }
+    {!hideFooter && <PremiumFooter lang={lang} />}
 
     <!-- Back to Top Button -->
     <button
