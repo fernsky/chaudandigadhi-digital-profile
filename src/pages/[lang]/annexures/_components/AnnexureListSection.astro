@@ -35,12 +35,12 @@ const t = content[lang];
                     <div class="text-sm font-bold text-primary-600 mb-1">
                         {lang === "ne" ? "अनुसूची" : "Annex"} {item.number}
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 group-hover:text-primary-700 transition-colors">
+                    <h3 class="text-xl font-bold text-slate-100 group-hover:text-primary-400 transition-colors">
                         {item.title}
                     </h3>
                 </div>
                 <svg
-                    class="w-6 h-6 text-gray-400 group-hover:text-primary-600 transform group-hover:translate-x-1 transition-all"
+                    class="w-6 h-6 text-slate-500 group-hover:text-primary-400 transform group-hover:translate-x-1 transition-all"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -57,7 +57,7 @@ const t = content[lang];
     }
 </div>
 
-<div class="mt-12 p-6 bg-slate-900  text-center">
+<div class="mt-12 p-6 bg-slate-900">
     <p class="text-slate-400">
         {t.note}
     </p>
