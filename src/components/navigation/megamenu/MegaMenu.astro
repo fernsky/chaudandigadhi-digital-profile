@@ -74,10 +74,10 @@ const t = getTranslations(lang);
   }
 
   /* Make header background match menu when open */
-  header.menu-open {
+  :global(header.menu-open) {
     background-color: rgb(2 6 23 / 0.95) !important;
-    backdrop-filter: blur(24px);
-    border-bottom-color: rgb(30 41 59);
+    backdrop-filter: blur(24px) !important;
+    border-bottom-color: rgb(30 41 59) !important;
   }
 </style>
 

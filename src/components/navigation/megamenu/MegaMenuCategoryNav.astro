@@ -13,7 +13,7 @@ const t = getTranslations(lang);
 ---
 
 <!-- Category Navigation (Left Side) -->
-<nav class="flex-shrink-0 w-80 border-r border-slate-800 h-full overflow-y-auto">
+<nav class="flex-shrink-0 w-80 border-r border-slate-800 h-full overflow-y-auto scrollbar-hide">
   <ul class="space-y-0" role="menu">
     {
       allChapters.map((num) => {
@@ -23,10 +23,10 @@ const t = getTranslations(lang);
           <li role="none">
             <button
               data-chapter={num}
-              class={`mega-menu-category group/cat w-full text-left px-6 py-5 transition-all duration-150 border-l-4 ${
+              class={`mega-menu-category group/cat w-full text-left px-6 py-5 transition-all duration-150 ${
                 isActive
-                  ? "bg-primary-500/5 text-white font-medium border-primary-400"
-                  : "text-slate-300 hover:bg-slate-900/50 hover:text-white border-transparent hover:border-slate-700"
+                  ? "bg-primary-500/5 text-white font-medium"
+                  : "text-slate-300 hover:bg-slate-900/50 hover:text-white"
               }`}
               role="menuitem"
               aria-current={isActive ? "page" : undefined}
@@ -59,31 +59,56 @@ const t = getTranslations(lang);
   </ul>
 </nav>
 
+<style>
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
 <script>
-  // Category hover interaction to update content area
-  const categoryButtons = document.querySelectorAll(".mega-menu-category");
+  document.addEventListener("DOMContentLoaded", () => {
+    // Category hover interaction to update content area
+    const categoryButtons = document.querySelectorAll(".mega-menu-category");
 
-  categoryButtons.forEach((button) => {
-    button.addEventListener("mouseenter", () => {
-      const chapterNum = button.getAttribute("data-chapter");
-      if (chapterNum) {
-        // Trigger custom event to update content area
-        document.dispatchEvent(
-          new CustomEvent("megamenu:categoryChange", {
-            detail: { chapter: parseInt(chapterNum) },
-          }),
-        );
-      }
-    });
+    categoryButtons.forEach((button) => {
+      // Update content on hover
+      button.addEventListener("mouseenter", () => {
+        // Remove active state from all buttons
+        categoryButtons.forEach((btn) => {
+          btn.classList.remove("bg-primary-500/5", "text-white", "font-medium");
+          btn.classList.add("text-slate-300");
+        });
 
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
-      const chapterNum = button.getAttribute("data-chapter");
-      if (chapterNum) {
-        const lang = document.documentElement.lang || "ne";
-        const slug = `chapter-${chapterNum}`;
-        window.location.href = `/${lang}/${slug}`;
-      }
+        // Add active state to hovered button
+        button.classList.remove("text-slate-300");
+        button.classList.add("bg-primary-500/5", "text-white", "font-medium");
+
+        const chapterNum = button.getAttribute("data-chapter");
+        if (chapterNum) {
+          // Trigger custom event to update content area
+          document.dispatchEvent(
+            new CustomEvent("megamenu:categoryChange", {
+              detail: { chapter: parseInt(chapterNum) },
+            }),
+          );
+        }
+      });
+
+      // Navigate on click
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const chapterNum = button.getAttribute("data-chapter");
+        if (chapterNum) {
+          const lang = document.documentElement.lang || "ne";
+          const slug = `chapter-${chapterNum}`;
+          window.location.href = `/${lang}/${slug}`;
+        }
+      });
     });
   });
 </script>
