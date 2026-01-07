@@ -31,17 +31,17 @@ const t = content[lang];
     </h2>
 
     <div class="prose prose-lg max-w-none">
-        <p class="text-gray-700 leading-relaxed mb-6">
+        <p class="text-slate-300 leading-relaxed mb-6">
             {t.text}
         </p>
 
-        <div class="card bg-slate-900 border-l-4 border-green-600 mt-6">
+        <div class="card bg-slate-900 border-l-4 border-primary-600 mt-6">
             <ul class="space-y-2">
                 {
                     t.documents.map((doc) => (
                         <li class="flex items-start gap-3">
                             <svg
-                                class="w-5 h-5 text-green-600 flex-shrink-0 mt-1"
+                                class="w-5 h-5 text-primary-400 flex-shrink-0 mt-1"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                             >
@@ -51,7 +51,7 @@ const t = content[lang];
                                     clip-rule="evenodd"
                                 />
                             </svg>
-                            <span class="text-gray-800">{doc}</span>
+                            <span class="text-slate-100">{doc}</span>
                         </li>
                     ))
                 }

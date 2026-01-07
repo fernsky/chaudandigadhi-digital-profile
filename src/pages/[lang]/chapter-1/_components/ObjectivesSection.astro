@@ -33,17 +33,17 @@ const t = content[lang];
     </h2>
 
     <div class="prose prose-lg max-w-none">
-        <p class="text-gray-700 leading-relaxed mb-6">
+        <p class="text-slate-300 leading-relaxed mb-6">
             {t.text}
         </p>
 
-        <div class="card bg-slate-900 border-l-4 border-blue-600">
+        <div class="card bg-slate-900 border-l-4 border-primary-600">
             <ul class="space-y-3">
                 {
                     t.objectives.map((obj) => (
                         <li class="flex items-start gap-3">
                             <svg
-                                class="w-6 h-6 text-blue-600 flex-shrink-0 mt-1"
+                                class="w-6 h-6 text-primary-400 flex-shrink-0 mt-1"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                             >
@@ -53,7 +53,7 @@ const t = content[lang];
                                     clip-rule="evenodd"
                                 />
                             </svg>
-                            <span class="text-gray-800">{obj}</span>
+                            <span class="text-slate-100">{obj}</span>
                         </li>
                     ))
                 }
