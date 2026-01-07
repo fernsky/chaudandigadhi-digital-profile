@@ -4,7 +4,7 @@
 
 <div
     id="population-map-container"
-    class="relative w-full h-[700px] md:h-[900px] flex items-center justify-center px-4 md:px-8"
+    class="relative w-full h-[600px] md:h-[600px] flex items-center justify-center px-4 md:px-8 overflow-visible"
 >
     <svg
         id="population-map"
@@ -46,8 +46,9 @@
             return;
         }
 
-        const width = 1000;
-        const height = 800;
+        // High resolution for crisp 2D rendering
+        const width = 2000;
+        const height = 1600;
 
         // Clear existing content
         svg.selectAll("*").remove();
@@ -64,16 +65,16 @@
 
         const projection = geoMercator()
             .center([centerLon, centerLat])
-            .scale(250000) // Balanced scale - large but no edge truncation
+            .scale(450000) // Adjusted scale for new 2D dimensions
             .translate([width / 2, height / 2]);
 
         const pathGenerator = geoPath().projection(projection);
 
-        // Main group with enhanced 3D transform
+        // Main group
         const g = svg
             .append("g")
             .attr("class", "map-layers")
-            .attr("transform", "translate(0, 30) scale(1, 0.92)"); // More pronounced 3D
+            .attr("transform", "translate(0, 0)"); // Centered flat map
 
         // Premium color scale - sophisticated gradient
         const populations = wardsGeoJSON.features.map(
@@ -144,7 +145,7 @@
             .attr("stroke", "rgba(255, 255, 255, 0.4)") // Thicker, brighter white borders
             .attr("stroke-width", 2.5)
             .attr("class", "ward-path cursor-pointer")
-            .style("pointer-events", "all")
+            .style("pointer-events", "none") // Disable interaction until animation completes
             .attr("fill-opacity", 0)
             .style("backdrop-filter", "blur(10px)"); // Glass effect
 
@@ -193,10 +194,14 @@
                 .transition()
                 .duration(1000)
                 .delay((d, i) => i * 180 + 1500)
-                .attr("opacity", 0.6);
+                .attr("opacity", 0.6)
+                .on("end", enableInteractions); // Re-enable interactions after glow animation
         }
 
-        // Premium hover effects
+        // Enable interactions after animation is complete
+        function enableInteractions() {
+            g.selectAll(".ward-path").style("pointer-events", "all");
+        }
         wards
             .on("mouseenter", function (event, d) {
                 const currentColor = colorScale(d.properties.total_population);
@@ -303,8 +308,17 @@
         window.addEventListener("load", initMap);
     }
 </script>
-
 <style>
+    #population-map {
+        /* Flat 2D map */
+        filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+    }
+
+    #population-map-container {
+        /* No perspective needed for 2D */
+        overflow: hidden;
+    }
+
     .ward-path {
         transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
