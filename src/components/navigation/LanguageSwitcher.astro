@@ -1,5 +1,5 @@
 ---
-import type { Language } from '../../i18n';
+import type { Language } from "../../i18n";
 
 interface Props {
   lang: Language;
@@ -9,31 +9,31 @@ interface Props {
 const { lang, currentPath } = Astro.props;
 
 // Generate the alternate language path
-const alternateLang = lang === 'ne' ? 'en' : 'ne';
+const alternateLang = lang === "ne" ? "en" : "ne";
 const alternatePath = currentPath.replace(`/${lang}/`, `/${alternateLang}/`);
 ---
 
 <div class="flex items-center gap-2">
-  <span class="text-sm text-gray-600">
-    {lang === 'ne' ? 'भाषा:' : 'Language:'}
+  <span class="text-sm text-slate-400">
+    {lang === "ne" ? "भाषा:" : "Language:"}
   </span>
-  <div class="flex bg-gray-100 rounded-lg p-1">
+  <div class="flex bg-slate-800 p-1 border border-slate-700">
     <a
       href={currentPath}
-      class={`px-3 py-1 rounded-md text-sm font-medium transition-all ${
-        lang === 'ne' 
-          ? 'bg-white text-primary-700 shadow-sm' 
-          : 'text-gray-600 hover:text-gray-900'
+      class={`px-3 py-1 text-sm font-medium transition-all ${
+        lang === "ne"
+          ? "bg-slate-700 text-slate-100 shadow-sm border border-slate-600"
+          : "text-slate-400 hover:text-slate-200"
       }`}
     >
       नेपाली
     </a>
     <a
       href={alternatePath}
-      class={`px-3 py-1 rounded-md text-sm font-medium transition-all ${
-        lang === 'en' 
-          ? 'bg-white text-primary-700 shadow-sm' 
-          : 'text-gray-600 hover:text-gray-900'
+      class={`px-3 py-1 text-sm font-medium transition-all ${
+        lang === "en"
+          ? "bg-slate-700 text-slate-100 shadow-sm border border-slate-600"
+          : "text-slate-400 hover:text-slate-200"
       }`}
     >
       English
