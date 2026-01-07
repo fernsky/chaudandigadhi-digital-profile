@@ -3,6 +3,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import type { Language } from "../../lib/i18n";
 import { getTranslations } from "../../lib/i18n";
 
+import { Users, Map, Landmark, Home as HomeIcon } from "lucide-astro";
+
 export async function getStaticPaths() {
     return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
 }
@@ -15,22 +17,22 @@ const stats = [
     {
         label: { ne: "कुल जनसंख्या", en: "Total Population" },
         value: "45,678",
-        icon: "👥",
+        icon: Users,
     },
     {
         label: { ne: "क्षेत्रफल", en: "Area" },
         value: "123.45 km²",
-        icon: "🗺️",
+        icon: Map,
     },
     {
         label: { ne: "वडा संख्या", en: "Number of Wards" },
         value: "8",
-        icon: "🏛️",
+        icon: Landmark,
     },
     {
         label: { ne: "घरपरिवार", en: "Households" },
         value: "10,234",
-        icon: "🏠",
+        icon: HomeIcon,
     },
 ];
 ---
@@ -102,7 +104,9 @@ const stats = [
                 {
                     stats.map((stat) => (
                         <div class="card hover:scale-105 transition-transform">
-                            <div class="text-4xl mb-3">{stat.icon}</div>
+                            <div class="text-4xl mb-3 text-primary-400">
+                                <stat.icon size={40} strokeWidth={1.5} />
+                            </div>
                             <div class="text-3xl font-bold text-primary-400 mb-2">
                                 {stat.value}
                             </div>
