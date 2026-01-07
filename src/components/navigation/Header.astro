@@ -2,7 +2,7 @@
 import type { Language } from "../../lib/i18n";
 import { getTranslations, allChapters } from "../../lib/i18n";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
-import { ChevronDown, Menu } from "lucide-astro";
+import { ChevronDown, Menu, X } from "lucide-astro";
 
 interface Props {
   lang: Language;
@@ -11,42 +11,62 @@ interface Props {
 
 const { lang, currentChapter } = Astro.props;
 const t = getTranslations(lang);
+
+// Check if we are on the home page
+const pathname = Astro.url.pathname;
+const isHomePage = pathname === `/${lang}` || pathname === `/${lang}/`;
+
+// Determine header classes based on page
+// On home page: absolute, transparent background initially (can add scroll listener later if needed)
+// On other pages: sticky, solid background
+const headerClass = isHomePage
+  ? "absolute top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/10"
+  : "sticky top-0 z-50 bg-slate-950/95 backdrop-blur-md shadow-md border-b border-slate-800 transition-all duration-300";
+
+const logoClass =
+  "w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-lg transition-transform hover:scale-105 duration-300";
+const navLinkClass =
+  "font-serif tracking-wide text-sm md:text-base font-medium transition-all duration-300";
+const navLinkActive = "text-primary-400";
+const navLinkInactive = "text-slate-300 hover:text-white";
 ---
 
-<header
-  class="sticky top-0 z-50 bg-slate-950 shadow-md no-print border-b border-slate-800"
->
-  <div class="container">
-    <div class="flex items-center justify-between py-4">
+<header class={headerClass} id="main-header">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="flex items-center justify-between py-4 md:py-5">
       <!-- Logo and Title -->
-      <a
-        href={`/${lang}/`}
-        class="flex items-center gap-3 hover:opacity-80 transition-opacity"
-      >
-        <img
-          src="/images/logo.svg"
-          alt="Government of Nepal Emblem"
-          class="w-12 h-12 object-contain"
-        />
-        <div>
-          <h1 class="text-lg font-bold text-slate-100 leading-tight">
-            {
-              lang === "ne"
-                ? "चौदण्डीगढी नगरपालिका"
-                : "Chaudandigadhi Municipality"
-            }
+      <a href={`/${lang}/`} class="flex items-center gap-3 md:gap-4 group">
+        <div class="relative">
+          <div
+            class="absolute inset-0 bg-primary-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full"
+          >
+          </div>
+          <img
+            src="/images/logo.svg"
+            alt="Government of Nepal Emblem"
+            class={logoClass}
+          />
+        </div>
+
+        <div class="flex flex-col">
+          <h1
+            class="font-serif font-bold text-slate-100 leading-tight tracking-wide text-lg md:text-xl lg:text-2xl group-hover:text-primary-200 transition-colors"
+          >
+            {t.home.hero.chaudandigadhi}
           </h1>
-          <p class="text-xs text-slate-400">
-            {lang === "ne" ? "डिजिटल प्रोफाइल" : "Digital Profile"}
+          <p
+            class="font-serif text-xs md:text-sm text-slate-400 tracking-wider uppercase group-hover:text-slate-300 transition-colors"
+          >
+            {t.home.hero.municipality}
           </p>
         </div>
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-6">
+      <nav class="hidden md:flex items-center gap-8">
         <a
           href={`/${lang}/`}
-          class={`font-medium transition-colors ${!currentChapter ? "text-primary-400" : "text-slate-300 hover:text-primary-400"}`}
+          class={`${navLinkClass} ${!currentChapter && Astro.url.pathname.endsWith(`/${lang}/`) ? navLinkActive : navLinkInactive}`}
         >
           {t.nav.home}
         </a>
@@ -54,48 +74,59 @@ const t = getTranslations(lang);
         <!-- Chapters Dropdown -->
         <div class="relative group">
           <button
-            class="font-medium text-slate-300 hover:text-primary-400 transition-colors flex items-center gap-1"
+            class={`${navLinkClass} ${currentChapter ? navLinkActive : navLinkInactive} flex items-center gap-1 group-hover:text-white`}
+            aria-expanded="false"
           >
             {t.nav.chapters}
-            <ChevronDown size={16} />
+            <ChevronDown
+              size={14}
+              class="transition-transform duration-300 group-hover:rotate-180"
+            />
           </button>
 
+          <!-- Dropdown Menu -->
           <div
-            class="absolute top-full left-0 mt-2 w-80 bg-slate-900 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-slate-700"
+            class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-80 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out pt-2"
           >
-            <div class="p-2 max-h-96 overflow-y-auto">
-              {
-                allChapters.map((num) => {
-                  const chapter = t.chapters[num];
-                  return (
-                    <a
-                      href={`/${lang}/${chapter.slug}`}
-                      class={`block px-4 py-3 transition-colors ${
-                        currentChapter === num
-                          ? "bg-primary-900 text-primary-300"
-                          : "hover:bg-slate-800"
-                      }`}
-                    >
-                      <div class="font-semibold text-sm text-slate-200">
-                        {chapter.title}
-                      </div>
-                      <div class="text-xs text-slate-400 mt-1">
-                        {chapter.description}
-                      </div>
-                    </a>
-                  );
-                })
-              }
+            <div
+              class="bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl rounded-sm overflow-hidden ring-1 ring-white/5"
+            >
+              <div class="max-h-[70vh] overflow-y-auto py-2 custom-scrollbar">
+                {
+                  allChapters.map((num) => {
+                    const chapter = t.chapters[num];
+                    return (
+                      <a
+                        href={`/${lang}/${chapter.slug}`}
+                        class={`block px-5 py-3 transition-colors duration-200 border-l-2 ${
+                          currentChapter === num
+                            ? "bg-primary-500/10 border-primary-400 text-primary-300"
+                            : "border-transparent text-slate-400 hover:bg-white/5 hover:text-slate-200"
+                        }`}
+                      >
+                        <div class="font-serif font-medium text-sm">
+                          {chapter.title}
+                        </div>
+                        <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-0.5">
+                          {t.nav.chapters} {num}
+                        </div>
+                      </a>
+                    );
+                  })
+                }
+              </div>
             </div>
           </div>
         </div>
 
         <a
           href={`/${lang}/annexures`}
-          class="font-medium text-slate-300 hover:text-primary-400 transition-colors"
+          class={`${navLinkClass} ${Astro.url.pathname.includes("/annexures") ? navLinkActive : navLinkInactive}`}
         >
           {t.nav.annexures}
         </a>
+
+        <div class="h-4 w-px bg-slate-700/50 mx-2"></div>
 
         <LanguageSwitcher lang={lang} currentPath={Astro.url.pathname} />
       </nav>
@@ -103,42 +134,48 @@ const t = getTranslations(lang);
       <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-button"
-        class="md:hidden p-2 text-slate-300 hover:text-primary-400 transition-colors"
+        class="md:hidden p-2 text-slate-300 hover:text-white transition-colors relative z-50"
         aria-label="Toggle menu"
       >
-        <Menu size={24} />
+        <Menu size={24} id="menu-icon" class="transition-all duration-300" />
+        <X
+          size={24}
+          id="close-icon"
+          class="absolute top-2 left-2 opacity-0 rotate-90 scale-75 transition-all duration-300"
+        />
       </button>
     </div>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile Menu Overlay -->
   <div
     id="mobile-menu"
-    class="md:hidden hidden bg-slate-900 border-t border-slate-800"
+    class="fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-300 md:hidden"
   >
-    <div class="container py-4">
-      <nav class="flex flex-col gap-2">
-        <a
-          href={`/${lang}/`}
-          class={`px-4 py-2 transition-colors ${!currentChapter ? "bg-primary-900 text-primary-300" : "hover:bg-slate-800"}`}
+    <nav
+      class="flex flex-col items-center gap-8 p-6 w-full max-w-sm text-center"
+    >
+      <a
+        href={`/${lang}/`}
+        class={`text-xl font-serif ${!currentChapter && Astro.url.pathname.endsWith(`/${lang}/`) ? "text-primary-400" : "text-slate-300"}`}
+      >
+        {t.nav.home}
+      </a>
+
+      <div class="w-full h-px bg-slate-800"></div>
+
+      <div class="flex flex-col gap-4 w-full max-h-[40vh] overflow-y-auto">
+        <span class="text-xs uppercase tracking-widest text-slate-500 mb-2"
+          >{t.nav.chapters}</span
         >
-          {t.nav.home}
-        </a>
-
-        <div class="px-4 py-2 font-semibold text-slate-200 text-sm">
-          {t.nav.chapters}
-        </div>
-
         {
           allChapters.map((num) => {
             const chapter = t.chapters[num];
             return (
               <a
                 href={`/${lang}/${chapter.slug}`}
-                class={`px-6 py-2 transition-colors text-sm ${
-                  currentChapter === num
-                    ? "bg-primary-900 text-primary-300"
-                    : "hover:bg-slate-800"
+                class={`text-base font-serif transition-colors ${
+                  currentChapter === num ? "text-primary-400" : "text-slate-400"
                 }`}
               >
                 {chapter.title}
@@ -146,27 +183,102 @@ const t = getTranslations(lang);
             );
           })
         }
+      </div>
 
-        <a
-          href={`/${lang}/annexures`}
-          class="px-4 py-2 hover:bg-slate-800 transition-colors"
-        >
-          {t.nav.annexures}
-        </a>
+      <div class="w-full h-px bg-slate-800"></div>
 
-        <div class="px-4 py-2 mt-2">
-          <LanguageSwitcher lang={lang} currentPath={Astro.url.pathname} />
-        </div>
-      </nav>
-    </div>
+      <a
+        href={`/${lang}/annexures`}
+        class={`text-xl font-serif ${Astro.url.pathname.includes("/annexures") ? "text-primary-400" : "text-slate-300"}`}
+      >
+        {t.nav.annexures}
+      </a>
+
+      <div class="mt-4 scale-125">
+        <LanguageSwitcher lang={lang} currentPath={Astro.url.pathname} />
+      </div>
+    </nav>
   </div>
 </header>
 
 <script>
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+  const header = document.getElementById("main-header");
+
+  let isMenuOpen = false;
 
   mobileMenuButton?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("hidden");
+    isMenuOpen = !isMenuOpen;
+
+    if (isMenuOpen) {
+      mobileMenu?.classList.remove("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "hidden"; // Prevent scrolling
+
+      // Icon toggle
+      menuIcon?.classList.add("opacity-0", "-rotate-90", "scale-75");
+      closeIcon?.classList.remove("opacity-0", "rotate-90", "scale-75");
+    } else {
+      mobileMenu?.classList.add("opacity-0", "pointer-events-none");
+      document.body.style.overflow = ""; // Restore scrolling
+
+      // Icon toggle
+      menuIcon?.classList.remove("opacity-0", "-rotate-90", "scale-75");
+      closeIcon?.classList.add("opacity-0", "rotate-90", "scale-75");
+    }
   });
+
+  // Close menu when clicking a link
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      isMenuOpen = false;
+      mobileMenu?.classList.add("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "";
+      menuIcon?.classList.remove("opacity-0", "-rotate-90", "scale-75");
+      closeIcon?.classList.add("opacity-0", "rotate-90", "scale-75");
+    });
+  });
+
+  // Optional: Add scroll effect for home page header transparency
+  const isHomePage = window.location.pathname.endsWith("/"); // Simple check, might need robust logic if languages are strictly /ne/ or /en/
+  if (header && header.classList.contains("absolute")) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.remove("bg-transparent", "border-white/10");
+        header.classList.add(
+          "bg-slate-950/90",
+          "backdrop-blur-md",
+          "shadow-md",
+          "border-slate-800",
+        );
+      } else {
+        header.classList.add("bg-transparent", "border-white/10");
+        header.classList.remove(
+          "bg-slate-950/90",
+          "backdrop-blur-md",
+          "shadow-md",
+          "border-slate-800",
+        );
+      }
+    });
+  }
 </script>
+
+<style>
+  /* Custom scrollbar for dropdown */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+</style>

@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import PremiumHeader from "../../components/navigation/PremiumHeader.astro";
 import PopulationMap from "../../pages/[lang]/_components/PopulationMap.astro";
 import PremiumFooter from "../../components/navigation/PremiumFooter.astro";
 import type { Language } from "../../lib/i18n";
@@ -19,11 +18,10 @@ const t = getTranslations(lang);
     lang={lang}
     title={t.meta.title}
     description={t.meta.description}
-    hideHeader={true}
+    hideHeader={false}
     hideFooter={true}
 >
     <!-- Hero Section -->
-    <PremiumHeader lang={lang} />
     <section
         class="relative h-screen bg-[url('/images/sakuna-pokhari.jpeg')] bg-cover bg-center bg-fixed"
     >
