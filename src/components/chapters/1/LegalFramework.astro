@@ -1,0 +1,239 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { ChevronDown } from "lucide-astro";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type LegalFrameworkContent = {
+    title: string;
+    sectionId: string;
+    intro: string;
+    frameworks: Array<{
+        marker: string;
+        title: string;
+        content: string;
+        keyLaws?: string[];
+        keyPolicies?: string[];
+        keyNeeds?: string[];
+    }>;
+    footer: string;
+    internationalCommitments: string[];
+};
+
+const content = await loadChapterSection<LegalFrameworkContent>(
+    1,
+    "legal-framework",
+    lang
+);
+
+if (!content) {
+    throw new Error("Legal Framework section content not found");
+}
+---
+
+<section
+    id="legal-framework"
+    class="relative min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-24 md:py-32"
+>
+    <!-- Background Texture -->
+    <div
+        class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMSI+PHBhdGggZD0iTTM2IDE0YzMuMzEzIDAgNiAyLjY4NyA2IDZzLTIuNjg3IDYtNiA2LTYtMi42ODctNi02IDIuNjg3LTYgNi02ek0xNCAzNmMzLjMxMyAwIDYgMi42ODcgNiA2cy0yLjY4NyA2LTYgNi02LTIuNjg3LTYtNiAyLjY4Ny02IDYtNnoiLz48L2c+PC9nPjwvc3ZnPg==')] pointer-events-none"
+    >
+    </div>
+
+    <div class="container mx-auto px-8 relative z-10">
+        <!-- Section Header -->
+        <div class="max-w-5xl mx-auto mb-16 reveal-item">
+            <div
+                class="inline-block px-6 py-2 bg-white/5 border border-white/10 mb-6"
+            >
+                <span class="text-slate-400 font-serif text-sm tracking-wider"
+                    >{content.sectionId}</span
+                >
+            </div>
+            <h2
+                class="font-serif text-[clamp(2.5rem,5vw,4.5rem)] md:text-[4.5rem] leading-[0.95] font-medium text-white tracking-tight mb-10"
+            >
+                {content.title}
+            </h2>
+
+            <!-- Introduction -->
+            <p
+                class="text-slate-300 font-serif text-lg md:text-xl leading-relaxed mb-2"
+            >
+                {content.intro}
+            </p>
+        </div>
+
+        <!-- Framework Accordions -->
+        <div class="max-w-5xl mx-auto space-y-6">
+            {
+                content.frameworks.map((framework, index) => (
+                    <div
+                        class="framework-accordion reveal-item"
+                        style={`--delay: ${(index + 1) * 150}ms`}
+                        data-framework={`framework-${index}`}
+                    >
+                        <div class="bg-white/[0.02] backdrop-blur-sm border border-white/10 overflow-hidden transition-all duration-500 hover:border-white/20">
+                            {/* Accordion Header */}
+                            <button
+                                class="accordion-trigger w-full px-8 md:px-12 py-8 flex items-center justify-between gap-6 group"
+                                aria-expanded="false"
+                            >
+                                <div class="flex items-center gap-6 flex-1 text-left">
+                                    <div class="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-white/10 border border-white/20 text-white font-serif text-2xl group-hover:bg-white/15 transition-all">
+                                        {framework.marker}
+                                    </div>
+                                    <h3 class="font-serif text-2xl md:text-3xl text-white tracking-tight">
+                                        {framework.title}
+                                    </h3>
+                                </div>
+                                <ChevronDown
+                                    size={28}
+                                    class="text-slate-400 group-hover:text-white transition-all duration-300 accordion-icon"
+                                />
+                            </button>
+
+                            {/* Accordion Content */}
+                            <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500">
+                                <div class="px-8 md:px-12 pb-8 pt-4 border-t border-white/5">
+                                    <p class="text-slate-300 font-serif text-base md:text-lg leading-relaxed mb-8">
+                                        {framework.content}
+                                    </p>
+
+                                    {/* Key Laws/Policies/Needs */}
+                                    {(framework.keyLaws ||
+                                        framework.keyPolicies ||
+                                        framework.keyNeeds) && (
+                                        <div class="bg-white/[0.02] border border-white/5 p-6 md:p-8">
+                                            <h4 class="text-slate-200 font-serif text-lg mb-4">
+                                                {framework.keyLaws
+                                                    ? "मुख्य कानुनहरू:"
+                                                    : framework.keyPolicies
+                                                      ? "मुख्य नीतिहरू:"
+                                                      : "मुख्य आवश्यकताहरू:"}
+                                            </h4>
+                                            <ul class="space-y-3">
+                                                {(framework.keyLaws ||
+                                                    framework.keyPolicies ||
+                                                    framework.keyNeeds)?.map(
+                                                    (item) => (
+                                                        <li class="flex items-start gap-3">
+                                                            <span class="text-slate-500 mt-2">
+                                                                •
+                                                            </span>
+                                                            <span class="text-slate-400 font-serif text-base flex-1">
+                                                                {item}
+                                                            </span>
+                                                        </li>
+                                                    )
+                                                )}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Footer and International Commitments -->
+        <div class="max-w-5xl mx-auto mt-16 space-y-8 reveal-item" style="--delay: 600ms">
+            <div
+                class="bg-gradient-to-r from-white/5 to-transparent border-l-4 border-white/30 p-8 md:p-10"
+            >
+                <p
+                    class="text-slate-300 font-serif text-base md:text-lg leading-relaxed"
+                >
+                    {content.footer}
+                </p>
+            </div>
+
+            <!-- International Commitments -->
+            <div class="bg-white/[0.02] border border-white/5 p-8 md:p-10">
+                <h4
+                    class="text-white font-serif text-xl md:text-2xl mb-6 tracking-tight"
+                >
+                    अन्तर्राष्ट्रिय प्रतिबद्धताहरू
+                </h4>
+                <div class="flex flex-wrap gap-3">
+                    {
+                        content.internationalCommitments.map((commitment) => (
+                            <span class="px-5 py-3 bg-white/5 border border-white/10 text-slate-300 font-serif text-sm hover:bg-white/10 hover:border-white/20 transition-all">
+                                {commitment}
+                            </span>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .reveal-item {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+            opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+            transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        transition-delay: var(--delay, 0ms);
+    }
+
+    .reveal-item.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .accordion-content.open {
+        max-height: 1000px;
+    }
+
+    .accordion-icon {
+        transition: transform 0.3s ease;
+    }
+
+    .accordion-trigger[aria-expanded="true"] .accordion-icon {
+        transform: rotate(180deg);
+    }
+</style>
+
+<script>
+    // Intersection Observer for reveal animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll(".reveal-item").forEach((item) => {
+        observer.observe(item);
+    });
+
+    // Accordion functionality
+    document.querySelectorAll(".accordion-trigger").forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+            const content =
+                trigger.parentElement?.querySelector(".accordion-content");
+            const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+
+            // Toggle current accordion
+            trigger.setAttribute("aria-expanded", (!isExpanded).toString());
+            content?.classList.toggle("open");
+        });
+    });
+</script>

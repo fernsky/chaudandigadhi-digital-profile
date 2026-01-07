@@ -1,0 +1,131 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Language } from "../../../lib/i18n";
+import { getTranslations } from "../../../lib/i18n";
+
+// Chapter 1 Components
+import ChapterHero from "../../../components/chapters/1/ChapterHero.astro";
+import Background from "../../../components/chapters/1/Background.astro";
+import Objectives from "../../../components/chapters/1/Objectives.astro";
+import LegalFramework from "../../../components/chapters/1/LegalFramework.astro";
+import PreparationStages from "../../../components/chapters/1/PreparationStages.astro";
+import PreparationSubsections from "../../../components/chapters/1/PreparationSubsections.astro";
+import Scope from "../../../components/chapters/1/Scope.astro";
+
+export async function getStaticPaths() {
+    return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Language };
+const t = getTranslations(lang);
+
+const chapterTitle = "परिच्छेद – १: परिचय";
+const chapterDescription =
+    "नगरपालिकाको पृष्ठभूमि, उद्देश्य र कानुनी आधार";
+---
+
+<BaseLayout
+    lang={lang}
+    title={`${chapterTitle} | ${t.meta.siteName}`}
+    description={chapterDescription}
+    hideHeader={false}
+    hideFooter={false}
+>
+    <!-- Chapter Hero -->
+    <ChapterHero lang={lang} />
+
+    <!-- Section 1.1: Background -->
+    <Background lang={lang} />
+
+    <!-- Section 1.2: Objectives -->
+    <Objectives lang={lang} />
+
+    <!-- Section 1.3: Legal Framework -->
+    <LegalFramework lang={lang} />
+
+    <!-- Section 1.4: Preparation Stages -->
+    <PreparationStages lang={lang} />
+
+    <!-- Subsections 1.4.1 through 1.4.7 -->
+    <PreparationSubsections lang={lang} />
+
+    <!-- Section 1.5: Scope -->
+    <Scope lang={lang} />
+
+    <!-- Chapter Navigation -->
+    <nav
+        class="sticky bottom-8 z-50 container mx-auto px-8 pointer-events-none"
+    >
+        <div
+            class="max-w-4xl mx-auto bg-slate-950/90 backdrop-blur-md border border-white/10 p-4 md:p-6 pointer-events-auto"
+        >
+            <div
+                class="flex flex-col md:flex-row items-center justify-between gap-4"
+            >
+                <!-- Previous Chapter -->
+                <a
+                    href={`/${lang}`}
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 text-slate-300 font-serif hover:bg-white/10 hover:border-white/20 hover:text-white transition-all"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    <span>गृहपृष्ठ</span>
+                </a>
+
+                <!-- Chapter Info -->
+                <div class="text-center">
+                    <div class="text-white font-serif text-lg mb-1">
+                        परिच्छेद – १
+                    </div>
+                    <div class="text-slate-400 font-serif text-sm">
+                        ८ परिच्छेदहरू मध्ये
+                    </div>
+                </div>
+
+                <!-- Next Chapter -->
+                <a
+                    href={`/${lang}/chapters/2`}
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-950 font-serif font-bold hover:bg-slate-100 hover:translate-x-1 transition-all"
+                >
+                    <span>अर्को परिच्छेद</span>
+                    <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+</BaseLayout>
+
+<style>
+    /* Smooth scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Fixed background support for mobile */
+    @media (max-width: 768px) {
+        section {
+            background-attachment: scroll !important;
+        }
+    }
+</style>

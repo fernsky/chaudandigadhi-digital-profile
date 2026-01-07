@@ -1,0 +1,507 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSections } from "../../../lib/i18n/chapter-loader";
+import { FileText, Users, Database, BarChart3, FileCheck, MessageSquare, CheckCircle2 } from "lucide-astro";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+// Load all subsection content
+const subsections = await loadChapterSections(
+    1,
+    [
+        "template-preparation",
+        "preparation-workshop",
+        "data-collection",
+        "data-analysis",
+        "draft-preparation",
+        "feedback-collection",
+        "final-report",
+    ],
+    lang
+);
+
+const icons = {
+    "template-preparation": FileText,
+    "preparation-workshop": Users,
+    "data-collection": Database,
+    "data-analysis": BarChart3,
+    "draft-preparation": FileCheck,
+    "feedback-collection": MessageSquare,
+    "final-report": CheckCircle2,
+};
+---
+
+<!-- 1.4.1 Template Preparation -->
+{
+    subsections["template-preparation"] && (
+        <section
+            id="template-preparation"
+            class="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 py-16 md:py-24"
+        >
+            <div class="container mx-auto px-8 relative z-10">
+                <div class="max-w-5xl mx-auto reveal-item">
+                    <div class="flex items-start gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-blue-500/10 border border-blue-500/20">
+                            <FileText size={32} class="text-blue-400" />
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-slate-500 font-serif text-sm mb-2">
+                                {subsections["template-preparation"].sectionId}
+                            </div>
+                            <h3 class="font-serif text-3xl md:text-4xl text-white mb-4 tracking-tight">
+                                {subsections["template-preparation"].title}
+                            </h3>
+                            <p class="text-slate-400 font-serif text-base md:text-lg leading-relaxed mb-6">
+                                {subsections["template-preparation"].intro}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        {subsections["template-preparation"].activities.map(
+                            (activity: any) => (
+                                <div class="bg-white/[0.02] border border-white/5 p-6 md:p-8">
+                                    <p class="text-slate-300 font-serif text-base md:text-lg leading-relaxed">
+                                        {activity.text}
+                                    </p>
+                                </div>
+                            )
+                        )}
+                    </div>
+
+                    {subsections["template-preparation"].keyAspects && (
+                        <div class="mt-8 flex flex-wrap gap-3">
+                            {subsections["template-preparation"].keyAspects.map(
+                                (aspect: string) => (
+                                    <span class="px-4 py-2 bg-white/5 border border-white/10 text-slate-400 text-sm font-serif">
+                                        {aspect}
+                                    </span>
+                                )
+                            )}
+                        </div>
+                    )}
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 1.4.2 Preparation Workshop -->
+{
+    subsections["preparation-workshop"] && (
+        <section
+            id="preparation-workshop"
+            class="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-16 md:py-24"
+        >
+            <div class="container mx-auto px-8 relative z-10">
+                <div class="max-w-5xl mx-auto reveal-item">
+                    <div class="flex items-start gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-purple-500/10 border border-purple-500/20">
+                            <Users size={32} class="text-purple-400" />
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-slate-500 font-serif text-sm mb-2">
+                                {subsections["preparation-workshop"].sectionId}
+                            </div>
+                            <h3 class="font-serif text-3xl md:text-4xl text-white mb-4 tracking-tight">
+                                {subsections["preparation-workshop"].title}
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/[0.02] border border-white/5 p-8 md:p-12 mb-8">
+                        <p class="text-slate-300 font-serif text-base md:text-lg leading-relaxed">
+                            {subsections["preparation-workshop"].description}
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-500/20 p-6">
+                            <h4 class="text-white font-serif text-xl mb-4">
+                                सहभागीहरू
+                            </h4>
+                            <ul class="space-y-2">
+                                {subsections["preparation-workshop"].participants.map(
+                                    (participant: string) => (
+                                        <li class="text-slate-400 font-serif text-sm flex items-start gap-2">
+                                            <span class="text-purple-400 mt-1">
+                                                •
+                                            </span>
+                                            <span>{participant}</span>
+                                        </li>
+                                    )
+                                )}
+                            </ul>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-500/20 p-6">
+                            <h4 class="text-white font-serif text-xl mb-4">
+                                उद्देश्यहरू
+                            </h4>
+                            <ul class="space-y-2">
+                                {subsections["preparation-workshop"].objectives.map(
+                                    (objective: string) => (
+                                        <li class="text-slate-400 font-serif text-sm flex items-start gap-2">
+                                            <span class="text-purple-400 mt-1">
+                                                •
+                                            </span>
+                                            <span>{objective}</span>
+                                        </li>
+                                    )
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 1.4.3 Data Collection -->
+{
+    subsections["data-collection"] && (
+        <section
+            id="data-collection"
+            class="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 py-16 md:py-24"
+        >
+            <div class="container mx-auto px-8 relative z-10">
+                <div class="max-w-5xl mx-auto reveal-item">
+                    <div class="flex items-start gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20">
+                            <Database size={32} class="text-emerald-400" />
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-slate-500 font-serif text-sm mb-2">
+                                {subsections["data-collection"].sectionId}
+                            </div>
+                            <h3 class="font-serif text-3xl md:text-4xl text-white mb-4 tracking-tight">
+                                {subsections["data-collection"].title}
+                            </h3>
+                            <p class="text-slate-400 font-serif text-base md:text-lg leading-relaxed mb-4">
+                                {subsections["data-collection"].intro}
+                            </p>
+                            <p class="text-slate-300 font-serif text-base md:text-lg leading-relaxed">
+                                {subsections["data-collection"].mainContent}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                        {subsections["data-collection"].dataSources.map(
+                            (source: any) => (
+                                <div class="bg-white/[0.02] border border-white/5 p-6 hover:bg-white/[0.04] hover:border-emerald-500/20 transition-all">
+                                    <h5 class="text-white font-serif text-lg mb-2">
+                                        {source.name}
+                                    </h5>
+                                    <div class="flex items-center gap-2">
+                                        <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-serif">
+                                            {source.type}
+                                        </span>
+                                        <span class="px-3 py-1 bg-white/5 text-slate-500 text-xs font-serif">
+                                            {source.importance}
+                                        </span>
+                                    </div>
+                                </div>
+                            )
+                        )}
+                    </div>
+
+                    <div class="flex flex-wrap gap-3">
+                        {subsections["data-collection"].methods.map(
+                            (method: string) => (
+                                <span class="px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-sm font-serif">
+                                    {method}
+                                </span>
+                            )
+                        )}
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 1.4.4 Data Analysis -->
+{
+    subsections["data-analysis"] && (
+        <section
+            id="data-analysis"
+            class="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-16 md:py-24"
+        >
+            <div class="container mx-auto px-8 relative z-10">
+                <div class="max-w-5xl mx-auto reveal-item">
+                    <div class="flex items-start gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-amber-500/10 border border-amber-500/20">
+                            <BarChart3 size={32} class="text-amber-400" />
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-slate-500 font-serif text-sm mb-2">
+                                {subsections["data-analysis"].sectionId}
+                            </div>
+                            <h3 class="font-serif text-3xl md:text-4xl text-white mb-4 tracking-tight">
+                                {subsections["data-analysis"].title}
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 mb-8">
+                        <div class="bg-white/[0.02] border border-white/5 p-8">
+                            <h4 class="text-white font-serif text-xl mb-4">
+                                तथ्याङ्क प्रशोधन
+                            </h4>
+                            <p class="text-slate-300 font-serif text-base md:text-lg leading-relaxed">
+                                {subsections["data-analysis"].description}
+                            </p>
+                        </div>
+
+                        <div class="bg-white/[0.02] border border-white/5 p-8">
+                            <h4 class="text-white font-serif text-xl mb-4">
+                                स्रोत नक्शा तयारी
+                            </h4>
+                            <p class="text-slate-300 font-serif text-base md:text-lg leading-relaxed">
+                                {subsections["data-analysis"].mappingDescription}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {subsections["data-analysis"].tools.map(
+                            (tool: any) => (
+                                <div class="bg-gradient-to-r from-amber-500/10 to-transparent border border-amber-500/20 p-6">
+                                    <h5 class="text-white font-serif text-lg mb-2">
+                                        {tool.name}
+                                    </h5>
+                                    <p class="text-slate-400 font-serif text-sm">
+                                        {tool.purpose}
+                                    </p>
+                                </div>
+                            )
+                        )}
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 1.4.5 Draft Preparation -->
+{
+    subsections["draft-preparation"] && (
+        <section
+            id="draft-preparation"
+            class="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 py-16 md:py-24"
+        >
+            <div class="container mx-auto px-8 relative z-10">
+                <div class="max-w-5xl mx-auto reveal-item">
+                    <div class="flex items-start gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-indigo-500/10 border border-indigo-500/20">
+                            <FileCheck size={32} class="text-indigo-400" />
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-slate-500 font-serif text-sm mb-2">
+                                {subsections["draft-preparation"].sectionId}
+                            </div>
+                            <h3 class="font-serif text-3xl md:text-4xl text-white mb-4 tracking-tight">
+                                {subsections["draft-preparation"].title}
+                            </h3>
+                            <p class="text-slate-300 font-serif text-base md:text-lg leading-relaxed">
+                                {subsections["draft-preparation"].description}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {subsections["draft-preparation"].process.map(
+                            (step: any) => (
+                                <div class="bg-white/[0.02] border border-white/5 p-6 hover:bg-white/[0.04] hover:border-indigo-500/20 transition-all group">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <div class="w-10 h-10 flex items-center justify-center bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-serif text-lg group-hover:bg-indigo-500/20 transition-all">
+                                            {step.step}
+                                        </div>
+                                        <h5 class="text-white font-serif text-lg">
+                                            {step.title}
+                                        </h5>
+                                    </div>
+                                    <p class="text-slate-400 font-serif text-sm leading-relaxed">
+                                        {step.description}
+                                    </p>
+                                </div>
+                            )
+                        )}
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 1.4.6 Feedback Collection -->
+{
+    subsections["feedback-collection"] && (
+        <section
+            id="feedback-collection"
+            class="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-16 md:py-24"
+        >
+            <div class="container mx-auto px-8 relative z-10">
+                <div class="max-w-5xl mx-auto reveal-item">
+                    <div class="flex items-start gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-pink-500/10 border border-pink-500/20">
+                            <MessageSquare size={32} class="text-pink-400" />
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-slate-500 font-serif text-sm mb-2">
+                                {subsections["feedback-collection"].sectionId}
+                            </div>
+                            <h3 class="font-serif text-3xl md:text-4xl text-white mb-4 tracking-tight">
+                                {subsections["feedback-collection"].title}
+                            </h3>
+                            <p class="text-slate-400 font-serif text-base md:text-lg leading-relaxed">
+                                {subsections["feedback-collection"].intro}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-pink-500/10 to-transparent border border-pink-500/20 p-8 md:p-10 mb-8">
+                        <h4 class="text-white font-serif text-2xl mb-6">
+                            कार्यशाला उद्देश्यहरू
+                        </h4>
+                        <ul class="space-y-3">
+                            {subsections["feedback-collection"].workshopObjectives.map(
+                                (objective: string, index: number) => (
+                                    <li class="flex items-start gap-3">
+                                        <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-pink-500/20 text-pink-300 text-xs font-serif mt-0.5">
+                                            {index + 1}
+                                        </span>
+                                        <span class="text-slate-300 font-serif text-base md:text-lg flex-1">
+                                            {objective}
+                                        </span>
+                                    </li>
+                                )
+                            )}
+                        </ul>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {subsections["feedback-collection"].activities.map(
+                            (activity: any) => (
+                                <div class="bg-white/[0.02] border border-white/5 p-6">
+                                    <h5 class="text-white font-serif text-lg mb-2">
+                                        {activity.title}
+                                    </h5>
+                                    <p class="text-slate-400 font-serif text-sm">
+                                        {activity.description}
+                                    </p>
+                                </div>
+                            )
+                        )}
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 1.4.7 Final Report -->
+{
+    subsections["final-report"] && (
+        <section
+            id="final-report"
+            class="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 py-16 md:py-24"
+        >
+            <div class="container mx-auto px-8 relative z-10">
+                <div class="max-w-5xl mx-auto reveal-item">
+                    <div class="flex items-start gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-green-500/10 border border-green-500/20">
+                            <CheckCircle2 size={32} class="text-green-400" />
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-slate-500 font-serif text-sm mb-2">
+                                {subsections["final-report"].sectionId}
+                            </div>
+                            <h3 class="font-serif text-3xl md:text-4xl text-white mb-4 tracking-tight">
+                                {subsections["final-report"].title}
+                            </h3>
+                            <p class="text-slate-300 font-serif text-base md:text-lg leading-relaxed">
+                                {subsections["final-report"].description}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mb-8">
+                        {subsections["final-report"].steps.map((step: any) => (
+                            <div class="bg-white/[0.02] border border-white/5 p-6 md:p-8 hover:border-green-500/20 hover:bg-white/[0.04] transition-all group">
+                                <div class="flex items-start gap-4">
+                                    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-green-500/10 border border-green-500/20 text-green-400 font-serif text-xl group-hover:bg-green-500/20 group-hover:scale-110 transition-all">
+                                        {step.order}
+                                    </div>
+                                    <div class="flex-1">
+                                        <h5 class="text-white font-serif text-xl mb-2">
+                                            {step.title}
+                                        </h5>
+                                        <p class="text-slate-400 font-serif text-base">
+                                            {step.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div class="bg-gradient-to-r from-green-500/10 to-transparent border-l-4 border-green-500/30 p-8 md:p-10">
+                        <h4 class="text-white font-serif text-2xl mb-4">
+                            {subsections["final-report"].output.title}
+                        </h4>
+                        <div class="flex flex-wrap gap-3">
+                            {subsections["final-report"].output.features.map(
+                                (feature: string) => (
+                                    <span class="px-4 py-2 bg-green-500/10 border border-green-500/20 text-green-300 text-sm font-serif">
+                                        {feature}
+                                    </span>
+                                )
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<style>
+    .reveal-item {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+            opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+            transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal-item.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll(".reveal-item").forEach((item) => {
+        observer.observe(item);
+    });
+</script>

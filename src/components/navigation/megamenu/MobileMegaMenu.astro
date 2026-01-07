@@ -24,7 +24,10 @@ const t = getTranslations(lang);
     {
       allChapters.map((num) => {
         const chapter = t.chapters[num];
-        const sections = chapter.sections || [];
+        // Handle both old array format and new object format
+        const sections = Array.isArray(chapter.sections)
+          ? chapter.sections
+          : (chapter.sections ? Object.values(chapter.sections) : []);
         const isActive = currentChapter === num;
 
         return (
