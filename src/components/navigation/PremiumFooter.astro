@@ -1,5 +1,4 @@
 ---
-import { Facebook, Twitter, Mail, MapPin, Phone, Globe } from "lucide-astro";
 import type { Language } from "../../lib/i18n";
 import { getTranslations } from "../../lib/i18n";
 
@@ -9,9 +8,6 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
-
-const currentYear = new Date().getFullYear();
-const nepaliYear = currentYear + 56; // Approx conversion
 ---
 
 <footer
@@ -24,200 +20,161 @@ const nepaliYear = currentYear + 56; // Approx conversion
     </div>
 
     <div class="container mx-auto px-8 relative z-10">
-        <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16"
-        >
-            <!-- Brand & Description -->
-            <div class="lg:col-span-5 flex flex-col gap-6">
-                <div>
-                    <h3
-                        class="font-serif text-3xl text-white font-medium tracking-wide mb-2"
-                    >
-                        चौदण्डीगढी नगरपालिका
-                    </h3>
-                    <p class="text-slate-500 font-light text-lg">
-                        नगर कार्यपालिकाको कार्यालय
-                    </p>
-                    <p class="text-slate-500 font-light">
-                        बेल्टार, उदयपुर, कोशी प्रदेश, नेपाल
-                    </p>
-                </div>
+        <!-- Brand Section (Top Row) -->
+        <div class="mb-16">
+            <h3
+                class="font-serif text-3xl text-white font-medium tracking-wide mb-2"
+            >
+                {t.home.hero.chaudandigadhi}
+            </h3>
+            <p class="text-slate-500 font-light text-lg">
+                {t.home.hero.office}
+            </p>
+            <p class="text-slate-500 font-light">
+                {t.home.hero.location}
+            </p>
+        </div>
 
-                <div class="flex flex-col gap-3 mt-4">
-                    <div class="flex items-start gap-4 group">
-                        <div
-                            class="p-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 group-hover:text-white group-hover:border-slate-600 transition-all duration-300"
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-16">
+            <!-- Contact Info (Column 1) -->
+            <div class="flex flex-col gap-8">
+                <h4
+                    class="text-white font-serif text-xl border-l-2 border-slate-700 pl-4"
+                >
+                    {t.footer.contact}
+                </h4>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                    <!-- Phone -->
+                    <div>
+                        <p
+                            class="text-xs text-slate-500 uppercase tracking-widest mb-1 font-medium"
                         >
-                            <Phone size={18} />
-                        </div>
-                        <div>
-                            <p
-                                class="text-xs text-slate-500 uppercase tracking-wider mb-1"
-                            >
-                                फोन नं.
-                            </p>
-                            <p class="text-slate-200 font-mono tracking-wide">
-                                ०३५-४४०२४६, २४७
-                            </p>
-                        </div>
+                            {t.footer.labels.phone}
+                        </p>
+                        <p
+                            class="text-slate-200 font-mono tracking-wide text-lg"
+                        >
+                            ०३५-४४०२४६, २४७
+                        </p>
                     </div>
 
-                    <div class="flex items-start gap-4 group">
-                        <div
-                            class="p-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 group-hover:text-white group-hover:border-slate-600 transition-all duration-300"
+                    <!-- Fax -->
+                    <div>
+                        <p
+                            class="text-xs text-slate-500 uppercase tracking-widest mb-1 font-medium"
                         >
-                            <span class="font-bold text-sm">F</span>
-                        </div>
-                        <div>
-                            <p
-                                class="text-xs text-slate-500 uppercase tracking-wider mb-1"
-                            >
-                                फ्याक्स नं.
-                            </p>
-                            <p class="text-slate-200 font-mono tracking-wide">
-                                ०३५-४४०२४७
-                            </p>
-                        </div>
+                            {t.footer.labels.fax}
+                        </p>
+                        <p
+                            class="text-slate-200 font-mono tracking-wide text-lg"
+                        >
+                            ०३५-४४०२४७
+                        </p>
                     </div>
 
-                    <div class="flex items-start gap-4 group">
-                        <div
-                            class="p-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 group-hover:text-white group-hover:border-slate-600 transition-all duration-300"
+                    <!-- Email -->
+                    <div class="md:col-span-2">
+                        <p
+                            class="text-xs text-slate-500 uppercase tracking-widest mb-1 font-medium"
                         >
-                            <Mail size={18} />
-                        </div>
-                        <div>
-                            <p
-                                class="text-xs text-slate-500 uppercase tracking-wider mb-1"
-                            >
-                                इमेल
-                            </p>
+                            {t.footer.labels.email}
+                        </p>
+                        <div class="flex flex-col gap-1">
                             <a
                                 href="mailto:chaudandigadhimun@gmail.com"
-                                class="text-slate-200 hover:text-white transition-colors block"
+                                class="text-slate-200 hover:text-white transition-colors block text-lg"
                                 >chaudandigadhimun@gmail.com</a
                             >
                             <a
                                 href="mailto:ito.chaudandigadhimun@gmail.com"
-                                class="text-slate-200 hover:text-white transition-colors block"
+                                class="text-slate-200 hover:text-white transition-colors block text-lg"
                                 >ito.chaudandigadhimun@gmail.com</a
                             >
                         </div>
                     </div>
 
-                    <div class="flex items-start gap-4 group">
-                        <div
-                            class="p-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 group-hover:text-white group-hover:border-slate-600 transition-all duration-300"
+                    <!-- Audio Notice -->
+                    <div>
+                        <p
+                            class="text-xs text-slate-500 uppercase tracking-widest mb-1 font-medium"
                         >
-                            <span class="font-bold text-sm">A</span>
-                        </div>
-                        <div>
-                            <p
-                                class="text-xs text-slate-500 uppercase tracking-wider mb-1"
-                            >
-                                ऑडियो नोटिस बोर्ड नम्बर
-                            </p>
-                            <p class="text-slate-200 font-mono tracking-wide">
-                                १६१८०३५४४०२४७
-                            </p>
-                        </div>
+                            {t.footer.labels.audioNotice}
+                        </p>
+                        <p
+                            class="text-slate-200 font-mono tracking-wide text-lg"
+                        >
+                            १६१८०३५४४०२४७
+                        </p>
                     </div>
 
-                    <div class="flex items-start gap-4 group">
-                        <div
-                            class="p-2 rounded-full bg-slate-900/50 border border-slate-800 text-slate-400 group-hover:text-white group-hover:border-slate-600 transition-all duration-300"
+                    <!-- Website -->
+                    <div>
+                        <p
+                            class="text-xs text-slate-500 uppercase tracking-widest mb-1 font-medium"
                         >
-                            <Globe size={18} />
-                        </div>
-                        <div>
-                            <p
-                                class="text-xs text-slate-500 uppercase tracking-wider mb-1"
-                            >
-                                वेबसाइट
-                            </p>
-                            <a
-                                href="https://chaudandigadhmun.gov.np"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="text-slate-200 hover:text-white font-mono tracking-wide transition-colors"
-                                >chaudandigadhmun.gov.np</a
-                            >
-                        </div>
+                            {t.footer.labels.website}
+                        </p>
+                        <a
+                            href="https://chaudandigadhmun.gov.np"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-slate-200 hover:text-white font-mono tracking-wide transition-colors text-lg border-b border-transparent hover:border-white inline-block leading-tight"
+                            >chaudandigadhmun.gov.np</a
+                        >
                     </div>
                 </div>
             </div>
 
-            <!-- Quick Links -->
-            <div class="lg:col-span-4 lg:col-start-9 flex flex-col gap-8">
-                <div>
-                    <h4
-                        class="text-white font-serif text-lg mb-6 border-l-2 border-slate-700 pl-3"
-                    >
-                        महत्वपूर्ण लिङ्कहरू
-                    </h4>
-                    <ul class="flex flex-col gap-4">
-                        <li>
-                            <a
-                                href="https://mofaga.gov.np/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="group flex items-center gap-3 text-slate-400 hover:text-white transition-all duration-300"
-                            >
-                                <span
-                                    class="w-1.5 h-1.5 bg-slate-700 rounded-full group-hover:bg-white group-hover:scale-125 transition-all"
-                                ></span>
-                                federal affairs and general administration
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="https://censusnepal.cbs.gov.np/results"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="group flex items-center gap-3 text-slate-400 hover:text-white transition-all duration-300"
-                            >
-                                <span
-                                    class="w-1.5 h-1.5 bg-slate-700 rounded-full group-hover:bg-white group-hover:scale-125 transition-all"
-                                ></span>
-                                National Census Result
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="https://nationaldata.gov.np/Province/Index/2"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="group flex items-center gap-3 text-slate-400 hover:text-white transition-all duration-300"
-                            >
-                                <span
-                                    class="w-1.5 h-1.5 bg-slate-700 rounded-full group-hover:bg-white group-hover:scale-125 transition-all"
-                                ></span>
-                                National Data Profile
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <!-- Important Links (Column 2) -->
+            <div class="flex flex-col gap-8">
+                <h4
+                    class="text-white font-serif text-xl border-l-2 border-slate-700 pl-4"
+                >
+                    {t.footer.importantLinks}
+                </h4>
+                <ul class="flex flex-col gap-5 items-start">
+                    <li>
+                        <a
+                            href="https://mofaga.gov.np/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-slate-300 hover:text-white transition-all duration-300 text-lg border-b border-slate-800 hover:border-white pb-1"
+                        >
+                            {t.footer.links.mofaga}
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://censusnepal.cbs.gov.np/results"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-slate-300 hover:text-white transition-all duration-300 text-lg border-b border-slate-800 hover:border-white pb-1"
+                        >
+                            {t.footer.links.census}
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://nationaldata.gov.np/Province/Index/2"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-slate-300 hover:text-white transition-all duration-300 text-lg border-b border-slate-800 hover:border-white pb-1"
+                        >
+                            {t.footer.links.nationalData}
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
 
         <!-- Copyright -->
-        <div
-            class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-600"
-        >
-            <div
-                class="flex flex-col md:flex-row gap-2 md:gap-8 text-center md:text-left"
+        <div class="border-t border-slate-900 pt-8 mt-8">
+            <p
+                class="text-slate-600 text-sm text-left font-medium tracking-wide"
             >
-                <p>© 2026 Chaudandigadhi Municipality. All rights reserved.</p>
-                <p>© २०८२ चौदण्डीगढी नगरपालिका. सर्वाधिकार सुरक्षित.</p>
-            </div>
-            <div class="flex gap-6">
-                <a href="#" class="hover:text-slate-400 transition-colors"
-                    >Privacy Policy</a
-                >
-                <a href="#" class="hover:text-slate-400 transition-colors"
-                    >Terms of Service</a
-                >
-            </div>
+                {t.footer.copyright}
+            </p>
         </div>
     </div>
 </footer>

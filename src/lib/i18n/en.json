@@ -82,8 +82,21 @@
     "tableOfContents": "Table of Contents"
   },
   "footer": {
-    "copyright": "© 2024 Chaudandigadhi Municipality. All rights reserved.",
+    "copyright": "© 2026 Chaudandigadhi Municipality. All rights reserved.",
     "contact": "Contact",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "importantLinks": "Important Links",
+    "labels": {
+      "phone": "Phone No.",
+      "fax": "Fax No.",
+      "email": "Email",
+      "audioNotice": "Audio Notice Board No.",
+      "website": "Website"
+    },
+    "links": {
+      "mofaga": "Federal Affairs and General Administration",
+      "census": "National Census Result",
+      "nationalData": "National Data Profile"
+    }
   }
 }
