@@ -21,11 +21,11 @@
     },
     "story": {
       "residents": "५३,६३१",
-      "residentsLabel": "नगरबासी",
+      "residentsLabel": "जनसंख्या",
       "households": "१२,७०३",
       "householdsLabel": "घरपरिवार",
       "wards": "१०",
-      "wardsLabel": "वडाहरू"
+      "wardsLabel": "वडा"
     }
   },
   "chapters": {

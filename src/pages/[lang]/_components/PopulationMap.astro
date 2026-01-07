@@ -1,0 +1,245 @@
+---
+
+---
+
+<div
+    id="population-map-container"
+    class="relative w-full h-[400px] md:h-[600px] flex items-center justify-center"
+>
+    <svg
+        id="population-map"
+        class="w-full h-full"
+        style="background: transparent;"></svg>
+
+    <!-- Tooltip -->
+    <div
+        id="map-tooltip"
+        class="absolute pointer-events-none opacity-0 bg-slate-900/90 text-white p-3 rounded-lg border border-white/10 backdrop-blur-md text-sm transition-opacity duration-300 z-50"
+    >
+        <div class="font-bold text-lg mb-1" data-label="ward-name"></div>
+        <div class="text-slate-400" data-label="population"></div>
+    </div>
+</div>
+
+<script>
+    import {
+        select,
+        geoPath,
+        geoMercator,
+        scaleSequential,
+        interpolateYlOrRd,
+        easeCubicOut,
+    } from "d3";
+    import { wardsGeoJSON } from "./wardsData";
+
+    function initMap() {
+        console.log("🗺️ Initializing map...");
+
+        const container = document.getElementById("population-map-container");
+        const svg = select("#population-map");
+        const tooltip = select("#map-tooltip");
+
+        if (!container) {
+            console.error("Container not found!");
+            return;
+        }
+
+        const width = 800;
+        const height = 600;
+
+        // Clear existing content
+        svg.selectAll("*").remove();
+
+        // Set viewBox
+        svg.attr("viewBox", `0 0 ${width} ${height}`).attr(
+            "preserveAspectRatio",
+            "xMidYMid meet",
+        );
+
+        // Manual bounds calculation from the GeoJSON data
+        // Longitude range: ~86.77 to 86.99
+        // Latitude range: ~26.69 to 26.91
+        const minLon = 86.77;
+        const maxLon = 86.99;
+        const minLat = 26.69;
+        const maxLat = 26.91;
+
+        const centerLon = (minLon + maxLon) / 2;
+        const centerLat = (minLat + maxLat) / 2;
+
+        console.log(`Center: [${centerLon}, ${centerLat}]`);
+
+        // Create projection with manual center and scale
+        const projection = geoMercator()
+            .center([centerLon, centerLat])
+            .scale(150000) // Large scale for small geographic area
+            .translate([width / 2, height / 2]);
+
+        console.log("Projection configured");
+
+        // Create path generator WITHOUT projection first to test
+        const pathGenerator = geoPath().projection(projection);
+
+        // Test path
+        const testPath = pathGenerator(wardsGeoJSON.features[0]);
+        console.log("Test path:", testPath);
+
+        // Main group
+        const g = svg.append("g").attr("class", "map-layers");
+
+        // Color Scale for Population
+        const populations = wardsGeoJSON.features.map(
+            (f) => f.properties.total_population,
+        );
+        const minPop = Math.min(...populations);
+        const maxPop = Math.max(...populations);
+
+        const colorScale = scaleSequential()
+            .domain([minPop, maxPop])
+            .interpolator(interpolateYlOrRd);
+
+        // Function to clean the path by removing the bounding box
+        function cleanPath(pathString: string | null): string {
+            if (!pathString) return "";
+
+            // The path has two parts separated by 'Z':
+            // 1. The actual ward shape (ends with Z)
+            // 2. The bounding box (starts with M and huge coordinates)
+            // We want to keep only the first part
+
+            // Find the first 'Z' which closes the ward polygon
+            const firstZIndex = pathString.indexOf("Z");
+            if (firstZIndex === -1) return pathString;
+
+            // Return everything up to and including the first Z
+            return pathString.substring(0, firstZIndex + 1);
+        }
+
+        // Draw ward paths
+        const wards = g
+            .selectAll("path")
+            .data(wardsGeoJSON.features)
+            .join("path")
+            .attr("d", (d) => {
+                const fullPath = pathGenerator(d);
+                const cleaned = cleanPath(fullPath);
+                return cleaned;
+            })
+            .attr("fill", "none")
+            .attr("stroke", "rgba(255, 255, 255, 0.4)")
+            .attr("stroke-width", 2)
+            .attr("class", "ward-path cursor-pointer")
+            .style("pointer-events", "all")
+            .attr("fill-opacity", 0);
+
+        console.log("Ward paths created:", wards.size());
+
+        // Log path lengths
+        wards.each(function (d) {
+            const node = this as SVGPathElement;
+            const length = node.getTotalLength();
+            const pathD = select(this).attr("d");
+            console.log(
+                `Ward ${d.properties.ward_number}: length=${length.toFixed(2)}`,
+            );
+            console.log(`  Path: ${pathD?.substring(0, 150)}`);
+        });
+
+        // Animation Logic
+        function runAnimation() {
+            console.log("🎬 Running animation...");
+
+            wards.each(function (d, i) {
+                const node = this as SVGPathElement;
+                const length = node.getTotalLength();
+
+                select(node)
+                    .attr("stroke-dasharray", length)
+                    .attr("stroke-dashoffset", length)
+                    .transition()
+                    .duration(1500)
+                    .delay(i * 120)
+                    .ease(easeCubicOut)
+                    .attr("stroke-dashoffset", 0)
+                    .transition()
+                    .delay(300)
+                    .duration(1000)
+                    .attr("fill", colorScale(d.properties.total_population))
+                    .attr("fill-opacity", 0.75)
+                    .attr("stroke", "rgba(255, 255, 255, 0.6)");
+            });
+        }
+
+        // Interactivity (Hover effects)
+        wards
+            .on("mouseenter", function (event, d) {
+                select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("fill-opacity", 0.95)
+                    .attr("stroke", "white")
+                    .attr("stroke-width", 3);
+
+                tooltip
+                    .style("opacity", 1)
+                    .select('[data-label="ward-name"]')
+                    .text(d.properties.name_en || d.properties.name_ne);
+
+                tooltip
+                    .select('[data-label="population"]')
+                    .text(
+                        `Population: ${d.properties.total_population.toLocaleString()}`,
+                    );
+            })
+            .on("mousemove", function (event) {
+                const [x, y] = [event.pageX, event.pageY];
+                tooltip
+                    .style("left", x + 15 + "px")
+                    .style("top", y - 15 + "px");
+            })
+            .on("mouseleave", function () {
+                select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("fill-opacity", 0.75)
+                    .attr("stroke", "rgba(255, 255, 255, 0.6)")
+                    .attr("stroke-width", 2);
+
+                tooltip.style("opacity", 0);
+            });
+
+        // Scroll Trigger
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    console.log("Map is visible, starting animation");
+                    runAnimation();
+                    observer.unobserve(container);
+                }
+            },
+            { threshold: 0.3 },
+        );
+
+        observer.observe(container);
+
+        console.log("✅ Map initialization complete");
+    }
+
+    // Handle Astro Page Load/Transitions
+    document.addEventListener("astro:page-load", () => {
+        initMap();
+    });
+
+    // Initialize on first load
+    if (document.readyState === "complete") {
+        initMap();
+    } else {
+        window.addEventListener("load", initMap);
+    }
+</script>
+
+<style>
+    .ward-path {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+</style>

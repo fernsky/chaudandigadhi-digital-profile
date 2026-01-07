@@ -99,21 +99,51 @@ const pageDescription = description || t.meta.description;
     <!-- Back to Top Button -->
     <button
       id="back-to-top"
-      class="fixed bottom-8 right-8 bg-primary-700 text-white p-3 shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-primary-600 no-print border border-primary-600 flex items-center justify-center"
+      class="fixed bottom-10 right-10 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-slate-900/40 backdrop-blur-xl border border-white/10 text-white shadow-2xl opacity-0 translate-y-10 pointer-events-none transition-all duration-700 cubic-bezier(0.2, 0.8, 0.2, 1) hover:bg-white hover:text-slate-950 hover:scale-110 group no-print"
       aria-label={t.labels.backToTop}
     >
-      <ChevronUp size={24} />
+      <div class="relative flex flex-col items-center">
+        <ChevronUp
+          size={28}
+          class="transition-transform duration-500 group-hover:-translate-y-1"
+        />
+        <div
+          class="absolute -bottom-1 w-1 h-1 bg-current rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        >
+        </div>
+      </div>
     </button>
 
     <script>
-      // Back to Top functionality
       const backToTopButton = document.getElementById("back-to-top");
 
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-          backToTopButton?.classList.remove("opacity-0", "pointer-events-none");
+      const handleScroll = () => {
+        if (window.scrollY > 400) {
+          backToTopButton?.classList.remove(
+            "opacity-0",
+            "translate-y-10",
+            "pointer-events-none",
+          );
+          backToTopButton?.classList.add("opacity-100", "translate-y-0");
         } else {
-          backToTopButton?.classList.add("opacity-0", "pointer-events-none");
+          backToTopButton?.classList.add(
+            "opacity-0",
+            "translate-y-10",
+            "pointer-events-none",
+          );
+          backToTopButton?.classList.remove("opacity-100", "translate-y-0");
+        }
+      };
+
+      // Throttled scroll listener
+      let isScrolling = false;
+      window.addEventListener("scroll", () => {
+        if (!isScrolling) {
+          window.requestAnimationFrame(() => {
+            handleScroll();
+            isScrolling = false;
+          });
+          isScrolling = true;
         }
       });
 
