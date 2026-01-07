@@ -28,7 +28,7 @@ type LegalFrameworkContent = {
 const content = await loadChapterSection<LegalFrameworkContent>(
     1,
     "legal-framework",
-    lang
+    lang,
 );
 
 if (!content) {
@@ -38,13 +38,10 @@ if (!content) {
 
 <section
     id="legal-framework"
-    class="relative min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-24 md:py-32"
+    class="relative min-h-screen bg-slate-950 py-24 md:py-32"
 >
-    <!-- Background Texture -->
-    <div
-        class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMSI+PHBhdGggZD0iTTM2IDE0YzMuMzEzIDAgNiAyLjY4NyA2IDZzLTIuNjg3IDYtNiA2LTYtMi42ODctNi02IDIuNjg3LTYgNi02ek0xNCAzNmMzLjMxMyAwIDYgMi42ODcgNiA2cy0yLjY4NyA2LTYgNi02LTIuNjg3LTYtNiAyLjY4Ny02IDYtNnoiLz48L2c+PC9nPjwvc3ZnPg==')] pointer-events-none"
-    >
-    </div>
+    <!-- Background Texture (Removed per user request) -->
+    <div class="absolute inset-0 pointer-events-none"></div>
 
     <div class="container mx-auto px-8 relative z-10">
         <!-- Section Header -->
@@ -119,20 +116,20 @@ if (!content) {
                                                       : "मुख्य आवश्यकताहरू:"}
                                             </h4>
                                             <ul class="space-y-3">
-                                                {(framework.keyLaws ||
+                                                {(
+                                                    framework.keyLaws ||
                                                     framework.keyPolicies ||
-                                                    framework.keyNeeds)?.map(
-                                                    (item) => (
-                                                        <li class="flex items-start gap-3">
-                                                            <span class="text-slate-500 mt-2">
-                                                                •
-                                                            </span>
-                                                            <span class="text-slate-400 font-serif text-base flex-1">
-                                                                {item}
-                                                            </span>
-                                                        </li>
-                                                    )
-                                                )}
+                                                    framework.keyNeeds
+                                                )?.map((item) => (
+                                                    <li class="flex items-start gap-3">
+                                                        <span class="text-slate-500 mt-2">
+                                                            •
+                                                        </span>
+                                                        <span class="text-slate-400 font-serif text-base flex-1">
+                                                            {item}
+                                                        </span>
+                                                    </li>
+                                                ))}
                                             </ul>
                                         </div>
                                     )}
@@ -145,7 +142,10 @@ if (!content) {
         </div>
 
         <!-- Footer and International Commitments -->
-        <div class="max-w-5xl mx-auto mt-16 space-y-8 reveal-item" style="--delay: 600ms">
+        <div
+            class="max-w-5xl mx-auto mt-16 space-y-8 reveal-item"
+            style="--delay: 600ms"
+        >
             <div
                 class="bg-gradient-to-r from-white/5 to-transparent border-l-4 border-white/30 p-8 md:p-10"
             >

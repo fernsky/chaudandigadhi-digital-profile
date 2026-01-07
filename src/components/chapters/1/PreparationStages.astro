@@ -29,7 +29,7 @@ type PreparationStagesContent = {
 const content = await loadChapterSection<PreparationStagesContent>(
     1,
     "preparation-stages",
-    lang
+    lang,
 );
 
 if (!content) {
@@ -39,13 +39,10 @@ if (!content) {
 
 <section
     id="preparation-stages"
-    class="relative min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-24 md:py-32"
+    class="relative min-h-screen bg-slate-950 py-24 md:py-32"
 >
-    <!-- Grid Pattern Background -->
-    <div
-        class="absolute inset-0 opacity-[0.02] bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:3rem_3rem]"
-    >
-    </div>
+    <!-- Grid Pattern Background (Removed per user request) -->
+    <div class="absolute inset-0 pointer-events-none"></div>
 
     <div class="container mx-auto px-8 relative z-10">
         <!-- Section Header -->
@@ -71,7 +68,9 @@ if (!content) {
         </div>
 
         <!-- Methods Grid -->
-        <div class="max-w-5xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div
+            class="max-w-5xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
             {
                 content.methods.map((method, index) => (
                     <div

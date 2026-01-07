@@ -1,7 +1,15 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSections } from "../../../lib/i18n/chapter-loader";
-import { FileText, Users, Database, BarChart3, FileCheck, MessageSquare, CheckCircle2 } from "lucide-astro";
+import {
+    FileText,
+    Users,
+    Database,
+    BarChart3,
+    FileCheck,
+    MessageSquare,
+    CheckCircle2,
+} from "lucide-astro";
 
 interface Props {
     lang: Language;
@@ -21,7 +29,7 @@ const subsections = await loadChapterSections(
         "feedback-collection",
         "final-report",
     ],
-    lang
+    lang,
 );
 
 const icons = {
@@ -35,12 +43,11 @@ const icons = {
 };
 ---
 
-<!-- 1.4.1 Template Preparation -->
-{
+<!-- 1.4.1 Template Preparation -->{
     subsections["template-preparation"] && (
         <section
             id="template-preparation"
-            class="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 py-16 md:py-24"
+            class="relative bg-slate-950 py-16 md:py-24"
         >
             <div class="container mx-auto px-8 relative z-10">
                 <div class="max-w-5xl mx-auto reveal-item">
@@ -69,7 +76,7 @@ const icons = {
                                         {activity.text}
                                     </p>
                                 </div>
-                            )
+                            ),
                         )}
                     </div>
 
@@ -80,7 +87,7 @@ const icons = {
                                     <span class="px-4 py-2 bg-white/5 border border-white/10 text-slate-400 text-sm font-serif">
                                         {aspect}
                                     </span>
-                                )
+                                ),
                             )}
                         </div>
                     )}
@@ -95,7 +102,7 @@ const icons = {
     subsections["preparation-workshop"] && (
         <section
             id="preparation-workshop"
-            class="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-16 md:py-24"
+            class="relative bg-slate-950 py-16 md:py-24"
         >
             <div class="container mx-auto px-8 relative z-10">
                 <div class="max-w-5xl mx-auto reveal-item">
@@ -125,16 +132,16 @@ const icons = {
                                 सहभागीहरू
                             </h4>
                             <ul class="space-y-2">
-                                {subsections["preparation-workshop"].participants.map(
-                                    (participant: string) => (
-                                        <li class="text-slate-400 font-serif text-sm flex items-start gap-2">
-                                            <span class="text-purple-400 mt-1">
-                                                •
-                                            </span>
-                                            <span>{participant}</span>
-                                        </li>
-                                    )
-                                )}
+                                {subsections[
+                                    "preparation-workshop"
+                                ].participants.map((participant: string) => (
+                                    <li class="text-slate-400 font-serif text-sm flex items-start gap-2">
+                                        <span class="text-purple-400 mt-1">
+                                            •
+                                        </span>
+                                        <span>{participant}</span>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 
@@ -143,16 +150,16 @@ const icons = {
                                 उद्देश्यहरू
                             </h4>
                             <ul class="space-y-2">
-                                {subsections["preparation-workshop"].objectives.map(
-                                    (objective: string) => (
-                                        <li class="text-slate-400 font-serif text-sm flex items-start gap-2">
-                                            <span class="text-purple-400 mt-1">
-                                                •
-                                            </span>
-                                            <span>{objective}</span>
-                                        </li>
-                                    )
-                                )}
+                                {subsections[
+                                    "preparation-workshop"
+                                ].objectives.map((objective: string) => (
+                                    <li class="text-slate-400 font-serif text-sm flex items-start gap-2">
+                                        <span class="text-purple-400 mt-1">
+                                            •
+                                        </span>
+                                        <span>{objective}</span>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </div>
@@ -167,7 +174,7 @@ const icons = {
     subsections["data-collection"] && (
         <section
             id="data-collection"
-            class="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 py-16 md:py-24"
+            class="relative bg-slate-950 py-16 md:py-24"
         >
             <div class="container mx-auto px-8 relative z-10">
                 <div class="max-w-5xl mx-auto reveal-item">
@@ -207,7 +214,7 @@ const icons = {
                                         </span>
                                     </div>
                                 </div>
-                            )
+                            ),
                         )}
                     </div>
 
@@ -217,7 +224,7 @@ const icons = {
                                 <span class="px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-sm font-serif">
                                     {method}
                                 </span>
-                            )
+                            ),
                         )}
                     </div>
                 </div>
@@ -231,7 +238,7 @@ const icons = {
     subsections["data-analysis"] && (
         <section
             id="data-analysis"
-            class="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-16 md:py-24"
+            class="relative bg-slate-950 py-16 md:py-24"
         >
             <div class="container mx-auto px-8 relative z-10">
                 <div class="max-w-5xl mx-auto reveal-item">
@@ -264,24 +271,25 @@ const icons = {
                                 स्रोत नक्शा तयारी
                             </h4>
                             <p class="text-slate-300 font-serif text-base md:text-lg leading-relaxed">
-                                {subsections["data-analysis"].mappingDescription}
+                                {
+                                    subsections["data-analysis"]
+                                        .mappingDescription
+                                }
                             </p>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {subsections["data-analysis"].tools.map(
-                            (tool: any) => (
-                                <div class="bg-gradient-to-r from-amber-500/10 to-transparent border border-amber-500/20 p-6">
-                                    <h5 class="text-white font-serif text-lg mb-2">
-                                        {tool.name}
-                                    </h5>
-                                    <p class="text-slate-400 font-serif text-sm">
-                                        {tool.purpose}
-                                    </p>
-                                </div>
-                            )
-                        )}
+                        {subsections["data-analysis"].tools.map((tool: any) => (
+                            <div class="bg-gradient-to-r from-amber-500/10 to-transparent border border-amber-500/20 p-6">
+                                <h5 class="text-white font-serif text-lg mb-2">
+                                    {tool.name}
+                                </h5>
+                                <p class="text-slate-400 font-serif text-sm">
+                                    {tool.purpose}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -294,7 +302,7 @@ const icons = {
     subsections["draft-preparation"] && (
         <section
             id="draft-preparation"
-            class="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 py-16 md:py-24"
+            class="relative bg-slate-950 py-16 md:py-24"
         >
             <div class="container mx-auto px-8 relative z-10">
                 <div class="max-w-5xl mx-auto reveal-item">
@@ -331,7 +339,7 @@ const icons = {
                                         {step.description}
                                     </p>
                                 </div>
-                            )
+                            ),
                         )}
                     </div>
                 </div>
@@ -345,7 +353,7 @@ const icons = {
     subsections["feedback-collection"] && (
         <section
             id="feedback-collection"
-            class="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-16 md:py-24"
+            class="relative bg-slate-950 py-16 md:py-24"
         >
             <div class="container mx-auto px-8 relative z-10">
                 <div class="max-w-5xl mx-auto reveal-item">
@@ -371,7 +379,9 @@ const icons = {
                             कार्यशाला उद्देश्यहरू
                         </h4>
                         <ul class="space-y-3">
-                            {subsections["feedback-collection"].workshopObjectives.map(
+                            {subsections[
+                                "feedback-collection"
+                            ].workshopObjectives.map(
                                 (objective: string, index: number) => (
                                     <li class="flex items-start gap-3">
                                         <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-pink-500/20 text-pink-300 text-xs font-serif mt-0.5">
@@ -381,7 +391,7 @@ const icons = {
                                             {objective}
                                         </span>
                                     </li>
-                                )
+                                ),
                             )}
                         </ul>
                     </div>
@@ -397,7 +407,7 @@ const icons = {
                                         {activity.description}
                                     </p>
                                 </div>
-                            )
+                            ),
                         )}
                     </div>
                 </div>
@@ -409,10 +419,7 @@ const icons = {
 <!-- 1.4.7 Final Report -->
 {
     subsections["final-report"] && (
-        <section
-            id="final-report"
-            class="relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 py-16 md:py-24"
-        >
+        <section id="final-report" class="relative bg-slate-950 py-16 md:py-24">
             <div class="container mx-auto px-8 relative z-10">
                 <div class="max-w-5xl mx-auto reveal-item">
                     <div class="flex items-start gap-6 mb-8">
@@ -462,7 +469,7 @@ const icons = {
                                     <span class="px-4 py-2 bg-green-500/10 border border-green-500/20 text-green-300 text-sm font-serif">
                                         {feature}
                                     </span>
-                                )
+                                ),
                             )}
                         </div>
                     </div>
