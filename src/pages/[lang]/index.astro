@@ -38,11 +38,11 @@ const stats = [
 <BaseLayout lang={lang} title={t.meta.title} description={t.meta.description}>
     <!-- Hero Section -->
     <section
-        class="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white py-20 md:py-32"
+        class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-white py-20 md:py-32"
     >
         <div class="absolute inset-0 bg-black opacity-20"></div>
         <div class="container relative z-10">
-            <div class="max-w-4xl mx-auto text-center fade-in">
+            <div class="max-w-4xl fade-in">
                 <h1 class="text-4xl md:text-6xl font-bold mb-6">
                     {
                         lang === "ne"
@@ -50,22 +50,20 @@ const stats = [
                             : "Chaudandigadhi Municipality"
                     }
                 </h1>
-                <p class="text-xl md:text-2xl mb-8 text-primary-100">
+                <p class="text-xl md:text-2xl mb-8 text-slate-300">
                     {
                         lang === "ne"
                             ? "डिजिटल प्रोफाइल २०८१"
                             : "Digital Profile 2024"
                     }
                 </p>
-                <p
-                    class="text-lg md:text-xl mb-12 text-primary-50 max-w-2xl mx-auto"
-                >
+                <p class="text-lg md:text-xl mb-12 text-slate-400 max-w-2xl">
                     {t.meta.description}
                 </p>
-                <div class="flex flex-wrap justify-center gap-4">
+                <div class="flex flex-wrap gap-4">
                     <a
                         href={`/${lang}/chapter-1`}
-                        class="btn btn-primary bg-white text-primary-700 hover:bg-primary-50"
+                        class="btn btn-primary bg-slate-100 text-slate-900 hover:bg-slate-200 border border-slate-300"
                     >
                         {
                             lang === "ne"
@@ -75,7 +73,7 @@ const stats = [
                     </a>
                     <a
                         href={`/${lang}/annexures`}
-                        class="btn glass text-white border-white hover:bg-white hover:text-primary-700"
+                        class="btn glass text-white border-slate-600 hover:bg-slate-800"
                     >
                         {t.nav.annexures}
                     </a>
@@ -92,7 +90,7 @@ const stats = [
             >
                 <path
                     d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
-                    fill="white"></path>
+                    fill="#020617"></path>
             </svg>
         </div>
     </section>
@@ -103,12 +101,12 @@ const stats = [
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {
                     stats.map((stat) => (
-                        <div class="card text-center hover:scale-105 transition-transform">
+                        <div class="card hover:scale-105 transition-transform">
                             <div class="text-4xl mb-3">{stat.icon}</div>
-                            <div class="text-3xl font-bold text-primary-700 mb-2">
+                            <div class="text-3xl font-bold text-primary-400 mb-2">
                                 {stat.value}
                             </div>
-                            <div class="text-gray-600 font-medium">
+                            <div class="text-slate-400 font-medium">
                                 {stat.label[lang]}
                             </div>
                         </div>
@@ -119,13 +117,13 @@ const stats = [
     </section>
 
     <!-- Chapters Grid -->
-    <section class="section-spacing bg-gray-50">
+    <section class="section-spacing bg-slate-900">
         <div class="container">
-            <div class="text-center mb-12">
+            <div class="mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
                     {t.nav.chapters}
                 </h2>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                <p class="text-slate-400 text-lg max-w-2xl">
                     {
                         lang === "ne"
                             ? "नगरपालिकाको विस्तृत जानकारीका लागि तलका परिच्छेदहरू हेर्नुहोस्"
@@ -155,17 +153,17 @@ const stats = [
                                 class="card group hover:shadow-xl transition-all duration-300"
                             >
                                 <div
-                                    class={`w-12 h-12 rounded-lg bg-gradient-to-br ${color} flex items-center justify-center text-white font-bold text-xl mb-4 group-hover:scale-110 transition-transform`}
+                                    class={`w-12 h-12 bg-gradient-to-br ${color} flex items-center justify-center text-white font-bold text-xl mb-4 group-hover:scale-110 transition-transform border border-slate-700`}
                                 >
                                     {num}
                                 </div>
-                                <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-primary-700 transition-colors">
+                                <h3 class="text-xl font-bold mb-2 text-slate-100 group-hover:text-primary-400 transition-colors">
                                     {chapter.title}
                                 </h3>
-                                <p class="text-gray-600 text-sm">
+                                <p class="text-slate-400 text-sm">
                                     {chapter.description}
                                 </p>
-                                <div class="mt-4 flex items-center text-primary-600 font-medium text-sm group-hover:gap-2 transition-all">
+                                <div class="mt-4 flex items-center text-primary-400 font-medium text-sm group-hover:gap-2 transition-all">
                                     <span>
                                         {lang === "ne"
                                             ? "विवरण हेर्नुहोस्"
@@ -197,7 +195,7 @@ const stats = [
     <section class="section-spacing">
         <div class="container">
             <div
-                class="card bg-gradient-to-br from-primary-600 to-primary-800 text-white text-center max-w-3xl mx-auto"
+                class="card bg-gradient-to-br from-slate-800 to-slate-950 text-white max-w-3xl border border-slate-700"
             >
                 <h2 class="text-3xl font-bold mb-4">
                     {
@@ -206,7 +204,7 @@ const stats = [
                             : "For More Information"
                     }
                 </h2>
-                <p class="text-primary-100 mb-6 text-lg">
+                <p class="text-slate-300 mb-6 text-lg">
                     {
                         lang === "ne"
                             ? "नगरपालिकाको सम्पूर्ण तथ्याङ्क र विवरणहरू हेर्नुहोस्"
@@ -215,7 +213,7 @@ const stats = [
                 </p>
                 <a
                     href={`/${lang}/annexures`}
-                    class="btn bg-white text-primary-700 hover:bg-primary-50"
+                    class="btn bg-slate-100 text-slate-900 hover:bg-slate-200 border border-slate-300"
                 >
                     {lang === "ne" ? "अनुसूचीहरू हेर्नुहोस्" : "View Annexures"}
                 </a>
