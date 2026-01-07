@@ -83,25 +83,11 @@ const t = getTranslations(lang);
         </div>
         <div class="relative z-10 w-full py-24">
             <div class="container mx-auto px-8">
-                <div class="max-w-6xl mx-auto flex flex-col gap-12 md:gap-24">
-                    <!-- Residents Stat -->
-                    <div class="reveal-item flex flex-col gap-4">
-                        <h2
-                            class="font-serif text-[clamp(4.5rem,8vw,6rem)] leading-[0.85] font-medium text-white tracking-tighter"
-                        >
-                            {t.home.story.residents}
-                        </h2>
-                        <span
-                            class="text-slate-500 uppercase text-xl md:text-xl font-medium ml-2 md:ml-4"
-                        >
-                            {t.home.story.residentsLabel}
-                        </span>
-                    </div>
-
+                <div class="max-w-6xl mx-auto flex flex-col gap-12 md:gap-20">
                     <!-- Households Stat -->
                     <div class="reveal-item flex flex-col gap-4">
                         <h2
-                            class="font-serif text-[clamp(4.5rem,8vw,6rem)] leading-[0.85] font-medium text-white tracking-tighter"
+                            class="font-serif text-[clamp(4rem,7vw,5rem)] leading-[0.85] font-medium text-white tracking-tighter"
                         >
                             {t.home.story.households}
                         </h2>
@@ -112,10 +98,24 @@ const t = getTranslations(lang);
                         </span>
                     </div>
 
+                    <!-- Residents Stat -->
+                    <div class="reveal-item flex flex-col gap-4">
+                        <h2
+                            class="font-serif text-[clamp(5.5rem,10vw,8rem)] leading-[0.85] font-medium text-white tracking-tighter"
+                        >
+                            {t.home.story.residents}
+                        </h2>
+                        <span
+                            class="text-slate-500 uppercase text-xl md:text-xl font-medium ml-2 md:ml-4"
+                        >
+                            {t.home.story.residentsLabel}
+                        </span>
+                    </div>
+
                     <!-- Wards Stat -->
                     <div class="reveal-item flex flex-col gap-4">
                         <h2
-                            class="font-serif text-[clamp(4.5rem,8vw,6rem)] leading-[0.85] font-medium text-white tracking-tighter"
+                            class="font-serif text-[clamp(4rem,7vw,5rem)] leading-[0.85] font-medium text-white tracking-tighter"
                         >
                             {t.home.story.wards}
                         </h2>
