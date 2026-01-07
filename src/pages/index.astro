@@ -1,10 +1,6 @@
 ---
+import Home from "../components/home/Home.astro";
 import { defaultLang } from "../lib/i18n";
-
-export const partial = true;
 ---
 
-<meta http-equiv="refresh" content={`0;url=/${defaultLang}/`} />
-<script define:vars={{ defaultLang }}>
-	window.location.href = `/${defaultLang}/`;
-</script>
+<Home lang={defaultLang} />
