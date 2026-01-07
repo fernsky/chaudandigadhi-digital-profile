@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PremiumHeader from "../../components/navigation/PremiumHeader.astro";
 import type { Language } from "../../lib/i18n";
 import { getTranslations } from "../../lib/i18n";
-import { ChevronDown } from "lucide-astro";
+import { ChevronDown, ArrowRight } from "lucide-astro";
 
 export async function getStaticPaths() {
     return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
@@ -34,22 +34,31 @@ const t = getTranslations(lang);
                 <div
                     class="max-w-4xl animate-in fade-in slide-in-from-bottom-12 duration-1000 ease-out"
                 >
-                    <h1
-                        class="font-serif text-6xl md:text-[10rem] font-extralight leading-[1.1] mb-6 text-white tracking-tighter"
-                    >
-                        {t.home.hero.title}
-                    </h1>
+                    <div class="flex flex-col -gap-[1.3rem] mb-2">
+                        <p
+                            class="font-serif text-[4rem] md:text-[6rem] font-medium text-white tracking-wide"
+                        >
+                            {t.home.hero.chaudandigadhi}
+                        </p>
+                        <p
+                            class="-mt-[1rem] font-serif text-[2rem] md:text-[2rem] font-medium text-white tracking-wide"
+                        >
+                            {t.home.hero.municipality}
+                        </p>
+                    </div>
+
                     <div
-                        class="font-serif text-xl md:text-2xl font-extralight leading-relaxed text-slate-300 mb-12 tracking-wide space-y-3"
+                        class="font-serif text-lg md:text-xl font-extralight leading-relaxed text-slate-300 mb-4 md:mb-12 tracking-wider"
                     >
                         <p>{t.home.hero.office}</p>
                         <p>{t.home.hero.location}</p>
                     </div>
                     <a
                         href="#story"
-                        class="inline-flex items-center justify-start bg-white text-slate-950 px-12 py-6 text-sm font-semibold tracking-[0.2em] uppercase transition-all duration-500 hover:bg-slate-100 hover:translate-x-2 hover:shadow-[20px_20px_60px_rgba(0,0,0,0.5)]"
+                        class="inline-flex items-center justify-between w-64 md:w-64 bg-white text-slate-950 px-6 md:py-4 py-[0.8rem] text-lg font-semibold uppercase transition-all duration-500 hover:bg-slate-100 hover:translate-x-2 hover:shadow-[20px_20px_60px_rgba(0,0,0,0.5)]"
                     >
-                        {t.home.hero.cta}
+                        <span>{t.home.hero.cta}</span>
+                        <ArrowRight size={20} />
                     </a>
                 </div>
             </div>

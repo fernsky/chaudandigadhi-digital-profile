@@ -12,7 +12,8 @@
   },
   "home": {
     "hero": {
-      "title": "Chaudandigadhi Municipality",
+      "chaudandigadhi": "Chaudandigadhi",
+      "municipality": "Municipality",
       "office": "Office of the Municipal Executive",
       "location": "Beltar, Udayapur, Koshi Province, Nepal",
       "cta": "Explore"
