@@ -36,8 +36,7 @@ const t = getTranslations(lang);
     style="top: 100%; height: 60vh; width: 100%; right: 0;"
   >
     <!-- Background -->
-    <div class="absolute inset-0 bg-slate-900/98 backdrop-blur-xl border-t border-slate-700">
-    </div>
+    <div class="absolute inset-0 bg-slate-950 border-t border-slate-700"></div>
 
     <!-- Container aligned with logo -->
     <div class="w-full h-full relative py-6">
@@ -145,7 +144,8 @@ const t = getTranslations(lang);
     megaMenuTrigger.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        const isExpanded = megaMenuTrigger.getAttribute("aria-expanded") === "true";
+        const isExpanded =
+          megaMenuTrigger.getAttribute("aria-expanded") === "true";
 
         if (isExpanded) {
           hideMenu();
