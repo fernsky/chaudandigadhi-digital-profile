@@ -16,27 +16,29 @@ const t = getTranslations(lang);
 <nav
   class="flex-shrink-0 w-80 border-r border-slate-700 h-full overflow-y-auto scrollbar-hide"
 >
-  <div class="py-2">
+  <div class="py-6">
     <ul class="space-y-0" role="menu">
       {
         allChapters.map((num) => {
-          const chapter = t.chapters[num];
+          const chapter = t.chapters[num as unknown as keyof typeof t.chapters];
           const isActive = currentChapter === num;
           return (
             <li role="none">
               <button
                 data-chapter={num}
-                class={`mega-menu-category group/cat w-full text-left px-6 py-5 transition-all duration-150 ${
+                class={`mega-menu-category group/cat w-full text-left px-6 py-5 transition-all duration-200 ${
                   isActive
-                    ? "bg-primary-500/10 text-white font-medium"
-                    : "text-slate-200 hover:bg-slate-800/60 hover:text-white"
+                    ? "text-primary-400 font-medium underline decoration-1 underline-offset-4"
+                    : "text-slate-300 hover:text-primary-400"
                 }`}
                 role="menuitem"
                 aria-current={isActive ? "page" : undefined}
               >
                 <div class="flex items-center justify-between gap-4">
                   <div class="flex-1 min-w-0">
-                    <p class="text-base leading-relaxed">{chapter.title}</p>
+                    <p class="text-xl leading-relaxed group-hover/cat:underline decoration-primary-400/50 underline-offset-4 decoration-1 transition-all duration-200">
+                      {chapter.title}
+                    </p>
                   </div>
                 </div>
               </button>
