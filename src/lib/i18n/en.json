@@ -93,6 +93,14 @@
       "audioNotice": "Audio Notice Board No.",
       "website": "Website"
     },
+    "values": {
+      "phone": "035-440246, 247",
+      "fax": "035-440247",
+      "audioNotice": "1618035440247",
+      "email1": "chaudandigadhimun@gmail.com",
+      "email2": "ito.chaudandigadhimun@gmail.com",
+      "website": "chaudandigadhmun.gov.np"
+    },
     "links": {
       "mofaga": "Federal Affairs and General Administration",
       "census": "National Census Result",

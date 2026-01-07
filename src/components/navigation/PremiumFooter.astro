@@ -21,13 +21,14 @@ const t = getTranslations(lang);
 
     <div class="container mx-auto px-8 relative z-10">
         <!-- Brand Section (Top Row) -->
-        <div class="mb-16">
+        <div class="mb-8">
             <h3
-                class="font-serif text-4xl text-white font-medium tracking-wide mb-3"
+                class="font-serif text-2xl text-white font-medium tracking-wide mb-1"
             >
                 {t.home.hero.chaudandigadhi}
+                {t.home.hero.municipality}
             </h3>
-            <p class="text-slate-500 font-light text-xl">
+            <p class="text-slate-500 font-light text-lg">
                 {t.home.hero.office}
             </p>
             <p class="text-slate-500 font-light text-lg">
@@ -36,84 +37,84 @@ const t = getTranslations(lang);
         </div>
 
         <!-- Main Content Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-8">
             <!-- Contact Info (Left Side - Single Column, Key-Value Grid) -->
-            <div class="lg:col-span-5 flex flex-col gap-6">
-                <h4 class="text-white font-serif text-2xl tracking-wide">
+            <div class="lg:col-span-5 flex flex-col gap-1">
+                <h4 class="text-white font-serif tracking-wide">
                     {t.footer.contact}
                 </h4>
 
                 <div
-                    class="grid grid-cols-[auto_1fr] gap-x-8 gap-y-3 items-baseline"
+                    class="grid grid-cols-[auto_1fr] gap-x-8 gap-y-1 items-baseline"
                 >
                     <!-- Phone -->
                     <div
-                        class="text-xs text-slate-500 uppercase tracking-widest font-medium whitespace-nowrap"
+                        class="text-sm text-slate-500 uppercase font-medium font-serif whitespace-nowrap"
                     >
                         {t.footer.labels.phone}
                     </div>
                     <div
                         class="text-slate-200 font-serif tracking-normal text-lg"
                     >
-                        ०३५-४४०२४६, २४७
+                        {t.footer.values.phone}
                     </div>
 
                     <!-- Fax -->
                     <div
-                        class="text-xs text-slate-500 uppercase tracking-widest font-medium whitespace-nowrap"
+                        class="text-sm text-slate-500 uppercase font-medium font-serif whitespace-nowrap"
                     >
                         {t.footer.labels.fax}
                     </div>
                     <div
                         class="text-slate-200 font-serif tracking-normal text-lg"
                     >
-                        ०३५-४४०२४७
+                        {t.footer.values.fax}
                     </div>
 
                     <!-- Email -->
                     <div
-                        class="text-xs text-slate-500 uppercase tracking-widest font-medium whitespace-nowrap mt-1.5 self-start"
+                        class="text-sm text-slate-500 uppercase font-medium font-serif whitespace-nowrap mt-1.5 self-start"
                     >
                         {t.footer.labels.email}
                     </div>
                     <div class="flex flex-col gap-1">
                         <a
-                            href="mailto:chaudandigadhimun@gmail.com"
+                            href={`mailto:${t.footer.values.email1}`}
                             class="text-slate-200 hover:text-white transition-colors block text-lg font-serif tracking-tight"
-                            >chaudandigadhimun@gmail.com</a
+                            >{t.footer.values.email1}</a
                         >
                         <a
-                            href="mailto:ito.chaudandigadhimun@gmail.com"
+                            href={`mailto:${t.footer.values.email2}`}
                             class="text-slate-200 hover:text-white transition-colors block text-lg font-serif tracking-tight"
-                            >ito.chaudandigadhimun@gmail.com</a
+                            >{t.footer.values.email2}</a
                         >
                     </div>
 
                     <!-- Audio Notice -->
                     <div
-                        class="text-xs text-slate-500 uppercase tracking-widest font-medium whitespace-nowrap"
+                        class="text-sm text-slate-500 uppercase font-medium font-serif whitespace-nowrap"
                     >
                         {t.footer.labels.audioNotice}
                     </div>
                     <div
                         class="text-slate-200 font-serif tracking-normal text-lg"
                     >
-                        १६१८०३५४४०२४७
+                        {t.footer.values.audioNotice}
                     </div>
 
                     <!-- Website -->
                     <div
-                        class="text-xs text-slate-500 uppercase tracking-widest font-medium whitespace-nowrap mt-1.5 self-start"
+                        class="text-sm text-slate-500 uppercase font-medium font-serif whitespace-nowrap mt-1.5 self-start"
                     >
                         {t.footer.labels.website}
                     </div>
                     <div>
                         <a
-                            href="https://chaudandigadhmun.gov.np"
+                            href={`https://${t.footer.values.website}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="text-slate-200 hover:text-white font-serif tracking-tight transition-colors text-lg border-b border-slate-800 hover:border-white pb-0.5 inline-block leading-tight"
-                            >chaudandigadhmun.gov.np</a
+                            >{t.footer.values.website}</a
                         >
                     </div>
                 </div>
@@ -121,7 +122,7 @@ const t = getTranslations(lang);
 
             <!-- Important Links (positioned right, left aligned text) -->
             <div class="lg:col-span-4 lg:col-start-9 flex flex-col gap-6">
-                <h4 class="text-white font-serif text-2xl tracking-wide">
+                <h4 class="text-white font-serif tracking-wide">
                     {t.footer.importantLinks}
                 </h4>
                 <ul class="flex flex-col gap-2.5 items-start w-full">
@@ -130,7 +131,7 @@ const t = getTranslations(lang);
                             href="https://mofaga.gov.np/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-slate-300 hover:text-white transition-all duration-300 text-lg border-b border-transparent hover:border-slate-500 pb-0.5 block decoration-slate-500/30"
+                            class="text-slate-300 hover:text-white transition-all duration-300 text-lg font-serif border-b border-slate-500 block decoration-slate-500/30"
                         >
                             {t.footer.links.mofaga}
                         </a>
@@ -140,7 +141,7 @@ const t = getTranslations(lang);
                             href="https://censusnepal.cbs.gov.np/results"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-slate-300 hover:text-white transition-all duration-300 text-lg border-b border-transparent hover:border-slate-500 pb-0.5 block decoration-slate-500/30"
+                            class="text-slate-300 hover:text-white transition-all duration-300 text-lg font-serif border-b border-slate-500 block decoration-slate-500/30"
                         >
                             {t.footer.links.census}
                         </a>
@@ -150,7 +151,7 @@ const t = getTranslations(lang);
                             href="https://nationaldata.gov.np/Province/Index/2"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-slate-300 hover:text-white transition-all duration-300 text-lg border-b border-transparent hover:border-slate-500 pb-0.5 block decoration-slate-500/30"
+                            class="text-slate-300 hover:text-white transition-all duration-300 text-lg font-serif border-b border-slate-500 block decoration-slate-500/30"
                         >
                             {t.footer.links.nationalData}
                         </a>
@@ -163,7 +164,9 @@ const t = getTranslations(lang);
         <div
             class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
         >
-            <p class="text-slate-600 text-sm font-medium tracking-wide">
+            <p
+                class="text-slate-600 text-sm font-medium tracking-wide font-serif"
+            >
                 {t.footer.copyright}
             </p>
         </div>
