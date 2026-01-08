@@ -30,89 +30,26 @@ if (!content) {
 }
 ---
 
-<section
-    id="background"
-    class="relative min-h-[70vh] bg-[#050505] py-24 md:py-32"
->
-    <div class="container mx-auto px-8 relative z-10">
+<section id="background" class="relative bg-[#050505] py-16 md:py-24">
+    <div class="container mx-auto px-8 max-w-4xl">
         <!-- Section Header -->
-        <div class="max-w-4xl mx-auto mb-20 reveal-item">
+        <div class="mb-8">
             <h2
-                class="font-serif text-[clamp(2.5rem,5vw,4.5rem)] md:text-[5rem] leading-[1.1] font-medium text-white tracking-tight mb-12"
+                class="font-serif text-3xl md:text-4xl font-bold text-blue-300 mb-6"
             >
-                {content.title}
+                १.१ {content.title}
             </h2>
         </div>
 
         <!-- Content Paragraphs -->
-        <div class="max-w-4xl mx-auto space-y-16">
+        <div class="space-y-6">
             {
-                content.paragraphs.map((para, index) => (
-                    <div
-                        class="reveal-item"
-                        style={`--delay: ${index * 150}ms`}
-                    >
-                        <p class="text-zinc-400 font-serif text-xl md:text-2xl leading-relaxed">
-                            {para.text}
-                        </p>
-                    </div>
+                content.paragraphs.map((para) => (
+                    <p class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify">
+                        {para.text}
+                    </p>
                 ))
             }
         </div>
-
-        <!-- Key Points -->
-        <div class="max-w-4xl mx-auto mt-32 reveal-item" style="--delay: 400ms">
-            <h3
-                class="font-serif text-2xl md:text-3xl text-zinc-300 mb-12 tracking-tight opacity-50"
-            >
-                मुख्य बुँदाहरू
-            </h3>
-            <div class="space-y-12">
-                {
-                    content.keyPoints.map((point) => (
-                        <div class="group border-l border-zinc-800 pl-8 transition-colors hover:border-zinc-400">
-                            <p class="text-zinc-500 font-serif text-lg md:text-xl leading-relaxed group-hover:text-zinc-300 transition-colors">
-                                {point}
-                            </p>
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
     </div>
 </section>
-
-<style>
-    .reveal-item {
-        opacity: 0;
-        transform: translateY(40px);
-        transition:
-            opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
-            transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-        transition-delay: var(--delay, 0ms);
-    }
-
-    .reveal-item.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
-</style>
-
-<script>
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("active");
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll(".reveal-item").forEach((item) => {
-        observer.observe(item);
-    });
-</script>

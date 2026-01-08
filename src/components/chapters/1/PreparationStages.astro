@@ -36,35 +36,32 @@ if (!content) {
 }
 ---
 
-<section
-    id="preparation-stages"
-    class="relative min-h-[70vh] bg-[#050505] py-24 md:py-32"
->
-    <div class="container mx-auto px-8 relative z-10">
+<section id="preparation-stages" class="relative bg-[#050505] py-16 md:py-24">
+    <div class="container mx-auto px-8 max-w-4xl">
         <!-- Section Header -->
-        <div class="max-w-4xl mx-auto mb-20 reveal-item">
+        <div class="mb-8">
             <h2
-                class="font-serif text-[clamp(2.5rem,5vw,4.5rem)] md:text-[5rem] leading-[1.1] font-medium text-white tracking-tight mb-12"
+                class="font-serif text-3xl md:text-4xl font-bold text-blue-300 mb-6"
             >
-                {content.title}
+                १.४ {content.title}
             </h2>
 
             <p
-                class="text-zinc-400 font-serif text-xl md:text-2xl leading-relaxed mb-8"
+                class="text-white font-serif text-lg md:text-xl leading-relaxed mb-6 text-justify"
             >
                 {content.intro}
             </p>
         </div>
 
-        <!-- Methods List -->
-        <div class="max-w-4xl mx-auto mb-32 space-y-12">
+        <!-- Methods List (With checkmarks as per user text) -->
+        <div class="space-y-4 mb-8">
             {
-                content.methods.map((method, index) => (
-                    <div
-                        class="reveal-item border-l border-zinc-800 pl-8 transition-colors hover:border-zinc-400"
-                        style={`--delay: ${(index + 1) * 100}ms`}
-                    >
-                        <p class="text-zinc-500 font-serif text-lg md:text-xl leading-relaxed">
+                content.methods.map((method) => (
+                    <div class="flex items-start gap-4">
+                        <span class="text-white font-serif text-lg md:text-xl shrink-0">
+                            ✓
+                        </span>
+                        <p class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify">
                             {method.text}
                         </p>
                     </div>
@@ -72,99 +69,13 @@ if (!content) {
             }
         </div>
 
-        <!-- Description Block -->
-        <div class="max-w-4xl mx-auto mb-32 reveal-item" style="--delay: 500ms">
-            <div class="border-t border-zinc-800 pt-16">
-                <p
-                    class="text-zinc-400 font-serif text-xl md:text-2xl leading-relaxed font-light italic opacity-80"
-                >
-                    {content.description}
-                </p>
-            </div>
-        </div>
-
-        <!-- Data Types -->
-        <div class="max-w-4xl mx-auto mb-32 reveal-item" style="--delay: 600ms">
-            <h3
-                class="text-zinc-300 font-serif text-base mb-8 opacity-50 uppercase tracking-widest"
+        <!-- Description -->
+        <div class="mb-8">
+            <p
+                class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify"
             >
-                तथ्याङ्क संकलन पद्धती
-            </h3>
-            <div class="flex flex-col gap-6">
-                {
-                    content.dataTypes.map((type) => (
-                        <div class="text-zinc-500 font-serif text-lg md:text-xl border-b border-zinc-900 pb-4">
-                            {type}
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
-
-        <!-- Subsections Navigation -->
-        <div class="max-w-4xl mx-auto reveal-item" style="--delay: 700ms">
-            <div class="mb-12">
-                <h3
-                    class="font-serif text-2xl md:text-3xl text-white mb-2 tracking-tight"
-                >
-                    विस्तृत चरणहरू
-                </h3>
-            </div>
-
-            <div class="space-y-4">
-                {
-                    content.subsections.map((subsection) => (
-                        <a
-                            href={`#${subsection.slug}`}
-                            class="group block border-t border-zinc-800 py-8 transition-colors hover:border-zinc-400"
-                        >
-                            <div class="flex items-center justify-between">
-                                <h4 class="font-serif text-xl md:text-2xl text-zinc-400 group-hover:text-white transition-colors">
-                                    {subsection.title}
-                                </h4>
-                                <span class="text-zinc-600 text-sm font-serif group-hover:text-zinc-300 transition-colors uppercase tracking-widest">
-                                    विवरण हेर्नुहोस्
-                                </span>
-                            </div>
-                        </a>
-                    ))
-                }
-            </div>
+                {content.description}
+            </p>
         </div>
     </div>
 </section>
-
-<style>
-    .reveal-item {
-        opacity: 0;
-        transform: translateY(40px);
-        transition:
-            opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
-            transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-        transition-delay: var(--delay, 0ms);
-    }
-
-    .reveal-item.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
-</style>
-
-<script>
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("active");
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll(".reveal-item").forEach((item) => {
-        observer.observe(item);
-    });
-</script>
