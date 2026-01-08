@@ -16,14 +16,18 @@ const t = getTranslations(lang);
 
 // Check if we are on the home page
 const pathname = Astro.url.pathname;
-const isHomePage = pathname === `/${lang}` || pathname === `/${lang}/` || pathname === '/' || pathname === '';
+const isHomePage =
+  pathname === `/${lang}` ||
+  pathname === `/${lang}/` ||
+  pathname === "/" ||
+  pathname === "";
 
 // Determine header classes based on page
 // On home page: absolute, transparent background initially (can add scroll listener later if needed)
 // On other pages: sticky, solid background
 const headerClass = isHomePage
   ? "absolute top-0 left-0 right-0 z-50 transition-all duration-200 border-b border-white/10"
-  : "sticky top-0 z-50 bg-slate-950/95 backdrop-blur-md shadow-md border-b border-slate-800 transition-all duration-200";
+  : "sticky top-0 z-50 bg-[#050505]/95 backdrop-blur-md shadow-md border-b border-slate-800 transition-all duration-200";
 
 const logoClass =
   "w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-lg transition-transform hover:scale-105 duration-300";
@@ -70,7 +74,7 @@ const navLinkInactive = "text-slate-300 hover:text-white";
         <div class="flex items-center gap-6">
           <a
             href={`/${lang}/`}
-            class={`${navLinkClass} ${!currentChapter && (Astro.url.pathname.endsWith(`/${lang}/`) || Astro.url.pathname === '/' || Astro.url.pathname === '') ? navLinkActive : navLinkInactive}`}
+            class={`${navLinkClass} ${!currentChapter && (Astro.url.pathname.endsWith(`/${lang}/`) || Astro.url.pathname === "/" || Astro.url.pathname === "") ? navLinkActive : navLinkInactive}`}
           >
             {t.nav.home}
           </a>
@@ -102,14 +106,14 @@ const navLinkInactive = "text-slate-300 hover:text-white";
   <!-- Mobile Menu Overlay -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 bg-slate-950/98 backdrop-blur-xl z-40 opacity-0 pointer-events-none transition-all duration-300 md:hidden overflow-y-auto"
+    class="fixed inset-0 bg-[#050505]/98 backdrop-blur-xl z-40 opacity-0 pointer-events-none transition-all duration-300 md:hidden overflow-y-auto"
   >
     <div class="min-h-full flex flex-col">
       <nav class="flex-1 px-6 py-8 space-y-6">
         <!-- Home Link -->
         <a
           href={`/${lang}/`}
-          class={`block text-lg font-serif ${!currentChapter && (Astro.url.pathname.endsWith(`/${lang}/`) || Astro.url.pathname === '/' || Astro.url.pathname === '') ? "text-primary-400" : "text-slate-300"}`}
+          class={`block text-lg font-serif ${!currentChapter && (Astro.url.pathname.endsWith(`/${lang}/`) || Astro.url.pathname === "/" || Astro.url.pathname === "") ? "text-primary-400" : "text-slate-300"}`}
         >
           {t.nav.home}
         </a>
@@ -198,7 +202,7 @@ const navLinkInactive = "text-slate-300 hover:text-white";
       if (window.scrollY > 50) {
         header.classList.remove("bg-transparent", "border-white/10");
         header.classList.add(
-          "bg-slate-950/90",
+          "bg-[#050505]/90",
           "backdrop-blur-md",
           "shadow-md",
           "border-slate-800",
@@ -206,7 +210,7 @@ const navLinkInactive = "text-slate-300 hover:text-white";
       } else {
         header.classList.add("bg-transparent", "border-white/10");
         header.classList.remove(
-          "bg-slate-950/90",
+          "bg-[#050505]/90",
           "backdrop-blur-md",
           "shadow-md",
           "border-slate-800",

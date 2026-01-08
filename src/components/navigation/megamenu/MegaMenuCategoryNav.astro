@@ -14,7 +14,7 @@ const t = getTranslations(lang);
 
 <!-- Category Navigation (Left Side) -->
 <nav
-  class="flex-shrink-0 w-80 border-r border-slate-700 h-full overflow-y-auto scrollbar-hide"
+  class="flex-shrink-0 w-80 border-r border-white/10 h-full overflow-y-auto scrollbar-hide"
 >
   <div class="py-6">
     <ul class="space-y-0" role="menu">
@@ -29,7 +29,7 @@ const t = getTranslations(lang);
                 class={`mega-menu-category group/cat w-full text-left px-6 py-5 transition-all duration-200 ${
                   isActive
                     ? "text-primary-400 font-medium underline decoration-1 underline-offset-4"
-                    : "text-slate-300 hover:text-primary-400"
+                    : "text-neutral-400 hover:text-primary-400"
                 }`}
                 role="menuitem"
                 aria-current={isActive ? "page" : undefined}
@@ -76,11 +76,11 @@ const t = getTranslations(lang);
             "text-white",
             "font-medium",
           );
-          btn.classList.add("text-slate-200");
+          btn.classList.add("text-neutral-400");
         });
 
         // Add active state to hovered button
-        button.classList.remove("text-slate-200");
+        button.classList.remove("text-neutral-400");
         button.classList.add("bg-primary-500/10", "text-white", "font-medium");
 
         const chapterNum = button.getAttribute("data-chapter");

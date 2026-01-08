@@ -32,11 +32,11 @@ const t = getTranslations(lang);
   <!-- Full-Width Mega Menu Dropdown -->
   <div
     id="mega-menu-dropdown"
-    class="fixed left-0 w-screen bg-[#050505] transform transition-all duration-300 origin-top shadow-2xl overflow-hidden opacity-0 invisible z-50"
-    style="top: var(--header-height); bottom: 0;"
+    class="fixed left-0 w-screen bg-[#050505] transform transition-all duration-300 origin-top shadow-2xl overflow-hidden opacity-0 invisible z-50 max-h-[80vh]"
+    style="top: var(--header-height);"
   >
     <!-- Background elements -->
-    <div class="absolute inset-0 bg-[#050505] border-t border-slate-800"></div>
+    <div class="absolute inset-0 bg-[#050505] border-t border-white/10"></div>
 
     <!-- Container aligned with logo -->
     <div class="w-full h-full relative">
@@ -84,7 +84,12 @@ const t = getTranslations(lang);
   /* Make header background match menu when open */
   :global(header.menu-open) {
     background-color: #050505 !important;
-    border-bottom-color: rgb(30 41 59) !important; /* border-slate-800 */
+    border-bottom-color: rgba(
+      255,
+      255,
+      255,
+      0.1
+    ) !important; /* border-white/10 */
   }
 </style>
 
