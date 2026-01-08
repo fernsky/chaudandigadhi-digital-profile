@@ -3,13 +3,17 @@ import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
+    data?: {
+        vaccine: string;
+        coverage: number;
+    }[];
 }
 
-const { lang } = Astro.props;
+const { lang, data } = Astro.props;
 
-// Vaccination coverage data (sample)
-const vaccinationData = [
-    { vaccine: "Rota2", coverage: 72.33 },
+// Vaccination coverage data (fallback)
+const vaccinationData = data || [
+    { vaccine: "Quota2", coverage: 72.33 },
     { vaccine: "DPT-HepB-Hib3", coverage: 73.49 },
     { vaccine: "DPT-HepB-Hib1", coverage: 74.77 },
 ];

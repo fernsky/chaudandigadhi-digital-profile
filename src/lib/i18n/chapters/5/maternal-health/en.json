@@ -1,0 +1,76 @@
+{
+    "title": "बच्चाको लिङ्ग र आमाको उमेर समूहको आधारमा जन्मेका, जीवित र मृत्यु भएका बच्चाहरुको विवरण",
+    "sectionId": "maternal-health",
+    "birthStatistics": {
+        "totalBirths": 21779,
+        "livingChildren": 21145,
+        "deaths": 634,
+        "maleBirths": 11213,
+        "femaleBirths": 10566
+    },
+    "ageGroupAnalysis": {
+        "title": "पहिलो बच्चा जन्मदिँदा महिलाको उमेरको विवरण",
+        "intro": "कानूनी र प्रजनन् स्वास्थको दृष्टिकोणबाट २० वा सो वर्षभन्दा कम उमेरमा आमा बन्नु गैरकानूनी र मातृ तथा शिशु दुवैको स्वास्थ्यका दृष्टिकोणबाट जोखिमपूर्ण मानिन्छ ।",
+        "totalMarriedWomen": 11184,
+        "ageGroups": [
+            {
+                "range": "१५–१९",
+                "count": 411,
+                "percent": 3.67
+            },
+            {
+                "range": "२०–२४",
+                "count": 1610,
+                "percent": 14.40
+            },
+            {
+                "range": "२५–२९",
+                "count": 2112,
+                "percent": 18.88
+            },
+            {
+                "range": "३०–३४",
+                "count": 2058,
+                "percent": 18.40
+            },
+            {
+                "range": "३५–३९",
+                "count": 1914,
+                "percent": 17.11
+            },
+            {
+                "range": "४०–४४",
+                "count": 1723,
+                "percent": 15.41
+            },
+            {
+                "range": "४५–४९",
+                "count": 1356,
+                "percent": 12.12
+            }
+        ]
+    },
+    "maritalStatus": {
+        "title": "विवाहित तथा अविवाहित महिला तथा पुरुषको विवरण",
+        "unmarried": {
+            "count": 14798,
+            "percent": 33.24
+        },
+        "married": {
+            "count": 27273,
+            "percent": 61.27
+        },
+        "single": {
+            "count": 2175,
+            "percent": 4.89
+        },
+        "divorced": {
+            "count": 64,
+            "percent": 0.14
+        },
+        "separated": {
+            "count": 206,
+            "percent": 0.46
+        }
+    }
+}

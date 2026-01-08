@@ -1,0 +1,57 @@
+---
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+    data?: {
+        range: string;
+        count: number;
+        percent: number;
+    }[];
+}
+
+const { lang, data } = Astro.props;
+
+// Default data (fallback)
+const ageGroups = data || [
+    { range: "15-19", count: 411, percent: 3.67 },
+    { range: "20-24", count: 1610, percent: 14.4 },
+    { range: "25-29", count: 2112, percent: 18.88 },
+];
+
+const maxPercent = Math.max(...ageGroups.map((g) => g.percent));
+---
+
+<div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
+    <h4 class="font-serif text-xl text-zinc-100 font-medium mb-6 text-center">
+        पहिलो बच्चा जन्मदिँदा महिलाको उमेर
+    </h4>
+
+    <div class="space-y-4">
+        {
+            ageGroups.map((group) => (
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-zinc-100 font-serif">
+                            {group.range} वर्ष
+                        </span>
+                        <div class="flex gap-4">
+                            <span class="text-zinc-400 font-serif">
+                                {group.count.toLocaleString()} जना
+                            </span>
+                            <span class="text-[#f2e25d] font-bold">
+                                {group.percent}%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="bg-[#050505] h-6 relative border border-[#f2e25d]/10 w-full">
+                        <div
+                            class="absolute inset-y-0 left-0 bg-[#f2e25d] transition-all duration-500"
+                            style={`width: ${(group.percent / maxPercent) * 100}%`}
+                        />
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</div>

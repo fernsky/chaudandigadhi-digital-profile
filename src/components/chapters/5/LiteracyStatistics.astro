@@ -1,0 +1,235 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import LiteracyChart from "../../charts/chapter-5/LiteracyChart.astro";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type LiteracyStatisticsContent = {
+    title: string;
+    sectionId: string;
+    intro: string[];
+    table40: {
+        title: string;
+        headers: string[];
+        summary: {
+            totalLiterate: number;
+            totalReadOnly: number;
+            totalIlliterate: number;
+            grandTotal: number;
+            literacyRate: number;
+            readOnlyRate: number;
+            illiteracyRate: number;
+        };
+        source: string;
+    };
+    formalEducation: {
+        title: string;
+        intro: string[];
+        table41Title: string;
+        summary: {
+            currentlyAttending: number;
+            currentlyAttendingPercent: number;
+            previouslyAttended: number;
+            previouslyAttendedPercent: number;
+            neverAttended: number;
+            neverAttendedPercent: number;
+            total: number;
+        };
+        source: string;
+    };
+};
+
+const content = await loadChapterSection<LiteracyStatisticsContent>(
+    5,
+    "literacy-statistics",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Literacy statistics content not found");
+}
+---
+
+<section id="literacy-statistics" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Header -->
+            <div class="mb-6">
+                <h3
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4"
+                >
+                    {content.sectionId}
+                    {content.title}
+                </h3>
+            </div>
+
+            <!-- Intro Paragraphs -->
+            <div class="space-y-4 mb-6">
+                {
+                    content.intro.map((para) => (
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                            {para}
+                        </p>
+                    ))
+                }
+            </div>
+
+            <!-- Literacy Chart -->
+            <div class="mb-8">
+                <LiteracyChart
+                    lang={lang}
+                    data={[
+                        {
+                            label: lang === "ne" ? "साक्षर" : "Literate",
+                            value: content.table40.summary.literacyRate,
+                            color: "#f2e25d",
+                        },
+                        {
+                            label:
+                                lang === "ne"
+                                    ? "पढ्न मात्र जान्ने"
+                                    : "Read Only",
+                            value: content.table40.summary.readOnlyRate,
+                            color: "#a3a3a3",
+                        },
+                        {
+                            label: lang === "ne" ? "निरक्षर" : "Illiterate",
+                            value: content.table40.summary.illiteracyRate,
+                            color: "#525252",
+                        },
+                    ]}
+                />
+            </div>
+
+            <!-- Summary Statistics -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
+                    <div
+                        class="text-[#f2e25d] font-serif text-4xl font-bold mb-2"
+                    >
+                        {content.table40.summary.literacyRate}%
+                    </div>
+                    <div class="text-zinc-100 font-serif text-sm">साक्षर</div>
+                    <div class="text-zinc-400 font-serif text-xs mt-1">
+                        {content.table40.summary.totalLiterate.toLocaleString()} जना
+                    </div>
+                </div>
+                <div class="bg-[#0a0a0a] border border-zinc-500/20 p-6">
+                    <div
+                        class="text-zinc-400 font-serif text-4xl font-bold mb-2"
+                    >
+                        {content.table40.summary.readOnlyRate}%
+                    </div>
+                    <div class="text-zinc-100 font-serif text-sm">
+                        पढ्न मात्र जान्ने
+                    </div>
+                    <div class="text-zinc-400 font-serif text-xs mt-1">
+                        {content.table40.summary.totalReadOnly} जना
+                    </div>
+                </div>
+                <div class="bg-[#0a0a0a] border border-zinc-700/20 p-6">
+                    <div
+                        class="text-zinc-500 font-serif text-4xl font-bold mb-2"
+                    >
+                        {content.table40.summary.illiteracyRate}%
+                    </div>
+                    <div class="text-zinc-100 font-serif text-sm">निरक्षर</div>
+                    <div class="text-zinc-400 font-serif text-xs mt-1">
+                        {
+                            content.table40.summary.totalIlliterate.toLocaleString()
+                        } जना
+                    </div>
+                </div>
+            </div>
+
+            <!-- Source -->
+            <p class="text-zinc-400 font-serif text-sm italic mb-8">
+                स्रोत: {content.table40.source}
+            </p>
+
+            <!-- Formal Education Section -->
+            <div class="mt-12">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+                >
+                    {content.formalEducation.title}
+                </h4>
+
+                <div class="space-y-4 mb-6">
+                    {
+                        content.formalEducation.intro.map((para) => (
+                            <p class="text-zinc-100 font-serif text-base md:text-lg leading-relaxed">
+                                {para}
+                            </p>
+                        ))
+                    }
+                </div>
+
+                <!-- Formal Education Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
+                        <div
+                            class="text-[#f2e25d] font-serif text-3xl font-bold mb-2"
+                        >
+                            {
+                                content.formalEducation.summary
+                                    .currentlyAttendingPercent
+                            }%
+                        </div>
+                        <div class="text-zinc-100 font-serif text-sm">
+                            हाल विद्यालय/कलेज गइरहेका
+                        </div>
+                        <div class="text-zinc-400 font-serif text-xs mt-1">
+                            {
+                                content.formalEducation.summary.currentlyAttending.toLocaleString()
+                            } जना
+                        </div>
+                    </div>
+                    <div class="bg-[#0a0a0a] border border-zinc-500/20 p-6">
+                        <div
+                            class="text-zinc-400 font-serif text-3xl font-bold mb-2"
+                        >
+                            {
+                                content.formalEducation.summary
+                                    .previouslyAttendedPercent
+                            }%
+                        </div>
+                        <div class="text-zinc-100 font-serif text-sm">
+                            पहिला गएका
+                        </div>
+                        <div class="text-zinc-400 font-serif text-xs mt-1">
+                            {
+                                content.formalEducation.summary.previouslyAttended.toLocaleString()
+                            } जना
+                        </div>
+                    </div>
+                    <div class="bg-[#0a0a0a] border border-zinc-700/20 p-6">
+                        <div
+                            class="text-zinc-500 font-serif text-3xl font-bold mb-2"
+                        >
+                            {
+                                content.formalEducation.summary
+                                    .neverAttendedPercent
+                            }%
+                        </div>
+                        <div class="text-zinc-100 font-serif text-sm">
+                            कहिले नगएका
+                        </div>
+                        <div class="text-zinc-400 font-serif text-xs mt-1">
+                            {content.formalEducation.summary.neverAttended} जना
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-zinc-400 font-serif text-sm italic">
+                    स्रोत: {content.formalEducation.source}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

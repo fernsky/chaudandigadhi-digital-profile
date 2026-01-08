@@ -3,12 +3,17 @@ import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
+    data?: {
+        type: string;
+        percent: number;
+        color: string;
+    }[];
 }
 
-const { lang } = Astro.props;
+const { lang, data } = Astro.props;
 
-// Toilet coverage data
-const toiletData = [
+// Toilet coverage data (fallback)
+const toiletData = data || [
     { type: "खाल्डे चर्पी", percent: 64.87, color: "#f2e25d" },
     { type: "फ्लस (सेप्टिक ट्याङ्क)", percent: 29.04, color: "#a3a3a3" },
     { type: "फ्लस (सार्वजनिक ढल)", percent: 2.83, color: "#737373" },
@@ -17,6 +22,15 @@ const toiletData = [
 ];
 
 let currentAngle = 0;
+
+// Calculate total coverage (excluding "no toilet" or just sum of positive types?)
+// Assuming "no toilet" is explicitly labeled "चर्पी नभएको" or similar.
+// For now, let's sum everything except explicitly negative ones if we want "coverage".
+// Or just sum everything? The text says "97.28% coverage" which refers to those having toilets.
+const noToiletKeywords = ["चर्पी नभएको", "no toilet", "none"];
+const totalCoverage = toiletData
+    .filter((d) => !noToiletKeywords.some((k) => d.type.includes(k)))
+    .reduce((acc, curr) => acc + curr.percent, 0);
 ---
 
 <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
@@ -73,7 +87,7 @@ let currentAngle = 0;
                 text-anchor="middle"
                 class="fill-zinc-100 font-serif text-xl font-bold"
             >
-                97.28%
+                {totalCoverage.toFixed(2)}%
             </text>
             <text
                 x="100"

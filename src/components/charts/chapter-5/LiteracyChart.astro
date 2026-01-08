@@ -3,12 +3,17 @@ import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
+    data?: {
+        label: string;
+        value: number;
+        color: string;
+    }[];
 }
 
-const { lang } = Astro.props;
+const { lang, data } = Astro.props;
 
-// Literacy data
-const literacyData = [
+// Default data if not provided (fallback)
+const literacyData = data || [
     { label: "साक्षर", value: 77.7, color: "#f2e25d" },
     { label: "पढ्न मात्र जान्ने", value: 0.24, color: "#a3a3a3" },
     { label: "निरक्षर", value: 22.06, color: "#525252" },

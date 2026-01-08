@@ -2,7 +2,7 @@
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSections } from "../../../lib/i18n/chapter-loader";
 import VaccinationChart from "../../charts/chapter-5/VaccinationChart.astro";
-import PopulationPyramid from "../../charts/chapter-5/PopulationPyramid.astro";
+import MaternalAgeChart from "../../charts/chapter-5/MaternalAgeChart.astro";
 
 interface Props {
     lang: Language;
@@ -110,9 +110,12 @@ const subsections = await loadChapterSections(
                             ५.२.५ {subsections["maternal-health"].title}
                         </h3>
 
-                        <!-- Population Pyramid -->
+                        <!-- Maternal Age Chart -->
                         <div class="my-8">
-                            <PopulationPyramid lang={lang} />
+                            <MaternalAgeChart 
+                                lang={lang}
+                                data={subsections["maternal-health"].ageGroupAnalysis.ageGroups}
+                            />
                         </div>
 
                         <!-- Age Group Analysis -->
