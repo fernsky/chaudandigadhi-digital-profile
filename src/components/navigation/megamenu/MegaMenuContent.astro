@@ -30,18 +30,19 @@ const initialChapter = currentChapter || 1;
       return (
         <div
           data-chapter-content={num}
-          class={`mega-menu-content h-full flex flex-col ${isInitiallyVisible ? "flex" : "hidden"}`}
+          class={`mega-menu-content w-full h-full flex flex-col ${isInitiallyVisible ? "flex" : "hidden"}`}
         >
-          {/* Header */}
-          <div class="border-b border-slate-700 w-full">
-            <div class="px-8 py-6">
+          <!-- Header with Full-Bleed Bottom Border -->
+          <!-- We use a pseudo-element on this relative container to draw the line all the way to the right -->
+          <div class="relative w-full border-b border-slate-800 after:content-[''] after:absolute after:bottom-[-1px] after:left-full after:w-screen after:h-[1px] after:bg-slate-800">
+            <div class="px-12 py-8">
               <h4 class="text-2xl font-serif font-semibold text-white">
                 {chapter.description}
               </h4>
             </div>
           </div>
 
-          {/* Scrollable sections - 2 column layout */}
+          <!-- Scrollable sections -->
           <div class="flex-1 overflow-y-auto px-12 py-8 scrollbar-hide">
             <div class="grid grid-cols-2 gap-x-16 gap-y-6">
               {sections.map((section: any) => (
@@ -59,8 +60,8 @@ const initialChapter = currentChapter || 1;
             </div>
           </div>
 
-          {/* View Full Chapter Link */}
-          <div class="px-8 py-5 border-t border-slate-700">
+          <!-- View Full Chapter Link with Full-Bleed Top Border -->
+          <div class="relative w-full px-12 py-6 border-t border-slate-800 after:content-[''] after:absolute after:top-[-1px] after:left-full after:w-screen after:h-[1px] after:bg-slate-800">
             <a
               href={`/${lang}/${chapter.slug}`}
               class="inline-flex items-center gap-2 text-base font-medium text-primary-400 hover:text-primary-300 transition-colors group/link"
