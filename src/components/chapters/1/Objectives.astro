@@ -44,7 +44,7 @@ if (!content) {
             <div
                 class="inline-block px-6 py-2 bg-white/5 border border-white/10 mb-6"
             >
-                <span class="text-slate-400 font-serif text-sm tracking-wider"
+                <span class="text-zinc-500 font-serif text-sm tracking-wider"
                     >{content.sectionId}</span
                 >
             </div>
@@ -59,7 +59,7 @@ if (!content) {
                 class="bg-white/[0.02] backdrop-blur-sm border border-white/5 p-8 md:p-12"
             >
                 <p
-                    class="text-slate-300 font-serif text-lg md:text-xl leading-relaxed"
+                    class="text-zinc-400 font-serif text-lg md:text-xl leading-relaxed"
                 >
                     {content.intro}
                 </p>
@@ -89,12 +89,12 @@ if (!content) {
                                 </h3>
 
                                 {/* Description */}
-                                <p class="text-slate-400 font-serif text-base md:text-lg leading-relaxed">
+                                <p class="text-zinc-500 font-serif text-base md:text-lg leading-relaxed">
                                     {objective.description}
                                 </p>
 
                                 {/* Hover Accent Line */}
-                                <div class="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-white/60 to-transparent group-hover:w-full transition-all duration-700" />
+                                <div class="absolute bottom-0 left-0 h-1 w-0 bg-white/30 group-hover:w-full transition-all duration-700" />
                             </div>
                         </div>
                     ))
@@ -108,7 +108,7 @@ if (!content) {
             style="--delay: 1000ms"
         >
             <div
-                class="bg-gradient-to-r from-white/5 to-transparent border-l-4 border-white/30 p-8 md:p-10"
+                class="bg-gradient-to-r from-white/5 to-transparent border-l-4 border-white/10 p-8 md:p-10"
             >
                 <div class="flex items-center gap-6">
                     <div
@@ -116,7 +116,7 @@ if (!content) {
                     >
                         {content.objectives.length}
                     </div>
-                    <p class="text-slate-300 font-serif text-lg md:text-xl">
+                    <p class="text-zinc-400 font-serif text-lg md:text-xl">
                         विशिष्ट उद्देश्यहरू परिभाषित गरिएका छन्
                     </p>
                 </div>
@@ -183,16 +183,15 @@ if (!content) {
     });
 
     // Mouse move effect for objective cards
-    document
-        .querySelectorAll(".objective-card")
-        .forEach((card: HTMLElement) => {
-            card.addEventListener("mousemove", (e: MouseEvent) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+    document.querySelectorAll(".objective-card").forEach((card) => {
+        const htmlCard = card as HTMLElement;
+        htmlCard.addEventListener("mousemove", (e: MouseEvent) => {
+            const rect = htmlCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-                card.style.setProperty("--mouse-x", `${x}px`);
-                card.style.setProperty("--mouse-y", `${y}px`);
-            });
+            htmlCard.style.setProperty("--mouse-x", `${x}px`);
+            htmlCard.style.setProperty("--mouse-y", `${y}px`);
         });
+    });
 </script>

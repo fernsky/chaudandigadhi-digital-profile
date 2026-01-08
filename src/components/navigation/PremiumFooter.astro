@@ -11,11 +11,11 @@ const t = getTranslations(lang);
 ---
 
 <footer
-    class="relative bg-[#050505] text-slate-300 py-24 overflow-hidden border-t border-slate-900/50"
+    class="relative bg-[#050505] text-zinc-400 py-24 overflow-hidden border-t border-white/5"
 >
     <!-- Background Elements -->
     <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900/40 via-slate-950/0 to-slate-950/0 pointer-events-none"
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent pointer-events-none"
     >
     </div>
 
@@ -28,10 +28,10 @@ const t = getTranslations(lang);
                 {t.home.hero.chaudandigadhi}
                 {t.home.hero.municipality}
             </h3>
-            <p class="text-slate-500 font-light text-lg">
+            <p class="text-zinc-500 font-light text-lg">
                 {t.home.hero.office}
             </p>
-            <p class="text-slate-500 font-light text-lg">
+            <p class="text-zinc-500 font-light text-lg">
                 {t.home.hero.location}
             </p>
         </div>
@@ -51,62 +51,62 @@ const t = getTranslations(lang);
                 >
                     <!-- Phone -->
                     <div
-                        class="text-xs md:text-sm text-slate-500 font-medium font-serif whitespace-nowrap"
+                        class="text-xs md:text-sm text-zinc-500 font-medium font-serif whitespace-nowrap"
                     >
                         {t.footer.labels.phone}
                     </div>
                     <div
-                        class="text-slate-200 font-serif tracking-normal text-base md:text-lg"
+                        class="text-zinc-200 font-serif tracking-normal text-base md:text-lg"
                     >
                         {t.footer.values.phone}
                     </div>
 
                     <!-- Fax -->
                     <div
-                        class="text-xs md:text-sm text-slate-500 font-medium font-serif whitespace-nowrap mt-4 md:mt-0"
+                        class="text-xs md:text-sm text-zinc-500 font-medium font-serif whitespace-nowrap mt-4 md:mt-0"
                     >
                         {t.footer.labels.fax}
                     </div>
                     <div
-                        class="text-slate-200 font-serif tracking-normal text-base md:text-lg"
+                        class="text-zinc-200 font-serif tracking-normal text-base md:text-lg"
                     >
                         {t.footer.values.fax}
                     </div>
 
                     <!-- Email -->
                     <div
-                        class="text-xs md:text-sm text-slate-500 font-medium font-serif whitespace-nowrap mt-4 md:mt-1.5 self-start"
+                        class="text-xs md:text-sm text-zinc-500 font-medium font-serif whitespace-nowrap mt-4 md:mt-1.5 self-start"
                     >
                         {t.footer.labels.email}
                     </div>
                     <div class="flex flex-col gap-1">
                         <a
                             href={`mailto:${t.footer.values.email1}`}
-                            class="text-slate-200 hover:text-white transition-colors block font-serif tracking-tight text-base md:text-lg"
+                            class="text-zinc-200 hover:text-white transition-colors block font-serif tracking-tight text-base md:text-lg"
                             >{t.footer.values.email1}</a
                         >
                         <a
                             href={`mailto:${t.footer.values.email2}`}
-                            class="text-slate-200 hover:text-white transition-colors block font-serif tracking-tight text-base md:text-lg"
+                            class="text-zinc-200 hover:text-white transition-colors block font-serif tracking-tight text-base md:text-lg"
                             >{t.footer.values.email2}</a
                         >
                     </div>
 
                     <!-- Audio Notice -->
                     <div
-                        class="text-xs md:text-sm text-slate-500 font-medium font-serif whitespace-nowrap mt-4 md:mt-0"
+                        class="text-xs md:text-sm text-zinc-500 font-medium font-serif whitespace-nowrap mt-4 md:mt-0"
                     >
                         {t.footer.labels.audioNotice}
                     </div>
                     <div
-                        class="text-slate-200 font-serif tracking-normal text-base md:text-lg"
+                        class="text-zinc-200 font-serif tracking-normal text-base md:text-lg"
                     >
                         {t.footer.values.audioNotice}
                     </div>
 
                     <!-- Website -->
                     <div
-                        class="text-xs md:text-sm text-slate-500 font-medium font-serif whitespace-nowrap mt-4 md:mt-1.5 self-start"
+                        class="text-xs md:text-sm text-zinc-500 font-medium font-serif whitespace-nowrap mt-4 md:mt-1.5 self-start"
                     >
                         {t.footer.labels.website}
                     </div>
@@ -115,7 +115,7 @@ const t = getTranslations(lang);
                             href={`https://${t.footer.values.website}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-slate-200 hover:text-white font-serif tracking-tight transition-colors border-b border-slate-800 hover:border-white pb-0.5 inline-block leading-tight text-base md:text-lg"
+                            class="text-zinc-200 hover:text-white font-serif tracking-tight transition-colors border-b border-white/10 hover:border-white pb-0.5 inline-block leading-tight text-base md:text-lg"
                             >{t.footer.values.website}</a
                         >
                     </div>
@@ -135,7 +135,7 @@ const t = getTranslations(lang);
                             href="https://mofaga.gov.np/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-slate-300 hover:text-white transition-all duration-300 font-serif border-b border-slate-500 block decoration-slate-500/30 text-base"
+                            class="text-zinc-300 hover:text-white transition-all duration-300 font-serif border-b border-zinc-500 block decoration-zinc-500/30 text-base"
                         >
                             {t.footer.links.mofaga}
                         </a>
@@ -145,7 +145,7 @@ const t = getTranslations(lang);
                             href="https://censusnepal.cbs.gov.np/results"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-slate-300 hover:text-white transition-all duration-300 font-serif border-b border-slate-500 block decoration-slate-500/30 text-base"
+                            class="text-zinc-300 hover:text-white transition-all duration-300 font-serif border-b border-zinc-500 block decoration-zinc-500/30 text-base"
                         >
                             {t.footer.links.census}
                         </a>
@@ -155,7 +155,7 @@ const t = getTranslations(lang);
                             href="https://nationaldata.gov.np/Province/Index/2"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-slate-300 hover:text-white transition-all duration-300 font-serif border-b border-slate-500 block decoration-slate-500/30 text-base"
+                            class="text-zinc-300 hover:text-white transition-all duration-300 font-serif border-b border-zinc-500 block decoration-zinc-500/30 text-base"
                         >
                             {t.footer.links.nationalData}
                         </a>
@@ -166,10 +166,10 @@ const t = getTranslations(lang);
 
         <!-- Copyright -->
         <div
-            class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+            class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
         >
             <p
-                class="text-slate-600 text-xs md:text-sm font-medium tracking-wide font-serif text-left"
+                class="text-zinc-600 text-xs md:text-sm font-medium tracking-wide font-serif text-left"
             >
                 {t.footer.copyright}
             </p>

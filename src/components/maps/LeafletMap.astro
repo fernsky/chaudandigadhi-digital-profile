@@ -28,11 +28,11 @@ const mapConfig = {
 
 <div class="map-container my-8">
     <div
-        class="bg-slate-800 border-b border-slate-700 px-4 py-2 font-medium text-slate-200 flex justify-between items-center"
+        class="bg-[#0a0a0a] border-b border-white/5 px-4 py-2 font-medium text-zinc-200 flex justify-between items-center"
     >
         <span>{title}</span>
         <span
-            class="text-xs text-slate-400 bg-slate-900 px-2 py-1 border border-slate-700"
+            class="text-xs text-zinc-500 bg-black px-2 py-1 border border-white/5"
             >Leaflet OpenStreetMap</span
         >
     </div>
@@ -80,10 +80,10 @@ const mapConfig = {
             L.geoJSON(mapConfig.data, {
                 style: function (feature) {
                     return {
-                        color: "#64748b",
+                        color: "#a1a1aa",
                         weight: 3,
                         opacity: 0.8,
-                        fillColor: "#475569",
+                        fillColor: "#52525b",
                         fillOpacity: 0.1,
                     };
                 },
