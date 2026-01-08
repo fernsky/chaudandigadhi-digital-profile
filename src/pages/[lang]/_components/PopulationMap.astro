@@ -145,8 +145,8 @@
             .join("path")
             .attr("d", (d) => cleanPath(pathGenerator(d)))
             .attr("fill", "none")
-            .attr("stroke", "rgba(242, 226, 93, 0.4)") // Golden borders
-            .attr("stroke-width", 2.5)
+            .attr("stroke", "rgba(255, 255, 255, 0.9)") // Ultra-thick, bright white borders
+            .attr("stroke-width", 8.0)
             .attr("class", "ward-path cursor-pointer")
             .style("pointer-events", "none") // Disable interaction until animation completes
             .attr("fill-opacity", 0)
@@ -173,8 +173,8 @@
                 select(node)
                     .attr("stroke-dasharray", length)
                     .attr("stroke-dashoffset", length)
-                    .attr("stroke", "rgba(242, 226, 93, 0.6)") // Golden stroke animation
-                    .attr("stroke-width", 2.5)
+                    .attr("stroke", "rgba(255, 255, 255, 1.0)") // High-contrast white stroke animation
+                    .attr("stroke-width", 8.0)
                     .transition()
                     .duration(2000)
                     .delay(i * 180)
@@ -188,8 +188,8 @@
                         "fill-opacity",
                         opacityScale(d.properties.total_population),
                     ) // Population-based transparency!
-                    .attr("stroke", "rgba(242, 226, 93, 0.5)") // Final Golden borders
-                    .attr("stroke-width", 2.5);
+                    .attr("stroke", "rgba(255, 255, 255, 0.9)") // Final Ultra-Thick White borders
+                    .attr("stroke-width", 8.0);
             });
 
             // Animate outer glow
@@ -215,8 +215,8 @@
                     .transition()
                     .duration(300)
                     .attr("fill-opacity", 0.95) // Brighter on hover
-                    .attr("stroke", "rgba(242, 226, 93, 1)") // Pure gold border
-                    .attr("stroke-width", 3)
+                    .attr("stroke", "rgba(255, 255, 255, 1)") // Pure white border
+                    .attr("stroke-width", 10.0)
                     .style(
                         "filter",
                         "brightness(1.1) drop-shadow(0 0 20px rgba(242, 226, 93, 0.4))",
@@ -263,8 +263,8 @@
                         "fill-opacity",
                         opacityScale(d.properties.total_population),
                     )
-                    .attr("stroke", "rgba(242, 226, 93, 0.5)")
-                    .attr("stroke-width", 2.5)
+                    .attr("stroke", "rgba(255, 255, 255, 0.9)")
+                    .attr("stroke-width", 8.0)
                     .style("filter", "none");
 
                 select(shadows.nodes()[wardIndex])
