@@ -1,107 +1,54 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Language } from "../../../lib/i18n";
+
+// Chapter 4 Components
 import ChapterHero from "../../../components/chapters/4/ChapterHero.astro";
 import EconomicOverview from "../../../components/chapters/4/EconomicOverview.astro";
-import HousingStructure from "../../../components/chapters/4/HousingStructure.astro";
-import LandUse_Agriculture from "../../../components/chapters/4/LandUse_Agriculture.astro";
+import ForeignEmployment from "../../../components/chapters/4/ForeignEmployment.astro";
+import Housing from "../../../components/chapters/4/Housing.astro";
+import LandUse from "../../../components/chapters/4/LandUse.astro";
+import Agriculture from "../../../components/chapters/4/Agriculture.astro";
 import Tourism from "../../../components/chapters/4/Tourism.astro";
-import Industry_Trade from "../../../components/chapters/4/Industry_Trade.astro";
-import MegaMenu from "../../../components/navigation/megamenu/MegaMenu.astro";
+import IndustryTrade from "../../../components/chapters/4/IndustryTrade.astro";
 
 export async function getStaticPaths() {
     return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
 }
 
-const { lang } = Astro.params;
+const { lang } = Astro.params as { lang: Language };
 ---
 
 <BaseLayout
-    title="आर्थिक अवस्था | चौदण्डीगढी नगरपालिका"
-    description="चौदण्डीगढी नगरपालिकाको आर्थिक अवस्था, कृषि, पर्यटन, र उद्योगको विस्तृत विवरण।"
-    lang={lang as any}
+    title="परिच्छेद – ४: आर्थिक अवस्था | चौदण्डीगढी नगरपालिका"
+    description="चौदण्डीगढी नगरपालिकाको आर्थिक संरचना, कृषि, पर्यटन र उद्योग व्यापारको विस्तृत विवरण"
+    lang={lang}
+    currentChapter={4}
+    hideMegaMenu={true}
 >
-    <main class="bg-zinc-950">
+    <main class="min-h-screen bg-black">
+        <!-- Chapter Hero -->
         <ChapterHero lang={lang} />
 
-        <div class="sticky top-0 z-50">
-            <MegaMenu lang={lang as any} currentChapter={4} />
-        </div>
-
+        <!-- Economic Overview (Table 23) -->
         <EconomicOverview lang={lang} />
-        <HousingStructure lang={lang} />
-        <LandUse_Agriculture lang={lang} />
+
+        <!-- Foreign Employment (Table 28) -->
+        <ForeignEmployment lang={lang} />
+
+        <!-- Housing (Tables 24-27) -->
+        <Housing lang={lang} />
+
+        <!-- Land Use -->
+        <LandUse lang={lang} />
+
+        <!-- Agriculture (Tables 29-34) -->
+        <Agriculture lang={lang} />
+
+        <!-- Tourism (Tables 35-36) -->
         <Tourism lang={lang} />
-        <Industry_Trade lang={lang} />
 
-        <!-- Chapter Navigation -->
-        <section class="py-20 bg-zinc-900 border-t border-zinc-800">
-            <div class="container mx-auto px-4">
-                <div
-                    class="flex flex-col md:flex-row justify-between items-center gap-6"
-                >
-                    <a
-                        href={`/${lang}/chapters/3`}
-                        class="group flex items-center gap-4 text-zinc-400 hover:text-white transition-colors"
-                    >
-                        <div
-                            class="w-12 h-12 rounded-full border border-zinc-700 flex items-center justify-center group-hover:bg-zinc-800 transition-colors"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M15 19l-7-7 7-7"></path>
-                            </svg>
-                        </div>
-                        <div class="text-left">
-                            <span class="block text-sm text-zinc-500"
-                                >अघिल्लो परिच्छेद</span
-                            >
-                            <span class="text-xl font-serif"
-                                >सामाजिक अवस्था</span
-                            >
-                        </div>
-                    </a>
-
-                    <a
-                        href={`/${lang}/chapters/5`}
-                        class="group flex items-center gap-4 text-zinc-400 hover:text-white transition-colors flex-row-reverse text-right"
-                    >
-                        <div
-                            class="w-12 h-12 rounded-full border border-zinc-700 flex items-center justify-center group-hover:bg-zinc-800 transition-colors"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="block text-sm text-zinc-500"
-                                >पछिल्लो परिच्छेद</span
-                            >
-                            <span class="text-xl font-serif"
-                                >सुशासन तथा संस्थागत विकास</span
-                            >
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
+        <!-- Industry & Trade (Tables 37-39) -->
+        <IndustryTrade lang={lang} />
     </main>
 </BaseLayout>

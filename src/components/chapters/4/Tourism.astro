@@ -1,113 +1,256 @@
 ---
-import ne from "../../../lib/i18n/chapters/4/tourism/ne.json";
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
 
 interface Props {
-    lang: string;
+    lang: Language;
 }
+
 const { lang } = Astro.props;
-const t = ne;
+
+const content = await loadChapterSection(4, "tourism", lang);
+
+if (!content) {
+    throw new Error("Tourism content not found");
+}
 ---
 
-<section id="tourism" class="py-20 bg-zinc-950">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-16">
+<section id="tourism" class="relative bg-[#050505] py-8 md:py-12 scroll-mt-24">
+    <div class="container mx-auto px-8">
+        <div class="max-w-6xl mx-auto space-y-8">
             <h2
-                class="text-3xl md:text-5xl font-serif font-bold text-white mb-6"
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100"
             >
-                {t.title}
+                {content.number}
+                {content.title}
             </h2>
-            <p class="text-lg text-zinc-400 leading-relaxed">{t.intro}</p>
-        </div>
 
-        <!-- 4.4.1 Sites -->
-        <div class="mb-24">
-            <div class="max-w-3xl mx-auto text-center mb-10">
-                <h3 class="text-2xl font-serif text-amber-500 mb-4">
-                    {t.sites.title}
-                </h3>
-                <p class="text-zinc-400">{t.sites.description}</p>
-            </div>
-
-            <div
-                class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+            <p
+                class="font-serif text-base md:text-lg text-zinc-300 leading-relaxed"
             >
-                {
-                    t.sites.list.map((site) => (
-                        <div class="group bg-zinc-900 border border-zinc-800 p-6 rounded-xl hover:bg-zinc-800 transition-all duration-300">
-                            <div class="flex items-start justify-between mb-4">
-                                <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-6 w-6"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                                        />
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                                        />
-                                    </svg>
-                                </div>
-                                <span class="text-xs font-mono text-zinc-500 border border-zinc-800 px-2 py-1 rounded">
-                                    {site.location}
-                                </span>
-                            </div>
-                            <h4 class="text-lg font-serif text-white mb-2 group-hover:text-amber-400 transition-colors">
-                                {site.name}
-                            </h4>
-                            <span class="text-sm text-zinc-400 inline-block bg-zinc-800 px-2 py-0.5 rounded-md group-hover:bg-zinc-700">
-                                {site.significance}
-                            </span>
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
+                {content.intro}
+            </p>
 
-        <!-- 4.4.2 Hotels -->
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-10">
-                <h3 class="text-2xl font-serif text-white mb-4">
-                    {t.hotels.title}
+            <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                {content.description}
+            </p>
+
+            <!-- Tourism Images Gallery -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                <div>
+                    <img
+                        src="/images/chapter-4/yalambar-park.jpg"
+                        alt="यलम्बर पार्क"
+                        class="w-full rounded-lg border border-zinc-800"
+                    />
+                    <p
+                        class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                    >
+                        यलम्बर पार्क
+                    </p>
+                </div>
+                <div>
+                    <img
+                        src="/images/chapter-4/chaudandigadhi-palace.jpg"
+                        alt="चौदण्डीगढी दरबार"
+                        class="w-full rounded-lg border border-zinc-800"
+                    />
+                    <p
+                        class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                    >
+                        चौदण्डीगढी दरबार
+                    </p>
+                </div>
+                <div>
+                    <img
+                        src="/images/chapter-4/chaudandigadhi-fort.jpg"
+                        alt="चौदण्डीगढी"
+                        class="w-full rounded-lg border border-zinc-800"
+                    />
+                    <p
+                        class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                    >
+                        चौदण्डीगढी
+                    </p>
+                </div>
+                <div>
+                    <img
+                        src="/images/chapter-4/ganesh-temple.jpg"
+                        alt="गणेश मन्दिर"
+                        class="w-full rounded-lg border border-zinc-800"
+                    />
+                    <p
+                        class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                    >
+                        गणेश मन्दिर
+                    </p>
+                </div>
+            </div>
+
+            <!-- More Tourism Sites -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                <div>
+                    <img
+                        src="/images/chapter-4/shanti-batika-gumba.jpg"
+                        alt="शान्तिबाटिका गुम्बा र पार्क"
+                        class="w-full rounded-lg border border-zinc-800"
+                    />
+                    <p
+                        class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                    >
+                        शान्तिबाटिका गुम्बा र पार्क
+                    </p>
+                </div>
+                <div>
+                    <img
+                        src="/images/chapter-4/tindobhan.jpg"
+                        alt="तिनदोभान"
+                        class="w-full rounded-lg border border-zinc-800"
+                    />
+                    <p
+                        class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                    >
+                        तिनदोभान
+                    </p>
+                </div>
+                <div>
+                    <img
+                        src="/images/chapter-4/kirateshwar-temple.jpg"
+                        alt="किरातेश्वर मन्दिर, तिनदोभान"
+                        class="w-full rounded-lg border border-zinc-800"
+                    />
+                    <p
+                        class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                    >
+                        किरातेश्वर मन्दिर, तिनदोभान
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sacred Sites -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                <div>
+                    <img
+                        src="/images/chapter-4/shivalaya-temple.jpg"
+                        alt="शिवालय मन्दिर सुन्दरपुर"
+                        class="w-full rounded-lg border border-zinc-800"
+                    />
+                    <p
+                        class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                    >
+                        शिवालय मन्दिर सुन्दरपुर
+                    </p>
+                </div>
+                <div>
+                    <img
+                        src="/images/chapter-4/kalidaha.jpg"
+                        alt="कालिदह"
+                        class="w-full rounded-lg border border-zinc-800"
+                    />
+                    <p
+                        class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                    >
+                        कालिदह
+                    </p>
+                </div>
+                <div>
+                    <img
+                        src="/images/chapter-4/thaneshwar-temple.jpg"
+                        alt="थानेश्वर मन्दिर"
+                        class="w-full rounded-lg border border-zinc-800"
+                    />
+                    <p
+                        class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                    >
+                        थानेश्वर मन्दिर
+                    </p>
+                </div>
+            </div>
+
+            <!-- Additional Sacred Pond -->
+            <div class="my-8">
+                <img
+                    src="/images/chapter-4/bhutiya-daha.jpg"
+                    alt="भुतिया दह"
+                    class="w-full max-w-4xl mx-auto rounded-lg border border-zinc-800"
+                />
+                <p
+                    class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                >
+                    भुतिया दह
+                </p>
+            </div>
+
+            <!-- Religious Sites Map -->
+            <div class="my-8">
+                <img
+                    src="/images/chapter-4/religious-sites-map.jpg"
+                    alt="नक्सा नं. 6: नगरपालिकाको धार्मिक क्षेत्र नक्शा"
+                    class="w-full max-w-4xl mx-auto rounded-lg border border-zinc-800"
+                />
+                <p
+                    class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                >
+                    नक्सा नं. 6: नगरपालिकाको धार्मिक क्षेत्र नक्शा
+                </p>
+            </div>
+
+            <!-- Tourist Sites (Table 35) -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.sites.number}
+                    {content.sites.title}
                 </h3>
-                <p class="text-zinc-400 max-w-2xl mx-auto">{t.hotels.intro}</p>
-            </div>
 
-            <div
-                class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl shadow-black/50"
-            >
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.sites.intro}
+                </p>
+
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.sites.tableTitle}
+                </h4>
+
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-zinc-400">
-                        <thead
-                            class="bg-zinc-800 text-zinc-200 uppercase font-medium"
-                        >
-                            <tr>
-                                <th class="px-6 py-4">होटल / रेष्टुरेन्ट</th>
-                                <th class="px-6 py-4">सञ्चालक</th>
-                                <th class="px-6 py-4 text-right">सम्पर्क</th>
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्र.सं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >नाम</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >स्थान</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >महत्व</th
+                                >
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-zinc-800">
+                        <tbody>
                             {
-                                t.hotels.list.map((hotel) => (
-                                    <tr class="hover:bg-zinc-800/50 transition-colors">
-                                        <td class="px-6 py-4 font-medium text-white">
-                                            {hotel.name}
+                                content.sites.tableData.map((row, idx) => (
+                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {idx + 1}
                                         </td>
-                                        <td class="px-6 py-4">
-                                            {hotel.owner || "-"}
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.name}
                                         </td>
-                                        <td class="px-6 py-4 text-right font-mono text-amber-500">
-                                            {hotel.contact}
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.location}
+                                        </td>
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.significance}
                                         </td>
                                     </tr>
                                 ))
@@ -115,6 +258,77 @@ const t = ne;
                         </tbody>
                     </table>
                 </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.sites.source}
+                </p>
+            </div>
+
+            <!-- Hotels and Restaurants (Table 36) -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.hotels.number}
+                    {content.hotels.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.hotels.intro}
+                </p>
+
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.hotels.tableTitle}
+                </h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्र.सं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >होटल, रिसोर्ट तथा रेष्टुरेन्टको नाम</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >सञ्चालकको नाम</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >सम्पर्क नम्बर</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.hotels.tableData.map((row, idx) => (
+                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {idx + 1}
+                                        </td>
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.name}
+                                        </td>
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.operator}
+                                        </td>
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.contact}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.hotels.source}
+                </p>
             </div>
         </div>
     </div>

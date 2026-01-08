@@ -1,13 +1,15 @@
 {
-    "title": "४.१.२ आवास संरचना विवरण",
-    "description": "नगरपालिकामा बसोवास गर्ने घरपरिवारको आवासको अवस्थाले उनीहरूको जीवनस्तर झल्काउँछ । यहाँका अधिकांश मानिसहरूको आफ्नै स्वामित्वमा घर रहेको छ भने केही भाडामा र संस्थागत घरमा बसोवास गर्दछन् ।",
+    "title": "आवास संरचना विवरण",
+    "sectionId": "housing",
+    "number": "४.१.२",
     "ownership": {
-        "title": "क) घरको स्वामित्वको आधारमा घरधुरीको विवरण",
-        "subtitle": "तालिका नं. २४: घरको स्वामित्वको आधारमा घरपरिवारको विवरण",
-        "description": "यस नगरपालिकामा घरको स्वामित्वको आधारमा ४ प्रकारका आवास संरचनाहरूको प्रयोग गरेको पाउन सकिन्छ । निजी स्वामित्वको घरमा बसोबास गरिरहेका घरधुरीहरू १२,०६९ अर्थात ९५.०१ प्रतिशत रहेका छन् ।",
-        "chartData": [
+        "title": "घरको स्वामित्वको आधारमा घरधुरीको विवरण",
+        "subtitle": "क)",
+        "intro": "यस नगरपालिकामा घरको स्वामित्वको आधारमा ४ प्रकारका आवास संरचनाहरूको प्रयोग गरेको पाउन सकिन्छ । निजी स्वामित्वको घरमा बसोबास गरिरहेका घरधुरीहरू १२,०६९ अर्थात ९५.०१ प्रतिशत रहेका छन् । त्यसैगरी भाडामा बसोबास गर्नेको संख्या ४०२ अर्थात ३.१६ प्रतिशत रहेको छ । संस्थागत घरहरूमा बसोबास गर्नेहरू ६६ परिवार अर्थात ०.५२ प्रतिशत रहेका छन् भने स्रोत नखुलेको अवस्थाका घरपरिवारहरू १६६ अर्थात १.३१ प्रतिशत रहेका छन् । भूकम्पीय दृष्टिकोणले संवेदनशील रहेको नेपालमा घरहरू निर्माण गर्दा भूकम्प प्रतिरोधात्मक बनाउनु आवश्यक छ । अति विपन्न परिवारका लागि एकीकृत बस्ती निर्माण गरी सरकारले उनीहरूको आवास सुरक्षाको अधिकार सुनिश्चित गरेको खण्डमा राज्यको लोककल्याणकारी भूमिका पुष्टी हुन्छ ।",
+        "tableTitle": "तालिका नं. 24: घरको स्वामित्वको आधारमा घरपरिवारको विवरण",
+        "tableData": [
             {
-                "ward": 1,
+                "ward": "1",
                 "private": 767,
                 "rented": 3,
                 "institutional": 2,
@@ -15,7 +17,7 @@
                 "total": 773
             },
             {
-                "ward": 2,
+                "ward": "2",
                 "private": 1090,
                 "rented": 10,
                 "institutional": 35,
@@ -23,7 +25,7 @@
                 "total": 1144
             },
             {
-                "ward": 3,
+                "ward": "3",
                 "private": 988,
                 "rented": 9,
                 "institutional": 0,
@@ -31,7 +33,7 @@
                 "total": 1000
             },
             {
-                "ward": 4,
+                "ward": "4",
                 "private": 1592,
                 "rented": 56,
                 "institutional": 2,
@@ -39,7 +41,7 @@
                 "total": 1668
             },
             {
-                "ward": 5,
+                "ward": "5",
                 "private": 1507,
                 "rented": 5,
                 "institutional": 5,
@@ -47,7 +49,7 @@
                 "total": 1523
             },
             {
-                "ward": 6,
+                "ward": "6",
                 "private": 1242,
                 "rented": 98,
                 "institutional": 5,
@@ -55,7 +57,7 @@
                 "total": 1352
             },
             {
-                "ward": 7,
+                "ward": "7",
                 "private": 1236,
                 "rented": 169,
                 "institutional": 11,
@@ -63,7 +65,7 @@
                 "total": 1427
             },
             {
-                "ward": 8,
+                "ward": "8",
                 "private": 820,
                 "rented": 25,
                 "institutional": 2,
@@ -71,7 +73,7 @@
                 "total": 861
             },
             {
-                "ward": 9,
+                "ward": "9",
                 "private": 1779,
                 "rented": 15,
                 "institutional": 1,
@@ -79,21 +81,37 @@
                 "total": 1806
             },
             {
-                "ward": 10,
+                "ward": "10",
                 "private": 1048,
                 "rented": 12,
                 "institutional": 3,
                 "other": 86,
                 "total": 1149
             }
-        ]
+        ],
+        "total": {
+            "private": 12069,
+            "rented": 402,
+            "institutional": 66,
+            "other": 166,
+            "total": 12703
+        },
+        "percentage": {
+            "private": 95.01,
+            "rented": 3.16,
+            "institutional": 0.52,
+            "other": 1.31,
+            "total": 100
+        },
+        "source": "राष्ट्रिय जनगणना, २०७८"
     },
     "foundation": {
-        "title": "ख) जगको आधारमा घरधुरीको विवरण",
-        "subtitle": "तालिका नं. २५: जगको आधारमा घरधुरीको विवरण",
-        "chartData": [
+        "title": "जगको आधारमा घरधुरीको विवरण",
+        "subtitle": "ख)",
+        "tableTitle": "तालिका नं. 25: जगको आधारमा घरधुरीको विवरण",
+        "tableData": [
             {
-                "ward": 1,
+                "ward": "1",
                 "mudStone": 346,
                 "cementStone": 45,
                 "rcc": 11,
@@ -102,7 +120,7 @@
                 "total": 773
             },
             {
-                "ward": 2,
+                "ward": "2",
                 "mudStone": 501,
                 "cementStone": 250,
                 "rcc": 104,
@@ -111,7 +129,7 @@
                 "total": 1144
             },
             {
-                "ward": 3,
+                "ward": "3",
                 "mudStone": 40,
                 "cementStone": 132,
                 "rcc": 76,
@@ -120,7 +138,7 @@
                 "total": 1000
             },
             {
-                "ward": 4,
+                "ward": "4",
                 "mudStone": 239,
                 "cementStone": 330,
                 "rcc": 105,
@@ -129,7 +147,7 @@
                 "total": 1668
             },
             {
-                "ward": 5,
+                "ward": "5",
                 "mudStone": 48,
                 "cementStone": 457,
                 "rcc": 103,
@@ -138,7 +156,7 @@
                 "total": 1523
             },
             {
-                "ward": 6,
+                "ward": "6",
                 "mudStone": 38,
                 "cementStone": 208,
                 "rcc": 426,
@@ -147,7 +165,7 @@
                 "total": 1352
             },
             {
-                "ward": 7,
+                "ward": "7",
                 "mudStone": 125,
                 "cementStone": 421,
                 "rcc": 355,
@@ -156,7 +174,7 @@
                 "total": 1427
             },
             {
-                "ward": 8,
+                "ward": "8",
                 "mudStone": 236,
                 "cementStone": 133,
                 "rcc": 21,
@@ -165,7 +183,7 @@
                 "total": 861
             },
             {
-                "ward": 9,
+                "ward": "9",
                 "mudStone": 294,
                 "cementStone": 322,
                 "rcc": 150,
@@ -174,7 +192,7 @@
                 "total": 1806
             },
             {
-                "ward": 10,
+                "ward": "10",
                 "mudStone": 199,
                 "cementStone": 139,
                 "rcc": 100,
@@ -182,14 +200,32 @@
                 "other": 4,
                 "total": 1149
             }
-        ]
+        ],
+        "total": {
+            "mudStone": 2066,
+            "cementStone": 2437,
+            "rcc": 1451,
+            "woodenPillar": 6701,
+            "other": 48,
+            "total": 12703
+        },
+        "percentage": {
+            "mudStone": 16.26,
+            "cementStone": 19.18,
+            "rcc": 11.42,
+            "woodenPillar": 52.75,
+            "other": 0.38,
+            "total": 100
+        },
+        "source": "राष्ट्रिय जनगणना, २०७८"
     },
     "outerWall": {
-        "title": "ग) बाहिरी गारोको आधारमा घरधुरीको विवरण",
-        "subtitle": "तालिका नं. २६: बाहिरी गारोको आधारमा घरधुरीको विवरण",
-        "chartData": [
+        "title": "बाहिरी गारोको आधारमा घरधुरीको विवरण",
+        "subtitle": "ग)",
+        "tableTitle": "तालिका नं. 26: बाहिरी गारोको आधारमा घरधुरीको विवरण",
+        "tableData": [
             {
-                "ward": 1,
+                "ward": "1",
                 "mudStone": 182,
                 "cementStone": 20,
                 "wood": 192,
@@ -200,7 +236,7 @@
                 "total": 773
             },
             {
-                "ward": 2,
+                "ward": "2",
                 "mudStone": 124,
                 "cementStone": 317,
                 "wood": 311,
@@ -211,7 +247,7 @@
                 "total": 1144
             },
             {
-                "ward": 3,
+                "ward": "3",
                 "mudStone": 29,
                 "cementStone": 199,
                 "wood": 481,
@@ -222,7 +258,7 @@
                 "total": 1000
             },
             {
-                "ward": 4,
+                "ward": "4",
                 "mudStone": 147,
                 "cementStone": 418,
                 "wood": 347,
@@ -233,7 +269,7 @@
                 "total": 1668
             },
             {
-                "ward": 5,
+                "ward": "5",
                 "mudStone": 44,
                 "cementStone": 539,
                 "wood": 64,
@@ -244,7 +280,7 @@
                 "total": 1523
             },
             {
-                "ward": 6,
+                "ward": "6",
                 "mudStone": 37,
                 "cementStone": 617,
                 "wood": 284,
@@ -255,7 +291,7 @@
                 "total": 1352
             },
             {
-                "ward": 7,
+                "ward": "7",
                 "mudStone": 119,
                 "cementStone": 693,
                 "wood": 283,
@@ -266,7 +302,7 @@
                 "total": 1427
             },
             {
-                "ward": 8,
+                "ward": "8",
                 "mudStone": 40,
                 "cementStone": 111,
                 "wood": 371,
@@ -277,7 +313,7 @@
                 "total": 861
             },
             {
-                "ward": 9,
+                "ward": "9",
                 "mudStone": 280,
                 "cementStone": 445,
                 "wood": 200,
@@ -288,7 +324,7 @@
                 "total": 1806
             },
             {
-                "ward": 10,
+                "ward": "10",
                 "mudStone": 159,
                 "cementStone": 263,
                 "wood": 94,
@@ -298,15 +334,37 @@
                 "other": 2,
                 "total": 1149
             }
-        ]
+        ],
+        "total": {
+            "mudStone": 1161,
+            "cementStone": 3622,
+            "wood": 2627,
+            "bamboo": 4894,
+            "unbakedBrick": 37,
+            "zincSheet": 331,
+            "other": 31,
+            "total": 12703
+        },
+        "percentage": {
+            "mudStone": 9.14,
+            "cementStone": 28.51,
+            "wood": 20.68,
+            "bamboo": 38.53,
+            "unbakedBrick": 0.29,
+            "zincSheet": 2.61,
+            "other": 0.24,
+            "total": 100
+        },
+        "source": "राष्ट्रिय जनगणना, २०७८"
     },
     "floor": {
-        "title": "घ) घरको भुँईको आधारमा घरधुरी विवरण",
-        "subtitle": "तालिका नं. २७: घरको भुँईको आधारमा घरधुरीको विवरण",
-        "description": "यस नगरपालिकामा घरको भुँईको आधारमा ६ प्रकारका आवास संरचनाहरूको प्रयोग गरेको पाउन सकिन्छ । माटोको भुँई प्रयोग गरिरहेका घरधुरीहरु ६,८८३ अर्थात् ५४.१८ प्रतिशत रहेका छन् ।",
-        "chartData": [
+        "title": "घरको भुँईको आधारमा घरधुरी विवरण",
+        "subtitle": "घ)",
+        "intro": "यस नगरपालिकामा घरको भुँईको आधारमा ६ प्रकारका आवास संरचनाहरूको प्रयोग गरेको पाउन सकिन्छ । माटोको भुँई प्रयोग गरिरहेका घरधुरीहरु ६,८८३ अर्थात् ५४.१८ प्रतिशत रहेका छन् । त्यसैगरी काठको फल्याक/बाँसको प्रयोग गर्ने घरधुरीको संख्या १८५ अर्थात १.४६ प्रतिशत, इँटा/ढुङ्गाको प्रयोग गर्ने घरधुरीको संख्या २७२ अर्थात २.१४ प्रतिशत, सेरामिक टायलको प्रयोग गर्ने घरधुरीको संख्या ७४ अर्थात ०.५८ प्रतिशत, सिमेन्ट ढलानको प्रयोग गर्ने घरधुरीको संख्या ५,२४४ अर्थात ४१.२८ प्रतिशत र स्रोत नखुलेका अवस्थाका घरधुरीहरु ४५ अर्थात ०.३५ प्रतिशत रहेका छन् । यसैगरी घरको छानोको आधारमा जस्ता/टिनको छानो भएका परिवार १०,६३२ अर्थात ८३.७० प्रतिशत, सिमेन्ट ढलान भएको छानोमा बस्ने १,३४२ अर्थात १०.५६ प्रतिशत र टायल/खपडा/झिँगटी भएको छानोमा बस्ने ३४६ अर्थात २.७२ प्रतिशत रहेका छन् । भूकम्पीय दृष्टिकोणले संवेदनशील रहेको नेपालमा घरहरू निर्माण गर्दा भूकम्प प्रतिरोधात्मक बनाउनु आवश्यक छ । अति विपन्न परिवारका लागि एकीकृत बस्ती निर्माण गरी सरकारले उनीहरूको आवास सुरक्षाको अधिकार सुनिश्चित गरेको खण्डमा राज्यको लोककल्याणकारी भूमिका पुष्टी हुन्छ । जसको विस्तृत विवरण तालिकामा प्रस्तुत गरिएको छ ।",
+        "tableTitle": "तालिका नं. 27: घरको भुँईको आधारमा घरधुरीको विवरण",
+        "tableData": [
             {
-                "ward": 1,
+                "ward": "1",
                 "mud": 665,
                 "woodBamboo": 30,
                 "brickStone": 5,
@@ -316,7 +374,7 @@
                 "total": 773
             },
             {
-                "ward": 2,
+                "ward": "2",
                 "mud": 727,
                 "woodBamboo": 14,
                 "brickStone": 6,
@@ -326,7 +384,7 @@
                 "total": 1144
             },
             {
-                "ward": 3,
+                "ward": "3",
                 "mud": 674,
                 "woodBamboo": 2,
                 "brickStone": 1,
@@ -336,7 +394,7 @@
                 "total": 1000
             },
             {
-                "ward": 4,
+                "ward": "4",
                 "mud": 855,
                 "woodBamboo": 18,
                 "brickStone": 17,
@@ -346,7 +404,7 @@
                 "total": 1668
             },
             {
-                "ward": 5,
+                "ward": "5",
                 "mud": 823,
                 "woodBamboo": 5,
                 "brickStone": 17,
@@ -356,7 +414,7 @@
                 "total": 1523
             },
             {
-                "ward": 6,
+                "ward": "6",
                 "mud": 457,
                 "woodBamboo": 19,
                 "brickStone": 43,
@@ -366,7 +424,7 @@
                 "total": 1352
             },
             {
-                "ward": 7,
+                "ward": "7",
                 "mud": 462,
                 "woodBamboo": 29,
                 "brickStone": 64,
@@ -376,7 +434,7 @@
                 "total": 1427
             },
             {
-                "ward": 8,
+                "ward": "8",
                 "mud": 607,
                 "woodBamboo": 28,
                 "brickStone": 6,
@@ -386,7 +444,7 @@
                 "total": 861
             },
             {
-                "ward": 9,
+                "ward": "9",
                 "mud": 947,
                 "woodBamboo": 36,
                 "brickStone": 97,
@@ -396,7 +454,7 @@
                 "total": 1806
             },
             {
-                "ward": 10,
+                "ward": "10",
                 "mud": 666,
                 "woodBamboo": 4,
                 "brickStone": 16,
@@ -405,15 +463,35 @@
                 "other": 4,
                 "total": 1149
             }
-        ]
+        ],
+        "total": {
+            "mud": 6883,
+            "woodBamboo": 185,
+            "brickStone": 272,
+            "ceramicTile": 74,
+            "cement": 5244,
+            "other": 45,
+            "total": 12703
+        },
+        "percentage": {
+            "mud": 54.18,
+            "woodBamboo": 1.46,
+            "brickStone": 2.14,
+            "ceramicTile": 0.58,
+            "cement": 41.28,
+            "other": 0.35,
+            "total": 100
+        },
+        "source": "राष्ट्रिय जनगणना, २०७८"
     },
     "roof": {
-        "title": "ङ) छानोको आधारमा घुरधुरीको विवरण",
-        "chartData": [
+        "title": "छानोको आधारमा घुरधुरीको विवरण",
+        "subtitle": "ङ)",
+        "tableData": [
             {
-                "ward": 1,
-                "zincSheet": 662,
-                "rcc": 6,
+                "ward": "1",
+                "zincTin": 662,
+                "cement": 6,
                 "straw": 72,
                 "tile": 28,
                 "stoneSlate": 1,
@@ -422,9 +500,9 @@
                 "total": 773
             },
             {
-                "ward": 2,
-                "zincSheet": 1035,
-                "rcc": 67,
+                "ward": "2",
+                "zincTin": 1035,
+                "cement": 67,
                 "straw": 21,
                 "tile": 17,
                 "stoneSlate": 3,
@@ -433,9 +511,9 @@
                 "total": 1144
             },
             {
-                "ward": 3,
-                "zincSheet": 882,
-                "rcc": 62,
+                "ward": "3",
+                "zincTin": 882,
+                "cement": 62,
                 "straw": 9,
                 "tile": 45,
                 "stoneSlate": 0,
@@ -444,9 +522,9 @@
                 "total": 1000
             },
             {
-                "ward": 4,
-                "zincSheet": 1346,
-                "rcc": 180,
+                "ward": "4",
+                "zincTin": 1346,
+                "cement": 180,
                 "straw": 40,
                 "tile": 99,
                 "stoneSlate": 1,
@@ -455,9 +533,9 @@
                 "total": 1668
             },
             {
-                "ward": 5,
-                "zincSheet": 1361,
-                "rcc": 97,
+                "ward": "5",
+                "zincTin": 1361,
+                "cement": 97,
                 "straw": 27,
                 "tile": 30,
                 "stoneSlate": 5,
@@ -466,9 +544,9 @@
                 "total": 1523
             },
             {
-                "ward": 6,
-                "zincSheet": 920,
-                "rcc": 400,
+                "ward": "6",
+                "zincTin": 920,
+                "cement": 400,
                 "straw": 5,
                 "tile": 18,
                 "stoneSlate": 3,
@@ -477,9 +555,9 @@
                 "total": 1352
             },
             {
-                "ward": 7,
-                "zincSheet": 1040,
-                "rcc": 355,
+                "ward": "7",
+                "zincTin": 1040,
+                "cement": 355,
                 "straw": 2,
                 "tile": 18,
                 "stoneSlate": 10,
@@ -488,9 +566,9 @@
                 "total": 1427
             },
             {
-                "ward": 8,
-                "zincSheet": 784,
-                "rcc": 16,
+                "ward": "8",
+                "zincTin": 784,
+                "cement": 16,
                 "straw": 32,
                 "tile": 23,
                 "stoneSlate": 2,
@@ -499,9 +577,9 @@
                 "total": 861
             },
             {
-                "ward": 9,
-                "zincSheet": 1612,
-                "rcc": 83,
+                "ward": "9",
+                "zincTin": 1612,
+                "cement": 83,
                 "straw": 63,
                 "tile": 34,
                 "stoneSlate": 13,
@@ -510,9 +588,9 @@
                 "total": 1806
             },
             {
-                "ward": 10,
-                "zincSheet": 990,
-                "rcc": 76,
+                "ward": "10",
+                "zincTin": 990,
+                "cement": 76,
                 "straw": 41,
                 "tile": 34,
                 "stoneSlate": 8,
@@ -520,6 +598,27 @@
                 "other": 0,
                 "total": 1149
             }
-        ]
+        ],
+        "total": {
+            "zincTin": 10632,
+            "cement": 1342,
+            "straw": 312,
+            "tile": 346,
+            "stoneSlate": 46,
+            "woodPlank": 17,
+            "other": 8,
+            "total": 12703
+        },
+        "percentage": {
+            "zincTin": 83.70,
+            "cement": 10.56,
+            "straw": 2.46,
+            "tile": 2.72,
+            "stoneSlate": 0.36,
+            "woodPlank": 0.13,
+            "other": 0.06,
+            "total": 100
+        },
+        "source": "राष्ट्रिय जनगणना, २०७८"
     }
 }

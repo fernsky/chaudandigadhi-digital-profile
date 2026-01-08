@@ -1,0 +1,260 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import ForeignEmploymentChart from "../../charts/chapter-4/ForeignEmploymentChart.astro";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type ForeignEmploymentContent = {
+    title: string;
+    sectionId: string;
+    number: string;
+    intro: string;
+    tableTitle: string;
+    tableData: Array<{
+        ageGroup: string;
+        gender: string;
+        india: number;
+        saarc: number;
+        asian: number;
+        middleEast: number;
+        otherAsian: number;
+        europe: number;
+        otherEurope: number;
+        northAmerica: number;
+        southAmerica: number;
+        africa: number;
+        pacific: number;
+        other: number;
+        undisclosed: number;
+        total: number;
+    }>;
+    grandTotal: any;
+    source: string;
+    landless: {
+        title: string;
+        number: string;
+        content: string;
+    };
+};
+
+const content = await loadChapterSection<ForeignEmploymentContent>(
+    4,
+    "foreign-employment",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Foreign employment content not found");
+}
+
+const chartData = [
+    { label: "भारत", value: content.grandTotal.india },
+    { label: "सार्क", value: content.grandTotal.saarc },
+    { label: "एशियन", value: content.grandTotal.asian },
+    { label: "मध्यपूर्व", value: content.grandTotal.middleEast },
+    { label: "अन्य एशियन", value: content.grandTotal.otherAsian },
+    { label: "युरोप", value: content.grandTotal.europe },
+    { label: "अन्य युरोप", value: content.grandTotal.otherEurope },
+    { label: "उत्तर अमेरिका", value: content.grandTotal.northAmerica },
+    { label: "दक्षिण अमेरिका", value: content.grandTotal.southAmerica },
+    { label: "अफ्रिका", value: content.grandTotal.africa },
+    { label: "प्यासिफिक", value: content.grandTotal.pacific },
+    { label: "अन्य", value: content.grandTotal.other },
+    { label: "खुल्न नसकेको", value: content.grandTotal.undisclosed },
+].filter((d) => d.value > 0);
+---
+
+<section
+    id="foreign-employment"
+    class="relative bg-[#050505] py-8 md:py-12 scroll-mt-24"
+>
+    <div class="container mx-auto px-8">
+        <div class="max-w-6xl mx-auto space-y-8">
+            <h2
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100"
+            >
+                {content.number}
+                {content.title}
+            </h2>
+
+            <p
+                class="font-serif text-base md:text-lg text-zinc-300 leading-relaxed"
+            >
+                {content.intro}
+            </p>
+
+            <h3 class="font-serif text-lg md:text-xl text-zinc-200 font-medium">
+                {content.tableTitle}
+            </h3>
+
+            <!-- Table 28 - Foreign Employment -->
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr class="border-b border-zinc-700">
+                            <th
+                                class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                                >उमेर समूह</th
+                            >
+                            <th
+                                class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                                >लिङ्ग</th
+                            >
+                            <th
+                                class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                                >भारत</th
+                            >
+                            <th
+                                class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                                >सार्क</th
+                            >
+                            <th
+                                class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                                >एशियन</th
+                            >
+                            <th
+                                class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                                >मध्यपूर्व</th
+                            >
+                            <th
+                                class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                                >अन्य एशियन</th
+                            >
+                            <th
+                                class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                                >युरोप</th
+                            >
+                            <th
+                                class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                                >अन्य युरोप</th
+                            >
+                            <th
+                                class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                                >उत्तर अमेरिका</th
+                            >
+                            <th
+                                class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                                >जम्मा</th
+                            >
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            content.tableData.map((row) => (
+                                <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                    <td class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                        {row.ageGroup}
+                                    </td>
+                                    <td class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                        {row.gender}
+                                    </td>
+                                    <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                        {row.india}
+                                    </td>
+                                    <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                        {row.saarc}
+                                    </td>
+                                    <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                        {row.asian}
+                                    </td>
+                                    <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                        {row.middleEast}
+                                    </td>
+                                    <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                        {row.otherAsian}
+                                    </td>
+                                    <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                        {row.europe}
+                                    </td>
+                                    <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                        {row.otherEurope}
+                                    </td>
+                                    <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                        {row.northAmerica}
+                                    </td>
+                                    <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300 font-medium">
+                                        {row.total.toLocaleString()}
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                        <tr class="border-t-2 border-zinc-600 bg-zinc-900/50">
+                            <td
+                                colspan="2"
+                                class="py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                                >जम्मा</td
+                            >
+                            <td
+                                class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                                >{content.grandTotal.india}</td
+                            >
+                            <td
+                                class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                                >{content.grandTotal.saarc}</td
+                            >
+                            <td
+                                class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                                >{content.grandTotal.asian}</td
+                            >
+                            <td
+                                class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                                >{content.grandTotal.middleEast}</td
+                            >
+                            <td
+                                class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                                >{content.grandTotal.otherAsian}</td
+                            >
+                            <td
+                                class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                                >{content.grandTotal.europe}</td
+                            >
+                            <td
+                                class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                                >{content.grandTotal.otherEurope}</td
+                            >
+                            <td
+                                class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                                >{content.grandTotal.northAmerica}</td
+                            >
+                            <td
+                                class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                                >{content.grandTotal.total.toLocaleString()}</td
+                            >
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div
+                class="mt-8 border border-zinc-800 rounded-xl p-6 bg-zinc-900/30"
+            >
+                <h4 class="text-zinc-400 font-serif text-sm mb-4">
+                    वैदेशिक रोजगार गन्तव्य (जम्मा)
+                </h4>
+                <ForeignEmploymentChart data={chartData} />
+            </div>
+
+            <p class="text-sm text-zinc-400 font-serif italic">
+                स्रोत: {content.source}
+            </p>
+
+            <!-- Landless Section -->
+            <div id="landless" class="space-y-4 scroll-mt-24">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.landless.number}
+                    {content.landless.title}
+                </h3>
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.landless.content}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

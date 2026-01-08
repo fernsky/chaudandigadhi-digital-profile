@@ -1,153 +1,114 @@
 ---
 interface Props {
-    data: any[]; // Complex array with regions
+    data: Array<{
+        label: string;
+        value: number;
+    }>;
 }
 
 const { data } = Astro.props;
 
-// Aggregate by Destination Region (summing all age/gender rows)
-// Regions in JSON keys: "india", "saarc", "asian", "middleEast", "otherAsian", "europe", "otherEurope", "northAmerica", "southAmerica", "africa", "pacific", "other", "unknown"
-const regions = [
-    { key: "india", label: "भारत" },
-    { key: "saarc", label: "अन्य सार्क" },
-    { key: "middleEast", label: "मध्यपूर्व (खाडी)" }, // High volume usually
-    { key: "asian", label: "अन्य एशिया" }, // "asian" + "otherAsian"? JSON has "asian" and "otherAsian". Check JSON content.
-    // JSON keys: "asian", "otherAsian".
-    { key: "europe", label: "युरोप" }, // "europe" + "otherEurope"
-    { key: "northAmerica", label: "उत्तर अमेरिका" },
-    { key: "pacific", label: "अष्ट्रेलिया/प्यासिफिक" },
-    { key: "other", label: "अन्य" },
-];
-
-// Helper to sum a key across all rows
-const sumKey = (key: string) =>
-    data.reduce((sum, row) => sum + (row[key] || 0), 0);
-
-// Compute chart data
-const chartData = regions
-    .map((r) => {
-        let val = sumKey(r.key);
-        // Combine sub-regions if needed
-        if (r.key === "asian") val += sumKey("otherAsian");
-        if (r.key === "europe") val += sumKey("otherEurope");
-        if (r.key === "other")
-            val +=
-                sumKey("southAmerica") + sumKey("africa") + sumKey("unknown");
-
-        return { label: r.label, value: val };
-    })
-    .sort((a, b) => b.value - a.value);
-
-const total = chartData.reduce((a, b) => a + b.value, 0);
+// Sort data by value descending
+const chartData = [...data].sort((a, b) => b.value - a.value);
 ---
 
-<div
-    class="relative w-full h-[600px] bg-zinc-900/50 rounded-xl border border-zinc-800 p-6 backdrop-blur-sm"
->
-    <div class="absolute top-6 left-6 z-10">
-        <h3 class="text-xl font-serif text-amber-500">
-            वैदेशिक रोजगार गन्तव्य
-        </h3>
-        <p class="text-sm text-zinc-400">
-            कुल संख्या: {total.toLocaleString("ne-NP")}
-        </p>
-    </div>
+<div class="w-full h-[400px] md:h-[500px]" id="foreign-employment-chart"></div>
 
-    <svg id="foreign-employment-chart" class="w-full h-full"></svg>
+<div
+    id="fe-chart-data-store"
+    data-chart={JSON.stringify(chartData)}
+    class="hidden"
+>
 </div>
 
-<script is:inline define:vars={{ initialData: chartData }}>
-    const data = initialData;
-    const svg = document.getElementById("foreign-employment-chart");
+<script>
+    import * as d3 from "d3";
 
-    if (svg) {
-        const margin = { top: 80, right: 60, bottom: 40, left: 160 };
-        const width = svg.clientWidth || 800;
-        const height = svg.clientHeight || 600;
+    // @ts-ignore
+    const container = document.getElementById("foreign-employment-chart");
+    // @ts-ignore
+    const dataStore = document.getElementById("fe-chart-data-store");
 
-        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    if (container && dataStore) {
+        const data = JSON.parse(dataStore.dataset.chart || "[]");
 
-        const chartWidth = width - margin.left - margin.right;
-        const chartHeight = height - margin.top - margin.bottom;
+        const margin = { top: 20, right: 30, bottom: 60, left: 60 };
+        const width = container.clientWidth - margin.left - margin.right;
+        const height = container.clientHeight - margin.top - margin.bottom;
 
-        const maxVal = Math.max(...data.map((d) => d.value));
-        const barHeight = Math.min(50, chartHeight / data.length - 15);
-        const gap = 15;
+        // Clear any existing svg
+        container.innerHTML = "";
 
-        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        svg.appendChild(g);
+        const svg = d3
+            .select(container)
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
 
-        data.forEach((item, i) => {
-            const y = margin.top + i * (barHeight + gap);
-            const barWidth = (item.value / maxVal) * chartWidth;
+        // X axis
+        const x = d3
+            .scaleBand()
+            .range([0, width])
+            .domain(data.map((d: any) => d.label))
+            .padding(0.2);
 
-            // Label
-            const label = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "text",
-            );
-            label.setAttribute("x", (margin.left - 10).toString());
-            label.setAttribute("y", (y + barHeight / 2 + 5).toString());
-            label.setAttribute("text-anchor", "end");
-            label.setAttribute("fill", "#e4e4e7");
-            label.setAttribute("font-family", "serif");
-            label.setAttribute("font-size", "14px");
-            label.textContent = item.label;
-            g.appendChild(label);
+        svg.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x))
+            .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end")
+            .style("font-family", "Noto Serif Devanagari, serif")
+            .style("font-size", "12px")
+            .style("fill", "#d4d4d8"); // zinc-300
 
-            // Bar Background
-            const bgRect = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "rect",
-            );
-            bgRect.setAttribute("x", margin.left.toString());
-            bgRect.setAttribute("y", y.toString());
-            bgRect.setAttribute("width", chartWidth.toString());
-            bgRect.setAttribute("height", barHeight.toString());
-            bgRect.setAttribute("fill", "#3f3f46");
-            bgRect.setAttribute("opacity", "0.2");
-            bgRect.setAttribute("rx", "4");
-            g.appendChild(bgRect);
+        // Y axis
+        const y = d3
+            .scaleLinear()
+            .domain([0, d3.max(data, (d: any) => d.value) || 100])
+            .range([height, 0]);
 
-            // Bar
-            const rect = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "rect",
-            );
-            rect.setAttribute("x", margin.left.toString());
-            rect.setAttribute("y", y.toString());
-            rect.setAttribute("width", "0");
-            rect.setAttribute("height", barHeight.toString());
-            rect.setAttribute("fill", "#8b5cf6"); // violet-500
-            rect.setAttribute("opacity", "0.9");
-            rect.setAttribute("rx", "4");
-            rect.style.transition = "width 1s ease-out";
-            g.appendChild(rect);
+        svg.append("g")
+            .call(d3.axisLeft(y))
+            .selectAll("text")
+            .style("font-family", "IBM Plex Serif, serif")
+            .style("font-size", "12px")
+            .style("fill", "#d4d4d8"); // zinc-300
 
-            setTimeout(() => {
-                rect.setAttribute("width", barWidth.toString());
-            }, 100);
+        // Axis Styles
+        svg.selectAll(".domain").style("stroke", "#52525b"); // zinc-600
+        svg.selectAll(".tick line").style("stroke", "#52525b"); // zinc-600
 
-            // Value text
-            const valueText = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "text",
-            );
-            valueText.setAttribute(
-                "x",
-                (margin.left + barWidth + 10).toString(),
-            );
-            valueText.setAttribute("y", (y + barHeight / 2 + 5).toString());
-            valueText.setAttribute("fill", "#a78bfa"); // violet-400
-            valueText.setAttribute("font-weight", "bold");
-            valueText.textContent = item.value.toLocaleString("ne-NP");
-            valueText.style.opacity = "0";
-            valueText.style.transition = "opacity 0.5s ease-out 0.8s";
-            g.appendChild(valueText);
+        // Bars
+        svg.selectAll("mybar")
+            .data(data)
+            .join("rect")
+            .attr("x", (d: any) => x(d.label) as number)
+            .attr("y", (d: any) => y(d.value))
+            .attr("width", x.bandwidth())
+            .attr("height", (d: any) => height - y(d.value))
+            .attr("fill", "#3b82f6") // blue-500
+            .on("mouseover", function (event, d) {
+                d3.select(this).style("opacity", 0.8);
+            })
+            .on("mouseout", function () {
+                d3.select(this).style("opacity", 1);
+            });
 
-            setTimeout(() => {
-                valueText.style.opacity = "1";
-            }, 100);
-        });
+        // Add labels on top of bars
+        svg.selectAll(".label")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("class", "label")
+            .attr("x", (d: any) => (x(d.label) as number) + x.bandwidth() / 2)
+            .attr("y", (d: any) => y(d.value) - 5)
+            .attr("text-anchor", "middle")
+            .text((d: any) => d.value)
+            .style("font-family", "IBM Plex Serif, serif")
+            .style("font-size", "10px")
+            .style("fill", "#d4d4d8"); // zinc-300
     }
 </script>

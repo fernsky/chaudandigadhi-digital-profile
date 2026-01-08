@@ -1,0 +1,471 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const content = await loadChapterSection(4, "agriculture", lang);
+
+if (!content) {
+    throw new Error("Agriculture content not found");
+}
+---
+
+<section
+    id="agriculture"
+    class="relative bg-[#050505] py-8 md:py-12 scroll-mt-24"
+>
+    <div class="container mx-auto px-8">
+        <div class="max-w-6xl mx-auto space-y-8">
+            <h2
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100"
+            >
+                {content.number}
+                {content.title}
+            </h2>
+
+            <p
+                class="font-serif text-base md:text-lg text-zinc-300 leading-relaxed"
+            >
+                {content.intro}
+            </p>
+
+            <!-- Commercial Banana Farming Image -->
+            <div class="my-6">
+                <img
+                    src="/images/chapter-4/banana-farming.jpg"
+                    alt="व्यवसायिक केरा खेति वार्ड ८ (चिनी चम्पा)"
+                    class="w-full max-w-4xl mx-auto rounded-lg border border-zinc-800"
+                />
+                <p
+                    class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                >
+                    व्यवसायिक केरा खेति वार्ड ८ (चिनी चम्पा)
+                </p>
+            </div>
+
+            <!-- Crop Diseases (Table 29) -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.cropDiseases.number}
+                    {content.cropDiseases.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.cropDiseases.intro}
+                </p>
+
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.cropDiseases.tableTitle}
+                </h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्र.सं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >बाली</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >प्रमुख शत्रु जीव</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >प्रमुख रोग</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.cropDiseases.tableData.map(
+                                    (row, idx) => (
+                                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {idx + 1}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.crop}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.pests}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.diseases}
+                                            </td>
+                                        </tr>
+                                    ),
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.cropDiseases.source}
+                </p>
+            </div>
+
+            <!-- Vegetable Diseases (Table 30) -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.vegetableDiseases.number}
+                    {content.vegetableDiseases.title}
+                </h3>
+
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.vegetableDiseases.tableTitle}
+                </h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्र.सं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >बाली</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >प्रमुख रोग</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >प्रमुख शत्रु जीव</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.vegetableDiseases.tableData.map(
+                                    (row, idx) => (
+                                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {idx + 1}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.crop}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300 text-xs">
+                                                {row.diseases}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300 text-xs">
+                                                {row.pests}
+                                            </td>
+                                        </tr>
+                                    ),
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.vegetableDiseases.source}
+                </p>
+            </div>
+
+            <!-- Animal Diseases -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.animalDiseases.number}
+                    {content.animalDiseases.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.animalDiseases.content}
+                </p>
+            </div>
+
+            <!-- Farms (Table 31) -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.farms.number}
+                    {content.farms.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.farms.intro}
+                </p>
+
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.farms.tableTitle}
+                </h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >वडा नं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >व्यवसायिक कृषि तथा पशुपंक्षीपालन फर्महरूको
+                                    विवरण</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.farms.tableData.map((row) => (
+                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.ward}
+                                        </td>
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.name}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.farms.source}
+                </p>
+            </div>
+
+            <!-- Human Resources (Tables 32-33) -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.humanResources.number}
+                    {content.humanResources.title}
+                </h3>
+
+                <!-- Agriculture Staff -->
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.humanResources.agriculture.tableTitle}
+                </h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्र.सं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >कर्मचारीको नाम</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >पद</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >सम्पर्क नं.</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.humanResources.agriculture.tableData.map(
+                                    (row, idx) => (
+                                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {idx + 1}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.name}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.position}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.contact}
+                                            </td>
+                                        </tr>
+                                    ),
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.humanResources.agriculture.source}
+                </p>
+
+                <!-- Livestock Staff -->
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium mt-6"
+                >
+                    {content.humanResources.livestock.tableTitle}
+                </h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्र.सं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >कर्मचारीको नाम</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >पद</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >सम्पर्क नं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >शाखा</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.humanResources.livestock.tableData.map(
+                                    (row, idx) => (
+                                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {idx + 1}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.name}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.position}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.contact}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.branch}
+                                            </td>
+                                        </tr>
+                                    ),
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.humanResources.livestock.source}
+                </p>
+            </div>
+
+            <!-- Farmer Groups (Table 34) -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.farmerGroups.number}
+                    {content.farmerGroups.title}
+                </h3>
+
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.farmerGroups.subtitle}
+                </h4>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.farmerGroups.intro}
+                </p>
+
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.farmerGroups.tableTitle}
+                </h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्र.सं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >वडा नं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >नविकरण भएका कृषि समूहरुको संख्या</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.farmerGroups.tableData.map(
+                                    (row, idx) => (
+                                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {idx + 1}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.ward}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.name}
+                                            </td>
+                                        </tr>
+                                    ),
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.farmerGroups.source}
+                </p>
+            </div>
+
+            <!-- Collection Center -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.collectionCenter.number}
+                    {content.collectionCenter.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.collectionCenter.content}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

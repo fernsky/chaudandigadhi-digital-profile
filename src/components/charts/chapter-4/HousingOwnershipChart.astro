@@ -1,145 +1,126 @@
 ---
 interface Props {
     data: {
-        ward: number;
         private: number;
         rented: number;
         institutional: number;
         other: number;
-        total: number;
-    }[];
+    };
 }
 
 const { data } = Astro.props;
 
-// Aggregate data
-const totals = data.reduce(
-    (acc, curr) => ({
-        private: acc.private + curr.private,
-        rented: acc.rented + curr.rented,
-        institutional: acc.institutional + curr.institutional,
-        other: acc.other + curr.other,
-    }),
-    { private: 0, rented: 0, institutional: 0, other: 0 },
-);
-
 const chartData = [
-    { label: "निजी", value: totals.private, color: "#10b981" }, // emerald-500
-    { label: "भाडामा", value: totals.rented, color: "#3b82f6" }, // blue-500
-    { label: "संस्थागत", value: totals.institutional, color: "#8b5cf6" }, // violet-500
-    { label: "अन्य", value: totals.other, color: "#6b7280" }, // gray-500
-];
-
-const totalHouses = Object.values(totals).reduce((a, b) => a + b, 0);
+    { label: "निजी", value: data.private },
+    { label: "भाडामा", value: data.rented },
+    { label: "संस्थागत", value: data.institutional },
+    { label: "अन्य", value: data.other },
+].filter((d) => d.value > 0);
 ---
 
+<div class="w-full h-[350px] md:h-[400px]" id="housing-ownership-chart"></div>
+
 <div
-    class="relative w-full h-[400px] bg-zinc-900/50 rounded-xl border border-zinc-800 p-6 backdrop-blur-sm flex flex-col items-center justify-center"
+    id="ho-chart-data-store"
+    data-chart={JSON.stringify(chartData)}
+    class="hidden"
 >
-    <div class="absolute top-4 left-6">
-        <h3 class="text-lg font-serif text-white">घरको स्वामित्व</h3>
-        <p class="text-sm text-zinc-400">
-            कुल घरधुरी: {totalHouses.toLocaleString("ne-NP")}
-        </p>
-    </div>
-
-    <div class="relative w-64 h-64 mt-8">
-        <svg
-            id="housing-ownership-chart"
-            viewBox="0 0 100 100"
-            class="w-full h-full transform -rotate-90"></svg>
-
-        <!-- Center Text -->
-        <div
-            class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
-        >
-            <span class="text-3xl font-bold text-white font-serif"
-                >{((totals.private / totalHouses) * 100).toFixed(1)}%</span
-            >
-            <span class="text-xs text-emerald-400">निजी</span>
-        </div>
-    </div>
-
-    <div class="mt-6 flex flex-wrap gap-4 justify-center">
-        {
-            chartData.map((item) => (
-                <div class="flex items-center gap-2">
-                    <div
-                        class="w-3 h-3 rounded-full"
-                        style={`background-color: ${item.color}`}
-                    />
-                    <div class="text-sm text-zinc-300">
-                        <span class="font-medium">{item.label}</span>
-                        <span class="text-zinc-500 ml-1">
-                            ({item.value.toLocaleString("ne-NP")})
-                        </span>
-                    </div>
-                </div>
-            ))
-        }
-    </div>
 </div>
 
-<script is:inline define:vars={{ initialData: chartData, total: totalHouses }}>
-    const svg = document.getElementById("housing-ownership-chart");
+<script>
+    import * as d3 from "d3";
 
-    if (svg) {
-        let cumulativePercent = 0;
+    // @ts-ignore
+    const container = document.getElementById("housing-ownership-chart");
+    // @ts-ignore
+    const dataStore = document.getElementById("ho-chart-data-store");
 
-        initialData.forEach((item) => {
-            const percent = item.value / total;
-            const startX = Math.cos(2 * Math.PI * cumulativePercent);
-            const startY = Math.sin(2 * Math.PI * cumulativePercent);
+    if (container && dataStore) {
+        const data = JSON.parse(dataStore.dataset.chart || "[]");
 
-            cumulativePercent += percent;
+        const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+        const width = container.clientWidth - margin.left - margin.right;
+        const height = container.clientHeight - margin.top - margin.bottom;
+        const radius = Math.min(width, height) / 2;
 
-            const endX = Math.cos(2 * Math.PI * cumulativePercent);
-            const endY = Math.sin(2 * Math.PI * cumulativePercent);
+        container.innerHTML = "";
 
-            const largeArcFlag = percent > 0.5 ? 1 : 0;
+        const svg = d3
+            .select(container)
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${width / 2},${height / 2})`);
 
-            const pathData = [
-                `M 0 0`, // Move to center (for pie) or specific radius for donut?
-                // Actually for donut we calculate inner/outer points.
-                // Let's use simple stroke-dasharray technique for donut circles which is easier and smoother animation.
-            ];
-        });
+        const color = d3
+            .scaleOrdinal()
+            .domain(data.map((d: any) => d.label))
+            .range(["#3b82f6", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6"]);
 
-        // Re-impl using stroke-dasharray for perfect circles
-        svg.innerHTML = "";
+        const pie = d3
+            .pie()
+            .value((d: any) => d.value)
+            .sort(null);
 
-        const radius = 40;
-        const circumference = 2 * Math.PI * radius;
-        let offset = 0; // Start at top (due to rotate-90 in CSS)
+        const arc = d3
+            .arc()
+            .innerRadius(radius * 0.5) // Doughnut
+            .outerRadius(radius * 0.8);
 
-        initialData.forEach((item) => {
-            const percent = item.value / total;
-            const strokeDasharray = `${percent * circumference} ${circumference}`;
+        const outerArc = d3
+            .arc()
+            .innerRadius(radius * 0.9)
+            .outerRadius(radius * 0.9);
 
-            const circle = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "circle",
+        // @ts-ignore
+        svg.selectAll("allSlices")
+            .data(pie(data))
+            .join("path")
+            .attr("d", arc as any)
+            .attr("fill", (d: any) => color(d.data.label) as string)
+            .attr("stroke", "#18181b") // zinc-950
+            .style("stroke-width", "2px")
+            .style("opacity", 0.9)
+            .on("mouseover", function () {
+                d3.select(this).style("opacity", 1);
+            })
+            .on("mouseout", function () {
+                d3.select(this).style("opacity", 0.9);
+            });
+
+        // Legend
+        const legend = svg
+            .append("g")
+            .attr(
+                "transform",
+                `translate(${radius + 20}, ${-height / 2 + 20})`,
             );
-            circle.setAttribute("cx", "50");
-            circle.setAttribute("cy", "50");
-            circle.setAttribute("r", radius.toString());
-            circle.setAttribute("fill", "transparent");
-            circle.setAttribute("stroke", item.color);
-            circle.setAttribute("stroke-width", "10");
-            circle.setAttribute("stroke-dasharray", strokeDasharray);
-            circle.setAttribute("stroke-dashoffset", (-offset).toString());
 
-            // Tooltip
-            const title = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "title",
-            );
-            title.textContent = `${item.label}: ${item.value.toLocaleString()} (${(percent * 100).toFixed(1)}%)`;
-            circle.appendChild(title);
+        // Adjust legend position if screen is small
+        if (width < 500) {
+            // Position below chart?
+        }
 
-            svg.appendChild(circle);
-
-            offset += percent * circumference;
-        });
+        // Simple Centered Labels for Doughnut? Or External Legend?
+        // Let's do a simple legend in the corner or separate div.
+        // Actually, let's use a separate HTML legend for better responsiveness.
     }
 </script>
+
+<!-- Custom HTML Legend -->
+<div class="flex flex-wrap justify-center gap-4 mt-4">
+    {
+        chartData.map((d, i) => (
+            <div class="flex items-center space-x-2">
+                <div
+                    class="w-3 h-3 rounded-full"
+                    style={`background-color: ${["#3b82f6", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6"][i % 5]}`}
+                />
+                <span class="text-zinc-300 text-sm font-serif">
+                    {d.label} ({d.value.toLocaleString()})
+                </span>
+            </div>
+        ))
+    }
+</div>

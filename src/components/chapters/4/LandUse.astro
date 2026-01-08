@@ -1,0 +1,230 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import LandUseChart from "../../charts/chapter-4/LandUseChart.astro";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const content = await loadChapterSection(4, "land-use", lang);
+
+if (!content) {
+    throw new Error("Land use content not found");
+}
+---
+
+<section id="land-use" class="relative bg-[#050505] py-8 md:py-12 scroll-mt-24">
+    <div class="container mx-auto px-8">
+        <div class="max-w-6xl mx-auto space-y-8">
+            <h2
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100"
+            >
+                {content.number}
+                {content.title}
+            </h2>
+
+            <p
+                class="font-serif text-base md:text-lg text-zinc-300 leading-relaxed"
+            >
+                {content.intro}
+            </p>
+
+            <!-- Land Use Distribution -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.distribution.number}
+                    {content.distribution.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.distribution.content}
+                </p>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >भू–उपयोगका क्षेत्र</th
+                                >
+                                <th
+                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्षेत्रफल (वर्ग कि.मि.)</th
+                                >
+                                <th
+                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्षेत्रफल प्रतिशतमा</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.distribution.tableData.map((row) => (
+                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.category}
+                                        </td>
+                                        <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.area}
+                                        </td>
+                                        <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.percentage}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                            <tr
+                                class="border-t-2 border-zinc-600 bg-zinc-900/50"
+                            >
+                                <td
+                                    class="py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
+                                    >जम्मा</td
+                                >
+                                <td
+                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
+                                    >{content.distribution.total.area}</td
+                                >
+                                <td
+                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
+                                    >{content.distribution.total.percentage}</td
+                                >
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div
+                    class="mt-8 border border-zinc-800 rounded-xl p-6 bg-zinc-900/30"
+                >
+                    <h4 class="text-zinc-400 font-serif text-sm mb-4">
+                        भू-उपयोगको अवस्था (क्षेत्रफल अनुसार)
+                    </h4>
+                    <LandUseChart
+                        data={content.distribution.tableData.map((d) => ({
+                            sector: d.category,
+                            area: d.area,
+                        }))}
+                    />
+                </div>
+
+                <!-- Land Use Map -->
+                <div class="my-6">
+                    <img
+                        src="/images/chapter-4/land-use-map.jpg"
+                        alt="नक्सा नं. 5: नगरपालिकाको भू–उपयोग नक्शा"
+                        class="w-full max-w-4xl mx-auto rounded-lg border border-zinc-800"
+                    />
+                    <p
+                        class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                    >
+                        नक्सा नं. 5: नगरपालिकाको भू–उपयोग नक्शा
+                    </p>
+                </div>
+
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.distribution.source}
+                </p>
+            </div>
+
+            <!-- Agricultural Land -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.agricultural.number}
+                    {content.agricultural.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.agricultural.content}
+                </p>
+
+                <!-- Irrigation Projects -->
+                <div class="space-y-4">
+                    <p
+                        class="font-serif text-base text-zinc-300 leading-relaxed"
+                    >
+                        {content.agricultural.irrigation.intro}
+                    </p>
+
+                    <!-- Irrigation Dam Image -->
+                    <div class="my-6">
+                        <img
+                            src="/images/chapter-4/sukna-pond-dam.jpg"
+                            alt="सुकना पोखरीको ड्याम र सिंचाई प्रयोजन"
+                            class="w-full max-w-4xl mx-auto rounded-lg border border-zinc-800"
+                        />
+                        <p
+                            class="text-center text-sm text-zinc-400 font-serif italic mt-2"
+                        >
+                            सुकना पोखरीको ड्याम र सिंचाई प्रयोजन
+                        </p>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="border-b border-zinc-700">
+                                    <th
+                                        class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                        >सि.नं.</th
+                                    >
+                                    <th
+                                        class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                        >सिँचाई आयोजना सम्बन्धी विवरण</th
+                                    >
+                                    <th
+                                        class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                        >सिंचित क्षेत्र</th
+                                    >
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    content.agricultural.irrigation.projects.map(
+                                        (project, idx) => (
+                                            <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                                <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                    {idx + 1}
+                                                </td>
+                                                <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                    {project.name}
+                                                </td>
+                                                <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                    {project.area}
+                                                </td>
+                                            </tr>
+                                        ),
+                                    )
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-sm text-zinc-400 font-serif italic">
+                        स्रोत: {content.agricultural.irrigation.source}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Barren Land -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.barren.number}
+                    {content.barren.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.barren.content}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

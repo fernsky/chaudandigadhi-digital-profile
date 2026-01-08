@@ -9,9 +9,10 @@ import { Menu, X } from "lucide-astro";
 interface Props {
   lang: Language;
   currentChapter?: number;
+  hideMegaMenu?: boolean;
 }
 
-const { lang, currentChapter } = Astro.props;
+const { lang, currentChapter, hideMegaMenu = false } = Astro.props;
 const t = getTranslations(lang);
 
 // Check if we are on the home page
@@ -80,7 +81,11 @@ const navLinkInactive = "text-zinc-400 hover:text-white";
           </a>
 
           <!-- Mega Menu for Chapters -->
-          <MegaMenu lang={lang} currentChapter={currentChapter} />
+          {
+            !hideMegaMenu && (
+              <MegaMenu lang={lang} currentChapter={currentChapter} />
+            )
+          }
         </div>
 
         <!-- Right side: Language Switcher -->
@@ -122,9 +127,13 @@ const navLinkInactive = "text-zinc-400 hover:text-white";
         <div class="w-full h-px bg-white/5"></div>
 
         <!-- Mobile Mega Menu (Accordion Style) -->
-        <div class="space-y-4">
-          <MobileMegaMenu lang={lang} currentChapter={currentChapter} />
-        </div>
+        {
+          !hideMegaMenu && (
+            <div class="space-y-4">
+              <MobileMegaMenu lang={lang} currentChapter={currentChapter} />
+            </div>
+          )
+        }
 
         <div class="w-full h-px bg-white/5"></div>
 
@@ -242,7 +251,9 @@ const navLinkInactive = "text-zinc-400 hover:text-white";
 
   /* Mobile Menu Overlay Styles */
   #mobile-menu {
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition:
+      opacity 0.3s ease-in-out,
+      visibility 0.3s ease-in-out;
   }
 
   #mobile-menu.opacity-100 {

@@ -1,161 +1,156 @@
 ---
 interface Props {
-    data: {
-        columns: string[];
-        rows: {
-            sector: string;
-            sixMonths: number;
-            threeToFive: number;
-            oneToTwo: number;
-            total: number;
-        }[];
-    };
+    data: Array<{
+        sector: string;
+        sixMonthsPlus: number;
+        threeToFive: number;
+        oneToTwo: number;
+        total: number;
+    }>;
 }
 
 const { data } = Astro.props;
 
-// Process data: sort by Total descending
-const chartData = [...data.rows].sort((a, b) => b.total - a.total).slice(0, 15); // Top 15 to avoid clutter if too many
+const chartData = data.map((d) => ({
+    sector: d.sector,
+    "6 महिना+": d.sixMonthsPlus,
+    "3-5 महिना": d.threeToFive,
+    "1-2 महिना": d.oneToTwo,
+    total: d.total,
+}));
+
+const subgroups = ["6 महिना+", "3-5 महिना", "1-2 महिना"];
+const groups = chartData.map((d) => d.sector);
 ---
 
-<div
-    class="relative w-full h-[600px] bg-zinc-900/50 rounded-xl border border-zinc-800 p-6 backdrop-blur-sm"
->
-    <div class="absolute top-6 left-6 z-10">
-        <h3 class="text-xl font-serif text-amber-500">आर्थिक गतिविधिहरू</h3>
-        <p class="text-sm text-zinc-400">
-            मुख्य औद्योगिक क्षेत्र अनुसार सकृय जनसंख्या
-        </p>
-    </div>
+<div class="w-full h-[400px] md:h-[500px]" id="economic-activities-chart"></div>
 
-    <svg id="economic-activities-chart" class="w-full h-full"></svg>
+<div
+    id="chart-data-store"
+    data-chart={JSON.stringify(chartData)}
+    data-subgroups={JSON.stringify(subgroups)}
+    data-groups={JSON.stringify(groups)}
+    class="hidden"
+>
 </div>
 
-<script is:inline define:vars={{ initialData: chartData }}>
-    const data = initialData;
-    const svg = document.getElementById("economic-activities-chart");
+<script>
+    import * as d3 from "d3";
 
-    function createChart() {
-        if (!svg) return;
+    // @ts-ignore
+    const container = document.getElementById("economic-activities-chart");
+    // @ts-ignore
+    const dataStore = document.getElementById("chart-data-store");
 
-        // Clear previous
-        while (svg.firstChild) {
-            svg.removeChild(svg.firstChild);
-        }
+    if (container && dataStore) {
+        const data = JSON.parse(dataStore.dataset.chart || "[]");
+        const subgroups = JSON.parse(dataStore.dataset.subgroups || "[]");
+        const groups = JSON.parse(dataStore.dataset.groups || "[]");
 
-        const margin = { top: 80, right: 100, bottom: 20, left: 240 };
-        const width = svg.clientWidth || 800; // Fallback
-        const height = svg.clientHeight || 600; // Fallback
-        // Dynamic height based on data length?
-        // Let's keep fixed height but fit bars.
+        const margin = { top: 40, right: 120, bottom: 120, left: 60 };
+        const width = container.clientWidth - margin.left - margin.right;
+        const height = container.clientHeight - margin.top - margin.bottom;
 
-        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+        // Clear any existing svg
+        container.innerHTML = "";
 
-        const chartWidth = width - margin.left - margin.right;
-        const chartHeight = height - margin.top - margin.bottom;
+        const svg = d3
+            .select(container)
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
 
-        const maxVal = Math.max(...data.map((d) => d.total));
-        const barHeight = Math.min(40, chartHeight / data.length - 10);
-        const gap = 10;
+        // X axis
+        const x = d3
+            .scaleBand()
+            .domain(groups)
+            .range([0, width])
+            .padding([0.2]);
 
-        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        svg.appendChild(g);
+        svg.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x).tickSizeOuter(0))
+            .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end")
+            .style("font-family", "Noto Serif Devanagari, serif")
+            .style("font-size", "12px")
+            .style("fill", "#d4d4d8"); // zinc-300
 
-        data.forEach((item, i) => {
-            const y = margin.top + i * (barHeight + gap);
-            const barWidth = (item.total / maxVal) * chartWidth;
+        // Y axis
+        const y = d3
+            .scaleLinear()
+            .domain([0, d3.max(data, (d: any) => d.total) || 100])
+            .range([height, 0]);
 
-            // Label (Sector)
-            const label = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "text",
-            );
-            label.setAttribute("x", (margin.left - 15).toString());
-            label.setAttribute("y", (y + barHeight / 2 + 5).toString());
-            label.setAttribute("text-anchor", "end");
-            label.setAttribute("fill", "#e4e4e7"); // zinc-200
-            label.setAttribute("font-family", "serif");
-            label.setAttribute("font-size", "14px");
-            // Truncate if too long (simple char limit)
-            const maxChars = 30;
-            label.textContent =
-                item.sector.length > maxChars
-                    ? item.sector.substring(0, maxChars) + "..."
-                    : item.sector;
+        svg.append("g")
+            .call(d3.axisLeft(y))
+            .selectAll("text")
+            .style("font-family", "IBM Plex Serif, serif")
+            .style("font-size", "12px")
+            .style("fill", "#d4d4d8"); // zinc-300
 
-            const title = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "title",
-            );
-            title.textContent = item.sector;
-            label.appendChild(title);
+        // Axis Styles
+        svg.selectAll(".domain").style("stroke", "#52525b"); // zinc-600
+        svg.selectAll(".tick line").style("stroke", "#52525b"); // zinc-600
 
-            g.appendChild(label);
+        // Color palette
+        const color = d3
+            .scaleOrdinal()
+            .domain(subgroups)
+            .range(["#22c55e", "#eab308", "#ef4444"]); // green-500, yellow-500, red-500
 
-            // Background Bar path
-            const bgBar = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "rect",
-            );
-            bgBar.setAttribute("x", margin.left.toString());
-            bgBar.setAttribute("y", y.toString());
-            bgBar.setAttribute("width", chartWidth.toString());
-            bgBar.setAttribute("height", barHeight.toString());
-            bgBar.setAttribute("fill", "#3f3f46"); // zinc-700
-            bgBar.setAttribute("opacity", "0.2");
-            bgBar.setAttribute("rx", "4");
-            g.appendChild(bgBar);
+        // Stack the data
+        const stackedData = d3.stack().keys(subgroups)(data);
 
-            // Actual Bar
-            const bar = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "rect",
-            );
-            bar.setAttribute("x", margin.left.toString());
-            bar.setAttribute("y", y.toString());
-            bar.setAttribute("width", "0"); // Animate from 0
-            bar.setAttribute("height", barHeight.toString());
-            bar.setAttribute("fill", "#f59e0b"); // amber-500
-            bar.setAttribute("opacity", "0.9");
-            bar.setAttribute("rx", "4");
-            bar.style.transition = "width 1s ease-out";
-            g.appendChild(bar);
+        // Show the bars
+        svg.append("g")
+            .selectAll("g")
+            .data(stackedData)
+            .join("g")
+            .attr("fill", (d) => color(d.key) as string)
+            .selectAll("rect")
+            .data((d) => d)
+            .join("rect")
+            .attr("x", (d: any) => x(d.data.sector) as number)
+            .attr("y", (d) => y(d[1]))
+            .attr("height", (d) => y(d[0]) - y(d[1]))
+            .attr("width", x.bandwidth())
+            .on("mouseover", function (event, d) {
+                d3.select(this).style("opacity", 0.8);
+            })
+            .on("mouseout", function () {
+                d3.select(this).style("opacity", 1);
+            });
 
-            // Animate width
-            setTimeout(() => {
-                bar.setAttribute("width", barWidth.toString());
-            }, 100);
+        // Legend
+        const legend = svg
+            .append("g")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 10)
+            .attr("text-anchor", "start")
+            .selectAll("g")
+            .data(subgroups.slice().reverse())
+            .enter()
+            .append("g")
+            .attr("transform", (d, i) => `translate(${width + 10},${i * 20})`);
 
-            // Value Label
-            const value = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "text",
-            );
-            value.setAttribute("x", (margin.left + barWidth + 10).toString()); // Initially position? No, animate nicely
-            value.setAttribute("y", (y + barHeight / 2 + 5).toString());
-            value.setAttribute("fill", "#fcd34d"); // amber-300
-            value.setAttribute("font-family", "sans-serif");
-            value.setAttribute("font-weight", "bold");
-            value.textContent = item.total.toLocaleString("ne-NP");
-            value.style.opacity = "0";
-            value.style.transition =
-                "opacity 0.5s ease-out 0.8s, x 1s ease-out";
+        legend
+            .append("rect")
+            .attr("x", 0)
+            .attr("width", 19)
+            .attr("height", 19)
+            .attr("fill", (d) => color(d) as string);
 
-            g.appendChild(value);
-
-            // Animate value position/opacity
-            setTimeout(() => {
-                value.style.opacity = "1";
-            }, 100);
-        });
+        legend
+            .append("text")
+            .attr("x", 24)
+            .attr("y", 9.5)
+            .attr("dy", "0.32em")
+            .text((d) => d)
+            .style("fill", "#e4e4e7") // zinc-200
+            .style("font-family", "Noto Serif Devanagari");
     }
-
-    // Initial render
-    createChart();
-
-    // Resize handler
-    window.addEventListener("resize", () => {
-        // Debounce or just re-render
-        createChart();
-    });
 </script>

@@ -1,0 +1,316 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const content = await loadChapterSection(4, "industry-trade", lang);
+
+if (!content) {
+    throw new Error("Industry trade content not found");
+}
+---
+
+<section
+    id="industry-trade"
+    class="relative bg-[#050505] py-8 md:py-12 scroll-mt-24"
+>
+    <div class="container mx-auto px-8">
+        <div class="max-w-6xl mx-auto space-y-8">
+            <h2
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100"
+            >
+                {content.number}
+                {content.title}
+            </h2>
+
+            <p
+                class="font-serif text-base md:text-lg text-zinc-300 leading-relaxed"
+            >
+                {content.intro}
+            </p>
+
+            <!-- Industry Overview -->
+            <div class="space-y-4">
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्र.सं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >व्यापार तथा उद्योगहरु सम्बन्धी विवरण</th
+                                >
+                                <th
+                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >संख्या</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.overview.tableData.map((row, idx) => (
+                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {idx + 1}
+                                        </td>
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.category}
+                                        </td>
+                                        <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.count}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.overview.source}
+                </p>
+            </div>
+
+            <!-- Industrial Development -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.industrial.number}
+                    {content.industrial.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.industrial.content}
+                </p>
+            </div>
+
+            <!-- Trade -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.trade.number}
+                    {content.trade.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.trade.content}
+                </p>
+            </div>
+
+            <!-- Mining -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.mining.number}
+                    {content.mining.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.mining.content}
+                </p>
+            </div>
+
+            <!-- Markets (Table 37) -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.markets.number}
+                    {content.markets.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.markets.intro}
+                </p>
+
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.markets.tableTitle}
+                </h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्र.सं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >नाम</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >वडा नं.</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.markets.tableData.map((row, idx) => (
+                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {idx + 1}
+                                        </td>
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.name}
+                                        </td>
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.ward}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.markets.source}
+                </p>
+            </div>
+
+            <!-- Banks (Table 38) -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.banks.number}
+                    {content.banks.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.banks.intro}
+                </p>
+
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.banks.tableTitle}
+                </h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्र.सं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >बैङ्क तथा वित्तीय संस्थाको नाम</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >प्रकार</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.banks.tableData.map((row, idx) => (
+                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {idx + 1}
+                                        </td>
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.name}
+                                        </td>
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.type}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.banks.source}
+                </p>
+            </div>
+
+            <!-- Cooperatives (Table 39) -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.cooperatives.number}
+                    {content.cooperatives.title}
+                </h3>
+
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.cooperatives.intro}
+                </p>
+
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.cooperatives.tableTitle}
+                </h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >क्र.सं.</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >सहकारी संस्थाहरूको नाम</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >प्रकार</th
+                                >
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >ठेगाना</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.cooperatives.tableData.map(
+                                    (row, idx) => (
+                                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {idx + 1}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.name}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.type}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.address}
+                                            </td>
+                                        </tr>
+                                    ),
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    स्रोत: {content.cooperatives.source}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
