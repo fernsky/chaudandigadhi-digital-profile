@@ -1,0 +1,117 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSections } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const subsections = await loadChapterSections(
+    5,
+    ["culture-arts", "festivals-events"],
+    lang,
+);
+---
+
+<section id="culture-arts" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <!-- Culture & Arts Header -->
+            {
+                subsections["culture-arts"] && (
+                    <div class="space-y-6">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100">
+                            ५.५ {subsections["culture-arts"].title}
+                        </h2>
+                    </div>
+                )
+            }
+
+            <!-- Public Spaces -->
+            {
+                subsections["culture-arts"]?.publicSpaces && (
+                    <div id="public-spaces" class="space-y-6">
+                        <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
+                            ५.५.१ {subsections["culture-arts"].publicSpaces.title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                            {subsections["culture-arts"].publicSpaces.intro}
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {subsections["culture-arts"].publicSpaces.locations.map((location: any) => (
+                                <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 hover:border-[#f2e25d]/30 transition-all">
+                                    <div class="text-[#f2e25d] font-bold mb-3">वडा नं. {location.ward}</div>
+                                    <ul class="space-y-2">
+                                        {location.places.map((place: string) => (
+                                            <li class="text-zinc-100 font-serif text-sm flex items-start">
+                                                <span class="mr-2 text-[#f2e25d]">•</span>
+                                                <span>{place}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
+
+            <!-- Festivals & Events -->
+            {
+                subsections["festivals-events"] && (
+                    <div id="festivals" class="space-y-6">
+                        <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
+                            ५.५.२ {subsections["festivals-events"].title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-base md:text-lg font-light leading-relaxed">
+                            {subsections["festivals-events"].intro}
+                        </p>
+
+                        <!-- Festival Table -->
+                        <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 overflow-hidden">
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead class="bg-[#050505] border-b border-[#f2e25d]/20">
+                                        <tr>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">क्र.सं.</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">चाडपर्व/जात्रा/मेला</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">कहिले मनाइन्छ</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">मनाउने जातजाति/समुदाय</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {subsections["festivals-events"].festivals.map((festival: any) => (
+                                            <tr class="border-b border-[#f2e25d]/5 hover:bg-[#050505] transition-colors">
+                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{festival.sn}</td>
+                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{festival.name}</td>
+                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{festival.time}</td>
+                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{festival.community}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Major Festivals Grid -->
+                        <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
+                            <h4 class="font-serif text-xl text-zinc-100 font-medium mb-4">
+                                प्रमुख चाडपर्वहरू
+                            </h4>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                {subsections["festivals-events"].majorFestivals.map((festival: string) => (
+                                    <div class="bg-[#050505] p-3 border border-[#f2e25d]/5 text-center">
+                                        <span class="text-zinc-100 font-serif text-sm">{festival}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+        </div>
+    </div>
+</section>

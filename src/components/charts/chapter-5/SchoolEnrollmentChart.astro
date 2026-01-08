@@ -1,0 +1,74 @@
+---
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+// School enrollment data
+const enrollmentData = [
+    { level: "बालविकास", community: 988, institutional: 1263 },
+    { level: "कक्षा १-५", community: 2969, institutional: 2308 },
+    { level: "कक्षा ६-८", community: 2234, institutional: 959 },
+    { level: "कक्षा ९-१०", community: 1336, institutional: 369 },
+    { level: "कक्षा ११-१२", community: 826, institutional: 76 },
+];
+
+const maxValue = Math.max(...enrollmentData.flatMap(d => [d.community, d.institutional]));
+---
+
+<div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
+    <h4 class="font-serif text-xl text-zinc-100 font-medium mb-6 text-center">
+        तहगत विद्यार्थी भर्ना
+    </h4>
+    
+    <div class="space-y-6">
+        {
+            enrollmentData.map((item) => (
+                <div class="space-y-2">
+                    <div class="text-zinc-100 font-serif text-sm font-medium">{item.level}</div>
+                    <div class="space-y-1">
+                        <!-- Community Schools Bar -->
+                        <div class="flex items-center gap-3">
+                            <div class="w-24 text-zinc-400 font-serif text-xs">सामुदायिक</div>
+                            <div class="flex-1 bg-[#050505] h-8 relative border border-[#f2e25d]/10">
+                                <div
+                                    class="absolute inset-y-0 left-0 bg-[#f2e25d] transition-all duration-500 flex items-center justify-end pr-2"
+                                    style={`width: ${(item.community / maxValue) * 100}%`}
+                                >
+                                    <span class="text-black font-bold text-xs">{item.community}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Institutional Schools Bar -->
+                        <div class="flex items-center gap-3">
+                            <div class="w-24 text-zinc-400 font-serif text-xs">संस्थागत</div>
+                            <div class="flex-1 bg-[#050505] h-8 relative border border-[#f2e25d]/10">
+                                <div
+                                    class="absolute inset-y-0 left-0 bg-zinc-500 transition-all duration-500 flex items-center justify-end pr-2"
+                                    style={`width: ${(item.institutional / maxValue) * 100}%`}
+                                >
+                                    <span class="text-white font-bold text-xs">{item.institutional}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+
+    <!-- Legend -->
+    <div class="flex justify-center gap-6 mt-6 pt-6 border-t border-[#f2e25d]/10">
+        <div class="flex items-center gap-2">
+            <div class="w-4 h-4 bg-[#f2e25d]"></div>
+            <span class="text-zinc-100 font-serif text-sm">सामुदायिक विद्यालय</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="w-4 h-4 bg-zinc-500"></div>
+            <span class="text-zinc-100 font-serif text-sm">संस्थागत विद्यालय</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+{
+    "title": "शिक्षक तथा शैक्षिक जनशक्ति विवरण",
+    "sectionId": "teachers-staff",
+    "teachersByLevel": {
+        "primary": {
+            "permanent": 125,
+            "contract": 10,
+            "total": 135,
+            "relief": 52,
+            "grandTotal": 177
+        },
+        "lowerSecondary": {
+            "permanent": 30,
+            "contract": 3,
+            "total": 33,
+            "relief": 48,
+            "grandTotal": 78
+        },
+        "secondary": {
+            "permanent": 24,
+            "contract": 1,
+            "total": 25,
+            "relief": 19,
+            "grandTotal": 43
+        },
+        "higherSecondary": {
+            "permanent": 26,
+            "contract": 0,
+            "total": 26,
+            "relief": 0,
+            "grandTotal": 26
+        },
+        "trainers": {
+            "permanent": 8,
+            "contract": 0,
+            "total": 8,
+            "relief": 0,
+            "grandTotal": 8
+        }
+    },
+    "supportStaff": {
+        "earlyChildhoodFacilitators": 50,
+        "municipalFacilitators": 7,
+        "communityMobilizers": 4,
+        "accountAssistants": 19,
+        "schoolStaff": 46,
+        "classAides": 3,
+        "nurses": 2,
+        "federalGrant": 27,
+        "totalMunicipalStaff": 490
+    },
+    "internetFacilities": {
+        "title": "नमूना तथा इन्टरनेट सुविधा उपलब्ध भएका विद्यालयको विवरण",
+        "schoolsWithInternet": 44
+    },
+    "qualityIndicators": {
+        "title": "शैक्षिक गुणस्तर सम्बन्धी विवरण",
+        "indicators": [
+            "विद्यालय सहयोग संयन्त्र",
+            "परीक्षा व्यवस्थापन",
+            "शिक्षकहरुको क्षमता विकास तालिम",
+            "नियमित रुपमा अनुगमन सुपरीवेक्षण",
+            "ऐन नियमावली कार्यविधि निर्माण"
+        ]
+    },
+    "childFriendlyEducation": {
+        "title": "बालमैत्री शिक्षा सम्बन्धी विवरण",
+        "initiatives": [
+            "दण्डरहित शिक्षा",
+            "बालविकासमा खेल सामाग्रीको व्यवस्था",
+            "क्षमता विकास तालिमको व्यवस्था",
+            "बालमैत्री खानेपानी तथा शौचालयको व्यवस्था",
+            "बालक्लवहरुको गठन",
+            "बाल शिक्षा सम्बन्धी कार्यक्रम सञ्चालन"
+        ]
+    }
+}
