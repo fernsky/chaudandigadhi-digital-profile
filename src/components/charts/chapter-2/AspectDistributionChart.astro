@@ -1,0 +1,237 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const content = await loadChapterSection<any>(2, "terrain-aspect", lang);
+
+if (!content) {
+    throw new Error("Aspect data not found");
+}
+
+const data = content.tableData;
+---
+
+<div class="space-y-6">
+    <h4
+        class="font-serif text-xl md:text-2xl text-zinc-100 font-medium text-center"
+    >
+        {content.tableTitle}
+    </h4>
+
+    <!-- SVG Donut Chart -->
+    <div class="w-full max-w-2xl mx-auto">
+        <svg
+            id="aspect-chart"
+            class="w-full"
+            viewBox="0 0 600 600"
+            style="background: transparent;"
+        >
+            <!-- Chart will be rendered by script -->
+        </svg>
+    </div>
+
+    <!-- Data Table -->
+    <div class="overflow-x-auto">
+        <table
+            class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10"
+        >
+            <thead>
+                <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                    <th
+                        class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                        >जमिनको मोहडा</th
+                    >
+                    <th
+                        class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                        >क्षेत्रफल (वर्ग कि.मि.)</th
+                    >
+                    <th
+                        class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
+                        >क्षेत्रफल प्रतिशतमा</th
+                    >
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    data.map((row: any) => (
+                        <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                            <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
+                                {row.aspect}
+                            </td>
+                            <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                {row.area.toFixed(2)}
+                            </td>
+                            <td class="px-4 py-3 font-serif text-zinc-100 text-right">
+                                {row.percentage.toFixed(2)}
+                            </td>
+                        </tr>
+                    ))
+                }
+                <tr
+                    class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
+                >
+                    <td
+                        class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
+                        >जम्मा</td
+                    >
+                    <td
+                        class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                    >
+                        {content.total.area.toFixed(2)}
+                    </td>
+                    <td class="px-4 py-3 font-serif text-zinc-100 text-right">
+                        {content.total.percentage}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="text-zinc-400 font-serif text-sm italic text-center">
+        स्रोत: {content.source}
+    </p>
+</div>
+
+<script define:vars={{ data }}>
+    function createAspectChart() {
+        const svg = document.getElementById("aspect-chart");
+        if (!svg) return;
+
+        // Clear existing content
+        svg.innerHTML = "";
+
+        const width = 600;
+        const height = 600;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const radius = Math.min(width, height) / 2 - 60;
+        const innerRadius = radius * 0.5; // Donut hole
+
+        // Gold color palette
+        const colors = [
+            "#f2e25d",
+            "#d4c44f",
+            "#b6a641",
+            "#988833",
+            "#7a6a25",
+            "#d4c44f",
+            "#b6a641",
+            "#988833",
+        ];
+
+        // Calculate total
+        const total = data.reduce((sum, d) => sum + d.percentage, 0);
+
+        // Create main group
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        g.setAttribute("transform", `translate(${centerX},${centerY})`);
+        svg.appendChild(g);
+
+        let currentAngle = -90; // Start from top
+
+        data.forEach((item, i) => {
+            const sliceAngle = (item.percentage / total) * 360;
+            const startAngle = currentAngle;
+            const endAngle = currentAngle + sliceAngle;
+
+            // Convert to radians
+            const startRad = (startAngle * Math.PI) / 180;
+            const endRad = (endAngle * Math.PI) / 180;
+
+            // Calculate path points
+            const x1 = Math.cos(startRad) * radius;
+            const y1 = Math.sin(startRad) * radius;
+            const x2 = Math.cos(endRad) * radius;
+            const y2 = Math.sin(endRad) * radius;
+            const x3 = Math.cos(endRad) * innerRadius;
+            const y3 = Math.sin(endRad) * innerRadius;
+            const x4 = Math.cos(startRad) * innerRadius;
+            const y4 = Math.sin(startRad) * innerRadius;
+
+            const largeArc = sliceAngle > 180 ? 1 : 0;
+
+            // Create path
+            const path = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "path",
+            );
+            const d = `
+                M ${x1} ${y1}
+                A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2}
+                L ${x3} ${y3}
+                A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${x4} ${y4}
+                Z
+            `;
+            path.setAttribute("d", d);
+            path.setAttribute("fill", colors[i % colors.length]);
+            path.setAttribute("opacity", "0.8");
+            path.setAttribute("class", "slice-hover");
+            path.setAttribute("data-aspect", item.aspect);
+            g.appendChild(path);
+
+            // Add label
+            const midAngle = (startAngle + endAngle) / 2;
+            const midRad = (midAngle * Math.PI) / 180;
+            const labelRadius = radius + 30;
+            const labelX = Math.cos(midRad) * labelRadius;
+            const labelY = Math.sin(midRad) * labelRadius;
+
+            const text = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+            );
+            text.setAttribute("x", labelX.toString());
+            text.setAttribute("y", labelY.toString());
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("fill", "#e4e4e7");
+            text.setAttribute("font-size", "12");
+            text.setAttribute("font-family", "serif");
+            text.textContent = `${item.percentage.toFixed(1)}%`;
+            g.appendChild(text);
+
+            currentAngle = endAngle;
+        });
+
+        // Center label
+        const centerText = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+        );
+        centerText.setAttribute("x", "0");
+        centerText.setAttribute("y", "0");
+        centerText.setAttribute("text-anchor", "middle");
+        centerText.setAttribute("dominant-baseline", "middle");
+        centerText.setAttribute("fill", "#f2e25d");
+        centerText.setAttribute("font-size", "18");
+        centerText.setAttribute("font-family", "serif");
+        centerText.setAttribute("font-weight", "bold");
+        centerText.textContent = "मोहडा";
+        g.appendChild(centerText);
+    }
+
+    // Initialize on load
+    if (document.readyState === "complete") {
+        createAspectChart();
+    } else {
+        window.addEventListener("load", createAspectChart);
+    }
+
+    // Re-initialize on Astro page transitions
+    document.addEventListener("astro:page-load", createAspectChart);
+</script>
+
+<style>
+    .slice-hover {
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+    }
+    .slice-hover:hover {
+        opacity: 1;
+    }
+</style>

@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Language } from "../../../lib/i18n";
+
+// Chapter 3 Components
+import ChapterHero from "../../../components/chapters/3/ChapterHero.astro";
+import MainSettlements from "../../../components/chapters/3/MainSettlements.astro";
+import HouseholdDetails from "../../../components/chapters/3/HouseholdDetails.astro";
+import PopulationDistribution from "../../../components/chapters/3/PopulationDistribution.astro";
+import AgeGenderDistribution from "../../../components/chapters/3/AgeGenderDistribution.astro";
+import MotherTongue from "../../../components/chapters/3/MotherTongue.astro";
+import Religion from "../../../components/chapters/3/Religion.astro";
+import CasteEthnicity from "../../../components/chapters/3/CasteEthnicity.astro";
+import HouseholdHead from "../../../components/chapters/3/HouseholdHead.astro";
+import Occupation from "../../../components/chapters/3/Occupation.astro";
+import EconomicActivity from "../../../components/chapters/3/EconomicActivity.astro";
+import Disability from "../../../components/chapters/3/Disability.astro";
+import Migration from "../../../components/chapters/3/Migration.astro";
+import PersonalEvents from "../../../components/chapters/3/PersonalEvents.astro";
+import SocialSecurity from "../../../components/chapters/3/SocialSecurity.astro";
+
+export async function getStaticPaths() {
+    return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Language };
+
+const title =
+    lang === "ne"
+        ? "परिच्छेद – ३: पारिवारिक तथा जनसांख्यिक विवरण"
+        : "Chapter 3: Family and Demographic Details";
+const description =
+    lang === "ne"
+        ? "चौदण्डीगढी नगरपालिकाको जनसांख्यिक संरचना, पारिवारिक विवरण, भाषिक विविधता, धार्मिक संरचना र सामाजिक सुरक्षा कार्यक्रमहरू"
+        : "Demographic structure, family details, linguistic diversity, religious composition and social security programs of Chaudandigadhi Municipality";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+    <!-- Chapter Hero -->
+    <ChapterHero lang={lang} />
+
+    <!-- 3.1.1 Main Settlements -->
+    <MainSettlements lang={lang} />
+
+    <!-- 3.1.2 Household Details -->
+    <HouseholdDetails lang={lang} />
+
+    <!-- 3.2 Population Distribution -->
+    <PopulationDistribution lang={lang} />
+
+    <!-- 3.3 Age-Gender Distribution -->
+    <AgeGenderDistribution lang={lang} />
+
+    <!-- 3.4 Mother Tongue -->
+    <MotherTongue lang={lang} />
+
+    <!-- 3.5 Religion -->
+    <Religion lang={lang} />
+
+    <!-- 3.6 Caste/Ethnicity -->
+    <CasteEthnicity lang={lang} />
+
+    <!-- 3.7 Household Head -->
+    <HouseholdHead lang={lang} />
+
+    <!-- 3.8 Occupation -->
+    <Occupation lang={lang} />
+
+    <!-- 3.9 Economic Activity -->
+    <EconomicActivity lang={lang} />
+
+    <!-- 3.10 Disability -->
+    <Disability lang={lang} />
+
+    <!-- 3.11 Migration -->
+    <Migration lang={lang} />
+
+    <!-- 3.12 Personal Events -->
+    <PersonalEvents lang={lang} />
+
+    <!-- 3.13 Social Security -->
+    <SocialSecurity lang={lang} />
+</BaseLayout>
+
+<style>
+    /* Smooth scroll behavior */
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+</style>

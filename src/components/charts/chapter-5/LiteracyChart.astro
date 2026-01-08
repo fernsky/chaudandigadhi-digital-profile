@@ -1,0 +1,84 @@
+---
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+// Literacy data
+const literacyData = [
+    { label: "साक्षर", value: 77.7, color: "#f2e25d" },
+    { label: "पढ्न मात्र जान्ने", value: 0.24, color: "#a3a3a3" },
+    { label: "निरक्षर", value: 22.06, color: "#525252" },
+];
+
+const total = literacyData.reduce((sum, item) => sum + item.value, 0);
+let currentAngle = 0;
+---
+
+<div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
+    <h4 class="font-serif text-xl text-zinc-100 font-medium mb-6 text-center">
+        साक्षरता दर विवरण
+    </h4>
+
+    <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+        <!-- Pie Chart -->
+        <svg viewBox="0 0 200 200" class="w-64 h-64">
+            {
+                literacyData.map((item) => {
+                    const angle = (item.value / 100) * 360;
+                    const startAngle = currentAngle;
+                    const endAngle = currentAngle + angle;
+
+                    const startRad = (startAngle - 90) * (Math.PI / 180);
+                    const endRad = (endAngle - 90) * (Math.PI / 180);
+
+                    const x1 = 100 + 80 * Math.cos(startRad);
+                    const y1 = 100 + 80 * Math.sin(startRad);
+                    const x2 = 100 + 80 * Math.cos(endRad);
+                    const y2 = 100 + 80 * Math.sin(endRad);
+
+                    const largeArc = angle > 180 ? 1 : 0;
+
+                    const path = `M 100 100 L ${x1} ${y1} A 80 80 0 ${largeArc} 1 ${x2} ${y2} Z`;
+
+                    currentAngle = endAngle;
+
+                    return (
+                        <path
+                            d={path}
+                            fill={item.color}
+                            stroke="#050505"
+                            stroke-width="2"
+                            class="transition-all hover:opacity-80"
+                        />
+                    );
+                })
+            }
+        </svg>
+
+        <!-- Legend -->
+        <div class="space-y-3">
+            {
+                literacyData.map((item) => (
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-4 h-4 rounded-sm"
+                            style={`background-color: ${item.color}`}
+                        />
+                        <div class="flex-1">
+                            <div class="text-zinc-100 font-serif text-sm">
+                                {item.label}
+                            </div>
+                            <div class="text-[#f2e25d] font-bold text-lg">
+                                {item.value}%
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Language } from "../../../lib/i18n";
+import ChapterHero from "../../../components/chapters/2/ChapterHero.astro";
+import GeographicLocation from "../../../components/chapters/2/GeographicLocation.astro";
+import HistoricalBackground from "../../../components/chapters/2/HistoricalBackground.astro";
+import PoliticalStructure from "../../../components/chapters/2/PoliticalStructure.astro";
+import TerrainConditions from "../../../components/chapters/2/TerrainConditions.astro";
+import TerrainSubsections from "../../../components/chapters/2/TerrainSubsections.astro";
+import NaturalResources from "../../../components/chapters/2/NaturalResources.astro";
+import CulturalExcellence from "../../../components/chapters/2/CulturalExcellence.astro";
+import DevelopmentPotential from "../../../components/chapters/2/DevelopmentPotential.astro";
+import DomesticProduction from "../../../components/chapters/2/DomesticProduction.astro";
+import HumanDevelopmentIndex from "../../../components/chapters/2/HumanDevelopmentIndex.astro";
+
+export async function getStaticPaths() {
+    return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Language };
+
+const title =
+    lang === "ne"
+        ? "परिच्छेद – २: नगरपालिकाको चिनारी"
+        : "Chapter 2: Municipality Profile";
+const description =
+    lang === "ne"
+        ? "चौदण्डीगढी नगरपालिकाको भौगोलिक अवस्थिति, ऐतिहासिक पृष्ठभूमि, राजनीतिक संरचना र विकासका सम्भावनाहरू"
+        : "Geographic location, historical background, political structure and development potential of Chaudandigadhi Municipality";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+    <!-- Chapter Hero -->
+    <ChapterHero lang={lang} />
+
+    <!-- 2.1 Geographic Location -->
+    <GeographicLocation lang={lang} />
+
+    <!-- 2.2 Historical Background -->
+    <HistoricalBackground lang={lang} />
+
+    <!-- 2.3 Political Structure -->
+    <PoliticalStructure lang={lang} />
+
+    <!-- 2.4 Terrain Conditions -->
+    <TerrainConditions lang={lang} />
+
+    <!-- 2.4 Terrain Subsections (Soil, Slope, Aspect) -->
+    <TerrainSubsections lang={lang} />
+
+    <!-- 2.5 Natural Resources -->
+    <NaturalResources lang={lang} />
+
+    <!-- 2.6 Cultural Excellence -->
+    <CulturalExcellence lang={lang} />
+
+    <!-- 2.7 Development Potential -->
+    <DevelopmentPotential lang={lang} />
+
+    <!-- 2.8 Domestic Production -->
+    <DomesticProduction lang={lang} />
+
+    <!-- 2.9 Human Development Index -->
+    <HumanDevelopmentIndex lang={lang} />
+</BaseLayout>
+
+<style>
+    /* Smooth scroll behavior */
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+</style>

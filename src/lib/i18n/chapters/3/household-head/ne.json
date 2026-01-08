@@ -1,0 +1,67 @@
+{
+    "title": "घरमुलीको विवरण",
+    "sectionId": "household-head",
+    "number": "३.७",
+    "tableTitle": "तालिका नं. 11: लिङ्ग अनुसार परिवारमूलीको विवरण",
+    "tableData": [
+        {
+            "ageGroup": "10-14",
+            "maleHead": 4,
+            "femaleHead": 11,
+            "total": 15
+        },
+        {
+            "ageGroup": "15-19",
+            "maleHead": 36,
+            "femaleHead": 48,
+            "total": 84
+        },
+        {
+            "ageGroup": "20-29",
+            "maleHead": 519,
+            "femaleHead": 669,
+            "total": 1188
+        },
+        {
+            "ageGroup": "30-39",
+            "maleHead": 1417,
+            "femaleHead": 1352,
+            "total": 2769
+        },
+        {
+            "ageGroup": "40-49",
+            "maleHead": 1819,
+            "femaleHead": 1061,
+            "total": 2880
+        },
+        {
+            "ageGroup": "50-59",
+            "maleHead": 1907,
+            "femaleHead": 742,
+            "total": 2649
+        },
+        {
+            "ageGroup": "60-69",
+            "maleHead": 1331,
+            "femaleHead": 586,
+            "total": 1917
+        },
+        {
+            "ageGroup": "७० वर्ष माथि",
+            "maleHead": 847,
+            "femaleHead": 354,
+            "total": 1201
+        }
+    ],
+    "total": {
+        "maleHead": 7880,
+        "femaleHead": 4823,
+        "total": 12703
+    },
+    "percentages": {
+        "male": 62.03,
+        "female": 37.97
+    },
+    "source": "राष्ट्रिय जनगणना,२०७८",
+    "analysis": "नगरपालिकामा रहेको कुल घरपरिवार संख्या १२,७०३ मध्ये ७,८८० अर्थात ६२.०३ प्रतिशत घरपरिवारमा पुरुष घरमूली रहेका छन् भने ४,८३२ अर्थात ३७.९७ प्रतिशत घरपरिवारमा महिला घरमूली रहेका छन् ।"
+}

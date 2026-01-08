@@ -1,0 +1,61 @@
+---
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+// Water source distribution
+const waterSources = [
+    { type: "ट्युवेल/हेन्डपम्प", percent: 34.61, color: "#f2e25d" },
+    { type: "पाइप धारा (घर भित्र)", percent: 32.03, color: "#d4c74f" },
+    { type: "पाइप धारा (घर बाहिर)", percent: 19.92, color: "#a3a3a3" },
+    { type: "नढाकिएको इनार", percent: 7.14, color: "#737373" },
+    { type: "ढाकिएको इनार", percent: 4.94, color: "#525252" },
+    { type: "अन्य", percent: 1.36, color: "#404040" },
+];
+
+const maxValue = Math.max(...waterSources.map((s) => s.percent));
+---
+
+<div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
+    <h4 class="font-serif text-xl text-zinc-100 font-medium mb-6 text-center">
+        खानेपानीको स्रोत वितरण
+    </h4>
+
+    <!-- Bar Chart -->
+    <div class="space-y-3">
+        {
+            waterSources.map((source) => (
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center">
+                        <span class="text-zinc-100 font-serif text-sm">
+                            {source.type}
+                        </span>
+                        <span class="text-[#f2e25d] font-bold">
+                            {source.percent}%
+                        </span>
+                    </div>
+                    <div class="bg-[#050505] h-8 relative border border-[#f2e25d]/10">
+                        <div
+                            class="absolute inset-y-0 left-0 transition-all duration-500 flex items-center justify-end pr-2"
+                            style={`width: ${(source.percent / maxValue) * 100}%; background-color: ${source.color}`}
+                        >
+                            {source.percent > 10 && (
+                                <span class="text-black font-bold text-xs">
+                                    {source.percent}%
+                                </span>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+
+    <div class="mt-6 pt-6 border-t border-[#f2e25d]/10 text-center">
+        <p class="text-zinc-400 font-serif text-xs">कुल घरपरिवार: १२,७०३</p>
+    </div>
+</div>

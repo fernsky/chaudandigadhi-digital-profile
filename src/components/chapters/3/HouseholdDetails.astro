@@ -1,0 +1,260 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type HouseholdDetailsContent = {
+    title: string;
+    sectionId: string;
+    subsection: {
+        title: string;
+        number: string;
+        tableTitle: string;
+        tableData: Array<{
+            ward: string;
+            households: number;
+            population2068: number;
+            male: number;
+            female: number;
+            total2078: number;
+            growthRate: number;
+            area: number;
+            density: number;
+            avgFamilySize: number;
+            genderRatio: number;
+        }>;
+        total: {
+            households: number;
+            population2068: number;
+            male: number;
+            female: number;
+            total2078: number;
+            growthRate: number;
+            area: number;
+            density: number;
+            avgFamilySize: number;
+            genderRatio: number;
+        };
+        source: string;
+        analysis: string;
+    };
+};
+
+const content = await loadChapterSection<HouseholdDetailsContent>(
+    3,
+    "household-details",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Household details content not found");
+}
+
+const { subsection } = content;
+---
+
+<section id="household-details" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-6xl mx-auto">
+            <!-- Subsection Header -->
+            <div class="mb-6">
+                <h3
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4"
+                >
+                    {subsection.number}
+                    {subsection.title}
+                </h3>
+            </div>
+
+            <!-- Table Title -->
+            <h4
+                class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+            >
+                {subsection.tableTitle}
+            </h4>
+
+            <!-- Premium Table -->
+            <div class="overflow-x-auto mb-6">
+                <table
+                    class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm"
+                >
+                    <thead>
+                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                            <th
+                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                rowspan="2">वडा</th
+                            >
+                            <th
+                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                rowspan="2">घरधुरी</th
+                            >
+                            <th
+                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                rowspan="2">२०६८ को जनसंख्या</th
+                            >
+                            <th
+                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                colspan="3">२०७८ को जम्मा जनसंख्या</th
+                            >
+                            <th
+                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                rowspan="2">जनसंख्या वृद्धिदर</th
+                            >
+                            <th
+                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                rowspan="2">क्षेत्रफल (वर्ग कि.मि.)</th
+                            >
+                            <th
+                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                rowspan="2">जनघनत्व</th
+                            >
+                            <th
+                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                rowspan="2">औषत परिवार आकार</th
+                            >
+                            <th
+                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium"
+                                rowspan="2">लैङ्गिक अनुपात</th
+                            >
+                        </tr>
+                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                            <th
+                                class="px-3 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >पुरूष</th
+                            >
+                            <th
+                                class="px-3 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >महिला</th
+                            >
+                            <th
+                                class="px-3 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >जम्मा</th
+                            >
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            subsection.tableData.map((row) => (
+                                <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                    <td class="px-3 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5">
+                                        {row.ward}
+                                    </td>
+                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.households.toLocaleString()}
+                                    </td>
+                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.population2068.toLocaleString()}
+                                    </td>
+                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.male.toLocaleString()}
+                                    </td>
+                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.female.toLocaleString()}
+                                    </td>
+                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.total2078.toLocaleString()}
+                                    </td>
+                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.growthRate.toFixed(2)}
+                                    </td>
+                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.area.toFixed(2)}
+                                    </td>
+                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.density.toFixed(2)}
+                                    </td>
+                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.avgFamilySize.toFixed(2)}
+                                    </td>
+                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right">
+                                        {row.genderRatio.toFixed(2)}
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                        <!-- Total Row -->
+                        <tr
+                            class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
+                        >
+                            <td
+                                class="px-3 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/10"
+                                >जम्मा</td
+                            >
+                            <td
+                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {subsection.total.households.toLocaleString()}
+                            </td>
+                            <td
+                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {
+                                    subsection.total.population2068.toLocaleString()
+                                }
+                            </td>
+                            <td
+                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {subsection.total.male.toLocaleString()}
+                            </td>
+                            <td
+                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {subsection.total.female.toLocaleString()}
+                            </td>
+                            <td
+                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {subsection.total.total2078.toLocaleString()}
+                            </td>
+                            <td
+                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {subsection.total.growthRate.toFixed(2)}
+                            </td>
+                            <td
+                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {subsection.total.area.toFixed(2)}
+                            </td>
+                            <td
+                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {subsection.total.density.toFixed(2)}
+                            </td>
+                            <td
+                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {subsection.total.avgFamilySize.toFixed(2)}
+                            </td>
+                            <td
+                                class="px-3 py-3 font-serif text-zinc-100 text-right"
+                            >
+                                {subsection.total.genderRatio.toFixed(2)}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Source -->
+            <p class="text-zinc-400 font-serif text-sm italic mb-6">
+                स्रोतM {subsection.source}
+            </p>
+
+            <!-- Analysis -->
+            <div class="mt-6">
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {subsection.analysis}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

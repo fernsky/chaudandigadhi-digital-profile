@@ -10,6 +10,7 @@
     "deploy": "pnpm build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.6",
     "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.6",
@@ -17,7 +18,8 @@
     "d3": "^7.9.0",
     "leaflet": "^1.9.4",
     "lucide-astro": "^0.556.0",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",

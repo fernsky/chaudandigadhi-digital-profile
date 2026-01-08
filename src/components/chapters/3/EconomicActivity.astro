@@ -1,0 +1,296 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type EconomicActivityContent = {
+    title: string;
+    sectionId: string;
+    number: string;
+    table13: {
+        title: string;
+        data: Array<{
+            duration: string;
+            male: number;
+            female: number;
+            total: number;
+            percentage: number;
+        }>;
+        total: {
+            male: number;
+            female: number;
+            total: number;
+            percentage: number;
+        };
+        source: string;
+    };
+    table14: {
+        title: string;
+        data: Array<{
+            category: string;
+            male: number;
+            female: number;
+            total: number;
+        }>;
+        total: {
+            male: number;
+            female: number;
+            total: number;
+        };
+        percentages: {
+            active: number;
+            inactive: number;
+        };
+        source: string;
+    };
+};
+
+const content = await loadChapterSection<EconomicActivityContent>(
+    3,
+    "economic-activity",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Economic activity content not found");
+}
+---
+
+<section id="economically-active" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Header -->
+            <div class="mb-6">
+                <h2
+                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
+                >
+                    {content.number}
+                    {content.title}
+                </h2>
+            </div>
+
+            <!-- Table 13 -->
+            <div class="mb-12">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+                >
+                    {content.table13.title}
+                </h4>
+
+                <div class="overflow-x-auto mb-6">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20"
+                            >
+                                <th
+                                    class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >लिङ्ग</th
+                                >
+                                <th
+                                    class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >पुरुष</th
+                                >
+                                <th
+                                    class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >महिला</th
+                                >
+                                <th
+                                    class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >कुल</th
+                                >
+                                <th
+                                    class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
+                                    >प्रतिशत</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.table13.data.map((row) => (
+                                    <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                        <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
+                                            {row.duration}
+                                        </td>
+                                        <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.male.toLocaleString()}
+                                        </td>
+                                        <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.female.toLocaleString()}
+                                        </td>
+                                        <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.total.toLocaleString()}
+                                        </td>
+                                        <td class="px-4 py-3 font-serif text-zinc-100 text-right">
+                                            {row.percentage}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                            <!-- Total Row -->
+                            <tr
+                                class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
+                            >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
+                                    >जम्मा</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        content.table13.total.male.toLocaleString()
+                                    }
+                                </td>
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        content.table13.total.female.toLocaleString()
+                                    }
+                                </td>
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        content.table13.total.total.toLocaleString()
+                                    }
+                                </td>
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right"
+                                >
+                                    {content.table13.total.percentage}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="text-zinc-400 font-serif text-sm italic">
+                    स्रोत M {content.table13.source}
+                </p>
+            </div>
+
+            <!-- Table 14 -->
+            <div>
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+                >
+                    {content.table14.title}
+                </h4>
+
+                <div class="overflow-x-auto mb-6">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20"
+                            >
+                                <th
+                                    class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >लिङ्ग</th
+                                >
+                                <th
+                                    class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >पुरुष</th
+                                >
+                                <th
+                                    class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >महिला</th
+                                >
+                                <th
+                                    class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
+                                    >कुल</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.table14.data.map((row) => (
+                                    <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                        <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
+                                            {row.category}
+                                        </td>
+                                        <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.male.toLocaleString()}
+                                        </td>
+                                        <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.female.toLocaleString()}
+                                        </td>
+                                        <td class="px-4 py-3 font-serif text-zinc-100 text-right">
+                                            {row.total.toLocaleString()}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                            <!-- Total Row -->
+                            <tr
+                                class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
+                            >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
+                                    >जम्मा</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        content.table14.total.male.toLocaleString()
+                                    }
+                                </td>
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        content.table14.total.female.toLocaleString()
+                                    }
+                                </td>
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right"
+                                >
+                                    {
+                                        content.table14.total.total.toLocaleString()
+                                    }
+                                </td>
+                            </tr>
+                            <!-- Percentage Row -->
+                            <tr class="bg-[#f2e25d]/5">
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
+                                    >प्रतिशत</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                    colspan="2"
+                                >
+                                    सक्रिय: {
+                                        content.table14.percentages.active
+                                    }%
+                                </td>
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right"
+                                >
+                                    निस्क्रिय: {
+                                        content.table14.percentages.inactive
+                                    }%
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="text-zinc-400 font-serif text-sm italic">
+                    स्रोतM {content.table14.source}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

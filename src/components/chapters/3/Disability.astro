@@ -1,0 +1,312 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type DisabilityContent = {
+    title: string;
+    sectionId: string;
+    number: string;
+    intro: string;
+    subsectionTitle: string;
+    tableTitle: string;
+    tableData: Array<{
+        ageGroup: string;
+        physical: number;
+        lowVision: number;
+        blind: number;
+        deaf: number;
+        hardHearing: number;
+        deafBlind: number;
+        speech: number;
+        mental: number;
+        intellectual: number;
+        hemophilia: number;
+        autism: number;
+        multiple: number;
+        total: number;
+    }>;
+    total: {
+        physical: number;
+        lowVision: number;
+        blind: number;
+        deaf: number;
+        hardHearing: number;
+        deafBlind: number;
+        speech: number;
+        mental: number;
+        intellectual: number;
+        hemophilia: number;
+        autism: number;
+        multiple: number;
+        total: number;
+    };
+    source: string;
+    columns: {
+        physical: string;
+        lowVision: string;
+        blind: string;
+        deaf: string;
+        hardHearing: string;
+        deafBlind: string;
+        speech: string;
+        mental: string;
+        intellectual: string;
+        hemophilia: string;
+        autism: string;
+        multiple: string;
+    };
+};
+
+const content = await loadChapterSection<DisabilityContent>(
+    3,
+    "disability",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Disability content not found");
+}
+---
+
+<section id="disability" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-full mx-auto">
+            <!-- Section Header -->
+            <div class="mb-6 max-w-4xl mx-auto">
+                <h2
+                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
+                >
+                    {content.number}
+                    {content.title}
+                </h2>
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {content.intro}
+                </p>
+            </div>
+
+            <!-- Subsection Title -->
+            <h3
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4 max-w-4xl mx-auto"
+            >
+                {content.subsectionTitle}
+            </h3>
+
+            <!-- Table Title -->
+            <h4
+                class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 max-w-4xl mx-auto"
+            >
+                {content.tableTitle}
+            </h4>
+
+            <!-- Premium Ultra-Wide Table -->
+            <div class="overflow-x-auto mb-6">
+                <table
+                    class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-xs"
+                >
+                    <thead>
+                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                            <th
+                                class="px-2 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10 sticky left-0 bg-[#0a0a0a] z-10 min-w-[100px]"
+                                >उमेर समुह</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.physical}>शारिरिक</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.lowVision}
+                                >न्युन दृष्टि</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.blind}>दृष्टि विहिन</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.deaf}>बहिरो</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.hardHearing}
+                                >न्युन श्रवण</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.deafBlind}
+                                >बहिरो+अन्धो</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.speech}>बोल्न नसक्ने</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.mental}>मानसिक</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.intellectual}>बौद्धिक</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.hemophilia}>रक्तश्राव</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.autism}>अटिजम</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                title={content.columns.multiple}>बहु</th
+                            >
+                            <th
+                                class="px-2 py-3 text-center font-serif text-zinc-100 font-medium"
+                                >जम्मा</th
+                            >
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            content.tableData.map((row) => (
+                                <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                    <td class="px-2 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5 sticky left-0 bg-[#0a0a0a]">
+                                        {row.ageGroup}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.physical}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.lowVision}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.blind}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.deaf}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.hardHearing}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.deafBlind}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.speech}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.mental}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.intellectual}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.hemophilia}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.autism}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.multiple}
+                                    </td>
+                                    <td class="px-2 py-3 font-serif text-zinc-100 text-right font-medium">
+                                        {row.total}
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                        <!-- Total Row -->
+                        <tr
+                            class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
+                        >
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10 sticky left-0 bg-[#0a0a0a]"
+                                >जम्मा</td
+                            >
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.physical}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.lowVision}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.blind}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.deaf}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.hardHearing}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.deafBlind}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.speech}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.mental}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.intellectual}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.hemophilia}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.autism}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.multiple}
+                            </td>
+                            <td
+                                class="px-2 py-3 font-serif text-zinc-100 text-right"
+                            >
+                                {content.total.total}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Source -->
+            <p
+                class="text-zinc-400 font-serif text-sm italic max-w-4xl mx-auto"
+            >
+                स्रोत M {content.source}
+            </p>
+        </div>
+    </div>
+</section>

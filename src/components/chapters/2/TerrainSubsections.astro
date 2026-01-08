@@ -1,0 +1,134 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSections } from "../../../lib/i18n/chapter-loader";
+import SlopeDistributionChart from "../../charts/chapter-2/SlopeDistributionChart.astro";
+import AspectDistributionChart from "../../charts/chapter-2/AspectDistributionChart.astro";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+// Load all terrain subsections
+const subsections = await loadChapterSections(
+    2,
+    ["terrain-soil", "terrain-slope", "terrain-aspect"],
+    lang,
+);
+
+const nepaliLettersParens = ["क", "ख", "ग"];
+---
+
+<div class="bg-[#050505]">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto space-y-8">
+            <!-- Soil Composition -->
+            {
+                subsections["terrain-soil"] && (
+                    <div id="terrain-soil" class="space-y-4">
+                        <h3 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium">
+                            {nepaliLettersParens[0]}) {subsections["terrain-soil"].title}
+                        </h3>
+                        {subsections["terrain-soil"].content.map((para: any) => (
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                                {para.text}
+                            </p>
+                        ))}
+                    </div>
+                )
+            }
+
+            <!-- Slope Analysis -->
+            {
+                subsections["terrain-slope"] && (
+                    <div id="terrain-slope" class="space-y-6">
+                        <h3 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium">
+                            {nepaliLettersParens[1]}) {subsections["terrain-slope"].title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                            {subsections["terrain-slope"].intro}
+                        </p>
+
+                        <!-- Slope Map -->
+                        {subsections["terrain-slope"].mapReference && (
+                            <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 group hover:border-[#f2e25d]/30 transition-all duration-300">
+                                <div class="aspect-[4/3] bg-[#050505] mb-4 flex items-center justify-center border border-[#f2e25d]/5">
+                                    <img
+                                        src={subsections["terrain-slope"].mapReference.image}
+                                        alt={subsections["terrain-slope"].mapReference.title}
+                                        class="w-full h-full object-contain"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <p class="text-zinc-100 font-serif text-sm text-center">
+                                    नक्सा नं. {subsections["terrain-slope"].mapReference.number}: {subsections["terrain-slope"].mapReference.title}
+                                </p>
+                            </div>
+                        )}
+
+                        <!-- Slope Categories -->
+                        <div class="space-y-6">
+                            {subsections["terrain-slope"].categories.map((category: any, index: number) => (
+                                <div class="space-y-2">
+                                    <h4 class="font-serif text-lg md:text-xl text-zinc-100 font-medium">
+                                        {category.marker}) {category.title}
+                                    </h4>
+                                    <p class="text-zinc-100 font-serif text-base md:text-lg font-light leading-relaxed">
+                                        {category.description}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <!-- Slope Distribution Chart -->
+                        <div class="my-8">
+                            <SlopeDistributionChart lang={lang} />
+                        </div>
+
+                        <!-- Conclusion -->
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                            {subsections["terrain-slope"].conclusion}
+                        </p>
+                    </div>
+                )
+            }
+
+            <!-- Aspect/Orientation -->
+            {
+                subsections["terrain-aspect"] && (
+                    <div id="terrain-aspect" class="space-y-6">
+                        <h3 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium">
+                            {nepaliLettersParens[2]}) {subsections["terrain-aspect"].title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                            {subsections["terrain-aspect"].intro}
+                        </p>
+
+                        <!-- Aspect Distribution Chart -->
+                        <div class="my-8">
+                            <AspectDistributionChart lang={lang} />
+                        </div>
+
+                        <!-- Aspect Map -->
+                        {subsections["terrain-aspect"].mapReference && (
+                            <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 group hover:border-[#f2e25d]/30 transition-all duration-300">
+                                <div class="aspect-[4/3] bg-[#050505] mb-4 flex items-center justify-center border border-[#f2e25d]/5">
+                                    <img
+                                        src={subsections["terrain-aspect"].mapReference.image}
+                                        alt={subsections["terrain-aspect"].mapReference.title}
+                                        class="w-full h-full object-contain"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <p class="text-zinc-100 font-serif text-sm text-center">
+                                    नक्सा नं. {subsections["terrain-aspect"].mapReference.number}: {subsections["terrain-aspect"].mapReference.title}
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                )
+            }
+        </div>
+    </div>
+</div>
