@@ -14,12 +14,15 @@
     <!-- Tooltip -->
     <div
         id="map-tooltip"
-        class="absolute pointer-events-none opacity-0 bg-[#0a0a0a]/60 text-white px-5 py-4 rounded-2xl border border-white/5 backdrop-blur-2xl text-sm transition-all duration-300 z-50 shadow-2xl"
-        style="box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);"
+        class="absolute pointer-events-none opacity-0 bg-[#0a0a0a]/80 text-white px-5 py-4 rounded-2xl border border-[#f2e25d]/20 backdrop-blur-2xl text-sm transition-all duration-300 z-50 shadow-2xl"
+        style="box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);"
     >
-        <div class="font-bold text-xl mb-2 text-white" data-label="ward-name">
+        <div
+            class="font-bold text-xl mb-2 text-[#f2e25d]"
+            data-label="ward-name"
+        >
         </div>
-        <div class="text-zinc-400 text-base" data-label="population"></div>
+        <div class="text-zinc-300 text-base" data-label="population"></div>
     </div>
 </div>
 
@@ -88,10 +91,10 @@
             .domain([minPop, maxPop])
             .interpolator(
                 interpolateRgb(
-                    "rgba(38, 38, 38, 0.8)",
-                    "rgba(250, 250, 250, 0.95)",
+                    "rgba(64, 52, 10, 0.7)", // Dark Golden/Olive
+                    "rgba(242, 226, 93, 0.95)", // User Requested Gold #f2e25d
                 ),
-            ); // Neutral Grey to Soft White
+            );
 
         // Population-based opacity scale: least populous = 0.2, most populous = 0.9
         const opacityScale = scaleSequential()
@@ -115,7 +118,7 @@
             .join("path")
             .attr("d", (d) => cleanPath(pathGenerator(d)))
             .attr("fill", "none")
-            .attr("stroke", "rgba(255, 255, 255, 0.1)")
+            .attr("stroke", "rgba(242, 226, 93, 0.15)") // Subtle Golden Glow
             .attr("stroke-width", 10)
             .attr("opacity", 0)
             .style("filter", "blur(15px)");
@@ -142,7 +145,7 @@
             .join("path")
             .attr("d", (d) => cleanPath(pathGenerator(d)))
             .attr("fill", "none")
-            .attr("stroke", "rgba(255, 255, 255, 0.4)") // Thicker, brighter white borders
+            .attr("stroke", "rgba(242, 226, 93, 0.4)") // Golden borders
             .attr("stroke-width", 2.5)
             .attr("class", "ward-path cursor-pointer")
             .style("pointer-events", "none") // Disable interaction until animation completes
@@ -170,7 +173,7 @@
                 select(node)
                     .attr("stroke-dasharray", length)
                     .attr("stroke-dashoffset", length)
-                    .attr("stroke", "rgba(255, 255, 255, 0.5)") // Brighter white stroke
+                    .attr("stroke", "rgba(242, 226, 93, 0.6)") // Golden stroke animation
                     .attr("stroke-width", 2.5)
                     .transition()
                     .duration(2000)
@@ -185,7 +188,7 @@
                         "fill-opacity",
                         opacityScale(d.properties.total_population),
                     ) // Population-based transparency!
-                    .attr("stroke", "rgba(255, 255, 255, 0.5)") // Brighter white borders
+                    .attr("stroke", "rgba(242, 226, 93, 0.5)") // Final Golden borders
                     .attr("stroke-width", 2.5);
             });
 
@@ -211,12 +214,12 @@
                 select(this)
                     .transition()
                     .duration(300)
-                    .attr("fill-opacity", 0.85) // Brighter on hover
-                    .attr("stroke", "rgba(255, 255, 255, 0.9)") // Bright white border
+                    .attr("fill-opacity", 0.95) // Brighter on hover
+                    .attr("stroke", "rgba(242, 226, 93, 1)") // Pure gold border
                     .attr("stroke-width", 3)
                     .style(
                         "filter",
-                        "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.2))",
+                        "brightness(1.1) drop-shadow(0 0 20px rgba(242, 226, 93, 0.4))",
                     );
 
                 // Enhance corresponding shadow
@@ -260,7 +263,7 @@
                         "fill-opacity",
                         opacityScale(d.properties.total_population),
                     )
-                    .attr("stroke", "rgba(255, 255, 255, 0.5)")
+                    .attr("stroke", "rgba(242, 226, 93, 0.5)")
                     .attr("stroke-width", 2.5)
                     .style("filter", "none");
 

@@ -42,13 +42,13 @@ if (!content) {
             <!-- Section Header -->
             <div class="mb-8">
                 <h2
-                    class="font-serif text-3xl md:text-4xl font-bold text-obsidian-accent mb-6"
+                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
                     १.४ {content.title}
                 </h2>
 
                 <p
-                    class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed mb-6"
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6"
                 >
                     {content.intro}
                 </p>
@@ -59,10 +59,10 @@ if (!content) {
                 {
                     content.methods.map((method) => (
                         <div class="flex items-start gap-4">
-                            <span class="text-zinc-100 font-serif text-lg md:text-xl shrink-0">
+                            <span class="text-zinc-100 font-serif text-lg md:text-xl font-light shrink-0">
                                 ✓
                             </span>
-                            <p class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed">
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
                                 {method.text}
                             </p>
                         </div>
@@ -73,7 +73,7 @@ if (!content) {
             <!-- Description -->
             <div class="mb-8">
                 <p
-                    class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed"
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
                 >
                     {content.description}
                 </p>
