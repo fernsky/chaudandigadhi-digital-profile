@@ -1,7 +1,6 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
-import { ChevronDown } from "lucide-astro";
 
 interface Props {
     lang: Language;
@@ -28,7 +27,7 @@ if (!content) {
 ---
 
 <section
-    class="relative min-h-screen bg-[url('/images/sakuna-pokhari.jpeg')] bg-cover bg-center bg-fixed flex items-center"
+    class="relative min-h-[90vh] bg-[url('/images/sakuna-pokhari.jpeg')] bg-cover bg-center bg-fixed flex items-center"
 >
     <!-- Dark Overlay with Gradient -->
     <div
@@ -45,63 +44,27 @@ if (!content) {
     <div class="relative z-10 w-full py-24">
         <div class="container mx-auto px-8">
             <div class="max-w-6xl mx-auto">
-                <!-- Chapter Number Badge -->
-                <div
-                    class="inline-block px-8 py-3 bg-white/10 backdrop-blur-md border border-white/20 mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000"
-                >
-                    <span
-                        class="text-zinc-200 font-serif text-lg tracking-[0.3em] uppercase"
-                    >
-                        {content.title}
-                    </span>
-                </div>
-
                 <!-- Main Title -->
                 <h1
-                    class="font-serif text-[clamp(4rem,10vw,8rem)] md:text-[8rem] leading-[0.85] font-medium text-white tracking-tighter mb-8 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-150"
+                    class="font-serif text-[clamp(4rem,10vw,8rem)] md:text-[9rem] leading-[0.85] font-medium text-white tracking-tighter mb-12 animate-in fade-in slide-in-from-bottom-12 duration-1000"
                 >
                     {content.subtitle}
                 </h1>
 
                 <!-- Tagline -->
                 <p
-                    class="font-serif text-2xl md:text-3xl text-zinc-300 mb-6 max-w-3xl leading-snug animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300"
+                    class="font-serif text-2xl md:text-3xl text-zinc-300 mb-8 max-w-3xl leading-snug animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200"
                 >
                     {content.tagline}
                 </p>
 
                 <!-- Description -->
                 <p
-                    class="font-serif text-lg md:text-xl text-zinc-400 mb-12 max-w-3xl leading-relaxed animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-450"
+                    class="font-serif text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-400"
                 >
                     {content.description}
                 </p>
-
-                <!-- Stats Grid -->
-                <div
-                    class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-600"
-                >
-                    {
-                        content.stats.map((stat) => (
-                            <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-500 group">
-                                <div class="text-[clamp(2.5rem,5vw,4rem)] font-serif font-medium text-white leading-none mb-2 group-hover:scale-110 transition-transform">
-                                    {stat.value}
-                                </div>
-                                <div class="text-zinc-500 font-serif text-sm">
-                                    {stat.label}
-                                </div>
-                            </div>
-                        ))
-                    }
-                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div
-        class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/50 animate-bounce z-10"
-    >
-        <ChevronDown size={32} />
     </div>
 </section>
