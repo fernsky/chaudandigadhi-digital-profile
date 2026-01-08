@@ -24,17 +24,17 @@ const t = getTranslations(lang);
             <li role="none">
               <button
                 data-chapter={num}
-                class={`mega-menu-category group/cat w-full text-left px-6 py-5 transition-all duration-200 ${
+                class={`mega-menu-category group/cat w-full text-left px-6 py-3 transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? "text-primary-400 font-medium underline decoration-1 underline-offset-4"
-                    : "text-neutral-400 hover:text-primary-400"
+                    ? "text-white font-medium bg-white/5"
+                    : "text-zinc-400 hover:text-white hover:bg-white/5"
                 }`}
                 role="menuitem"
                 aria-current={isActive ? "page" : undefined}
               >
                 <div class="flex items-center justify-between gap-4">
                   <div class="flex-1 min-w-0">
-                    <p class="text-sm leading-relaxed group-hover/cat:underline decoration-primary-400/50 underline-offset-4 decoration-1 transition-all duration-200">
+                    <p class="text-base leading-relaxed transition-all duration-200">
                       {chapter.title}
                     </p>
                   </div>
@@ -69,17 +69,13 @@ const t = getTranslations(lang);
       button.addEventListener("mouseenter", () => {
         // Remove active state from all buttons
         categoryButtons.forEach((btn) => {
-          btn.classList.remove(
-            "bg-primary-500/10",
-            "text-white",
-            "font-medium",
-          );
-          btn.classList.add("text-neutral-400");
+          btn.classList.remove("bg-white/5", "text-white", "font-medium");
+          btn.classList.add("text-zinc-400");
         });
 
         // Add active state to hovered button
-        button.classList.remove("text-neutral-400");
-        button.classList.add("bg-primary-500/10", "text-white", "font-medium");
+        button.classList.remove("text-zinc-400");
+        button.classList.add("bg-white/5", "text-white", "font-medium");
 
         const chapterNum = button.getAttribute("data-chapter");
         if (chapterNum) {
