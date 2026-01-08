@@ -51,11 +51,16 @@ const chartData = [...data].sort((a, b) => b.value - a.value);
 
         if (!container || !dataEl || container.hasChildNodes()) return;
 
-        const data = JSON.parse(dataEl.dataset.chart || "[]");
+        const data = JSON.parse(dataEl.dataset.chart || "[]").map((d: any) => ({
+            label: String(d.label),
+            value: Number(d.value) || 0,
+        }));
 
         const margin = { top: 20, right: 30, bottom: 60, left: 60 };
         const width = container.clientWidth - margin.left - margin.right;
         const height = container.clientHeight - margin.top - margin.bottom;
+
+        if (width <= 0 || height <= 0) return;
 
         const svg = d3
             .select(container)
