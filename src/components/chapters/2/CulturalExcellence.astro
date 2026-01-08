@@ -1,0 +1,67 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type CulturalExcellenceContent = {
+    title: string;
+    sectionId: string;
+    intro: string;
+    religiousData: {
+        intro: string;
+        festivals: string;
+    };
+    culturalDiversity: string;
+};
+
+const content = await loadChapterSection<CulturalExcellenceContent>(
+    2,
+    "cultural-excellence",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Cultural excellence section content not found");
+}
+---
+
+<section id="cultural-excellence" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-2xl mx-auto">
+            <div class="mb-4">
+                <h2
+                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
+                >
+                    २.६ {content.title}
+                </h2>
+            </div>
+            <div class="space-y-4">
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {content.intro}
+                </p>
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {content.religiousData.intro}
+                </p>
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {content.religiousData.festivals}
+                </p>
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {content.culturalDiversity}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

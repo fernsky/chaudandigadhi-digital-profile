@@ -1,0 +1,163 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type PoliticalStructureContent = {
+    title: string;
+    sectionId: string;
+    intro: string;
+    tableTitle: string;
+    tableData: Array<{
+        wardNo: string;
+        includedVDC: string;
+        population: number;
+        area: number;
+    }>;
+    total: {
+        population: number;
+        area: number;
+    };
+    source: string;
+    maps: Array<{
+        number: number;
+        title: string;
+        image: string;
+    }>;
+};
+
+const content = await loadChapterSection<PoliticalStructureContent>(
+    2,
+    "political-structure",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Political structure section content not found");
+}
+---
+
+<section id="political-structure" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Header -->
+            <div class="mb-6">
+                <h2
+                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
+                >
+                    २.३ {content.title}
+                </h2>
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {content.intro}
+                </p>
+            </div>
+
+            <!-- Maps -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {
+                    content.maps.map((map) => (
+                        <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 group hover:border-[#f2e25d]/30 transition-all duration-300">
+                            <div class="aspect-[4/3] bg-[#050505] mb-4 flex items-center justify-center border border-[#f2e25d]/5">
+                                <img
+                                    src={map.image}
+                                    alt={map.title}
+                                    class="w-full h-full object-contain"
+                                    loading="lazy"
+                                />
+                            </div>
+                            <p class="text-zinc-100 font-serif text-sm text-center">
+                                नक्सा नं. {map.number}: {map.title}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <!-- Table Title -->
+            <h3
+                class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+            >
+                {content.tableTitle}
+            </h3>
+
+            <!-- Premium Table -->
+            <div class="overflow-x-auto mb-4">
+                <table
+                    class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10"
+                >
+                    <thead>
+                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                            <th
+                                class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >वडा नं.</th
+                            >
+                            <th
+                                class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >समावेश गाविस/तथा नगरपालिका</th
+                            >
+                            <th
+                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >वडा नं.</th
+                            >
+                            <th
+                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
+                                >क्षेत्रफल (वर्ग कि.मि.)</th
+                            >
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            content.tableData.map((row, index) => (
+                                <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                    <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
+                                        {row.wardNo}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
+                                        {row.includedVDC}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.population.toLocaleString()}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right">
+                                        {row.area.toFixed(2)}
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                        <!-- Total Row -->
+                        <tr
+                            class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
+                        >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
+                                colspan="2">जम्मा</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.population.toLocaleString()}
+                            </td>
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right"
+                            >
+                                {content.total.area.toFixed(2)}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Source -->
+            <p class="text-zinc-400 font-serif text-sm italic">
+                स्रोतM {content.source}
+            </p>
+        </div>
+    </div>
+</section>

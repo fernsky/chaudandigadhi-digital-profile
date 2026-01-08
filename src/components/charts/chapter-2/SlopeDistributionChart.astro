@@ -1,0 +1,249 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type SlopeData = {
+    tableTitle: string;
+    tableData: Array<{
+        slopeRange: string;
+        area: number;
+        percentage: number;
+    }>;
+    total: {
+        area: number;
+        percentage: number;
+    };
+    source: string;
+};
+
+const content = await loadChapterSection<any>(2, "terrain-slope", lang);
+
+if (!content) {
+    throw new Error("Slope data not found");
+}
+
+const data = content.tableData;
+---
+
+<div class="space-y-6">
+    <h4
+        class="font-serif text-xl md:text-2xl text-zinc-100 font-medium text-center"
+    >
+        {content.tableTitle}
+    </h4>
+
+    <!-- SVG Bar Chart -->
+    <div class="w-full max-w-3xl mx-auto">
+        <svg
+            id="slope-chart"
+            class="w-full"
+            viewBox="0 0 800 500"
+            style="background: transparent;"
+        >
+            <!-- Chart will be rendered by script -->
+        </svg>
+    </div>
+
+    <!-- Data Table -->
+    <div class="overflow-x-auto">
+        <table
+            class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10"
+        >
+            <thead>
+                <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                    <th
+                        class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                        >भिरालोपन (डिग्रीमा)</th
+                    >
+                    <th
+                        class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                        >क्षेत्रफल (वर्ग कि.मि.)</th
+                    >
+                    <th
+                        class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
+                        >क्षेत्रफल (प्रतिशत)</th
+                    >
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    data.map((row: any) => (
+                        <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                            <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
+                                {row.slopeRange}
+                            </td>
+                            <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                {row.area.toFixed(2)}
+                            </td>
+                            <td class="px-4 py-3 font-serif text-zinc-100 text-right">
+                                {row.percentage.toFixed(2)}
+                            </td>
+                        </tr>
+                    ))
+                }
+                <tr
+                    class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
+                >
+                    <td
+                        class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
+                        >जम्मा</td
+                    >
+                    <td
+                        class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                    >
+                        {content.total.area.toFixed(2)}
+                    </td>
+                    <td class="px-4 py-3 font-serif text-zinc-100 text-right">
+                        {content.total.percentage}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="text-zinc-400 font-serif text-sm italic text-center">
+        स्रोत: {content.source}
+    </p>
+</div>
+
+<script define:vars={{ data }}>
+    function createSlopeChart() {
+        const svg = document.getElementById("slope-chart");
+        if (!svg) return;
+
+        // Clear existing content
+        svg.innerHTML = "";
+
+        const width = 800;
+        const height = 500;
+        const margin = { top: 40, right: 40, bottom: 80, left: 80 };
+        const chartWidth = width - margin.left - margin.right;
+        const chartHeight = height - margin.top - margin.bottom;
+
+        // Create main group
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        g.setAttribute("transform", `translate(${margin.left},${margin.top})`);
+        svg.appendChild(g);
+
+        // Calculate scales
+        const maxPercentage = Math.max(...data.map((d) => d.percentage));
+        const barWidth = chartWidth / data.length - 20;
+
+        // Draw bars
+        data.forEach((item, i) => {
+            const barHeight = (item.percentage / maxPercentage) * chartHeight;
+            const x = i * (chartWidth / data.length) + 10;
+            const y = chartHeight - barHeight;
+
+            // Bar
+            const rect = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect",
+            );
+            rect.setAttribute("x", x.toString());
+            rect.setAttribute("y", y.toString());
+            rect.setAttribute("width", barWidth.toString());
+            rect.setAttribute("height", barHeight.toString());
+            rect.setAttribute("fill", "#f2e25d");
+            rect.setAttribute("opacity", "0.8");
+            rect.setAttribute("class", "bar-hover");
+            g.appendChild(rect);
+
+            // Percentage label
+            const text = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+            );
+            text.setAttribute("x", (x + barWidth / 2).toString());
+            text.setAttribute("y", (y - 10).toString());
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("fill", "#f2e25d");
+            text.setAttribute("font-size", "14");
+            text.setAttribute("font-family", "serif");
+            text.textContent = `${item.percentage.toFixed(2)}%`;
+            g.appendChild(text);
+
+            // X-axis label
+            const label = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+            );
+            label.setAttribute("x", (x + barWidth / 2).toString());
+            label.setAttribute("y", (chartHeight + 30).toString());
+            label.setAttribute("text-anchor", "middle");
+            label.setAttribute("fill", "#e4e4e7");
+            label.setAttribute("font-size", "12");
+            label.setAttribute("font-family", "serif");
+            label.textContent = item.slopeRange.replace("डिग्री", "°");
+            g.appendChild(label);
+        });
+
+        // Y-axis
+        const yAxis = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "line",
+        );
+        yAxis.setAttribute("x1", "0");
+        yAxis.setAttribute("y1", "0");
+        yAxis.setAttribute("x2", "0");
+        yAxis.setAttribute("y2", chartHeight.toString());
+        yAxis.setAttribute("stroke", "#f2e25d");
+        yAxis.setAttribute("stroke-width", "2");
+        yAxis.setAttribute("opacity", "0.3");
+        g.appendChild(yAxis);
+
+        // X-axis
+        const xAxis = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "line",
+        );
+        xAxis.setAttribute("x1", "0");
+        xAxis.setAttribute("y1", chartHeight.toString());
+        xAxis.setAttribute("x2", chartWidth.toString());
+        xAxis.setAttribute("y2", chartHeight.toString());
+        xAxis.setAttribute("stroke", "#f2e25d");
+        xAxis.setAttribute("stroke-width", "2");
+        xAxis.setAttribute("opacity", "0.3");
+        g.appendChild(xAxis);
+
+        // Y-axis label
+        const yLabel = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+        );
+        yLabel.setAttribute("x", "-200");
+        yLabel.setAttribute("y", "-50");
+        yLabel.setAttribute("transform", "rotate(-90)");
+        yLabel.setAttribute("text-anchor", "middle");
+        yLabel.setAttribute("fill", "#e4e4e7");
+        yLabel.setAttribute("font-size", "14");
+        yLabel.setAttribute("font-family", "serif");
+        yLabel.textContent = "प्रतिशत (%)";
+        g.appendChild(yLabel);
+    }
+
+    // Initialize on load
+    if (document.readyState === "complete") {
+        createSlopeChart();
+    } else {
+        window.addEventListener("load", createSlopeChart);
+    }
+
+    // Re-initialize on Astro page transitions
+    document.addEventListener("astro:page-load", createSlopeChart);
+</script>
+
+<style>
+    .bar-hover {
+        transition: opacity 0.3s ease;
+    }
+    .bar-hover:hover {
+        opacity: 1;
+    }
+</style>
