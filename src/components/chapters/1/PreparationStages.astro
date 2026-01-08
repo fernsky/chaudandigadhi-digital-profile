@@ -37,45 +37,47 @@ if (!content) {
 ---
 
 <section id="preparation-stages" class="relative bg-[#050505] py-16 md:py-24">
-    <div class="container mx-auto px-8 max-w-4xl">
-        <!-- Section Header -->
-        <div class="mb-8">
-            <h2
-                class="font-serif text-3xl md:text-4xl font-bold text-blue-300 mb-6"
-            >
-                १.४ {content.title}
-            </h2>
+    <div class="container mx-auto px-8">
+        <div class="max-w-2xl mx-auto">
+            <!-- Section Header -->
+            <div class="mb-8">
+                <h2
+                    class="font-serif text-3xl md:text-4xl font-bold text-blue-300 mb-6"
+                >
+                    १.४ {content.title}
+                </h2>
 
-            <p
-                class="text-white font-serif text-lg md:text-xl leading-relaxed mb-6 text-justify"
-            >
-                {content.intro}
-            </p>
-        </div>
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed mb-6"
+                >
+                    {content.intro}
+                </p>
+            </div>
 
-        <!-- Methods List (With checkmarks as per user text) -->
-        <div class="space-y-4 mb-8">
-            {
-                content.methods.map((method) => (
-                    <div class="flex items-start gap-4">
-                        <span class="text-white font-serif text-lg md:text-xl shrink-0">
-                            ✓
-                        </span>
-                        <p class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify">
-                            {method.text}
-                        </p>
-                    </div>
-                ))
-            }
-        </div>
+            <!-- Methods List (With checkmarks as per user text) -->
+            <div class="space-y-4 mb-8">
+                {
+                    content.methods.map((method) => (
+                        <div class="flex items-start gap-4">
+                            <span class="text-zinc-100 font-serif text-lg md:text-xl shrink-0">
+                                ✓
+                            </span>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed">
+                                {method.text}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
 
-        <!-- Description -->
-        <div class="mb-8">
-            <p
-                class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify"
-            >
-                {content.description}
-            </p>
+            <!-- Description -->
+            <div class="mb-8">
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed"
+                >
+                    {content.description}
+                </p>
+            </div>
         </div>
     </div>
 </section>

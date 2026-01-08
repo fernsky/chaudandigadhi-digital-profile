@@ -35,123 +35,127 @@ const stepNumbers = [
 ---
 
 <div class="bg-[#050505]">
-    <div class="container mx-auto px-8 max-w-4xl space-y-12">
-        <!-- 1.4.1 Template Preparation -->
-        {
-            subsections["template-preparation"] && (
-                <div id="template-preparation" class="space-y-6">
-                    <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
-                        {stepNumbers[0]}{" "}
-                        {subsections["template-preparation"].title}
-                    </h3>
-                    <p class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify">
-                        {subsections["template-preparation"].intro}
-                    </p>
-                    <div class="space-y-4">
-                        {subsections["template-preparation"].activities.map(
-                            (activity: any) => (
-                                <div class="flex items-start gap-4">
-                                    <span class="text-white font-serif text-lg md:text-xl shrink-0">
-                                        •
-                                    </span>
-                                    <p class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify">
-                                        {activity.text}
-                                    </p>
-                                </div>
-                            ),
-                        )}
+    <div class="container mx-auto px-8">
+        <div class="max-w-2xl mx-auto space-y-12">
+            <!-- 1.4.1 Template Preparation -->
+            {
+                subsections["template-preparation"] && (
+                    <div id="template-preparation" class="space-y-6">
+                        <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
+                            {stepNumbers[0]}{" "}
+                            {subsections["template-preparation"].title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed">
+                            {subsections["template-preparation"].intro}
+                        </p>
+                        <div class="space-y-4">
+                            {subsections["template-preparation"].activities.map(
+                                (activity: any) => (
+                                    <div class="flex items-start gap-4">
+                                        <span class="text-zinc-100 font-serif text-lg md:text-xl shrink-0">
+                                            •
+                                        </span>
+                                        <p class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed">
+                                            {activity.text}
+                                        </p>
+                                    </div>
+                                ),
+                            )}
+                        </div>
                     </div>
-                </div>
-            )
-        }
+                )
+            }
 
-        <!-- 1.4.2 Preparation Workshop -->
-        {
-            subsections["preparation-workshop"] && (
-                <div id="preparation-workshop" class="space-y-6">
-                    <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
-                        {stepNumbers[1]}{" "}
-                        {subsections["preparation-workshop"].title}
-                    </h3>
-                    <p class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify">
-                        {subsections["preparation-workshop"].description}
-                    </p>
-                </div>
-            )
-        }
+            <!-- 1.4.2 Preparation Workshop -->
+            {
+                subsections["preparation-workshop"] && (
+                    <div id="preparation-workshop" class="space-y-6">
+                        <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
+                            {stepNumbers[1]}{" "}
+                            {subsections["preparation-workshop"].title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed">
+                            {subsections["preparation-workshop"].description}
+                        </p>
+                    </div>
+                )
+            }
 
-        <!-- 1.4.3 Data Collection -->
-        {
-            subsections["data-collection"] && (
-                <div id="data-collection" class="space-y-6">
-                    <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
-                        {stepNumbers[2]} {subsections["data-collection"].title}
-                    </h3>
-                    <p class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify">
-                        {subsections["data-collection"].intro}{" "}
-                        {subsections["data-collection"].mainContent}
-                    </p>
-                </div>
-            )
-        }
+            <!-- 1.4.3 Data Collection -->
+            {
+                subsections["data-collection"] && (
+                    <div id="data-collection" class="space-y-6">
+                        <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
+                            {stepNumbers[2]}{" "}
+                            {subsections["data-collection"].title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed">
+                            {subsections["data-collection"].intro}{" "}
+                            {subsections["data-collection"].mainContent}
+                        </p>
+                    </div>
+                )
+            }
 
-        <!-- 1.4.4 Data Analysis -->
-        {
-            subsections["data-analysis"] && (
-                <div id="data-analysis" class="space-y-6">
-                    <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
-                        {stepNumbers[3]} {subsections["data-analysis"].title}
-                    </h3>
-                    <p class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify">
-                        {subsections["data-analysis"].description}{" "}
-                        {subsections["data-analysis"].mappingDescription}
-                    </p>
-                </div>
-            )
-        }
+            <!-- 1.4.4 Data Analysis -->
+            {
+                subsections["data-analysis"] && (
+                    <div id="data-analysis" class="space-y-6">
+                        <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
+                            {stepNumbers[3]}{" "}
+                            {subsections["data-analysis"].title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed">
+                            {subsections["data-analysis"].description}{" "}
+                            {subsections["data-analysis"].mappingDescription}
+                        </p>
+                    </div>
+                )
+            }
 
-        <!-- 1.4.5 Draft Preparation -->
-        {
-            subsections["draft-preparation"] && (
-                <div id="draft-preparation" class="space-y-6">
-                    <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
-                        {stepNumbers[4]}{" "}
-                        {subsections["draft-preparation"].title}
-                    </h3>
-                    <p class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify">
-                        {subsections["draft-preparation"].description}
-                    </p>
-                </div>
-            )
-        }
+            <!-- 1.4.5 Draft Preparation -->
+            {
+                subsections["draft-preparation"] && (
+                    <div id="draft-preparation" class="space-y-6">
+                        <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
+                            {stepNumbers[4]}{" "}
+                            {subsections["draft-preparation"].title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed">
+                            {subsections["draft-preparation"].description}
+                        </p>
+                    </div>
+                )
+            }
 
-        <!-- 1.4.6 Feedback Collection -->
-        {
-            subsections["feedback-collection"] && (
-                <div id="feedback-collection" class="space-y-6">
-                    <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
-                        {stepNumbers[5]}{" "}
-                        {subsections["feedback-collection"].title}
-                    </h3>
-                    <p class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify">
-                        {subsections["feedback-collection"].intro}
-                    </p>
-                </div>
-            )
-        }
+            <!-- 1.4.6 Feedback Collection -->
+            {
+                subsections["feedback-collection"] && (
+                    <div id="feedback-collection" class="space-y-6">
+                        <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
+                            {stepNumbers[5]}{" "}
+                            {subsections["feedback-collection"].title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed">
+                            {subsections["feedback-collection"].intro}
+                        </p>
+                    </div>
+                )
+            }
 
-        <!-- 1.4.7 Final Report -->
-        {
-            subsections["final-report"] && (
-                <div id="final-report" class="space-y-6">
-                    <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
-                        {stepNumbers[6]} {subsections["final-report"].title}
-                    </h3>
-                    <p class="text-white font-serif text-lg md:text-xl leading-relaxed text-justify">
-                        {subsections["final-report"].description}
-                    </p>
-                </div>
-            )
-        }
+            <!-- 1.4.7 Final Report -->
+            {
+                subsections["final-report"] && (
+                    <div id="final-report" class="space-y-6">
+                        <h3 class="font-serif text-xl md:text-2xl text-blue-300 font-bold">
+                            {stepNumbers[6]} {subsections["final-report"].title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl leading-relaxed">
+                            {subsections["final-report"].description}
+                        </p>
+                    </div>
+                )
+            }
+        </div>
     </div>
 </div>
