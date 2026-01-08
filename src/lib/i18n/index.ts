@@ -20,7 +20,7 @@ export function getChapterTitle(lang: Language, chapterNumber: number) {
 }
 
 export function getChapterSlug(chapterNumber: number) {
-  return `chapter-${chapterNumber}`;
+  return `chapters/${chapterNumber}`;
 }
 
 export const allChapters = [1, 2, 3, 4, 5, 6, 7, 8] as const;

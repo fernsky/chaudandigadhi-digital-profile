@@ -47,7 +47,7 @@ const initialChapter = currentChapter || 1;
             <div class="grid grid-cols-2 gap-x-16 gap-y-6">
               {sections.map((section: any) => (
                 <a
-                  href={`/${lang}/${chapter.slug}#${section.slug}`}
+                  href={`/${lang}/chapters/${num}#${section.slug}`}
                   class="group/item flex items-start justify-between transition-all duration-300"
                 >
                   <div class="flex-1 min-w-0 pr-4">
@@ -63,7 +63,7 @@ const initialChapter = currentChapter || 1;
           <!-- View Full Chapter Link with Full-Bleed Top Border -->
           <div class="relative w-full pl-6 pr-12 py-6">
             <a
-              href={`/${lang}/${chapter.slug}`}
+              href={`/${lang}/chapters/${num}`}
               class="inline-flex items-center gap-2 text-base font-medium text-primary-300 hover:text-primary-50 transition-colors group/link hover:translate-x-1 duration-300"
             >
               <span>

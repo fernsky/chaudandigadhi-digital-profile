@@ -61,7 +61,7 @@ const t = getTranslations(lang);
             <div class="mobile-chapter-content hidden mt-2 ml-4 space-y-1">
               {sections.map((section: any) => (
                 <a
-                  href={`/${lang}/${chapter.slug}#${section.slug}`}
+                  href={`/${lang}/chapters/${num}#${section.slug}`}
                   class="block px-4 py-2.5 rounded-md text-sm text-zinc-500 hover:text-white hover:bg-white/5 transition-all duration-200 border-l-2 border-transparent hover:border-primary-500/50"
                 >
                   <span class="flex-1">{section.title}</span>
@@ -70,7 +70,7 @@ const t = getTranslations(lang);
 
               {/* View Full Chapter Link */}
               <a
-                href={`/${lang}/${chapter.slug}`}
+                href={`/${lang}/chapters/${num}`}
                 class="block px-4 py-2.5 text-sm text-primary-400 hover:text-primary-300 transition-colors font-medium mt-2"
               >
                 <div class="flex items-center gap-2">
@@ -99,7 +99,9 @@ const t = getTranslations(lang);
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transition:
+      max-height 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
   }
 
   .mobile-chapter-content:not(.hidden) {

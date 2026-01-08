@@ -98,7 +98,7 @@ const t = getTranslations(lang);
         const chapterNum = button.getAttribute("data-chapter");
         if (chapterNum) {
           const lang = document.documentElement.lang || "ne";
-          const slug = `chapter-${chapterNum}`;
+          const slug = `chapters/${chapterNum}`;
           window.location.href = `/${lang}/${slug}`;
         }
       });
