@@ -34,7 +34,7 @@ const initialChapter = currentChapter || 1;
         >
           <!-- Header with Full-Bleed Bottom Border -->
           <!-- We use a pseudo-element on this relative container to draw the line all the way to the right -->
-          <div class="relative w-full border-b border-white/10 after:content-[''] after:absolute after:bottom-[-1px] after:left-full after:w-screen after:h-[1px] after:bg-white/10">
+          <div class="relative w-full">
             <div class="pl-6 pr-12 py-8">
               <h4 class="text-2xl font-serif font-semibold text-white">
                 {chapter.description}
@@ -61,7 +61,7 @@ const initialChapter = currentChapter || 1;
           </div>
 
           <!-- View Full Chapter Link with Full-Bleed Top Border -->
-          <div class="relative w-full pl-6 pr-12 py-6 border-t border-white/10 after:content-[''] after:absolute after:top-[-1px] after:left-full after:w-screen after:h-[1px] after:bg-white/10">
+          <div class="relative w-full pl-6 pr-12 py-6">
             <a
               href={`/${lang}/${chapter.slug}`}
               class="inline-flex items-center gap-2 text-base font-medium text-primary-400 hover:text-primary-300 transition-colors group/link"
