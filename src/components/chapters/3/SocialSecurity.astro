@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import SocialSecurityChart from "../../charts/chapter-3/SocialSecurityChart.astro";
 
 interface Props {
     lang: Language;
@@ -83,6 +84,11 @@ if (!content) {
             >
                 {content.tableTitle}
             </h4>
+
+            <!-- Social Security Chart -->
+            <div class="mb-12">
+                <SocialSecurityChart lang={lang} />
+            </div>
 
             <!-- Premium Table -->
             <div class="overflow-x-auto mb-6">

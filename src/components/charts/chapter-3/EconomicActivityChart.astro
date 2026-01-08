@@ -1,0 +1,321 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type EconomicActivityData = {
+    table13: {
+        title: string;
+        data: Array<{
+            duration: string;
+            total: number;
+            percentage: number;
+        }>;
+    };
+    table14: {
+        title: string;
+        total: {
+            total: number;
+        };
+        percentages: {
+            active: number;
+            inactive: number;
+        };
+    };
+};
+
+const content = await loadChapterSection<EconomicActivityData>(
+    3,
+    "economic-activity",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Economic activity data not found");
+}
+
+const table13Data = content.table13;
+const table14Data = content.table14;
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Chart 1: Work Duration (Bar Chart) -->
+    <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 rounded-lg">
+        <h4 class="text-zinc-100 font-serif text-lg mb-6 text-center">
+            काम गरेको अवधि (Work Duration)
+        </h4>
+        <div class="w-full">
+            <svg
+                id="duration-chart"
+                class="w-full"
+                style="background: transparent;"
+            >
+                <!-- Work Duration Chart -->
+            </svg>
+        </div>
+    </div>
+
+    <!-- Chart 2: Active vs Inactive (Donut Chart) -->
+    <div
+        class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 rounded-lg flex flex-col items-center"
+    >
+        <h4 class="text-zinc-100 font-serif text-lg mb-6 text-center">
+            आर्थिक सक्रियता (Economic Activity)
+        </h4>
+        <div class="relative w-full max-w-[300px] aspect-square">
+            <svg
+                id="activity-status-chart"
+                class="w-full h-full transform -rotate-90"
+                viewBox="0 0 100 100"
+            >
+                <!-- Activity Status Chart -->
+            </svg>
+            <!-- Center Text -->
+            <div
+                class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
+            >
+                <span class="text-zinc-500 font-serif text-sm"
+                    >जम्मा जनसंख्या</span
+                >
+                <span class="text-[#f2e25d] font-serif text-xl font-bold">
+                    {table14Data.total.total.toLocaleString()}
+                </span>
+            </div>
+        </div>
+
+        <!-- Legend for Donut -->
+        <div class="flex gap-6 mt-6">
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-[#f2e25d]"></div>
+                <div class="flex flex-col">
+                    <span class="text-zinc-100 text-sm font-serif"
+                        >सक्रिय (Active)</span
+                    >
+                    <span class="text-[#f2e25d] text-xs font-serif"
+                        >{table14Data.percentages.active}%</span
+                    >
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-[#a1a1aa]"></div>
+                <div class="flex flex-col">
+                    <span class="text-zinc-100 text-sm font-serif"
+                        >निस्क्रिय (Inactive)</span
+                    >
+                    <span class="text-zinc-400 text-xs font-serif"
+                        >{table14Data.percentages.inactive}%</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script define:vars={{ table13Data, table14Data }}>
+    function createEconomicCharts() {
+        createDurationChart();
+        createActivityStatusChart();
+    }
+
+    function createDurationChart() {
+        const svg = document.getElementById("duration-chart");
+        if (!svg) return;
+        svg.innerHTML = "";
+
+        const data = table13Data.data;
+        const margin = { top: 20, right: 40, bottom: 20, left: 160 };
+        const width = 500; // working width
+        const barHeight = 40;
+        const gap = 15;
+        const height =
+            margin.top + margin.bottom + data.length * (barHeight + gap);
+
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+        const chartWidth = width - margin.left - margin.right;
+        const maxPercentage = Math.max(...data.map((d) => d.percentage));
+
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        svg.appendChild(g);
+
+        data.forEach((item, i) => {
+            const y = margin.top + i * (barHeight + gap);
+            const barWidth = (item.percentage / maxPercentage) * chartWidth;
+
+            // Label
+            const label = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+            );
+            label.setAttribute("x", (margin.left - 10).toString());
+            label.setAttribute("y", (y + barHeight / 2 + 5).toString());
+            label.setAttribute("text-anchor", "end");
+            label.setAttribute("fill", "#e4e4e7");
+            label.setAttribute("font-family", "serif");
+            label.setAttribute("font-size", "12");
+
+            // Shorten label if needed
+            let labelText = item.duration;
+            if (labelText.length > 20) {
+                labelText = labelText.substring(0, 18) + "...";
+                const title = document.createElementNS(
+                    "http://www.w3.org/2000/svg",
+                    "title",
+                );
+                title.textContent = item.duration;
+                label.appendChild(title);
+            }
+            label.textContent = labelText;
+            g.appendChild(label);
+
+            // Bar Bg
+            const bgRect = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect",
+            );
+            bgRect.setAttribute("x", margin.left.toString());
+            bgRect.setAttribute("y", y.toString());
+            bgRect.setAttribute("width", chartWidth.toString());
+            bgRect.setAttribute("height", barHeight.toString());
+            bgRect.setAttribute("fill", "#f2e25d");
+            bgRect.setAttribute("opacity", "0.05");
+            bgRect.setAttribute("rx", "4");
+            g.appendChild(bgRect);
+
+            // Bar
+            const rect = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect",
+            );
+            rect.setAttribute("x", margin.left.toString());
+            rect.setAttribute("y", y.toString());
+            rect.setAttribute("width", barWidth.toString());
+            rect.setAttribute("height", barHeight.toString());
+            rect.setAttribute("fill", "#f2e25d");
+            rect.setAttribute("opacity", "0.8");
+            rect.setAttribute("rx", "4");
+            rect.setAttribute("class", "bar-hover transition-all duration-300");
+            g.appendChild(rect);
+
+            // Percentage
+            const text = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+            );
+            text.setAttribute("x", (margin.left + barWidth + 5).toString());
+            text.setAttribute("y", (y + barHeight / 2 + 5).toString());
+            text.setAttribute("fill", "#f2e25d");
+            text.setAttribute("font-family", "serif");
+            text.setAttribute("font-size", "12");
+            text.textContent = `${item.percentage}%`;
+            g.appendChild(text);
+
+            // Tooltip
+            const tooltip = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "title",
+            );
+            tooltip.textContent = `${item.duration}: ${item.total.toLocaleString()} (${item.percentage}%)`;
+            rect.appendChild(tooltip);
+        });
+    }
+
+    function createActivityStatusChart() {
+        const svg = document.getElementById("activity-status-chart");
+        if (!svg) return;
+        svg.innerHTML = "";
+
+        const activePct = table14Data.percentages.active;
+        const inactivePct = table14Data.percentages.inactive;
+
+        // Data for pie
+        const data = [
+            { value: activePct, color: "#f2e25d", label: "Active" },
+            { value: inactivePct, color: "#a1a1aa", label: "Inactive" }, // Gray for inactive
+        ];
+
+        const radius = 50;
+        const center = 50;
+        let currentAngle = 0;
+
+        data.forEach((item) => {
+            const angle = (item.value / 100) * 360;
+
+            // Calc coordinates
+            const startRad = (currentAngle * Math.PI) / 180;
+            const endRad = ((currentAngle + angle) * Math.PI) / 180;
+
+            const x1 = center + radius * Math.cos(startRad);
+            const y1 = center + radius * Math.sin(startRad);
+            const x2 = center + radius * Math.cos(endRad);
+            const y2 = center + radius * Math.sin(endRad);
+
+            const largeArcFlag = angle > 180 ? 1 : 0;
+            const innerRadius = 38; // Thinner donut
+
+            const x3 = center + innerRadius * Math.cos(endRad);
+            const y3 = center + innerRadius * Math.sin(endRad);
+            const x4 = center + innerRadius * Math.cos(startRad);
+            const y4 = center + innerRadius * Math.sin(startRad);
+
+            const pathData = [
+                `M ${x1} ${y1}`,
+                `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
+                `L ${x3} ${y3}`,
+                `A ${innerRadius} ${innerRadius} 0 ${largeArcFlag} 0 ${x4} ${y4}`,
+                `Z`,
+            ].join(" ");
+
+            const path = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "path",
+            );
+            path.setAttribute("d", pathData);
+            path.setAttribute("fill", item.color);
+            path.setAttribute("class", "bar-hover transition-all duration-300");
+
+            const title = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "title",
+            );
+            title.textContent = `${item.label}: ${item.value}%`;
+            path.appendChild(title);
+
+            svg.appendChild(path);
+
+            // Separator
+            const separator = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "line",
+            );
+            separator.setAttribute("x1", center.toString());
+            separator.setAttribute("y1", center.toString());
+            separator.setAttribute("x2", x2.toString());
+            separator.setAttribute("y2", y2.toString());
+            separator.setAttribute("stroke", "#0a0a0a");
+            separator.setAttribute("stroke-width", "1");
+            svg.appendChild(separator);
+
+            currentAngle += angle;
+        });
+    }
+
+    if (document.readyState === "complete") {
+        createEconomicCharts();
+    } else {
+        window.addEventListener("load", createEconomicCharts);
+    }
+
+    document.addEventListener("astro:page-load", createEconomicCharts);
+</script>
+
+<style>
+    .bar-hover:hover {
+        opacity: 0.9;
+        filter: brightness(1.1);
+    }
+</style>

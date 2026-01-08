@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import MigrationCharts from "../../charts/chapter-3/MigrationCharts.astro";
 
 interface Props {
     lang: Language;
@@ -98,6 +99,11 @@ if (!content) {
                 >
                     {content.subsections.previousResidence.tableTitle}
                 </h4>
+
+                <!-- Migration Chart -->
+                <div class="mb-12">
+                    <MigrationCharts lang={lang} />
+                </div>
 
                 <!-- Premium Table -->
                 <div class="overflow-x-auto mb-6">

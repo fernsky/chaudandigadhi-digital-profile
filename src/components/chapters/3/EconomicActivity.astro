@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import EconomicActivityChart from "../../charts/chapter-3/EconomicActivityChart.astro";
 
 interface Props {
     lang: Language;
@@ -72,6 +73,11 @@ if (!content) {
                     {content.number}
                     {content.title}
                 </h2>
+
+                <!-- Economic Activity Charts -->
+                <div class="mb-12">
+                    <EconomicActivityChart lang={lang} />
+                </div>
             </div>
 
             <!-- Table 13 -->

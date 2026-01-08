@@ -1,0 +1,168 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type PersonalEventsData = {
+    table18: {
+        total: {
+            birthTotal: number;
+            deathTotal: number;
+            marriage: number;
+            divorce: number;
+            migrationIn: number;
+            migrationOut: number;
+        };
+    };
+};
+
+const content = await loadChapterSection<PersonalEventsData>(
+    3,
+    "personal-events",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Personal events data not found");
+}
+
+const totals = content.table18.total;
+
+const chartData = [
+    { label: "Birth", value: totals.birthTotal, labelNe: "जन्म दर्ता" },
+    { label: "Marriage", value: totals.marriage, labelNe: "विवाह दर्ता" },
+    { label: "Death", value: totals.deathTotal, labelNe: "मृत्यु दर्ता" },
+    {
+        label: "Migration In",
+        value: totals.migrationIn,
+        labelNe: "बसाईसराई (आउने)",
+    },
+    {
+        label: "Migration Out",
+        value: totals.migrationOut,
+        labelNe: "बसाईसराई (जाने)",
+    },
+    { label: "Divorce", value: totals.divorce, labelNe: "सम्बन्ध विच्छेद" },
+].sort((a, b) => b.value - a.value);
+---
+
+<div class="space-y-6">
+    <div class="w-full max-w-4xl mx-auto">
+        <svg id="events-chart" class="w-full" style="background: transparent;">
+            <!-- Chart will be rendered by script -->
+        </svg>
+    </div>
+</div>
+
+<script define:vars={{ data: chartData }}>
+    function createEventsChart() {
+        const svg = document.getElementById("events-chart");
+        if (!svg) return;
+
+        svg.innerHTML = "";
+
+        const margin = { top: 20, right: 60, bottom: 40, left: 160 };
+        const width = 800;
+        const barHeight = 40;
+        const gap = 15;
+        const height =
+            margin.top + margin.bottom + data.length * (barHeight + gap);
+
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+        const chartWidth = width - margin.left - margin.right;
+        const maxValue = Math.max(...data.map((d) => d.value));
+
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        svg.appendChild(g);
+
+        data.forEach((item, i) => {
+            const y = margin.top + i * (barHeight + gap);
+            const barWidth = (item.value / maxValue) * chartWidth;
+
+            // Label
+            const label = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+            );
+            label.setAttribute("x", (margin.left - 10).toString());
+            label.setAttribute("y", (y + barHeight / 2 + 5).toString());
+            label.setAttribute("text-anchor", "end");
+            label.setAttribute("fill", "#e4e4e7");
+            label.setAttribute("font-family", "serif");
+            label.setAttribute("font-size", "14");
+            label.textContent = item.labelNe;
+            g.appendChild(label);
+
+            // Bar Background
+            const bgRect = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect",
+            );
+            bgRect.setAttribute("x", margin.left.toString());
+            bgRect.setAttribute("y", y.toString());
+            bgRect.setAttribute("width", chartWidth.toString());
+            bgRect.setAttribute("height", barHeight.toString());
+            bgRect.setAttribute("fill", "#f2e25d");
+            bgRect.setAttribute("opacity", "0.05");
+            bgRect.setAttribute("rx", "4");
+            g.appendChild(bgRect);
+
+            // Bar
+            const rect = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect",
+            );
+            rect.setAttribute("x", margin.left.toString());
+            rect.setAttribute("y", y.toString());
+            rect.setAttribute("width", barWidth.toString());
+            rect.setAttribute("height", barHeight.toString());
+            rect.setAttribute("fill", "#f2e25d");
+            rect.setAttribute("opacity", "0.8");
+            rect.setAttribute("rx", "4");
+            rect.setAttribute("class", "bar-hover transition-all duration-300");
+            g.appendChild(rect);
+
+            // Value Label
+            const text = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+            );
+            text.setAttribute("x", (margin.left + barWidth + 10).toString());
+            text.setAttribute("y", (y + barHeight / 2 + 5).toString());
+            text.setAttribute("fill", "#f2e25d");
+            text.setAttribute("font-family", "serif");
+            text.setAttribute("font-weight", "500");
+            text.textContent = item.value.toLocaleString();
+            g.appendChild(text);
+
+            // Tooltip
+            const title = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "title",
+            );
+            title.textContent = `${item.labelNe}: ${item.value.toLocaleString()}`;
+            rect.appendChild(title);
+        });
+    }
+
+    if (document.readyState === "complete") {
+        createEventsChart();
+    } else {
+        window.addEventListener("load", createEventsChart);
+    }
+
+    document.addEventListener("astro:page-load", createEventsChart);
+</script>
+
+<style>
+    .bar-hover:hover {
+        opacity: 1;
+        fill: #fbbf24;
+    }
+</style>

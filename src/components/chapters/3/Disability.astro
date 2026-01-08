@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import DisabilityChart from "../../charts/chapter-3/DisabilityChart.astro";
 
 interface Props {
     lang: Language;
@@ -105,6 +106,11 @@ if (!content) {
             >
                 {content.tableTitle}
             </h4>
+
+            <!-- Disability Chart -->
+            <div class="mb-12">
+                <DisabilityChart lang={lang} />
+            </div>
 
             <!-- Premium Ultra-Wide Table -->
             <div class="overflow-x-auto mb-6">

@@ -116,7 +116,7 @@
             .selectAll("path")
             .data(wardsGeoJSON.features)
             .join("path")
-            .attr("d", (d) => cleanPath(pathGenerator(d)))
+            .attr("d", (d) => cleanPath(pathGenerator(d as any)))
             .attr("fill", "none")
             .attr("stroke", "rgba(242, 226, 93, 0.15)") // Subtle Golden Glow
             .attr("stroke-width", 10)
@@ -130,7 +130,7 @@
             .selectAll("path")
             .data(wardsGeoJSON.features)
             .join("path")
-            .attr("d", (d) => cleanPath(pathGenerator(d)))
+            .attr("d", (d) => cleanPath(pathGenerator(d as any)))
             .attr("fill", "rgba(0, 0, 0, 0.8)") // Pure black shadow
             .attr("opacity", 0)
             .attr("transform", "translate(8, 12)") // Deeper shadow offset
@@ -143,7 +143,7 @@
             .selectAll("path")
             .data(wardsGeoJSON.features)
             .join("path")
-            .attr("d", (d) => cleanPath(pathGenerator(d)))
+            .attr("d", (d) => cleanPath(pathGenerator(d as any)))
             .attr("fill", "none")
             .attr("stroke", "rgba(255, 255, 255, 0.9)") // Ultra-thick, bright white borders
             .attr("stroke-width", 8.0)
