@@ -94,6 +94,18 @@ const t = getTranslations(lang);
   .mobile-chapter-trigger[aria-expanded="true"] .accordion-icon {
     transform: rotate(180deg);
   }
+
+  .mobile-chapter-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  .mobile-chapter-content:not(.hidden) {
+    max-height: 500px;
+    opacity: 1;
+  }
 </style>
 
 <script>

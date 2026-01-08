@@ -106,9 +106,10 @@ const navLinkInactive = "text-zinc-400 hover:text-white";
   <!-- Mobile Menu Overlay -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 bg-[#050505]/98 backdrop-blur-xl z-40 opacity-0 pointer-events-none transition-all duration-300 md:hidden overflow-y-auto"
+    class="fixed top-0 left-0 right-0 bottom-0 bg-[#050505]/98 backdrop-blur-xl z-40 opacity-0 pointer-events-none transition-all duration-300 md:hidden overflow-y-auto"
+    style="height: 100dvh; width: 100vw;"
   >
-    <div class="min-h-full flex flex-col">
+    <div class="min-h-screen flex flex-col pt-20">
       <nav class="flex-1 px-6 py-8 space-y-6">
         <!-- Home Link -->
         <a
@@ -164,6 +165,7 @@ const navLinkInactive = "text-zinc-400 hover:text-white";
 
     if (isMenuOpen) {
       mobileMenu?.classList.remove("opacity-0", "pointer-events-none");
+      mobileMenu?.classList.add("opacity-100", "pointer-events-auto");
       document.body.style.overflow = "hidden"; // Prevent scrolling
 
       // Icon toggle
@@ -171,6 +173,7 @@ const navLinkInactive = "text-zinc-400 hover:text-white";
       closeIcon?.classList.remove("opacity-0", "rotate-90", "scale-75");
     } else {
       mobileMenu?.classList.add("opacity-0", "pointer-events-none");
+      mobileMenu?.classList.remove("opacity-100", "pointer-events-auto");
       document.body.style.overflow = ""; // Restore scrolling
 
       // Icon toggle
@@ -184,6 +187,7 @@ const navLinkInactive = "text-zinc-400 hover:text-white";
     link.addEventListener("click", () => {
       isMenuOpen = false;
       mobileMenu?.classList.add("opacity-0", "pointer-events-none");
+      mobileMenu?.classList.remove("opacity-100", "pointer-events-auto");
       document.body.style.overflow = "";
       menuIcon?.classList.remove("opacity-0", "-rotate-90", "scale-75");
       closeIcon?.classList.add("opacity-0", "rotate-90", "scale-75");
@@ -195,7 +199,7 @@ const navLinkInactive = "text-zinc-400 hover:text-white";
   if (header && header.classList.contains("absolute")) {
     window.addEventListener("scroll", () => {
       // Don't change background if menu is open
-      if (header.classList.contains("menu-open")) {
+      if (header.classList.contains("menu-open") || isMenuOpen) {
         return;
       }
 
@@ -234,5 +238,20 @@ const navLinkInactive = "text-zinc-400 hover:text-white";
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Mobile Menu Overlay Styles */
+  #mobile-menu {
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+
+  #mobile-menu.opacity-100 {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #mobile-menu.opacity-0 {
+    opacity: 0;
+    visibility: hidden;
   }
 </style>
