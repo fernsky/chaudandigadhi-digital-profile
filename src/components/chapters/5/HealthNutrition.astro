@@ -1,0 +1,166 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSections } from "../../../lib/i18n/chapter-loader";
+import VaccinationChart from "../../charts/chapter-5/VaccinationChart.astro";
+import PopulationPyramid from "../../charts/chapter-5/PopulationPyramid.astro";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const subsections = await loadChapterSections(
+    5,
+    ["health-nutrition", "health-facilities", "vaccination-data", "maternal-health"],
+    lang,
+);
+---
+
+<section id="health-nutrition" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <!-- Health & Nutrition Header -->
+            {
+                subsections["health-nutrition"] && (
+                    <div class="space-y-6">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100">
+                            ५.२ {subsections["health-nutrition"].title}
+                        </h2>
+                        {subsections["health-nutrition"].intro.map((para: any) => (
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                                {para.text}
+                            </p>
+                        ))}
+                    </div>
+                )
+            }
+
+            <!-- Health Facilities -->
+            {
+                subsections["health-facilities"] && (
+                    <div id="health-facilities" class="space-y-6">
+                        <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
+                            ५.२.१ {subsections["health-facilities"].title}
+                        </h3>
+                        <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 overflow-hidden">
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead class="bg-[#050505] border-b border-[#f2e25d]/20">
+                                        <tr>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">क्र.सं.</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">स्वास्थ्य संस्थाको नाम</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">ठेगाना</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">सेवा</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {subsections["health-facilities"].facilities.map((facility: any) => (
+                                            <tr class="border-b border-[#f2e25d]/5 hover:bg-[#050505] transition-colors">
+                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{facility.sn}</td>
+                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{facility.name}</td>
+                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{facility.address}</td>
+                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{facility.services}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+
+            <!-- Vaccination Data -->
+            {
+                subsections["vaccination-data"] && (
+                    <div id="vaccination" class="space-y-6">
+                        <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
+                            ५.२.२ {subsections["vaccination-data"].title}
+                        </h3>
+                        
+                        <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
+                            <h4 class="font-serif text-xl text-zinc-100 font-medium mb-4">
+                                {subsections["vaccination-data"].vaccination.title}
+                            </h4>
+                            <p class="text-zinc-100 font-serif text-base md:text-lg font-light mb-4">
+                                {subsections["vaccination-data"].vaccination.intro}
+                            </p>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                {subsections["vaccination-data"].vaccination.vaccines.map((vaccine: string) => (
+                                    <div class="bg-[#050505] p-3 border border-[#f2e25d]/5 text-center">
+                                        <span class="text-zinc-100 font-serif text-sm">{vaccine}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div class="my-8">
+                            <VaccinationChart lang={lang} />
+                        </div>
+                    </div>
+                )
+            }
+
+            <!-- Maternal Health -->
+            {
+                subsections["maternal-health"] && (
+                    <div id="maternal-health" class="space-y-6">
+                        <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
+                            ५.२.५ {subsections["maternal-health"].title}
+                        </h3>
+
+                        <!-- Population Pyramid -->
+                        <div class="my-8">
+                            <PopulationPyramid lang={lang} />
+                        </div>
+
+                        <!-- Age Group Analysis -->
+                        <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
+                            <h4 class="font-serif text-xl text-zinc-100 font-medium mb-4">
+                                {subsections["maternal-health"].ageGroupAnalysis.title}
+                            </h4>
+                            <p class="text-zinc-100 font-serif text-base md:text-lg font-light mb-6">
+                                {subsections["maternal-health"].ageGroupAnalysis.intro}
+                            </p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                {subsections["maternal-health"].ageGroupAnalysis.ageGroups.map((group: any) => (
+                                    <div class="bg-[#050505] p-4 border border-[#f2e25d]/5">
+                                        <div class="text-[#f2e25d] text-2xl font-bold mb-2">
+                                            {group.percent}%
+                                        </div>
+                                        <div class="text-zinc-100 font-serif text-xs mb-1">
+                                            {group.range} वर्ष
+                                        </div>
+                                        <div class="text-zinc-400 font-serif text-xs">
+                                            {group.count} जना
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+
+            <!-- Top Diseases -->
+            {
+                subsections["health-nutrition"]?.topDiseases && (
+                    <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
+                        <h4 class="font-serif text-xl text-zinc-100 font-medium mb-4">
+                            {subsections["health-nutrition"].topDiseases.title}
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            {subsections["health-nutrition"].topDiseases.diseases.map((disease: string, index: number) => (
+                                <div class="flex items-center space-x-3 bg-[#050505] p-3 border border-[#f2e25d]/5">
+                                    <span class="text-[#f2e25d] font-bold text-lg">{index + 1}.</span>
+                                    <span class="text-zinc-100 font-serif text-sm">{disease}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
+        </div>
+    </div>
+</section>

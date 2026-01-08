@@ -1,0 +1,30 @@
+{
+    "title": "पाँच वर्ष माथिको जनसंख्याको साक्षरता",
+    "sectionId": "literacy-stats",
+    "intro": "साक्षरताले पढ्न र लेख्न सक्ने सीपभन्दा माथि समग्र मानव विकास सूचकलाई इंगित गर्दछ । नगरपालिकामा ५ वर्ष वा सो भन्दा माथिको उमेर समूहका कुल ४९,४७७ जनसंख्या मध्ये ३८,४४५ अर्थात् ७७.७० प्रतिशत साक्षर रहेका छन् ।",
+    "statistics": {
+        "totalPopulation": 49477,
+        "literate": 38445,
+        "literacyRate": 77.70,
+        "readOnly": 118,
+        "readOnlyPercent": 0.24,
+        "illiterate": 10913,
+        "illiteratePercent": 22.06
+    },
+    "formalEducation": {
+        "title": "औपचारिक शिक्षाको आधारमा जनसंख्याको साक्षरताको स्थिति",
+        "ageGroup": "५ वर्ष देखि २५ वर्ष सम्म",
+        "currentlyAttending": {
+            "count": 12105,
+            "percent": 72.93
+        },
+        "previouslyAttended": {
+            "count": 3783,
+            "percent": 22.96
+        },
+        "neverAttended": {
+            "count": 675,
+            "percent": 4.10
+        }
+    }
+}

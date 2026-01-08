@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Language } from "../../../lib/i18n";
+import ChapterHero from "../../../components/chapters/5/ChapterHero.astro";
+import EducationalStatus from "../../../components/chapters/5/EducationalStatus.astro";
+import EducationSubsections from "../../../components/chapters/5/EducationSubsections.astro";
+import HealthNutrition from "../../../components/chapters/5/HealthNutrition.astro";
+import WaterSanitation from "../../../components/chapters/5/WaterSanitation.astro";
+import YouthSports from "../../../components/chapters/5/YouthSports.astro";
+import CultureArts from "../../../components/chapters/5/CultureArts.astro";
+import PeaceSecurity from "../../../components/chapters/5/PeaceSecurity.astro";
+
+export async function getStaticPaths() {
+    return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Language };
+
+const title =
+    lang === "ne" ? "परिच्छेद – ५: सामाजिक अवस्था" : "Chapter 5: Social Status";
+const description =
+    lang === "ne"
+        ? "चौदण्डीगढी नगरपालिकाको शैक्षिक स्थिति, स्वास्थ्य सेवा, खानेपानी तथा सरसफाई, युवा खेलकुद र सांस्कृतिक पहिचान"
+        : "Educational status, health services, water and sanitation, youth sports and cultural identity of Chaudandigadhi Municipality";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+    <!-- Chapter Hero -->
+    <ChapterHero lang={lang} />
+
+    <!-- 5.1 Educational Status and Human Resource Development -->
+    <EducationalStatus lang={lang} />
+    <EducationSubsections lang={lang} />
+
+    <!-- 5.2 Health and Nutrition -->
+    <HealthNutrition lang={lang} />
+
+    <!-- 5.3 Water Supply and Sanitation -->
+    <WaterSanitation lang={lang} />
+
+    <!-- 5.4 Youth, Sports and Recreation -->
+    <YouthSports lang={lang} />
+
+    <!-- 5.5 Art, Language and Culture -->
+    <CultureArts lang={lang} />
+
+    <!-- 5.6 Peace and Security -->
+    <PeaceSecurity lang={lang} />
+</BaseLayout>
+
+<style>
+    /* Smooth scroll behavior */
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+</style>
