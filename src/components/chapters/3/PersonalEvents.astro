@@ -1,0 +1,370 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type PersonalEventsContent = {
+    title: string;
+    sectionId: string;
+    number: string;
+    intro: string[];
+    table18: {
+        title: string;
+        tableData: Array<{
+            ward: string;
+            birthMale: number;
+            birthFemale: number;
+            birthTotal: number;
+            deathMale: number;
+            deathFemale: number;
+            deathTotal: number;
+            divorce: number;
+            marriage: number;
+            migrationIn: number;
+            migrationInMembers: number;
+            migrationOut: number;
+            migrationOutMembers: number;
+            total: number;
+        }>;
+        total: any;
+        source: string;
+    };
+    table19: {
+        title: string;
+        tableTitle: string;
+        analysis: string;
+    };
+    table20: {
+        title: string;
+        tableTitle: string;
+        analysis: string;
+    };
+    table21: {
+        title: string;
+        tableTitle: string;
+        analysis: string;
+    };
+};
+
+const content = await loadChapterSection<PersonalEventsContent>(
+    3,
+    "personal-events",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Personal events content not found");
+}
+---
+
+<section id="vital-events" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-full mx-auto">
+            <!-- Section Header -->
+            <div class="mb-6 max-w-4xl mx-auto">
+                <h2
+                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
+                >
+                    {content.number}
+                    {content.title}
+                </h2>
+
+                <!-- Intro Paragraphs -->
+                <div class="space-y-4">
+                    {
+                        content.intro.map((para) => (
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                                {para}
+                            </p>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Table 18: Personal Events Registration -->
+            <div class="mb-12">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 max-w-4xl mx-auto"
+                >
+                    {content.table18.title}
+                </h4>
+
+                <!-- Ultra-Wide Table -->
+                <div class="overflow-x-auto mb-6">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-xs"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20"
+                            >
+                                <th
+                                    class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10 sticky left-0 bg-[#0a0a0a] z-10"
+                                    rowspan="2">वडा</th
+                                >
+                                <th
+                                    class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    colspan="3">जन्म</th
+                                >
+                                <th
+                                    class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    colspan="3">मृत्यु</th
+                                >
+                                <th
+                                    class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    rowspan="2">सम्बन्ध विच्छेद</th
+                                >
+                                <th
+                                    class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    rowspan="2">विवाह</th
+                                >
+                                <th
+                                    class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    colspan="2">बसाइँसराई आएको</th
+                                >
+                                <th
+                                    class="px-2 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    colspan="2">बसाइँसराई गएको</th
+                                >
+                                <th
+                                    class="px-2 py-3 text-center font-serif text-zinc-100 font-medium"
+                                    rowspan="2">जम्मा</th
+                                >
+                            </tr>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20"
+                            >
+                                <th
+                                    class="px-2 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >पु</th
+                                >
+                                <th
+                                    class="px-2 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >म</th
+                                >
+                                <th
+                                    class="px-2 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >जम्मा</th
+                                >
+                                <th
+                                    class="px-2 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >पु</th
+                                >
+                                <th
+                                    class="px-2 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >म</th
+                                >
+                                <th
+                                    class="px-2 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >जम्मा</th
+                                >
+                                <th
+                                    class="px-2 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >परिवार</th
+                                >
+                                <th
+                                    class="px-2 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >सदस्य</th
+                                >
+                                <th
+                                    class="px-2 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >परिवार</th
+                                >
+                                <th
+                                    class="px-2 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >सदस्य</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.table18.tableData.map((row) => (
+                                    <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5 sticky left-0 bg-[#0a0a0a]">
+                                            {row.ward}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.birthMale}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.birthFemale}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.birthTotal}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.deathMale}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.deathFemale}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.deathTotal}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.divorce}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.marriage}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.migrationIn}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.migrationInMembers}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.migrationOut}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                            {row.migrationOutMembers}
+                                        </td>
+                                        <td class="px-2 py-3 font-serif text-zinc-100 text-right font-medium">
+                                            {row.total}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                            <!-- Total Row -->
+                            <tr
+                                class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
+                            >
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/10 sticky left-0 bg-[#0a0a0a]"
+                                    >जम्मा</td
+                                >
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.birthMale}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.birthFemale}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.birthTotal}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.deathMale}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.deathFemale}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.deathTotal}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.divorce}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.marriage}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.migrationIn}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.migrationInMembers}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.migrationOut}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                >
+                                    {content.table18.total.migrationOutMembers}
+                                </td>
+                                <td
+                                    class="px-2 py-3 font-serif text-zinc-100 text-right"
+                                >
+                                    {content.table18.total.total}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p
+                    class="text-zinc-400 font-serif text-sm italic max-w-4xl mx-auto"
+                >
+                    स्रोतM {content.table18.source}
+                </p>
+            </div>
+
+            <!-- Table 19: Birth Registration -->
+            <div class="mb-12 max-w-4xl mx-auto">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+                >
+                    {content.table19.title}
+                </h4>
+                <h5 class="font-serif text-lg text-zinc-100 mb-4">
+                    {content.table19.tableTitle}
+                </h5>
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {content.table19.analysis}
+                </p>
+            </div>
+
+            <!-- Table 20: Death by Age and Gender -->
+            <div class="mb-12 max-w-4xl mx-auto">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+                >
+                    {content.table20.title}
+                </h4>
+                <h5 class="font-serif text-lg text-zinc-100 mb-4">
+                    {content.table20.tableTitle}
+                </h5>
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {content.table20.analysis}
+                </p>
+            </div>
+
+            <!-- Table 21: Death Causes -->
+            <div class="max-w-4xl mx-auto">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+                >
+                    {content.table21.title}
+                </h4>
+                <h5 class="font-serif text-lg text-zinc-100 mb-4">
+                    {content.table21.tableTitle}
+                </h5>
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {content.table21.analysis}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

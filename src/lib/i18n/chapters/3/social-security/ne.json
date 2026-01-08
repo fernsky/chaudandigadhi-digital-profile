@@ -1,0 +1,142 @@
+{
+    "title": "सामाजिक सुरक्षा कार्यक्रमबाट लाभान्वित विवरण",
+    "sectionId": "social-security",
+    "number": "३.१३",
+    "tableTitle": "तालिका नं. 22: सामाजिक सुरक्षा भत्ता प्राप्त गर्ने लाभग्राहीहरुको संख्यात्मक विवरण",
+    "tableData": [
+        {
+            "ward": "१",
+            "elderlyGeneral": 1241,
+            "elderlyDalit": 85,
+            "elderlySingleWomen": 81,
+            "widow": 183,
+            "disabilityFull": 36,
+            "disabilitySevere": 128,
+            "dalitChildren": 112,
+            "total": 1866
+        },
+        {
+            "ward": "२",
+            "elderlyGeneral": 1513,
+            "elderlyDalit": 205,
+            "elderlySingleWomen": 125,
+            "widow": 319,
+            "disabilityFull": 63,
+            "disabilitySevere": 111,
+            "dalitChildren": 439,
+            "total": 2775
+        },
+        {
+            "ward": "३",
+            "elderlyGeneral": 981,
+            "elderlyDalit": 215,
+            "elderlySingleWomen": 113,
+            "widow": 254,
+            "disabilityFull": 80,
+            "disabilitySevere": 107,
+            "dalitChildren": 398,
+            "total": 2148
+        },
+        {
+            "ward": "४",
+            "elderlyGeneral": 1967,
+            "elderlyDalit": 342,
+            "elderlySingleWomen": 243,
+            "widow": 443,
+            "disabilityFull": 56,
+            "disabilitySevere": 173,
+            "dalitChildren": 381,
+            "total": 3605
+        },
+        {
+            "ward": "५",
+            "elderlyGeneral": 1692,
+            "elderlyDalit": 72,
+            "elderlySingleWomen": 185,
+            "widow": 276,
+            "disabilityFull": 66,
+            "disabilitySevere": 112,
+            "dalitChildren": 185,
+            "total": 2588
+        },
+        {
+            "ward": "६",
+            "elderlyGeneral": 1438,
+            "elderlyDalit": 132,
+            "elderlySingleWomen": 166,
+            "widow": 344,
+            "disabilityFull": 65,
+            "disabilitySevere": 76,
+            "dalitChildren": 215,
+            "total": 2436
+        },
+        {
+            "ward": "७",
+            "elderlyGeneral": 1520,
+            "elderlyDalit": 130,
+            "elderlySingleWomen": 216,
+            "widow": 301,
+            "disabilityFull": 55,
+            "disabilitySevere": 93,
+            "dalitChildren": 137,
+            "total": 2452
+        },
+        {
+            "ward": "८",
+            "elderlyGeneral": 960,
+            "elderlyDalit": 40,
+            "elderlySingleWomen": 107,
+            "widow": 189,
+            "disabilityFull": 76,
+            "disabilitySevere": 140,
+            "dalitChildren": 147,
+            "total": 1659
+        },
+        {
+            "ward": "९",
+            "elderlyGeneral": 1982,
+            "elderlyDalit": 115,
+            "elderlySingleWomen": 197,
+            "widow": 360,
+            "disabilityFull": 87,
+            "disabilitySevere": 244,
+            "dalitChildren": 268,
+            "total": 3253
+        },
+        {
+            "ward": "१०",
+            "elderlyGeneral": 1389,
+            "elderlyDalit": 51,
+            "elderlySingleWomen": 147,
+            "widow": 252,
+            "disabilityFull": 37,
+            "disabilitySevere": 157,
+            "dalitChildren": 120,
+            "total": 2153
+        }
+    ],
+    "total": {
+        "elderlyGeneral": 14683,
+        "elderlyDalit": 1387,
+        "elderlySingleWomen": 1580,
+        "widow": 2921,
+        "disabilityFull": 621,
+        "disabilitySevere": 1341,
+        "dalitChildren": 2402,
+        "total": 24935
+    },
+    "source": "नगर कार्यपालिकाको कार्यालय",
+    "categories": {
+        "elderlyGeneral": "अन्य ज्येष्ठ नागरिक भत्ता",
+        "elderlyDalit": "ज्येष्ठ नागरिक भत्ता (दलित)",
+        "elderlySingleWomen": "ज्येष्ठ नागरिक भत्ता (एकल महिला)",
+        "widow": "विधवा",
+        "disabilityFull": "पूर्ण अपाङ्गता भत्ता",
+        "disabilitySevere": "अति अशक्त अपाङ्गता भत्ता",
+        "dalitChildren": "दलित बालबालिका"
+    },
+    "intro": "यस नगरपालिकामा आ.व. २०८०/०८१ मा अन्य ज्येष्ठ नागरिक भत्ता प्राप्त गर्नेको संख्या १४,६८३ जना, दलित समुदायबाट ज्येष्ठ नागरिक भत्ता प्राप्त गर्नेको संख्या १,३८७ जना, एकल महिला भत्ता प्राप्त गर्ने महिलाको संख्या १,५८० जना रहका छन् । यसैगरी यहाँ विधवा भत्ता प्राप्त गर्ने महिलाको संख्या २,९२१ जना, पूर्ण अपाङ्गता भत्ता प्राप्त गर्ने (क वर्गका) ६२१ जना, अति अशक्त अपाङ्गता भत्ता प्राप्त गर्ने (ख वर्गका) १,३४१ जना, दलित बालबालिका भत्ता प्राप्त गर्ने २,४०२ गरी जम्मा २४,९३५ जनाले सामाजिक सुरक्षा भत्ता प्राप्त गरेका छन् जसको वडागत विवरण तालिकामा प्रस्तुत गरिएको छ ।",
+    "policyInfo": [
+        "सामाजिक सुरक्षा ऐन, २०७५ अनुसार देहाय बमोजिमका नेपाली नागरिकलाई सामाजिक सुरक्षा भत्ता पाउने उल्लेख गरिएको छ । (क) ज्येष्ठ नागरिक, (ख) आर्थिक रूपले विपन्न, (ग) अशक्त र असहाय अवस्थामा रहेका व्यक्ति, (घ) असहाय एकल महिला (ङ) अपाङ्गता भएका, (च) बालबालिका (छ) आफ्नो हेरचाह आफैँ गर्न नसक्ने (ज) लोपोन्मुख जाति आदि ।"
+    ]
+}

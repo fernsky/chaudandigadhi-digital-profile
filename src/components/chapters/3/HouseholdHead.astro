@@ -1,0 +1,175 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type HouseholdHeadContent = {
+    title: string;
+    sectionId: string;
+    number: string;
+    tableTitle: string;
+    tableData: Array<{
+        ageGroup: string;
+        maleHead: number;
+        femaleHead: number;
+        total: number;
+    }>;
+    total: {
+        maleHead: number;
+        femaleHead: number;
+        total: number;
+    };
+    percentages: {
+        male: number;
+        female: number;
+    };
+    source: string;
+    analysis: string;
+};
+
+const content = await loadChapterSection<HouseholdHeadContent>(
+    3,
+    "household-head",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Household head content not found");
+}
+---
+
+<section id="household-head" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Header -->
+            <div class="mb-6">
+                <h2
+                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
+                >
+                    {content.number}
+                    {content.title}
+                </h2>
+            </div>
+
+            <!-- Table Title -->
+            <h4
+                class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+            >
+                {content.tableTitle}
+            </h4>
+
+            <!-- Premium Table -->
+            <div class="overflow-x-auto mb-6">
+                <table
+                    class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10"
+                >
+                    <thead>
+                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                            <th
+                                class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >उमेर समूह</th
+                            >
+                            <th
+                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >पुरुष परिवारमूली</th
+                            >
+                            <th
+                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >महिला परिवारमूली</th
+                            >
+                            <th
+                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
+                                >जम्मा परिवार संख्या</th
+                            >
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            content.tableData.map((row) => (
+                                <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                    <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
+                                        {row.ageGroup}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.maleHead.toLocaleString()}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.femaleHead.toLocaleString()}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right">
+                                        {row.total.toLocaleString()}
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                        <!-- Total Row -->
+                        <tr
+                            class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
+                        >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
+                                >जम्मा</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.maleHead.toLocaleString()}
+                            </td>
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.femaleHead.toLocaleString()}
+                            </td>
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right"
+                            >
+                                {content.total.total.toLocaleString()}
+                            </td>
+                        </tr>
+                        <!-- Percentage Row -->
+                        <tr class="bg-[#f2e25d]/5">
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
+                                >प्रतिशत</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.percentages.male.toFixed(2)}
+                            </td>
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.percentages.female.toFixed(2)}
+                            </td>
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right"
+                            >
+                                100
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Source -->
+            <p class="text-zinc-400 font-serif text-sm italic mb-6">
+                स्रोतM {content.source}
+            </p>
+
+            <!-- Analysis -->
+            <div class="mt-6">
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {content.analysis}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
