@@ -1,0 +1,153 @@
+---
+interface Props {
+    data: any[]; // Complex array with regions
+}
+
+const { data } = Astro.props;
+
+// Aggregate by Destination Region (summing all age/gender rows)
+// Regions in JSON keys: "india", "saarc", "asian", "middleEast", "otherAsian", "europe", "otherEurope", "northAmerica", "southAmerica", "africa", "pacific", "other", "unknown"
+const regions = [
+    { key: "india", label: "भारत" },
+    { key: "saarc", label: "अन्य सार्क" },
+    { key: "middleEast", label: "मध्यपूर्व (खाडी)" }, // High volume usually
+    { key: "asian", label: "अन्य एशिया" }, // "asian" + "otherAsian"? JSON has "asian" and "otherAsian". Check JSON content.
+    // JSON keys: "asian", "otherAsian".
+    { key: "europe", label: "युरोप" }, // "europe" + "otherEurope"
+    { key: "northAmerica", label: "उत्तर अमेरिका" },
+    { key: "pacific", label: "अष्ट्रेलिया/प्यासिफिक" },
+    { key: "other", label: "अन्य" },
+];
+
+// Helper to sum a key across all rows
+const sumKey = (key: string) =>
+    data.reduce((sum, row) => sum + (row[key] || 0), 0);
+
+// Compute chart data
+const chartData = regions
+    .map((r) => {
+        let val = sumKey(r.key);
+        // Combine sub-regions if needed
+        if (r.key === "asian") val += sumKey("otherAsian");
+        if (r.key === "europe") val += sumKey("otherEurope");
+        if (r.key === "other")
+            val +=
+                sumKey("southAmerica") + sumKey("africa") + sumKey("unknown");
+
+        return { label: r.label, value: val };
+    })
+    .sort((a, b) => b.value - a.value);
+
+const total = chartData.reduce((a, b) => a + b.value, 0);
+---
+
+<div
+    class="relative w-full h-[600px] bg-zinc-900/50 rounded-xl border border-zinc-800 p-6 backdrop-blur-sm"
+>
+    <div class="absolute top-6 left-6 z-10">
+        <h3 class="text-xl font-serif text-amber-500">
+            वैदेशिक रोजगार गन्तव्य
+        </h3>
+        <p class="text-sm text-zinc-400">
+            कुल संख्या: {total.toLocaleString("ne-NP")}
+        </p>
+    </div>
+
+    <svg id="foreign-employment-chart" class="w-full h-full"></svg>
+</div>
+
+<script is:inline define:vars={{ initialData: chartData }}>
+    const data = initialData;
+    const svg = document.getElementById("foreign-employment-chart");
+
+    if (svg) {
+        const margin = { top: 80, right: 60, bottom: 40, left: 160 };
+        const width = svg.clientWidth || 800;
+        const height = svg.clientHeight || 600;
+
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+        const chartWidth = width - margin.left - margin.right;
+        const chartHeight = height - margin.top - margin.bottom;
+
+        const maxVal = Math.max(...data.map((d) => d.value));
+        const barHeight = Math.min(50, chartHeight / data.length - 15);
+        const gap = 15;
+
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        svg.appendChild(g);
+
+        data.forEach((item, i) => {
+            const y = margin.top + i * (barHeight + gap);
+            const barWidth = (item.value / maxVal) * chartWidth;
+
+            // Label
+            const label = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+            );
+            label.setAttribute("x", (margin.left - 10).toString());
+            label.setAttribute("y", (y + barHeight / 2 + 5).toString());
+            label.setAttribute("text-anchor", "end");
+            label.setAttribute("fill", "#e4e4e7");
+            label.setAttribute("font-family", "serif");
+            label.setAttribute("font-size", "14px");
+            label.textContent = item.label;
+            g.appendChild(label);
+
+            // Bar Background
+            const bgRect = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect",
+            );
+            bgRect.setAttribute("x", margin.left.toString());
+            bgRect.setAttribute("y", y.toString());
+            bgRect.setAttribute("width", chartWidth.toString());
+            bgRect.setAttribute("height", barHeight.toString());
+            bgRect.setAttribute("fill", "#3f3f46");
+            bgRect.setAttribute("opacity", "0.2");
+            bgRect.setAttribute("rx", "4");
+            g.appendChild(bgRect);
+
+            // Bar
+            const rect = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect",
+            );
+            rect.setAttribute("x", margin.left.toString());
+            rect.setAttribute("y", y.toString());
+            rect.setAttribute("width", "0");
+            rect.setAttribute("height", barHeight.toString());
+            rect.setAttribute("fill", "#8b5cf6"); // violet-500
+            rect.setAttribute("opacity", "0.9");
+            rect.setAttribute("rx", "4");
+            rect.style.transition = "width 1s ease-out";
+            g.appendChild(rect);
+
+            setTimeout(() => {
+                rect.setAttribute("width", barWidth.toString());
+            }, 100);
+
+            // Value text
+            const valueText = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+            );
+            valueText.setAttribute(
+                "x",
+                (margin.left + barWidth + 10).toString(),
+            );
+            valueText.setAttribute("y", (y + barHeight / 2 + 5).toString());
+            valueText.setAttribute("fill", "#a78bfa"); // violet-400
+            valueText.setAttribute("font-weight", "bold");
+            valueText.textContent = item.value.toLocaleString("ne-NP");
+            valueText.style.opacity = "0";
+            valueText.style.transition = "opacity 0.5s ease-out 0.8s";
+            g.appendChild(valueText);
+
+            setTimeout(() => {
+                valueText.style.opacity = "1";
+            }, 100);
+        });
+    }
+</script>

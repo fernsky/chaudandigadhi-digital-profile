@@ -1,0 +1,476 @@
+{
+    "title": "प्रमुख आर्थिक विवरण",
+    "description": "मुख्यतयाः नेपाली अर्थतन्त्र कृषि, पर्यटन, साना तथा घरेलु उद्योग, वैदेशिक रोजगार, बैङ्किङ, व्यापार, सेवा क्षेत्र आदिमा केन्द्रित छ । उच्च प्रविधिमा आधारित अन्तराष्ट्रियस्तरका उद्योगहरूको विकास भई नसकेको अवस्थामा धेरै जसो आर्थिक क्रियाकलापहरू निर्वाहमूखी नै रहेका छन् ।",
+    "sections": {
+        "industrialClassification": {
+            "title": "४.१.१ आर्थिक कामको औद्योगिक क्षेत्र वर्गीकरण अनुसारको जनसंख्या",
+            "subtitle": "तालिका नं. २३: आर्थिक रुपले सकृय जनसंख्याको मूख्य औद्योगिक क्षेत्र अनुसारको विवरण",
+            "description": "नगरपालिकामा रहेका १० वर्ष उमेर समूह माथिका कुल जनसंख्या मध्ये २९,००१ जनाले कुनै न कुनै किसिमको आर्थिक क्रियाकलापमा आबद्ध भई आर्थिक आम्दानी गरिरहेका छन् । यी मध्ये सबैभन्दा बढी कृषि, वन तथा पशुपालन कार्यमा २०,४८९ जना संलग्न रहेका छन् ।",
+            "chartData": {
+                "columns": [
+                    "Sector",
+                    "6+ Months",
+                    "3-5 Months",
+                    "1-2 Months",
+                    "Total"
+                ],
+                "rows": [
+                    {
+                        "sector": "कृषि वन तथा पशुपालन",
+                        "sixMonths": 12852,
+                        "threeToFive": 4114,
+                        "oneToTwo": 3523,
+                        "total": 20489
+                    },
+                    {
+                        "sector": "खानी तथा उत्खनन्",
+                        "sixMonths": 29,
+                        "threeToFive": 10,
+                        "oneToTwo": 3,
+                        "total": 42
+                    },
+                    {
+                        "sector": "औद्योगिक उत्पादन",
+                        "sixMonths": 469,
+                        "threeToFive": 56,
+                        "oneToTwo": 42,
+                        "total": 567
+                    },
+                    {
+                        "sector": "विद्युत ग्याँस बाफ तथा वातानुकुलित सेवा",
+                        "sixMonths": 44,
+                        "threeToFive": 6,
+                        "oneToTwo": 3,
+                        "total": 53
+                    },
+                    {
+                        "sector": "पानीको आपूर्ति ढल निकास, फोहोर व्यवस्थापन",
+                        "sixMonths": 27,
+                        "threeToFive": 1,
+                        "oneToTwo": 2,
+                        "total": 30
+                    },
+                    {
+                        "sector": "निर्माण",
+                        "sixMonths": 1065,
+                        "threeToFive": 450,
+                        "oneToTwo": 462,
+                        "total": 1977
+                    },
+                    {
+                        "sector": "थोक एवं खुद्रा व्यापार",
+                        "sixMonths": 1172,
+                        "threeToFive": 705,
+                        "oneToTwo": 945,
+                        "total": 2822
+                    },
+                    {
+                        "sector": "यातायात तथा भण्डारण",
+                        "sixMonths": 361,
+                        "threeToFive": 33,
+                        "oneToTwo": 8,
+                        "total": 402
+                    },
+                    {
+                        "sector": "आवास तथा भोज सम्बन्धी कृयाकलाप",
+                        "sixMonths": 184,
+                        "threeToFive": 16,
+                        "oneToTwo": 5,
+                        "total": 205
+                    },
+                    {
+                        "sector": "सूचना तथा सञ्चार",
+                        "sixMonths": 43,
+                        "threeToFive": 3,
+                        "oneToTwo": 0,
+                        "total": 46
+                    },
+                    {
+                        "sector": "घर जग्गा कारोबारका लागि",
+                        "sixMonths": 134,
+                        "threeToFive": 3,
+                        "oneToTwo": 3,
+                        "total": 140
+                    },
+                    {
+                        "sector": "पशु चिकित्सा तथा पशु स्वास्थ्य सम्बन्धी",
+                        "sixMonths": 4,
+                        "threeToFive": 1,
+                        "oneToTwo": 0,
+                        "total": 5
+                    },
+                    {
+                        "sector": "पेशागत, वैज्ञानिक तथा प्राविधिक कृयाकलापहरु",
+                        "sixMonths": 40,
+                        "threeToFive": 3,
+                        "oneToTwo": 1,
+                        "total": 44
+                    },
+                    {
+                        "sector": "प्रशासनिक तथा सहयोगी सेवाका कृयाकलापहरु",
+                        "sixMonths": 20,
+                        "threeToFive": 1,
+                        "oneToTwo": 1,
+                        "total": 22
+                    },
+                    {
+                        "sector": "सार्वजनिक प्रशासन र सुरक्षा सम्बन्धी कृयाकलाप",
+                        "sixMonths": 241,
+                        "threeToFive": 9,
+                        "oneToTwo": 8,
+                        "total": 258
+                    },
+                    {
+                        "sector": "शिक्षा सम्बन्धी",
+                        "sixMonths": 671,
+                        "threeToFive": 17,
+                        "oneToTwo": 10,
+                        "total": 698
+                    },
+                    {
+                        "sector": "मानव स्वास्थ्य तथा सामाजिक कार्य सम्बन्धी",
+                        "sixMonths": 136,
+                        "threeToFive": 8,
+                        "oneToTwo": 1,
+                        "total": 145
+                    },
+                    {
+                        "sector": "कला मनोरञ्जनसँग सम्बन्धी",
+                        "sixMonths": 22,
+                        "threeToFive": 3,
+                        "oneToTwo": 0,
+                        "total": 25
+                    },
+                    {
+                        "sector": "अन्य",
+                        "sixMonths": 104,
+                        "threeToFive": 292,
+                        "oneToTwo": 374,
+                        "total": 770
+                    },
+                    {
+                        "sector": "घर परिवारका घरायसी कृयाकलाप सम्बन्धी",
+                        "sixMonths": 138,
+                        "threeToFive": 72,
+                        "oneToTwo": 42,
+                        "total": 252
+                    },
+                    {
+                        "sector": "बाह्य संघ संस्था तथा यसका अंगहरु सम्बन्धी",
+                        "sixMonths": 9,
+                        "threeToFive": 0,
+                        "oneToTwo": 0,
+                        "total": 9
+                    }
+                ]
+            }
+        },
+        "importExport": {
+            "title": "४.१.३ आयात तथा निर्यातको अवस्था",
+            "content": "कुनै पनि नगरपालिका आर्थिक रूपले सबल हुनका लागि आयातभन्दा निर्यात बढी हुनु अनिवार्य छ । आयातभन्दा निर्यातको आयतन ठूलो हुँदा यसले व्यापार नाफा वृद्धि भई आर्थिकस्तर माथि उठ्न मद्दत गर्दछ । नगरपालिकाभित्र उत्पादन हुने उपजहरूलाई प्रवद्र्धन गरी स्थानीयस्तरमा उत्पादन हुने उपजमा आत्मनिर्भर भई निर्यात बढाउन सकेमात्र नगरपालिकाको आर्थिक हैसियत वृद्धि हुन सक्छ । नगरपालिकाबाट अदुवा, बेसार, धान, केरा, कागती लगायतका कृषि उपजहरु तथा बाख्रा, कुखुरा, बंगुर लगायतका पशुजन्य उत्पादनहरु निर्यात गर्ने गरिन्छ भने अतिरिक्त खाद्य सामग्री, तरकारी, लत्ता कपडा, घरायसी विद्युतीय उपकरण, निर्माण सामग्रीहरु, शिक्षण सामग्री, रसायनिक मल, फलफूल स्वास्थ्य औषधी तथा उपकरण जस्ता वस्तुहरुको आयात हुने गरेको छ । निर्यातभन्दा आयात बढी हुनुले नगरपालिकाको व्यापार घाटा स्पष्ट अनुमान गर्न सकिन्छ । यद्यपि यकिन तथ्याङ्कका लागि भने नगरपालिकाले विशेष पहलकदमी लिन जरुरी छ ।"
+        },
+        "rawMaterials": {
+            "title": "४.१.४ औद्योगिक कच्चा पदार्थ उत्पादनको अवस्था",
+            "content": "स्थानीय श्रोतमा आधारित कच्चा पदार्थको प्रचुरताका हिसाबले नेपाल सम्पन्न रहेतापनि यसको दिगो सदुपयोगमा भने निकै पछाडि परेको यथार्थ हामी सामु छ । हामी कहाँ उपलब्ध श्रोतहरूमा काठ, जडिबुटी, फलफूल, खाद्यान्न, तरकारी आदि पर्दछन् । यस प्रकारका कच्चा पदार्थहरूको व्यवसायिक उत्पादन र दिगो सदुपयोग गर्दा नगरपालिकाको अर्थतन्त्रमा प्रत्यक्ष सकारात्मक योगदान पुग्दछ । साथै व्यवसायिक पशुपालनबाट पनि प्रशस्त लाभ उठाउन सकिन्छ ।"
+        },
+        "foreignEmployment": {
+            "title": "४.१.५ वैदेशिक रोजगारीमा गएकाहरूको विवरण",
+            "subtitle": "तालिका नं. २८: नगरपालिकामा रहेका वैदेशिक रोजगारीमा गएका जनसंख्याको विवरण",
+            "description": "यस नगरपालिकाबाट विभिन्न देशहरूमा वैदेशिक रोजगारीमा जानेहरूको संख्या ४,०१६ रहेको छ । उमेरगत रूपमा विश्लेषण गर्दा सबैभन्दा बढी २५–३४ उमेर समूहका १,६१६ जना वैदेशिक रोजगारीमा गएका छन् भने सबैभन्दा कम ६५ वर्ष माथि उमेर समूहका १२ जना वैदेशिक रोजगारीमा गएका छन् । वैदेशिक रोजगारीमा गएका मध्ये सबैभन्दा बढी मध्यपूर्वी देश जानेहरुको संख्या रहेको छ ।",
+            "chartData": [
+                {
+                    "ageGroup": "०-१४ वर्ष",
+                    "gender": "पुरुष",
+                    "india": 35,
+                    "saarc": 0,
+                    "asian": 8,
+                    "middleEast": 12,
+                    "otherAsian": 2,
+                    "europe": 0,
+                    "otherEurope": 8,
+                    "northAmerica": 7,
+                    "southAmerica": 0,
+                    "africa": 0,
+                    "pacific": 0,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 72
+                },
+                {
+                    "ageGroup": "०-१४ वर्ष",
+                    "gender": "महिला",
+                    "india": 38,
+                    "saarc": 0,
+                    "asian": 2,
+                    "middleEast": 3,
+                    "otherAsian": 2,
+                    "europe": 0,
+                    "otherEurope": 5,
+                    "northAmerica": 11,
+                    "southAmerica": 0,
+                    "africa": 0,
+                    "pacific": 2,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 63
+                },
+                {
+                    "ageGroup": "१५-२४ वर्ष",
+                    "gender": "पुरुष",
+                    "india": 169,
+                    "saarc": 2,
+                    "asian": 277,
+                    "middleEast": 759,
+                    "otherAsian": 48,
+                    "europe": 10,
+                    "otherEurope": 32,
+                    "northAmerica": 9,
+                    "southAmerica": 1,
+                    "africa": 2,
+                    "pacific": 11,
+                    "other": 3,
+                    "unknown": 3,
+                    "total": 1326
+                },
+                {
+                    "ageGroup": "१५-२४ वर्ष",
+                    "gender": "महिला",
+                    "india": 28,
+                    "saarc": 0,
+                    "asian": 13,
+                    "middleEast": 65,
+                    "otherAsian": 43,
+                    "europe": 13,
+                    "otherEurope": 18,
+                    "northAmerica": 7,
+                    "southAmerica": 0,
+                    "africa": 1,
+                    "pacific": 10,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 198
+                },
+                {
+                    "ageGroup": "२५-३४ वर्ष",
+                    "gender": "पुरुष",
+                    "india": 85,
+                    "saarc": 4,
+                    "asian": 261,
+                    "middleEast": 959,
+                    "otherAsian": 44,
+                    "europe": 20,
+                    "otherEurope": 21,
+                    "northAmerica": 16,
+                    "southAmerica": 1,
+                    "africa": 2,
+                    "pacific": 8,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 1421
+                },
+                {
+                    "ageGroup": "२५-३४ वर्ष",
+                    "gender": "महिला",
+                    "india": 30,
+                    "saarc": 0,
+                    "asian": 20,
+                    "middleEast": 78,
+                    "otherAsian": 16,
+                    "europe": 13,
+                    "otherEurope": 19,
+                    "northAmerica": 10,
+                    "southAmerica": 0,
+                    "africa": 0,
+                    "pacific": 8,
+                    "other": 0,
+                    "unknown": 1,
+                    "total": 195
+                },
+                {
+                    "ageGroup": "३५-४४ वर्ष",
+                    "gender": "पुरुष",
+                    "india": 36,
+                    "saarc": 1,
+                    "asian": 115,
+                    "middleEast": 340,
+                    "otherAsian": 11,
+                    "europe": 6,
+                    "otherEurope": 8,
+                    "northAmerica": 8,
+                    "southAmerica": 0,
+                    "africa": 1,
+                    "pacific": 4,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 530
+                },
+                {
+                    "ageGroup": "३५-४४ वर्ष",
+                    "gender": "महिला",
+                    "india": 6,
+                    "saarc": 0,
+                    "asian": 3,
+                    "middleEast": 25,
+                    "otherAsian": 4,
+                    "europe": 2,
+                    "otherEurope": 4,
+                    "northAmerica": 2,
+                    "southAmerica": 0,
+                    "africa": 1,
+                    "pacific": 0,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 47
+                },
+                {
+                    "ageGroup": "४५-५४ वर्ष",
+                    "gender": "पुरुष",
+                    "india": 26,
+                    "saarc": 1,
+                    "asian": 7,
+                    "middleEast": 47,
+                    "otherAsian": 4,
+                    "europe": 1,
+                    "otherEurope": 1,
+                    "northAmerica": 0,
+                    "southAmerica": 0,
+                    "africa": 0,
+                    "pacific": 0,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 87
+                },
+                {
+                    "ageGroup": "४५-५४ वर्ष",
+                    "gender": "महिला",
+                    "india": 3,
+                    "saarc": 1,
+                    "asian": 0,
+                    "middleEast": 1,
+                    "otherAsian": 0,
+                    "europe": 0,
+                    "otherEurope": 4,
+                    "northAmerica": 0,
+                    "southAmerica": 0,
+                    "africa": 0,
+                    "pacific": 0,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 9
+                },
+                {
+                    "ageGroup": "५५-६४ वर्ष",
+                    "gender": "पुरुष",
+                    "india": 4,
+                    "saarc": 0,
+                    "asian": 1,
+                    "middleEast": 1,
+                    "otherAsian": 0,
+                    "europe": 0,
+                    "otherEurope": 2,
+                    "northAmerica": 1,
+                    "southAmerica": 0,
+                    "africa": 0,
+                    "pacific": 0,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 9
+                },
+                {
+                    "ageGroup": "५५-६४ वर्ष",
+                    "gender": "महिला",
+                    "india": 2,
+                    "saarc": 0,
+                    "asian": 0,
+                    "middleEast": 0,
+                    "otherAsian": 0,
+                    "europe": 0,
+                    "otherEurope": 5,
+                    "northAmerica": 0,
+                    "southAmerica": 0,
+                    "africa": 0,
+                    "pacific": 0,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 7
+                },
+                {
+                    "ageGroup": "६५+ वर्ष",
+                    "gender": "पुरुष",
+                    "india": 2,
+                    "saarc": 0,
+                    "asian": 0,
+                    "middleEast": 1,
+                    "otherAsian": 0,
+                    "europe": 0,
+                    "otherEurope": 3,
+                    "northAmerica": 0,
+                    "southAmerica": 0,
+                    "africa": 0,
+                    "pacific": 0,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 6
+                },
+                {
+                    "ageGroup": "६५+ वर्ष",
+                    "gender": "महिला",
+                    "india": 1,
+                    "saarc": 0,
+                    "asian": 0,
+                    "middleEast": 0,
+                    "otherAsian": 0,
+                    "europe": 0,
+                    "otherEurope": 4,
+                    "northAmerica": 1,
+                    "southAmerica": 0,
+                    "africa": 0,
+                    "pacific": 0,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 6
+                },
+                {
+                    "ageGroup": "उल्लेख नभएको",
+                    "gender": "पुरुष",
+                    "india": 9,
+                    "saarc": 0,
+                    "asian": 4,
+                    "middleEast": 13,
+                    "otherAsian": 3,
+                    "europe": 0,
+                    "otherEurope": 0,
+                    "northAmerica": 1,
+                    "southAmerica": 0,
+                    "africa": 0,
+                    "pacific": 0,
+                    "other": 0,
+                    "unknown": 1,
+                    "total": 31
+                },
+                {
+                    "ageGroup": "उल्लेख नभएको",
+                    "gender": "महिला",
+                    "india": 2,
+                    "saarc": 0,
+                    "asian": 0,
+                    "middleEast": 2,
+                    "otherAsian": 2,
+                    "europe": 0,
+                    "otherEurope": 2,
+                    "northAmerica": 1,
+                    "southAmerica": 0,
+                    "africa": 0,
+                    "pacific": 0,
+                    "other": 0,
+                    "unknown": 0,
+                    "total": 9
+                }
+            ]
+        },
+        "squatterDetails": {
+            "title": "४.१.६ सुकुम्बासी सम्बन्धी विवरण",
+            "content": "नेपालमा परिवारको जमिन माथिको स्वामित्वको विषयलाई आर्थिक हैसियतसँग गाँसेर हेरिन्छ । नेपालको अर्थतन्त्र कृषिमा आधारित हुँदा जमिनमाथिको स्वामित्वलाई आर्थिक हैसियतसँग गाँसेर हेर्नु स्वभाविक भए तापनि पछिल्लो समय वैदेशिक रोजगार लगायत अन्य सेवा क्षेत्रमा मानिसहरूको पहुँच वृद्धि हुँदा गैह्र कृषि क्षेत्रबाट आफ्नो आर्थिक हैसियत निर्माण गर्ने परिपाटी सुरु भएको पाईन्छ । अर्कोतर्फ जमिनमाथिको स्वामित्वलाई आफ्नो थातथलो वा आवास स्थलको रुपमा समेत हेरिन्छ । यसर्थ हरेक नागरिकको जमिनमाथिको स्वामित्वलाई सदियौंदेखि एक प्रमुख आर्थिक सामाजिक तथा राजनैतिक मुद्दाको रूपमा हेरिँदै आएको छ । त्यस्तै नेपालमा जमिनको वितरण अवैज्ञानिक रहेको छ ।"
+        }
+    }
+}

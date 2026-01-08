@@ -1,0 +1,121 @@
+---
+import ne from "../../../lib/i18n/chapters/4/tourism/ne.json";
+
+interface Props {
+    lang: string;
+}
+const { lang } = Astro.props;
+const t = ne;
+---
+
+<section id="tourism" class="py-20 bg-zinc-950">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+            <h2
+                class="text-3xl md:text-5xl font-serif font-bold text-white mb-6"
+            >
+                {t.title}
+            </h2>
+            <p class="text-lg text-zinc-400 leading-relaxed">{t.intro}</p>
+        </div>
+
+        <!-- 4.4.1 Sites -->
+        <div class="mb-24">
+            <div class="max-w-3xl mx-auto text-center mb-10">
+                <h3 class="text-2xl font-serif text-amber-500 mb-4">
+                    {t.sites.title}
+                </h3>
+                <p class="text-zinc-400">{t.sites.description}</p>
+            </div>
+
+            <div
+                class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+            >
+                {
+                    t.sites.list.map((site) => (
+                        <div class="group bg-zinc-900 border border-zinc-800 p-6 rounded-xl hover:bg-zinc-800 transition-all duration-300">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                        />
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                        />
+                                    </svg>
+                                </div>
+                                <span class="text-xs font-mono text-zinc-500 border border-zinc-800 px-2 py-1 rounded">
+                                    {site.location}
+                                </span>
+                            </div>
+                            <h4 class="text-lg font-serif text-white mb-2 group-hover:text-amber-400 transition-colors">
+                                {site.name}
+                            </h4>
+                            <span class="text-sm text-zinc-400 inline-block bg-zinc-800 px-2 py-0.5 rounded-md group-hover:bg-zinc-700">
+                                {site.significance}
+                            </span>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- 4.4.2 Hotels -->
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-10">
+                <h3 class="text-2xl font-serif text-white mb-4">
+                    {t.hotels.title}
+                </h3>
+                <p class="text-zinc-400 max-w-2xl mx-auto">{t.hotels.intro}</p>
+            </div>
+
+            <div
+                class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl shadow-black/50"
+            >
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-zinc-400">
+                        <thead
+                            class="bg-zinc-800 text-zinc-200 uppercase font-medium"
+                        >
+                            <tr>
+                                <th class="px-6 py-4">होटल / रेष्टुरेन्ट</th>
+                                <th class="px-6 py-4">सञ्चालक</th>
+                                <th class="px-6 py-4 text-right">सम्पर्क</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-zinc-800">
+                            {
+                                t.hotels.list.map((hotel) => (
+                                    <tr class="hover:bg-zinc-800/50 transition-colors">
+                                        <td class="px-6 py-4 font-medium text-white">
+                                            {hotel.name}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {hotel.owner || "-"}
+                                        </td>
+                                        <td class="px-6 py-4 text-right font-mono text-amber-500">
+                                            {hotel.contact}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

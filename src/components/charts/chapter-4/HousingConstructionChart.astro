@@ -1,0 +1,46 @@
+---
+interface Props {
+    title: string;
+    data: any[]; // Array of Ward objects
+    keys: { key: string; label: string; color: string }[];
+}
+
+const { title, data, keys } = Astro.props;
+
+// Aggregate
+const totals = keys
+    .map((k) => {
+        const value = data.reduce((sum, item) => sum + (item[k.key] || 0), 0);
+        return { ...k, value };
+    })
+    .sort((a, b) => b.value - a.value);
+
+const maxVal = Math.max(...totals.map((t) => t.value));
+---
+
+<div class="w-full bg-zinc-900/30 rounded-lg border border-zinc-800/50 p-4">
+    <h4
+        class="text-md font-serif text-zinc-200 mb-4 border-b border-zinc-800 pb-2"
+    >
+        {title}
+    </h4>
+
+    <div class="space-y-4">
+        {
+            totals.map((item) => (
+                <div class="group">
+                    <div class="flex justify-between text-xs text-zinc-400 mb-1">
+                        <span>{item.label}</span>
+                        <span>{item.value.toLocaleString("ne-NP")}</span>
+                    </div>
+                    <div class="w-full h-2 bg-zinc-800 rounded-full overflow-hidden">
+                        <div
+                            class="h-full rounded-full transition-all duration-1000 ease-out"
+                            style={`width: ${(item.value / maxVal) * 100}%; background-color: ${item.color}`}
+                        />
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</div>

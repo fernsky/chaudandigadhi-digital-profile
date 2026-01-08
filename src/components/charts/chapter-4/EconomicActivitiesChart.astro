@@ -1,0 +1,161 @@
+---
+interface Props {
+    data: {
+        columns: string[];
+        rows: {
+            sector: string;
+            sixMonths: number;
+            threeToFive: number;
+            oneToTwo: number;
+            total: number;
+        }[];
+    };
+}
+
+const { data } = Astro.props;
+
+// Process data: sort by Total descending
+const chartData = [...data.rows].sort((a, b) => b.total - a.total).slice(0, 15); // Top 15 to avoid clutter if too many
+---
+
+<div
+    class="relative w-full h-[600px] bg-zinc-900/50 rounded-xl border border-zinc-800 p-6 backdrop-blur-sm"
+>
+    <div class="absolute top-6 left-6 z-10">
+        <h3 class="text-xl font-serif text-amber-500">आर्थिक गतिविधिहरू</h3>
+        <p class="text-sm text-zinc-400">
+            मुख्य औद्योगिक क्षेत्र अनुसार सकृय जनसंख्या
+        </p>
+    </div>
+
+    <svg id="economic-activities-chart" class="w-full h-full"></svg>
+</div>
+
+<script is:inline define:vars={{ initialData: chartData }}>
+    const data = initialData;
+    const svg = document.getElementById("economic-activities-chart");
+
+    function createChart() {
+        if (!svg) return;
+
+        // Clear previous
+        while (svg.firstChild) {
+            svg.removeChild(svg.firstChild);
+        }
+
+        const margin = { top: 80, right: 100, bottom: 20, left: 240 };
+        const width = svg.clientWidth || 800; // Fallback
+        const height = svg.clientHeight || 600; // Fallback
+        // Dynamic height based on data length?
+        // Let's keep fixed height but fit bars.
+
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+        const chartWidth = width - margin.left - margin.right;
+        const chartHeight = height - margin.top - margin.bottom;
+
+        const maxVal = Math.max(...data.map((d) => d.total));
+        const barHeight = Math.min(40, chartHeight / data.length - 10);
+        const gap = 10;
+
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        svg.appendChild(g);
+
+        data.forEach((item, i) => {
+            const y = margin.top + i * (barHeight + gap);
+            const barWidth = (item.total / maxVal) * chartWidth;
+
+            // Label (Sector)
+            const label = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+            );
+            label.setAttribute("x", (margin.left - 15).toString());
+            label.setAttribute("y", (y + barHeight / 2 + 5).toString());
+            label.setAttribute("text-anchor", "end");
+            label.setAttribute("fill", "#e4e4e7"); // zinc-200
+            label.setAttribute("font-family", "serif");
+            label.setAttribute("font-size", "14px");
+            // Truncate if too long (simple char limit)
+            const maxChars = 30;
+            label.textContent =
+                item.sector.length > maxChars
+                    ? item.sector.substring(0, maxChars) + "..."
+                    : item.sector;
+
+            const title = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "title",
+            );
+            title.textContent = item.sector;
+            label.appendChild(title);
+
+            g.appendChild(label);
+
+            // Background Bar path
+            const bgBar = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect",
+            );
+            bgBar.setAttribute("x", margin.left.toString());
+            bgBar.setAttribute("y", y.toString());
+            bgBar.setAttribute("width", chartWidth.toString());
+            bgBar.setAttribute("height", barHeight.toString());
+            bgBar.setAttribute("fill", "#3f3f46"); // zinc-700
+            bgBar.setAttribute("opacity", "0.2");
+            bgBar.setAttribute("rx", "4");
+            g.appendChild(bgBar);
+
+            // Actual Bar
+            const bar = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "rect",
+            );
+            bar.setAttribute("x", margin.left.toString());
+            bar.setAttribute("y", y.toString());
+            bar.setAttribute("width", "0"); // Animate from 0
+            bar.setAttribute("height", barHeight.toString());
+            bar.setAttribute("fill", "#f59e0b"); // amber-500
+            bar.setAttribute("opacity", "0.9");
+            bar.setAttribute("rx", "4");
+            bar.style.transition = "width 1s ease-out";
+            g.appendChild(bar);
+
+            // Animate width
+            setTimeout(() => {
+                bar.setAttribute("width", barWidth.toString());
+            }, 100);
+
+            // Value Label
+            const value = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "text",
+            );
+            value.setAttribute("x", (margin.left + barWidth + 10).toString()); // Initially position? No, animate nicely
+            value.setAttribute("y", (y + barHeight / 2 + 5).toString());
+            value.setAttribute("fill", "#fcd34d"); // amber-300
+            value.setAttribute("font-family", "sans-serif");
+            value.setAttribute("font-weight", "bold");
+            value.textContent = item.total.toLocaleString("ne-NP");
+            value.style.opacity = "0";
+            value.style.transition =
+                "opacity 0.5s ease-out 0.8s, x 1s ease-out";
+
+            g.appendChild(value);
+
+            // Animate value position/opacity
+            setTimeout(() => {
+                value.style.opacity = "1";
+            }, 100);
+        });
+    }
+
+    // Initial render
+    createChart();
+
+    // Resize handler
+    window.addEventListener("resize", () => {
+        // Debounce or just re-render
+        createChart();
+    });
+</script>

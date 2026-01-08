@@ -1,0 +1,55 @@
+---
+import ne from "../../../lib/i18n/chapters/4/hero/ne.json";
+import en from "../../../lib/i18n/chapters/4/hero/ne.json"; // Fallback to ne for now as en doesn't exist
+
+interface Props {
+    lang: string;
+}
+const { lang } = Astro.props;
+const t = ne; // Force Nepali for now as English JSON is not created yet
+---
+
+<section
+    class="relative min-h-[60vh] flex items-center justify-center overflow-hidden"
+>
+    <div class="absolute inset-0 bg-zinc-900">
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-900/80 to-zinc-900"
+        >
+        </div>
+        {
+            /* Abstract/Pattern Background since we might not have the image yet */
+        }
+        <div
+            class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"
+        >
+        </div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 text-center">
+        <span
+            class="inline-block py-1 px-3 rounded-full bg-amber-500/10 text-amber-500 text-sm font-medium mb-4 border border-amber-500/20"
+        >
+            {t.title}
+        </span>
+        <h1
+            class="text-4xl md:text-6xl lg:text-7xl font-bold font-serif text-white mb-6 leading-tight"
+        >
+            {t.subtitle}
+        </h1>
+        <p
+            class="text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed"
+        >
+            {t.description}
+        </p>
+
+        <div class="mt-10 flex justify-center gap-4">
+            <a
+                href="#economic-overview"
+                class="px-6 py-3 bg-white text-zinc-900 rounded-full font-medium hover:bg-zinc-200 transition-colors"
+            >
+                अध्ययन सुरु गर्नुहोस्
+            </a>
+        </div>
+    </div>
+</section>

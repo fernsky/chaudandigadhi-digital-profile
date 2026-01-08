@@ -1,0 +1,192 @@
+---
+import ne from "../../../lib/i18n/chapters/4/industry-trade/ne.json";
+
+interface Props {
+    lang: string;
+}
+const { lang } = Astro.props;
+const t = ne;
+---
+
+<section id="industry-trade" class="py-20 bg-zinc-900">
+    <div class="container mx-auto px-4">
+        <!-- Header -->
+        <div class="max-w-4xl mx-auto text-center mb-16">
+            <h2
+                class="text-3xl md:text-5xl font-serif font-bold text-white mb-6"
+            >
+                {t.industryTrade.title}
+            </h2>
+            <p class="text-lg text-zinc-400 leading-relaxed">
+                {t.industryTrade.description}
+            </p>
+        </div>
+
+        <!-- Summary Stats Grid -->
+        <div
+            class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-24"
+        >
+            {
+                t.industryTrade.summaryTable.map((stat, i) => (
+                    <div class="bg-zinc-800/20 border border-zinc-700/50 p-6 rounded-xl text-center hover:bg-zinc-800/50 transition-colors">
+                        <span class="block text-4xl font-bold font-serif text-emerald-400 mb-2">
+                            {stat.count}
+                        </span>
+                        <span class="text-sm text-zinc-400">
+                            {stat.description}
+                        </span>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Text Sections -->
+        <div
+            class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-24 text-justify text-zinc-400 leading-relaxed"
+        >
+            <div>
+                <h3 class="text-xl font-serif text-white mb-4">
+                    {t.industryTrade.development.title}
+                </h3>
+                <p>{t.industryTrade.development.content}</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-serif text-white mb-4">
+                    {t.industryTrade.business.title}
+                </h3>
+                <p>{t.industryTrade.business.content}</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-serif text-white mb-4">
+                    {t.industryTrade.mining.title}
+                </h3>
+                <p>{t.industryTrade.mining.content}</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-serif text-white mb-4">
+                    {t.industryTrade.markets.title}
+                </h3>
+                <ul class="mt-4 space-y-2">
+                    {
+                        t.industryTrade.markets.list.map((m) => (
+                            <li class="flex justify-between border-b border-zinc-800 pb-2">
+                                <span class="text-zinc-200">{m.name}</span>
+                                <span class="text-amber-500 text-sm font-mono">
+                                    {m.ward}
+                                </span>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <!-- Banking & Cooperatives -->
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
+            <!-- Banking -->
+            <div class="bg-zinc-950 p-8 rounded-2xl border border-zinc-800">
+                <h3
+                    class="text-2xl font-serif text-amber-500 mb-6 flex items-center gap-3"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        ><path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
+                        ></path></svg
+                    >
+                    {t.industryTrade.banking.title}
+                </h3>
+                <p class="text-zinc-400 mb-6 text-sm">
+                    {t.industryTrade.banking.introduction}
+                </p>
+
+                <div
+                    class="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar"
+                >
+                    {
+                        t.industryTrade.banking.list.map((bank) => (
+                            <div class="bg-zinc-900 p-4 rounded-lg flex justify-between items-center border border-zinc-800 hover:border-amber-500/50 transition-colors">
+                                <span class="text-zinc-200 font-medium">
+                                    {bank.name}
+                                </span>
+                                <span class="text-xs text-zinc-500 bg-zinc-800 px-2 py-1 rounded">
+                                    {bank.type}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Cooperatives -->
+            <div class="bg-zinc-950 p-8 rounded-2xl border border-zinc-800">
+                <h3
+                    class="text-2xl font-serif text-emerald-500 mb-6 flex items-center gap-3"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        ><path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                        ></path></svg
+                    >
+                    {t.industryTrade.cooperatives.title}
+                </h3>
+                <p class="text-zinc-400 mb-6 text-sm">
+                    {t.industryTrade.cooperatives.introduction}
+                </p>
+
+                <div
+                    class="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar"
+                >
+                    {
+                        t.industryTrade.cooperatives.list.map((coop) => (
+                            <div class="bg-zinc-900 p-4 rounded-lg border border-zinc-800 hover:border-emerald-500/50 transition-colors">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-zinc-200 font-medium">
+                                        {coop.name}
+                                    </span>
+                                    <span class="text-xs text-zinc-500 font-mono">
+                                        {coop.address}
+                                    </span>
+                                </div>
+                                <span class="text-xs text-emerald-500/80 uppercase tracking-wider">
+                                    {coop.type}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #18181b;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #3f3f46;
+        border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #52525b;
+    }
+</style>
