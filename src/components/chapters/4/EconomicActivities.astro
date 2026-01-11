@@ -1,0 +1,322 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type SimpleSection = {
+    title: string;
+    number: string;
+    content: string;
+};
+
+type ForeignEmploymentSection = SimpleSection & {
+    tableTitle?: string;
+    tableNumber?: string;
+    source?: string;
+    tableData?: Array<{
+        ageGroup: string;
+        male: number[];
+        female: number[];
+        total: number[];
+    }>;
+    grandTotal?: number[];
+};
+
+const importExport = (await loadChapterSection(
+    4,
+    "import-export",
+    lang,
+)) as SimpleSection;
+const rawMaterials = (await loadChapterSection(
+    4,
+    "raw-materials",
+    lang,
+)) as SimpleSection;
+const foreignEmployment = (await loadChapterSection(
+    4,
+    "foreign-employment",
+    lang,
+)) as ForeignEmploymentSection;
+const landless = (await loadChapterSection(
+    4,
+    "landless",
+    lang,
+)) as SimpleSection;
+
+// Table Headers Configuration
+const countries =
+    lang === "ne"
+        ? [
+              "भारत",
+              "सार्क",
+              "एशियन",
+              "मध्यपूर्व",
+              "अन्य एशियन",
+              "युरोप",
+              "अन्य युरोप",
+              "उत्तर अमेरिका",
+              "दक्षिण अमेरिका",
+              "अफ्रिका",
+              "प्यासिफिक",
+              "अन्य",
+              "नखुलाए‌को",
+          ]
+        : [
+              "India",
+              "SAARC",
+              "Asian",
+              "Middle East",
+              "Other Asian",
+              "Europe",
+              "Other Europe",
+              "North America",
+              "South America",
+              "Africa",
+              "Pacific",
+              "Other",
+              "Not Stated",
+          ];
+
+const genderLabels =
+    lang === "ne"
+        ? { male: "पुरुष", female: "महिला", total: "जम्मा" }
+        : { male: "Male", female: "Female", total: "Total" };
+
+const headers =
+    lang === "ne"
+        ? {
+              ageGroup: "उमेर समूह",
+              gender: "लिङ्ग",
+              countryName: "देशको नाम",
+              total: "जम्मा",
+          }
+        : {
+              ageGroup: "Age Group",
+              gender: "Gender",
+              countryName: "Country Name",
+              total: "Total",
+          };
+---
+
+<!-- 4.1.3 Import/Export -->{
+    importExport && (
+        <section
+            id="import-export"
+            class="relative bg-[#050505] py-8 md:py-12 border-t border-[#f2e25d]/10"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                            {importExport.number} {importExport.title}
+                        </h2>
+                    </div>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                        {importExport.content}
+                    </p>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.1.4 Raw Materials -->
+{
+    rawMaterials && (
+        <section
+            id="raw-materials"
+            class="relative bg-[#050505] py-8 md:py-12 border-t border-[#f2e25d]/10"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                            {rawMaterials.number} {rawMaterials.title}
+                        </h2>
+                    </div>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                        {rawMaterials.content}
+                    </p>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.1.5 Foreign Employment -->
+{
+    foreignEmployment && (
+        <section
+            id="foreign-employment"
+            class="relative bg-[#050505] py-8 md:py-12 border-t border-[#f2e25d]/10"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                                {foreignEmployment.number}{" "}
+                                {foreignEmployment.title}
+                            </h2>
+                        </div>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                            {foreignEmployment.content}
+                        </p>
+                    </div>
+
+                    {foreignEmployment.tableData && (
+                        <div>
+                            <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 max-w-4xl mx-auto">
+                                {foreignEmployment.tableNumber}:{" "}
+                                {foreignEmployment.tableTitle}
+                            </h4>
+                            <div class="overflow-x-auto mb-2">
+                                <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm">
+                                    <thead>
+                                        <tr class="bg-[#2440A5] text-white">
+                                            <th
+                                                rowspan="2"
+                                                class="px-2 py-2 border border-blue-400/30 whitespace-nowrap"
+                                            >
+                                                {headers.ageGroup}
+                                            </th>
+                                            <th
+                                                rowspan="2"
+                                                class="px-2 py-2 border border-blue-400/30 whitespace-nowrap"
+                                            >
+                                                {headers.gender}
+                                            </th>
+                                            <th
+                                                colspan={countries.length}
+                                                class="px-2 py-2 border border-blue-400/30 text-center"
+                                            >
+                                                {headers.countryName}
+                                            </th>
+                                            <th
+                                                rowspan="2"
+                                                class="px-2 py-2 border border-blue-400/30 whitespace-nowrap"
+                                            >
+                                                {headers.total}
+                                            </th>
+                                        </tr>
+                                        <tr class="bg-[#2440A5] text-white">
+                                            {countries.map((country) => (
+                                                <th class="px-2 py-2 border border-blue-400/30 whitespace-nowrap font-normal">
+                                                    {country}
+                                                </th>
+                                            ))}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {foreignEmployment.tableData.map(
+                                            (row, index) => (
+                                                <>
+                                                    {/* Age Group Row Span (3 rows) */}
+                                                    {/* Male Row */}
+                                                    <tr class="text-zinc-100">
+                                                        <td
+                                                            rowspan="3"
+                                                            class="px-2 py-2 border border-[#f2e25d]/10 bg-[#f2e25d]/5 align-middle text-center"
+                                                        >
+                                                            {row.ageGroup}
+                                                        </td>
+                                                        <td class="px-2 py-2 border border-[#f2e25d]/10 bg-[#f2e25d]/5">
+                                                            {genderLabels.male}
+                                                        </td>
+                                                        {row.male.map((val) => (
+                                                            <td class="px-2 py-2 border border-[#f2e25d]/10 text-right">
+                                                                {val || 0}
+                                                            </td>
+                                                        ))}
+                                                    </tr>
+                                                    {/* Female Row */}
+                                                    <tr class="text-zinc-100">
+                                                        <td class="px-2 py-2 border border-[#f2e25d]/10 bg-[#f2e25d]/5">
+                                                            {
+                                                                genderLabels.female
+                                                            }
+                                                        </td>
+                                                        {row.female.map(
+                                                            (val) => (
+                                                                <td class="px-2 py-2 border border-[#f2e25d]/10 text-right">
+                                                                    {val || 0}
+                                                                </td>
+                                                            ),
+                                                        )}
+                                                    </tr>
+                                                    {/* Total Row */}
+                                                    <tr class="text-zinc-100 font-medium bg-[#f2e25d]/5">
+                                                        <td class="px-2 py-2 border border-[#f2e25d]/10">
+                                                            {genderLabels.total}
+                                                        </td>
+                                                        {row.total.map(
+                                                            (val) => (
+                                                                <td class="px-2 py-2 border border-[#f2e25d]/10 text-right">
+                                                                    {val || 0}
+                                                                </td>
+                                                            ),
+                                                        )}
+                                                    </tr>
+                                                </>
+                                            ),
+                                        )}
+                                        {foreignEmployment.grandTotal && (
+                                            <tr class="bg-[#f2e25d]/10 text-zinc-100 font-bold">
+                                                <td
+                                                    colspan="2"
+                                                    class="px-2 py-2 border border-[#f2e25d]/10 text-center"
+                                                >
+                                                    {genderLabels.total}
+                                                </td>
+                                                {foreignEmployment.grandTotal.map(
+                                                    (val) => (
+                                                        <td class="px-2 py-2 border border-[#f2e25d]/10 text-right">
+                                                            {val}
+                                                        </td>
+                                                    ),
+                                                )}
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </table>
+                            </div>
+                            {foreignEmployment.source && (
+                                <div class="text-right text-zinc-400 font-serif italic text-sm mb-6 max-w-6xl mx-auto">
+                                    स्रोत: {foreignEmployment.source}
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.1.6 Landless -->
+{
+    landless && (
+        <section
+            id="landless"
+            class="relative bg-[#050505] py-8 md:py-12 border-t border-[#f2e25d]/10"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                            {landless.number} {landless.title}
+                        </h2>
+                    </div>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                        {landless.content}
+                    </p>
+                </div>
+            </div>
+        </section>
+    )
+}

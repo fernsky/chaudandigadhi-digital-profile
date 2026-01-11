@@ -1,0 +1,40 @@
+{
+    "title": "Diseases and Pests in Food Crops",
+    "number": "4.3.1",
+    "content": "कृषि बालीबाट अपेक्षित उत्पादन लिनका लागि बालीनालीको उचित स्याहार सम्भार आवश्यक छ । विशेषत बालीनालीलाई रोग तथा किराले आक्रमण गर्ने हुँदा रोग तथा किराबाट बच्न समयमै उच्च सतर्कता अपनाउने र रोकथाम बारे जानकारी हासिल गर्नु अति आवश्यक छ । अर्कोतर्फ बालीनालीमा लाग्ने र लाग्न सक्ने रोग तथा किराको सही ढङ्गले पहिचान हुन समेत जरुरी छ । रोग तथा किराको सही पहिचान हुन सके समयमै त्यसको रोकथाम हुन गई उत्पादनलाई सुरक्षित तथा वृद्धि गर्न सकिन्छ ।",
+    "tableTitle": "Details of Diseases in Food Crops",
+    "tableNumber": "Table No. 29",
+    "source": "Office of Municipal Executive",
+    "tableData": [
+        {
+            "sn": "1",
+            "crop": "Paddy",
+            "majorPest": "Plant hopper, Grasshopper, Stem Borer, Hispa",
+            "majorDisease": "Blast, Blight, Brown Spot"
+        },
+        {
+            "sn": "2",
+            "crop": "Wheat",
+            "majorPest": "Armyworm, Termite, Aphid",
+            "majorDisease": "Black rust, Yellow rust, Brown rust, Blight, Loose smut etc."
+        },
+        {
+            "sn": "3",
+            "crop": "Maize",
+            "majorPest": "Fall Armyworm, Cutworm, Borer, Stem borer etc.",
+            "majorDisease": "Gray leaf spot, Northern leaf blight, Southern leaf blight, Stalk rot etc."
+        },
+        {
+            "sn": "4",
+            "crop": "Mustard",
+            "majorPest": "Sawfly, Aphid",
+            "majorDisease": "Sawfly, Aphid etc."
+        },
+        {
+            "sn": "5",
+            "crop": "Potato",
+            "majorPest": "Cutworm, Potato tuber moth, Red ant, Aphid etc.",
+            "majorDisease": "Cutworm, Potato tuber moth, Red ant, Aphid etc."
+        }
+    ]
+}

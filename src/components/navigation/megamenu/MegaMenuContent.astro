@@ -43,7 +43,7 @@ const initialChapter = currentChapter || 1;
           </div>
 
           <!-- Scrollable sections -->
-          <div class="flex-1 overflow-y-auto pl-6 pr-12 py-8 pb-32 scrollbar-hide min-h-0">
+          <div class="flex-1 overflow-y-auto pl-6 pr-12 py-8 pb-32 custom-scrollbar min-h-0">
             <div class="grid grid-cols-2 gap-x-16 gap-y-6">
               {sections.map((section: any) => (
                 <a
@@ -114,6 +114,26 @@ const initialChapter = currentChapter || 1;
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Custom visible scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(242, 226, 93, 0.3) rgba(255, 255, 255, 0.05);
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(242, 226, 93, 0.3);
+    border-radius: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(242, 226, 93, 0.5);
   }
 </style>
 

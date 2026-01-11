@@ -386,7 +386,7 @@
         {
           "id": "4.3",
           "title": "कृषि तथा पशु विकास",
-          "slug": "agriculture-livestock"
+          "slug": "agriculture-development"
         },
         {
           "id": "4.3.1",
@@ -396,7 +396,7 @@
         {
           "id": "4.3.2",
           "title": "तरकारी तथा फलफूलमा लाग्ने रोग तथा किरा",
-          "slug": "vegetable-diseases"
+          "slug": "vegetable-fruit-diseases"
         },
         {
           "id": "4.3.3",
@@ -416,7 +416,7 @@
         {
           "id": "4.3.6",
           "title": "कृषि तथा पशुपालनसँग सम्बन्धित समूह तथा सामुदायिक संस्थाको विवरण",
-          "slug": "agriculture-groups"
+          "slug": "agricultural-groups"
         },
         {
           "id": "4.3.7",
@@ -426,22 +426,22 @@
         {
           "id": "4.4",
           "title": "पर्यटन विकास",
-          "slug": "tourism"
+          "slug": "tourism-development"
         },
         {
           "id": "4.4.1",
           "title": "धार्मिक स्थल तथा पर्यटकीय स्थलहरूको विवरण",
-          "slug": "tourist-sites"
+          "slug": "tourism-sites"
         },
         {
           "id": "4.4.2",
           "title": "होटल, रिसोर्ट तथा रेष्टुरेन्ट सम्बन्धी विवरण",
-          "slug": "hospitality"
+          "slug": "tourism-hotels"
         },
         {
           "id": "4.5",
           "title": "उद्योग व्यापार तथा बैङ्किङ",
-          "slug": "industry-trade"
+          "slug": "industry-intro"
         },
         {
           "id": "4.5.1",
@@ -456,17 +456,17 @@
         {
           "id": "4.5.3",
           "title": "खनिज तथा खानी सम्बन्धी विवरण",
-          "slug": "minerals-mining"
+          "slug": "minerals-mines"
         },
         {
           "id": "4.5.4",
           "title": "स्थानीय बजार तथा व्यापारिक केन्द्रहरूको विवरण",
-          "slug": "markets"
+          "slug": "local-markets"
         },
         {
           "id": "4.5.5",
           "title": "बैङ्क तथा वित्तीय संस्था सम्बन्धी विवरण",
-          "slug": "banking"
+          "slug": "banking-finance"
         },
         {
           "id": "4.5.6",

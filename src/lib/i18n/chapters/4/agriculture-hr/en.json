@@ -1,0 +1,111 @@
+{
+    "title": "Human Resources Related to Agriculture and Livestock Services",
+    "number": "4.3.5",
+    "tableTitle1": "Details of Manpower Related to Agriculture",
+    "tableNumber1": "Table No. 32",
+    "tableData1": [
+        {
+            "sn": "1.",
+            "name": "Samjhana Joshi",
+            "designation": "Agriculture Extension Officer (7th)",
+            "contact": "9865522523"
+        },
+        {
+            "sn": "2.",
+            "name": "Pawan Paudel",
+            "designation": "Technical Assistant",
+            "contact": "9840362859"
+        },
+        {
+            "sn": "3.",
+            "name": "Lok Bahadur Wali",
+            "designation": "Na.Pra.Sa.",
+            "contact": "9846682048"
+        },
+        {
+            "sn": "4.",
+            "name": "Neha Tamang",
+            "designation": "Na.Pra.Sa.",
+            "contact": "9863907090"
+        },
+        {
+            "sn": "5.",
+            "name": "Punam Rayamajhi",
+            "designation": "Na.Pra.Sa.",
+            "contact": "9862188085"
+        },
+        {
+            "sn": "6.",
+            "name": "Bahirama Chemjong",
+            "designation": "Kri.A.",
+            "contact": "9862971516"
+        },
+        {
+            "sn": "7.",
+            "name": "Rama Kumari Rai",
+            "designation": "Na.Pra.Sa.",
+            "contact": "9842907636"
+        }
+    ],
+    "tableTitle2": "Details of Manpower Related to Livestock Services",
+    "tableNumber2": "Table No. 33",
+    "tableData2": [
+        {
+            "sn": "1.",
+            "name": "Dr. Vimal Silwal",
+            "designation": "Veterinarian (Officer 7th) Branch Head",
+            "contact": "9860366303",
+            "branch": "Livestock Service Branch"
+        },
+        {
+            "sn": "2.",
+            "name": "Bikram Basnet",
+            "designation": "Veterinary Health Technician",
+            "contact": "9860612044",
+            "branch": "Ward No. 5"
+        },
+        {
+            "sn": "3.",
+            "name": "Bheshraj Katwal",
+            "designation": "Veterinary Service Technician",
+            "contact": "9862936858",
+            "branch": "Ward No. 1"
+        },
+        {
+            "sn": "4.",
+            "name": "Bikram Waiva",
+            "designation": "Assistant Veterinary Health Technician",
+            "contact": "9869290609",
+            "branch": "Livestock Service Branch"
+        },
+        {
+            "sn": "5.",
+            "name": "Shantiram Bastola",
+            "designation": "Assistant Veterinary Service Technician",
+            "contact": "9862226428",
+            "branch": "Ward No. 8"
+        },
+        {
+            "sn": "6.",
+            "name": "Niroj Kumar Dulal",
+            "designation": "Assistant 4th",
+            "contact": "9824725184",
+            "branch": "Ward No. 9,10"
+        },
+        {
+            "sn": "7.",
+            "name": "Kumar Ghimire",
+            "designation": "Veterinary Service Technician",
+            "contact": "9862872097",
+            "branch": "Livestock Service Branch"
+        },
+        {
+            "sn": "8.",
+            "name": "Bindra Magar",
+            "designation": "Office Helper",
+            "contact": "9765775420",
+            "branch": "Livestock Service Branch"
+        }
+    ],
+    "source": "Office of Chaudandigadhi Municipality"
+}

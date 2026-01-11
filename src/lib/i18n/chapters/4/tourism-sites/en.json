@@ -1,0 +1,145 @@
+{
+    "title": "Details of Religious and Tourism Sites",
+    "number": "4.4.1",
+    "caption1": "Ganesh Temple",
+    "caption2": "Shantibatika Gumba and Park",
+    "content": "अनुपम प्राकृतिक सौन्दर्य, प्रचुर जैविक विविधता, बहुजातीय, बहुभाषीय, बहुधर्म र सामाजिक विविधता एवं चौदण्डीगढी नगरपालिकामा परम्परागत मन्दिरहरु, प्राकृतिक खोला, झरना, पधेराहरु तथा ऐतिहासिक स्थलहरु रहेका छन् । यस नगरपालिकामा रहेका विभिन्न पर्यटकीय तथा धार्मिक स्थलहरूको विवरण तालिकामा उल्लेख गरिएको छ ।",
+    "caption3": "Tindovan",
+    "caption4": "Kirateshwar Temple, Tindovan",
+    "caption5": "Shivalaya Temple Sundarpur",
+    "mapTitle": "Map No. 6: Religious Sites Map of Municipality",
+    "tableTitle": "Details of Tourist and Religious Sites",
+    "tableNumber": "Table No. 35",
+    "source": "Office of Municipal Executive",
+    "tableData": [
+        {
+            "sn": "1",
+            "name": "Batase Dhunge View Tower",
+            "place": "Ward No. 1",
+            "importance": "Tourism Area"
+        },
+        {
+            "sn": "2",
+            "name": "Ganesh Temple",
+            "place": "Ward No. 1",
+            "importance": "Religious and Cultural"
+        },
+        {
+            "sn": "3",
+            "name": "Nagdaha",
+            "place": "Ward No. 1",
+            "importance": "Tourism Area"
+        },
+        {
+            "sn": "4",
+            "name": "Bungbunge Waterfall",
+            "place": "Ward No. 1",
+            "importance": "Tourism Area"
+        },
+        {
+            "sn": "5",
+            "name": "Shivalaya Temple",
+            "place": "Ward No. 2",
+            "importance": "Religious and Cultural"
+        },
+        {
+            "sn": "6",
+            "name": "Jaleshwar Mahadev",
+            "place": "Ward No. 3",
+            "importance": "Religious and Cultural"
+        },
+        {
+            "sn": "7",
+            "name": "Tin Dobhane Lake",
+            "place": "Ward No. 4",
+            "importance": "Tourism Area"
+        },
+        {
+            "sn": "8",
+            "name": "Basaha Than Shivalaya Temple",
+            "place": "Ward No. 4",
+            "importance": "Religious and Cultural"
+        },
+        {
+            "sn": "9",
+            "name": "Shivalaya Temple",
+            "place": "Ward No. 5",
+            "importance": "Religious and Cultural"
+        },
+        {
+            "sn": "10",
+            "name": "Sundarpur Lake",
+            "place": "Ward No. 5",
+            "importance": "Tourism Area"
+        },
+        {
+            "sn": "11",
+            "name": "Radhakrishna Temple",
+            "place": "Ward No. 5",
+            "importance": "Religious and Cultural"
+        },
+        {
+            "sn": "12",
+            "name": "Pushpalal Chowk Park",
+            "place": "Ward No. 6",
+            "importance": "Tourism Area"
+        },
+        {
+            "sn": "13",
+            "name": "Lingeshwar Shivalaya",
+            "place": "Ward No. 6",
+            "importance": "Cultural and Religious"
+        },
+        {
+            "sn": "14",
+            "name": "Kali Daha",
+            "place": "Ward No. 6",
+            "importance": "Tourism Area"
+        },
+        {
+            "sn": "15",
+            "name": "Kanya Aulshri Gumba",
+            "place": "Ward No. 7",
+            "importance": "Religious and Tourism"
+        },
+        {
+            "sn": "16",
+            "name": "Dhodeni Waterfall",
+            "place": "Ward No. 7",
+            "importance": "Tourism Area"
+        },
+        {
+            "sn": "17",
+            "name": "Dwardani Devi Than",
+            "place": "Ward No. 7",
+            "importance": "Cultural and Religious"
+        },
+        {
+            "sn": "18",
+            "name": "Apraha Waterfall",
+            "place": "Ward No. 8",
+            "importance": "Tourism Area"
+        },
+        {
+            "sn": "19",
+            "name": "Thanpokhari Than",
+            "place": "Ward No. 9",
+            "importance": "Cultural and Religious"
+        },
+        {
+            "sn": "20",
+            "name": "Raksa Daha",
+            "place": "Ward No. 9",
+            "importance": "Tourism Area"
+        },
+        {
+            "sn": "21",
+            "name": "Bhutia Daha",
+            "place": "Ward No. 10",
+            "importance": "Tourism Area"
+        }
+    ],
+    "caption6": "Kalidaha",
+    "caption7": "Thaneshwar Temple",
+    "caption8": "Bhutia Daha"
+}

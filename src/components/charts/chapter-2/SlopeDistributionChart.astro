@@ -97,7 +97,7 @@ const data = content.tableData;
                     <td
                         class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                     >
-                        {content.total.area.toFixed(2)}
+                        {content.total.area.toLocaleString('ne-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
                     <td class="px-4 py-3 font-serif text-zinc-100 text-right">
                         {content.total.percentage}

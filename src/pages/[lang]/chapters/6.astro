@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Language } from "../../../lib/i18n";
+
+// Chapter 6 Components
+import ChapterHero from "../../../components/chapters/6/ChapterHero.astro";
+import ForestManagement from "../../../components/chapters/6/ForestManagement.astro";
+import WaterResources from "../../../components/chapters/6/WaterResources.astro";
+import Biodiversity from "../../../components/chapters/6/Biodiversity.astro";
+import DisasterManagement from "../../../components/chapters/6/DisasterManagement.astro";
+
+export async function getStaticPaths() {
+    return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Language };
+
+const title =
+    lang === "ne"
+        ? "परिच्छेद – ६: वन तथा वातावरणीय स्थिति"
+        : "Chapter 6: Forest and Environmental Status";
+const description =
+    lang === "ne"
+        ? "चौदण्डीगढी नगरपालिकाको वन क्षेत्र, जैविक विविधता, जलस्रोत र विपद् व्यवस्थापन"
+        : "Forest area, biodiversity, water resources and disaster management of Chaudandigadhi Municipality";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+    <!-- Chapter Hero -->
+    <ChapterHero lang={lang} />
+
+    <!-- 6.1 Forest Management -->
+    <ForestManagement lang={lang} />
+
+    <!-- 6.2 Water Resources -->
+    <WaterResources lang={lang} />
+
+    <!-- 6.3 Biodiversity -->
+    <Biodiversity lang={lang} />
+
+    <!-- 6.4 Disaster Management -->
+    <DisasterManagement lang={lang} />
+</BaseLayout>
+
+<style>
+    /* Smooth scroll behavior */
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+</style>

@@ -1,7 +1,6 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
-import EconomicActivitiesChart from "../../charts/chapter-4/EconomicActivitiesChart.astro";
 
 interface Props {
     lang: Language;
@@ -12,37 +11,7 @@ const { lang } = Astro.props;
 type EconomicOverviewContent = {
     title: string;
     sectionId: string;
-    intro: string;
-    industrialClassification: {
-        title: string;
-        number: string;
-        tableTitle: string;
-        tableData: Array<{
-            sector: string;
-            sixMonthsPlus: number;
-            threeToFive: number;
-            oneToTwo: number;
-            total: number;
-        }>;
-        total: {
-            sixMonthsPlus: number;
-            threeToFive: number;
-            oneToTwo: number;
-            total: number;
-        };
-        source: string;
-        analysis: string;
-    };
-    importExport: {
-        title: string;
-        number: string;
-        content: string;
-    };
-    rawMaterials: {
-        title: string;
-        number: string;
-        content: string;
-    };
+    content: Array<{ text: string }>;
 };
 
 const content = await loadChapterSection<EconomicOverviewContent>(
@@ -56,172 +25,27 @@ if (!content) {
 }
 ---
 
-<section
-    id="economic-overview"
-    class="relative bg-[#050505] py-8 md:py-12 scroll-mt-24"
->
+<section id="economic-overview" class="relative bg-[#050505] py-8 md:py-12">
     <div class="container mx-auto px-8">
-        <div class="max-w-6xl mx-auto space-y-8">
-            <!-- Section Title -->
-            <h2
-                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100"
-            >
-                {content.title}
-            </h2>
-
-            <!-- Intro -->
-            <p
-                class="font-serif text-base md:text-lg text-zinc-300 leading-relaxed"
-            >
-                {content.intro}
-            </p>
-
-            <!-- Industrial Classification -->
-            <div id="industrial-classification" class="space-y-4 scroll-mt-24">
-                <h3
-                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Header -->
+            <div class="mb-6">
+                <h2
+                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    {content.industrialClassification.number}
-                    {content.industrialClassification.title}
-                </h3>
-
-                <h4
-                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
-                >
-                    {content.industrialClassification.tableTitle}
-                </h4>
-
-                <!-- Table 23 -->
-                <div class="overflow-x-auto">
-                    <table class="w-full border-collapse">
-                        <thead>
-                            <tr class="border-b border-zinc-700">
-                                <th
-                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >आर्थिक कामको क्षेत्र वा उद्योग</th
-                                >
-                                <th
-                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >६ महिना वा सो भन्दा बढी</th
-                                >
-                                <th
-                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >३ देखि ५ महिना</th
-                                >
-                                <th
-                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >१ देखि २ महिना</th
-                                >
-                                <th
-                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >जम्मा</th
-                                >
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                content.industrialClassification.tableData.map(
-                                    (row) => (
-                                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
-                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {row.sector}
-                                            </td>
-                                            <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {row.sixMonthsPlus.toLocaleString()}
-                                            </td>
-                                            <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {row.threeToFive.toLocaleString()}
-                                            </td>
-                                            <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {row.oneToTwo.toLocaleString()}
-                                            </td>
-                                            <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300 font-medium">
-                                                {row.total.toLocaleString()}
-                                            </td>
-                                        </tr>
-                                    ),
-                                )
-                            }
-                            <tr
-                                class="border-t-2 border-zinc-600 bg-zinc-900/50"
-                            >
-                                <td
-                                    class="py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
-                                    >जम्मा</td
-                                >
-                                <td
-                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
-                                    >{
-                                        content.industrialClassification.total.sixMonthsPlus.toLocaleString()
-                                    }</td
-                                >
-                                <td
-                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
-                                    >{
-                                        content.industrialClassification.total.threeToFive.toLocaleString()
-                                    }</td
-                                >
-                                <td
-                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
-                                    >{
-                                        content.industrialClassification.total.oneToTwo.toLocaleString()
-                                    }</td
-                                >
-                                <td
-                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
-                                    >{
-                                        content.industrialClassification.total.total.toLocaleString()
-                                    }</td
-                                >
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div
-                    class="mt-8 border border-zinc-800 rounded-xl p-6 bg-zinc-900/30"
-                >
-                    <h4 class="text-zinc-400 font-serif text-sm mb-4">
-                        आर्थिक क्रियाकलाप अवधि (विभिन्न क्षेत्रहरूमा)
-                    </h4>
-                    <EconomicActivitiesChart
-                        data={content.industrialClassification.tableData}
-                    />
-                </div>
-
-                <p class="text-sm text-zinc-400 font-serif italic">
-                    स्रोत: {content.industrialClassification.source}
-                </p>
-
-                <p class="font-serif text-base text-zinc-300 leading-relaxed">
-                    {content.industrialClassification.analysis}
-                </p>
+                    ४.१ {content.title}
+                </h2>
             </div>
 
-            <!-- Import/Export -->
-            <div id="import-export" class="space-y-4 scroll-mt-24">
-                <h3
-                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
-                >
-                    {content.importExport.number}
-                    {content.importExport.title}
-                </h3>
-                <p class="font-serif text-base text-zinc-300 leading-relaxed">
-                    {content.importExport.content}
-                </p>
-            </div>
-
-            <!-- Raw Materials -->
-            <div id="raw-materials" class="space-y-4 scroll-mt-24">
-                <h3
-                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
-                >
-                    {content.rawMaterials.number}
-                    {content.rawMaterials.title}
-                </h3>
-                <p class="font-serif text-base text-zinc-300 leading-relaxed">
-                    {content.rawMaterials.content}
-                </p>
+            <!-- Content Paragraphs -->
+            <div class="space-y-6">
+                {
+                    content.content.map((para) => (
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                            {para.text}
+                        </p>
+                    ))
+                }
             </div>
         </div>
     </div>
