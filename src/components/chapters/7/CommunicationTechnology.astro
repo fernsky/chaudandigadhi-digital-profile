@@ -260,7 +260,7 @@ const modernAmenities = (await loadChapterSection(
         const height = container.clientHeight;
         const margin = { top: 20, right: 30, bottom: 120, left: 60 }; // Increased bottom margin for labels
         const chartWidth = width - margin.left - margin.right;
-        const chartHeight = height - margin.top - margin.bottom;
+        const chartHeight = Math.max(height - margin.top - margin.bottom, 100);
 
         const svg = d3.select(container)
             .append("svg")
@@ -286,8 +286,9 @@ const modernAmenities = (await loadChapterSection(
             .attr("class", "font-serif");
 
         // Y Axis
+        const maxValue = d3.max(data, (d: any) => d.value as number) || 100;
         const y = d3.scaleLinear()
-            .domain([0, d3.max(data, (d: any) => d.value as number) || 0])
+            .domain([0, maxValue])
             .range([chartHeight, 0]);
 
         svg.append("g")
@@ -307,11 +308,17 @@ const modernAmenities = (await loadChapterSection(
             .attr("y", chartHeight)
             .attr("width", x.bandwidth())
             .attr("height", 0)
-            .attr("fill", "#86efac") // Light green color match
+            .attr("fill", "#86efac")
             .transition()
             .duration(800)
-            .attr("y", (d: any) => y(d.value) ?? 0)
-            .attr("height", (d: any) => chartHeight - (y(d.value) ?? 0));
+            .attr("y", (d: any) => {
+                const yVal = y(d.value);
+                return yVal >= 0 ? yVal : chartHeight;
+            })
+            .attr("height", (d: any) => {
+                const h = chartHeight - (y(d.value) ?? chartHeight);
+                return h >= 0 ? h : 0;
+            });
         
         // Labels on top of bars not needed as per screenshot style, but good for accessibility. 
         // Screenshot doesn't show values on top, but scales are readable. Keeping it clean.

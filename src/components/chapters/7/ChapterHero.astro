@@ -22,9 +22,11 @@ if (!content) {
 }
 ---
 
-<section class="relative min-h-[40vh] bg-black flex items-center py-12">
+<section
+    class="relative min-h-[40vh] bg-[#050505] flex items-center py-16 border-b border-white/5"
+>
     <div class="container mx-auto px-8">
-        <div class="max-w-2xl mx-auto">
+        <div class="max-w-2xl mx-auto text-center">
             <!-- Main Title -->
             <h1
                 class="font-serif text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] font-bold text-white tracking-tight mb-6"
@@ -33,7 +35,9 @@ if (!content) {
             </h1>
 
             <!-- Tagline -->
-            <p class="font-serif text-xl md:text-2xl text-white leading-snug">
+            <p
+                class="font-serif text-xl md:text-2xl text-zinc-300 leading-snug"
+            >
                 {content.tagline}
             </p>
         </div>
