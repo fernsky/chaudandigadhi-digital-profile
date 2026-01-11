@@ -1,0 +1,79 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+const { lang } = Astro.props;
+
+const content = await loadChapterSection(5, "water-sanitation-overview", lang);
+if (!content) throw new Error("Water sanitation overview content not found");
+---
+
+<section
+    id="water-sanitation-overview"
+    class="relative bg-[#050505] py-8 md:py-12"
+>
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <h2
+                class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
+            >
+                {content.sectionId}
+                {content.title}
+            </h2>
+            <p class="text-zinc-100 font-serif text-lg leading-relaxed mb-8">
+                {content.intro}
+            </p>
+
+            <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-8">
+                <h4 class="font-serif text-xl text-[#f2e25d] font-medium mb-6">
+                    {content.sdgTarget.goal}: {content.sdgTarget.description}
+                </h4>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <div class="text-center">
+                        <div class="text-zinc-400 text-sm mb-2">2015</div>
+                        <div
+                            class="text-zinc-100 font-serif text-2xl font-bold"
+                        >
+                            {content.sdgTarget.baseline2015}%
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-zinc-400 text-sm mb-2">2019</div>
+                        <div
+                            class="text-zinc-100 font-serif text-2xl font-bold"
+                        >
+                            {content.sdgTarget.target2019}%
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-zinc-400 text-sm mb-2">2022</div>
+                        <div
+                            class="text-zinc-100 font-serif text-2xl font-bold"
+                        >
+                            {content.sdgTarget.target2022}%
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-zinc-400 text-sm mb-2">2025</div>
+                        <div
+                            class="text-zinc-100 font-serif text-2xl font-bold"
+                        >
+                            {content.sdgTarget.target2025}%
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-[#f2e25d] text-sm mb-2">2030</div>
+                        <div
+                            class="text-[#f2e25d] font-serif text-2xl font-bold"
+                        >
+                            {content.sdgTarget.target2030}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

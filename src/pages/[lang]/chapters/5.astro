@@ -1,14 +1,42 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import type { Language } from "../../../lib/i18n";
+
+// Chapter 5 Components - Education (8)
 import ChapterHero from "../../../components/chapters/5/ChapterHero.astro";
-import EducationalStatus from "../../../components/chapters/5/EducationalStatus.astro";
-import EducationSubsections from "../../../components/chapters/5/EducationSubsections.astro";
-import HealthNutrition from "../../../components/chapters/5/HealthNutrition.astro";
-import WaterSanitation from "../../../components/chapters/5/WaterSanitation.astro";
-import YouthSports from "../../../components/chapters/5/YouthSports.astro";
-import CultureArts from "../../../components/chapters/5/CultureArts.astro";
-import PeaceSecurity from "../../../components/chapters/5/PeaceSecurity.astro";
+import EducationalOverview from "../../../components/chapters/5/EducationalOverview.astro";
+import LiteracyStatistics from "../../../components/chapters/5/LiteracyStatistics.astro";
+import SchoolsByLevel from "../../../components/chapters/5/SchoolsByLevel.astro";
+import StudentEnrollment from "../../../components/chapters/5/StudentEnrollment.astro";
+import TeachersStaff from "../../../components/chapters/5/TeachersStaff.astro";
+import InternetFacilities from "../../../components/chapters/5/InternetFacilities.astro";
+import EducationQuality from "../../../components/chapters/5/EducationQuality.astro";
+import ChildFriendlyEducation from "../../../components/chapters/5/ChildFriendlyEducation.astro";
+
+// Health & Nutrition (7)
+import HealthOverview from "../../../components/chapters/5/HealthOverview.astro";
+import HealthFacilities from "../../../components/chapters/5/HealthFacilities.astro";
+import ImmunizationServices from "../../../components/chapters/5/ImmunizationServices.astro";
+import ChildHealthNutrition from "../../../components/chapters/5/ChildHealthNutrition.astro";
+import MajorDiseases from "../../../components/chapters/5/MajorDiseases.astro";
+import SafeMotherhood from "../../../components/chapters/5/SafeMotherhood.astro";
+import MaritalStatus from "../../../components/chapters/5/MaritalStatus.astro";
+
+// Water & Sanitation (7)
+import WaterSanitationOverview from "../../../components/chapters/5/WaterSanitationOverview.astro";
+import WaterSources from "../../../components/chapters/5/WaterSources.astro";
+import ToiletUsage from "../../../components/chapters/5/ToiletUsage.astro";
+import PublicToilets from "../../../components/chapters/5/PublicToilets.astro";
+import WasteManagement from "../../../components/chapters/5/WasteManagement.astro";
+import DrainageLandfill from "../../../components/chapters/5/DrainageLandfill.astro";
+import HomelessChildren from "../../../components/chapters/5/HomelessChildren.astro";
+
+// Youth, Culture & Security (5)
+import SportsRecreation from "../../../components/chapters/5/SportsRecreation.astro";
+import YouthClubs from "../../../components/chapters/5/YouthClubs.astro";
+import PublicPlaces from "../../../components/chapters/5/PublicPlaces.astro";
+import FestivalsEvents from "../../../components/chapters/5/FestivalsEvents.astro";
+import PeaceSecurityDetails from "../../../components/chapters/5/PeaceSecurityDetails.astro";
 
 export async function getStaticPaths() {
     return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
@@ -28,24 +56,44 @@ const description =
     <!-- Chapter Hero -->
     <ChapterHero lang={lang} />
 
-    <!-- 5.1 Educational Status and Human Resource Development -->
-    <EducationalStatus lang={lang} />
-    <EducationSubsections lang={lang} />
+    <!-- 5.1 Education and Human Resource Development -->
+    <EducationalOverview lang={lang} />
+    <LiteracyStatistics lang={lang} />
+    <SchoolsByLevel lang={lang} />
+    <StudentEnrollment lang={lang} />
+    <TeachersStaff lang={lang} />
+    <InternetFacilities lang={lang} />
+    <EducationQuality lang={lang} />
+    <ChildFriendlyEducation lang={lang} />
 
     <!-- 5.2 Health and Nutrition -->
-    <HealthNutrition lang={lang} />
+    <HealthOverview lang={lang} />
+    <HealthFacilities lang={lang} />
+    <ImmunizationServices lang={lang} />
+    <ChildHealthNutrition lang={lang} />
+    <MajorDiseases lang={lang} />
+    <SafeMotherhood lang={lang} />
+    <MaritalStatus lang={lang} />
 
     <!-- 5.3 Water Supply and Sanitation -->
-    <WaterSanitation lang={lang} />
+    <WaterSanitationOverview lang={lang} />
+    <WaterSources lang={lang} />
+    <ToiletUsage lang={lang} />
+    <PublicToilets lang={lang} />
+    <WasteManagement lang={lang} />
+    <DrainageLandfill lang={lang} />
+    <HomelessChildren lang={lang} />
 
     <!-- 5.4 Youth, Sports and Recreation -->
-    <YouthSports lang={lang} />
+    <SportsRecreation lang={lang} />
+    <YouthClubs lang={lang} />
 
     <!-- 5.5 Art, Language and Culture -->
-    <CultureArts lang={lang} />
+    <PublicPlaces lang={lang} />
+    <FestivalsEvents lang={lang} />
 
     <!-- 5.6 Peace and Security -->
-    <PeaceSecurity lang={lang} />
+    <PeaceSecurityDetails lang={lang} />
 </BaseLayout>
 
 <style>

@@ -1,0 +1,156 @@
+---
+interface Props {
+    data: Array<{
+        sector: string;
+        sixMonthsPlus: number;
+        threeToFive: number;
+        oneToTwo: number;
+        total: number;
+    }>;
+}
+
+const { data } = Astro.props;
+
+const chartData = data.map((d) => ({
+    sector: d.sector,
+    "6 महिना+": d.sixMonthsPlus,
+    "3-5 महिना": d.threeToFive,
+    "1-2 महिना": d.oneToTwo,
+    total: d.total,
+}));
+
+const subgroups = ["6 महिना+", "3-5 महिना", "1-2 महिना"];
+const groups = chartData.map((d) => d.sector);
+---
+
+<div class="w-full h-[400px] md:h-[500px]" id="economic-activities-chart"></div>
+
+<div
+    id="chart-data-store"
+    data-chart={JSON.stringify(chartData)}
+    data-subgroups={JSON.stringify(subgroups)}
+    data-groups={JSON.stringify(groups)}
+    class="hidden"
+>
+</div>
+
+<script>
+    import * as d3 from "d3";
+
+    // @ts-ignore
+    const container = document.getElementById("economic-activities-chart");
+    // @ts-ignore
+    const dataStore = document.getElementById("chart-data-store");
+
+    if (container && dataStore) {
+        const data = JSON.parse(dataStore.dataset.chart || "[]");
+        const subgroups = JSON.parse(dataStore.dataset.subgroups || "[]");
+        const groups = JSON.parse(dataStore.dataset.groups || "[]");
+
+        const margin = { top: 40, right: 120, bottom: 120, left: 60 };
+        const width = container.clientWidth - margin.left - margin.right;
+        const height = container.clientHeight - margin.top - margin.bottom;
+
+        // Clear any existing svg
+        container.innerHTML = "";
+
+        const svg = d3
+            .select(container)
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // X axis
+        const x = d3
+            .scaleBand()
+            .domain(groups)
+            .range([0, width])
+            .padding([0.2]);
+
+        svg.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x).tickSizeOuter(0))
+            .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end")
+            .style("font-family", "Noto Serif Devanagari, serif")
+            .style("font-size", "12px")
+            .style("fill", "#d4d4d8"); // zinc-300
+
+        // Y axis
+        const y = d3
+            .scaleLinear()
+            .domain([0, d3.max(data, (d: any) => d.total) || 100])
+            .range([height, 0]);
+
+        svg.append("g")
+            .call(d3.axisLeft(y))
+            .selectAll("text")
+            .style("font-family", "IBM Plex Serif, serif")
+            .style("font-size", "12px")
+            .style("fill", "#d4d4d8"); // zinc-300
+
+        // Axis Styles
+        svg.selectAll(".domain").style("stroke", "#52525b"); // zinc-600
+        svg.selectAll(".tick line").style("stroke", "#52525b"); // zinc-600
+
+        // Color palette
+        const color = d3
+            .scaleOrdinal()
+            .domain(subgroups)
+            .range(["#22c55e", "#eab308", "#ef4444"]); // green-500, yellow-500, red-500
+
+        // Stack the data
+        const stackedData = d3.stack().keys(subgroups)(data);
+
+        // Show the bars
+        svg.append("g")
+            .selectAll("g")
+            .data(stackedData)
+            .join("g")
+            .attr("fill", (d) => color(d.key) as string)
+            .selectAll("rect")
+            .data((d) => d)
+            .join("rect")
+            .attr("x", (d: any) => x(d.data.sector) as number)
+            .attr("y", (d) => y(d[1]))
+            .attr("height", (d) => y(d[0]) - y(d[1]))
+            .attr("width", x.bandwidth())
+            .on("mouseover", function (event, d) {
+                d3.select(this).style("opacity", 0.8);
+            })
+            .on("mouseout", function () {
+                d3.select(this).style("opacity", 1);
+            });
+
+        // Legend
+        const legend = svg
+            .append("g")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 10)
+            .attr("text-anchor", "start")
+            .selectAll("g")
+            .data(subgroups.slice().reverse())
+            .enter()
+            .append("g")
+            .attr("transform", (d, i) => `translate(${width + 10},${i * 20})`);
+
+        legend
+            .append("rect")
+            .attr("x", 0)
+            .attr("width", 19)
+            .attr("height", 19)
+            .attr("fill", (d) => color(d) as string);
+
+        legend
+            .append("text")
+            .attr("x", 24)
+            .attr("y", 9.5)
+            .attr("dy", "0.32em")
+            .text((d) => d)
+            .style("fill", "#e4e4e7") // zinc-200
+            .style("font-family", "Noto Serif Devanagari");
+    }
+</script>

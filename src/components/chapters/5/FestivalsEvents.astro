@@ -1,0 +1,37 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+const { lang } = Astro.props;
+
+const content = await loadChapterSection(5, "festivals-events", lang);
+---
+
+{
+    content && (
+        <section
+            id="festivals-events"
+            class="relative bg-[#050505] py-8 md:py-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <h3 class="font-serif text-2xl font-medium text-zinc-100 mb-6">
+                        {content.sectionId} {content.title}
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        {content.festivals.map((festival: string) => (
+                            <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-4 text-center hover:border-[#f2e25d]/30 transition-colors">
+                                <p class="text-zinc-100 font-serif text-sm">
+                                    {festival}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}

@@ -1,0 +1,69 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+const { lang } = Astro.props;
+
+type MaritalStatusContent = {
+    title: string;
+    sectionId: string;
+    married: number;
+    unmarried: number;
+    widowed: number;
+    divorced: number;
+    separated: number;
+    source: string;
+};
+
+const content = await loadChapterSection<MaritalStatusContent>(
+    5,
+    "marital-status",
+    lang,
+);
+if (!content) throw new Error("Marital status content not found");
+---
+
+<section id="marital-status" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <h3
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+            >
+                {content.sectionId}
+                {content.title}
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
+                    <div class="text-[#f2e25d] font-serif text-3xl font-bold">
+                        {content.married.toLocaleString()}
+                    </div>
+                    <div class="text-zinc-100 font-serif text-sm mt-2">
+                        विवाहित
+                    </div>
+                </div>
+                <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
+                    <div class="text-[#f2e25d] font-serif text-3xl font-bold">
+                        {content.unmarried.toLocaleString()}
+                    </div>
+                    <div class="text-zinc-100 font-serif text-sm mt-2">
+                        अविवाहित
+                    </div>
+                </div>
+                <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
+                    <div class="text-[#f2e25d] font-serif text-3xl font-bold">
+                        {content.widowed.toLocaleString()}
+                    </div>
+                    <div class="text-zinc-100 font-serif text-sm mt-2">
+                        विधवा/विधुर
+                    </div>
+                </div>
+            </div>
+            <p class="text-zinc-400 font-serif text-sm italic mt-6">
+                स्रोत: {content.source}
+            </p>
+        </div>
+    </div>
+</section>

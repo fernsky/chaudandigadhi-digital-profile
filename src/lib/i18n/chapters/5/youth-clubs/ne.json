@@ -1,0 +1,16 @@
+{
+    "title": "युवा क्लब सम्बन्धी विवरण",
+    "sectionId": "5.4.2",
+    "youthClubs": 25,
+    "source": "नगर कार्यपालिकाको कार्यालय",
+    "gallery": [
+        {
+            "caption": "भर्लेनी खेलमैदान",
+            "imagePath": "/images/placeholder-bharleni-playground.jpg"
+        },
+        {
+            "caption": "सुन्दरपुर खेल मैदान",
+            "imagePath": "/images/placeholder-sundarpur-playground.jpg"
+        }
+    ]
+}

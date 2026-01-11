@@ -3,12 +3,17 @@ import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
+    data?: {
+        level: string;
+        community: number;
+        institutional: number;
+    }[];
 }
 
-const { lang } = Astro.props;
+const { lang, data } = Astro.props;
 
-// School enrollment data
-const enrollmentData = [
+// School enrollment data (fallback)
+const enrollmentData = data || [
     { level: "बालविकास", community: 988, institutional: 1263 },
     { level: "कक्षा १-५", community: 2969, institutional: 2308 },
     { level: "कक्षा ६-८", community: 2234, institutional: 959 },

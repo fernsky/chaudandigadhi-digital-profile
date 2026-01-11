@@ -1,0 +1,46 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import WaterSourceChart from "../../charts/chapter-5/WaterSourceChart.astro";
+
+interface Props {
+    lang: Language;
+}
+const { lang } = Astro.props;
+
+type WaterSourcesContent = {
+    title: string;
+    sectionId: string;
+    totalHouseholds: number;
+    sources: {
+        type: string;
+        count: number;
+        percent: number;
+    }[];
+    analysis: string;
+};
+
+const content = await loadChapterSection<WaterSourcesContent>(
+    5,
+    "water-sources",
+    lang,
+);
+if (!content) throw new Error("Water sources content not found");
+---
+
+<section id="water-sources" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <h3
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+            >
+                {content.sectionId}
+                {content.title}
+            </h3>
+            <WaterSourceChart lang={lang} data={content.sources} />
+            <p class="text-zinc-100 font-serif text-base leading-relaxed mt-6">
+                {content.analysis}
+            </p>
+        </div>
+    </div>
+</section>

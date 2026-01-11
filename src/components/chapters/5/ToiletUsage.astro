@@ -1,0 +1,45 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import ToiletCoverageChart from "../../charts/chapter-5/ToiletCoverageChart.astro";
+
+interface Props {
+    lang: Language;
+}
+const { lang } = Astro.props;
+
+type ToiletUsageContent = {
+    title: string;
+    sectionId: string;
+    usage: {
+        type: string;
+        percent: number;
+        color: string;
+    }[];
+    source: string;
+};
+
+const content = await loadChapterSection<ToiletUsageContent>(
+    5,
+    "toilet-usage",
+    lang,
+);
+if (!content) throw new Error("Toilet usage content not found");
+---
+
+<section id="toilet-usage" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <h3
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+            >
+                {content.sectionId}
+                {content.title}
+            </h3>
+            <ToiletCoverageChart lang={lang} data={content.usage} />
+            <p class="text-zinc-400 font-serif text-sm italic mt-4">
+                स्रोत: {content.source}
+            </p>
+        </div>
+    </div>
+</section>

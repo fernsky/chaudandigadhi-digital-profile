@@ -3,19 +3,40 @@ import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
+    data?: {
+        type: string;
+        percent: number;
+        color?: string;
+    }[];
 }
 
-const { lang } = Astro.props;
+const { lang, data } = Astro.props;
 
-// Water source distribution
-const waterSources = [
-    { type: "ट्युवेल/हेन्डपम्प", percent: 34.61, color: "#f2e25d" },
-    { type: "पाइप धारा (घर भित्र)", percent: 32.03, color: "#d4c74f" },
-    { type: "पाइप धारा (घर बाहिर)", percent: 19.92, color: "#a3a3a3" },
-    { type: "नढाकिएको इनार", percent: 7.14, color: "#737373" },
-    { type: "ढाकिएको इनार", percent: 4.94, color: "#525252" },
-    { type: "अन्य", percent: 1.36, color: "#404040" },
+// Default colors
+const colors = [
+    "#f2e25d",
+    "#d4c74f",
+    "#a3a3a3",
+    "#737373",
+    "#525252",
+    "#404040",
+    "#262626",
 ];
+
+// Water source distribution (fallback)
+const waterSources = (
+    data || [
+        { type: "ट्युवेल/हेन्डपम्प", percent: 34.61 },
+        { type: "पाइप धारा (घर भित्र)", percent: 32.03 },
+        { type: "पाइप धारा (घर बाहिर)", percent: 19.92 },
+        { type: "नढाकिएको इनार", percent: 7.14 },
+        { type: "ढाकिएको इनार", percent: 4.94 },
+        { type: "अन्य", percent: 1.36 },
+    ]
+).map((item, index) => ({
+    ...item,
+    color: item.color || colors[index % colors.length],
+}));
 
 const maxValue = Math.max(...waterSources.map((s) => s.percent));
 ---

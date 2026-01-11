@@ -1,0 +1,120 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type HealthFacilitiesContent = {
+    title: string;
+    sectionId: string;
+    facilities: Array<{
+        sn: number;
+        name: string;
+        address: string;
+        services: string;
+    }>;
+    summary: {
+        totalFacilities: number;
+        hospitals: number;
+        healthPosts: number;
+        basicHealthCenters: number;
+    };
+};
+
+const content = await loadChapterSection<HealthFacilitiesContent>(
+    5,
+    "health-facilities",
+    lang,
+);
+if (!content) throw new Error("Health facilities content not found");
+---
+
+<section id="health-facilities" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <h3
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+            >
+                ५.२.१ {content.title}
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
+                    <div class="text-[#f2e25d] font-serif text-4xl font-bold">
+                        {content.summary.hospitals}
+                    </div>
+                    <div class="text-zinc-100 font-serif text-sm mt-2">
+                        नगर अस्पताल
+                    </div>
+                </div>
+                <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
+                    <div class="text-[#f2e25d] font-serif text-4xl font-bold">
+                        {content.summary.healthPosts}
+                    </div>
+                    <div class="text-zinc-100 font-serif text-sm mt-2">
+                        स्वास्थ्य चौकी
+                    </div>
+                </div>
+                <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
+                    <div class="text-[#f2e25d] font-serif text-4xl font-bold">
+                        {content.summary.basicHealthCenters}
+                    </div>
+                    <div class="text-zinc-100 font-serif text-sm mt-2">
+                        स्वास्थ्य केन्द्र
+                    </div>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table
+                    class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10"
+                >
+                    <thead>
+                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                            <th
+                                class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10 w-16"
+                                >क्र.सं.</th
+                            >
+                            <th
+                                class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >स्वास्थ्य संस्थाको नाम</th
+                            >
+                            <th
+                                class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >ठेगाना</th
+                            >
+                            <th
+                                class="px-4 py-3 text-left font-serif text-zinc-100 font-medium"
+                                >सेवा</th
+                            >
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            content.facilities.map((facility) => (
+                                <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors">
+                                    <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
+                                        {facility.sn}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
+                                        {facility.name}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
+                                        {facility.address}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100">
+                                        {facility.services}
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

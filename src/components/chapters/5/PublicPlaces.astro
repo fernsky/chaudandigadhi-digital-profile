@@ -1,0 +1,33 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+const { lang } = Astro.props;
+
+const content = await loadChapterSection(5, "public-places", lang);
+---
+
+{
+    content && (
+        <section id="public-places" class="relative bg-[#050505] py-8 md:py-12">
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <h3 class="font-serif text-2xl font-medium text-zinc-100 mb-6">
+                        {content.sectionId} {content.title}
+                    </h3>
+                    <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-8 text-center">
+                        <div class="text-[#f2e25d] font-serif text-6xl font-bold">
+                            {content.publicPlaces}
+                        </div>
+                        <p class="text-zinc-100 font-serif text-sm mt-2">
+                            सार्वजनिक स्थल
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}

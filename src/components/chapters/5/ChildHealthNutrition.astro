@@ -1,0 +1,48 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+const { lang } = Astro.props;
+
+type ChildHealthNutritionContent = {
+    title: string;
+    sectionId: string;
+    intro: string[];
+    source: string;
+};
+
+const content = await loadChapterSection<ChildHealthNutritionContent>(
+    5,
+    "child-health-nutrition",
+    lang,
+);
+if (!content) throw new Error("Child health nutrition content not found");
+---
+
+<section
+    id="child-health-nutrition"
+    class="relative bg-[#050505] py-8 md:py-12"
+>
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <h3
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+            >
+                {content.sectionId}
+                {content.title}
+            </h3>
+            <div class="space-y-4">
+                {
+                    content.intro.map((para) => (
+                        <p class="text-zinc-100 font-serif text-lg leading-relaxed">
+                            {para}
+                        </p>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

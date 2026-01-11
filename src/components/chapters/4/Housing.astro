@@ -1,0 +1,709 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import HousingOwnershipChart from "../../charts/chapter-4/HousingOwnershipChart.astro";
+import HousingConstructionChart from "../../charts/chapter-4/HousingConstructionChart.astro";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const content = await loadChapterSection(4, "housing", lang);
+
+if (!content) {
+    throw new Error("Housing content not found");
+}
+---
+
+<section id="housing" class="relative bg-[#050505] py-8 md:py-12 scroll-mt-24">
+    <div class="container mx-auto px-8">
+        <div class="max-w-6xl mx-auto space-y-8">
+            <h2
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100"
+            >
+                {content.number}
+                {content.title}
+            </h2>
+
+            <!-- Ownership -->
+            <div class="space-y-4">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {content.ownership.subtitle}
+                    {content.ownership.title}
+                </h3>
+                <p class="font-serif text-base text-zinc-300 leading-relaxed">
+                    {content.ownership.intro}
+                </p>
+
+                <h4
+                    class="font-serif text-lg md:text-xl text-zinc-200 font-medium"
+                >
+                    {content.ownership.tableTitle}
+                </h4>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >वडा नं.</th
+                                >
+                                <th
+                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >निजी</th
+                                >
+                                <th
+                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >भाडामा</th
+                                >
+                                <th
+                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >संस्थागत</th
+                                >
+                                <th
+                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >अन्य</th
+                                >
+                                <th
+                                    class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
+                                    >जम्मा</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.ownership.tableData.map((row) => (
+                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.ward}
+                                        </td>
+                                        <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.private.toLocaleString()}
+                                        </td>
+                                        <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.rented.toLocaleString()}
+                                        </td>
+                                        <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.institutional.toLocaleString()}
+                                        </td>
+                                        <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                            {row.other.toLocaleString()}
+                                        </td>
+                                        <td class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-300 font-medium">
+                                            {row.total.toLocaleString()}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div
+                    class="mt-4 border border-zinc-800 rounded-xl p-6 bg-zinc-900/30"
+                >
+                    <h4 class="text-zinc-400 font-serif text-sm mb-4">
+                        घरको जगको प्रकार (जम्मा)
+                    </h4>
+                    <HousingConstructionChart
+                        data={[
+                            {
+                                label: "माटोको जोडाइ",
+                                value: content.foundation.total.mudStone,
+                            },
+                            {
+                                label: "सिमेन्टको जोडाइ",
+                                value: content.foundation.total.cementStone,
+                            },
+                            {
+                                label: "ढलान पिल्लर",
+                                value: content.foundation.total.rcc,
+                            },
+                            {
+                                label: "काठको खम्बा",
+                                value: content.foundation.total.woodenPillar,
+                            },
+                            {
+                                label: "अन्य",
+                                value: content.foundation.total.other,
+                            },
+                        ]}
+                    />
+                </div>
+
+                }
+                <tr class="border-t-2 border-zinc-600 bg-zinc-900/50">
+                    <td
+                        class="py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
+                        >जम्मा</td
+                    >
+                    <td
+                        class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
+                        >{content.ownership.total.private.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
+                        >{content.ownership.total.rented.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
+                        >{
+                            content.ownership.total.institutional.toLocaleString()
+                        }</td
+                    >
+                    <td
+                        class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
+                        >{content.ownership.total.other.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
+                        >{content.ownership.total.total.toLocaleString()}</td
+                    >
+                </tr>
+                <tr class="bg-zinc-900/30">
+                    <td
+                        class="py-2 px-4 font-serif text-sm md:text-base text-zinc-200"
+                        >प्रतिशत</td
+                    >
+                    <td
+                        class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-200"
+                        >{content.ownership.percentage.private}</td
+                    >
+                    <td
+                        class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-200"
+                        >{content.ownership.percentage.rented}</td
+                    >
+                    <td
+                        class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-200"
+                        >{content.ownership.percentage.institutional}</td
+                    >
+                    <td
+                        class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-200"
+                        >{content.ownership.percentage.other}</td
+                    >
+                    <td
+                        class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-200"
+                        >{content.ownership.percentage.total}</td
+                    >
+                </tr>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="mt-4 border border-zinc-800 rounded-xl p-6 bg-zinc-900/30">
+    <h4 class="text-zinc-400 font-serif text-sm mb-4">
+        घरको स्वामित्व स्थिति (जम्मा)
+    </h4>
+    <HousingOwnershipChart data={content.ownership.total} />
+</div>
+
+<!-- Foundation (Table 25) -->
+<div class="space-y-4">
+    <h3 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium">
+        {content.foundation.subtitle}
+        {content.foundation.title}
+    </h3>
+    <h4 class="font-serif text-lg md:text-xl text-zinc-200 font-medium">
+        {content.foundation.tableTitle}
+    </h4>
+
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+            <thead>
+                <tr class="border-b border-zinc-700">
+                    <th
+                        class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >वडा</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >माटोको जोडाइ</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >सिमेन्टको जोडाइ</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >ढलान पिल्लर</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >काठको खम्बा</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >अन्य</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >जम्मा</th
+                    >
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    content.foundation.tableData.map((row) => (
+                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                            <td class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.ward}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.mudStone.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.cementStone.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.rcc.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.woodenPillar.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.other.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300 font-medium">
+                                {row.total.toLocaleString()}
+                            </td>
+                        </tr>
+                    ))
+                }
+                <tr class="border-t-2 border-zinc-600 bg-zinc-900/50">
+                    <td
+                        class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >जम्मा</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{
+                            content.foundation.total.mudStone.toLocaleString()
+                        }</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{
+                            content.foundation.total.cementStone.toLocaleString()
+                        }</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.foundation.total.rcc.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{
+                            content.foundation.total.woodenPillar.toLocaleString()
+                        }</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.foundation.total.other.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.foundation.total.total.toLocaleString()}</td
+                    >
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="text-sm text-zinc-400 font-serif italic">
+        स्रोत: {content.foundation.source}
+    </p>
+</div>
+
+<!-- Outer Wall (Table 26) -->
+<div class="space-y-4">
+    <h3 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium">
+        {content.outerWall.subtitle}
+        {content.outerWall.title}
+    </h3>
+    <h4 class="font-serif text-lg md:text-xl text-zinc-200 font-medium">
+        {content.outerWall.tableTitle}
+    </h4>
+
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+            <thead>
+                <tr class="border-b border-zinc-700">
+                    <th
+                        class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >वडा</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >माटो ढुङ्गा</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >सिमेन्ट ढुङ्गा</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >काठ</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >बाँस</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >इँटा</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >जस्ता</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >अन्य</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >जम्मा</th
+                    >
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    content.outerWall.tableData.map((row) => (
+                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                            <td class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.ward}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.mudStone.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.cementStone.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.wood.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.bamboo.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.unbakedBrick.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.zincSheet.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.other.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300 font-medium">
+                                {row.total.toLocaleString()}
+                            </td>
+                        </tr>
+                    ))
+                }
+                <tr class="border-t-2 border-zinc-600 bg-zinc-900/50">
+                    <td
+                        class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >जम्मा</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.outerWall.total.mudStone.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{
+                            content.outerWall.total.cementStone.toLocaleString()
+                        }</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.outerWall.total.wood.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.outerWall.total.bamboo.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{
+                            content.outerWall.total.unbakedBrick.toLocaleString()
+                        }</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{
+                            content.outerWall.total.zincSheet.toLocaleString()
+                        }</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.outerWall.total.other.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.outerWall.total.total.toLocaleString()}</td
+                    >
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="text-sm text-zinc-400 font-serif italic">
+        स्रोत: {content.outerWall.source}
+    </p>
+</div>
+
+<!-- Floor (Table 27) -->
+<div class="space-y-4">
+    <h3 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium">
+        {content.floor.subtitle}
+        {content.floor.title}
+    </h3>
+    <p class="font-serif text-base text-zinc-300 leading-relaxed">
+        {content.floor.intro}
+    </p>
+    <h4 class="font-serif text-lg md:text-xl text-zinc-200 font-medium">
+        {content.floor.tableTitle}
+    </h4>
+
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+            <thead>
+                <tr class="border-b border-zinc-700">
+                    <th
+                        class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >वडा</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >माटो</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >काठ/बाँस</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >इँटा/ढुङ्गा</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >टायल</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >सिमेन्ट</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >अन्य</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >जम्मा</th
+                    >
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    content.floor.tableData.map((row) => (
+                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                            <td class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.ward}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.mud.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.woodBamboo.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.brickStone.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.ceramicTile.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.cement.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.other.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300 font-medium">
+                                {row.total.toLocaleString()}
+                            </td>
+                        </tr>
+                    ))
+                }
+                <tr class="border-t-2 border-zinc-600 bg-zinc-900/50">
+                    <td
+                        class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >जम्मा</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.floor.total.mud.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.floor.total.woodBamboo.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.floor.total.brickStone.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.floor.total.ceramicTile.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.floor.total.cement.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.floor.total.other.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.floor.total.total.toLocaleString()}</td
+                    >
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="text-sm text-zinc-400 font-serif italic">
+        स्रोत: {content.floor.source}
+    </p>
+</div>
+
+<!-- Roof -->
+<div class="space-y-4">
+    <h3 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium">
+        {content.roof.subtitle} छानोको आधारमा घुरधुरीको विवरण
+    </h3>
+
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+            <thead>
+                <tr class="border-b border-zinc-700">
+                    <th
+                        class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >वडा</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >जस्ता/टिन</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >सिमेन्ट</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >फूस</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >टायल/खपडा</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >ढुङ्गा</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >काठ</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >अन्य</th
+                    >
+                    <th
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
+                        >जम्मा</th
+                    >
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    content.roof.tableData.map((row) => (
+                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                            <td class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.ward}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.zincTin.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.cement.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.straw.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.tile.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.stoneSlate.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.woodPlank.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
+                                {row.other.toLocaleString()}
+                            </td>
+                            <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300 font-medium">
+                                {row.total.toLocaleString()}
+                            </td>
+                        </tr>
+                    ))
+                }
+                <tr class="border-t-2 border-zinc-600 bg-zinc-900/50">
+                    <td
+                        class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >जम्मा</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.roof.total.zincTin.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.roof.total.cement.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.roof.total.straw.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.roof.total.tile.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.roof.total.stoneSlate.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.roof.total.woodPlank.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.roof.total.other.toLocaleString()}</td
+                    >
+                    <td
+                        class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
+                        >{content.roof.total.total.toLocaleString()}</td
+                    >
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="text-sm text-zinc-400 font-serif italic">
+        स्रोत: {content.roof.source}
+    </p>
+</div>

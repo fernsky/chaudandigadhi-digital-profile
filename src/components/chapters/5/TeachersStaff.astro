@@ -1,0 +1,260 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type TeachersStaffContent = {
+    title: string;
+    sectionId: string;
+    teachersByLevel: {
+        primary: {
+            permanent: number;
+            contract: number;
+            total: number;
+            relief: number;
+            grandTotal: number;
+        };
+        lowerSecondary: {
+            permanent: number;
+            contract: number;
+            total: number;
+            relief: number;
+            grandTotal: number;
+        };
+        secondary: {
+            permanent: number;
+            contract: number;
+            total: number;
+            relief: number;
+            grandTotal: number;
+        };
+        higherSecondary: {
+            permanent: number;
+            contract: number;
+            total: number;
+            relief: number;
+            grandTotal: number;
+        };
+        trainers: {
+            permanent: number;
+            contract: number;
+            total: number;
+            relief: number;
+            grandTotal: number;
+        };
+    };
+    supportStaff: {
+        earlyChildhoodFacilitators: number;
+        municipalFacilitators: number;
+        communityMobilizers: number;
+        accountAssistants: number;
+        schoolStaff: number;
+        classAides: number;
+        nurses: number;
+        federalGrant: number;
+        totalMunicipalStaff: number;
+    };
+};
+
+const content = await loadChapterSection<TeachersStaffContent>(
+    5,
+    "teachers-staff",
+    lang,
+);
+if (!content) throw new Error("Teachers staff content not found");
+---
+
+<section id="teachers-staff" class="relative bg-[#050505] py-8 md:py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <h3
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+            >
+                ५.१.४ {content.title}
+            </h3>
+
+            <div class="overflow-x-auto mb-8">
+                <table
+                    class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10"
+                >
+                    <thead>
+                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                            <th
+                                class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >तह</th
+                            >
+                            <th
+                                class="px-4 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >स्थायी</th
+                            >
+                            <th
+                                class="px-4 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >करार</th
+                            >
+                            <th
+                                class="px-4 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >जम्मा</th
+                            >
+                            <th
+                                class="px-4 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >राहत</th
+                            >
+                            <th
+                                class="px-4 py-3 text-center font-serif text-zinc-100 font-medium"
+                                >कुल जम्मा</th
+                            >
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors"
+                        >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5"
+                                >प्राथमिक</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{content.teachersByLevel.primary.permanent}</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{content.teachersByLevel.primary.contract}</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{content.teachersByLevel.primary.total}</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{content.teachersByLevel.primary.relief}</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-[#f2e25d] font-bold text-center"
+                                >{
+                                    content.teachersByLevel.primary.grandTotal
+                                }</td
+                            >
+                        </tr>
+                        <tr
+                            class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors"
+                        >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5"
+                                >निम्न माध्यमिक</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{
+                                    content.teachersByLevel.lowerSecondary
+                                        .permanent
+                                }</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{
+                                    content.teachersByLevel.lowerSecondary
+                                        .contract
+                                }</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{
+                                    content.teachersByLevel.lowerSecondary.total
+                                }</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{
+                                    content.teachersByLevel.lowerSecondary
+                                        .relief
+                                }</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-[#f2e25d] font-bold text-center"
+                                >{
+                                    content.teachersByLevel.lowerSecondary
+                                        .grandTotal
+                                }</td
+                            >
+                        </tr>
+                        <tr
+                            class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors"
+                        >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5"
+                                >माध्यमिक</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{
+                                    content.teachersByLevel.secondary.permanent
+                                }</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{
+                                    content.teachersByLevel.secondary.contract
+                                }</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{content.teachersByLevel.secondary.total}</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{content.teachersByLevel.secondary.relief}</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-[#f2e25d] font-bold text-center"
+                                >{
+                                    content.teachersByLevel.secondary.grandTotal
+                                }</td
+                            >
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-4">
+                    <div class="text-[#f2e25d] font-serif text-2xl font-bold">
+                        {content.supportStaff.earlyChildhoodFacilitators}
+                    </div>
+                    <div class="text-zinc-100 font-serif text-xs mt-1">
+                        बाल विकास सहजकर्ता
+                    </div>
+                </div>
+                <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-4">
+                    <div class="text-[#f2e25d] font-serif text-2xl font-bold">
+                        {content.supportStaff.municipalFacilitators}
+                    </div>
+                    <div class="text-zinc-100 font-serif text-xs mt-1">
+                        नगर सहजकर्ता
+                    </div>
+                </div>
+                <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-4">
+                    <div class="text-[#f2e25d] font-serif text-2xl font-bold">
+                        {content.supportStaff.accountAssistants}
+                    </div>
+                    <div class="text-zinc-100 font-serif text-xs mt-1">
+                        लेखा सहायक
+                    </div>
+                </div>
+                <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-4">
+                    <div class="text-[#f2e25d] font-serif text-2xl font-bold">
+                        {content.supportStaff.totalMunicipalStaff}
+                    </div>
+                    <div class="text-zinc-100 font-serif text-xs mt-1">
+                        कुल जनशक्ति
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
