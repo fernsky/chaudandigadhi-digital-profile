@@ -1,0 +1,326 @@
+{
+    "title": "Details of Human Resources working in the Ward Offices",
+    "number": "8.3.3",
+    "tableName": "Table No. 73: Details of Human Resources working in the Ward Offices",
+    "tableHeaderWard": "Ward No.",
+    "tableHeaderLevel": "Employee Level",
+    "tableHeaderPermanent": "Permanent",
+    "tableHeaderContract": "Contract",
+    "tableData": [
+        {
+            "ward": "Ward No. 1",
+            "rows": [
+                {
+                    "level": "Officer 6th (Ward Secretary)",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Sub-Engineer",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Social Mobilizer",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Psychosocial Worker",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "",
+                    "contract": "1"
+                }
+            ]
+        },
+        {
+            "ward": "Ward No. 2",
+            "rows": [
+                {
+                    "level": "Assistant Level 4th (Ward Secretary)",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Assistant Sub-Engineer",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Assistant Level 4th",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Psychosocial Worker",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "",
+                    "contract": "2"
+                }
+            ]
+        },
+        {
+            "ward": "Ward No. 3",
+            "rows": [
+                {
+                    "level": "Assistant Level 4th (Ward Secretary)",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Social Mobilizer",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Psychosocial Worker",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Assistant Sub-Engineer",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "",
+                    "contract": "1"
+                }
+            ]
+        },
+        {
+            "ward": "Ward No. 4",
+            "rows": [
+                {
+                    "level": "Assistant Level 4th (Ward Secretary)",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Assistant Level 4th",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Technical Assistant 4th",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Computer Operator 5th",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "",
+                    "contract": "1"
+                }
+            ]
+        },
+        {
+            "ward": "Ward No. 5",
+            "rows": [
+                {
+                    "level": "Officer 6th (Ward Secretary)",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Social Mobilizer",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Assistant Sub-Engineer",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Assistant Computer Operator",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Psychosocial Worker",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "",
+                    "contract": "3"
+                }
+            ]
+        },
+        {
+            "ward": "Ward No. 6",
+            "rows": [
+                {
+                    "level": "Assistant Level 5th (Ward Secretary)",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Field Assistant",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "J.T.A. (Agriculture)",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Psychosocial Worker",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "",
+                    "contract": "1"
+                }
+            ]
+        },
+        {
+            "ward": "Ward No. 7",
+            "rows": [
+                {
+                    "level": "Livestock Health Technical 5th (Ward Secretary)",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Sub-Engineer",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Assistant Computer Operator",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Social Mobilizer",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "",
+                    "contract": "1"
+                }
+            ]
+        },
+        {
+            "ward": "Ward No. 8",
+            "rows": [
+                {
+                    "level": "Assistant Level 4th (Ward Secretary)",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Assistant Sub-Engineer",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Assistant Computer Operator",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Child Friendly Facilitator",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Psychosocial Worker",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "",
+                    "contract": "1"
+                }
+            ]
+        },
+        {
+            "ward": "Ward No. 9",
+            "rows": [
+                {
+                    "level": "Assistant Level 5th (Ward Secretary)",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Assistant Sub-Engineer",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Technical Assistant 4th",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Assistant Computer Operator",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Psychosocial Worker",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "",
+                    "contract": "1"
+                }
+            ]
+        },
+        {
+            "ward": "Ward No. 10",
+            "rows": [
+                {
+                    "level": "Technical Assistant 4th (Ward Secretary)",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Assistant Sub-Engineer",
+                    "permanent": "1",
+                    "contract": ""
+                },
+                {
+                    "level": "Social Mobilizer",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Gardener",
+                    "permanent": "",
+                    "contract": "1"
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "",
+                    "contract": "1"
+                }
+            ]
+        }
+    ]
+}

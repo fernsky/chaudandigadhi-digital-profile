@@ -1,0 +1,528 @@
+{
+    "title": "Municipal Staff at Executive Office",
+    "number": "8.3.2",
+    "tableName": "Table No. 72: Details of Human Resources working in the Executive Office",
+    "tableHeaderBranch": "Existing Branch",
+    "tableHeaderLevel": "Level",
+    "tableHeaderPermanent": "Permanent",
+    "tableHeaderContract": "Contract",
+    "tableHeaderWage": "Daily Wages",
+    "tableData": [
+        {
+            "branch": "Chief Administrative Officer",
+            "rows": [
+                {
+                    "level": "CAO",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Education Section",
+            "rows": [
+                {
+                    "level": "Under Secretary",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Education Officer (7th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Technical Assistant (5th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Financial Administration Section",
+            "rows": [
+                {
+                    "level": "Accounts Officer (8th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Accounts Officer (8th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Planning Section",
+            "rows": [
+                {
+                    "level": "Officer (6th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Infrastructure Development Section",
+            "rows": [
+                {
+                    "level": "Engineer (7th)",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Sub-Engineer (5th)",
+                    "permanent": "2",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "WSS Technician (5th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Asst. Sub-Engineer (4th)",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Amin",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Health Section",
+            "rows": [
+                {
+                    "level": "Sr. Public Health Officer (8th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Sr. AHW (6th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Sr. ANM Inspector (6th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Nutrition Assistant",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Livestock Service Section",
+            "rows": [
+                {
+                    "level": "Veterinarian (6th)",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Livestock Service Technician (5th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Jr. Livestock Service Technician (4th)",
+                    "permanent": "1",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Jr. Animal Health Technician (4th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Administration Section",
+            "rows": [
+                {
+                    "level": "Officer (6th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Computer Operator (5th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Administration Assistant (4th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Heavy Vehicle Driver (Fire Engine)",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Fireman",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Light Vehicle Driver",
+                    "permanent": "",
+                    "contract": "7",
+                    "wage": ""
+                },
+                {
+                    "level": "City Police Coordinator",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "City Police Personnel",
+                    "permanent": "",
+                    "contract": "16",
+                    "wage": ""
+                },
+                {
+                    "level": "Social Mobilizer (Registration/Dispatch)",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Electrician",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Backhoe Loader Driver",
+                    "permanent": "",
+                    "contract": "",
+                    "wage": "1"
+                },
+                {
+                    "level": "Backhoe Loader Helper",
+                    "permanent": "",
+                    "contract": "",
+                    "wage": "1"
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "1",
+                    "contract": "13",
+                    "wage": ""
+                },
+                {
+                    "level": "Cleaning Assistant",
+                    "permanent": "",
+                    "contract": "5",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Employment Service Center",
+            "rows": [
+                {
+                    "level": "Employment Coordinator",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Employment Assistant",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Technical Assistant (5th)",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Information Technology Section",
+            "rows": [
+                {
+                    "level": "IT Officer",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Store Section",
+            "rows": [
+                {
+                    "level": "Nayab Subba",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Assistant Level (4th)",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Agriculture Development Section",
+            "rows": [
+                {
+                    "level": "Agriculture Graduate (6th)",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Technical Assistant (5th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Junior Technical Assistant (4th)",
+                    "permanent": "1",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Women and Children Section",
+            "rows": [
+                {
+                    "level": "Women Development Inspector (5th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Disability Support Facilitator",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Revenue Section",
+            "rows": [
+                {
+                    "level": "Assistant Level (5th)",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Assistant Computer Operator (4th)",
+                    "permanent": "",
+                    "contract": "3",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Social Security and Vital Registration Unit",
+            "rows": [
+                {
+                    "level": "MIS Operator (5th)",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Cooperative Section",
+            "rows": [
+                {
+                    "level": "Assistant Level (5th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Social Development Section",
+            "rows": [
+                {
+                    "level": "Assistant Level (5th)",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Office Assistant",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Safe Migration Section",
+            "rows": [
+                {
+                    "level": "Program Coordinator",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Financial Literacy Facilitator",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Small Enterprise Section",
+            "rows": [
+                {
+                    "level": "Enterprise Development Facilitator",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Enterprise Development Assistant",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Judicial Section",
+            "rows": [
+                {
+                    "level": "Assistant Level (5th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "Legal Advisor",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Psychosocial Counseling Section",
+            "rows": [
+                {
+                    "level": "Social Psychosocial Counseling Coordinator",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Land Service Center",
+            "rows": [
+                {
+                    "level": "Coordinator",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Surveyor",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                },
+                {
+                    "level": "Amin",
+                    "permanent": "",
+                    "contract": "6",
+                    "wage": ""
+                },
+                {
+                    "level": "Social Mobilizer",
+                    "permanent": "",
+                    "contract": "2",
+                    "wage": ""
+                },
+                {
+                    "level": "Field Assistant",
+                    "permanent": "",
+                    "contract": "4",
+                    "wage": ""
+                },
+                {
+                    "level": "Data Entry Operator",
+                    "permanent": "",
+                    "contract": "1",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Forest, Environment, Disaster and Waste Management Section",
+            "rows": [
+                {
+                    "level": "Technical Assistant (5th)",
+                    "permanent": "1",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "Total",
+            "rows": [
+                {
+                    "level": "",
+                    "permanent": "27",
+                    "contract": "88",
+                    "wage": "2"
+                }
+            ]
+        }
+    ]
+}

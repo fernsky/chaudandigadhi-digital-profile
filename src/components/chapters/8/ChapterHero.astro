@@ -1,0 +1,41 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type HeroContent = {
+    title: string;
+    subtitle: string;
+    tagline: string;
+    description: string;
+};
+
+const content = await loadChapterSection<HeroContent>(8, "hero", lang);
+
+if (!content) {
+    throw new Error("Chapter 8 hero content not found");
+}
+---
+
+<section class="relative min-h-[40vh] bg-black flex items-center py-12">
+    <div class="container mx-auto px-8">
+        <div class="max-w-2xl mx-auto">
+            <!-- Main Title -->
+            <h1
+                class="font-serif text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] font-bold text-white tracking-tight mb-6"
+            >
+                {content.subtitle}
+            </h1>
+
+            <!-- Tagline -->
+            <p class="font-serif text-xl md:text-2xl text-white leading-snug">
+                {content.tagline}
+            </p>
+        </div>
+    </div>
+</section>

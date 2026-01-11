@@ -703,28 +703,28 @@
       ]
     },
     "8": {
-      "title": "Chapter 8: Institutional and Governance",
+      "title": "Chapter 8: Institutional and Governance Status",
       "slug": "chapters/8",
-      "description": "Organizational structure, service delivery, and policies",
+      "description": "Institutional structure, service delivery and legal framework of the municipality",
       "sections": [
         {
           "id": "8.1",
-          "title": "Organizational and Human Resources",
+          "title": "Organizational and Human Resource Status",
           "slug": "organization"
         },
         {
           "id": "8.1.1",
-          "title": "Organizational Structure",
+          "title": "Organizational Structure of Municipality",
           "slug": "organizational-structure"
         },
         {
           "id": "8.2",
-          "title": "Service Delivery and Management",
-          "slug": "service-delivery"
+          "title": "Service Operation and Management",
+          "slug": "services"
         },
         {
           "id": "8.2.1",
-          "title": "Types of Services Available",
+          "title": "Types of Available Services",
           "slug": "service-types"
         },
         {
@@ -734,23 +734,28 @@
         },
         {
           "id": "8.2.3",
-          "title": "Community Mediation Committee",
-          "slug": "mediation-committee"
+          "title": "Details regarding Community Mediation Committee",
+          "slug": "mediation"
         },
         {
           "id": "8.3",
-          "title": "Laws, Policies and Procedures",
-          "slug": "laws-policies"
+          "title": "Acts, Policies, Rules and Procedures",
+          "slug": "legal-framework"
         },
         {
           "id": "8.3.1",
-          "title": "Approved Laws and Regulations",
-          "slug": "approved-laws"
+          "title": "Approved Acts, Policies, Rules, Directives and Standards of Municipality",
+          "slug": "approved-acts"
         },
         {
           "id": "8.3.2",
-          "title": "Municipal Staff",
+          "title": "Municipal Staff at Executive Office",
           "slug": "staff"
+        },
+        {
+          "id": "8.3.3",
+          "title": "Details of Human Resources working in the Ward Offices",
+          "slug": "ward-staff"
         }
       ]
     }
