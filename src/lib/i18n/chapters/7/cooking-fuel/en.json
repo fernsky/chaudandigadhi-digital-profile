@@ -1,0 +1,180 @@
+{
+    "title": "Households based on Cooking Fuel Use",
+    "number": "7.2.1",
+    "content": "Although Nepal is rich in water resources, due to underutilization, energy crisis is prevalent in urban and rural areas. Even today, in the hilly and Himalayan regions of Nepal, a large number of people use wood/firewood/coal as cooking fuel, while the use of cow dung cakes (Guitha) is widespread in the Terai region.\n\nOut of the total households in this Chaudandigadhi Municipality, 9,263 or 72.92 percent use wood/firewood/coal for cooking, and 3,195 or 25.15 percent use LP gas. Similarly, 84 households or 0.66 percent use electricity, 1 household or 0.01 percent uses kerosene, 148 households or 1.17 percent use biogas, 3 households or 0.02 percent use Guitha, and 9 households or 0.07 percent use other sources of fuel. The use of mostly wood/firewood by locals not only damages forests and the environment but also affects health due to smoke and takes more time to collect firewood, leading to loss of time. Therefore, it seems necessary to encourage the use of biogas as the best alternative energy option in rural areas and to lead the municipality residents towards alternatives to wood/firewood by focusing on income-generating programs. Detailed information is presented in the table.",
+    "tableTitle": "Table No. 66: Households based on main fuel used for cooking",
+    "tableData": [
+        {
+            "ward": "1",
+            "wood": "709",
+            "lpg": "49",
+            "electricity": "0",
+            "guitha": "0",
+            "biogas": "14",
+            "kerosene": "1",
+            "others": "0",
+            "total": "773"
+        },
+        {
+            "ward": "2",
+            "wood": "890",
+            "lpg": "229",
+            "electricity": "8",
+            "guitha": "0",
+            "biogas": "16",
+            "kerosene": "0",
+            "others": "1",
+            "total": "1144"
+        },
+        {
+            "ward": "3",
+            "wood": "812",
+            "lpg": "185",
+            "electricity": "1",
+            "guitha": "0",
+            "biogas": "2",
+            "kerosene": "0",
+            "others": "0",
+            "total": "1000"
+        },
+        {
+            "ward": "4",
+            "wood": "1100",
+            "lpg": "526",
+            "electricity": "5",
+            "guitha": "0",
+            "biogas": "36",
+            "kerosene": "0",
+            "others": "1",
+            "total": "1668"
+        },
+        {
+            "ward": "5",
+            "wood": "1312",
+            "lpg": "180",
+            "electricity": "20",
+            "guitha": "0",
+            "biogas": "10",
+            "kerosene": "0",
+            "others": "1",
+            "total": "1523"
+        },
+        {
+            "ward": "6",
+            "wood": "599",
+            "lpg": "728",
+            "electricity": "2",
+            "guitha": "0",
+            "biogas": "20",
+            "kerosene": "0",
+            "others": "3",
+            "total": "1352"
+        },
+        {
+            "ward": "7",
+            "wood": "629",
+            "lpg": "788",
+            "electricity": "2",
+            "guitha": "0",
+            "biogas": "6",
+            "kerosene": "0",
+            "others": "2",
+            "total": "1427"
+        },
+        {
+            "ward": "8",
+            "wood": "780",
+            "lpg": "74",
+            "electricity": "3",
+            "guitha": "0",
+            "biogas": "4",
+            "kerosene": "0",
+            "others": "0",
+            "total": "861"
+        },
+        {
+            "ward": "9",
+            "wood": "1468",
+            "lpg": "280",
+            "electricity": "27",
+            "guitha": "3",
+            "biogas": "27",
+            "kerosene": "0",
+            "others": "1",
+            "total": "1806"
+        },
+        {
+            "ward": "10",
+            "wood": "964",
+            "lpg": "156",
+            "electricity": "16",
+            "guitha": "0",
+            "biogas": "13",
+            "kerosene": "0",
+            "others": "0",
+            "total": "1149"
+        },
+        {
+            "ward": "Total",
+            "wood": "9263",
+            "lpg": "3195",
+            "electricity": "84",
+            "guitha": "3",
+            "biogas": "148",
+            "kerosene": "1",
+            "others": "9",
+            "total": "12703"
+        },
+        {
+            "ward": "Percent",
+            "wood": "72.92",
+            "lpg": "25.15",
+            "electricity": "0.66",
+            "guitha": "0.02",
+            "biogas": "1.17",
+            "kerosene": "0.01",
+            "others": "0.07",
+            "total": "100"
+        }
+    ],
+    "source": "National Census, 2078",
+    "chartTitle": "Households details based on main fuel used for cooking",
+    "chartData": [
+        {
+            "label": "Wood/Firewood",
+            "value": 72.92,
+            "color": "#fbbf24"
+        },
+        {
+            "label": "LP Gas",
+            "value": 25.15,
+            "color": "#0ea5e9"
+        },
+        {
+            "label": "Electricity",
+            "value": 0.66,
+            "color": "#713f12"
+        },
+        {
+            "label": "Guitha",
+            "value": 0.02,
+            "color": "#ef4444"
+        },
+        {
+            "label": "Bio Gas",
+            "value": 1.17,
+            "color": "#22c55e"
+        },
+        {
+            "label": "Kerosene",
+            "value": 0.01,
+            "color": "#854d0e"
+        },
+        {
+            "label": "Others",
+            "value": 0.07,
+            "color": "#78350f"
+        }
+    ],
+    "content2": "According to the concept of sustainable development, it is inevitable to change people's consumption patterns to maintain environmental balance. For example, Nepal has set a goal to reduce the population using wood, firewood, guitha, etc. as primary sources of fuel from 74.7 percent in the base year 2015 to 30 percent by 2030 (SDG-7) and to increase the use of LP gas for cooking from 18 percent (2015) to 33 percent. Embracing this national goal, it is necessary to orient the policies and programs of this municipality towards that."
+}

@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Language } from "../../../lib/i18n";
+
+// Chapter 7 Components
+import ChapterHero from "../../../components/chapters/7/ChapterHero.astro";
+import TransportationInfrastructure from "../../../components/chapters/7/TransportationInfrastructure.astro";
+import ElectricityAlternativeEnergy from "../../../components/chapters/7/ElectricityAlternativeEnergy.astro";
+import CommunicationTechnology from "../../../components/chapters/7/CommunicationTechnology.astro";
+import HousingBuildings from "../../../components/chapters/7/HousingBuildings.astro";
+
+export async function getStaticPaths() {
+    return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Language };
+
+const title =
+    lang === "ne"
+        ? "परिच्छेद – ७: भौतिक विकासको अवस्था"
+        : "Chapter 7: Physical Development Status";
+const description =
+    lang === "ne"
+        ? "चौदण्डीगढी नगरपालिकाको भौतिक पूर्वाधार, यातायात, सञ्चार र ऊर्जाको अवस्था"
+        : "Physical infrastructure, transportation, communication, and energy status of Chaudandigadhi Municipality";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+    <!-- Chapter Hero -->
+    <ChapterHero lang={lang} />
+
+    <!-- 7.1 Transportation Infrastructure -->
+    <TransportationInfrastructure lang={lang} />
+
+    <!-- 7.2 Electricity and Alternative Energy -->
+    <ElectricityAlternativeEnergy lang={lang} />
+
+    <!-- 7.3 Communication and Technology -->
+    <CommunicationTechnology lang={lang} />
+
+    <!-- 7.4 Housing and Buildings -->
+    <HousingBuildings lang={lang} />
+</BaseLayout>
+
+<style>
+    /* Smooth scroll behavior */
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+</style>

@@ -1,0 +1,146 @@
+{
+    "title": "Households based on Lighting Fuel Use",
+    "number": "7.2.2",
+    "content": "In all wards of this municipality, electricity maintenance, tariff collection, and implementation of electrification plans have been done by the Nepal Electricity Authority. According to the data of National Census, 2078, electricity seems to be the main source of fuel used for daily lighting.",
+    "tableTitle": "Table No. 67: Details of Fuel Used for Daily Lighting",
+    "tableData": [
+        {
+            "ward": "1",
+            "electricity": "468",
+            "solar": "270",
+            "kerosene": "9",
+            "biogas": "1",
+            "others": "25",
+            "total": "773"
+        },
+        {
+            "ward": "2",
+            "electricity": "1089",
+            "solar": "27",
+            "kerosene": "9",
+            "biogas": "1",
+            "others": "18",
+            "total": "1144"
+        },
+        {
+            "ward": "3",
+            "electricity": "978",
+            "solar": "11",
+            "kerosene": "2",
+            "biogas": "1",
+            "others": "8",
+            "total": "1000"
+        },
+        {
+            "ward": "4",
+            "electricity": "1622",
+            "solar": "25",
+            "kerosene": "8",
+            "biogas": "0",
+            "others": "13",
+            "total": "1668"
+        },
+        {
+            "ward": "5",
+            "electricity": "1507",
+            "solar": "4",
+            "kerosene": "5",
+            "biogas": "0",
+            "others": "7",
+            "total": "1523"
+        },
+        {
+            "ward": "6",
+            "electricity": "1329",
+            "solar": "10",
+            "kerosene": "1",
+            "biogas": "0",
+            "others": "12",
+            "total": "1352"
+        },
+        {
+            "ward": "7",
+            "electricity": "1395",
+            "solar": "22",
+            "kerosene": "2",
+            "biogas": "0",
+            "others": "8",
+            "total": "1427"
+        },
+        {
+            "ward": "8",
+            "electricity": "754",
+            "solar": "68",
+            "kerosene": "16",
+            "biogas": "0",
+            "others": "23",
+            "total": "861"
+        },
+        {
+            "ward": "9",
+            "electricity": "1776",
+            "solar": "17",
+            "kerosene": "3",
+            "biogas": "0",
+            "others": "10",
+            "total": "1806"
+        },
+        {
+            "ward": "10",
+            "electricity": "1131",
+            "solar": "3",
+            "kerosene": "1",
+            "biogas": "0",
+            "others": "14",
+            "total": "1149"
+        },
+        {
+            "ward": "Total",
+            "electricity": "12049",
+            "solar": "457",
+            "kerosene": "56",
+            "biogas": "3",
+            "others": "138",
+            "total": "12703"
+        },
+        {
+            "ward": "Percent",
+            "electricity": "94.85",
+            "solar": "3.60",
+            "kerosene": "0.44",
+            "biogas": "0.02",
+            "others": "1.09",
+            "total": "100"
+        }
+    ],
+    "source": "National Census, 2078",
+    "content2": "Analyzing the source of fuel used by households in the municipality for daily lighting, out of a total of 12,703 households, 12,049 or 94.85 percent were found using electricity, 475 or 3.60 percent using solar, 56 or 0.44 percent using kerosene, 3 or 0.02 percent using biogas, and 138 or 1.09 percent using other sources of fuel. Detailed ward-wise information is presented in the table.",
+    "chartTitle": "Details of Fuel Used for Daily Lighting",
+    "chartData": [
+        {
+            "label": "Electricity",
+            "value": 12049,
+            "color": "#ea580c"
+        },
+        {
+            "label": "Solar",
+            "value": 457,
+            "color": "#b91c1c"
+        },
+        {
+            "label": "Kerosene",
+            "value": 56,
+            "color": "#65451F"
+        },
+        {
+            "label": "Bio Gas",
+            "value": 3,
+            "color": "#22c55e"
+        },
+        {
+            "label": "Others",
+            "value": 138,
+            "color": "#3b82f6"
+        }
+    ]
+}

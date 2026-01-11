@@ -1,0 +1,465 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type HousingSection = {
+    title: string;
+    number: string;
+    content: string;
+};
+
+type RoofTypeSection = {
+    title: string;
+    number: string;
+    tableTitle: string;
+    tableData: Array<{
+        ward: string;
+        zinc: string;
+        cement: string;
+        thatch: string;
+        tile: string;
+        stone: string;
+        wood: string;
+        others: string;
+        total: string;
+    }>;
+    source: string;
+    chartTitle: string;
+    chartData: Array<{ label: string; value: number; color: string }>;
+    content: string;
+};
+
+type GovtBuildingsSection = {
+    title: string;
+    number: string;
+    content1: string;
+    content2: string;
+    tableTitle: string;
+    tableData: Array<{
+        sn: string;
+        name: string;
+        ward: string;
+        status: string;
+        remarks: string;
+    }>;
+    source: string;
+    imageCaption1: string;
+    imageCaption2: string;
+};
+
+type SlaughterhouseSection = {
+    title: string;
+    number: string;
+    content: string;
+};
+
+type CrematoriumSection = {
+    title: string;
+    number: string;
+    content: string;
+};
+
+const housing = (await loadChapterSection(
+    7,
+    "housing",
+    lang
+)) as HousingSection;
+
+const roofType = (await loadChapterSection(
+    7,
+    "roof-types",
+    lang
+)) as RoofTypeSection;
+
+const govtBuildings = (await loadChapterSection(
+    7,
+    "govt-buildings",
+    lang
+)) as GovtBuildingsSection;
+
+const slaughterhouse = (await loadChapterSection(
+    7,
+    "slaughterhouse",
+    lang
+)) as SlaughterhouseSection;
+
+const crematorium = (await loadChapterSection(
+    7,
+    "crematorium",
+    lang
+)) as CrematoriumSection;
+---
+
+<!-- 7.4 Housing and Buildings -->
+{
+    housing && (
+        <section id="housing" class="relative bg-[#050505] pb-8 md:pb-12">
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                            {housing.number} {housing.title}
+                        </h2>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                            {housing.content}
+                        </p>
+                    </div>
+
+                    <!-- 7.4.1 Roof Types -->
+                    {roofType && (
+                        <div id="roof-types" class="mb-16">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {roofType.number} {roofType.title}
+                            </h3>
+                            
+                            <!-- Table 70 -->
+                             <div class="mb-10 max-w-6xl -mx-4 md:mx-auto">
+                                <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                                    {roofType.tableTitle}
+                                </h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                        <thead>
+                                            <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                                <th class="px-2 py-3 border-r border-[#f2e25d]/10 text-center font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "वडा" : "Ward"}
+                                                </th>
+                                                <th class="px-2 py-3 border-r border-[#f2e25d]/10 text-right font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "जस्ता/टिन" : "Zinc/Tin"}
+                                                </th>
+                                                <th class="px-2 py-3 border-r border-[#f2e25d]/10 text-right font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "सिमेन्ट/ ढलान" : "Cement"}
+                                                </th>
+                                                <th class="px-2 py-3 border-r border-[#f2e25d]/10 text-right font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "खर/पराल" : "Thatch"}
+                                                </th>
+                                                <th class="px-2 py-3 border-r border-[#f2e25d]/10 text-right font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "टायल" : "Tile"}
+                                                </th>
+                                                <th class="px-2 py-3 border-r border-[#f2e25d]/10 text-right font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "ढुङ्गा/स्लेट" : "Stone"}
+                                                </th>
+                                                <th class="px-2 py-3 border-r border-[#f2e25d]/10 text-right font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "काठ/फल्याक" : "Wood"}
+                                                </th>
+                                                <th class="px-2 py-3 border-r border-[#f2e25d]/10 text-right font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "अन्य" : "Others"}
+                                                </th>
+                                                <th class="px-2 py-3 text-right font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "जम्मा" : "Total"}
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {roofType.tableData.map((row) => (
+                                                <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                                    <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center font-medium bg-[#f2e25d]/5">
+                                                        {row.ward}
+                                                    </td>
+                                                    <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-right">
+                                                        {row.zinc}
+                                                    </td>
+                                                    <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-right">
+                                                        {row.cement}
+                                                    </td>
+                                                    <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-right">
+                                                        {row.thatch}
+                                                    </td>
+                                                    <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-right">
+                                                        {row.tile}
+                                                    </td>
+                                                    <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-right">
+                                                        {row.stone}
+                                                    </td>
+                                                    <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-right">
+                                                        {row.wood}
+                                                    </td>
+                                                    <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-right">
+                                                        {row.others}
+                                                    </td>
+                                                    <td class="px-2 py-2 text-right font-bold bg-[#f2e25d]/5 text-[#f2e25d]">
+                                                        {row.total}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="text-zinc-400 text-sm text-right mt-2 font-serif italic mb-8">
+                                    {lang === "ne" ? "स्रोत:" : "Source:"} {roofType.source}
+                                </p>
+                            </div>
+
+                            <!-- Pie Chart -->
+                            <div class="mb-10">
+                                <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-6 text-center">
+                                    {roofType.chartTitle}
+                                </h5>
+                                <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 rounded-lg p-6 flex flex-col items-center">
+                                    <div id="roof-type-chart" class="w-full h-[450px]" data-chart-data={JSON.stringify(roofType.chartData)}></div>
+                                </div>
+                            </div>
+
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                                {roofType.content}
+                            </p>
+                        </div>
+                    )}
+
+                    <!-- 7.4.2 Govt Buildings -->
+                     {govtBuildings && (
+                        <div id="govt-buildings" class="mb-16">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {govtBuildings.number} {govtBuildings.title}
+                            </h3>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                                {govtBuildings.content1}
+                            </p>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-8">
+                                {govtBuildings.content2}
+                            </p>
+
+                            <!-- Table 71 -->
+                            <div class="mb-10">
+                                <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                                    {govtBuildings.tableTitle}
+                                </h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                        <thead>
+                                            <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                                <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-center w-12 font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "क्र.सं." : "SN"}
+                                                </th>
+                                                <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "भवनको नाम" : "Building Name"}
+                                                </th>
+                                                <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-center font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "वडा नं." : "Ward No."}
+                                                </th>
+                                                <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "अवस्था" : "Status"}
+                                                </th>
+                                                <th class="px-3 py-3 text-left font-serif text-zinc-100 font-medium">
+                                                    {lang === "ne" ? "कैफियत" : "Remarks"}
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {govtBuildings.tableData.map((row) => (
+                                                <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                                    <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                        {row.sn}
+                                                    </td>
+                                                    <td class="px-3 py-2 border-r border-[#f2e25d]/5">
+                                                        {row.name}
+                                                    </td>
+                                                    <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center">
+                                                        {row.ward}
+                                                    </td>
+                                                    <td class="px-3 py-2 border-r border-[#f2e25d]/5">
+                                                        {row.status}
+                                                    </td>
+                                                    <td class="px-3 py-2">
+                                                        {row.remarks}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="text-zinc-400 text-sm text-right mt-2 font-serif italic">
+                                    {lang === "ne" ? "स्रोत:" : "Source:"} {govtBuildings.source}
+                                </p>
+                            </div>
+
+                            <!-- Ward 1 Office Image -->
+                            <figure class="mb-10">
+                                <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                                    <span class="font-serif italic">[Image: Ward 1 Office]</span>
+                                </div>
+                                <figcaption class="text-center font-bold text-zinc-200 font-serif text-lg md:text-xl">
+                                    {govtBuildings.imageCaption1}
+                                </figcaption>
+                            </figure>
+
+                            <!-- Ward 4 Office Image -->
+                            <figure class="mb-10">
+                                <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                                     <span class="font-serif italic">[Image: Ward 4 Office]</span>
+                                </div>
+                                <figcaption class="text-center font-bold text-zinc-200 font-serif text-lg md:text-xl">
+                                    {govtBuildings.imageCaption2}
+                                </figcaption>
+                            </figure>
+                        </div>
+                     )}
+
+                     <!-- 7.4.3 Slaughterhouse -->
+                     {slaughterhouse && (
+                        <div id="slaughterhouse" class="mb-16">
+                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {slaughterhouse.number} {slaughterhouse.title}
+                            </h3>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                                {slaughterhouse.content}
+                            </p>
+                        </div>
+                     )}
+
+                     <!-- 7.4.4 Crematorium -->
+                     {crematorium && (
+                        <div id="crematorium">
+                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {crematorium.number} {crematorium.title}
+                            </h3>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                                {crematorium.content}
+                            </p>
+                        </div>
+                     )}
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<script>
+    import * as d3 from "d3";
+
+    const initRoofTypeChart = () => {
+        const container = document.getElementById("roof-type-chart");
+        if (!container) return;
+
+        const dataStr = container.dataset.chartData;
+        if (!dataStr) return;
+        const data = JSON.parse(dataStr);
+
+        container.innerHTML = "";
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        const radius = Math.min(width, height) / 2;
+
+        const svg = d3.select(container)
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", `translate(${width / 2},${height / 2})`);
+
+        const pie = d3.pie<any>().value((d) => d.value);
+        const arc = d3.arc<any>().innerRadius(0).outerRadius(radius * 0.75); // Slightly smaller to fit labels
+        const arcHover = d3.arc<any>().innerRadius(0).outerRadius(radius * 0.85);
+        const outerArc = d3.arc<any>().innerRadius(radius * 0.8).outerRadius(radius * 0.8);
+
+        // Tooltip
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "absolute bg-black/90 border border-[#f2e25d]/30 text-white text-sm px-3 py-2 rounded pointer-events-none opacity-0 transition-opacity z-50");
+
+        const slices = svg.selectAll("path")
+            .data(pie(data))
+            .enter()
+            .append("path")
+            .attr("d", arc)
+            .attr("fill", (d: any) => d.data.color)
+            .attr("stroke", "#0a0a0a")
+            .attr("stroke-width", "2px")
+            .style("cursor", "pointer")
+            .transition()
+            .duration(1000)
+             .attrTween("d", function (d: any) {
+                const i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
+                return function (t) {
+                    d.endAngle = i(t);
+                    return arc(d) as string;
+                }
+            });
+
+        svg.selectAll("path")
+            .on("mouseover", function (event, d: any) {
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("d", arcHover);
+                
+                tooltip.style("opacity", 1)
+                    .html(`<div class="font-serif"><strong>${d.data.label}</strong><br/>${d.data.value}%</div>`);
+            })
+            .on("mousemove", function(event) {
+                tooltip
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 10) + "px");
+            })
+            .on("mouseout", function () {
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("d", arc);
+                tooltip.style("opacity", 0);
+            });
+
+        // Polylines and Labels for Pie Chart
+        const labelGroup = svg.append("g");
+        
+        // This is a bit complex for a quick implementation, let's stick to a Legend below for mobile friendliness and simplicity, similar to previous charts.
+        // It's cleaner on small screens.
+        
+        // Legends
+        const legendGroup = svg.append("g")
+            .attr("transform", `translate(${radius + 20}, ${-height/4})`);
+            
+        // For larger screens, show legend on the side, or stack below.
+        // Let's create a list below the chart in HTML/CSS instead of SVG for better responsiveness? 
+        // No, user asked for D3. Let's do simple legend in SVG if space permits, else loop below.
+        
+        // Let's use responsive legend positioning
+        const legend = legendGroup.selectAll(".legend")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("class", "legend")
+            .attr("transform", (d, i) => `translate(0, ${i * 25})`);
+        
+        // Only show SVG legend if width > 600
+        if(width > 600) {
+             legend.append("rect")
+                .attr("width", 18)
+                .attr("height", 18)
+                .style("fill", (d: any) => d.color);
+
+            legend.append("text")
+                .attr("x", 24)
+                .attr("y", 14)
+                .text((d: any) => `${d.label} (${d.value}%)`)
+                .style("font-size", "14px")
+                .style("fill", "#e4e4e7")
+                .attr("class", "font-serif");
+        } else {
+             // For small screens, we might want to append HTML legends outside. 
+             // But for now, let's rely on tooltip and simple color blocks below if needed.
+             // Or simply let the user hover/tap.
+        }
+    }
+
+    document.addEventListener("astro:page-load", () => {
+        initRoofTypeChart();
+    });
+
+    initRoofTypeChart();
+    
+    const resizeObserver = new ResizeObserver(() => {
+         window.requestAnimationFrame(() => {
+            initRoofTypeChart();
+        });
+    });
+
+    const container = document.getElementById("roof-type-chart");
+    if (container) resizeObserver.observe(container);
+
+</script>
