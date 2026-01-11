@@ -5,11 +5,12 @@ import type { Language } from "../../../lib/i18n";
 // Chapter 4 Components
 import ChapterHero from "../../../components/chapters/4/ChapterHero.astro";
 import EconomicOverview from "../../../components/chapters/4/EconomicOverview.astro";
-import ForeignEmployment from "../../../components/chapters/4/ForeignEmployment.astro";
-import Housing from "../../../components/chapters/4/Housing.astro";
+import IndustrialClassification from "../../../components/chapters/4/IndustrialClassification.astro";
+import HousingStructure from "../../../components/chapters/4/HousingStructure.astro";
+import EconomicActivities from "../../../components/chapters/4/EconomicActivities.astro";
 import LandUse from "../../../components/chapters/4/LandUse.astro";
-import Agriculture from "../../../components/chapters/4/Agriculture.astro";
-import Tourism from "../../../components/chapters/4/Tourism.astro";
+import AgricultureDevelopment from "../../../components/chapters/4/AgricultureDevelopment.astro";
+import TourismDevelopment from "../../../components/chapters/4/TourismDevelopment.astro";
 import IndustryTrade from "../../../components/chapters/4/IndustryTrade.astro";
 
 export async function getStaticPaths() {
@@ -17,38 +18,49 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params as { lang: Language };
+
+const title =
+    lang === "ne"
+        ? "परिच्छेद – ४: आर्थिक अवस्था"
+        : "Chapter 4: Economic Status";
+const description =
+    lang === "ne"
+        ? "चौदण्डीगढी नगरपालिकाको आर्थिक संरचना, रोजगारी, कृषि, व्यापार र औद्योगिक विकास"
+        : "Economic structure, employment, agriculture, trade and industrial development of Chaudandigadhi Municipality";
 ---
 
-<BaseLayout
-    title="परिच्छेद – ४: आर्थिक अवस्था | चौदण्डीगढी नगरपालिका"
-    description="चौदण्डीगढी नगरपालिकाको आर्थिक संरचना, कृषि, पर्यटन र उद्योग व्यापारको विस्तृत विवरण"
-    lang={lang}
-    currentChapter={4}
-    hideMegaMenu={true}
->
-    <main class="min-h-screen bg-black">
-        <!-- Chapter Hero -->
-        <ChapterHero lang={lang} />
+<BaseLayout title={title} description={description} lang={lang}>
+    <!-- Chapter Hero -->
+    <ChapterHero lang={lang} />
 
-        <!-- Economic Overview (Table 23) -->
-        <EconomicOverview lang={lang} />
+    <!-- 4.1 Economic Overview -->
+    <EconomicOverview lang={lang} />
 
-        <!-- Foreign Employment (Table 28) -->
-        <ForeignEmployment lang={lang} />
+    <!-- 4.1.1 Industrial Classification -->
+    <IndustrialClassification lang={lang} />
 
-        <!-- Housing (Tables 24-27) -->
-        <Housing lang={lang} />
+    <!-- 4.1.2 Housing Structure -->
+    <HousingStructure lang={lang} />
 
-        <!-- Land Use -->
-        <LandUse lang={lang} />
+    <!-- 4.1.3 - 4.1.6 Additional Economic Activities -->
+    <EconomicActivities lang={lang} />
 
-        <!-- Agriculture (Tables 29-34) -->
-        <Agriculture lang={lang} />
+    <!-- 4.2 Land Use -->
+    <LandUse lang={lang} />
 
-        <!-- Tourism (Tables 35-36) -->
-        <Tourism lang={lang} />
+    <!-- 4.3 Agriculture Development -->
+    <AgricultureDevelopment lang={lang} />
 
-        <!-- Industry & Trade (Tables 37-39) -->
-        <IndustryTrade lang={lang} />
-    </main>
+    <!-- 4.4 Tourism Development -->
+    <TourismDevelopment lang={lang} />
+
+    <!-- 4.5 Industry, Trade and Banking -->
+    <IndustryTrade lang={lang} />
 </BaseLayout>
+
+<style>
+    /* Smooth scroll behavior */
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+</style>

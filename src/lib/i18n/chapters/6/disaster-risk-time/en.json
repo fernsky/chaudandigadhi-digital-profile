@@ -1,0 +1,63 @@
+{
+    "title": "Time of Risk According to Disaster Type",
+    "number": "6.4.2",
+    "tableNumber": "Table No. 62",
+    "tableTitle": "Details of Potential Disasters in the Municipality",
+    "tableData": [
+        {
+            "sn": "1.",
+            "type": "Earthquake",
+            "currentSituation": "Nepal ranks 11th globally in terms of earthquake risk, and there are very few earthquake-resistant buildings in the municipality, with building codes not fully implemented.",
+            "time": "Any time"
+        },
+        {
+            "sn": "2.",
+            "type": "Flood",
+            "currentSituation": "Various flash floods in the municipality erode arable land and cause inundation during the rainy season. Many families are affected annually.",
+            "time": "Jestha-Ashoj"
+        },
+        {
+            "sn": "3",
+            "type": "Landslide",
+            "currentSituation": "Sudden floods and landslides in various streams flowing through the municipality destroy arable land, houses, roads, bridges and cause human casualties during Jestha, Asar, Saun, Bhadra months.",
+            "time": "Jestha-Ashoj"
+        },
+        {
+            "sn": "4.",
+            "type": "Fire",
+            "currentSituation": "Dense settlements in most parts of the municipality (squatters, flood victims), lack of awareness in households of ultra-poor communities, lack of fire control equipment, use of kerosene while lighting stoves, and children playing with fire-lighting objects like matches and lighters lead to increased fire incidents. Forest fire problems are also seen.",
+            "time": "Chaitra-Jestha"
+        },
+        {
+            "sn": "5",
+            "type": "Epidemic",
+            "currentSituation": "Increase in waterborne diseases like diarrhea as disasters, lack of resources and public awareness, lack of adaptive capacity.",
+            "time": "Post-disaster, other times"
+        },
+        {
+            "sn": "6",
+            "type": "Corona Virus, Bird Flu, Other Flu",
+            "currentSituation": "Unorganized poultry farming, Swine flu etc.",
+            "time": "Any time"
+        },
+        {
+            "sn": "7",
+            "type": "Wild Animal Terror",
+            "currentSituation": "Attacks by (monkeys, wild boars, porcupines) and fear of wild animals continue in various areas of the municipality (areas near forests).",
+            "time": "Any time"
+        },
+        {
+            "sn": "8.",
+            "type": "Insect Terror",
+            "currentSituation": "Disappearance of beneficial birds, insects due to climate change, excessive use of pesticides.",
+            "time": "Farming season"
+        },
+        {
+            "sn": "9.",
+            "type": "Lightning, Hailstone",
+            "currentSituation": "Mostly during rainy season and when it rains.",
+            "time": "Any time"
+        }
+    ],
+    "source": "Office of the Municipal Executive"
+}

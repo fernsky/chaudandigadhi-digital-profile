@@ -123,7 +123,7 @@ if (!content) {
                                         {row.includedVDC}
                                     </td>
                                     <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.population.toLocaleString()}
+                                        {row.population.toLocaleString('ne-NP')}
                                     </td>
                                     <td class="px-4 py-3 font-serif text-zinc-100 text-right">
                                         {row.area.toFixed(2)}
@@ -142,12 +142,12 @@ if (!content) {
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                             >
-                                {content.total.population.toLocaleString()}
+                                {content.total.population.toLocaleString('ne-NP')}
                             </td>
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-right"
                             >
-                                {content.total.area.toFixed(2)}
+                                {content.total.area.toLocaleString('ne-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                             </td>
                         </tr>
                     </tbody>

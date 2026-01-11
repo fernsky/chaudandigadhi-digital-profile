@@ -1,0 +1,59 @@
+{
+    "title": "Major Rivers and Streams",
+    "number": "6.2.1",
+    "content": "The streams and canals spread across various geographical areas and wards of the municipality not only store abundant water but also provide shelter as safe habitats for various types of aquatic animals and birds. Also, it is seen that animals drink water from such streams and farmers also use water for irrigation partially from time to time. Due to the development of human settlements and the pressure of migration, as well as excessive grazing and use of unproductive animals, natural rivers/streams continue to be eroded and buried. Details of streams, canals, rivers, lakes and waterfalls in the municipality are mentioned in the table.",
+    "tableNumber": "Table No. 61",
+    "tableTitle": "Details of Streams, Canals, Rivers, Lakes and Waterfalls in the Municipality",
+    "tableData": [
+        {
+            "sn": "1",
+            "name": "Chuila Waterfall, Namdaha, Budbunge Waterfall, Koshi River",
+            "address": "Ward No. 1"
+        },
+        {
+            "sn": "2",
+            "name": "Triyuga River, Lama River",
+            "address": "Ward No. 2"
+        },
+        {
+            "sn": "3",
+            "name": "Kali River",
+            "address": "Ward No. 3"
+        },
+        {
+            "sn": "4",
+            "name": "Triyuga River, Tindobhane",
+            "address": "Ward No. 4"
+        },
+        {
+            "sn": "5",
+            "name": "Triyuga River, Dher River, Badekha River, Sivahi River, Dunga River, Tamang River, Jutpani River, Dolta River, Sundarpur Lake, Phantewa River",
+            "address": "Ward No. 5"
+        },
+        {
+            "sn": "6",
+            "name": "Kali Daha",
+            "address": "Ward No. 6"
+        },
+        {
+            "sn": "7",
+            "name": "Duvar River, Aari River, Aari Daha",
+            "address": "Ward No. 7"
+        },
+        {
+            "sn": "8",
+            "name": "Duvar River, Dudhkoshi River, Apra River, Siddhipur Dhodeni Waterfall",
+            "address": "Ward No. 8"
+        },
+        {
+            "sn": "9",
+            "name": "Raksha Daha, Dhan Pokhri, Triyuga River",
+            "address": "Ward No. 9"
+        },
+        {
+            "sn": "10",
+            "name": "Bhutiya Daha, Triyuga River",
+            "address": "Ward No. 10"
+        }
+    ]
+}

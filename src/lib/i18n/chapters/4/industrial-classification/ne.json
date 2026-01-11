@@ -1,0 +1,171 @@
+{
+    "title": "आर्थिक कामको औद्योगिक क्षेत्र वर्गीकरण अनुसारको जनसंख्या",
+    "sectionId": "industrial-classification",
+    "number": "४.१.१",
+    "tableNumber": "तालिका नं. २३",
+    "tableTitle": "आर्थिक रुपले सक्रिय जनसंख्याको मुख्य औद्योगिक क्षेत्र अनुसारको विवरण",
+    "tableData": [
+        {
+            "sector": "कृषि वन तथा मत्स्यपालन",
+            "sixMonthsOrMore": 12852,
+            "threeToFiveMonths": 4114,
+            "oneToTwoMonths": 3523,
+            "total": 20489
+        },
+        {
+            "sector": "खानी तथा उत्खनन",
+            "sixMonthsOrMore": 25,
+            "threeToFiveMonths": 10,
+            "oneToTwoMonths": 7,
+            "total": 42
+        },
+        {
+            "sector": "औद्योगिक उत्पादन",
+            "sixMonthsOrMore": 446,
+            "threeToFiveMonths": 56,
+            "oneToTwoMonths": 72,
+            "total": 574
+        },
+        {
+            "sector": "बिद्युत ग्यास बाफ तथा वातानुकुलित सेवा",
+            "sixMonthsOrMore": 44,
+            "threeToFiveMonths": 6,
+            "oneToTwoMonths": 3,
+            "total": 53
+        },
+        {
+            "sector": "पानीको आपूर्ति ढल निकास, फोहोर व्यवस्थापन",
+            "sixMonthsOrMore": 27,
+            "threeToFiveMonths": 1,
+            "oneToTwoMonths": 2,
+            "total": 30
+        },
+        {
+            "sector": "निर्माण",
+            "sixMonthsOrMore": 1065,
+            "threeToFiveMonths": 450,
+            "oneToTwoMonths": 962,
+            "total": 2477
+        },
+        {
+            "sector": "थोक एवं खुद्रा व्यापार",
+            "sixMonthsOrMore": 1172,
+            "threeToFiveMonths": 705,
+            "oneToTwoMonths": 945,
+            "total": 2822
+        },
+        {
+            "sector": "यातायात तथा भण्डारण",
+            "sixMonthsOrMore": 391,
+            "threeToFiveMonths": 33,
+            "oneToTwoMonths": 8,
+            "total": 432
+        },
+        {
+            "sector": "आवास तथा भोजन सम्बन्धी क्रियाकलाप",
+            "sixMonthsOrMore": 184,
+            "threeToFiveMonths": 16,
+            "oneToTwoMonths": 5,
+            "total": 205
+        },
+        {
+            "sector": "सुचना तथा सञ्चार",
+            "sixMonthsOrMore": 43,
+            "threeToFiveMonths": 3,
+            "oneToTwoMonths": 0,
+            "total": 46
+        },
+        {
+            "sector": "घर जग्गा कारोबारका लागि",
+            "sixMonthsOrMore": 134,
+            "threeToFiveMonths": 3,
+            "oneToTwoMonths": 3,
+            "total": 140
+        },
+        {
+            "sector": "पेशु चिकित्सा तथा पशु स्वास्थ्य सम्बन्धी",
+            "sixMonthsOrMore": 4,
+            "threeToFiveMonths": 1,
+            "oneToTwoMonths": 0,
+            "total": 5
+        },
+        {
+            "sector": "प्रशासन, रैबानिक तथा प्राविधिक क्रियाकलापहरु",
+            "sixMonthsOrMore": 40,
+            "threeToFiveMonths": 3,
+            "oneToTwoMonths": 1,
+            "total": 44
+        },
+        {
+            "sector": "प्रशासनिक तथा सहयोगी सेवाका क्रियाकलापहरु",
+            "sixMonthsOrMore": 20,
+            "threeToFiveMonths": 1,
+            "oneToTwoMonths": 1,
+            "total": 22
+        },
+        {
+            "sector": "सार्वजनिक प्रशासन र सुरक्षा सम्बन्धी क्रियाकलाप",
+            "sixMonthsOrMore": 241,
+            "threeToFiveMonths": 9,
+            "oneToTwoMonths": 8,
+            "total": 258
+        },
+        {
+            "sector": "शिक्षा सम्बन्धी",
+            "sixMonthsOrMore": 671,
+            "threeToFiveMonths": 77,
+            "oneToTwoMonths": 10,
+            "total": 758
+        },
+        {
+            "sector": "मानव स्वास्थ्य तथा सामाजिक कार्य सम्बन्धी",
+            "sixMonthsOrMore": 139,
+            "threeToFiveMonths": 8,
+            "oneToTwoMonths": 1,
+            "total": 148
+        },
+        {
+            "sector": "कला मनोरञ्जनसँग सम्बन्धी",
+            "sixMonthsOrMore": 22,
+            "threeToFiveMonths": 3,
+            "oneToTwoMonths": 0,
+            "total": 25
+        },
+        {
+            "sector": "अन्य",
+            "sixMonthsOrMore": 104,
+            "threeToFiveMonths": 292,
+            "oneToTwoMonths": 374,
+            "total": 770
+        },
+        {
+            "sector": "घर परिवारका प्रयोगी क्रियाकलाप सम्बन्धी",
+            "sixMonthsOrMore": 138,
+            "threeToFiveMonths": 52,
+            "oneToTwoMonths": 42,
+            "total": 232
+        },
+        {
+            "sector": "बाह्य संघ संस्था तथा प्रशंसा आपूर्ति सम्बन्धी",
+            "sixMonthsOrMore": 9,
+            "threeToFiveMonths": 0,
+            "oneToTwoMonths": 0,
+            "total": 9
+        },
+        {
+            "sector": "उल्लेख नभएको",
+            "sixMonthsOrMore": 0,
+            "threeToFiveMonths": 0,
+            "oneToTwoMonths": 0,
+            "total": 0
+        }
+    ],
+    "total": {
+        "sixMonthsOrMore": 17765,
+        "threeToFiveMonths": 5803,
+        "oneToTwoMonths": 5433,
+        "total": 29001
+    },
+    "source": "राष्ट्रिय जनगणना, २०७८",
+    "analysis": "नगरपालिकामा रहेका १० वर्ष उमेर समूह माथिका कुल जनसंख्या मध्ये २९,००१ जनाले कुनै न कुनै किसिमको आर्थिक क्रियाकलापमा आबद्ध भई आर्थिक आम्दानी गरिरहेका छन् । यी मध्ये सबैभन्दा बढी कृषि, वन तथा पशुपालन कार्यमा २०,४८९ जना संलग्न रहेका छन् । यसैगरी ६ महिना वा सो भन्दा बढी आम्दानीका क्रियाकलापमा संलग्न हुनेको संख्या १७,७६५, ३ महिना देखि ५ महिना सम्म आम्दानीका क्रियाकलापमा संलग्न हुनेको संख्या ५,८०३ रहेको छ भने १ देखि २ महिना मात्र आर्थिक क्रियाकलापमा संलग्न हुनेको संख्या ५,४३३ रहेको छ । जसको विस्तृत विवरण तालिकामा प्रस्तुत गरिएको छ ।"
+}

@@ -5,61 +5,61 @@
     "tableTitle": "तालिका नं. 1: राजनीतिक र प्रशासनिक संरचना",
     "tableData": [
         {
-            "wardNo": "1",
+            "wardNo": "१",
             "includedVDC": "चौदण्डी (१–९)",
             "population": 3882,
             "area": 47.94
         },
         {
-            "wardNo": "2",
+            "wardNo": "२",
             "includedVDC": "बेल्टार बसाह (५,६)",
             "population": 4059,
             "area": 13.74
         },
         {
-            "wardNo": "3",
+            "wardNo": "३",
             "includedVDC": "बेल्टार बसाह (९,१०)",
             "population": 3871,
             "area": 17.02
         },
         {
-            "wardNo": "4",
+            "wardNo": "४",
             "includedVDC": "बेल्टार बसाह (७,८,११)",
             "population": 6235,
             "area": 19.76
         },
         {
-            "wardNo": "5",
+            "wardNo": "५",
             "includedVDC": "सुन्दरपुर (१–९)",
             "population": 5673,
             "area": 43.64
         },
         {
-            "wardNo": "6",
+            "wardNo": "६",
             "includedVDC": "बेल्टार बसाह (२,३)",
             "population": 4516,
             "area": 9.01
         },
         {
-            "wardNo": "7",
+            "wardNo": "७",
             "includedVDC": "बेल्टार बसाह (१,४)",
             "population": 5237,
             "area": 9.37
         },
         {
-            "wardNo": "8",
+            "wardNo": "८",
             "includedVDC": "सिद्दिपुर (१–९)",
             "population": 3770,
             "area": 44.09
         },
         {
-            "wardNo": "9",
+            "wardNo": "९",
             "includedVDC": "हडिया (२–६)",
             "population": 6753,
             "area": 49.43
         },
         {
-            "wardNo": "10",
+            "wardNo": "१०",
             "includedVDC": "हडिया (१,७–९)",
             "population": 4578,
             "area": 29.76

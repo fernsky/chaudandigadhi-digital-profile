@@ -1,0 +1,381 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type TourismDevelopmentSection = {
+    title: string;
+    number: string;
+    content1: string;
+    caption1: string;
+    content2: string;
+    caption2: string;
+    caption3: string;
+};
+
+type TourismSitesSection = {
+    title: string;
+    number: string;
+    content: string;
+    caption1: string;
+    caption2: string;
+    caption3: string;
+    caption4: string;
+    caption5: string;
+    caption6: string;
+    caption7: string;
+    caption8: string;
+    mapTitle: string;
+    tableTitle: string;
+    tableNumber: string;
+    source: string;
+    tableData: Array<{
+        sn: string;
+        name: string;
+        place: string;
+        importance: string;
+    }>;
+};
+
+type TourismHotelsSection = {
+    title: string;
+    number: string;
+    content: string;
+    tableTitle: string;
+    tableNumber: string;
+    source: string;
+    tableData: Array<{
+        sn: string;
+        name: string;
+        owner: string;
+        contact: string;
+    }>;
+};
+
+const tourismDevelopment = (await loadChapterSection(
+    4,
+    "tourism-development",
+    lang,
+)) as TourismDevelopmentSection;
+
+
+const tourismSites = (await loadChapterSection(
+    4,
+    "tourism-sites",
+    lang,
+)) as TourismSitesSection;
+const tourismHotels = (await loadChapterSection(
+    4,
+    "tourism-hotels",
+    lang,
+)) as TourismHotelsSection;
+---
+
+<!-- 4.4 Tourism Development -->
+{
+    tourismDevelopment && (
+        <section
+            id="tourism-development"
+            class="relative bg-[#050505] py-8 md:py-12 border-t border-[#f2e25d]/10"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                            {tourismDevelopment.number} {tourismDevelopment.title}
+                        </h2>
+                    </div>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                        {tourismDevelopment.content1}
+                    </p>
+
+                    <!-- Yalambar Park Image -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Yalambar Park]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismDevelopment.caption1}
+                        </figcaption>
+                    </figure>
+
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                        {tourismDevelopment.content2}
+                    </p>
+
+                    <!-- Chaudandigadhi Palace Image -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Chaudandigadhi Palace]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismDevelopment.caption2}
+                        </figcaption>
+                    </figure>
+
+                    <!-- Chaudandigadhi Image -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Chaudandigadhi]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismDevelopment.caption3}
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.4.1 Tourism Sites Details -->
+{
+    tourismSites && (
+        <section
+            id="tourism-sites"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {tourismSites.number} {tourismSites.title}
+                        </h3>
+                    </div>
+
+                    <!-- Ganesh Mandir -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Ganesh Mandir]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismSites.caption1}
+                        </figcaption>
+                    </figure>
+
+                    <!-- Shantibatika Gumba and Park (2 images stacked) -->
+                    <div class="mb-10">
+                        <div class="w-full h-64 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Shantibatika 1]
+                        </div>
+                        <div class="w-full h-64 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Shantibatika 2]
+                        </div>
+                        <div class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismSites.caption2}
+                        </div>
+                    </div>
+
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                        {tourismSites.content}
+                    </p>
+
+                    <!-- Tindovan -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Tindovan]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismSites.caption3}
+                        </figcaption>
+                    </figure>
+
+                    <!-- Kirateshwar -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Kirateshwar]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismSites.caption4}
+                        </figcaption>
+                    </figure>
+
+                    <!-- Shivalaya Sundarpur -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Shivalaya Sundarpur]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismSites.caption5}
+                        </figcaption>
+                    </figure>
+
+                    <!-- Map Image -->
+                    <figure class="mb-10">
+                        <div class="w-full h-[500px] bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Map No. 6]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismSites.mapTitle}
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <!-- Table 35 -->
+                <div class="max-w-5xl mx-auto mb-10">
+                    <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                        {tourismSites.tableNumber}: {tourismSites.tableTitle}
+                    </h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                            <thead>
+                                <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                    <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-20 font-serif text-zinc-100 font-medium">
+                                        {lang === "ne" ? "क्र.सं." : "SN"}
+                                    </th>
+                                    <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                        {lang === "ne" ? "नाम" : "Name"}
+                                    </th>
+                                    <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                        {lang === "ne" ? "स्थान" : "Place"}
+                                    </th>
+                                    <th class="px-4 py-3 text-left font-serif text-zinc-100 font-medium">
+                                        {lang === "ne" ? "महत्व" : "Importance"}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {tourismSites.tableData.map((row) => (
+                                    <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                        <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
+                                            {row.sn}
+                                        </td>
+                                        <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                            {row.name}
+                                        </td>
+                                        <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                            {row.place}
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            {row.importance}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
+                        स्रोत: {tourismSites.source}
+                    </div>
+                </div>
+
+                <div class="max-w-4xl mx-auto">
+                    <!-- Kalidah -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Kalidah]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismSites.caption6}
+                        </figcaption>
+                    </figure>
+
+                    <!-- Thaneshwar -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Thaneshwar]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismSites.caption7}
+                        </figcaption>
+                    </figure>
+
+                    <!-- Bhutia Daha -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Bhutia Daha]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {tourismSites.caption8}
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.4.2 Tourism Hotels -->
+{
+    tourismHotels && (
+        <section
+            id="tourism-hotels"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {tourismHotels.number} {tourismHotels.title}
+                            </h3>
+                        </div>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                            {tourismHotels.content}
+                        </p>
+                    </div>
+
+                    <!-- Table 36 Hotels -->
+                    <div class="mb-10 max-w-5xl mx-auto">
+                        <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {tourismHotels.tableNumber}:{" "}
+                            {tourismHotels.tableTitle}
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-16 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "होटल, रिसोर्ट तथा रेष्टुरेन्टको नाम"
+                                                : "Hotel, Resort and Restaurant Name"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "सञ्चालकको नाम"
+                                                : "Owner Name"}
+                                        </th>
+                                        <th class="px-4 py-3 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "सम्पर्क नम्बर"
+                                                : "Contact Number"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {tourismHotels.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.name}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.owner}
+                                            </td>
+                                            <td class="px-4 py-3">
+                                                {row.contact}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
+                            स्रोत: {tourismHotels.source}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}

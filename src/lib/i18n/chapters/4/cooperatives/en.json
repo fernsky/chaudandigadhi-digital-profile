@@ -1,0 +1,370 @@
+{
+    "title": "Cooperative Institutions Details",
+    "number": "4.5.6",
+    "content": "Details of cooperative institutions in Chaudandigadhi Municipality are mentioned in the table below.",
+    "tableNumber": "Table No. 39",
+    "tableTitle": "Details of Cooperative Institutions in the Municipality",
+    "source": "Municipal Executive Office",
+    "tableData": [
+        {
+            "sn": "1",
+            "name": "Radhakrishna Agriculture Cooperative Ltd.",
+            "type": "Agricultural Coop",
+            "address": "Ward-5"
+        },
+        {
+            "sn": "2",
+            "name": "Malati Agriculture Cooperative Ltd.",
+            "type": "Agricultural Coop",
+            "address": "Ward-10"
+        },
+        {
+            "sn": "3",
+            "name": "Kalikhola Agriculture Cooperative Ltd.",
+            "type": "Agricultural Coop",
+            "address": "Ward-4"
+        },
+        {
+            "sn": "4",
+            "name": "Saptakoshi Savings & Credit Cooperative Ltd.",
+            "type": "Savings & Credit",
+            "address": "Ward-6"
+        },
+        {
+            "sn": "5",
+            "name": "Samaweshi Women Savings & Credit Cooperative Ltd.",
+            "type": "Savings & Credit",
+            "address": "Ward-6"
+        },
+        {
+            "sn": "6",
+            "name": "Sajha Cooperative Ltd.",
+            "type": "",
+            "address": "Ward-6"
+        },
+        {
+            "sn": "7",
+            "name": "Shree Pangrami Multi-purpose Cooperative Ltd.",
+            "type": "Multi-purpose",
+            "address": "Ward-6"
+        },
+        {
+            "sn": "8",
+            "name": "Unique Savings & Credit Cooperative Ltd.",
+            "type": "Savings & Credit",
+            "address": "Ward-10"
+        },
+        {
+            "sn": "9",
+            "name": "Buddanagar Agriculture Cooperative Ltd.",
+            "type": "Agricultural Coop",
+            "address": "Ward-10"
+        },
+        {
+            "sn": "10",
+            "name": "Small Farmers Agriculture Cooperative Ltd.",
+            "type": "Agricultural Coop",
+            "address": "Ward-7"
+        },
+        {
+            "sn": "11",
+            "name": "Laligurans Women Multi-purpose Cooperative Ltd.",
+            "type": "Multi-purpose",
+            "address": "Ward-4"
+        },
+        {
+            "sn": "12",
+            "name": "Dihwar Agriculture Cooperative Ltd.",
+            "type": "Agricultural Coop",
+            "address": "Ward-9"
+        },
+        {
+            "sn": "13",
+            "name": "Uchchajyoti Women Savings & Credit Cooperative",
+            "type": "Savings & Credit",
+            "address": "Ward-8"
+        },
+        {
+            "sn": "14",
+            "name": "Beltar Agriculture Cooperative Ltd.",
+            "type": "Agricultural Coop",
+            "address": "Ward-6"
+        },
+        {
+            "sn": "15",
+            "name": "Parijat Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-10"
+        },
+        {
+            "sn": "16",
+            "name": "Udayiman Savings & Credit Cooperative",
+            "type": "Savings & Credit",
+            "address": "Ward-6"
+        },
+        {
+            "sn": "17",
+            "name": "Navadurga Multi-purpose Cooperative",
+            "type": "Multi-purpose",
+            "address": "Ward-5"
+        },
+        {
+            "sn": "18",
+            "name": "Dhan Pokhri Savings & Credit Cooperative",
+            "type": "Savings & Credit",
+            "address": "Ward-9"
+        },
+        {
+            "sn": "19",
+            "name": "Navadurga Savings & Credit Cooperative",
+            "type": "Savings & Credit",
+            "address": "Ward-7"
+        },
+        {
+            "sn": "20",
+            "name": "Bhimsen Agriculture Cooperative Ltd.",
+            "type": "Agricultural Coop",
+            "address": "Ward-10"
+        },
+        {
+            "sn": "21",
+            "name": "Hariyali Agriculture Cooperative Ltd.",
+            "type": "Agricultural Coop",
+            "address": "Ward-8"
+        },
+        {
+            "sn": "22",
+            "name": "Women Awareness Multi-purpose Cooperative",
+            "type": "Multi-purpose",
+            "address": "Ward-10"
+        },
+        {
+            "sn": "23",
+            "name": "Ujjalashil Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-10"
+        },
+        {
+            "sn": "24",
+            "name": "Janothan Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-10"
+        },
+        {
+            "sn": "25",
+            "name": "Sustainable Agriculture Technology & Information Coop",
+            "type": "Agricultural Coop",
+            "address": "Ward-10"
+        },
+        {
+            "sn": "26",
+            "name": "Ambika Multi-purpose Cooperative",
+            "type": "Multi-purpose",
+            "address": "Ward-10"
+        },
+        {
+            "sn": "27",
+            "name": "Gilan Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-10"
+        },
+        {
+            "sn": "28",
+            "name": "Urjashil Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-9"
+        },
+        {
+            "sn": "29",
+            "name": "Sirjanshil Savings & Credit",
+            "type": "Savings & Credit",
+            "address": "Ward-9"
+        },
+        {
+            "sn": "30",
+            "name": "Trishakti Swawalambhan Savings & Credit",
+            "type": "Savings & Credit",
+            "address": "Ward-9"
+        },
+        {
+            "sn": "31",
+            "name": "Women Small Farmers Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-8"
+        },
+        {
+            "sn": "32",
+            "name": "Siddhbaba Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-8"
+        },
+        {
+            "sn": "33",
+            "name": "Jana-Consumer Cooperative",
+            "type": "Consumer",
+            "address": "Ward-8"
+        },
+        {
+            "sn": "34",
+            "name": "Paruhang Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-7"
+        },
+        {
+            "sn": "35",
+            "name": "Sukhashanti Savings & Credit Cooperative",
+            "type": "Savings & Credit",
+            "address": "Ward-7"
+        },
+        {
+            "sn": "36",
+            "name": "Prakriti Savings & Credit Cooperative",
+            "type": "Savings & Credit",
+            "address": "Ward-7"
+        },
+        {
+            "sn": "37",
+            "name": "Mamata Savings & Credit Cooperative",
+            "type": "Savings & Credit",
+            "address": "Ward-7"
+        },
+        {
+            "sn": "38",
+            "name": "Sudhimma Savings & Credit Cooperative",
+            "type": "Savings & Credit",
+            "address": "Ward-7"
+        },
+        {
+            "sn": "39",
+            "name": "Chaumalongma Consumer Cooperative",
+            "type": "Consumer",
+            "address": "Ward-7"
+        },
+        {
+            "sn": "40",
+            "name": "Shivalaya Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-6"
+        },
+        {
+            "sn": "41",
+            "name": "Aastha Savings & Credit Cooperative",
+            "type": "Savings & Credit",
+            "address": "Ward-6"
+        },
+        {
+            "sn": "42",
+            "name": "Chhahari Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-6"
+        },
+        {
+            "sn": "43",
+            "name": "Pangrami Multi-purpose Cooperative",
+            "type": "Multi-purpose",
+            "address": "Ward-6"
+        },
+        {
+            "sn": "44",
+            "name": "Navabihani Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-5"
+        },
+        {
+            "sn": "45",
+            "name": "Shivai Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-5"
+        },
+        {
+            "sn": "46",
+            "name": "Shivashakti Multi-purpose Cooperative",
+            "type": "Multi-purpose",
+            "address": "Ward-5"
+        },
+        {
+            "sn": "47",
+            "name": "Ghararai Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-4"
+        },
+        {
+            "sn": "48",
+            "name": "Hanskali Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-4"
+        },
+        {
+            "sn": "49",
+            "name": "Udayapur Karmatara Savings & Credit Coop",
+            "type": "Savings & Credit",
+            "address": "Ward-4"
+        },
+        {
+            "sn": "50",
+            "name": "Sahayatri Multi-purpose Cooperative",
+            "type": "Multi-purpose",
+            "address": "Ward-4"
+        },
+        {
+            "sn": "51",
+            "name": "Vishwa Consumer Cooperative",
+            "type": "Consumer",
+            "address": "Ward-4"
+        },
+        {
+            "sn": "52",
+            "name": "Annapurna Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-4"
+        },
+        {
+            "sn": "53",
+            "name": "Suryojyoti Women Multi-purpose Cooperative",
+            "type": "Multi-purpose",
+            "address": "Ward-9"
+        },
+        {
+            "sn": "54",
+            "name": "Vishasaya Kalika Savings & Credit Coop",
+            "type": "Savings & Credit",
+            "address": "Ward-9"
+        },
+        {
+            "sn": "55",
+            "name": "Dudhkoshi Consumer Cooperative",
+            "type": "Consumer",
+            "address": "Ward-9"
+        },
+        {
+            "sn": "56",
+            "name": "Triguna Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-6"
+        },
+        {
+            "sn": "57",
+            "name": "Women Small Farmers Agriculture Cooperative",
+            "type": "Agricultural Coop",
+            "address": "Ward-9"
+        },
+        {
+            "sn": "58",
+            "name": "Sajha Cooperative Ltd.",
+            "type": "",
+            "address": "Ward-"
+        },
+        {
+            "sn": "59",
+            "name": "Sajha Cooperative Ltd.",
+            "type": "",
+            "address": "Ward-"
+        },
+        {
+            "sn": "60",
+            "name": "Pangkanya Multi-purpose Cooperative",
+            "type": "Multi-purpose",
+            "address": "Ward-6"
+        }
+    ]
+}

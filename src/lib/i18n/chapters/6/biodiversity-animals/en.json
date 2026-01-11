@@ -1,0 +1,22 @@
+{
+    "title": "Details of Important Animals and Birds Based on Habitat",
+    "number": "6.3.1",
+    "subsections": {
+        "wildlife": {
+            "heading": "a) Details of Major Wildlife",
+            "content": "The major wildlife found in this municipality include monkeys, deer, leopards, wild boars, red pandas, gorals, barking deer, musk deer, civets, rabbits, weasels, foxes, hyenas, and jackals."
+        },
+        "birds": {
+            "heading": "b) Details of Major Birds",
+            "content": "The bird species in this municipality include pheasants, doves, parrots, pigeons, jungle fowl, partridges, kalij, crows, herons, cranes, crows, hornbills, cuckoos, and ducks."
+        },
+        "reptiles": {
+            "heading": "c) Reptiles",
+            "content": "In this municipality, reptiles mainly include snakes, water snakes, lizards, monitor lizards, frogs, and turtles."
+        },
+        "insects": {
+            "heading": "d) Insects",
+            "content": "Butterflies, grasshoppers, moths, dung beetles, fireflies, leeches, crickets, mosquitoes, wasps, bees, spiders, centipedes, fish, millipedes, and caterpillars are found."
+        }
+    }
+}

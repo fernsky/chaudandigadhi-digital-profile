@@ -1,0 +1,633 @@
+{
+    "title": "आवास संरचना विवरण",
+    "sectionId": "housing-structure",
+    "number": "४.१.२",
+    "intro": "यस नगरपालिकामा घरको स्वामित्वको आधारमा ४ प्रकारका आवास संरचनाहरूको प्रयोग गरेको पाउन सकिन्छ । निजी स्वामित्वको घरमा बसोबास गरिरहेका घरधुरीहरू १२,०६९ अर्थात ९५.०१ प्रतिशत रहेका छन् । त्यसैगरी भाडामा बसोबास गर्नेको संख्या ४०२ अर्थात ३.१६ प्रतिशत रहेको छ । संस्थागत घरहरूमा बसोबास गर्नेहरू ६६ परिवार अर्थात ०.५२ प्रतिशत रहेका छन् भने स्रोत नखुलेको अवस्थाका घरपरिवारहरू १६६ अर्थात १.३१ प्रतिशत रहेका छन् । भूकम्पीय दृष्टिकोणले संवेदनशील रहेको नेपालमा घरहरू निर्माण गर्दा भूकम्प प्रतिरोधात्मक बनाउनु आवश्यक छ । अति विपन्न परिवारका लागि एकीकृत बस्ती निर्माण गरी सरकारले उनीहरूको आवास सुरक्षाको अधिकार सुनिश्चित गरेको खण्डमा राज्यको लोककल्याणकारी भूमिका पुष्टी हुन्छ ।",
+    "subsections": {
+        "ownershipDetails": {
+            "title": "क) घरको स्वामित्वको आधारमा घरधुरीको विवरण",
+            "subtitle": "क) घरको स्वामित्वको आधारमा घरधुरीको विवरण",
+            "tableNumber": "तालिका नं. २४",
+            "tableTitle": "घरको स्वामित्वको आधारमा घरपरिवारको विवरण",
+            "tableData": [
+                {
+                    "ward": 1,
+                    "owned": 767,
+                    "rented": 3,
+                    "institutional": 2,
+                    "other": 1,
+                    "total": 773
+                },
+                {
+                    "ward": 2,
+                    "owned": 1090,
+                    "rented": 10,
+                    "institutional": 35,
+                    "other": 9,
+                    "total": 1144
+                },
+                {
+                    "ward": 3,
+                    "owned": 988,
+                    "rented": 9,
+                    "institutional": 0,
+                    "other": 3,
+                    "total": 1000
+                },
+                {
+                    "ward": 4,
+                    "owned": 1592,
+                    "rented": 56,
+                    "institutional": 2,
+                    "other": 18,
+                    "total": 1668
+                },
+                {
+                    "ward": 5,
+                    "owned": 1507,
+                    "rented": 5,
+                    "institutional": 5,
+                    "other": 6,
+                    "total": 1523
+                },
+                {
+                    "ward": 6,
+                    "owned": 1242,
+                    "rented": 98,
+                    "institutional": 5,
+                    "other": 7,
+                    "total": 1352
+                },
+                {
+                    "ward": 7,
+                    "owned": 1236,
+                    "rented": 169,
+                    "institutional": 11,
+                    "other": 11,
+                    "total": 1427
+                },
+                {
+                    "ward": 8,
+                    "owned": 820,
+                    "rented": 25,
+                    "institutional": 2,
+                    "other": 14,
+                    "total": 861
+                },
+                {
+                    "ward": 9,
+                    "owned": 1779,
+                    "rented": 15,
+                    "institutional": 1,
+                    "other": 11,
+                    "total": 1806
+                },
+                {
+                    "ward": 10,
+                    "owned": 1048,
+                    "rented": 12,
+                    "institutional": 3,
+                    "other": 86,
+                    "total": 1149
+                }
+            ],
+            "total": {
+                "owned": 12069,
+                "rented": 402,
+                "institutional": 66,
+                "other": 166,
+                "total": 12703
+            },
+            "percentage": {
+                "owned": 95.01,
+                "rented": 3.16,
+                "institutional": 0.52,
+                "other": 1.31
+            },
+            "source": "National Census, 2078",
+            "chartTitle": "Household Details Based on House Type"
+        },
+        "foundationDetails": {
+            "title": "ख) जगको आधारमा घरधुरीको विवरण",
+            "subtitle": "ख) जगको आधारमा घरधुरीको विवरण",
+            "tableNumber": "तालिका नं. २५",
+            "tableTitle": "जगको आधारमा घरधुरीको विवरण",
+            "tableData": [
+                {
+                    "ward": 1,
+                    "mudBonded": 346,
+                    "cementBonded": 45,
+                    "rcc": 11,
+                    "wooden": 362,
+                    "other": 9,
+                    "total": 773
+                },
+                {
+                    "ward": 2,
+                    "mudBonded": 501,
+                    "cementBonded": 250,
+                    "rcc": 104,
+                    "wooden": 286,
+                    "other": 3,
+                    "total": 1144
+                },
+                {
+                    "ward": 3,
+                    "mudBonded": 40,
+                    "cementBonded": 132,
+                    "rcc": 76,
+                    "wooden": 750,
+                    "other": 2,
+                    "total": 1000
+                },
+                {
+                    "ward": 4,
+                    "mudBonded": 239,
+                    "cementBonded": 330,
+                    "rcc": 105,
+                    "wooden": 990,
+                    "other": 4,
+                    "total": 1668
+                },
+                {
+                    "ward": 5,
+                    "mudBonded": 48,
+                    "cementBonded": 457,
+                    "rcc": 103,
+                    "wooden": 908,
+                    "other": 7,
+                    "total": 1523
+                },
+                {
+                    "ward": 6,
+                    "mudBonded": 38,
+                    "cementBonded": 208,
+                    "rcc": 426,
+                    "wooden": 673,
+                    "other": 7,
+                    "total": 1352
+                },
+                {
+                    "ward": 7,
+                    "mudBonded": 125,
+                    "cementBonded": 421,
+                    "rcc": 355,
+                    "wooden": 523,
+                    "other": 3,
+                    "total": 1427
+                },
+                {
+                    "ward": 8,
+                    "mudBonded": 236,
+                    "cementBonded": 133,
+                    "rcc": 21,
+                    "wooden": 469,
+                    "other": 2,
+                    "total": 861
+                },
+                {
+                    "ward": 9,
+                    "mudBonded": 294,
+                    "cementBonded": 322,
+                    "rcc": 150,
+                    "wooden": 1033,
+                    "other": 7,
+                    "total": 1806
+                },
+                {
+                    "ward": 10,
+                    "mudBonded": 199,
+                    "cementBonded": 139,
+                    "rcc": 100,
+                    "wooden": 707,
+                    "other": 4,
+                    "total": 1149
+                }
+            ],
+            "total": {
+                "mudBonded": 2066,
+                "cementBonded": 2437,
+                "rcc": 1451,
+                "wooden": 6701,
+                "other": 48,
+                "total": 12703
+            },
+            "percentage": {
+                "mudBonded": 16.26,
+                "cementBonded": 19.18,
+                "rcc": 11.42,
+                "wooden": 52.75,
+                "other": 0.38
+            },
+            "source": "राष्ट्रिय जनगणना, २०७८",
+            "chartTitle": "जगको आधारमा घरधुरीको विवरण"
+        },
+        "outerWallDetails": {
+            "title": "ग) बाहिरी गारोको आधारमा घरधुरीको विवरण",
+            "subtitle": "ग) बाहिरी गारोको आधारमा घरधुरीको विवरण",
+            "tableNumber": "तालिका नं. २६",
+            "tableTitle": "बाहिरी गारोको आधारमा घरधुरीको विवरण",
+            "tableData": [
+                {
+                    "ward": 1,
+                    "mudBonded": 182,
+                    "cementBonded": 20,
+                    "wood": 192,
+                    "bamboo": 339,
+                    "unbakedBrick": 1,
+                    "galvanized": 35,
+                    "other": 4,
+                    "total": 773
+                },
+                {
+                    "ward": 2,
+                    "mudBonded": 124,
+                    "cementBonded": 317,
+                    "wood": 311,
+                    "bamboo": 353,
+                    "unbakedBrick": 0,
+                    "galvanized": 39,
+                    "other": 0,
+                    "total": 1144
+                },
+                {
+                    "ward": 3,
+                    "mudBonded": 29,
+                    "cementBonded": 199,
+                    "wood": 481,
+                    "bamboo": 225,
+                    "unbakedBrick": 1,
+                    "galvanized": 63,
+                    "other": 2,
+                    "total": 1000
+                },
+                {
+                    "ward": 4,
+                    "mudBonded": 147,
+                    "cementBonded": 418,
+                    "wood": 347,
+                    "bamboo": 680,
+                    "unbakedBrick": 3,
+                    "galvanized": 65,
+                    "other": 8,
+                    "total": 1668
+                },
+                {
+                    "ward": 5,
+                    "mudBonded": 44,
+                    "cementBonded": 539,
+                    "wood": 64,
+                    "bamboo": 862,
+                    "unbakedBrick": 0,
+                    "galvanized": 7,
+                    "other": 7,
+                    "total": 1523
+                },
+                {
+                    "ward": 6,
+                    "mudBonded": 37,
+                    "cementBonded": 617,
+                    "wood": 284,
+                    "bamboo": 362,
+                    "unbakedBrick": 19,
+                    "galvanized": 31,
+                    "other": 2,
+                    "total": 1352
+                },
+                {
+                    "ward": 7,
+                    "mudBonded": 119,
+                    "cementBonded": 693,
+                    "wood": 283,
+                    "bamboo": 288,
+                    "unbakedBrick": 1,
+                    "galvanized": 43,
+                    "other": 0,
+                    "total": 1427
+                },
+                {
+                    "ward": 8,
+                    "mudBonded": 40,
+                    "cementBonded": 111,
+                    "wood": 371,
+                    "bamboo": 306,
+                    "unbakedBrick": 4,
+                    "galvanized": 28,
+                    "other": 1,
+                    "total": 861
+                },
+                {
+                    "ward": 9,
+                    "mudBonded": 280,
+                    "cementBonded": 445,
+                    "wood": 200,
+                    "bamboo": 851,
+                    "unbakedBrick": 5,
+                    "galvanized": 20,
+                    "other": 5,
+                    "total": 1806
+                },
+                {
+                    "ward": 10,
+                    "mudBonded": 159,
+                    "cementBonded": 263,
+                    "wood": 94,
+                    "bamboo": 628,
+                    "unbakedBrick": 3,
+                    "galvanized": 0,
+                    "other": 2,
+                    "total": 1149
+                }
+            ],
+            "total": {
+                "mudBonded": 1161,
+                "cementBonded": 3622,
+                "wood": 2627,
+                "bamboo": 4894,
+                "unbakedBrick": 37,
+                "galvanized": 331,
+                "other": 31,
+                "total": 12703
+            },
+            "percentage": {
+                "mudBonded": 9.14,
+                "cementBonded": 28.51,
+                "wood": 20.68,
+                "bamboo": 38.53,
+                "unbakedBrick": 0.29,
+                "galvanized": 2.61,
+                "other": 0.24
+            },
+            "source": "राष्ट्रिय जनगणना, २०७८",
+            "chartTitle": "बाहिरी गारोको आधारमा घरधुरीको विवरण"
+        },
+        "floorDetails": {
+            "title": "घ) घरको भुँईको आधारमा घरधुरी विवरण",
+            "subtitle": "घ) घरको भुँईको आधारमा घरधुरी विवरण",
+            "intro": "यस नगरपालिकामा घरको भुँईको आधारमा ६ प्रकारका आवास संरचनाहरूको प्रयोग गरेको पाउन सकिन्छ । माटोको भुँई प्रयोग गरिरहेका घरधुरीहरु ६,८८३ अर्थात् ५४.१८ प्रतिशत रहेका छन् । त्यसैगरी काठको फल्याक/बाँसको प्रयोग गर्ने घरधुरीको संख्या १८५ अर्थात १.४६ प्रतिशत, इँटा/ढुङ्गाको प्रयोग गर्ने घरधुरीको संख्या २७२ अर्थात २.१४ प्रतिशत, सेरामिक टायलको प्रयोग गर्ने घरधुरीको संख्या ७४ अर्थात ०.५८ प्रतिशत, सिमेन्ट ढलानको प्रयोग गर्ने घरधुरीको संख्या ५,२४४ अर्थात ४१.२८ प्रतिशत र स्रोत नखुलेका अवस्थाका घरधुरीहरु ४५ अर्थात ०.३५ प्रतिशत रहेका छन् । यसैगरी घरको छानोको आधारमा जस्ता/टिनको छानो भएका परिवार १०,६३२ अर्थात ८३.७० प्रतिशत, सिमेन्ट ढलान भएको छानोमा बस्ने १,३४२ अर्थात १०.५६ प्रतिशत र टायल/खपडा/झिँगटी भएको छानोमा बस्ने ३४६ अर्थात २.७२ प्रतिशत रहेका छन् । भूकम्पीय दृष्टिकोणले संवेदनशील रहेको नेपालमा घरहरू निर्माण गर्दा भूकम्प प्रतिरोधात्मक बनाउनु आवश्यक छ । अति विपन्न परिवारका लागि एकीकृत बस्ती निर्माण गरी सरकारले उनीहरूको आवास सुरक्षाको अधिकार सुनिश्चित गरेको खण्डमा राज्यको लोककल्याणकारी भूमिका पुष्टी हुन्छ । जसको विस्तृत विवरण तालिकामा प्रस्तुत गरिएको छ ।",
+            "tableNumber": "तालिका नं. २७",
+            "tableTitle": "घरको भुँईको आधारमा घरधुरीको विवरण",
+            "tableData": [
+                {
+                    "ward": 1,
+                    "mud": 665,
+                    "woodBamboo": 30,
+                    "brickStone": 5,
+                    "tile": 5,
+                    "cement": 65,
+                    "other": 3,
+                    "total": 773
+                },
+                {
+                    "ward": 2,
+                    "mud": 727,
+                    "woodBamboo": 14,
+                    "brickStone": 6,
+                    "tile": 4,
+                    "cement": 392,
+                    "other": 1,
+                    "total": 1144
+                },
+                {
+                    "ward": 3,
+                    "mud": 674,
+                    "woodBamboo": 2,
+                    "brickStone": 1,
+                    "tile": 4,
+                    "cement": 318,
+                    "other": 1,
+                    "total": 1000
+                },
+                {
+                    "ward": 4,
+                    "mud": 855,
+                    "woodBamboo": 18,
+                    "brickStone": 17,
+                    "tile": 16,
+                    "cement": 758,
+                    "other": 4,
+                    "total": 1668
+                },
+                {
+                    "ward": 5,
+                    "mud": 823,
+                    "woodBamboo": 5,
+                    "brickStone": 17,
+                    "tile": 2,
+                    "cement": 671,
+                    "other": 5,
+                    "total": 1523
+                },
+                {
+                    "ward": 6,
+                    "mud": 457,
+                    "woodBamboo": 19,
+                    "brickStone": 43,
+                    "tile": 9,
+                    "cement": 816,
+                    "other": 8,
+                    "total": 1352
+                },
+                {
+                    "ward": 7,
+                    "mud": 462,
+                    "woodBamboo": 29,
+                    "brickStone": 64,
+                    "tile": 14,
+                    "cement": 853,
+                    "other": 5,
+                    "total": 1427
+                },
+                {
+                    "ward": 8,
+                    "mud": 607,
+                    "woodBamboo": 28,
+                    "brickStone": 6,
+                    "tile": 3,
+                    "cement": 212,
+                    "other": 5,
+                    "total": 861
+                },
+                {
+                    "ward": 9,
+                    "mud": 947,
+                    "woodBamboo": 36,
+                    "brickStone": 97,
+                    "tile": 8,
+                    "cement": 709,
+                    "other": 9,
+                    "total": 1806
+                },
+                {
+                    "ward": 10,
+                    "mud": 666,
+                    "woodBamboo": 4,
+                    "brickStone": 16,
+                    "tile": 9,
+                    "cement": 450,
+                    "other": 4,
+                    "total": 1149
+                }
+            ],
+            "total": {
+                "mud": 6883,
+                "woodBamboo": 185,
+                "brickStone": 272,
+                "tile": 74,
+                "cement": 5244,
+                "other": 45,
+                "total": 12703
+            },
+            "percentage": {
+                "mud": 54.18,
+                "woodBamboo": 1.46,
+                "brickStone": 2.14,
+                "tile": 0.58,
+                "cement": 41.28,
+                "other": 0.35
+            },
+            "source": "राष्ट्रिय जनगणना, २०७८",
+            "chartTitle": "घरको भुँईको आधारमा घरधुरीको विवरण"
+        },
+        "roofDetails": {
+            "title": "ङ) छानोको आधारमा घुरधुरीको विवरण",
+            "subtitle": "ङ) छानोको आधारमा घुरधुरीको विवरण",
+            "intro": "",
+            "tableNumber": "तालिका नं. २८",
+            "tableTitle": "छानोको आधारमा घुरधुरीको विवरण",
+            "tableData": [
+                {
+                    "ward": 1,
+                    "zinc": 662,
+                    "cement": 6,
+                    "straw": 72,
+                    "tile": 28,
+                    "stone": 1,
+                    "wood": 4,
+                    "other": 0,
+                    "total": 773
+                },
+                {
+                    "ward": 2,
+                    "zinc": 1035,
+                    "cement": 67,
+                    "straw": 21,
+                    "tile": 17,
+                    "stone": 3,
+                    "wood": 1,
+                    "other": 0,
+                    "total": 1144
+                },
+                {
+                    "ward": 3,
+                    "zinc": 882,
+                    "cement": 62,
+                    "straw": 9,
+                    "tile": 45,
+                    "stone": 0,
+                    "wood": 1,
+                    "other": 1,
+                    "total": 1000
+                },
+                {
+                    "ward": 4,
+                    "zinc": 1346,
+                    "cement": 180,
+                    "straw": 40,
+                    "tile": 99,
+                    "stone": 1,
+                    "wood": 0,
+                    "other": 2,
+                    "total": 1668
+                },
+                {
+                    "ward": 5,
+                    "zinc": 1361,
+                    "cement": 97,
+                    "straw": 27,
+                    "tile": 30,
+                    "stone": 5,
+                    "wood": 1,
+                    "other": 2,
+                    "total": 1523
+                },
+                {
+                    "ward": 6,
+                    "zinc": 920,
+                    "cement": 400,
+                    "straw": 5,
+                    "tile": 18,
+                    "stone": 3,
+                    "wood": 5,
+                    "other": 1,
+                    "total": 1352
+                },
+                {
+                    "ward": 7,
+                    "zinc": 1040,
+                    "cement": 355,
+                    "straw": 2,
+                    "tile": 18,
+                    "stone": 10,
+                    "wood": 2,
+                    "other": 0,
+                    "total": 1427
+                },
+                {
+                    "ward": 8,
+                    "zinc": 784,
+                    "cement": 16,
+                    "straw": 32,
+                    "tile": 23,
+                    "stone": 2,
+                    "wood": 3,
+                    "other": 1,
+                    "total": 861
+                },
+                {
+                    "ward": 9,
+                    "zinc": 1612,
+                    "cement": 83,
+                    "straw": 63,
+                    "tile": 34,
+                    "stone": 13,
+                    "wood": 0,
+                    "other": 1,
+                    "total": 1806
+                },
+                {
+                    "ward": 10,
+                    "zinc": 990,
+                    "cement": 76,
+                    "straw": 41,
+                    "tile": 34,
+                    "stone": 8,
+                    "wood": 0,
+                    "other": 0,
+                    "total": 1149
+                }
+            ],
+            "total": {
+                "zinc": 10632,
+                "cement": 1342,
+                "straw": 312,
+                "tile": 346,
+                "stone": 46,
+                "wood": 17,
+                "other": 8,
+                "total": 12703
+            },
+            "percentage": {
+                "zinc": 83.70,
+                "cement": 10.56,
+                "straw": 2.46,
+                "tile": 2.72,
+                "stone": 0.36,
+                "wood": 0.13,
+                "other": 0.06
+            },
+            "source": "राष्ट्रिय जनगणना, २०७८",
+            "chartTitle": "छानोको आधारमा घुरधुरीको विवरण"
+        }
+    }
+}

@@ -1,0 +1,176 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type IndustrialClassificationContent = {
+    title: string;
+    sectionId: string;
+    number: string;
+    tableNumber: string;
+    tableTitle: string;
+    tableData: Array<{
+        sector: string;
+        sixMonthsOrMore: number;
+        threeToFiveMonths: number;
+        oneToTwoMonths: number;
+        total: number;
+    }>;
+    total: {
+        sixMonthsOrMore: number;
+        threeToFiveMonths: number;
+        oneToTwoMonths: number;
+        total: number;
+    };
+    source: string;
+    analysis: string;
+};
+
+const content = await loadChapterSection<IndustrialClassificationContent>(
+    4,
+    "industrial-classification",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Industrial classification content not found");
+}
+---
+
+<section
+    id="industrial-classification"
+    class="relative bg-[#050505] py-8 md:py-12"
+>
+    <div class="container mx-auto px-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Header -->
+            <div class="mb-6">
+                <h2
+                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
+                >
+                    {content.number}
+                    {content.title}
+                </h2>
+            </div>
+
+            <!-- Table Title -->
+            <h4
+                class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+            >
+                {content.tableNumber}: {content.tableTitle}
+            </h4>
+
+            <!-- Premium Table -->
+            <div class="overflow-x-auto mb-6">
+                <table
+                    class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10"
+                >
+                    <thead>
+                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                            <th
+                                class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >आर्थिक कामको क्षेत्र वा उत्पादन</th
+                            >
+                            <th
+                                colspan="4"
+                                class="px-4 py-3 text-center font-serif text-zinc-100 font-medium"
+                                >कामको अवधि</th
+                            >
+                        </tr>
+                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                            <th class="px-4 py-3 border-r border-[#f2e25d]/10"
+                            ></th>
+                            <th
+                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >६ महिना वा सो भन्दा बढी</th
+                            >
+                            <th
+                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >३ देखि ५ महिना</th
+                            >
+                            <th
+                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                >१ देखि २ महिना</th
+                            >
+                            <th
+                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
+                                >जम्मा</th
+                            >
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            content.tableData.map((row) => (
+                                <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                    <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
+                                        {row.sector}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.sixMonthsOrMore.toLocaleString()}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.threeToFiveMonths.toLocaleString()}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
+                                        {row.oneToTwoMonths.toLocaleString()}
+                                    </td>
+                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right">
+                                        {row.total.toLocaleString()}
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                        <!-- Total Row -->
+                        <tr
+                            class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
+                        >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
+                                >जम्मा</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.sixMonthsOrMore.toLocaleString()}
+                            </td>
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {
+                                    content.total.threeToFiveMonths.toLocaleString()
+                                }
+                            </td>
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {content.total.oneToTwoMonths.toLocaleString()}
+                            </td>
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right"
+                            >
+                                {content.total.total.toLocaleString()}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Source -->
+            <p class="text-zinc-400 font-serif text-sm italic mb-6">
+                स्रोत: {content.source}
+            </p>
+
+            <!-- Analysis -->
+            <p
+                class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+            >
+                {content.analysis}
+            </p>
+        </div>
+    </div>
+</section>
