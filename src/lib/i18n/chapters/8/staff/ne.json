@@ -1,0 +1,528 @@
+{
+    "title": "नगरकार्यपालिका कार्यालयमा कार्यरत जनशक्ति",
+    "number": "८.३.२",
+    "tableName": "तालिका नं. ७२: कार्यपालिकाको कार्यालयमा कार्यरत जनशक्तिको विवरण",
+    "tableHeaderBranch": "विद्यमान शाखा",
+    "tableHeaderLevel": "कर्मचारीहरुको तह",
+    "tableHeaderPermanent": "स्थायी",
+    "tableHeaderContract": "करार",
+    "tableHeaderWage": "ज्यालादारी",
+    "tableData": [
+        {
+            "branch": "प्रमुख प्रशासकीय अधिकृत",
+            "rows": [
+                {
+                    "level": "प्र.प्र.अ.",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "शिक्षा शाखा",
+            "rows": [
+                {
+                    "level": "उपसचिव",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "शिक्षा अधिकृत सातौँ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "प्राविधिक सहायक पाँचौ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "आर्थिक प्रशासन शाखा",
+            "rows": [
+                {
+                    "level": "लेखा अधिकृत आठौँ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "लेखा अधिकृत आठौँ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "योजना शाखा",
+            "rows": [
+                {
+                    "level": "अधिकृत छैठौँ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "पूर्वाधार विकास शाखा",
+            "rows": [
+                {
+                    "level": "इन्जिनियर सातौँ",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "सब इन्जिनियर पाँचौ",
+                    "permanent": "२",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "खा.पा.स.टे. पाँचौ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "अ.स.इ चौथो",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "अमिन",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "स्वास्थ्य शाखा",
+            "rows": [
+                {
+                    "level": "व.ज. अधिकृत आठौँ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "सि.अ.हे.व. छैठौँ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "सि.अ.न.मी. निरीक्षक छैठौँ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "पोषण सहायक",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "पशु सेवा शाखा",
+            "rows": [
+                {
+                    "level": "पशु चिकित्सक छैठौँ",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "पशु सेवा प्राविधिक पाँचौ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "ना.प.से.प्रा चौथो",
+                    "permanent": "१",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "ना.प.स्वा.प्रा. चौथो",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "प्रशासन शाखा",
+            "rows": [
+                {
+                    "level": "अधिकृत छैठौँ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "कम्प्युटर अपरेटर पाँचौ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "प्रशासन सहायक चौथो",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "भारी सवारी चालक (दमकल)",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "फायरमेन",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "हलुका सवारी चालक",
+                    "permanent": "",
+                    "contract": "७",
+                    "wage": ""
+                },
+                {
+                    "level": "नगर प्रहरी संयोजक",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "नगर प्रहरी जवान",
+                    "permanent": "",
+                    "contract": "१६",
+                    "wage": ""
+                },
+                {
+                    "level": "सामाजिक परिचालक (दर्ता चलानी)",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "इलेक्ट्रिसियन",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "व्याक हो लोडर चालक",
+                    "permanent": "",
+                    "contract": "",
+                    "wage": "१"
+                },
+                {
+                    "level": "व्याक हो लोडर हेल्पर",
+                    "permanent": "",
+                    "contract": "",
+                    "wage": "१"
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "१",
+                    "contract": "१३",
+                    "wage": ""
+                },
+                {
+                    "level": "सरसफाई सहयोगी",
+                    "permanent": "",
+                    "contract": "५",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "रोजगार सेवा केन्द्र",
+            "rows": [
+                {
+                    "level": "रोजगार संयोजक",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "रोजगार सहायक",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "प्राविधिक सहायक पाँचौ",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "सूचना प्रविधि शाखा",
+            "rows": [
+                {
+                    "level": "सूचना प्रविधि अधिकृत",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "जिन्सी शाखा",
+            "rows": [
+                {
+                    "level": "नायव सुब्बा",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "सहायकस्तर चौथो",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "कृषि विकास शाखा",
+            "rows": [
+                {
+                    "level": "कृषि स्नातक छैठौँ",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "प्रा.स. पाँचौ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "ना.प्रा.स. चौथो",
+                    "permanent": "१",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "महिला तथा बालबालिका शाखा",
+            "rows": [
+                {
+                    "level": "महिला विकास निरीक्षक पाँचौ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "अपाङ्गता सहायता सहजकर्ता",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "राजश्व शाखा",
+            "rows": [
+                {
+                    "level": "सहायकस्तर पाँचौ",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "स.कम्प्युटर अपरेटर चौथो",
+                    "permanent": "",
+                    "contract": "३",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "सामाजिक सुरक्षा तथा पञ्जीकरण स्वा इकाई",
+            "rows": [
+                {
+                    "level": "MIS Operator पाँचौ",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "सहकारी शाखा",
+            "rows": [
+                {
+                    "level": "सहायकस्तर पाँचौ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "सामाजिक विकास शाखा",
+            "rows": [
+                {
+                    "level": "सहायकस्तर पाँचौ",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "सुरक्षित आप्रावासन शाखा",
+            "rows": [
+                {
+                    "level": "कार्यक्रम संयोजक",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "वित्तीय साक्षरता सहजकर्ता",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "लघु उद्यम शाखा",
+            "rows": [
+                {
+                    "level": "उद्यम विकास सहजकर्ता",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "उद्यम विकास सहयोगी",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "न्यायिक शाखा",
+            "rows": [
+                {
+                    "level": "सहायकस्तर पाँचौ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                },
+                {
+                    "level": "कानूनी सल्लाहकार",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "मनोसामाजिक परामर्श शाखा",
+            "rows": [
+                {
+                    "level": "सामाजिक मनोविमर्श संयोजक",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "भूमि सेवा केन्द्र",
+            "rows": [
+                {
+                    "level": "संयोजक",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "सर्वेक्षक",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                },
+                {
+                    "level": "अमिन",
+                    "permanent": "",
+                    "contract": "६",
+                    "wage": ""
+                },
+                {
+                    "level": "सामाजिक परिचालक",
+                    "permanent": "",
+                    "contract": "२",
+                    "wage": ""
+                },
+                {
+                    "level": "फाल्ड सहयोगी",
+                    "permanent": "",
+                    "contract": "४",
+                    "wage": ""
+                },
+                {
+                    "level": "लगत प्रविष्टकर्ता",
+                    "permanent": "",
+                    "contract": "१",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "वन, वातावरण, विपद् तथा फोहोरमैला व्यवस्थापन शाखा",
+            "rows": [
+                {
+                    "level": "प्राविधिक सहायक पाँचौ",
+                    "permanent": "१",
+                    "contract": "",
+                    "wage": ""
+                }
+            ]
+        },
+        {
+            "branch": "जम्मा",
+            "rows": [
+                {
+                    "level": "",
+                    "permanent": "२७",
+                    "contract": "८८",
+                    "wage": "२"
+                }
+            ]
+        }
+    ]
+}

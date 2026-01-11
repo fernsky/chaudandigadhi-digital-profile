@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Language } from "../../../lib/i18n";
+
+// Chapter 8 Components
+import ChapterHero from "../../../components/chapters/8/ChapterHero.astro";
+import OrganizationResource from "../../../components/chapters/8/OrganizationResource.astro";
+import ServiceManagement from "../../../components/chapters/8/ServiceManagement.astro";
+import LegalFramework from "../../../components/chapters/8/LegalFramework.astro";
+
+export async function getStaticPaths() {
+    return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Language };
+
+const title =
+    lang === "ne"
+        ? "परिच्छेद – ८: संस्थागत तथा सुशासनको स्थिति"
+        : "Chapter 8: Institutional and Governance Status";
+const description =
+    lang === "ne"
+        ? "चौदण्डीगढी नगरपालिकाको संस्थागत तथा सुशासनको स्थिति"
+        : "Institutional and Governance Status of Chaudandigadhi Municipality";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+    <ChapterHero lang={lang} />
+    <OrganizationResource lang={lang} />
+    <ServiceManagement lang={lang} />
+    <LegalFramework lang={lang} />
+</BaseLayout>
+
+<style>
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+</style>

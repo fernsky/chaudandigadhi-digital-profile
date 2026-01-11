@@ -1,0 +1,326 @@
+{
+    "title": "वडा कार्यालयमा कार्यरत जनशक्तिको विवरण",
+    "number": "८.३.३",
+    "tableName": "तालिका नं. ७३: वडा कार्यालयमा कार्यरत जनशक्तिको विवरण",
+    "tableHeaderWard": "वडा नं.",
+    "tableHeaderLevel": "कर्मचारीहरुको तह",
+    "tableHeaderPermanent": "स्थायी",
+    "tableHeaderContract": "करार",
+    "tableData": [
+        {
+            "ward": "वडा नं.१",
+            "rows": [
+                {
+                    "level": "अधिकृत छैठौँ (वडा सचिव)",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "सब इन्जिनियर",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "सामाजिक परिचालक",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "मनोसामाजिक कार्यकर्ता",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "",
+                    "contract": "१"
+                }
+            ]
+        },
+        {
+            "ward": "वडा नं.२",
+            "rows": [
+                {
+                    "level": "सहायकस्तर चौथो (वडा सचिव)",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "असिष्टेन्ट सब इन्जिनियर",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "सहायकस्तर चौथो",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "मनोसामाजिक कार्यकर्ता",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "",
+                    "contract": "२"
+                }
+            ]
+        },
+        {
+            "ward": "वडा नं.३",
+            "rows": [
+                {
+                    "level": "सहायकस्तर चौथो (वडा सचिव)",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "सामाजिक परिचालक",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "मनोसामाजिक कार्यकर्ता",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "असिष्टेन्ट सब इन्जिनियर",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "",
+                    "contract": "१"
+                }
+            ]
+        },
+        {
+            "ward": "वडा नं.४",
+            "rows": [
+                {
+                    "level": "सहायकस्तर चौथो (वडा सचिव)",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "सहायकस्तर चौथो",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "प्राविधिक सहायक चौथो",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "कम्प्युटर अपरेटर पाँचौ",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "",
+                    "contract": "१"
+                }
+            ]
+        },
+        {
+            "ward": "वडा नं.५",
+            "rows": [
+                {
+                    "level": "अधिकृत छैठौँ (वडा सचिव)",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "सामाजिक परिचालक",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "असिष्टेन्ट सब इन्जिनियर",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "सहायक कम्प्युटर अपरेटर",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "मनोसामाजिक कार्यकर्ता",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "",
+                    "contract": "३"
+                }
+            ]
+        },
+        {
+            "ward": "वडा नं.६",
+            "rows": [
+                {
+                    "level": "सहायकस्तर पाँचौ (वडा सचिव)",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "फिल्ड सहायक",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "ना.प्रा.स.",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "मनोसामाजिक कार्यकर्ता",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "",
+                    "contract": "१"
+                }
+            ]
+        },
+        {
+            "ward": "वडा नं.७",
+            "rows": [
+                {
+                    "level": "पशु स्वा.प्राविधिक पाँचौ (वडा सचिव)",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "सब इन्जिनियर",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "सहायक कम्प्युटर अपरेटर",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "सामाजिक परिचालक",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "",
+                    "contract": "१"
+                }
+            ]
+        },
+        {
+            "ward": "वडा नं.८",
+            "rows": [
+                {
+                    "level": "सहायकस्तर चौथो (वडा सचिव)",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "असिष्टेन्ट सब इन्जिनियर",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "सहायक कम्प्युटर अपरेटर",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "बालमैत्री सहजकर्ता",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "मनोसामाजिक कार्यकर्ता",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "",
+                    "contract": "१"
+                }
+            ]
+        },
+        {
+            "ward": "वडा नं.९",
+            "rows": [
+                {
+                    "level": "सहायकस्तर पाँचौ (वडा सचिव)",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "असिष्टेन्ट सब इन्जिनियर",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "प्राविधिक सहायक चौथो",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "सहायक कम्प्युटर अपरेटर",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "मनोसामाजिक कार्यकर्ता",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "",
+                    "contract": "१"
+                }
+            ]
+        },
+        {
+            "ward": "वडा नं.१०",
+            "rows": [
+                {
+                    "level": "प्राविधिक सहायक चौथो (वडा सचिव)",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "असिष्टेन्ट सब इन्जिनियर",
+                    "permanent": "१",
+                    "contract": ""
+                },
+                {
+                    "level": "सामाजिक परिचालक",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "माली बगैँचे",
+                    "permanent": "",
+                    "contract": "१"
+                },
+                {
+                    "level": "कार्यालय सहयोगी",
+                    "permanent": "",
+                    "contract": "१"
+                }
+            ]
+        }
+    ]
+}

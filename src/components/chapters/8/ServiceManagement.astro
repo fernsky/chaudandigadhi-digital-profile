@@ -1,0 +1,99 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type ServicesSection = {
+    title: string;
+    number: string;
+    typesTitle: string;
+    typesNumber: string;
+    serviceTypes: string[];
+    processTitle: string;
+    processNumber: string;
+    serviceProcesses: string[];
+    mediationTitle: string;
+    mediationNumber: string;
+    mediationContent: string;
+};
+
+const services = (await loadChapterSection(
+    8,
+    "services",
+    lang
+)) as ServicesSection;
+---
+
+<!-- 8.2 Service Operation and Management -->
+{
+    services && (
+        <section id="services" class="relative bg-[#050505] pb-8 md:pb-12">
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <!-- 8.2 Header -->
+                    <div class="mb-8">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                            {services.number} {services.title}
+                        </h2>
+                    </div>
+
+                    <!-- 8.2.1 Service Types -->
+                    <div id="service-types" class="mb-12">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {services.typesNumber} {services.typesTitle}
+                        </h3>
+                        <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 rounded-lg p-6 md:p-8">
+                            <ul class="space-y-3">
+                                {services.serviceTypes.map((item) => (
+                                    <li class="flex items-start text-zinc-300 font-serif text-lg leading-relaxed">
+                                        <span class="text-[#f2e25d] mr-3 mt-1.5 text-xs">◆</span>
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 8.2.2 Service Processes -->
+                    <div id="service-process" class="mb-12">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {services.processNumber} {services.processTitle}
+                        </h3>
+                         <div class="space-y-6">
+                            {services.serviceProcesses.map((process) => {
+                                const parts = process.split(':');
+                                const hasTitle = parts.length > 1;
+                                const title = hasTitle ? parts[0] + ":" : "";
+                                const content = hasTitle ? parts.slice(1).join(':') : process;
+                                
+                                return (
+                                    <div class="bg-[#0a0a0a] border-l-2 border-[#f2e25d] pl-6 py-2">
+                                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                                            {hasTitle && <strong class="text-[#f2e25d] font-bold block mb-2">{title}</strong>}
+                                            {content}
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+
+                    <!-- 8.2.3 Mediation -->
+                    <div id="mediation" class="mb-8">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {services.mediationNumber} {services.mediationTitle}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                            {services.mediationContent}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}

@@ -1,0 +1,266 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type LegalSection = {
+    title: string;
+    number: string;
+    subTitle: string;
+    subNumber: string;
+    tableHeaderSN: string;
+    tableHeaderTitle: string;
+    tableData: Array<{
+        sn: string;
+        title: string;
+    }>;
+};
+
+type StaffRow = {
+    level: string;
+    permanent: string;
+    contract: string;
+    wage: string;
+};
+
+type StaffGroup = {
+    branch: string;
+    rows: StaffRow[];
+};
+
+type StaffSection = {
+    title: string;
+    number: string;
+    tableName: string;
+    tableHeaderBranch: string;
+    tableHeaderLevel: string;
+    tableHeaderPermanent: string;
+    tableHeaderContract: string;
+    tableHeaderWage: string;
+    tableData: StaffGroup[];
+};
+
+type WardRow = {
+    level: string;
+    permanent: string;
+    contract: string;
+};
+
+type WardGroup = {
+    ward: string;
+    rows: WardRow[];
+};
+
+type WardSection = {
+    title: string;
+    number: string;
+    tableName: string;
+    tableHeaderWard: string;
+    tableHeaderLevel: string;
+    tableHeaderPermanent: string;
+    tableHeaderContract: string;
+    tableData: WardGroup[];
+};
+
+const legal = (await loadChapterSection(
+    8,
+    "legal",
+    lang
+)) as LegalSection;
+
+const staff = (await loadChapterSection(
+    8,
+    "staff",
+    lang
+)) as StaffSection;
+
+const wardStaff = (await loadChapterSection(
+    8,
+    "ward-staff",
+    lang
+)) as WardSection;
+---
+
+<!-- 8.3 Acts, Policies and Procedures -->
+{
+    legal && (
+        <section id="legal-framework" class="relative bg-[#050505] pb-8 md:pb-12">
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <!-- 8.3 Header -->
+                    <div class="mb-8">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                            {legal.number} {legal.title}
+                        </h2>
+                    </div>
+
+                    <!-- 8.3.1 Approved Acts Table -->
+                    <div id="approved-acts" class="mb-16">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {legal.subNumber} {legal.subTitle}
+                        </h3>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-lg">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/10 border-b border-[#f2e25d]/20">
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-center w-16 font-serif text-zinc-100 font-bold text-lg md:text-xl">
+                                            {legal.tableHeaderSN}
+                                        </th>
+                                        <th class="px-3 py-3 text-left font-serif text-zinc-100 font-bold text-lg md:text-xl">
+                                            {legal.tableHeaderTitle}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {legal.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-3 py-3 border-r border-[#f2e25d]/5 text-center font-medium font-serif">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-4 py-3 font-serif">
+                                                {row.title}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 8.3.2 Executive Staff Table -->
+                    {staff && (
+                        <div id="staff" class="mb-16">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4">
+                                {staff.number} {staff.title}
+                            </h3>
+                            <p class="text-[#f2e25d] font-serif text-lg mb-6">{staff.tableName}</p>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-lg">
+                                    <thead>
+                                        <tr class="bg-[#f2e25d]/10 border-b border-[#f2e25d]/20 text-zinc-100">
+                                            <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif font-bold text-lg md:text-xl">
+                                                {staff.tableHeaderBranch}
+                                            </th>
+                                            <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif font-bold text-lg md:text-xl">
+                                                {staff.tableHeaderLevel}
+                                            </th>
+                                            <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center font-serif font-bold text-lg md:text-xl">
+                                                {staff.tableHeaderPermanent}
+                                            </th>
+                                            <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center font-serif font-bold text-lg md:text-xl">
+                                                {staff.tableHeaderContract}
+                                            </th>
+                                            <th class="px-4 py-3 text-center font-serif font-bold text-lg md:text-xl">
+                                                {staff.tableHeaderWage}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {staff.tableData.map((group) => {
+                                            const isTotal = group.branch === "जम्मा" || group.branch === "Total";
+                                            return (
+                                                <>
+                                                    {group.rows.map((row, idx) => (
+                                                        <tr class={`text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200 ${isTotal ? 'bg-[#f2e25d]/10 font-bold' : ''}`}>
+                                                            {idx === 0 && (
+                                                                <td 
+                                                                    class={`px-4 py-3 border-r border-[#f2e25d]/5 font-serif font-medium ${isTotal ? 'bg-[#f2e25d]/15' : 'bg-[#f2e25d]/2'}`} 
+                                                                    rowspan={group.rows.length}
+                                                                >
+                                                                    {group.branch}
+                                                                </td>
+                                                            )}
+                                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 font-serif">
+                                                                {row.level}
+                                                            </td>
+                                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-serif">
+                                                                {row.permanent}
+                                                            </td>
+                                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-serif">
+                                                                {row.contract}
+                                                            </td>
+                                                            <td class="px-4 py-3 text-center font-serif">
+                                                                {row.wage}
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </>
+                                            );
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    )}
+
+                    <!-- 8.3.3 Ward Staff Table -->
+                    {wardStaff && (
+                        <div id="ward-staff" class="mb-10">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4">
+                                {wardStaff.number} {wardStaff.title}
+                            </h3>
+                            <p class="text-[#f2e25d] font-serif text-lg mb-6">{wardStaff.tableName}</p>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-lg">
+                                    <thead>
+                                        <tr class="bg-[#f2e25d]/10 border-b border-[#f2e25d]/20 text-zinc-100">
+                                            <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif font-bold text-lg md:text-xl">
+                                                {wardStaff.tableHeaderWard}
+                                            </th>
+                                            <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif font-bold text-lg md:text-xl">
+                                                {wardStaff.tableHeaderLevel}
+                                            </th>
+                                            <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center font-serif font-bold text-lg md:text-xl">
+                                                {wardStaff.tableHeaderPermanent}
+                                            </th>
+                                            <th class="px-4 py-3 text-center font-serif font-bold text-lg md:text-xl">
+                                                {wardStaff.tableHeaderContract}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {wardStaff.tableData.map((group) => (
+                                            <>
+                                                {group.rows.map((row, idx) => (
+                                                    <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                                        {idx === 0 && (
+                                                            <td 
+                                                                class="px-4 py-3 border-r border-[#f2e25d]/5 font-serif font-medium bg-[#f2e25d]/2" 
+                                                                rowspan={group.rows.length}
+                                                            >
+                                                                {group.ward}
+                                                            </td>
+                                                        )}
+                                                        <td class="px-4 py-3 border-r border-[#f2e25d]/5 font-serif">
+                                                            {row.level}
+                                                        </td>
+                                                        <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-serif">
+                                                            {row.permanent}
+                                                        </td>
+                                                        <td class="px-4 py-3 text-center font-serif">
+                                                            {row.contract}
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </section>
+    )
+}
+
+
