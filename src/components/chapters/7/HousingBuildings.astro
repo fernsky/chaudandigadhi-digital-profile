@@ -344,7 +344,12 @@ const crematorium = (await loadChapterSection(
         container.innerHTML = "";
         const width = container.clientWidth;
         const height = container.clientHeight;
-        const radius = Math.min(width, height) / 2;
+        const radius = Math.min(width, height) / 2.5;
+
+        if (radius <= 0 || !data || data.length === 0) {
+            console.warn("Invalid chart dimensions or data");
+            return;
+        }
 
         const svg = d3.select(container)
             .append("svg")
@@ -354,7 +359,7 @@ const crematorium = (await loadChapterSection(
             .attr("transform", `translate(${width / 2},${height / 2})`);
 
         const pie = d3.pie<any>().value((d) => d.value);
-        const arc = d3.arc<any>().innerRadius(0).outerRadius(radius * 0.75); // Slightly smaller to fit labels
+        const arc = d3.arc<any>().innerRadius(0).outerRadius(radius * 0.75);
         const arcHover = d3.arc<any>().innerRadius(0).outerRadius(radius * 0.85);
         const outerArc = d3.arc<any>().innerRadius(radius * 0.8).outerRadius(radius * 0.8);
 
