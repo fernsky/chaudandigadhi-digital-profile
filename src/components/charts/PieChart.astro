@@ -8,6 +8,7 @@ interface Props {
     data: number[];
     backgroundColor?: string[];
     lang: Language;
+    type?: "pie" | "doughnut";
 }
 
 const {
@@ -23,6 +24,7 @@ const {
         "rgba(30, 41, 59, 0.8)",
     ],
     lang,
+    type = "pie",
 } = Astro.props;
 
 const chartData = {
@@ -33,21 +35,25 @@ const chartData = {
             backgroundColor,
             borderWidth: 2,
             borderColor: "#1e293b",
+            hoverOffset: 4,
         },
     ],
 };
 
 const chartConfig = {
-    type: "pie",
+    type: type,
     data: chartData,
     options: {
         responsive: true,
         maintainAspectRatio: true,
+        cutout: type === "doughnut" ? "50%" : undefined,
         plugins: {
             legend: {
                 position: "bottom",
                 labels: {
-                    padding: 15,
+                    padding: 20,
+                    usePointStyle: true,
+                    pointStyle: "circle",
                     font: {
                         size: 12,
                         family:
@@ -70,19 +76,8 @@ const chartConfig = {
                             : "'Inter', sans-serif",
                 },
                 color: "#e2e8f0",
-            },
-            tooltip: {
-                callbacks: {
-                    label: function (context) {
-                        const label = context.label || "";
-                        const value = context.parsed || 0;
-                        const total = context.dataset.data.reduce(
-                            (a, b) => a + b,
-                            0,
-                        );
-                        const percentage = ((value / total) * 100).toFixed(1);
-                        return `${label}: ${value.toLocaleString()} (${percentage}%)`;
-                    },
+                padding: {
+                    bottom: 20,
                 },
             },
         },
@@ -109,6 +104,38 @@ const chartConfig = {
     function initChart() {
         const ctx = document.getElementById(id);
         if (ctx && typeof Chart !== "undefined") {
+            // Destroy existing chart if it exists to prevent overlap/errors on re-renders
+            const existingChart = Chart.getChart(ctx);
+            if (existingChart) {
+                existingChart.destroy();
+            }
+
+            // Define tooltip callback on client side to avoid serialization issues
+            if (!chartConfig.options.plugins.tooltip) {
+                chartConfig.options.plugins.tooltip = {};
+            }
+
+            chartConfig.options.plugins.tooltip.callbacks = {
+                label: function (context) {
+                    const label = context.label || "";
+                    const value = context.raw || 0;
+                    let total = 0;
+                    const dataset = context.chart.data.datasets[0];
+                    if (dataset && Array.isArray(dataset.data)) {
+                        total = dataset.data.reduce(
+                            (a, b) => Number(a) + Number(b),
+                            0,
+                        );
+                    }
+
+                    const percentage =
+                        total > 0
+                            ? ((Number(value) / total) * 100).toFixed(2)
+                            : "0.00";
+                    return `${label}: ${percentage}%`;
+                },
+            };
+
             new Chart(ctx, chartConfig);
         }
     }

@@ -1,0 +1,244 @@
+{
+    "title": "जडिबुटी उत्पादन, संकलन तथा निकासी सम्बन्धी विवरण",
+    "number": "६.१.३",
+    "heading": "जडिबुटी सम्बन्धी विवरण",
+    "content": "नगरपालिकाको वन क्षेत्रमा पाइने जडिबुटीहरूमा सर्पगन्धा, कुरिलो, अंगेरी, तुलसी, हर्रो, वर्रो, अमला, निम, गुर्जो, भूँइ अमला लगायत रहेका छन् । यस बाहेक दालचिनी, चिराइतो, सिस्नो लगायतका जडिबुटीहरु यहाँ पाउनुका साथै संकलन तथा बिक्री हुने प्रशस्त सम्भावना रहेको देखिन्छ ।",
+    "tableNumber": "तालिका नं. ६०",
+    "tableTitle": "चौदण्डीगढी नगरपालिका क्षेत्रमा पाइने महत्वपूर्ण स्थानीय जडिबुटीहरू",
+    "tableData": [
+        {
+            "sn": "१.",
+            "nepaliName": "अधुरो",
+            "englishName": "Malabar nut",
+            "scientificName": "Adhatoda vasica Nees"
+        },
+        {
+            "sn": "२.",
+            "nepaliName": "अदुवा",
+            "englishName": "Ginger",
+            "scientificName": "Zingibar officinale Rose"
+        },
+        {
+            "sn": "३.",
+            "nepaliName": "आँक",
+            "englishName": "Madar",
+            "scientificName": "Calotropis procera"
+        },
+        {
+            "sn": "४.",
+            "nepaliName": "ऐसेलु",
+            "englishName": "Golden raspberry",
+            "scientificName": "Rubus ellipticus Smith"
+        },
+        {
+            "sn": "५.",
+            "nepaliName": "करेला",
+            "englishName": "Bitter Gourd",
+            "scientificName": "Memordia charantia Linn."
+        },
+        {
+            "sn": "६.",
+            "nepaliName": "कागती",
+            "englishName": "Lemon",
+            "scientificName": "Citrus eurantifolia (Christm) Swingle"
+        },
+        {
+            "sn": "७.",
+            "nepaliName": "कुरिलो",
+            "englishName": "Asparagus",
+            "scientificName": "Asparagus racemosus Willd."
+        },
+        {
+            "sn": "८.",
+            "nepaliName": "कुश",
+            "englishName": "Kus-grass",
+            "scientificName": "Desmostachya bipinnata Staff"
+        },
+        {
+            "sn": "९.",
+            "nepaliName": "केरा",
+            "englishName": "Banana",
+            "scientificName": "Musa parasiciaca Linn."
+        },
+        {
+            "sn": "१०.",
+            "nepaliName": "गुर्जो",
+            "englishName": "",
+            "scientificName": "Tinosph​ora cordifolia Willd Miers"
+        },
+        {
+            "sn": "११.",
+            "nepaliName": "गुलाफ",
+            "englishName": "Rose",
+            "scientificName": "Rosa sp."
+        },
+        {
+            "sn": "१२.",
+            "nepaliName": "घण्टीफुल (बाँहमासे)",
+            "englishName": "China rose",
+            "scientificName": "Hibiscus rosa-sinensis Linn."
+        },
+        {
+            "sn": "१३.",
+            "nepaliName": "धुकुमारी",
+            "englishName": "Aloe",
+            "scientificName": "Aloe barbadensis Mill"
+        },
+        {
+            "sn": "१४.",
+            "nepaliName": "तितेपाती",
+            "englishName": "Mug-wort",
+            "scientificName": "Artemisia vulgaris Linn."
+        },
+        {
+            "sn": "१५.",
+            "nepaliName": "तुलसी",
+            "englishName": "Holy basil",
+            "scientificName": "Ocimum sanctum Linn."
+        },
+        {
+            "sn": "१६.",
+            "nepaliName": "दुधेझार",
+            "englishName": "",
+            "scientificName": "Euphorbia thymifolia L"
+        },
+        {
+            "sn": "१७.",
+            "nepaliName": "दुबो",
+            "englishName": "Conch grass",
+            "scientificName": "Cynodon dactylon Pers"
+        },
+        {
+            "sn": "१८.",
+            "nepaliName": "धतुरो",
+            "englishName": "Datura",
+            "scientificName": "Datura metel Linn."
+        },
+        {
+            "sn": "१९.",
+            "nepaliName": "धनिया",
+            "englishName": "Coriender",
+            "scientificName": "Corienfrum sativum Linn."
+        },
+        {
+            "sn": "२०.",
+            "nepaliName": "नीम",
+            "englishName": "Neem tree",
+            "scientificName": "Azadhiracta indica A.Juss"
+        },
+        {
+            "sn": "२१.",
+            "nepaliName": "पारिजात",
+            "englishName": "Night Jusmine",
+            "scientificName": "Nyctantanthes arbor-tristis Linn"
+        },
+        {
+            "sn": "२२.",
+            "nepaliName": "पालुङ्गो",
+            "englishName": "Spinas",
+            "scientificName": "Spicia oleracea Linn."
+        },
+        {
+            "sn": "२३.",
+            "nepaliName": "पुदिना",
+            "englishName": "Garden mint",
+            "scientificName": "Mentha spicata Linn."
+        },
+        {
+            "sn": "२४.",
+            "nepaliName": "बकाइनो",
+            "englishName": "China berry",
+            "scientificName": "Melia azadhirach Linn."
+        },
+        {
+            "sn": "२५.",
+            "nepaliName": "बेथे",
+            "englishName": "Lambs quarters",
+            "scientificName": "Chenopoidium album L"
+        },
+        {
+            "sn": "२६.",
+            "nepaliName": "बोझो",
+            "englishName": "Sweet flag",
+            "scientificName": "Acorus calamus Linn."
+        },
+        {
+            "sn": "२७.",
+            "nepaliName": "भुईं अमला",
+            "englishName": "",
+            "scientificName": "Phyllanthus urinaria L."
+        },
+        {
+            "sn": "२८.",
+            "nepaliName": "मुला",
+            "englishName": "Radish",
+            "scientificName": "Raphanus sativus Linn."
+        },
+        {
+            "sn": "२९.",
+            "nepaliName": "मोथे",
+            "englishName": "Nut Grass",
+            "scientificName": "Cyperus rotundus Linn."
+        },
+        {
+            "sn": "३०.",
+            "nepaliName": "लज्जावती",
+            "englishName": "Sensitive plant",
+            "scientificName": "Mimosa pudica Linn"
+        },
+        {
+            "sn": "३१.",
+            "nepaliName": "लसुन",
+            "englishName": "Garlic",
+            "scientificName": "Allium sativum Linn."
+        },
+        {
+            "sn": "३२.",
+            "nepaliName": "लाहा",
+            "englishName": "Lac insect",
+            "scientificName": "Laccifer lacca Kerr."
+        },
+        {
+            "sn": "३३.",
+            "nepaliName": "लुँडे",
+            "englishName": "Pickly amaranth",
+            "scientificName": "Amaranthus spinosus L."
+        },
+        {
+            "sn": "३४.",
+            "nepaliName": "सर्पगन्या",
+            "englishName": "Serpentina",
+            "scientificName": "Rauwolfia serpentine Bethex Kurz"
+        },
+        {
+            "sn": "३५.",
+            "nepaliName": "सयपत्री",
+            "englishName": "Marigold",
+            "scientificName": "Tagetus erecta Linn."
+        },
+        {
+            "sn": "३६.",
+            "nepaliName": "सिस्नु",
+            "englishName": "Neetle",
+            "scientificName": "Urtica dioca Linn."
+        },
+        {
+            "sn": "३७.",
+            "nepaliName": "सुँप",
+            "englishName": "Dill",
+            "scientificName": "Anethum sowa Kurz"
+        },
+        {
+            "sn": "३८.",
+            "nepaliName": "हर्रो",
+            "englishName": "Chebulic myrobalan",
+            "scientificName": "Terminalia chebula Retz."
+        },
+        {
+            "sn": "३९.",
+            "nepaliName": "हलेंदो",
+            "englishName": "Turmeric",
+            "scientificName": "Curcuma longa Linn."
+        }
+    ]
+}

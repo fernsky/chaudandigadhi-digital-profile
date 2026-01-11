@@ -1,0 +1,348 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type ForestAreaSection = {
+    title: string;
+    number: string;
+    content: string;
+};
+
+type ForestManagementSection = {
+    title: string;
+    number: string;
+    sections: {
+        communityForest: {
+            heading: string;
+            content1: string;
+            content2: string;
+            tableNumber: string;
+            tableTitle: string;
+            tableData: Array<{
+                sn: string;
+                name: string;
+                address: string;
+            }>;
+        };
+        nationalForest: { heading: string; content1: string; content2: string };
+        blockForest: { heading: string; content: string };
+        partnershipForest: { heading: string; content: string };
+        religiousForest: { heading: string; content: string };
+        privateForest: { heading: string; content: string };
+        leaseholdForest: { heading: string; content: string };
+    };
+};
+
+type PlantationAreasSection = {
+    title: string;
+    number: string;
+    heading: string;
+    content: string;
+};
+
+type HerbsSection = {
+    title: string;
+    number: string;
+    heading: string;
+    content: string;
+    tableNumber: string;
+    tableTitle: string;
+    tableData: Array<{
+        sn: string;
+        nepaliName: string;
+        englishName: string;
+        scientificName: string;
+    }>;
+};
+
+type ForestProductsSection = {
+    title: string;
+    number: string;
+    content1: string;
+    content2: string;
+};
+
+const forestArea = (await loadChapterSection(6, "forest-area", lang)) as ForestAreaSection;
+const forestManagement = (await loadChapterSection(6, "forest-management", lang)) as ForestManagementSection;
+const plantationAreas = (await loadChapterSection(6, "plantation-areas", lang)) as PlantationAreasSection;
+const herbs = (await loadChapterSection(6, "herbs", lang)) as HerbsSection;
+const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as ForestProductsSection;
+---
+
+<!-- 6.1 Forest Area Status -->
+{
+    forestArea && (
+        <section id="forest-area" class="relative bg-[#050505] pb-8 md:pb-12 pt-16">
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                            {forestArea.number} {forestArea.title}
+                        </h2>
+                    </div>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                        {forestArea.content}
+                    </p>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 6.1.1 Forest Management -->
+{
+    forestManagement && (
+        <section id="forest-management" class="relative bg-[#050505] pb-8 md:pb-12">
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {forestManagement.number} {forestManagement.title}
+                            </h3>
+                        </div>
+
+                        <!-- Community Forest -->
+                        <div class="mb-8">
+                            <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-3">
+                                {forestManagement.sections.communityForest.heading}
+                            </h4>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-4">
+                                {forestManagement.sections.communityForest.content1}
+                            </p>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                                {forestManagement.sections.communityForest.content2}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Community Forest Table -->
+                    <div class="mb-10 max-w-6xl mx-auto">
+                        <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {forestManagement.sections.communityForest.tableNumber}: {forestManagement.sections.communityForest.tableTitle}
+                        </h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-center w-12 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "वनको नाम" : "Forest Name"}
+                                        </th>
+                                        <th class="px-3 py-3 text-left w-32 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "ठेगाना" : "Address"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {forestManagement.sections.communityForest.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5">
+                                                {row.name}
+                                            </td>
+                                            <td class="px-3 py-2">
+                                                {row.address}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto space-y-8">
+                        <!-- National Forest -->
+                        <div>
+                            <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-3">
+                                {forestManagement.sections.nationalForest.heading}
+                            </h4>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-4">
+                                {forestManagement.sections.nationalForest.content1}
+                            </p>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                                {forestManagement.sections.nationalForest.content2}
+                            </p>
+                        </div>
+                        
+                        <!-- Block Forest -->
+                        <div>
+                            <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-3">
+                                {forestManagement.sections.blockForest.heading}
+                            </h4>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                                {forestManagement.sections.blockForest.content}
+                            </p>
+                        </div>
+
+                        <!-- Partnership Forest -->
+                        <div>
+                            <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-3">
+                                {forestManagement.sections.partnershipForest.heading}
+                            </h4>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                                {forestManagement.sections.partnershipForest.content}
+                            </p>
+                        </div>
+
+                        <!-- Religious Forest -->
+                        <div>
+                            <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-3">
+                                {forestManagement.sections.religiousForest.heading}
+                            </h4>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                                {forestManagement.sections.religiousForest.content}
+                            </p>
+                        </div>
+
+                        <!-- Private Forest -->
+                        <div>
+                            <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-3">
+                                {forestManagement.sections.privateForest.heading}
+                            </h4>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                                {forestManagement.sections.privateForest.content}
+                            </p>
+                        </div>
+
+                        <!-- Leasehold Forest -->
+                        <div>
+                            <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-3">
+                                {forestManagement.sections.leaseholdForest.heading}
+                            </h4>
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                                {forestManagement.sections.leaseholdForest.content}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 6.1.2 Plantation Areas -->
+{
+    plantationAreas && (
+        <section id="plantation" class="relative bg-[#050505] pb-8 md:pb-12">
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {plantationAreas.number} {plantationAreas.title}
+                        </h3>
+                    </div>
+                    <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-4">
+                        {plantationAreas.heading}
+                    </h4>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                        {plantationAreas.content}
+                    </p>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 6.1.3 Medicinal Plants -->
+{
+    herbs && (
+        <section id="herbs" class="relative bg-[#050505] pb-8 md:pb-12">
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {herbs.number} {herbs.title}
+                            </h3>
+                        </div>
+                        <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-4">
+                            {herbs.heading}
+                        </h4>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                            {herbs.content}
+                        </p>
+                    </div>
+
+                    <!-- Medicinal Plants Table -->
+                    <div class="mb-10 max-w-5xl mx-auto">
+                        <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {herbs.tableNumber}: {herbs.tableTitle}
+                        </h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-16 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "नेपाली नाम" : "Nepali Name"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "अंग्रेजी नाम" : "English Name"}
+                                        </th>
+                                        <th class="px-4 py-3 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "वैज्ञानिक नाम" : "Scientific Name"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {herbs.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.nepaliName}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 italic">
+                                                {row.englishName}
+                                            </td>
+                                            <td class="px-4 py-3 italic">
+                                                {row.scientificName}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 6.1.4 Forest Products -->
+{
+    forestProducts && (
+        <section id="forest-products" class="relative bg-[#050505] pb-8 md:pb-12">
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {forestProducts.number} {forestProducts.title}
+                        </h3>
+                    </div>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                        {forestProducts.content1}
+                    </p>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                        {forestProducts.content2}
+                    </p>
+                </div>
+            </div>
+        </section>
+    )
+}

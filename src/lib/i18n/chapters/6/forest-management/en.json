@@ -1,0 +1,363 @@
+{
+    "title": "Details of Forest Management (Government Managed, Community, Leasehold, Religious and Private Forests)",
+    "number": "6.1.1",
+    "sections": {
+        "communityForest": {
+            "heading": "a. Community Forest",
+            "content1": "Community forest means national forest handed over to a user group for the development, conservation and use of the forest for collective interest. According to the policy of the Government of Nepal to involve local residents in forest conservation and use, community forest user groups are being formed and forests are being handed over through the District Forest Office in this municipality. According to the Forest Act, 2049 and Forest Rules, 2051, the community forest user groups themselves are fully responsible for the conservation, enhancement and management of community forests. When this program was initially implemented, its objective was to increase greenery in barren hills and slopes and to meet the basic needs of forest products including wood, firewood and leaves for the general public. However, the main objectives of this program now include poverty alleviation of poor families, livelihood, biodiversity conservation, sustainable forest management, good governance, inclusion, gender equality, especially participation of women, dalits and indigenous people, and it is believed that this program can also help in poverty reduction.",
+            "content2": "With the participation of the municipality and community forest user groups, various training seminars and study tours are being conducted to encourage the production of non-timber forest products within community forests. This seems to help advance all aspects of forest management from the local level and increase forest production. Since the manpower of the District Forest Office alone does not seem sufficient for strengthening community forests, various non-governmental organizations related to forests need to be deployed in the municipality for this purpose. Details of community forests registered in this municipality are mentioned in the table below.",
+            "tableNumber": "Table No. 59",
+            "tableTitle": "Details of Community Forests in the Municipality",
+            "source": "Municipal Executive Office",
+            "tableData": [
+                {
+                    "sn": "1",
+                    "name": "Mahabharat",
+                    "address": "Ward-10"
+                },
+                {
+                    "sn": "2",
+                    "name": "Devidhan",
+                    "address": "Ward-10"
+                },
+                {
+                    "sn": "3",
+                    "name": "Shivababa Women",
+                    "address": "Ward-10"
+                },
+                {
+                    "sn": "4",
+                    "name": "Krintimai",
+                    "address": "Ward-10"
+                },
+                {
+                    "sn": "5",
+                    "name": "Adarsha",
+                    "address": "Ward-10"
+                },
+                {
+                    "sn": "6",
+                    "name": "Sivai (Ramakant Memorial)",
+                    "address": "Ward-5"
+                },
+                {
+                    "sn": "7",
+                    "name": "Sivai Women",
+                    "address": "Ward-5"
+                },
+                {
+                    "sn": "8",
+                    "name": "Shivalaya",
+                    "address": "Ward-5"
+                },
+                {
+                    "sn": "9",
+                    "name": "Sagarmatha",
+                    "address": "Ward-5"
+                },
+                {
+                    "sn": "10",
+                    "name": "Shiva",
+                    "address": "Ward-5"
+                },
+                {
+                    "sn": "11",
+                    "name": "Churesivai Women",
+                    "address": "Ward-5"
+                },
+                {
+                    "sn": "12",
+                    "name": "Sukuna",
+                    "address": "Ward-5"
+                },
+                {
+                    "sn": "13",
+                    "name": "Dhoknahi Dharapani",
+                    "address": "Ward-5"
+                },
+                {
+                    "sn": "14",
+                    "name": "Dhamivethhan",
+                    "address": "Ward-5"
+                },
+                {
+                    "sn": "15",
+                    "name": "Mainamain",
+                    "address": "Ward-5"
+                },
+                {
+                    "sn": "16",
+                    "name": "Bhim",
+                    "address": "Ward-9"
+                },
+                {
+                    "sn": "17",
+                    "name": "Sarvodaya Namma",
+                    "address": "Ward-9"
+                },
+                {
+                    "sn": "18",
+                    "name": "Srijana",
+                    "address": "Ward-10"
+                },
+                {
+                    "sn": "19",
+                    "name": "Devisthan",
+                    "address": "Ward-9"
+                },
+                {
+                    "sn": "20",
+                    "name": "Deurali",
+                    "address": "Ward-9"
+                },
+                {
+                    "sn": "21",
+                    "name": "Bhagwati",
+                    "address": "Ward-9"
+                },
+                {
+                    "sn": "22",
+                    "name": "Mulkhola",
+                    "address": "Ward-9"
+                },
+                {
+                    "sn": "23",
+                    "name": "Triguna Van Balika Women",
+                    "address": "Ward-9"
+                },
+                {
+                    "sn": "24",
+                    "name": "Saraswati Women",
+                    "address": "Ward-9"
+                },
+                {
+                    "sn": "25",
+                    "name": "Simanta",
+                    "address": "Ward-9"
+                },
+                {
+                    "sn": "26",
+                    "name": "Hariyali",
+                    "address": "Ward-9,10"
+                },
+                {
+                    "sn": "27",
+                    "name": "Dhanpokhri",
+                    "address": "Ward-2,9"
+                },
+                {
+                    "sn": "28",
+                    "name": "Himchuli",
+                    "address": "Ward-1"
+                },
+                {
+                    "sn": "29",
+                    "name": "Thaukhani",
+                    "address": "Ward-1"
+                },
+                {
+                    "sn": "30",
+                    "name": "Dudhkoshi",
+                    "address": "Ward-1"
+                },
+                {
+                    "sn": "31",
+                    "name": "Lamakhola",
+                    "address": "Ward-1"
+                },
+                {
+                    "sn": "32",
+                    "name": "Bhalumara Ahale",
+                    "address": "Ward-1"
+                },
+                {
+                    "sn": "33",
+                    "name": "Panchkanya",
+                    "address": "Ward-1"
+                },
+                {
+                    "sn": "34",
+                    "name": "Chandeshwari",
+                    "address": "Ward-1"
+                },
+                {
+                    "sn": "35",
+                    "name": "Trishuli",
+                    "address": "Ward-1"
+                },
+                {
+                    "sn": "36",
+                    "name": "Sundar",
+                    "address": "Ward-1,3"
+                },
+                {
+                    "sn": "37",
+                    "name": "Shikhar Koshdhunga",
+                    "address": "Ward-1, Belka Mun-5"
+                },
+                {
+                    "sn": "38",
+                    "name": "Saunguri Gaunbeshwi",
+                    "address": "Ward-2"
+                },
+                {
+                    "sn": "39",
+                    "name": "Chitre Lama Khola",
+                    "address": "Ward-3"
+                },
+                {
+                    "sn": "40",
+                    "name": "Chuniya Lama Khola",
+                    "address": "Ward-3"
+                },
+                {
+                    "sn": "41",
+                    "name": "Kalibhangeni",
+                    "address": "Ward-3,4"
+                },
+                {
+                    "sn": "42",
+                    "name": "Basahathan",
+                    "address": "Ward-4"
+                },
+                {
+                    "sn": "43",
+                    "name": "Raktamala Devi",
+                    "address": "Ward-4"
+                },
+                {
+                    "sn": "44",
+                    "name": "Kobe Devi",
+                    "address": "Ward-4"
+                },
+                {
+                    "sn": "45",
+                    "name": "Janakalyan",
+                    "address": "Ward-4"
+                },
+                {
+                    "sn": "46",
+                    "name": "Chalise Devidhan",
+                    "address": "Ward-7"
+                },
+                {
+                    "sn": "47",
+                    "name": "Bapsanta Pangrami",
+                    "address": "Ward-7"
+                },
+                {
+                    "sn": "48",
+                    "name": "Salghari",
+                    "address": "Ward-8"
+                },
+                {
+                    "sn": "49",
+                    "name": "Sayapatri",
+                    "address": "Ward-8"
+                },
+                {
+                    "sn": "50",
+                    "name": "Tinthaya",
+                    "address": "Ward-8"
+                },
+                {
+                    "sn": "51",
+                    "name": "Baghakhor Devidhan",
+                    "address": "Ward-8"
+                },
+                {
+                    "sn": "52",
+                    "name": "Pakhepani",
+                    "address": "Ward-8"
+                },
+                {
+                    "sn": "53",
+                    "name": "Gewaadhan",
+                    "address": "Ward-8"
+                },
+                {
+                    "sn": "54",
+                    "name": "Sunagabha",
+                    "address": "Ward-8"
+                },
+                {
+                    "sn": "55",
+                    "name": "Dhulke Belar",
+                    "address": "Ward-7"
+                },
+                {
+                    "sn": "56",
+                    "name": "Deurali",
+                    "address": "Ward-3"
+                },
+                {
+                    "sn": "57",
+                    "name": "Ompsahare",
+                    "address": "Ward-6"
+                },
+                {
+                    "sn": "58",
+                    "name": "Devikhola",
+                    "address": "Ward-6,7"
+                },
+                {
+                    "sn": "59",
+                    "name": "Kattunje",
+                    "address": "Ward-6,7"
+                },
+                {
+                    "sn": "60",
+                    "name": "Singamala",
+                    "address": "Ward-1"
+                },
+                {
+                    "sn": "61",
+                    "name": "Churi",
+                    "address": "Ward-8"
+                },
+                {
+                    "sn": "62",
+                    "name": "Chiuri Bhanjyang",
+                    "address": "Ward-8"
+                },
+                {
+                    "sn": "63",
+                    "name": "Belka",
+                    "address": "Ward-3"
+                }
+            ]
+        },
+        "nationalForest": {
+            "heading": "b. National Forest",
+            "content1": "National forest means a forest action plan prepared to maintain environmental balance and develop, conserve and use and distribute forest products.",
+            "content2": "National forest means all forests within Nepal, whether demarcated or not, except private forests, and the term includes fallow or barren land surrounded by or adjacent to forests and roads, ponds, lakes or streams and gravels within forests."
+        },
+        "blockForest": {
+            "heading": "c. Block Forest",
+            "content": "Block forest means a part of a government-managed forest with an area of at least five hundred hectares."
+        },
+        "partnershipForest": {
+            "heading": "d. Partnership Forest",
+            "content": "Partnership forest means a part of national forest managed in partnership between the Division Forest Office, local level and users."
+        },
+        "religiousForest": {
+            "heading": "e. Religious Forest",
+            "content": "Religious forest means national forest handed over to a religious body, group or community for development, conservation and use of the forest."
+        },
+        "privateForest": {
+            "heading": "f. Private Forest",
+            "content": "Private forest means forest grown or conserved on private land to which a person is entitled according to the prevailing law."
+        },
+        "leaseholdForest": {
+            "heading": "g. Leasehold Forest",
+            "content": "Leasehold forest means national forest provided on lease to an institution, forest product-based industry or community established according to the prevailing law for achieving various objectives (also added by Some Nepal Amendment Act, 2075). The part of the national forest as mentioned in Section-6 of the National Forest Act, 2(4) is called leasehold forest. Leasehold forest is allocated for the following purposes:",
+            "purposes": [
+                "(a) To produce raw materials required for forest product-based industries.",
+                "(b) To increase production of forest products by plantation and distribute or use them.",
+                "(c) To conduct tourism business in a way that conserves and develops forests.",
+                "(d) To conduct agriculture-forestry crop work in a way that conserves and develops forests.",
+                "(e) To conduct insect, butterfly and wildlife farms in a way that conserves and develops forests."
+            ]
+        }
+    }
+}

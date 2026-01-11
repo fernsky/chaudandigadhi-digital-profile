@@ -1,0 +1,264 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type SimpleSection = {
+    title: string;
+    number: string;
+    content: string;
+};
+
+type LandDistributionSection = SimpleSection & {
+    tableTitle: string;
+    tableSource: string;
+    imageCaption: string;
+    tableData: Array<{
+        area: string;
+        sqKm: string;
+        percentage: string;
+    }>;
+};
+
+type AgriculturalLandSection = {
+    title: string;
+    number: string;
+    intro1: string;
+    intro2: string;
+    imageCaption: string;
+    tableTitle: string;
+    tableSource: string;
+    tableData: Array<{
+        sn: string;
+        project: string;
+        area: string;
+    }>;
+};
+
+const landUse = (await loadChapterSection(
+    4,
+    "land-use",
+    lang,
+)) as SimpleSection;
+const landDistribution = (await loadChapterSection(
+    4,
+    "land-distribution",
+    lang,
+)) as LandDistributionSection;
+const agriculturalLand = (await loadChapterSection(
+    4,
+    "agricultural-land",
+    lang,
+)) as AgriculturalLandSection;
+const barrenLand = (await loadChapterSection(
+    4,
+    "barren-land",
+    lang,
+)) as SimpleSection;
+---
+
+<!-- 4.2 Land Use -->
+{
+    landUse && (
+        <section
+            id="land-use"
+            class="relative bg-[#050505] py-8 md:py-12 border-t border-[#f2e25d]/10"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                            {landUse.number} {landUse.title}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.2.1 Land Distribution -->
+{
+    landDistribution && (
+        <section
+            id="land-distribution"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {landDistribution.number} {landDistribution.title}
+                        </h3>
+                    </div>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed whitespace-pre-line mb-10">
+                        {landDistribution.content}
+                    </p>
+
+                    <!-- Table 4.2.1 -->
+                    <div class="mb-10">
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "भू–उपयोगका क्षेत्र"
+                                                : "Land Use Area"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-right font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "नगरपालिकाको भू–उपयोगको विवरण क्षेत्रफल (वर्ग कि.मि.)"
+                                                : "Area (Sq. Km)"}
+                                        </th>
+                                        <th class="px-4 py-3 text-right font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "क्षेत्रफल प्रतिशतमा"
+                                                : "Percentage Area"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {landDistribution.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/10">
+                                                {row.area}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/10 text-right">
+                                                {row.sqKm}
+                                            </td>
+                                            <td class="px-4 py-3 text-right">
+                                                {row.percentage}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
+                            स्रोत: {landDistribution.tableSource}
+                        </div>
+                    </div>
+
+                    <!-- Image Placeholder 1 -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Map No. 5 Placeholder]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-200 font-serif text-lg md:text-xl underline decoration-[#f2e25d]/30 underline-offset-4">
+                            {landDistribution.imageCaption}
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.2.2 Agricultural Land -->
+{
+    agriculturalLand && (
+        <section
+            id="agricultural-land"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {agriculturalLand.number} {agriculturalLand.title}
+                        </h3>
+                    </div>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                        {agriculturalLand.intro1}
+                    </p>
+
+                    <!-- Image Placeholder 2 -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Sukuna Pokhari Dam Placeholder]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-200 font-serif text-lg md:text-xl">
+                            {agriculturalLand.imageCaption}
+                        </figcaption>
+                    </figure>
+
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                        {agriculturalLand.intro2}
+                    </p>
+
+                    <!-- Table 4.2.2 -->
+                    <div class="mb-10">
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-16 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "सि.नं." : "S.N."}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "सिँचाई आयोजना सम्बन्धी विवरण"
+                                                : "Irrigation Project Details"}
+                                        </th>
+                                        <th class="px-4 py-3 text-right font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "सिंचित क्षेत्र"
+                                                : "Irrigated Area"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {agriculturalLand.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/10 text-center">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/10">
+                                                {row.project}
+                                            </td>
+                                            <td class="px-4 py-3 text-right">
+                                                {row.area}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
+                            स्रोत: {agriculturalLand.tableSource}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.2.3 Barren Land -->
+{
+    barrenLand && (
+        <section
+            id="barren-land"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {barrenLand.number} {barrenLand.title}
+                        </h3>
+                    </div>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                        {barrenLand.content}
+                    </p>
+                </div>
+            </div>
+        </section>
+    )
+}

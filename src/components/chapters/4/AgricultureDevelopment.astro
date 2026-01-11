@@ -1,0 +1,660 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type SimpleSection = {
+    title: string;
+    number: string;
+    content: string;
+};
+
+type AgricultureDevelopmentSection = SimpleSection & {
+    imageCaption1: string;
+};
+
+type CropDiseasesSection = SimpleSection & {
+    tableTitle: string;
+    tableNumber: string;
+    source: string;
+    tableData: Array<{
+        sn: string;
+        crop: string;
+        majorPest: string;
+        majorDisease: string;
+    }>;
+};
+
+type VegFruitDiseasesSection = SimpleSection & {
+    tableTitle: string;
+    tableNumber: string;
+    source: string;
+    tableData: Array<{
+        sn: string;
+        crop: string;
+        majorDisease: string;
+        majorPest: string;
+    }>;
+};
+
+type LivestockDiseasesSection = {
+    title: string;
+    number: string;
+    content1: string;
+    content2: string;
+};
+
+type CommercialFarmsSection = SimpleSection & {
+    tableTitle: string;
+    tableNumber: string;
+    source: string;
+    tableData: Array<{
+        ward: string;
+        firmName: string;
+    }>;
+};
+
+type AgricultureHrSection = {
+    title: string;
+    number: string;
+    tableTitle1: string;
+    tableNumber1: string;
+    tableData1: Array<{
+        sn: string;
+        name: string;
+        designation: string;
+        contact: string;
+    }>;
+    tableTitle2: string;
+    tableNumber2: string;
+    tableData2: Array<{
+        sn: string;
+        name: string;
+        designation: string;
+        contact: string;
+        branch: string;
+    }>;
+    source: string;
+};
+
+type AgriculturalGroupsSection = SimpleSection & {
+    subtitle: string;
+    tableTitle: string;
+    tableNumber: string;
+    source: string;
+    tableData: Array<{
+        sn: string;
+        ward: string;
+        groupName: string;
+    }>;
+};
+
+type CollectionCentersSection = SimpleSection;
+
+const agricultureDevelopment = (await loadChapterSection(
+    4,
+    "agriculture-development",
+    lang,
+)) as AgricultureDevelopmentSection;
+const cropDiseases = (await loadChapterSection(
+    4,
+    "crop-diseases",
+    lang,
+)) as CropDiseasesSection;
+const vegFruitDiseases = (await loadChapterSection(
+    4,
+    "vegetable-fruit-diseases",
+    lang,
+)) as VegFruitDiseasesSection;
+const livestockDiseases = (await loadChapterSection(
+    4,
+    "livestock-diseases",
+    lang,
+)) as LivestockDiseasesSection;
+const commercialFarms = (await loadChapterSection(
+    4,
+    "commercial-farms",
+    lang,
+)) as CommercialFarmsSection;
+const agricultureHr = (await loadChapterSection(
+    4,
+    "agriculture-hr",
+    lang,
+)) as AgricultureHrSection;
+const agriculturalGroups = (await loadChapterSection(
+    4,
+    "agricultural-groups",
+    lang,
+)) as AgriculturalGroupsSection;
+const collectionCenters = (await loadChapterSection(
+    4,
+    "collection-centers",
+    lang,
+)) as CollectionCentersSection;
+---
+
+<!-- 4.3 Agriculture Development -->
+{
+    agricultureDevelopment && (
+        <section
+            id="agriculture-development"
+            class="relative bg-[#050505] py-8 md:py-12 border-t border-[#f2e25d]/10"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                            {agricultureDevelopment.number}{" "}
+                            {agricultureDevelopment.title}
+                        </h2>
+                    </div>
+
+                    <!-- Image Placeholder 1 -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Agriculture Placeholder]
+                        </div>
+                        <figcaption class="text-center font-bold text-zinc-100 font-serif text-lg md:text-xl">
+                            {agricultureDevelopment.imageCaption1}
+                        </figcaption>
+                    </figure>
+
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                        {agricultureDevelopment.content}
+                    </p>
+
+                    <!-- Image Placeholder 2 -->
+                    <figure class="mb-10">
+                        <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                            [Image: Second Agriculture Placeholder]
+                        </div>
+                    </figure>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.3.1 Crop Diseases -->
+{
+    cropDiseases && (
+        <section
+            id="crop-diseases"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {cropDiseases.number} {cropDiseases.title}
+                            </h3>
+                        </div>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-8">
+                            {cropDiseases.content}
+                        </p>
+                    </div>
+
+                    <!-- Table 4.3.1 -->
+                    <div class="mb-10">
+                        <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {cropDiseases.tableNumber}:{" "}
+                            {cropDiseases.tableTitle}
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-16 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left w-32 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "बाली" : "Crop"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "प्रमुख शत्रु जीव"
+                                                : "Major Pest"}
+                                        </th>
+                                        <th class="px-4 py-3 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "प्रमुख रोग"
+                                                : "Major Disease"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {cropDiseases.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 font-medium">
+                                                {row.crop}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.majorPest}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.majorDisease}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
+                            स्रोत: {cropDiseases.source}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.3.2 Veg Fruit Diseases -->
+{
+    vegFruitDiseases && (
+        <section
+            id="vegetable-fruit-diseases"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {vegFruitDiseases.number} {vegFruitDiseases.title}
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!-- Table 4.3.2 -->
+                    <div class="mb-10">
+                        <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {vegFruitDiseases.tableNumber}:{" "}
+                            {vegFruitDiseases.tableTitle}
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-16 font-serif text-zinc-100 font-medium pt-3 pb-3">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left w-32 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "बाली" : "Crop"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "प्रमुख रोग"
+                                                : "Major Disease"}
+                                        </th>
+                                        <th class="px-4 py-3 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "प्रमुख शत्रु जीव"
+                                                : "Major Pest"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {vegFruitDiseases.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 font-medium">
+                                                {row.crop}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.majorDisease}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.majorPest}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
+                            स्रोत: {vegFruitDiseases.source}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.3.3 Livestock Diseases -->
+{
+    livestockDiseases && (
+        <section
+            id="livestock-diseases"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {livestockDiseases.number} {livestockDiseases.title}
+                        </h3>
+                    </div>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                        {livestockDiseases.content1}
+                    </p>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                        {livestockDiseases.content2}
+                    </p>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.3.4 Commercial Farms -->
+{
+    commercialFarms && (
+        <section
+            id="commercial-farms"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {commercialFarms.number} {commercialFarms.title}
+                            </h3>
+                        </div>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-8">
+                            {commercialFarms.content}
+                        </p>
+                    </div>
+
+                    <!-- Table 4.3.4 (Orange Header) -->
+                    <div class="mb-10 max-w-4xl mx-auto">
+                        <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {commercialFarms.tableNumber}:{" "}
+                            {commercialFarms.tableTitle}
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-32 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "वडा नं."
+                                                : "Ward No."}
+                                        </th>
+                                        <th class="px-4 py-3 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "व्यवसायिक कृषि तथा पशुपंक्षीपालन फर्महरूको विवरण"
+                                                : "Details of Commercial Agriculture and Livestock Farms"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {commercialFarms.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.ward}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.firmName}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
+                            स्रोत: {commercialFarms.source}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.3.5 Agriculture HR -->
+{
+    agricultureHr && (
+        <section
+            id="agriculture-hr"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {agricultureHr.number} {agricultureHr.title}
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!-- Table 1 -->
+                    <div class="mb-10 max-w-4xl mx-auto">
+                        <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {agricultureHr.tableNumber1}:{" "}
+                            {agricultureHr.tableTitle1}
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-20 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "कर्मचारीको नाम"
+                                                : "Name"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "पद"
+                                                : "Designation"}
+                                        </th>
+                                        <th class="px-4 py-3 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "सम्पर्क नं."
+                                                : "Contact No."}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {agricultureHr.tableData1.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.name}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.designation}
+                                            </td>
+                                            <td class="px-4 py-3">
+                                                {row.contact}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Table 2 -->
+                    <div class="mb-10 max-w-5xl mx-auto">
+                        <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {agricultureHr.tableNumber2}:{" "}
+                            {agricultureHr.tableTitle2}
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-20 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "कर्मचारीको नाम"
+                                                : "Name"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "पद"
+                                                : "Designation"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "सम्पर्क नं."
+                                                : "Contact No."}
+                                        </th>
+                                        <th class="px-4 py-3 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "शाखा" : "Branch"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {agricultureHr.tableData2.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.name}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.designation}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.contact}
+                                            </td>
+                                            <td class="px-4 py-3">
+                                                {row.branch}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
+                            स्रोत: {agricultureHr.source}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.3.6 Agricultural Groups -->
+{
+    agriculturalGroups && (
+        <section
+            id="agricultural-groups"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {agriculturalGroups.number}{" "}
+                                {agriculturalGroups.title}
+                            </h3>
+                            <h4 class="font-serif text-xl md:text-2xl text-zinc-300 font-medium mb-4">
+                                {agriculturalGroups.subtitle}
+                            </h4>
+                        </div>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-8">
+                            {agriculturalGroups.content}
+                        </p>
+                    </div>
+
+                    <!-- Table 4.3.6 -->
+                    <div class="mb-10 max-w-4xl mx-auto">
+                        <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {agriculturalGroups.tableNumber}:{" "}
+                            {agriculturalGroups.tableTitle}
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-20 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-32 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "वडा नं."
+                                                : "Ward No."}
+                                        </th>
+                                        <th class="px-4 py-3 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne"
+                                                ? "नविकरण भएका कृषि समूहहरु को संख्या"
+                                                : "Renewed Agriculture Groups"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {agriculturalGroups.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center">
+                                                {row.ward}
+                                            </td>
+                                            <td class="px-4 py-3">
+                                                {row.groupName}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
+                            स्रोत: {agriculturalGroups.source}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 4.3.7 Collection Centers -->
+{
+    collectionCenters && (
+        <section
+            id="collection-centers"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {collectionCenters.number} {collectionCenters.title}
+                        </h3>
+                    </div>
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                        {collectionCenters.content}
+                    </p>
+                </div>
+            </div>
+        </section>
+    )
+}

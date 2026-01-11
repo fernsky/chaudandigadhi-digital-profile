@@ -1,0 +1,171 @@
+{
+    "title": "Population by Industrial Sector Classification",
+    "sectionId": "industrial-classification",
+    "number": "4.1.1",
+    "tableNumber": "Table No. 23",
+    "tableTitle": "Distribution of Economically Active Population by Major Industrial Sector",
+    "tableData": [
+        {
+            "sector": "Agriculture, Forestry and Fishing",
+            "sixMonthsOrMore": 12852,
+            "threeToFiveMonths": 4114,
+            "oneToTwoMonths": 3523,
+            "total": 20489
+        },
+        {
+            "sector": "Mining and Quarrying",
+            "sixMonthsOrMore": 25,
+            "threeToFiveMonths": 10,
+            "oneToTwoMonths": 7,
+            "total": 42
+        },
+        {
+            "sector": "Manufacturing",
+            "sixMonthsOrMore": 446,
+            "threeToFiveMonths": 56,
+            "oneToTwoMonths": 72,
+            "total": 574
+        },
+        {
+            "sector": "Electricity, Gas, Steam and Air Conditioning Supply",
+            "sixMonthsOrMore": 44,
+            "threeToFiveMonths": 6,
+            "oneToTwoMonths": 3,
+            "total": 53
+        },
+        {
+            "sector": "Water Supply, Sewerage, Waste Management",
+            "sixMonthsOrMore": 27,
+            "threeToFiveMonths": 1,
+            "oneToTwoMonths": 2,
+            "total": 30
+        },
+        {
+            "sector": "Construction",
+            "sixMonthsOrMore": 1065,
+            "threeToFiveMonths": 450,
+            "oneToTwoMonths": 962,
+            "total": 2477
+        },
+        {
+            "sector": "Wholesale and Retail Trade",
+            "sixMonthsOrMore": 1172,
+            "threeToFiveMonths": 705,
+            "oneToTwoMonths": 945,
+            "total": 2822
+        },
+        {
+            "sector": "Transportation and Storage",
+            "sixMonthsOrMore": 391,
+            "threeToFiveMonths": 33,
+            "oneToTwoMonths": 8,
+            "total": 432
+        },
+        {
+            "sector": "Accommodation and Food Service Activities",
+            "sixMonthsOrMore": 184,
+            "threeToFiveMonths": 16,
+            "oneToTwoMonths": 5,
+            "total": 205
+        },
+        {
+            "sector": "Information and Communication",
+            "sixMonthsOrMore": 43,
+            "threeToFiveMonths": 3,
+            "oneToTwoMonths": 0,
+            "total": 46
+        },
+        {
+            "sector": "Real Estate Activities",
+            "sixMonthsOrMore": 134,
+            "threeToFiveMonths": 3,
+            "oneToTwoMonths": 3,
+            "total": 140
+        },
+        {
+            "sector": "Veterinary Medicine and Animal Health",
+            "sixMonthsOrMore": 4,
+            "threeToFiveMonths": 1,
+            "oneToTwoMonths": 0,
+            "total": 5
+        },
+        {
+            "sector": "Administrative, Defense and Technical Activities",
+            "sixMonthsOrMore": 40,
+            "threeToFiveMonths": 3,
+            "oneToTwoMonths": 1,
+            "total": 44
+        },
+        {
+            "sector": "Administrative and Support Service Activities",
+            "sixMonthsOrMore": 20,
+            "threeToFiveMonths": 1,
+            "oneToTwoMonths": 1,
+            "total": 22
+        },
+        {
+            "sector": "Public Administration and Defense",
+            "sixMonthsOrMore": 241,
+            "threeToFiveMonths": 9,
+            "oneToTwoMonths": 8,
+            "total": 258
+        },
+        {
+            "sector": "Education",
+            "sixMonthsOrMore": 671,
+            "threeToFiveMonths": 77,
+            "oneToTwoMonths": 10,
+            "total": 758
+        },
+        {
+            "sector": "Human Health and Social Work",
+            "sixMonthsOrMore": 139,
+            "threeToFiveMonths": 8,
+            "oneToTwoMonths": 1,
+            "total": 148
+        },
+        {
+            "sector": "Arts and Entertainment",
+            "sixMonthsOrMore": 22,
+            "threeToFiveMonths": 3,
+            "oneToTwoMonths": 0,
+            "total": 25
+        },
+        {
+            "sector": "Other",
+            "sixMonthsOrMore": 104,
+            "threeToFiveMonths": 292,
+            "oneToTwoMonths": 374,
+            "total": 770
+        },
+        {
+            "sector": "Household Employment Activities",
+            "sixMonthsOrMore": 138,
+            "threeToFiveMonths": 52,
+            "oneToTwoMonths": 42,
+            "total": 232
+        },
+        {
+            "sector": "Extra-territorial Organizations and Bodies",
+            "sixMonthsOrMore": 9,
+            "threeToFiveMonths": 0,
+            "oneToTwoMonths": 0,
+            "total": 9
+        },
+        {
+            "sector": "Not Stated",
+            "sixMonthsOrMore": 0,
+            "threeToFiveMonths": 0,
+            "oneToTwoMonths": 0,
+            "total": 0
+        }
+    ],
+    "total": {
+        "sixMonthsOrMore": 17765,
+        "threeToFiveMonths": 5803,
+        "oneToTwoMonths": 5433,
+        "total": 29001
+    },
+    "source": "National Census, 2078",
+    "analysis": "Among the total population aged 10 years and above in the municipality, 29,001 people are engaged in some form of economic activity and earning income. Of these, the largest number, 20,489 people, are involved in agriculture, forestry and livestock farming. Similarly, 17,765 people are engaged in income-generating activities for 6 months or more, 5,803 people are engaged in income-generating activities for 3 to 5 months, and 5,433 people are engaged in economic activities for only 1 to 2 months. The detailed breakdown is presented in the table."
+}

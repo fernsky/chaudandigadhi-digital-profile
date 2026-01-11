@@ -1,0 +1,218 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type WaterResourcesSection = {
+    title: string;
+    number: string;
+    content: string;
+};
+
+type RiversSection = {
+    title: string;
+    number: string;
+    content: string;
+    tableNumber: string;
+    tableTitle: string;
+    tableData: Array<{
+        sn: string;
+        name: string;
+        address: string;
+    }>;
+};
+
+const waterResources = (await loadChapterSection(6, "water-resources", lang)) as WaterResourcesSection;
+const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
+---
+
+<!-- 6.2 Water Resources -->
+{
+    waterResources && (
+        <section id="water-resources" class="relative bg-[#050505] pb-8 md:pb-12">
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                            {waterResources.number} {waterResources.title}
+                        </h2>
+                    </div>
+                    
+                    <!-- Image Container 1: Badel Pokhari -->
+                    <div class="mb-6">
+                        <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
+                            <span class="text-zinc-500 font-serif">[Image: Badel Pokhari]</span>
+                        </div>
+                        <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
+                            {lang === "ne" ? "बदेल पोखरी" : "Badel Pokhari"}
+                        </p>
+                    </div>
+
+                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                        {waterResources.content}
+                    </p>
+
+                    <!-- Image Container 2: Tin Dobhaneko Talau -->
+                    <div class="mb-10">
+                        <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
+                            <span class="text-zinc-500 font-serif">[Image: Tin Dobhaneko Talau]</span>
+                        </div>
+                        <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
+                            {lang === "ne" ? "तिन दोभानेको तलाउ" : "Tin Dobhaneko Talau"}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 6.2.1 Major Rivers -->
+{
+    rivers && (
+        <section id="rivers" class="relative bg-[#050505] pb-8 md:pb-12">
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {rivers.number} {rivers.title}
+                            </h3>
+                        </div>
+
+                        <!-- Image Container 1: Triyuga Khola -->
+                        <div class="mb-6">
+                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
+                                <span class="text-zinc-500 font-serif">[Image: Triyuga Khola]</span>
+                            </div>
+                            <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
+                                {lang === "ne" ? "त्रियुगा खोला" : "Triyuga Khola"}
+                            </p>
+                        </div>
+
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                            {rivers.content}
+                        </p>
+
+                        <!-- Image Container 2: Sundarpur Pokhari -->
+                        <div class="mb-6">
+                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
+                                <span class="text-zinc-500 font-serif">[Image: Sundarpur Pokhari]</span>
+                            </div>
+                            <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
+                                {lang === "ne" ? "सुन्दरपुर पोखरी" : "Sundarpur Pokhari"}
+                            </p>
+                        </div>
+
+                        <!-- Image Container 3: Duvar Khola -->
+                        <div class="mb-10">
+                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
+                                <span class="text-zinc-500 font-serif">[Image: Duvar Khola]</span>
+                            </div>
+                            <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
+                                {lang === "ne" ? "दुवार खोला" : "Duvar Khola"}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Rivers and Streams Table -->
+                    <div class="mb-10 max-w-5xl mx-auto">
+                        <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {rivers.tableNumber}: {rivers.tableTitle}
+                        </h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-20 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "पालिकामा रहेका खोला, नाला, नदी, ताल तथा झरनाहरू" : "Rivers, Streams, Lakes and Waterfalls in Municipality"}
+                                        </th>
+                                        <th class="px-4 py-3 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "ठेगाना" : "Address"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {rivers.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {row.name}
+                                            </td>
+                                            <td class="px-4 py-3">
+                                                {row.address}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Image Containers After Table -->
+                    <div class="max-w-4xl mx-auto">
+                        <!-- Image Container 4: Pokhari -->
+                        <div class="mb-6">
+                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
+                                <span class="text-zinc-500 font-serif">[Image: Pokhari]</span>
+                            </div>
+                            <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
+                                {lang === "ne" ? "हात्ती खोरे पोखरी" : "Pokhari"}
+                            </p>
+                        </div>
+
+                        <!-- Image Container 5 -->
+                        <div class="mb-6">
+                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
+                                <span class="text-zinc-500 font-serif">[Image Placeholder]</span>
+                            </div>
+                            <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
+                                {lang === "ne" ? "थान पोखरी" : "[Image Title]"}
+                            </p>
+                        </div>
+
+                        <!-- Image Container 6: Sukuna Pokhari -->
+                        <div class="mb-6">
+                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
+                                <span class="text-zinc-500 font-serif">[Image: Sukuna Pokhari]</span>
+                            </div>
+                            <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
+                                {lang === "ne" ? "सुकना पोखरी" : "Sukuna Pokhari"}
+                            </p>
+                        </div>
+
+                        <!-- Image Container 7: Map -->
+                        <div class="mb-6">
+                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
+                                <span class="text-zinc-500 font-serif">[Image: Map]</span>
+                            </div>
+                            <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
+                                {lang === "ne" ? "नक्सा नं. ८: नगरपालिकाको नदी तथा खोला सञ्जाल नक्सा" : "Map No. 8: River and Stream Network Map of Municipality"}
+                            </p>
+                        </div>
+
+                        <!-- Image Container 8: Bhutiya Daha -->
+                        <div class="mb-10">
+                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
+                                <span class="text-zinc-500 font-serif">[Image: Bhutiya Daha]</span>
+                            </div>
+                            <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
+                                {lang === "ne" ? "भुतीया दह देबदार खोला" : "Bhutiya Daha Debdar Khola"}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}

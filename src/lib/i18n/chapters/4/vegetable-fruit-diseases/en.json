@@ -1,0 +1,63 @@
+{
+    "title": "Diseases and Pests in Vegetables and Fruits",
+    "number": "4.3.2",
+    "tableTitle": "Diseases and Pests in Vegetables and Fruits",
+    "tableNumber": "Table No. 30",
+    "source": "Office of Municipal Executive",
+    "tableData": [
+        {
+            "sn": "1.",
+            "crop": "Tomato",
+            "majorDisease": "Tuta absoluta, White fly, Aphid, Fruit borer, Bug etc.",
+            "majorPest": "Damping off - Early, Late Blight, Mosaic etc."
+        },
+        {
+            "sn": "2.",
+            "crop": "Cauliflower, Cabbage",
+            "majorDisease": "Diamond Back Moth, Tobacco Caterpillar, Aphid, Hopper etc.",
+            "majorPest": "Soft rot, Black rot, Alternaria, Club root, Damping off etc."
+        },
+        {
+            "sn": "3.",
+            "crop": "Potato",
+            "majorDisease": "Blight, Mosaic, Brown rot, Cutworm, Aphid etc.",
+            "majorPest": "Potato tuber moth, Red ant, Leaf eating caterpillar etc."
+        },
+        {
+            "sn": "4.",
+            "crop": "Mustard Greens (Rayo)",
+            "majorDisease": "Diamond Back Moth, Tobacco Caterpillar, Aphid, Hopper etc.",
+            "majorPest": "Soft rot, Black rot, Alternaria, Club root, Damping off etc."
+        },
+        {
+            "sn": "5.",
+            "crop": "Orange/Lemon",
+            "majorDisease": "Bug, Aphid, Fruit fly, Scale leaf, Root rot, Foot rot, Powdery mildew, pink disease, anthracnose, citrus scab, Gummosis, sooty mould, Canker, Citrus greening, (Citrus tristeza virus CTV) Lemon dog etc.",
+            "majorPest": "Canker, Fruit rot, Root rot, Green bug, Fruit fly, Sooty mould, citrus psylla, Leaf miner, Red spider mite, blue beetle, stem & trunk borer, Aphid, Thrips, Nematode, Lemon butterfly etc."
+        },
+        {
+            "sn": "",
+            "crop": "Cucumber/Pumpkin",
+            "majorDisease": "Powdery mildew, Downy mildew, Mosaic virus",
+            "majorPest": "Red pumpkin beetle, Aulacophora foveicollis, Fruit flies, Bacterocera cucurbitae, Aphids, Aphis gossyypii"
+        },
+        {
+            "sn": "",
+            "crop": "Bean/Peas",
+            "majorDisease": "Rust, Powdery mildew",
+            "majorPest": "Soyabean hairy caterpillar, Spilarctia casigneta, Pod borers, Helicoverpa armigera, Coepea aphids, Aphis craccivora"
+        },
+        {
+            "sn": "",
+            "crop": "Mango",
+            "majorDisease": "Powdery mildew, Fruit cracking, Bacterial black spot, Sooty mould",
+            "majorPest": "Fruitfly, Stem Borer, Leaf webber, Stone weevil"
+        },
+        {
+            "sn": "",
+            "crop": "Banana",
+            "majorDisease": "Rhizome rot",
+            "majorPest": "Banana aphid, Pseudostem weevil, Black Sigatoka, Banana skipper (Erionota thrax)"
+        }
+    ]
+}

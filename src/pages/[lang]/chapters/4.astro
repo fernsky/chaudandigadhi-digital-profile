@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import type { Language } from "../../../lib/i18n";
+
+// Chapter 4 Components
+import ChapterHero from "../../../components/chapters/4/ChapterHero.astro";
+import EconomicOverview from "../../../components/chapters/4/EconomicOverview.astro";
+import IndustrialClassification from "../../../components/chapters/4/IndustrialClassification.astro";
+import HousingStructure from "../../../components/chapters/4/HousingStructure.astro";
+import EconomicActivities from "../../../components/chapters/4/EconomicActivities.astro";
+import LandUse from "../../../components/chapters/4/LandUse.astro";
+import AgricultureDevelopment from "../../../components/chapters/4/AgricultureDevelopment.astro";
+import TourismDevelopment from "../../../components/chapters/4/TourismDevelopment.astro";
+import IndustryTrade from "../../../components/chapters/4/IndustryTrade.astro";
+
+export async function getStaticPaths() {
+    return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Language };
+
+const title =
+    lang === "ne"
+        ? "परिच्छेद – ४: आर्थिक अवस्था"
+        : "Chapter 4: Economic Status";
+const description =
+    lang === "ne"
+        ? "चौदण्डीगढी नगरपालिकाको आर्थिक संरचना, रोजगारी, कृषि, व्यापार र औद्योगिक विकास"
+        : "Economic structure, employment, agriculture, trade and industrial development of Chaudandigadhi Municipality";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+    <!-- Chapter Hero -->
+    <ChapterHero lang={lang} />
+
+    <!-- 4.1 Economic Overview -->
+    <EconomicOverview lang={lang} />
+
+    <!-- 4.1.1 Industrial Classification -->
+    <IndustrialClassification lang={lang} />
+
+    <!-- 4.1.2 Housing Structure -->
+    <HousingStructure lang={lang} />
+
+    <!-- 4.1.3 - 4.1.6 Additional Economic Activities -->
+    <EconomicActivities lang={lang} />
+
+    <!-- 4.2 Land Use -->
+    <LandUse lang={lang} />
+
+    <!-- 4.3 Agriculture Development -->
+    <AgricultureDevelopment lang={lang} />
+
+    <!-- 4.4 Tourism Development -->
+    <TourismDevelopment lang={lang} />
+
+    <!-- 4.5 Industry, Trade and Banking -->
+    <IndustryTrade lang={lang} />
+</BaseLayout>
+
+<style>
+    /* Smooth scroll behavior */
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+</style>
