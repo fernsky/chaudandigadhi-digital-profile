@@ -1,0 +1,34 @@
+{
+    "title": "Communication and Technology",
+    "number": "7.3",
+    "content": "The globalized society of the 21st century is in the age of information and communication. Although the urban areas of Nepal have almost embraced the revolution in the field of information and communication, television, newspapers, internet, telephone, mobile and courier services are yet to be expanded in rural areas. Fully developing these means of communication and technology and introducing rural people to the world of information and communication remains challenging. The Constitution of Nepal has defined the people's right to information as a fundamental right. Details regarding communication and technology available in the municipality are presented in the table.",
+    "tableTitle": "Table No. 68: Details of Telephone Networks (Towers), Post Offices, Newspapers and Radio Stations within the Municipality",
+    "tableData": [
+        {
+            "sn": "1.",
+            "name": "Nepal Telecom",
+            "address": "Chaudandigadhi Municipality Ward No. 7, 9, and 2"
+        },
+        {
+            "sn": "2.",
+            "name": "Ncell",
+            "address": "Chaudandigadhi Municipality Ward No. 6, 10, and 8"
+        },
+        {
+            "sn": "3.",
+            "name": "Area Post Office",
+            "address": "Beltar – 6, 10, 8"
+        },
+        {
+            "sn": "4.",
+            "name": "Gadhi Khabar Patrika",
+            "address": "Beltar"
+        },
+        {
+            "sn": "5.",
+            "name": "Radio Chaudandigadhi 94.4 MHz",
+            "address": "Beltar – 7"
+        }
+    ],
+    "source": "Office of Municipal Executive"
+}

@@ -1,0 +1,300 @@
+{
+    "title": "Details regarding Access to Modern Amenities",
+    "number": "7.3.1",
+    "tableTitle": "Table No. 69: Details of Household Facilities and Amenities (Based on Multiple Answers)",
+    "tableData": [
+        {
+            "amenity": "No facility",
+            "w1": "55",
+            "w2": "51",
+            "w3": "62",
+            "w4": "46",
+            "w5": "125",
+            "w6": "31",
+            "w7": "20",
+            "w8": "66",
+            "w9": "64",
+            "w10": "25",
+            "total": "545"
+        },
+        {
+            "amenity": "At least one facility",
+            "w1": "718",
+            "w2": "1093",
+            "w3": "938",
+            "w4": "1622",
+            "w5": "1398",
+            "w6": "1321",
+            "w7": "1407",
+            "w8": "795",
+            "w9": "1742",
+            "w10": "1124",
+            "total": "12158"
+        },
+        {
+            "amenity": "Radio",
+            "w1": "155",
+            "w2": "166",
+            "w3": "202",
+            "w4": "315",
+            "w5": "107",
+            "w6": "269",
+            "w7": "446",
+            "w8": "141",
+            "w9": "461",
+            "w10": "144",
+            "total": "2406"
+        },
+        {
+            "amenity": "Television",
+            "w1": "87",
+            "w2": "454",
+            "w3": "482",
+            "w4": "852",
+            "w5": "752",
+            "w6": "835",
+            "w7": "835",
+            "w8": "199",
+            "w9": "902",
+            "w10": "632",
+            "total": "6030"
+        },
+        {
+            "amenity": "Landline Telephone",
+            "w1": "4",
+            "w2": "0",
+            "w3": "10",
+            "w4": "18",
+            "w5": "5",
+            "w6": "67",
+            "w7": "86",
+            "w8": "6",
+            "w9": "6",
+            "w10": "9",
+            "total": "211"
+        },
+        {
+            "amenity": "Mobile Phone (Simple)",
+            "w1": "689",
+            "w2": "906",
+            "w3": "697",
+            "w4": "1342",
+            "w5": "1083",
+            "w6": "1108",
+            "w7": "944",
+            "w8": "743",
+            "w9": "1514",
+            "w10": "900",
+            "total": "9926"
+        },
+        {
+            "amenity": "Smart Mobile Phone",
+            "w1": "354",
+            "w2": "739",
+            "w3": "558",
+            "w4": "1140",
+            "w5": "895",
+            "w6": "1125",
+            "w7": "1226",
+            "w8": "475",
+            "w9": "1207",
+            "w10": "704",
+            "total": "8423"
+        },
+        {
+            "amenity": "Computer/Laptop",
+            "w1": "22",
+            "w2": "28",
+            "w3": "52",
+            "w4": "86",
+            "w5": "57",
+            "w6": "149",
+            "w7": "214",
+            "w8": "16",
+            "w9": "89",
+            "w10": "67",
+            "total": "780"
+        },
+        {
+            "amenity": "Internet",
+            "w1": "257",
+            "w2": "169",
+            "w3": "102",
+            "w4": "196",
+            "w5": "64",
+            "w6": "392",
+            "w7": "688",
+            "w8": "35",
+            "w9": "330",
+            "w10": "131",
+            "total": "2364"
+        },
+        {
+            "amenity": "Car/Jeep/Van",
+            "w1": "6",
+            "w2": "13",
+            "w3": "2",
+            "w4": "11",
+            "w5": "9",
+            "w6": "36",
+            "w7": "62",
+            "w8": "6",
+            "w9": "10",
+            "w10": "19",
+            "total": "174"
+        },
+        {
+            "amenity": "Motorcycle/Scooter",
+            "w1": "217",
+            "w2": "164",
+            "w3": "166",
+            "w4": "310",
+            "w5": "219",
+            "w6": "375",
+            "w7": "363",
+            "w8": "124",
+            "w9": "451",
+            "w10": "201",
+            "total": "2590"
+        },
+        {
+            "amenity": "Cycle",
+            "w1": "169",
+            "w2": "389",
+            "w3": "186",
+            "w4": "586",
+            "w5": "1032",
+            "w6": "713",
+            "w7": "592",
+            "w8": "134",
+            "w9": "1068",
+            "w10": "592",
+            "total": "5461"
+        },
+        {
+            "amenity": "Electric Fan",
+            "w1": "79",
+            "w2": "685",
+            "w3": "611",
+            "w4": "1289",
+            "w5": "1058",
+            "w6": "1128",
+            "w7": "1152",
+            "w8": "230",
+            "w9": "1282",
+            "w10": "864",
+            "total": "8378"
+        },
+        {
+            "amenity": "Refrigerator",
+            "w1": "7",
+            "w2": "237",
+            "w3": "237",
+            "w4": "576",
+            "w5": "236",
+            "w6": "685",
+            "w7": "696",
+            "w8": "88",
+            "w9": "393",
+            "w10": "357",
+            "total": "3512"
+        },
+        {
+            "amenity": "Washing Machine",
+            "w1": "0",
+            "w2": "2",
+            "w3": "1",
+            "w4": "2",
+            "w5": "2",
+            "w6": "17",
+            "w7": "13",
+            "w8": "1",
+            "w9": "2",
+            "w10": "0",
+            "total": "40"
+        },
+        {
+            "amenity": "Air Conditioner",
+            "w1": "0",
+            "w2": "0",
+            "w3": "0",
+            "w4": "1",
+            "w5": "1",
+            "w6": "7",
+            "w7": "8",
+            "w8": "0",
+            "w9": "5",
+            "w10": "0",
+            "total": "22"
+        }
+    ],
+    "source": "National Census, 2078",
+    "content": "Based on resources and facilities, the number of households with bicycle availability seems to be high in the municipality. Of the total households in the municipality, 9,926 households have mobile phones (basic). Secondly, the number of families with smart mobiles is 8,423. The number of families with radio facilities is 2,406, while the number of families with television is 6,030.\n\nOverall, looking at the statistics, the major mobile service in the communication sector seems to be increasing, while internet service seems to be expanding. Since mobile users find it easier to perform many tasks like audio, video, information, songs, news exchange etc., the number of television and radio users seems to be decreasing compared to mobile. Due to being geographically remote, high hilly and cold terrain, the number of modern facilities in this municipality is low and the use of high-end amenities like car/jeep, air conditioner, heater or gas geyser seems to be low. However, even in rural areas, consumerist culture seems to be developing with the increasing number of users of modern luxury goods. Ward-wise detailed description is presented in the table.",
+    "chartTitle": "Details of Household Facilities and Amenities",
+    "chartData": [
+        {
+            "label": "No facility",
+            "value": 545
+        },
+        {
+            "label": "At least one",
+            "value": 12158
+        },
+        {
+            "label": "Radio",
+            "value": 2406
+        },
+        {
+            "label": "Television",
+            "value": 6030
+        },
+        {
+            "label": "Landline",
+            "value": 211
+        },
+        {
+            "label": "Mobile (Simple)",
+            "value": 9926
+        },
+        {
+            "label": "Smart Mobile",
+            "value": 8423
+        },
+        {
+            "label": "Computer/Laptop",
+            "value": 780
+        },
+        {
+            "label": "Internet",
+            "value": 2364
+        },
+        {
+            "label": "Car/Jeep/Van",
+            "value": 174
+        },
+        {
+            "label": "Motorcycle/Scooter",
+            "value": 2590
+        },
+        {
+            "label": "Cycle",
+            "value": 5461
+        },
+        {
+            "label": "Electric Fan",
+            "value": 8378
+        },
+        {
+            "label": "Refrigerator",
+            "value": 3512
+        },
+        {
+            "label": "Washing Machine",
+            "value": 40
+        },
+        {
+            "label": "Air Conditioner",
+            "value": 22
+        }
+    ]
+}

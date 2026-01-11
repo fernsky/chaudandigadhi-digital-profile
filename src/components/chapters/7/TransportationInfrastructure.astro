@@ -1,0 +1,344 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type TransportationSection = {
+    title: string;
+    number: string;
+    subTitle: string;
+    subNumber: string;
+    mapCaption: string;
+    content1: string;
+    content2: string;
+    content3: string;
+    tableTitle1: string;
+    tableData1: Array<{
+        sn: string;
+        drain: string;
+        bridge: string;
+        pipe: string;
+    }>;
+    tableTitle2: string;
+    tableData2: Array<{
+        sn: string;
+        name: string;
+        ward: string;
+        remarks: string;
+    }>;
+    source: string;
+};
+
+type TransportFacilitiesSection = {
+    title: string;
+    number: string;
+    content: string;
+    vehicles: {
+        title: string;
+        number: string;
+        content1: string;
+        content2: string;
+    };
+};
+
+type BusParksSection = {
+    title: string;
+    number: string;
+    content: string;
+    tableNumber: string;
+    tableTitle: string;
+    tableData: Array<{
+        sn: string;
+        name: string;
+        ward: string;
+        status: string;
+        remarks: string;
+    }>;
+    source: string;
+};
+
+const transportation = (await loadChapterSection(
+    7,
+    "transportation",
+    lang
+)) as TransportationSection;
+const transportFacilities = (await loadChapterSection(
+    7,
+    "transport-facilities",
+    lang
+)) as TransportFacilitiesSection;
+const busParks = (await loadChapterSection(
+    7,
+    "bus-parks",
+    lang
+)) as BusParksSection;
+---
+
+<!-- 7.1 Transportation Infrastructure -->{
+    transportation && (
+        <section
+            id="transportation"
+            class="relative bg-[#050505] pb-8 md:pb-12 pt-16"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="mb-6">
+                            <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
+                                {transportation.number} {transportation.title}
+                            </h2>
+                        </div>
+
+                        <!-- 7.1.1 Road Network -->
+                        <div class="mb-8">
+                            <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                                {transportation.subNumber}{" "}
+                                {transportation.subTitle}
+                            </h3>
+                            
+                            <!-- Map Placeholder Container -->
+                            <figure class="mb-8">
+                                <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
+                                    <span class="font-serif italic">Map Placeholder</span>
+                                </div>
+                                <figcaption class="text-center font-bold text-zinc-200 font-serif text-lg md:text-xl underline decoration-[#f2e25d]/30 underline-offset-4">
+                                    {transportation.mapCaption}
+                                </figcaption>
+                            </figure>
+
+                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                                {transportation.content1}
+                            </p>
+                        </div>
+                        
+                         <!-- Image Container -->
+                        <div class="mb-8 w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500">
+                             <span class="font-serif italic">Image Placeholder</span>
+                        </div>
+
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                            {transportation.content2}
+                        </p>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
+                            {transportation.content3}
+                        </p>
+                    </div>
+
+                    <!-- Table 63 -->
+                    <div class="mb-10 max-w-6xl mx-auto">
+                        <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {transportation.tableTitle1}
+                        </h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-center w-12 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "नाली निर्माण" : "Drain Construction"}
+                                        </th>
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "पुल/ट्रस पुल/कल्भर्ट" : "Bridge/Truss/Culvert"}
+                                        </th>
+                                        <th class="px-3 py-3 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "ह्युम पाइप" : "Hume Pipe"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {transportation.tableData1.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5">
+                                                {row.drain}
+                                            </td>
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5">
+                                                {row.bridge}
+                                            </td>
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5">
+                                                {row.pipe}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Table 64 -->
+                    <div class="mb-10 max-w-4xl mx-auto">
+                        <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {transportation.tableTitle2}
+                        </h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-center w-12 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "योजनाको नाम" : "Project Name"}
+                                        </th>
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-center w-24 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "वडा नं." : "Ward No."}
+                                        </th>
+                                        <th class="px-3 py-3 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "कैफियत" : "Remarks"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {transportation.tableData2.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5">
+                                                {row.name}
+                                            </td>
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center">
+                                                {row.ward}
+                                            </td>
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5">
+                                                {row.remarks}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-zinc-400 text-sm text-right mt-2 font-serif italic">
+                            {lang === "ne" ? "स्रोत:" : "Source:"} {transportation.source}
+                        </p>
+                    </div>
+
+                    <!-- Image Container after tables -->
+                    <div class="mb-12 max-w-4xl mx-auto w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500">
+                         <span class="font-serif italic">Image Placeholder</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 7.1.2 & 7.1.3 Transport Facilities -->{
+    transportFacilities && (
+        <section
+            id="transport-facilities"
+            class="relative bg-[#050505] pb-8 md:pb-12"
+        >
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <!-- 7.1.2 -->
+                    <div class="mb-8">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {transportFacilities.number} {transportFacilities.title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                            {transportFacilities.content}
+                        </p>
+                    </div>
+
+                    <!-- 7.1.3 -->
+                    <div class="mb-8">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {transportFacilities.vehicles.number}{" "}
+                            {transportFacilities.vehicles.title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
+                            {transportFacilities.vehicles.content1}
+                        </p>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
+                            {transportFacilities.vehicles.content2}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- 7.1.4 Bus Parks -->{
+    busParks && (
+        <section id="bus-parks" class="relative bg-[#050505] pb-8 md:pb-12">
+            <div class="container mx-auto px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-6">
+                        <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
+                            {busParks.number} {busParks.title}
+                        </h3>
+                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-8">
+                            {busParks.content}
+                        </p>
+                    </div>
+
+                    <!-- Bus Park Table -->
+                    <div class="mb-10">
+                        <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
+                            {busParks.tableNumber}: {busParks.tableTitle}
+                        </h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
+                                <thead>
+                                    <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-center w-12 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "क्र.सं." : "SN"}
+                                        </th>
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "नाम" : "Name"}
+                                        </th>
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-center w-24 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "वडा नं." : "Ward No."}
+                                        </th>
+                                        <th class="px-3 py-3 border-r border-[#f2e25d]/10 text-left font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "अवस्था" : "Status"}
+                                        </th>
+                                        <th class="px-3 py-3 text-left w-32 font-serif text-zinc-100 font-medium">
+                                            {lang === "ne" ? "कैफियत" : "Remarks"}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {busParks.tableData.map((row) => (
+                                        <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center font-medium">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5">
+                                                {row.name}
+                                            </td>
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center">
+                                                {row.ward}
+                                            </td>
+                                            <td class="px-3 py-2 border-r border-[#f2e25d]/5">
+                                                {row.status}
+                                            </td>
+                                            <td class="px-3 py-2">
+                                                {row.remarks}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-zinc-400 text-sm text-right mt-2 font-serif italic">
+                            {lang === "ne" ? "स्रोत:" : "Source:"} {busParks.source}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}

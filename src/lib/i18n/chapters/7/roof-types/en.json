@@ -1,0 +1,179 @@
+{
+    "title": "Households based on Roof Type",
+    "number": "7.4.1",
+    "tableTitle": "Table No. 70: Details of Households based on Roof Type",
+    "tableData": [
+        {
+            "ward": "1",
+            "zinc": "662",
+            "cement": "6",
+            "thatch": "72",
+            "tile": "28",
+            "stone": "1",
+            "wood": "4",
+            "others": "0",
+            "total": "773"
+        },
+        {
+            "ward": "2",
+            "zinc": "1035",
+            "cement": "67",
+            "thatch": "21",
+            "tile": "17",
+            "stone": "3",
+            "wood": "1",
+            "others": "0",
+            "total": "1144"
+        },
+        {
+            "ward": "3",
+            "zinc": "882",
+            "cement": "62",
+            "thatch": "9",
+            "tile": "45",
+            "stone": "0",
+            "wood": "1",
+            "others": "1",
+            "total": "1000"
+        },
+        {
+            "ward": "4",
+            "zinc": "1346",
+            "cement": "180",
+            "thatch": "40",
+            "tile": "99",
+            "stone": "1",
+            "wood": "0",
+            "others": "2",
+            "total": "1668"
+        },
+        {
+            "ward": "5",
+            "zinc": "1361",
+            "cement": "97",
+            "thatch": "27",
+            "tile": "30",
+            "stone": "5",
+            "wood": "1",
+            "others": "2",
+            "total": "1523"
+        },
+        {
+            "ward": "6",
+            "zinc": "920",
+            "cement": "400",
+            "thatch": "5",
+            "tile": "18",
+            "stone": "3",
+            "wood": "5",
+            "others": "1",
+            "total": "1352"
+        },
+        {
+            "ward": "7",
+            "zinc": "1040",
+            "cement": "355",
+            "thatch": "2",
+            "tile": "18",
+            "stone": "10",
+            "wood": "2",
+            "others": "0",
+            "total": "1427"
+        },
+        {
+            "ward": "8",
+            "zinc": "784",
+            "cement": "16",
+            "thatch": "32",
+            "tile": "23",
+            "stone": "2",
+            "wood": "3",
+            "others": "1",
+            "total": "861"
+        },
+        {
+            "ward": "9",
+            "zinc": "1612",
+            "cement": "83",
+            "thatch": "63",
+            "tile": "34",
+            "stone": "13",
+            "wood": "0",
+            "others": "1",
+            "total": "1806"
+        },
+        {
+            "ward": "10",
+            "zinc": "990",
+            "cement": "76",
+            "thatch": "41",
+            "tile": "34",
+            "stone": "8",
+            "wood": "0",
+            "others": "0",
+            "total": "1149"
+        },
+        {
+            "ward": "Total",
+            "zinc": "10632",
+            "cement": "1342",
+            "thatch": "312",
+            "tile": "346",
+            "stone": "46",
+            "wood": "17",
+            "others": "8",
+            "total": "12703"
+        },
+        {
+            "ward": "Percent",
+            "zinc": "83.70",
+            "cement": "10.56",
+            "thatch": "2.46",
+            "tile": "2.72",
+            "stone": "0.36",
+            "wood": "0.13",
+            "others": "0.06",
+            "total": "100"
+        }
+    ],
+    "source": "National Census, 2078",
+    "chartTitle": "Details of Households based on Roof Type",
+    "chartData": [
+        {
+            "label": "Zinc/Tin",
+            "value": 83.70,
+            "color": "#0ea5e9"
+        },
+        {
+            "label": "Cement/Concrete",
+            "value": 10.56,
+            "color": "#f97316"
+        },
+        {
+            "label": "Thatch/Straw",
+            "value": 2.46,
+            "color": "#84cc16"
+        },
+        {
+            "label": "Tile",
+            "value": 2.72,
+            "color": "#eab308"
+        },
+        {
+            "label": "Stone/Slate",
+            "value": 0.36,
+            "color": "#a855f7"
+        },
+        {
+            "label": "Wood/Plank",
+            "value": 0.13,
+            "color": "#ef4444"
+        },
+        {
+            "label": "Others",
+            "value": 0.06,
+            "color": "#3b82f6"
+        }
+    ],
+    "content": "Out of 12,703 households here, the number of families living in houses with zinc sheet/tin roofs is the highest, i.e., 10,632 or 83.70 percent. The number of families living in houses with cement concrete roofs is 1,342 or 10.56 percent, those with thatch/straw roofs is 312 or 2.46 percent, and those with stone/slate roofs is 46 or 0.36 percent. Similarly, the number of people living in houses with roofs of wood/plank, tile, etc. is found to be negligible."
+}

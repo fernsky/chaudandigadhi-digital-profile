@@ -1,0 +1,17 @@
+{
+    "title": "Details regarding Bus Park and Bus Stops",
+    "number": "7.1.4",
+    "content": "Movement of people can be made easier by constructing bus parks with facilities including electricity, water, passenger waiting sheds, toilets, public mobile charging stations etc. Looking at the practice of developed countries, it is found that proper arrangements for peace and security including help desks are made in bus parks. If facilitated and safe bus parks are constructed, the quality of transport service increases. Structures built in bus parks must be disability friendly. Although Beltar Buspark is in operation in Ward No. 6 of this municipality, it is not in an organized state. Similarly, main market areas of the municipality are serving as bus stops. There is a lack of passenger waiting sheds and toilets here. Details regarding bus parks and bus stops operating in the municipality are presented in the table.",
+    "tableNumber": "Table No. 65",
+    "tableTitle": "Details regarding Bus Parks and Bus Stops in the Municipality",
+    "tableData": [
+        {
+            "sn": "1.",
+            "name": "Beltar Buspark",
+            "ward": "06",
+            "status": "At least 5 long-distance buses and 7 short-distance buses stay at night and currently the bus park is not operating in an organized manner",
+            "remarks": ""
+        }
+    ],
+    "source": "Office of Municipal Executive"
+}

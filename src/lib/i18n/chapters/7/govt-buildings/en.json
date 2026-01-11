@@ -1,0 +1,40 @@
+{
+    "title": "Details of Government Buildings under Municipality",
+    "number": "7.4.2",
+    "content1": "It is necessary for the local level to construct the municipal office building, ward office buildings and other essential government buildings on its own land or on land received from the Government of Nepal to make the performance smooth and effective and to give the people a sense of the government's presence. After the construction of such permanent structures, federalism will take institutional form.",
+    "content2": "According to the recognition that the local government programs should be operated by constructing the necessary physical structures at the local level built under the federal governance system, it is necessary for the rural municipality/municipality to have its own community building and assembly hall. This municipality has its own concrete building and all the ward offices here have their own buildings. Similarly, there is a city hospital building in Ward No. 7 and health posts and basic health post buildings in all 10 wards. Details regarding community buildings and assembly halls in the municipality are presented in the table.",
+    "tableTitle": "Table No. 71: Details of Community Buildings and Halls in Municipality",
+    "tableData": [
+        {
+            "sn": "1.",
+            "name": "Municipality Administrative Building",
+            "ward": "Ward No. 7",
+            "status": "Concrete Building",
+            "remarks": ""
+        },
+        {
+            "sn": "2.",
+            "name": "Ward Offices",
+            "ward": "Ward No. (1-10)",
+            "status": "",
+            "remarks": ""
+        },
+        {
+            "sn": "3.",
+            "name": "City Hospital Building",
+            "ward": "Ward No. 7",
+            "status": "",
+            "remarks": ""
+        },
+        {
+            "sn": "4.",
+            "name": "Health Post and Basic Health Post Buildings",
+            "ward": "Ward No. (1-10)",
+            "status": "",
+            "remarks": ""
+        }
+    ],
+    "source": "Office of Municipal Executive",
+    "imageCaption1": "Ward 1 Office",
+    "imageCaption2": "Ward 4 Office"
+}

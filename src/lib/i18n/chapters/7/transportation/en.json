@@ -1,0 +1,119 @@
+{
+    "title": "Transportation Infrastructure",
+    "number": "7.1",
+    "subTitle": "Status of Road Network",
+    "subNumber": "7.1.1",
+    "mapCaption": "Map No. 9: Road Network Map of the Municipality",
+    "content1": "Road network is the primary condition for physical development of any place. With the development of fully facilitated road transport, the door to overall development opens. In the case of local levels, it is necessary to connect ward centers to the municipal center and the municipal center to the national highway system through district roads. By developing and upgrading agricultural roads in settlements, agricultural products can be marketed and the economic condition of the people can be strengthened. Economic revolution is possible by developing industry and tourism sectors through a facilitated road network. In addition, by providing access to religious areas through road networks, domestic and international tourists can be attracted.",
+    "content2": "By the time the mapping work was done in 2050 BS, the condition of roads in the hilly areas of Nepal was very poor. However, after the political change of 2046 BS, as per the practice of allocating funds to local bodies from the national fund, the work of road expansion in rural areas also started to gain momentum. Since then, rural areas have also made a leap in the expansion of road networks. However, due to remote hilly terrain, mapping of many such physical structures could not be done and due to lack of factual information, exact data on how much road network has been expanded in those areas is not available. In this context, Municipality Transport Master Plan (MTMP) was envisioned to make mandatory provisions based on maps and facts based on transport network data of every village/municipal area. Accordingly, it is necessary to formulate and implement a road transport master plan in this municipality as well.",
+    "content3": "Looking at the condition of roads in the municipality, it is satisfactory. In the last fiscal year, 3.3 km of blacktopped/paved road was constructed, and by the end of Chaitra of the current fiscal year, 5.5 km of blacktopped/paved road has been constructed. Similarly, 25 km of gravel road was constructed in the last fiscal year and 15 km by the end of Chaitra of the current fiscal year, while 35 km of earthen road was constructed in the last fiscal year and 18 km by the end of Chaitra of the current fiscal year. The details of the municipality's road infrastructure related to the last fiscal year are included in the table below.",
+    "tableTitle1": "Table No. 63: Details regarding Construction of Local Bridges, Drains, Truss Bridges, Culverts, Suspension Bridges, Hume Pipes",
+    "tableData1": [
+        {
+            "sn": "1.",
+            "drain": "Drain construction north of Siwai Chowk 200m (Ward No. 5)",
+            "bridge": "Iron bridge construction on Taprang River 20m (Ward No. 1)",
+            "pipe": "Hume pipe purchase and transportation 30mm - 15 pcs, 45mm - 7 pcs (Ward No. 4)"
+        },
+        {
+            "sn": "2.",
+            "drain": "Chatara Line drain construction 34m (Ward No. 6)",
+            "bridge": "Kumang bridge and culvert construction 18m (Ward No. 7)",
+            "pipe": ""
+        },
+        {
+            "sn": "3.",
+            "drain": "Drain construction from Siwai Chowk South to Small Farmers Building 190m (Ward No. 5)",
+            "bridge": "Devi River culvert construction 6m length RCC (Ward No. 3)",
+            "pipe": ""
+        },
+        {
+            "sn": "4.",
+            "drain": "Drain construction at Lahure Chowk connecting new trail 160m length (Ward No. 6)",
+            "bridge": "Bhadoli River truss bridge 12m length (Ward No. 9)",
+            "pipe": ""
+        },
+        {
+            "sn": "5.",
+            "drain": "Chaudhary Tole drain construction 52m length (Ward No. 4)",
+            "bridge": "Satbihe truss bridge construction 20m length (Ward No. 10)",
+            "pipe": ""
+        },
+        {
+            "sn": "6.",
+            "drain": "Om Shanti drain construction 75m length (Ward No. 7)",
+            "bridge": "Ghormuna River truss bridge construction 11m length (Ward No. 10)",
+            "pipe": ""
+        },
+        {
+            "sn": "7.",
+            "drain": "Janata Secondary School drain construction 71m length (Ward No. 8)",
+            "bridge": "Lati Khola Charghare culvert construction 7m length (Ward No. 10)",
+            "pipe": ""
+        },
+        {
+            "sn": "8.",
+            "drain": "Drain construction on road from Hadiya Bazar to Beltar 230m length (Ward No. 10)",
+            "bridge": "Bridge construction on Sughare River below Raktamala Devi 6m length (Ward No. 2)",
+            "pipe": ""
+        },
+        {
+            "sn": "9.",
+            "drain": "Hadiya Bazar drain improvement plan 59m length (Ward No. 10)",
+            "bridge": "Paved bridge construction on Karamje River connecting Bhorleni Kusumchauri 12m (Ward No. 3)",
+            "pipe": ""
+        },
+        {
+            "sn": "10.",
+            "drain": "Pachwari Rjamire drain construction 47m length (Ward No. 9)",
+            "bridge": "Culvert construction on Gauri River connecting Simalatar Shikarpur 6m length (Ward No. 8)",
+            "pipe": ""
+        },
+        {
+            "sn": "11.",
+            "drain": "Drain construction near Basnet's house at Khoriya Tole 50m length (Ward No. 9)",
+            "bridge": "Truss bridge construction on Lati River on the way to Devithan 15m length (Ward No. 7)",
+            "pipe": ""
+        },
+        {
+            "sn": "12.",
+            "drain": "",
+            "bridge": "Dhami Chap bridge construction 7m length (Ward No. 5)",
+            "pipe": ""
+        }
+    ],
+    "tableTitle2": "Table No. 64: Details of Suspension Bridges and Culverts in the Municipality",
+    "tableData2": [
+        {
+            "sn": "1.",
+            "name": "Birendra Bazar Susp. Bridge",
+            "ward": "8",
+            "remarks": ""
+        },
+        {
+            "sn": "2.",
+            "name": "Aamshal Susp. Bridge",
+            "ward": "3",
+            "remarks": ""
+        },
+        {
+            "sn": "3.",
+            "name": "Sundar Basti Susp. Bridge",
+            "ward": "3",
+            "remarks": ""
+        },
+        {
+            "sn": "4.",
+            "name": "Chatpate Tole Susp. Bridge",
+            "ward": "4",
+            "remarks": ""
+        },
+        {
+            "sn": "5.",
+            "name": "Chamere Susp. Bridge",
+            "ward": "8",
+            "remarks": "Bridge connecting Chaudandi 8 and Khotang"
+        }
+    ],
+    "source": "Office of Municipal Executive"
+}
