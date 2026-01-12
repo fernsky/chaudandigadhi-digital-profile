@@ -4,19 +4,26 @@
   "paragraphs": [
     {
       "id": "p1",
-      "text": "After the long sacrificial struggle of the Nepali people, a federal democratic republican system has been established in Nepal. This system, which has been successfully practiced in various countries around the world, is new in Nepal and will take some time to get used to. The strong side of the federal governance system is people-centered governance. Under Nepal's federal system, the structure of the state has been divided into three levels. The Constitution of Nepal has established local levels as autonomous local governments, similar to federal or central governance, provincial governance in the middle, and local government at the lower level. Schedule 8, Serial No. 6 of the Constitution mentions that the local government has full authority regarding local statistics and record collection, and this subject has been further expanded in Section 11(2)(ch) of the Local Government Operation Act, 2074.",
-      "highlight": ["Federal Democratic Republican System", "Three-tier Division", "Autonomous Local Government"]
+      "text": "After the sacrificial long struggle of the Nepali people, a federal democratic republican state system has been established in Nepal. As this system, which has been successfully practiced in various countries around the world, is new to Nepal, it will certainly take some time to get accustomed to it. The strong aspect of the federal governance system is people-centered governance. Under Nepal's federal system, the state structure has been divided into three levels: federal (central government), provincial government in the middle, and local government at the lower level. Nepal's Constitution has established local levels as local autonomous governments. Schedule 8, Serial No. 6 of the Constitution mentions that the local government has complete authority regarding local statistics and record collection, while Section 11 (2)(c) of the Local Government Operation Act, 2074 further elaborates on the aforementioned subject.",
+      "highlight": [
+        "federal democratic republican state system",
+        "three levels",
+        "local autonomous governments"
+      ]
     },
     {
       "id": "p2",
-      "text": "Therefore, exercising the rights granted by the Constitution of Nepal and the Local Government Operation Act, 2074, this report has been prepared with the belief that this baseline profile will help the municipality move towards proper direction of development and prosperity as a major source of local level development planning, policy formulation and local information, according to the Village/Municipality Baseline Profile Preparation Procedure, 2078 prepared by the Ministry of Federal Affairs and General Administration.",
-      "highlight": ["Village/Municipality Baseline Profile Preparation Procedure, 2078", "Development and Prosperity"]
+      "text": "Therefore, exercising the authority provided by the Constitution of Nepal and the Local Government Operation Act, 2074, this report has been prepared with the belief that this status description, which will serve as the main source of local information for planning development at the local level, policy formulation, and information according to the Village/Municipality Status Description Preparation Guidelines, 2078 prepared by the Ministry of Federal Affairs and General Administration, will help the municipality move in the appropriate direction of development and prosperity.",
+      "highlight": [
+        "Village/Municipality Status Description Preparation Guidelines, 2078",
+        "development and prosperity"
+      ]
     }
   ],
   "keyPoints": [
-    "Establishment of Federal Democratic Republic",
+    "Establishment of federal democratic republic",
     "Three-tier governance structure",
-    "Autonomy of local level",
-    "Authority for data collection"
+    "Local level autonomy",
+    "Authority for statistics collection"
   ]
 }

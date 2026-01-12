@@ -1,16 +1,6 @@
 {
-  "title": "Chapter – 1",
+  "title": "Chapter 1: Introduction",
   "subtitle": "Introduction",
-  "tagline": "Foundational Introduction to Chaudandigadhi Municipality's Baseline Profile",
-  "description": "Foundation for the development of systematic data and information system of the municipality after the establishment of the federal democratic republic",
-  "stats": [
-    {
-      "value": "8",
-      "label": "Chapters"
-    },
-    {
-      "value": "12",
-      "label": "Sections"
-    }
-  ]
+  "tagline": "Basic Introduction to Chaudandigadhi Municipality's Status Description",
+  "description": "The foundation for the development of the municipality's systematic statistics and information system after the establishment of the federal democratic republic"
 }

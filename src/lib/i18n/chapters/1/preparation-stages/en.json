@@ -1,0 +1,26 @@
+{
+    "title": "Preparation Stages",
+    "sectionId": "1.4",
+    "intro": "The methods used in preparing this municipality's profile are as follows:",
+    "methods": [
+        {
+            "id": 1,
+            "text": "This includes data available from the municipality's various thematic branches, thematic offices, and various organizations."
+        },
+        {
+            "id": 2,
+            "text": "Data was collected using direct interview methods with all ward chairpersons and other office bearers."
+        },
+        {
+            "id": 3,
+            "text": "Results from the National Census, 2078 and various other surveys have been included."
+        },
+        {
+            "id": 4,
+            "text": "In the analysis of data in this study report, descriptive and comparative analysis has been done using various tables, diagrams, and maps."
+        }
+    ],
+    "description": "The work of preparing the profile has been done using primary and secondary information collection methods. Data such as land use, roads and their quality, and environmental problems, Geographic Information System data (GIS Data), topographic maps, aerial maps, survey maps were collected using field inspection and interview methods. Along with this, information about the main problems and development possibilities of the municipality has been obtained by discussing and interviewing officials of various government and non-government bodies located in the municipality, intellectuals, and available distinguished personalities. The overall data of the municipality such as: physical, environmental, social, economic, financial and institutional data have been collected from the records of the municipality office and government and non-government offices located in the municipality, and some data have been collected by studying reports and books published by relevant departments and other bodies.",
+    "dataTypes": [],
+    "subsections": []
+}
