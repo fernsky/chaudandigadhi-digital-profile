@@ -29,13 +29,14 @@ if (!content) {
 
 <section id="geographic-location" class="relative bg-[#050505] py-8 md:py-12">
     <div class="container mx-auto px-8">
-        <div class="max-w-2xl mx-auto">
+        <div class="w-full">
             <!-- Section Header -->
             <div class="mb-4">
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    २.१ {content.title}
+                    {lang === "ne" ? "२.१" : "2.1"}
+                    {content.title}
                 </h2>
             </div>
 

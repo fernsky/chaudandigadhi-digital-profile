@@ -80,7 +80,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
     forestArea && (
         <section id="forest-area" class="relative bg-[#050505] pb-8 md:pb-12 pt-16">
             <div class="container mx-auto px-8">
-                <div class="max-w-4xl mx-auto">
+                <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
                             {forestArea.number} {forestArea.title}
@@ -100,8 +100,8 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
     forestManagement && (
         <section id="forest-management" class="relative bg-[#050505] pb-8 md:pb-12">
             <div class="container mx-auto px-8">
-                <div class="max-w-6xl mx-auto">
-                    <div class="max-w-4xl mx-auto">
+                <div class="w-full mx-auto">
+                    <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                                 {forestManagement.number} {forestManagement.title}
@@ -123,7 +123,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                     </div>
 
                     <!-- Community Forest Table -->
-                    <div class="mb-10 max-w-6xl mx-auto">
+                    <div class="mb-10 w-full mx-auto">
                         <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
                             {forestManagement.sections.communityForest.tableNumber}: {forestManagement.sections.communityForest.tableTitle}
                         </h5>
@@ -161,7 +161,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                         </div>
                     </div>
 
-                    <div class="max-w-4xl mx-auto space-y-8">
+                    <div class="w-full space-y-8">
                         <!-- National Forest -->
                         <div>
                             <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-3">
@@ -236,7 +236,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
     plantationAreas && (
         <section id="plantation" class="relative bg-[#050505] pb-8 md:pb-12">
             <div class="container mx-auto px-8">
-                <div class="max-w-4xl mx-auto">
+                <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                             {plantationAreas.number} {plantationAreas.title}
@@ -259,8 +259,8 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
     herbs && (
         <section id="herbs" class="relative bg-[#050505] pb-8 md:pb-12">
             <div class="container mx-auto px-8">
-                <div class="max-w-6xl mx-auto">
-                    <div class="max-w-4xl mx-auto">
+                <div class="w-full mx-auto">
+                    <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                                 {herbs.number} {herbs.title}
@@ -275,7 +275,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                     </div>
 
                     <!-- Medicinal Plants Table -->
-                    <div class="mb-10 max-w-5xl mx-auto">
+                    <div class="mb-10 w-full mx-auto">
                         <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
                             {herbs.tableNumber}: {herbs.tableTitle}
                         </h5>
@@ -329,7 +329,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
     forestProducts && (
         <section id="forest-products" class="relative bg-[#050505] pb-8 md:pb-12">
             <div class="container mx-auto px-8">
-                <div class="max-w-4xl mx-auto">
+                <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                             {forestProducts.number} {forestProducts.title}

@@ -107,8 +107,8 @@ const equationHtml = energy?.equation
             class="relative bg-[#050505] pb-8 md:pb-12"
         >
             <div class="container mx-auto px-8">
-                <div class="max-w-6xl mx-auto">
-                    <div class="max-w-4xl mx-auto">
+                <div class="w-full mx-auto">
+                    <div class="w-full">
                         <div class="mb-6">
                             <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
                                 {energy.number} {energy.title}
@@ -144,7 +144,7 @@ const equationHtml = energy?.equation
                     <!-- 7.2.1 Cooking Fuel -->
                     {cookingFuel && (
                         <div id="cooking-fuel" class="mb-16">
-                            <div class="max-w-4xl mx-auto mb-8">
+                            <div class="w-full mb-8">
                                 <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                                     {cookingFuel.number} {cookingFuel.title}
                                 </h3>
@@ -154,7 +154,7 @@ const equationHtml = energy?.equation
                             </div>
 
                             <!-- Table 66 -->
-                            <div class="mb-10 max-w-6xl mx-auto">
+                            <div class="mb-10 w-full mx-auto">
                                 <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
                                     {cookingFuel.tableTitle}
                                 </h5>
@@ -232,7 +232,7 @@ const equationHtml = energy?.equation
                             </div>
 
                             <!-- Pie Chart Container -->
-                            <div class="max-w-4xl mx-auto mb-10">
+                            <div class="w-full mb-10">
                                 <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-6 text-center">
                                     {cookingFuel.chartTitle}
                                 </h5>
@@ -241,7 +241,7 @@ const equationHtml = energy?.equation
                                 </div>
                             </div>
                            
-                            <div class="max-w-4xl mx-auto">
+                            <div class="w-full">
                                 <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
                                     {cookingFuel.content2}
                                 </p>
@@ -252,7 +252,7 @@ const equationHtml = energy?.equation
                     <!-- 7.2.2 Lighting Fuel -->
                     {lightingFuel && (
                         <div id="lighting-fuel" class="mb-16">
-                            <div class="max-w-4xl mx-auto mb-8">
+                            <div class="w-full mb-8">
                                 <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                                     {lightingFuel.number} {lightingFuel.title}
                                 </h3>
@@ -262,7 +262,7 @@ const equationHtml = energy?.equation
                             </div>
 
                             <!-- Table 67 -->
-                            <div class="mb-10 max-w-5xl mx-auto">
+                            <div class="mb-10 w-full mx-auto">
                                 <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
                                     {lightingFuel.tableTitle}
                                 </h5>
@@ -327,14 +327,14 @@ const equationHtml = energy?.equation
                                 </p>
                             </div>
                             
-                            <div class="max-w-4xl mx-auto mb-10">
+                            <div class="w-full mb-10">
                                  <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
                                     {lightingFuel.content2}
                                 </p>
                             </div>
 
                             <!-- Bar Chart Container -->
-                            <div class="max-w-4xl mx-auto mb-10">
+                            <div class="w-full mb-10">
                                 <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-6 text-center">
                                     {lightingFuel.chartTitle}
                                 </h5>
@@ -348,7 +348,7 @@ const equationHtml = energy?.equation
                     <!-- 7.2.3 Alternative Energy -->
                     {alternativeEnergy && (
                         <div id="alternative-energy">
-                            <div class="max-w-4xl mx-auto">
+                            <div class="w-full">
                                 <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                                     {alternativeEnergy.number} {alternativeEnergy.title}
                                 </h3>

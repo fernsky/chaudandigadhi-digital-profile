@@ -58,7 +58,7 @@ const emergencyTransport = (await loadChapterSection(6, "emergency-transport", l
     disasterManagement && (
         <section id="disaster-management" class="relative bg-[#050505] pb-8 md:pb-12">
             <div class="container mx-auto px-8">
-                <div class="max-w-4xl mx-auto">
+                <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
                             {disasterManagement.number} {disasterManagement.title}
@@ -78,7 +78,7 @@ const emergencyTransport = (await loadChapterSection(6, "emergency-transport", l
     disasterDamage && (
         <section id="disaster-damages" class="relative bg-[#050505] pb-8 md:pb-12">
             <div class="container mx-auto px-8">
-                <div class="max-w-4xl mx-auto">
+                <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                             {disasterDamage.number} {disasterDamage.title}
@@ -98,15 +98,15 @@ const emergencyTransport = (await loadChapterSection(6, "emergency-transport", l
     disasterRiskTime && (
         <section id="disaster-risks" class="relative bg-[#050505] pb-8 md:pb-12">
             <div class="container mx-auto px-8">
-                <div class="max-w-6xl mx-auto">
-                    <div class="max-w-4xl mx-auto mb-6">
+                <div class="w-full mx-auto">
+                    <div class="w-full mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                             {disasterRiskTime.number} {disasterRiskTime.title}
                         </h3>
                     </div>
 
                     <!-- Risk Time Table -->
-                    <div class="mb-4 max-w-6xl mx-auto">
+                    <div class="mb-4 w-full mx-auto">
                         <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
                             {disasterRiskTime.tableNumber}: {disasterRiskTime.tableTitle}
                         </h5>
@@ -163,7 +163,7 @@ const emergencyTransport = (await loadChapterSection(6, "emergency-transport", l
     disasterPreparedness && (
         <section id="disaster-preparedness" class="relative bg-[#050505] pb-8 md:pb-12">
             <div class="container mx-auto px-8">
-                <div class="max-w-4xl mx-auto">
+                <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                             {disasterPreparedness.number} {disasterPreparedness.title}
@@ -183,7 +183,7 @@ const emergencyTransport = (await loadChapterSection(6, "emergency-transport", l
     emergencyTransport && (
         <section id="emergency-transport" class="relative bg-[#050505] pb-8 md:pb-12">
             <div class="container mx-auto px-8">
-                <div class="max-w-4xl mx-auto">
+                <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                             {emergencyTransport.number} {emergencyTransport.title}

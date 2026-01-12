@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { ArrowLeft, ArrowRight } from "lucide-astro";
 import type { Language } from "../../../lib/i18n";
 
 // Chapter 5 Components - Education (8)
@@ -94,6 +95,50 @@ const description =
 
     <!-- 5.6 Peace and Security -->
     <PeaceSecurityDetails lang={lang} />
+    <!-- Chapter Navigation -->
+    <section
+        class="relative bg-[#050505] py-8 md:py-12 border-t border-zinc-900"
+    >
+        <div class="container mx-auto px-8 relative z-10">
+            <nav
+                class="w-full mx-auto flex flex-row items-center justify-between gap-4"
+            >
+                <a
+                    href={`/${lang}/chapters/4`}
+                    class="group flex items-center gap-3 text-zinc-500 hover:text-white transition-all duration-300"
+                >
+                    <div
+                        class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/10 bg-white/5 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300"
+                    >
+                        <ArrowLeft
+                            class="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-1"
+                        />
+                    </div>
+                    <span
+                        class="font-serif text-base md:text-lg tracking-wide whitespace-nowrap"
+                        >{lang === "ne" ? "परिच्छेद – ४" : "Chapter 4"}</span
+                    >
+                </a>
+
+                <a
+                    href={`/${lang}/chapters/6`}
+                    class="group flex flex-row items-center gap-3 text-white hover:text-obsidian-accent transition-all duration-300"
+                >
+                    <span
+                        class="font-serif text-base md:text-lg tracking-wide whitespace-nowrap"
+                        >{lang === "ne" ? "परिच्छेद – ६" : "Chapter 6"}</span
+                    >
+                    <div
+                        class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/10 bg-white/5 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300"
+                    >
+                        <ArrowRight
+                            class="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
+                        />
+                    </div>
+                </a>
+            </nav>
+        </div>
+    </section>
 </BaseLayout>
 
 <style>

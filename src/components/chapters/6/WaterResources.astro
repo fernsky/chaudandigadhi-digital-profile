@@ -36,7 +36,7 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
     waterResources && (
         <section id="water-resources" class="relative bg-[#050505] pb-8 md:pb-12">
             <div class="container mx-auto px-8">
-                <div class="max-w-4xl mx-auto">
+                <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
                             {waterResources.number} {waterResources.title}
@@ -77,8 +77,8 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
     rivers && (
         <section id="rivers" class="relative bg-[#050505] pb-8 md:pb-12">
             <div class="container mx-auto px-8">
-                <div class="max-w-6xl mx-auto">
-                    <div class="max-w-4xl mx-auto">
+                <div class="w-full mx-auto">
+                    <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
                                 {rivers.number} {rivers.title}
@@ -121,7 +121,7 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
                     </div>
 
                     <!-- Rivers and Streams Table -->
-                    <div class="mb-10 max-w-5xl mx-auto">
+                    <div class="mb-10 w-full mx-auto">
                         <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
                             {rivers.tableNumber}: {rivers.tableTitle}
                         </h5>
@@ -160,7 +160,7 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
                     </div>
 
                     <!-- Image Containers After Table -->
-                    <div class="max-w-4xl mx-auto">
+                    <div class="w-full">
                         <!-- Image Container 4: Pokhari -->
                         <div class="mb-6">
                             <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
