@@ -71,7 +71,10 @@ img {
 }
 
 /* Base Styles */
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-serif);
 }

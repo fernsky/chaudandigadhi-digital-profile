@@ -44,6 +44,25 @@ const t = getTranslations(lang);
           );
         })
       }
+
+      <!-- Annexures (after all chapters, behaves like a chapter) -->
+      <li role="none" class="border-t border-white/5 mt-2 pt-2">
+        <button
+          data-section="annexures"
+          class="mega-menu-category group/cat w-full text-left px-6 py-3 transition-all duration-200 cursor-pointer text-primary-400 hover:text-primary-50 hover:bg-primary-500/10"
+          role="menuitem"
+        >
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex-1 min-w-0">
+              <p
+                class="text-base leading-relaxed transition-all duration-200 group-hover/cat:underline decoration-white/30 underline-offset-4 decoration-1"
+              >
+                {t.annexures.title}
+              </p>
+            </div>
+          </div>
+        </button>
+      </li>
     </ul>
   </div>
 </nav>
@@ -82,11 +101,20 @@ const t = getTranslations(lang);
         // );
 
         const chapterNum = button.getAttribute("data-chapter");
+        const section = button.getAttribute("data-section");
+
         if (chapterNum) {
-          // Trigger custom event to update content area
+          // Trigger custom event to update content area with chapter
           document.dispatchEvent(
             new CustomEvent("megamenu:categoryChange", {
               detail: { chapter: parseInt(chapterNum) },
+            }),
+          );
+        } else if (section) {
+          // Trigger custom event for special sections like annexures
+          document.dispatchEvent(
+            new CustomEvent("megamenu:categoryChange", {
+              detail: { section: section },
             }),
           );
         }
@@ -95,11 +123,14 @@ const t = getTranslations(lang);
       // Navigate on click
       button.addEventListener("click", (e) => {
         e.preventDefault();
+        const lang = document.documentElement.lang || "ne";
         const chapterNum = button.getAttribute("data-chapter");
+        const section = button.getAttribute("data-section");
+
         if (chapterNum) {
-          const lang = document.documentElement.lang || "ne";
-          const slug = `chapters/${chapterNum}`;
-          window.location.href = `/${lang}/${slug}`;
+          window.location.href = `/${lang}/chapters/${chapterNum}`;
+        } else if (section === "annexures") {
+          window.location.href = `/${lang}/annexures`;
         }
       });
     });

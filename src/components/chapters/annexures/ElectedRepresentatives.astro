@@ -1,0 +1,110 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+// Define Types
+type Row = { sn: string; name: string; position: string; ward: string };
+type TableData = { title: string; headers: string[]; rows: Row[] };
+type SectionData = {
+    id: string;
+    title: string;
+    executiveTable: TableData;
+    wardTable: TableData;
+};
+
+const data = await loadChapterSection<SectionData>(
+    "annexures",
+    "elected-representatives",
+    lang,
+);
+---
+
+{
+    data && (
+        <div id="elected-representatives" class="scroll-mt-32 space-y-12 mb-16">
+            <div>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-8">
+                    <span class="text-[#f2e25d]">{data.id}</span>: {data.title}
+                </h2>
+
+                {/* Executive Table */}
+                <div class="mb-10">
+                    <h3 class="font-serif text-2xl text-zinc-200 mb-4">
+                        {data.executiveTable.title}
+                    </h3>
+                    <div class="overflow-x-auto rounded-lg border border-[#f2e25d]/10 bg-white/5">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-[#f2e25d]/10 text-white font-serif text-lg">
+                                <tr>
+                                    {data.executiveTable.headers.map(
+                                        (header) => (
+                                            <th class="px-6 py-4 border-b border-[#f2e25d]/20 font-bold tracking-wide text-[#f2e25d]">
+                                                {header}
+                                            </th>
+                                        ),
+                                    )}
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#f2e25d]/10 text-zinc-300 font-serif">
+                                {data.executiveTable.rows.map((row) => (
+                                    <tr class="hover:bg-[#f2e25d]/5 transition-colors">
+                                        <td class="px-6 py-4">{row.sn}</td>
+                                        <td class="px-6 py-4 font-medium text-white">
+                                            {row.name}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {row.position}
+                                        </td>
+                                        <td class="px-6 py-4">{row.ward}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {/* Ward Table */}
+                <div>
+                    <h3 class="font-serif text-2xl text-zinc-200 mb-4">
+                        {data.wardTable.title}
+                    </h3>
+                    <div class="overflow-x-auto rounded-lg border border-[#f2e25d]/10 bg-white/5">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-[#f2e25d]/10 text-white font-serif text-lg">
+                                <tr>
+                                    {data.wardTable.headers.map((header) => (
+                                        <th class="px-6 py-4 border-b border-[#f2e25d]/20 font-bold tracking-wide text-[#f2e25d]">
+                                            {header}
+                                        </th>
+                                    ))}
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#f2e25d]/10 text-zinc-300 font-serif">
+                                {data.wardTable.rows.map((row) => (
+                                    <tr class="hover:bg-[#f2e25d]/5 transition-colors">
+                                        <td class="px-6 py-4">{row.sn}</td>
+                                        <td class="px-6 py-4 font-medium text-white">
+                                            {row.name}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {row.position}
+                                        </td>
+                                        <td class="px-6 py-4 text-center">
+                                            {row.ward}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}

@@ -1,0 +1,53 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type HeroContent = {
+    title: string;
+    subtitle: string;
+    tagline: string;
+    description: string;
+};
+
+const content = await loadChapterSection<HeroContent>(
+    "annexures",
+    "hero",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Annexures hero content not found");
+}
+---
+
+<section
+    class="relative min-h-[40vh] bg-[#050505] flex items-center py-16 border-b border-white/5"
+>
+    <div class="container mx-auto px-8">
+        <div class="max-w-2xl mx-auto text-center">
+            <!-- Main Title -->
+            <h1
+                class="font-serif text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] font-bold text-white tracking-tight mb-6"
+            >
+                {content.title}
+            </h1>
+
+            <!-- Subtitle/Tagline -->
+            <p
+                class="font-serif text-xl md:text-2xl text-zinc-300 leading-snug mb-4"
+            >
+                {content.subtitle}
+            </p>
+
+            <p class="font-serif text-lg text-zinc-500">
+                {content.tagline}
+            </p>
+        </div>
+    </div>
+</section>

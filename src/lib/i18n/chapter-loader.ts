@@ -10,7 +10,7 @@ import type { Language } from './index';
  * @returns Translation object or null if not found
  */
 export async function loadChapterSection<T = any>(
-  chapter: number,
+  chapter: number | string,
   section: string,
   lang: Language
 ): Promise<T | null> {
@@ -48,7 +48,7 @@ export async function loadChapterSection<T = any>(
  * @returns Object with section slug as key and translation as value
  */
 export async function loadChapterSections<T = any>(
-  chapter: number,
+  chapter: number | string,
   sections: string[],
   lang: Language
 ): Promise<Record<string, T | null>> {
@@ -75,7 +75,7 @@ export async function loadChapterSections<T = any>(
  * @returns Translation object (throws if not found)
  */
 export async function requireChapterSection<T = any>(
-  chapter: number,
+  chapter: number | string,
   section: string,
   lang: Language
 ): Promise<T> {

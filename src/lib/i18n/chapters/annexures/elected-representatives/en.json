@@ -1,0 +1,98 @@
+{
+    "id": "Schedule - 1",
+    "title": "Details of Elected Representatives of Municipality",
+    "executiveTable": {
+        "title": "Municipal Executive",
+        "headers": [
+            "S.N.",
+            "Name",
+            "Designation",
+            "Municipality/Ward No."
+        ],
+        "rows": [
+            {
+                "sn": "1",
+                "name": "Kaluman Lama",
+                "position": "Mayor",
+                "ward": "Municipality"
+            },
+            {
+                "sn": "2",
+                "name": "Manika Devi Dulal",
+                "position": "Deputy Mayor",
+                "ward": "Municipality"
+            }
+        ]
+    },
+    "wardTable": {
+        "title": "Ward Chairpersons",
+        "headers": [
+            "S.N.",
+            "Name",
+            "Designation",
+            "Ward No."
+        ],
+        "rows": [
+            {
+                "sn": "1",
+                "name": "Sitaram Rai",
+                "position": "Ward Chairperson",
+                "ward": "1"
+            },
+            {
+                "sn": "2",
+                "name": "Hari Bahadur Khadka",
+                "position": "Ward Chairperson",
+                "ward": "2"
+            },
+            {
+                "sn": "3",
+                "name": "Parshuram Rai",
+                "position": "Ward Chairperson",
+                "ward": "3"
+            },
+            {
+                "sn": "4",
+                "name": "Lungaraj Raj Rai",
+                "position": "Ward Chairperson",
+                "ward": "4"
+            },
+            {
+                "sn": "5",
+                "name": "Tulsiram Dhakal",
+                "position": "Ward Chairperson",
+                "ward": "5"
+            },
+            {
+                "sn": "6",
+                "name": "Ambar Bahadur Khadka",
+                "position": "Ward Chairperson",
+                "ward": "6"
+            },
+            {
+                "sn": "7",
+                "name": "Keshav Adhikari",
+                "position": "Ward Chairperson",
+                "ward": "7"
+            },
+            {
+                "sn": "8",
+                "name": "Bhagnath Kumar Magar",
+                "position": "Ward Chairperson",
+                "ward": "8"
+            },
+            {
+                "sn": "9",
+                "name": "Prakash Raut",
+                "position": "Ward Chairperson",
+                "ward": "9"
+            },
+            {
+                "sn": "10",
+                "name": "Dharmendra Kumar Khadka",
+                "position": "Ward Chairperson",
+                "ward": "10"
+            }
+        ]
+    }
+}
