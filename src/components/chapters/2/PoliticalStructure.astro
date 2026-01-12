@@ -52,27 +52,24 @@ if (!content) {
                 >
                     २.३ {content.title}
                 </h2>
-                <p
-                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
-                >
-                    {content.intro}
-                </p>
             </div>
 
             <!-- Maps -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="space-y-8 mb-8">
                 {
                     content.maps.map((map) => (
-                        <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 group hover:border-[#f2e25d]/30 transition-all duration-300">
-                            <div class="aspect-[4/3] bg-[#050505] mb-4 flex items-center justify-center border border-[#f2e25d]/5">
-                                <img
-                                    src={map.image}
-                                    alt={map.title}
-                                    class="w-full h-full object-contain"
-                                    loading="lazy"
-                                />
+                        <div class="flex flex-col items-center space-y-4">
+                            <div class="w-full bg-[#0a0a0a] border border-[#f2e25d]/10 p-4">
+                                <div class="aspect-video bg-[#050505] flex items-center justify-center border border-[#f2e25d]/5">
+                                    <img
+                                        src={map.image}
+                                        alt={map.title}
+                                        class="w-full h-full object-contain"
+                                        loading="lazy"
+                                    />
+                                </div>
                             </div>
-                            <p class="text-zinc-100 font-serif text-sm text-center">
+                            <p class="text-zinc-100 font-serif text-lg font-bold text-center">
                                 नक्सा नं. {map.number}: {map.title}
                             </p>
                         </div>
@@ -80,9 +77,17 @@ if (!content) {
                 }
             </div>
 
+            <div class="mb-8">
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+                >
+                    {content.intro}
+                </p>
+            </div>
+
             <!-- Table Title -->
             <h3
-                class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+                class="font-serif text-xl md:text-2xl text-white font-medium mb-4 text-center font-bold"
             >
                 {content.tableTitle}
             </h3>
@@ -123,7 +128,7 @@ if (!content) {
                                         {row.includedVDC}
                                     </td>
                                     <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.population.toLocaleString('ne-NP')}
+                                        {row.population.toLocaleString("ne-NP")}
                                     </td>
                                     <td class="px-4 py-3 font-serif text-zinc-100 text-right">
                                         {row.area.toFixed(2)}
@@ -142,12 +147,21 @@ if (!content) {
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                             >
-                                {content.total.population.toLocaleString('ne-NP')}
+                                {
+                                    content.total.population.toLocaleString(
+                                        "ne-NP",
+                                    )
+                                }
                             </td>
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-right"
                             >
-                                {content.total.area.toLocaleString('ne-NP', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                {
+                                    content.total.area.toLocaleString("ne-NP", {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2,
+                                    })
+                                }
                             </td>
                         </tr>
                     </tbody>
