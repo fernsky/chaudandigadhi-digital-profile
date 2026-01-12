@@ -1,0 +1,31 @@
+{
+    "id": "अनुसूची - ६",
+    "title": "डिजिटल प्रोफाइल तयारीको लागि गरिएको तथ्याङ्क संकलन तथा तस्विरहरू",
+    "images": [
+        {
+            "id": "img-1",
+            "caption": "तथ्याङ्क संकलन कार्य",
+            "placeholder": "Data Collection Photo 1"
+        },
+        {
+            "id": "img-2",
+            "caption": "स्थलगत निरीक्षण",
+            "placeholder": "Data Collection Photo 2"
+        },
+        {
+            "id": "img-3",
+            "caption": "प्राविधिक सर्वेक्षण",
+            "placeholder": "Data Collection Photo 3"
+        },
+        {
+            "id": "img-4",
+            "caption": "सरोकारवालासँगको छलफल",
+            "placeholder": "Data Collection Photo 4"
+        },
+        {
+            "id": "img-5",
+            "caption": "डिजिटल प्रोफाइल निर्माणको अन्तिम चरण",
+            "placeholder": "Data Collection Photo 5"
+        }
+    ]
+}

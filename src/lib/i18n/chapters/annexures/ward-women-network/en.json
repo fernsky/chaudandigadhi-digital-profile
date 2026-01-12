@@ -1,0 +1,697 @@
+{
+    "id": "Schedule - 5",
+    "title": "Details regarding Ward-level Women Network Committee in Municipality",
+    "wards": [
+        {
+            "title": "Details regarding Women Network Committee in Ward No. 1",
+            "headers": [
+                "S.N.",
+                "Name",
+                "Post",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "name": "Gita Tamang",
+                    "post": "Chairperson",
+                    "contact": "9862926754"
+                },
+                {
+                    "sn": "2",
+                    "name": "Durga Magar",
+                    "post": "Secretary",
+                    "contact": "9862926862"
+                },
+                {
+                    "sn": "3",
+                    "name": "Pramila Kaphle",
+                    "post": "Treasurer",
+                    "contact": "9849788821"
+                },
+                {
+                    "sn": "4",
+                    "name": "Binita Rai",
+                    "post": "Member",
+                    "contact": "9862228250"
+                },
+                {
+                    "sn": "5",
+                    "name": "Pramila Nepali",
+                    "post": "Member",
+                    "contact": ""
+                },
+                {
+                    "sn": "6",
+                    "name": "Mandira Raut",
+                    "post": "Member",
+                    "contact": "9848953600"
+                },
+                {
+                    "sn": "7",
+                    "name": "Pavitra Shrestha",
+                    "post": "Member",
+                    "contact": "9764472320"
+                },
+                {
+                    "sn": "8",
+                    "name": "Dil Kumari Katuwal",
+                    "post": "Member",
+                    "contact": "9745993512"
+                },
+                {
+                    "sn": "9",
+                    "name": "Champa Giri",
+                    "post": "Member",
+                    "contact": "9872111028"
+                },
+                {
+                    "sn": "10",
+                    "name": "Menuka Rai",
+                    "post": "Member",
+                    "contact": "9762881924"
+                },
+                {
+                    "sn": "11",
+                    "name": "Tika Rai Magar",
+                    "post": "",
+                    "contact": "9862814745"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Women Network Committee in Ward No. 2",
+            "headers": [
+                "S.N.",
+                "Name",
+                "Post",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "name": "Rammaya Sarki",
+                    "post": "Chairperson",
+                    "contact": "9827298782"
+                },
+                {
+                    "sn": "2",
+                    "name": "",
+                    "post": "Secretary",
+                    "contact": "-"
+                },
+                {
+                    "sn": "3",
+                    "name": "Man Kumari B.K.",
+                    "post": "Treasurer",
+                    "contact": "9840407763"
+                },
+                {
+                    "sn": "4",
+                    "name": "Tikasari Rai",
+                    "post": "Member",
+                    "contact": "9842567054"
+                },
+                {
+                    "sn": "5",
+                    "name": "Pavitra Thapa Magar",
+                    "post": "Member",
+                    "contact": "9824748550"
+                },
+                {
+                    "sn": "6",
+                    "name": "Bishnu Sada",
+                    "post": "Member",
+                    "contact": "9827298782"
+                },
+                {
+                    "sn": "7",
+                    "name": "Chandramaya Shrestha",
+                    "post": "Member",
+                    "contact": "9862434843"
+                },
+                {
+                    "sn": "8",
+                    "name": "Pavitra Pariyar",
+                    "post": "Member",
+                    "contact": "9808774499"
+                },
+                {
+                    "sn": "9",
+                    "name": "Menuka B.K.",
+                    "post": "Member",
+                    "contact": "9822317781"
+                },
+                {
+                    "sn": "10",
+                    "name": "Gita Adhikari",
+                    "post": "Member",
+                    "contact": "9841359194"
+                },
+                {
+                    "sn": "11",
+                    "name": "Ganga Pathak",
+                    "post": "Member",
+                    "contact": "9849381781"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Women Network Committee in Ward No. 3",
+            "headers": [
+                "S.N.",
+                "Name",
+                "Post",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "name": "Tikamaya Shrestha",
+                    "post": "Chairperson",
+                    "contact": "-"
+                },
+                {
+                    "sn": "2",
+                    "name": "Saraswati Rai",
+                    "post": "Secretary",
+                    "contact": "-"
+                },
+                {
+                    "sn": "3",
+                    "name": "Nanda Kumari Magar",
+                    "post": "Treasurer",
+                    "contact": "-"
+                },
+                {
+                    "sn": "4",
+                    "name": "Chija B.K.",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "5",
+                    "name": "Shantidevi Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "6",
+                    "name": "Bhaloshobha Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "7",
+                    "name": "Aruna Tamang",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "8",
+                    "name": "Sita Shrestha",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "9",
+                    "name": "Dhankumari Magar",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "10",
+                    "name": "Samjhana Tamang",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "11",
+                    "name": "Vedmaya Khadka",
+                    "post": "Member",
+                    "contact": "-"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Women Network Committee in Ward No. 4",
+            "headers": [
+                "S.N.",
+                "Name",
+                "Post",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "name": "Chhatra Kumari Rai",
+                    "post": "Chairperson",
+                    "contact": "-"
+                },
+                {
+                    "sn": "2",
+                    "name": "Ambika Khadka",
+                    "post": "Secretary",
+                    "contact": "-"
+                },
+                {
+                    "sn": "3",
+                    "name": "Mishra Tamang",
+                    "post": "Treasurer",
+                    "contact": "-"
+                },
+                {
+                    "sn": "4",
+                    "name": "Rita Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "5",
+                    "name": "Gita Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "6",
+                    "name": "Sumitra Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "7",
+                    "name": "Anjana Nepali",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "8",
+                    "name": "Gita Chaudhary",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "9",
+                    "name": "Lalita B.K.",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "10",
+                    "name": "Gitadevi Magar",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "11",
+                    "name": "Tara Nepali",
+                    "post": "Member",
+                    "contact": "-"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Women Network Committee in Ward No. 6",
+            "headers": [
+                "S.N.",
+                "Name",
+                "Post",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "name": "Sarbila Tamang",
+                    "post": "Chairperson",
+                    "contact": "-"
+                },
+                {
+                    "sn": "2",
+                    "name": "Rita Magar Shrestha",
+                    "post": "Secretary",
+                    "contact": "-"
+                },
+                {
+                    "sn": "3",
+                    "name": "Basanti Rai",
+                    "post": "Treasurer",
+                    "contact": "-"
+                },
+                {
+                    "sn": "4",
+                    "name": "Maya Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "5",
+                    "name": "Nilam Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "6",
+                    "name": "Chuna Raut",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "7",
+                    "name": "Bhagawati Bhattarai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "8",
+                    "name": "Madan Kumari Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "9",
+                    "name": "Vedana B.K.",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "10",
+                    "name": "Mamta Himang",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "11",
+                    "name": "Gita Shrestha",
+                    "post": "Member",
+                    "contact": "-"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Women Network Committee in Ward No. 7",
+            "headers": [
+                "S.N.",
+                "Name",
+                "Post",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "name": "Vimala Bisht",
+                    "post": "Chairperson",
+                    "contact": "-"
+                },
+                {
+                    "sn": "2",
+                    "name": "Sushma Thapa",
+                    "post": "Secretary",
+                    "contact": "-"
+                },
+                {
+                    "sn": "3",
+                    "name": "Sita Rai",
+                    "post": "Treasurer",
+                    "contact": "-"
+                },
+                {
+                    "sn": "4",
+                    "name": "Mankala Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "5",
+                    "name": "Jit Kumari Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "6",
+                    "name": "Sushila Khatri",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "7",
+                    "name": "Usha Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "8",
+                    "name": "Vimala Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "9",
+                    "name": "Manju Shrestha",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "10",
+                    "name": "Sangita Pariyar",
+                    "post": "Member",
+                    "contact": "9807771699"
+                },
+                {
+                    "sn": "11",
+                    "name": "Dil Kumari Rai",
+                    "post": "Member",
+                    "contact": "-"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Women Network Committee in Ward No. 8",
+            "headers": [
+                "S.N.",
+                "Name",
+                "Post",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "name": "Pampha Rai",
+                    "post": "Chairperson",
+                    "contact": "9862832778"
+                },
+                {
+                    "sn": "2",
+                    "name": "Manita Rai",
+                    "post": "Secretary",
+                    "contact": "9764482603"
+                },
+                {
+                    "sn": "3",
+                    "name": "Sumitra Pariyar",
+                    "post": "Treasurer",
+                    "contact": "9706302007"
+                },
+                {
+                    "sn": "4",
+                    "name": "Sita Nepali",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "5",
+                    "name": "Mikal Rai",
+                    "post": "Member",
+                    "contact": "9842955664"
+                },
+                {
+                    "sn": "6",
+                    "name": "Kavita Rai",
+                    "post": "Member",
+                    "contact": "9861795279"
+                },
+                {
+                    "sn": "7",
+                    "name": "Ranjana Rai",
+                    "post": "Member",
+                    "contact": "9840984882"
+                },
+                {
+                    "sn": "8",
+                    "name": "Radha Rai",
+                    "post": "Member",
+                    "contact": "9869539539"
+                },
+                {
+                    "sn": "9",
+                    "name": "Bhagawati Khadka",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "10",
+                    "name": "Sobita Rai",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "11",
+                    "name": "Vimala Basnet",
+                    "post": "Member",
+                    "contact": "9862274904"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Women Network Committee in Ward No. 9",
+            "headers": [
+                "S.N.",
+                "Name",
+                "Post",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "name": "Ishwara Gelal",
+                    "post": "Chairperson",
+                    "contact": "9844158543"
+                },
+                {
+                    "sn": "2",
+                    "name": "Vishnu Kumari Shrestha",
+                    "post": "Secretary",
+                    "contact": "-"
+                },
+                {
+                    "sn": "3",
+                    "name": "Bal Kumari Magar",
+                    "post": "Treasurer",
+                    "contact": "9808172959"
+                },
+                {
+                    "sn": "4",
+                    "name": "Rita Chaudhary",
+                    "post": "Member",
+                    "contact": "9824797566"
+                },
+                {
+                    "sn": "5",
+                    "name": "Vishnu Kumari Thapa",
+                    "post": "Member",
+                    "contact": "9808288434"
+                },
+                {
+                    "sn": "6",
+                    "name": "Kopila B.K.",
+                    "post": "Member",
+                    "contact": "9749870844"
+                },
+                {
+                    "sn": "7",
+                    "name": "Pushpa Laxmi Shrestha",
+                    "post": "Member",
+                    "contact": "9847814168"
+                },
+                {
+                    "sn": "8",
+                    "name": "Dil Kumari Chaudhary",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "9",
+                    "name": "Sarita Chaudhary",
+                    "post": "Member",
+                    "contact": "9824797566"
+                },
+                {
+                    "sn": "10",
+                    "name": "Goma Karki",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "11",
+                    "name": "Ranjita B.K.",
+                    "post": "Member",
+                    "contact": "-"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Women Network Committee in Ward No. 10",
+            "headers": [
+                "S.N.",
+                "Name",
+                "Post",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "name": "Urmila Karki",
+                    "post": "Chairperson",
+                    "contact": "9807445667"
+                },
+                {
+                    "sn": "2",
+                    "name": "Ishwari Chaudhary",
+                    "post": "Secretary",
+                    "contact": "9818632023"
+                },
+                {
+                    "sn": "3",
+                    "name": "Usa Magar",
+                    "post": "Treasurer",
+                    "contact": "9882179182"
+                },
+                {
+                    "sn": "4",
+                    "name": "Nanudevi Chaudhary",
+                    "post": "Member",
+                    "contact": "9804774878"
+                },
+                {
+                    "sn": "5",
+                    "name": "Harani Chaudhary",
+                    "post": "Member",
+                    "contact": "-"
+                },
+                {
+                    "sn": "6",
+                    "name": "Nirmala Karki",
+                    "post": "Member",
+                    "contact": "9827714825"
+                },
+                {
+                    "sn": "7",
+                    "name": "Shanta Paudel",
+                    "post": "Member",
+                    "contact": "9808090269"
+                },
+                {
+                    "sn": "8",
+                    "name": "Goma Raut",
+                    "post": "Member",
+                    "contact": "9808922374"
+                },
+                {
+                    "sn": "9",
+                    "name": "Goma Nepal",
+                    "post": "Member",
+                    "contact": "9861835521"
+                }
+            ]
+        }
+    ],
+    "nextSection": "Annexure - 6: Data Collection and Photographs taken for Digital Profile Preparation"
+}

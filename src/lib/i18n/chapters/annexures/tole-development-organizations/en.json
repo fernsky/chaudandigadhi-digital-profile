@@ -1,0 +1,1706 @@
+{
+    "id": "Schedule - 4",
+    "title": "Details regarding Tole Development Organizations in Municipality",
+    "wards": [
+        {
+            "title": "Details regarding Tole Development Organizations in Ward No. 1",
+            "headers": [
+                "S.N.",
+                "Reg. No.",
+                "Tole Development Org Name",
+                "Address",
+                "Chairman Name"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "regNo": "45",
+                    "name": "Palpali",
+                    "address": "C.N.P.1",
+                    "chairman": "Bir Bahadur Tamang"
+                },
+                {
+                    "sn": "2",
+                    "regNo": "56",
+                    "name": "Kavre Shikharpur",
+                    "address": "C.N.P.1",
+                    "chairman": "Bhupjeet Rai"
+                },
+                {
+                    "sn": "3",
+                    "regNo": "85",
+                    "name": "Chhuila",
+                    "address": "C.N.P.1",
+                    "chairman": "Santosh Rai"
+                },
+                {
+                    "sn": "4",
+                    "regNo": "88",
+                    "name": "Singhadevi",
+                    "address": "C.N.P.1",
+                    "chairman": "Khagendra Basnet"
+                },
+                {
+                    "sn": "5",
+                    "regNo": "93",
+                    "name": "Kanchanpur Bhalu Khola",
+                    "address": "C.N.P.1",
+                    "chairman": "Govinda Tamang"
+                },
+                {
+                    "sn": "6",
+                    "regNo": "94",
+                    "name": "Birta",
+                    "address": "C.N.P.1",
+                    "chairman": "Ashok Kumar Khatri"
+                },
+                {
+                    "sn": "7",
+                    "regNo": "99",
+                    "name": "Subha Prabhat",
+                    "address": "C.N.P.1",
+                    "chairman": "Lila Bahadur Rai"
+                },
+                {
+                    "sn": "8",
+                    "regNo": "123",
+                    "name": "Ranitar",
+                    "address": "C.N.P.1",
+                    "chairman": "Jeewan Kalikote"
+                },
+                {
+                    "sn": "9",
+                    "regNo": "124",
+                    "name": "Pudhkoshi",
+                    "address": "C.N.P.1",
+                    "chairman": "Krishna B. Majhi"
+                },
+                {
+                    "sn": "10",
+                    "regNo": "129",
+                    "name": "Gairitole Sempani",
+                    "address": "C.N.P.1",
+                    "chairman": "Dhan Bahadur Rai"
+                },
+                {
+                    "sn": "11",
+                    "regNo": "138",
+                    "name": "Yalamber",
+                    "address": "C.N.P.1",
+                    "chairman": "Ripudarshan Rai"
+                },
+                {
+                    "sn": "12",
+                    "regNo": "166",
+                    "name": "Godawari",
+                    "address": "C.N.P.1",
+                    "chairman": "Devraj Bhandari"
+                },
+                {
+                    "sn": "13",
+                    "regNo": "167",
+                    "name": "Charghare",
+                    "address": "C.N.P.1",
+                    "chairman": "Jaguirman Rai"
+                },
+                {
+                    "sn": "14",
+                    "regNo": "172",
+                    "name": "Belbote Turlangtar",
+                    "address": "C.N.P.1",
+                    "chairman": "Chakra Bahadur Rai"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Tole Development Organizations in Ward No. 2",
+            "headers": [
+                "S.N.",
+                "Reg. No.",
+                "Tole Development Org Name",
+                "Address",
+                "Chairman Name"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "regNo": "1",
+                    "name": "Gangate Tole Development Org",
+                    "address": "C.N.P.2",
+                    "chairman": "Sher Bahadur Tamang"
+                },
+                {
+                    "sn": "2",
+                    "regNo": "14",
+                    "name": "Sudhare Sudhar Tole Development Org",
+                    "address": "C.N.P.2",
+                    "chairman": "Tulsi B. Shrestha"
+                },
+                {
+                    "sn": "3",
+                    "regNo": "16",
+                    "name": "Madibas",
+                    "address": "C.N.P.2",
+                    "chairman": "Ambar Bahadur Rai"
+                },
+                {
+                    "sn": "4",
+                    "regNo": "23",
+                    "name": "Bhitte Devithan Tole Development Org",
+                    "address": "C.N.P.2",
+                    "chairman": "Tara Rai"
+                },
+                {
+                    "sn": "5",
+                    "regNo": "37",
+                    "name": "Kouwa Devi Tole Development Org",
+                    "address": "C.N.P.2",
+                    "chairman": "Mina Kaphle"
+                },
+                {
+                    "sn": "6",
+                    "regNo": "64",
+                    "name": "Charghare",
+                    "address": "C.N.P.2",
+                    "chairman": "Gangaram Sunuwar"
+                },
+                {
+                    "sn": "7",
+                    "regNo": "-",
+                    "name": "Shivalaya",
+                    "address": "C.N.P.2",
+                    "chairman": "Kamala Magar"
+                },
+                {
+                    "sn": "8",
+                    "regNo": "-",
+                    "name": "Jalakanya",
+                    "address": "C.N.P.2",
+                    "chairman": "Samram Khadka"
+                },
+                {
+                    "sn": "9",
+                    "regNo": "-",
+                    "name": "Sangam",
+                    "address": "C.N.P.2",
+                    "chairman": "Badri Khanal"
+                },
+                {
+                    "sn": "10",
+                    "regNo": "-",
+                    "name": "Radhakrishna",
+                    "address": "C.N.P.2",
+                    "chairman": "Shankar Paudel"
+                },
+                {
+                    "sn": "11",
+                    "regNo": "-",
+                    "name": "Shivalaya Pani Tanki",
+                    "address": "C.N.P.2",
+                    "chairman": "Dhyan Kumar Katuwal"
+                },
+                {
+                    "sn": "12",
+                    "regNo": "-",
+                    "name": "Devithan Bhitte",
+                    "address": "C.N.P.2",
+                    "chairman": "Bhakta Bahadur Karki"
+                },
+                {
+                    "sn": "13",
+                    "regNo": "-",
+                    "name": "Ekata",
+                    "address": "C.N.P.2",
+                    "chairman": "Jagat Bahadur Khadka"
+                },
+                {
+                    "sn": "14",
+                    "regNo": "-",
+                    "name": "Charghare Kalikali",
+                    "address": "C.N.P.2",
+                    "chairman": "Khadga Bahadur Bhujel"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Tole Development Organizations in Ward No. 3",
+            "headers": [
+                "S.N.",
+                "Reg. No.",
+                "Tole Development Org Name",
+                "Address",
+                "Chairman Name"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "regNo": "58",
+                    "name": "Ramailo Danda",
+                    "address": "C.N.P.3",
+                    "chairman": "Jang Bahadur Bishwokarma"
+                },
+                {
+                    "sn": "2",
+                    "regNo": "60",
+                    "name": "Kusumchauri",
+                    "address": "C.N.P.3",
+                    "chairman": "Rajendra Karki"
+                },
+                {
+                    "sn": "3",
+                    "regNo": "61",
+                    "name": "Barpipal Bhanjyang Danda",
+                    "address": "C.N.P.3",
+                    "chairman": "Raj Kumar Wan"
+                },
+                {
+                    "sn": "4",
+                    "regNo": "66",
+                    "name": "Saure Chipruge",
+                    "address": "C.N.P.3",
+                    "chairman": "Krishna Rai"
+                },
+                {
+                    "sn": "5",
+                    "regNo": "67",
+                    "name": "Badelpani",
+                    "address": "C.N.P.3",
+                    "chairman": "Thakurji Rai"
+                },
+                {
+                    "sn": "6",
+                    "regNo": "70",
+                    "name": "Bholeni",
+                    "address": "C.N.P.3",
+                    "chairman": "Jit Bahadur Rai"
+                },
+                {
+                    "sn": "7",
+                    "regNo": "72",
+                    "name": "Kirtiman Danda Gaunle",
+                    "address": "C.N.P.3",
+                    "chairman": "Hari Tamang"
+                },
+                {
+                    "sn": "8",
+                    "regNo": "74",
+                    "name": "Ammsal",
+                    "address": "C.N.P.3",
+                    "chairman": "Govinda Rai"
+                },
+                {
+                    "sn": "9",
+                    "regNo": "76",
+                    "name": "Hattisar Pradhan Tole",
+                    "address": "C.N.P.3",
+                    "chairman": "Uttar Bahadur Rai"
+                },
+                {
+                    "sn": "10",
+                    "regNo": "79",
+                    "name": "Schoolbari",
+                    "address": "C.N.P.3",
+                    "chairman": "Raj Kumar Nepali"
+                },
+                {
+                    "sn": "11",
+                    "regNo": "83",
+                    "name": "Ajingare",
+                    "address": "C.N.P.3",
+                    "chairman": "Sharan Kumar Rai"
+                },
+                {
+                    "sn": "12",
+                    "regNo": "115",
+                    "name": "Rajanagi",
+                    "address": "C.N.P.3",
+                    "chairman": "Bhakta Bahadur Rai"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Tole Development Organizations in Ward No. 4",
+            "headers": [
+                "S.N.",
+                "Reg. No.",
+                "Tole Development Org Name",
+                "Address",
+                "Chairman Name",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "regNo": "62",
+                    "name": "Barkhe Danda",
+                    "address": "C.N.P.4",
+                    "chairman": "Rita Rai",
+                    "contact": "9804786576"
+                },
+                {
+                    "sn": "2",
+                    "regNo": "69",
+                    "name": "Bhitteli Tole",
+                    "address": "C.N.P.4",
+                    "chairman": "Manu Sing Rai",
+                    "contact": "9827762444"
+                },
+                {
+                    "sn": "3",
+                    "regNo": "71",
+                    "name": "Sawali Tole",
+                    "address": "C.N.P.4",
+                    "chairman": "Prakash Rai",
+                    "contact": "9817797483"
+                },
+                {
+                    "sn": "4",
+                    "regNo": "75",
+                    "name": "Samriddhi",
+                    "address": "C.N.P.4",
+                    "chairman": "Lalita Magar",
+                    "contact": "9860590763"
+                },
+                {
+                    "sn": "5",
+                    "regNo": "77",
+                    "name": "Sri Lanka",
+                    "address": "C.N.P.4",
+                    "chairman": "Mangal Dorje Tamang",
+                    "contact": "9823501032"
+                },
+                {
+                    "sn": "6",
+                    "regNo": "80",
+                    "name": "Mainline Magardanda",
+                    "address": "C.N.P.4",
+                    "chairman": "Suresh Magar",
+                    "contact": "9829767812"
+                },
+                {
+                    "sn": "7",
+                    "regNo": "82",
+                    "name": "Triveni Sanibare",
+                    "address": "C.N.P.4",
+                    "chairman": "Arjun Tamang",
+                    "contact": ""
+                },
+                {
+                    "sn": "8",
+                    "regNo": "86",
+                    "name": "Sangam Tole",
+                    "address": "C.N.P.4",
+                    "chairman": "Binam Tamang",
+                    "contact": "9849788781"
+                },
+                {
+                    "sn": "9",
+                    "regNo": "91",
+                    "name": "Triveni Sanibare Bazar",
+                    "address": "C.N.P.4",
+                    "chairman": "Sahadev Rai",
+                    "contact": "9815908864"
+                },
+                {
+                    "sn": "10",
+                    "regNo": "96",
+                    "name": "Karamje Kirat",
+                    "address": "C.N.P.4",
+                    "chairman": "Dipak Rai",
+                    "contact": "9863872007"
+                },
+                {
+                    "sn": "11",
+                    "regNo": "101",
+                    "name": "Autari Than",
+                    "address": "C.N.P.4",
+                    "chairman": "Dambar Magar",
+                    "contact": "9821700029"
+                },
+                {
+                    "sn": "12",
+                    "regNo": "102",
+                    "name": "Somi Chowk",
+                    "address": "C.N.P.4",
+                    "chairman": "Dhan Kumari Rai",
+                    "contact": "9805950418"
+                },
+                {
+                    "sn": "13",
+                    "regNo": "104",
+                    "name": "Ajingare",
+                    "address": "C.N.P.4",
+                    "chairman": "Hari Bahadur Sarki",
+                    "contact": "9827737444"
+                },
+                {
+                    "sn": "14",
+                    "regNo": "110",
+                    "name": "Makamdanda",
+                    "address": "C.N.P.4",
+                    "chairman": "Santa Bir Rai",
+                    "contact": "9818427651"
+                },
+                {
+                    "sn": "15",
+                    "regNo": "121",
+                    "name": "Parijat Ghumti",
+                    "address": "C.N.P.4",
+                    "chairman": "Revanti Rai",
+                    "contact": "9842809747"
+                },
+                {
+                    "sn": "16",
+                    "regNo": "126",
+                    "name": "Basaha Than",
+                    "address": "C.N.P.4",
+                    "chairman": "Chakra Bahadur Rai",
+                    "contact": "9813171801"
+                },
+                {
+                    "sn": "17",
+                    "regNo": "127",
+                    "name": "Chatpate",
+                    "address": "C.N.P.4",
+                    "chairman": "Chakra Bahadur Raut",
+                    "contact": "9814955802"
+                },
+                {
+                    "sn": "18",
+                    "regNo": "130",
+                    "name": "Jan Adarsha",
+                    "address": "C.N.P.4",
+                    "chairman": "Kumar Magar",
+                    "contact": "9816705839"
+                },
+                {
+                    "sn": "19",
+                    "regNo": "142",
+                    "name": "Major Chautari Saptarangi",
+                    "address": "C.N.P.4",
+                    "chairman": "Yam Kumar Rai",
+                    "contact": "9803650678"
+                },
+                {
+                    "sn": "20",
+                    "regNo": "143",
+                    "name": "Chaudhary",
+                    "address": "C.N.P.4",
+                    "chairman": "Ghanshyam Chaudhary",
+                    "contact": "9813797385"
+                },
+                {
+                    "sn": "21",
+                    "regNo": "145",
+                    "name": "Egharkhare Magar",
+                    "address": "C.N.P.4",
+                    "chairman": "Jabar Sing Rai",
+                    "contact": "9817764979"
+                },
+                {
+                    "sn": "22",
+                    "regNo": "146",
+                    "name": "Egharkhare Charan Chowk",
+                    "address": "C.N.P.4",
+                    "chairman": "Min Bahadur B.K.",
+                    "contact": "9813005409"
+                },
+                {
+                    "sn": "23",
+                    "regNo": "147",
+                    "name": "Amalchauri Wantawa",
+                    "address": "C.N.P.4",
+                    "chairman": "Mila Ram Rai",
+                    "contact": "9825702805"
+                },
+                {
+                    "sn": "24",
+                    "regNo": "150",
+                    "name": "Tarware",
+                    "address": "C.N.P.4",
+                    "chairman": "Chitra Kumar Rai",
+                    "contact": "9803653538"
+                },
+                {
+                    "sn": "25",
+                    "regNo": "155",
+                    "name": "Barpani",
+                    "address": "C.N.P.4",
+                    "chairman": "Deu Mani Rai",
+                    "contact": "9807758838"
+                },
+                {
+                    "sn": "26",
+                    "regNo": "156",
+                    "name": "Shantitoole",
+                    "address": "C.N.P.4",
+                    "chairman": "Balkrishna Rai",
+                    "contact": "9826752041"
+                },
+                {
+                    "sn": "27",
+                    "regNo": "163",
+                    "name": "Triveni Sanibare Bazar",
+                    "address": "C.N.P.4",
+                    "chairman": "Tika Thulung",
+                    "contact": "9811723779"
+                },
+                {
+                    "sn": "28",
+                    "regNo": "164",
+                    "name": "Janakalyan",
+                    "address": "C.N.P.4",
+                    "chairman": "Sovitman B.K.",
+                    "contact": "9807758687"
+                },
+                {
+                    "sn": "29",
+                    "regNo": "165",
+                    "name": "Tin Dobhane",
+                    "address": "C.N.P.4",
+                    "chairman": "Kumar Dhan Rai",
+                    "contact": "9807758687"
+                },
+                {
+                    "sn": "30",
+                    "regNo": "168",
+                    "name": "Jirayat",
+                    "address": "C.N.P.4",
+                    "chairman": "Kumar Bista",
+                    "contact": "9765476898"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Tole Development Organizations in Ward No. 5",
+            "headers": [
+                "S.N.",
+                "Reg. No.",
+                "Tole Development Org Name",
+                "Address",
+                "Chairman Name",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "regNo": "2",
+                    "name": "Deurali Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Hark Bahadur Bhujel",
+                    "contact": "98119756293"
+                },
+                {
+                    "sn": "2",
+                    "regNo": "3",
+                    "name": "Ram Janaki Shivalaya Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Rajesh Rai",
+                    "contact": "9852890098"
+                },
+                {
+                    "sn": "3",
+                    "regNo": "6",
+                    "name": "Sandasi Baba Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Ramananda Chaudhary",
+                    "contact": "9842407504"
+                },
+                {
+                    "sn": "4",
+                    "regNo": "7",
+                    "name": "Dunggaha Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Indra Prasad Ghimire",
+                    "contact": ""
+                },
+                {
+                    "sn": "5",
+                    "regNo": "11",
+                    "name": "Phulbari Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Anita Panjiyar",
+                    "contact": "9814764591"
+                },
+                {
+                    "sn": "6",
+                    "regNo": "12",
+                    "name": "Dhami Chap Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Basudev Chaudhary",
+                    "contact": "9811701781"
+                },
+                {
+                    "sn": "7",
+                    "regNo": "13",
+                    "name": "Tokani Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Mo. Muslim Miya",
+                    "contact": "9807763094"
+                },
+                {
+                    "sn": "8",
+                    "regNo": "15",
+                    "name": "Dharmiyan Than Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Falgun Pr. Parajuli",
+                    "contact": "9807749755"
+                },
+                {
+                    "sn": "9",
+                    "regNo": "19",
+                    "name": "Kalika Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Manpur Chaudhary",
+                    "contact": "9819963697"
+                },
+                {
+                    "sn": "10",
+                    "regNo": "25",
+                    "name": "Dihibar Baba Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Lalita Ku. Chaudhary",
+                    "contact": "9814757074"
+                },
+                {
+                    "sn": "11",
+                    "regNo": "26",
+                    "name": "Shivalaya Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Krishna Bahadur Subedi",
+                    "contact": "9807782160"
+                },
+                {
+                    "sn": "12",
+                    "regNo": "31",
+                    "name": "Gadhichhal Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Rajeshwor Chaudhary",
+                    "contact": "9825711045"
+                },
+                {
+                    "sn": "13",
+                    "regNo": "36",
+                    "name": "Ram Janaki Tole Development Org",
+                    "address": "C.N.P.5",
+                    "chairman": "Ananda Dev Chaudhary",
+                    "contact": ""
+                },
+                {
+                    "sn": "14",
+                    "regNo": "103",
+                    "name": "Dhela Chauri",
+                    "address": "C.N.P.5",
+                    "chairman": "Rabin Chaudhary",
+                    "contact": "9849181163"
+                },
+                {
+                    "sn": "15",
+                    "regNo": "133",
+                    "name": "Waderuwa Khola",
+                    "address": "C.N.P.5",
+                    "chairman": "Ramchandra Pokharel",
+                    "contact": "9829751973"
+                },
+                {
+                    "sn": "16",
+                    "regNo": "144",
+                    "name": "Devisthan",
+                    "address": "C.N.P.5",
+                    "chairman": "Ramji Bista",
+                    "contact": "9807709479"
+                },
+                {
+                    "sn": "17",
+                    "regNo": "",
+                    "name": "Triyuga",
+                    "address": "C.N.P.5",
+                    "chairman": "Tirtharaj Ojha",
+                    "contact": "9804700039"
+                },
+                {
+                    "sn": "18",
+                    "regNo": "",
+                    "name": "Siwai Chowk",
+                    "address": "C.N.P.5",
+                    "chairman": "Manju Basnet",
+                    "contact": "9807748270"
+                },
+                {
+                    "sn": "19",
+                    "regNo": "",
+                    "name": "Ram Janaki Shivalaya",
+                    "address": "C.N.P.5",
+                    "chairman": "Ratna Bahadur Basnet",
+                    "contact": "9814716072"
+                },
+                {
+                    "sn": "20",
+                    "regNo": "",
+                    "name": "Mitra",
+                    "address": "C.N.P.5",
+                    "chairman": "Amar Bahadur Bogati",
+                    "contact": "9807762356"
+                },
+                {
+                    "sn": "21",
+                    "regNo": "",
+                    "name": "Dunggaha",
+                    "address": "C.N.P.5",
+                    "chairman": "Narayan Prasad Chaudhary",
+                    "contact": "9811553977"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Tole Development Organizations in Ward No. 6",
+            "headers": [
+                "S.N.",
+                "Reg. No.",
+                "Tole Development Org Name",
+                "Address",
+                "Chairman Name",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "regNo": "90",
+                    "name": "Radhakrishna",
+                    "address": "C.N.P.6",
+                    "chairman": "Tek Bahadur Thapa",
+                    "contact": "9841787334"
+                },
+                {
+                    "sn": "2",
+                    "regNo": "92",
+                    "name": "Kalika Tole Development Org",
+                    "address": "C.N.P.6",
+                    "chairman": "Indraman Rai",
+                    "contact": "9811735221"
+                },
+                {
+                    "sn": "3",
+                    "regNo": "95",
+                    "name": "Katunje",
+                    "address": "C.N.P.6",
+                    "chairman": "Ambar Bahadur Bista",
+                    "contact": "9805987320"
+                },
+                {
+                    "sn": "4",
+                    "regNo": "97",
+                    "name": "Autari",
+                    "address": "C.N.P.6",
+                    "chairman": "Tanka Bahadur Khadka",
+                    "contact": "9817751760"
+                },
+                {
+                    "sn": "5",
+                    "regNo": "100",
+                    "name": "Shivalaya",
+                    "address": "C.N.P.6",
+                    "chairman": "Shreelal Bishwokarma",
+                    "contact": "9821792795"
+                },
+                {
+                    "sn": "6",
+                    "regNo": "119",
+                    "name": "Kauwakhoj",
+                    "address": "C.N.P.6",
+                    "chairman": "Santa Bahadur Basnet",
+                    "contact": "9819997575"
+                },
+                {
+                    "sn": "7",
+                    "regNo": "128",
+                    "name": "Jyoti Namuna",
+                    "address": "C.N.P.6",
+                    "chairman": "Adhiraj Rai",
+                    "contact": "9816751635"
+                },
+                {
+                    "sn": "8",
+                    "regNo": "132",
+                    "name": "Thaneswor",
+                    "address": "C.N.P.6",
+                    "chairman": "Sherbahadur Khadka",
+                    "contact": "9824718599"
+                },
+                {
+                    "sn": "9",
+                    "regNo": "",
+                    "name": "Samabesi",
+                    "address": "C.N.P.6",
+                    "chairman": "Bidur Rai",
+                    "contact": "98247533578"
+                },
+                {
+                    "sn": "10",
+                    "regNo": "",
+                    "name": "Parijat",
+                    "address": "C.N.P.6",
+                    "chairman": "Lilbahadur Magar",
+                    "contact": "9819903039"
+                },
+                {
+                    "sn": "11",
+                    "regNo": "",
+                    "name": "Phulchowk",
+                    "address": "C.N.P.6",
+                    "chairman": "Gopal Magar",
+                    "contact": "9814798174"
+                },
+                {
+                    "sn": "12",
+                    "regNo": "",
+                    "name": "Deurali",
+                    "address": "C.N.P.6",
+                    "chairman": "Sher Bahadur Karki",
+                    "contact": "9807788212"
+                },
+                {
+                    "sn": "13",
+                    "regNo": "",
+                    "name": "Autari Khatri",
+                    "address": "C.N.P.6",
+                    "chairman": "Shiva Dhakal",
+                    "contact": "9816791515"
+                },
+                {
+                    "sn": "14",
+                    "regNo": "",
+                    "name": "Byarphot",
+                    "address": "C.N.P.6",
+                    "chairman": "Padam B.K.",
+                    "contact": "9844380385"
+                },
+                {
+                    "sn": "15",
+                    "regNo": "",
+                    "name": "Pavitra",
+                    "address": "C.N.P.6",
+                    "chairman": "Tej Bahadur",
+                    "contact": "9849740614"
+                },
+                {
+                    "sn": "16",
+                    "regNo": "",
+                    "name": "Ekata",
+                    "address": "C.N.P.6",
+                    "chairman": "Durga Narayan Shrestha",
+                    "contact": "9840985166"
+                },
+                {
+                    "sn": "17",
+                    "regNo": "",
+                    "name": "Janajagriti",
+                    "address": "C.N.P.6",
+                    "chairman": "",
+                    "contact": "9865956564"
+                },
+                {
+                    "sn": "18",
+                    "regNo": "",
+                    "name": "Dwarkhola",
+                    "address": "C.N.P.6",
+                    "chairman": "Dhan Bahadur Shrestha",
+                    "contact": ""
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Tole Development Organizations in Ward No. 7",
+            "headers": [
+                "S.N.",
+                "Reg. No.",
+                "Tole Development Org Name",
+                "Address",
+                "Chairman Name",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "regNo": "106",
+                    "name": "Panchawati",
+                    "address": "C.N.P.7",
+                    "chairman": "Padam Prasad Banjara",
+                    "contact": ""
+                },
+                {
+                    "sn": "2",
+                    "regNo": "107",
+                    "name": "Bahuntole Lamechauri",
+                    "address": "C.N.P.7",
+                    "chairman": "Keshav Adhikari",
+                    "contact": ""
+                },
+                {
+                    "sn": "3",
+                    "regNo": "108",
+                    "name": "Sitapaila",
+                    "address": "C.N.P.7",
+                    "chairman": "Udesh Rai",
+                    "contact": "9823580097"
+                },
+                {
+                    "sn": "4",
+                    "regNo": "109",
+                    "name": "Sundar Beltar Height",
+                    "address": "C.N.P.7",
+                    "chairman": "Gajendra Bahadur Khatri",
+                    "contact": "9862311820"
+                },
+                {
+                    "sn": "5",
+                    "regNo": "112",
+                    "name": "Madan Chowk",
+                    "address": "C.N.P.7",
+                    "chairman": "Tikaram Shrestha",
+                    "contact": "9862814733"
+                },
+                {
+                    "sn": "6",
+                    "regNo": "113",
+                    "name": "Samuhik",
+                    "address": "C.N.P.7",
+                    "chairman": "Chitra Bahadur Kepchhaki Magar",
+                    "contact": "9862981276"
+                },
+                {
+                    "sn": "7",
+                    "regNo": "114",
+                    "name": "Kalyan Paruhang",
+                    "address": "C.N.P.7",
+                    "chairman": "Arjun Rai",
+                    "contact": "9819753049"
+                },
+                {
+                    "sn": "8",
+                    "regNo": "116",
+                    "name": "Raktamala",
+                    "address": "C.N.P.7",
+                    "chairman": "Gajendra Bhujel",
+                    "contact": "9861793770"
+                },
+                {
+                    "sn": "9",
+                    "regNo": "118",
+                    "name": "Naya Goreto Line",
+                    "address": "C.N.P.7",
+                    "chairman": "Sarmila Rai",
+                    "contact": "9805966644"
+                },
+                {
+                    "sn": "10",
+                    "regNo": "120",
+                    "name": "Bhulke",
+                    "address": "C.N.P.7",
+                    "chairman": "Dan Bahadur Paudel",
+                    "contact": "9842899359"
+                },
+                {
+                    "sn": "11",
+                    "regNo": "151",
+                    "name": "Pragati",
+                    "address": "C.N.P.7",
+                    "chairman": "Krishna Kumar Thapa Magar",
+                    "contact": "9862983400"
+                },
+                {
+                    "sn": "12",
+                    "regNo": "157",
+                    "name": "Hang Bazar",
+                    "address": "C.N.P.7",
+                    "chairman": "Surya Bahadur Tamang",
+                    "contact": "9863844758"
+                },
+                {
+                    "sn": "13",
+                    "regNo": "171",
+                    "name": "Shanti Chowk",
+                    "address": "C.N.P.7",
+                    "chairman": "Arjun Kumar Rai",
+                    "contact": "9863905799"
+                },
+                {
+                    "sn": "14",
+                    "regNo": "",
+                    "name": "Sajhaline",
+                    "address": "C.N.P.7",
+                    "chairman": "Raj Kumar Rai",
+                    "contact": ""
+                },
+                {
+                    "sn": "15",
+                    "regNo": "",
+                    "name": "Trimarga Tole",
+                    "address": "C.N.P.7",
+                    "chairman": "Shishir Rai",
+                    "contact": ""
+                },
+                {
+                    "sn": "16",
+                    "regNo": "",
+                    "name": "Puwardanda",
+                    "address": "C.N.P.7",
+                    "chairman": "Ivindra Rai",
+                    "contact": ""
+                },
+                {
+                    "sn": "17",
+                    "regNo": "",
+                    "name": "Kumang",
+                    "address": "C.N.P.7",
+                    "chairman": "Mohan Khadka",
+                    "contact": ""
+                },
+                {
+                    "sn": "18",
+                    "regNo": "",
+                    "name": "B.P. Chowk",
+                    "address": "C.N.P.7",
+                    "chairman": "Surya Bahadur Shrestha",
+                    "contact": ""
+                },
+                {
+                    "sn": "19",
+                    "regNo": "",
+                    "name": "Kanchanjunga",
+                    "address": "C.N.P.7",
+                    "chairman": "Dillisher Shrestha",
+                    "contact": ""
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Tole Development Organizations in Ward No. 8",
+            "headers": [
+                "S.N.",
+                "Reg. No.",
+                "Tole Development Org Name",
+                "Address",
+                "Chairman Name"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "regNo": "44",
+                    "name": "Dhappad",
+                    "address": "C.N.P.8",
+                    "chairman": "Sampat Rai"
+                },
+                {
+                    "sn": "2",
+                    "regNo": "46",
+                    "name": "Bargachhi",
+                    "address": "C.N.P.8",
+                    "chairman": "Angdandi Rai"
+                },
+                {
+                    "sn": "3",
+                    "regNo": "48",
+                    "name": "Pandit",
+                    "address": "C.N.P.8",
+                    "chairman": "Elina Rai"
+                },
+                {
+                    "sn": "4",
+                    "regNo": "50",
+                    "name": "Kusungtang Pokhare",
+                    "address": "C.N.P.8",
+                    "chairman": "Rabin Rai"
+                },
+                {
+                    "sn": "5",
+                    "regNo": "51",
+                    "name": "Simatar",
+                    "address": "C.N.P.8",
+                    "chairman": "Nanda Bahadur Magar"
+                },
+                {
+                    "sn": "6",
+                    "regNo": "52",
+                    "name": "Siddhipur",
+                    "address": "C.N.P.8",
+                    "chairman": "Lil Bahadur Magar"
+                },
+                {
+                    "sn": "7",
+                    "regNo": "53",
+                    "name": "Apraha",
+                    "address": "C.N.P.8",
+                    "chairman": "Jeewan Prakash Rai"
+                },
+                {
+                    "sn": "8",
+                    "regNo": "54",
+                    "name": "Kalitar Bagaincha",
+                    "address": "C.N.P.8",
+                    "chairman": "Tika Magar"
+                },
+                {
+                    "sn": "9",
+                    "regNo": "57",
+                    "name": "Dharapani",
+                    "address": "C.N.P.8",
+                    "chairman": "Ambar Bahadur Rai"
+                },
+                {
+                    "sn": "10",
+                    "regNo": "59",
+                    "name": "Shivalaya",
+                    "address": "C.N.P.8",
+                    "chairman": "Dinesh Rai"
+                },
+                {
+                    "sn": "11",
+                    "regNo": "68",
+                    "name": "Gaiya Than",
+                    "address": "C.N.P.8",
+                    "chairman": "Mohan Magar"
+                },
+                {
+                    "sn": "12",
+                    "regNo": "73",
+                    "name": "Namuna",
+                    "address": "C.N.P.8",
+                    "chairman": "Ambar Bahadur Bhujel"
+                },
+                {
+                    "sn": "13",
+                    "regNo": "87",
+                    "name": "Singhathan",
+                    "address": "C.N.P.8",
+                    "chairman": "Shomitman Chhetri"
+                },
+                {
+                    "sn": "14",
+                    "regNo": "89",
+                    "name": "Dhodeni",
+                    "address": "C.N.P.8",
+                    "chairman": "Santosh Rai"
+                },
+                {
+                    "sn": "15",
+                    "regNo": "98",
+                    "name": "Sanwa",
+                    "address": "C.N.P.8",
+                    "chairman": "Dev Bahadur Magar"
+                },
+                {
+                    "sn": "16",
+                    "regNo": "125",
+                    "name": "Waitung Lungintar",
+                    "address": "C.N.P.8",
+                    "chairman": "Hari Khadka"
+                },
+                {
+                    "sn": "17",
+                    "regNo": "131",
+                    "name": "Belpani",
+                    "address": "C.N.P.8",
+                    "chairman": "Santosh Kumar Rai"
+                },
+                {
+                    "sn": "18",
+                    "regNo": "139",
+                    "name": "Beshara",
+                    "address": "C.N.P.8",
+                    "chairman": "Hukum Bahadur Magar"
+                },
+                {
+                    "sn": "19",
+                    "regNo": "148",
+                    "name": "Todke",
+                    "address": "C.N.P.8",
+                    "chairman": "Bhavindra Rai"
+                },
+                {
+                    "sn": "20",
+                    "regNo": "149",
+                    "name": "Khanyabasti",
+                    "address": "C.N.P.8",
+                    "chairman": "Birendra Khadka"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Tole Development Organizations in Ward No. 9",
+            "headers": [
+                "S.N.",
+                "Reg. No.",
+                "Tole Development Org Name",
+                "Address",
+                "Chairman Name",
+                "Contact Number"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "regNo": "39",
+                    "name": "Dipjyoti",
+                    "address": "C.N.P.9",
+                    "chairman": "Bajra Bahadur Dahal",
+                    "contact": "9817771744"
+                },
+                {
+                    "sn": "2",
+                    "regNo": "40",
+                    "name": "Ganesh Mandir",
+                    "address": "C.N.P.9",
+                    "chairman": "Breesha Bahadur Thapa",
+                    "contact": "9825760038"
+                },
+                {
+                    "sn": "3",
+                    "regNo": "41",
+                    "name": "Manakamana",
+                    "address": "C.N.P.9",
+                    "chairman": "Chandralal Giri",
+                    "contact": "9852835550"
+                },
+                {
+                    "sn": "4",
+                    "regNo": "42",
+                    "name": "Radha Krishna",
+                    "address": "C.N.P.9",
+                    "chairman": "Pradip Karki",
+                    "contact": "9804772420"
+                },
+                {
+                    "sn": "5",
+                    "regNo": "47",
+                    "name": "Ramjanaki",
+                    "address": "C.N.P.9",
+                    "chairman": "Ramba Kumari Chaudhary",
+                    "contact": "9816778470"
+                },
+                {
+                    "sn": "6",
+                    "regNo": "49",
+                    "name": "Tower Danda",
+                    "address": "C.N.P.9",
+                    "chairman": "Om Prakash Raut",
+                    "contact": "9805966659"
+                },
+                {
+                    "sn": "7",
+                    "regNo": "55",
+                    "name": "Mills Area",
+                    "address": "C.N.P.9",
+                    "chairman": "Taranath Giri",
+                    "contact": "9815716729"
+                },
+                {
+                    "sn": "8",
+                    "regNo": "63",
+                    "name": "Shivalaya Namuna",
+                    "address": "C.N.P.9",
+                    "chairman": "Rajan Raut",
+                    "contact": "9811784604"
+                },
+                {
+                    "sn": "9",
+                    "regNo": "65",
+                    "name": "Radhakrishna",
+                    "address": "C.N.P.9",
+                    "chairman": "Prem Karki",
+                    "contact": "9821700446"
+                },
+                {
+                    "sn": "10",
+                    "regNo": "78",
+                    "name": "Pateruwa",
+                    "address": "C.N.P.9",
+                    "chairman": "Tanka Bahadur Thapa",
+                    "contact": "9811793899"
+                },
+                {
+                    "sn": "11",
+                    "regNo": "81",
+                    "name": "Buddhannagar",
+                    "address": "C.N.P.9",
+                    "chairman": "Indra Bahadur Raut",
+                    "contact": "9816567320"
+                },
+                {
+                    "sn": "12",
+                    "regNo": "84",
+                    "name": "Hadia Bazar Tole Development Org",
+                    "address": "C.N.P.9",
+                    "chairman": "Bheg Bahadur Karki",
+                    "contact": "9803731354"
+                },
+                {
+                    "sn": "13",
+                    "regNo": "105",
+                    "name": "Shri Rajaji",
+                    "address": "C.N.P.9",
+                    "chairman": "Sitaram Chaudhary",
+                    "contact": "9815767751"
+                },
+                {
+                    "sn": "14",
+                    "regNo": "111",
+                    "name": "Kadam Chautara",
+                    "address": "C.N.P.9",
+                    "chairman": "Bishnudev Chaudhary",
+                    "contact": "9805130424"
+                },
+                {
+                    "sn": "15",
+                    "regNo": "117",
+                    "name": "Siddheshwor",
+                    "address": "C.N.P.9",
+                    "chairman": "Dhruva Prasad Gelal",
+                    "contact": "9842907645"
+                },
+                {
+                    "sn": "16",
+                    "regNo": "122",
+                    "name": "Katahari",
+                    "address": "C.N.P.9",
+                    "chairman": "Shubha Narayan Chaudhary",
+                    "contact": "9827788282"
+                },
+                {
+                    "sn": "17",
+                    "regNo": "134",
+                    "name": "Bhim Sardar",
+                    "address": "C.N.P.9",
+                    "chairman": "Ramakant Chaudhary",
+                    "contact": "9824793017"
+                },
+                {
+                    "sn": "18",
+                    "regNo": "135",
+                    "name": "Milan",
+                    "address": "C.N.P.9",
+                    "chairman": "Satya Bahadur Raut",
+                    "contact": "8904712077"
+                },
+                {
+                    "sn": "19",
+                    "regNo": "136",
+                    "name": "Sagarmatha Milan",
+                    "address": "C.N.P.9",
+                    "chairman": "Narayan Basnet",
+                    "contact": "9814730261"
+                },
+                {
+                    "sn": "20",
+                    "regNo": "137",
+                    "name": "Dhanpokhari Namuna",
+                    "address": "C.N.P.9",
+                    "chairman": "Keshav Khadka",
+                    "contact": "9749928399"
+                },
+                {
+                    "sn": "21",
+                    "regNo": "140",
+                    "name": "Deurali",
+                    "address": "C.N.P.9",
+                    "chairman": "Keshar Poudel",
+                    "contact": "9816733916"
+                },
+                {
+                    "sn": "22",
+                    "regNo": "141",
+                    "name": "Raktamala",
+                    "address": "C.N.P.9",
+                    "chairman": "Tankanath Ojha",
+                    "contact": "9863872163"
+                },
+                {
+                    "sn": "23",
+                    "regNo": "153",
+                    "name": "Juntara",
+                    "address": "C.N.P.9",
+                    "chairman": "Sher Bahadur Budhathoki",
+                    "contact": ""
+                },
+                {
+                    "sn": "24",
+                    "regNo": "154",
+                    "name": "Bhadauli",
+                    "address": "C.N.P.9",
+                    "chairman": "Jagat Bahadur Tamang",
+                    "contact": "9706858287"
+                },
+                {
+                    "sn": "25",
+                    "regNo": "158",
+                    "name": "Sukrabare Shivalaya",
+                    "address": "C.N.P.9",
+                    "chairman": "Hari Narayan Chaudhary",
+                    "contact": "9819728400"
+                },
+                {
+                    "sn": "26",
+                    "regNo": "159",
+                    "name": "Bhagawati",
+                    "address": "C.N.P.9",
+                    "chairman": "Nainsingh Subedi",
+                    "contact": "9817747149"
+                },
+                {
+                    "sn": "27",
+                    "regNo": "160",
+                    "name": "Jaleshwor",
+                    "address": "C.N.P.9",
+                    "chairman": "Tikaram Bhattarai",
+                    "contact": "9811747392"
+                },
+                {
+                    "sn": "28",
+                    "regNo": "161",
+                    "name": "Chandrasurya",
+                    "address": "C.N.P.9",
+                    "chairman": "Ganesh Jiri",
+                    "contact": "9803831354"
+                },
+                {
+                    "sn": "29",
+                    "regNo": "162",
+                    "name": "Namuna Adarsha",
+                    "address": "C.N.P.9",
+                    "chairman": "Sitaram Chaudhary",
+                    "contact": "9825729574"
+                },
+                {
+                    "sn": "30",
+                    "regNo": "169",
+                    "name": "Jadibuti Navajagaran",
+                    "address": "C.N.P.9",
+                    "chairman": "Januka Karki",
+                    "contact": "9879929020"
+                },
+                {
+                    "sn": "31",
+                    "regNo": "170",
+                    "name": "Khoriya",
+                    "address": "C.N.P.9",
+                    "chairman": "Budhani Lekhi",
+                    "contact": "9819904078"
+                },
+                {
+                    "sn": "32",
+                    "regNo": "",
+                    "name": "Rajashree",
+                    "address": "C.N.P.9",
+                    "chairman": "Bhola Chaudhary",
+                    "contact": "9815736327"
+                },
+                {
+                    "sn": "33",
+                    "regNo": "",
+                    "name": "Hattisar",
+                    "address": "C.N.P.9",
+                    "chairman": "Chandahas Chaudhary",
+                    "contact": "9863825825"
+                },
+                {
+                    "sn": "34",
+                    "regNo": "",
+                    "name": "Sukrabare Shivalaya",
+                    "address": "C.N.P.9",
+                    "chairman": "Hari Chaudhary",
+                    "contact": "9819728400"
+                }
+            ]
+        },
+        {
+            "title": "Details regarding Tole Development Organizations in Ward No. 10",
+            "headers": [
+                "S.N.",
+                "Reg. No.",
+                "Tole Development Org Name",
+                "Address",
+                "Chairman Name"
+            ],
+            "source": "Office of Municipal Executive",
+            "rows": [
+                {
+                    "sn": "1",
+                    "regNo": "4",
+                    "name": "Hadia Bazar Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Santosh Kumar Khatri"
+                },
+                {
+                    "sn": "2",
+                    "regNo": "5",
+                    "name": "Shanti Nagar Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Tanka Prasad Banjara"
+                },
+                {
+                    "sn": "3",
+                    "regNo": "8",
+                    "name": "Om Shanti Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Rudra B. Raut"
+                },
+                {
+                    "sn": "4",
+                    "regNo": "9",
+                    "name": "Pragati Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Jahan Sing Raut"
+                },
+                {
+                    "sn": "5",
+                    "regNo": "10",
+                    "name": "Lauwagadhi Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Ram Bahadur Dhungel"
+                },
+                {
+                    "sn": "6",
+                    "regNo": "17",
+                    "name": "Khairaha Shanti Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Laxmi Chaudhary"
+                },
+                {
+                    "sn": "7",
+                    "regNo": "18",
+                    "name": "Khairaha Shivshakti Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Bhubaneswar Chaudhary"
+                },
+                {
+                    "sn": "8",
+                    "regNo": "20",
+                    "name": "Melmilap Shantinagar",
+                    "address": "C.N.P.10",
+                    "chairman": "Nar Bahadur Raut"
+                },
+                {
+                    "sn": "9",
+                    "regNo": "21",
+                    "name": "Milan Chowk Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Khilraj Pokhrel"
+                },
+                {
+                    "sn": "10",
+                    "regNo": "22",
+                    "name": "Shivalaya Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Tekraj Poudel"
+                },
+                {
+                    "sn": "11",
+                    "regNo": "24",
+                    "name": "Rajaji Devdhar Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Krishna Prasad Chaudhary"
+                },
+                {
+                    "sn": "12",
+                    "regNo": "27",
+                    "name": "School Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Ghanshyam Raut"
+                },
+                {
+                    "sn": "13",
+                    "regNo": "28",
+                    "name": "Khairahajhoda Beech Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Binda Poudel"
+                },
+                {
+                    "sn": "14",
+                    "regNo": "29",
+                    "name": "Gadhithan Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Sukdev Chaudhary"
+                },
+                {
+                    "sn": "15",
+                    "regNo": "30",
+                    "name": "Shiv Nagar Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Kumar Karki"
+                },
+                {
+                    "sn": "16",
+                    "regNo": "32",
+                    "name": "Surakshya Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Krishna Kumar Basnet"
+                },
+                {
+                    "sn": "17",
+                    "regNo": "33",
+                    "name": "Ikraha Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Uddhav Karki"
+                },
+                {
+                    "sn": "18",
+                    "regNo": "34",
+                    "name": "Devnagar Bakainiya Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Ram Prasad Chaudhary"
+                },
+                {
+                    "sn": "19",
+                    "regNo": "35",
+                    "name": "Bhimsen Tole Development Org",
+                    "address": "C.N.P.10",
+                    "chairman": "Mahi Narayan Chaudhary"
+                },
+                {
+                    "sn": "20",
+                    "regNo": "38",
+                    "name": "Bakainiya Naya Basti",
+                    "address": "C.N.P.10",
+                    "chairman": "Babu Chaudhary"
+                },
+                {
+                    "sn": "21",
+                    "regNo": "43",
+                    "name": "Sanyasi Baba",
+                    "address": "C.N.P.10",
+                    "chairman": "Narayan Prasad Chaudhary"
+                },
+                {
+                    "sn": "22",
+                    "regNo": "152",
+                    "name": "Briddha",
+                    "address": "C.N.P.10",
+                    "chairman": "Tirtha Bahadur Raut"
+                },
+                {
+                    "sn": "23",
+                    "regNo": "",
+                    "name": "Ganga Jamuna",
+                    "address": "C.N.P.10",
+                    "chairman": "Kedar Koirala"
+                },
+                {
+                    "sn": "24",
+                    "regNo": "",
+                    "name": "Shivnagar Shivalaya",
+                    "address": "C.N.P.10",
+                    "chairman": "Jamuna Khadka"
+                }
+            ]
+        }
+    ],
+    "nextSection": "Details regarding Ward-level Women Network Committee in Municipality"
+}

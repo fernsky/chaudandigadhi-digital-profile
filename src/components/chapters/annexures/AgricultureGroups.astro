@@ -9,52 +9,61 @@ interface Props {
 const { lang } = Astro.props;
 
 // Define Types
-type Row = { sn: string; name: string; ward: string; contact: string };
-type TableData = { title: string; headers: string[]; rows: Row[] };
-type SectionData = { id: string; title: string; table: TableData };
+type AgricultureRow = { sn: string; name: string; ward: string; contact: string };
+type LivestockRow = { sn: string; name: string; operator: string; ward: string; contact: string };
 
-const data = await loadChapterSection<SectionData>(
+type TableData<T> = { title: string; source?: string; headers: string[]; rows: T[] };
+type SectionData<T> = { id?: string; title?: string; table: TableData<T> };
+
+const agricultureData = await loadChapterSection<SectionData<AgricultureRow>>(
     "annexures",
     "agriculture-livestock-groups",
+    lang,
+);
+
+const livestockData = await loadChapterSection<TableData<LivestockRow>>(
+    "annexures",
+    "livestock-groups",
     lang,
 );
 ---
 
 {
-    data && (
+    agricultureData && (
         <div
             id="agriculture-livestock-groups"
             class="scroll-mt-32 space-y-8 mb-16 pt-8 border-t border-white/5"
         >
             <div>
                 <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-8">
-                    <span class="text-[#f2e25d]">{data.id}</span>: {data.title}
+                    <span class="text-[#f2e25d]">{agricultureData.id}</span>: {agricultureData.title}
                 </h2>
 
-                <div class="mb-6">
+                <!-- Agriculture Groups Table -->
+                <div class="mb-12">
                     <h3 class="font-serif text-lg md:text-xl text-white mb-4 text-center font-medium opacity-90">
-                        {data.table.title}
+                        {agricultureData.table.title}
                     </h3>
                     <div class="overflow-x-auto rounded-lg border border-[#f2e25d]/10 bg-white/5">
                         <table class="w-full text-left border-collapse">
                             <thead class="bg-[#f2e25d]/10 text-white font-serif text-lg">
                                 <tr>
                                     <th class="px-6 py-4 border-b border-[#f2e25d]/20 w-16 text-center font-bold text-[#f2e25d]">
-                                        {data.table.headers[0]}
+                                        {agricultureData.table.headers[0]}
                                     </th>
                                     <th class="px-6 py-4 border-b border-[#f2e25d]/20 font-bold text-[#f2e25d]">
-                                        {data.table.headers[1]}
+                                        {agricultureData.table.headers[1]}
                                     </th>
                                     <th class="px-6 py-4 border-b border-[#f2e25d]/20 w-24 text-center font-bold text-[#f2e25d]">
-                                        {data.table.headers[2]}
+                                        {agricultureData.table.headers[2]}
                                     </th>
                                     <th class="px-6 py-4 border-b border-[#f2e25d]/20 font-bold text-[#f2e25d]">
-                                        {data.table.headers[3]}
+                                        {agricultureData.table.headers[3]}
                                     </th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-[#f2e25d]/10 text-zinc-300 font-serif">
-                                {data.table.rows.map((row) => (
+                                {agricultureData.table.rows.map((row) => (
                                     <tr class="hover:bg-[#f2e25d]/5 transition-colors">
                                         <td class="px-6 py-3 text-center opacity-70">
                                             {row.sn}
@@ -71,7 +80,68 @@ const data = await loadChapterSection<SectionData>(
                             </tbody>
                         </table>
                     </div>
+                    {agricultureData.table.source && (
+                        <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
+                             {lang === 'ne' ? 'स्रोतः' : 'Source:'} {agricultureData.table.source}
+                        </div>
+                    )}
                 </div>
+
+                <!-- Livestock Groups Table -->
+                {livestockData && (
+                    <div class="mb-6">
+                         <h3 class="font-serif text-lg md:text-xl text-white mb-4 text-center font-medium opacity-90">
+                            {livestockData.title}
+                        </h3>
+                        <div class="overflow-x-auto rounded-lg border border-[#f2e25d]/10 bg-white/5">
+                            <table class="w-full text-left border-collapse">
+                                <thead class="bg-[#f2e25d]/10 text-white font-serif text-lg">
+                                    <tr>
+                                        <th class="px-6 py-4 border-b border-[#f2e25d]/20 w-16 text-center font-bold text-[#f2e25d]">
+                                            {livestockData.headers[0]}
+                                        </th>
+                                        <th class="px-6 py-4 border-b border-[#f2e25d]/20 font-bold text-[#f2e25d]">
+                                            {livestockData.headers[1]}
+                                        </th>
+                                        <th class="px-6 py-4 border-b border-[#f2e25d]/20 font-bold text-[#f2e25d]">
+                                            {livestockData.headers[2]}
+                                        </th>
+                                        <th class="px-6 py-4 border-b border-[#f2e25d]/20 w-24 text-center font-bold text-[#f2e25d]">
+                                            {livestockData.headers[3]}
+                                        </th>
+                                        <th class="px-6 py-4 border-b border-[#f2e25d]/20 font-bold text-[#f2e25d]">
+                                            {livestockData.headers[4]}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-[#f2e25d]/10 text-zinc-300 font-serif">
+                                    {livestockData.rows.map((row) => (
+                                        <tr class="hover:bg-[#f2e25d]/5 transition-colors">
+                                            <td class="px-6 py-3 text-center opacity-70">
+                                                {row.sn}
+                                            </td>
+                                            <td class="px-6 py-3 font-medium text-white">
+                                                {row.name}
+                                            </td>
+                                            <td class="px-6 py-3">
+                                                {row.operator}
+                                            </td>
+                                            <td class="px-6 py-3 text-center">
+                                                {row.ward}
+                                            </td>
+                                            <td class="px-6 py-3">{row.contact}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        {livestockData.source && (
+                            <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
+                                {lang === 'ne' ? 'स्रोतः' : 'Source:'} {livestockData.source}
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     )
