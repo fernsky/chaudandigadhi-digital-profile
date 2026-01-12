@@ -1,0 +1,682 @@
+{
+    "id": "Annexure - 3",
+    "title": "Details of Health Workers Working in Health Institutions under the Municipality",
+    "table": {
+        "title": "Table No. 76: Details of Employees Working in the Municipality's Health Post",
+        "source": "Office of Municipal Executive",
+        "headers": [
+            "S.N.",
+            "Name",
+            "Post",
+            "Office",
+            "Contact No."
+        ],
+        "rows": [
+            {
+                "sn": "1",
+                "name": "Samjhana Lama",
+                "designation": "Sr. ANM Inspector",
+                "office": "Chaudandigadhi Health Post - Ward No. 1",
+                "contact": "9842961492"
+            },
+            {
+                "sn": "2",
+                "name": "Sirjana Rai",
+                "designation": "AHW",
+                "office": "Chaudandigadhi Health Post - Ward No. 1",
+                "contact": ""
+            },
+            {
+                "sn": "3",
+                "name": "Raj Kumar Rai",
+                "designation": "Sr. AHW",
+                "office": "Chaudandigadhi Health Post - Ward No. 1",
+                "contact": "9842961492"
+            },
+            {
+                "sn": "4",
+                "name": "Balika Magar",
+                "designation": "Office Helper",
+                "office": "Chaudandigadhi Health Post - Ward No. 1",
+                "contact": ""
+            },
+            {
+                "sn": "5",
+                "name": "Bemasari Rai",
+                "designation": "Sr. ANM Inspector",
+                "office": "Basic Health Post Madibas - Ward No. 2",
+                "contact": "9842808491"
+            },
+            {
+                "sn": "6",
+                "name": "Shyam Kumar Bik",
+                "designation": "Sr. AHW",
+                "office": "Basic Health Post Madibas - Ward No. 2",
+                "contact": "9842808491"
+            },
+            {
+                "sn": "7",
+                "name": "Dirga Kumari Gelal",
+                "designation": "Lab Assistant",
+                "office": "Basic Health Post Madibas - Ward No. 2",
+                "contact": ""
+            },
+            {
+                "sn": "8",
+                "name": "Nirmala Khadka",
+                "designation": "Office Helper",
+                "office": "Basic Health Post Madibas - Ward No. 2",
+                "contact": ""
+            },
+            {
+                "sn": "9",
+                "name": "Bipin Prasad Chaudhary",
+                "designation": "Health Assistant",
+                "office": "Basic Health Center Aamsal - Ward No. 3",
+                "contact": "9804748264"
+            },
+            {
+                "sn": "10",
+                "name": "Bimala Basnet",
+                "designation": "ANM",
+                "office": "Basic Health Center Aamsal - Ward No. 3",
+                "contact": ""
+            },
+            {
+                "sn": "11",
+                "name": "Anusha Tamang",
+                "designation": "Lab Assistant",
+                "office": "Basic Health Center Aamsal - Ward No. 3",
+                "contact": ""
+            },
+            {
+                "sn": "12",
+                "name": "Sunita Rai",
+                "designation": "Office Helper",
+                "office": "Basic Health Center Aamsal - Ward No. 3",
+                "contact": ""
+            },
+            {
+                "sn": "13",
+                "name": "Tej Bahadur Pokharel",
+                "designation": "Sr. AHW Officer",
+                "office": "Basaha Health Post - Ward No. 4",
+                "contact": ""
+            },
+            {
+                "sn": "14",
+                "name": "Shambhu Nepal",
+                "designation": "Sr. AHW Officer",
+                "office": "Basaha Health Post - Ward No. 4",
+                "contact": "9861701826"
+            },
+            {
+                "sn": "15",
+                "name": "Sushma Rai",
+                "designation": "Sr. AHW",
+                "office": "Basaha Health Post - Ward No. 4",
+                "contact": ""
+            },
+            {
+                "sn": "16",
+                "name": "Savitra Neupane",
+                "designation": "Sr. ANM Inspector",
+                "office": "Basaha Health Post - Ward No. 4",
+                "contact": ""
+            },
+            {
+                "sn": "17",
+                "name": "Laxmi Bagdas",
+                "designation": "Sr. ANM",
+                "office": "Basaha Health Post - Ward No. 4",
+                "contact": ""
+            },
+            {
+                "sn": "18",
+                "name": "Mamata Ghimire",
+                "designation": "Sr. ANM",
+                "office": "Basaha Health Post - Ward No. 4",
+                "contact": ""
+            },
+            {
+                "sn": "19",
+                "name": "Pujana Rai",
+                "designation": "ANM",
+                "office": "Basaha Health Post - Ward No. 4",
+                "contact": ""
+            },
+            {
+                "sn": "20",
+                "name": "Menuka Rai",
+                "designation": "Lab Assistant",
+                "office": "Basaha Health Post - Ward No. 4",
+                "contact": ""
+            },
+            {
+                "sn": "21",
+                "name": "Tulash Magar",
+                "designation": "Office Helper",
+                "office": "Basaha Health Post - Ward No. 4",
+                "contact": ""
+            },
+            {
+                "sn": "22",
+                "name": "Dip Narayan Chaudhary",
+                "designation": "Public Health Inspector",
+                "office": "Sundarpur Health Post - Ward No. 5",
+                "contact": ""
+            },
+            {
+                "sn": "23",
+                "name": "Rosan Kumar Chaudhary",
+                "designation": "Sr. AHW",
+                "office": "Sundarpur Health Post - Ward No. 5",
+                "contact": "9843183267"
+            },
+            {
+                "sn": "24",
+                "name": "Kalpana Kumari Chaudhary",
+                "designation": "Sr. ANM",
+                "office": "Sundarpur Health Post - Ward No. 5",
+                "contact": ""
+            },
+            {
+                "sn": "25",
+                "name": "Sandhya Chaudhary",
+                "designation": "Sr. ANM",
+                "office": "Sundarpur Health Post - Ward No. 5",
+                "contact": ""
+            },
+            {
+                "sn": "26",
+                "name": "Kaushila Bhattarai",
+                "designation": "Sr. ANM",
+                "office": "Sundarpur Health Post - Ward No. 5",
+                "contact": ""
+            },
+            {
+                "sn": "27",
+                "name": "Kaushila Bhattarai",
+                "designation": "Sr. AHW",
+                "office": "Sundarpur Health Post - Ward No. 5",
+                "contact": ""
+            },
+            {
+                "sn": "28",
+                "name": "Ranjana Karki",
+                "designation": "ANM",
+                "office": "Sundarpur Health Post - Ward No. 5",
+                "contact": ""
+            },
+            {
+                "sn": "29",
+                "name": "Rina Chaudhary",
+                "designation": "Lab Assistant",
+                "office": "Sundarpur Health Post - Ward No. 5",
+                "contact": ""
+            },
+            {
+                "sn": "30",
+                "name": "Ramita Chaudhary",
+                "designation": "Office Helper",
+                "office": "Sundarpur Health Post - Ward No. 5",
+                "contact": ""
+            },
+            {
+                "sn": "31",
+                "name": "Raj Kumar Chaudhary",
+                "designation": "AHW",
+                "office": "Basic Health Center Siwai - 5",
+                "contact": ""
+            },
+            {
+                "sn": "32",
+                "name": "Niramaya Chaudhary",
+                "designation": "ANM",
+                "office": "Basic Health Center Siwai - 5",
+                "contact": ""
+            },
+            {
+                "sn": "33",
+                "name": "Sushma Parajuli",
+                "designation": "Office Helper",
+                "office": "Basic Health Center Siwai - 5",
+                "contact": ""
+            },
+            {
+                "sn": "34",
+                "name": "Karishma Subedi",
+                "designation": "Sr. AHW",
+                "office": "Basic Health Center Sirbani - 6",
+                "contact": ""
+            },
+            {
+                "sn": "35",
+                "name": "Elshiva Majhi",
+                "designation": "ANM",
+                "office": "Basic Health Center Sirbani - 6",
+                "contact": ""
+            },
+            {
+                "sn": "36",
+                "name": "Shanti Shrestha",
+                "designation": "Office Helper",
+                "office": "Basic Health Center Sirbani - 6",
+                "contact": ""
+            },
+            {
+                "sn": "37",
+                "name": "Dr. Amrit Karna",
+                "designation": "Medical Officer",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "38",
+                "name": "Dr. Siddhi Singh",
+                "designation": "Medical Officer",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "39",
+                "name": "Dr. Birendra Prasad Yadav",
+                "designation": "Medical Officer",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "40",
+                "name": "Jamun Prasad Rajak",
+                "designation": "Public Health Inspector",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "41",
+                "name": "Madan Karki",
+                "designation": "Public Health Inspector",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "42",
+                "name": "Madan Karki",
+                "designation": "Public Health Inspector",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "43",
+                "name": "Manu Tamang",
+                "designation": "Sr. AHW",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": "9863872090"
+            },
+            {
+                "sn": "44",
+                "name": "Purnima Tamang",
+                "designation": "Health Assistant",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "45",
+                "name": "Mahesh Dahal",
+                "designation": "Health Assistant",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "46",
+                "name": "Anisha Kumari Chaudhary",
+                "designation": "Health Assistant",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "47",
+                "name": "Vishnu Kumari Khatiwada",
+                "designation": "AHW",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "48",
+                "name": "Malati Jalandhar",
+                "designation": "Sr. ANM Inspector",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "49",
+                "name": "Menuka Paudel",
+                "designation": "Sr. ANM Inspector",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": "9842942243"
+            },
+            {
+                "sn": "50",
+                "name": "Shanti Kumari Rai",
+                "designation": "Sr. ANM",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "51",
+                "name": "Binita Karki",
+                "designation": "Sr. ANM",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "52",
+                "name": "Sanila Lama",
+                "designation": "Staff Nurse",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "53",
+                "name": "Sushma Paudel",
+                "designation": "ANM",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "54",
+                "name": "Rina Magar",
+                "designation": "ANM",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "55",
+                "name": "Purnima Khadka",
+                "designation": "ANM",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "56",
+                "name": "Pramila Thapa",
+                "designation": "ANM",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "57",
+                "name": "Tej Narayan Chaudhary",
+                "designation": "Lab Technician",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "58",
+                "name": "Manita Rai",
+                "designation": "Lab Assistant",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "59",
+                "name": "Sanjay Chaudhary",
+                "designation": "Lab Assistant",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "60",
+                "name": "Subas Chandra Panjiyar",
+                "designation": "Lab Assistant",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "61",
+                "name": "Santosh Chaudhary",
+                "designation": "Radiographer",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "62",
+                "name": "Sujit Kumar Urau",
+                "designation": "Pharmacist",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "63",
+                "name": "Prabhat Singh",
+                "designation": "Pharmacist",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "64",
+                "name": "Swechha Lekhi",
+                "designation": "Pharmacist",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "65",
+                "name": "Shiv Sagar Chaudhary",
+                "designation": "Pharmacist",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "66",
+                "name": "Phiran Chaudhary",
+                "designation": "Kharidar",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "67",
+                "name": "Sulekha Kumari Chaudhary",
+                "designation": "Computer Operator",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "68",
+                "name": "Pratikshya Chaudhary",
+                "designation": "Computer Operator",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "69",
+                "name": "Bhawani Prasad Khatiwada",
+                "designation": "Office Helper",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "70",
+                "name": "Sudip Kumar Chaudhary",
+                "designation": "Office Helper",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "71",
+                "name": "Sumitra Magar",
+                "designation": "Office Helper",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "72",
+                "name": "Ramakanta Chaudhary",
+                "designation": "Office Helper",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "73",
+                "name": "Arun Marik",
+                "designation": "Office Helper",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "74",
+                "name": "Bisho Amar Gupta",
+                "designation": "Office Helper",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "75",
+                "name": "Sapana Rai",
+                "designation": "Office Helper",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "76",
+                "name": "Yukala Shrestha",
+                "designation": "Office Helper",
+                "office": "Municipal Hospital Beltar - Ward No. 7",
+                "contact": ""
+            },
+            {
+                "sn": "77",
+                "name": "Shyam Narayan Pandit",
+                "designation": "Sr. AHW Officer",
+                "office": "Siddhipur Health Post - Ward No. 8",
+                "contact": ""
+            },
+            {
+                "sn": "78",
+                "name": "Balas Danuwar",
+                "designation": "Public Health Inspector",
+                "office": "Siddhipur Health Post - Ward No. 8",
+                "contact": ""
+            },
+            {
+                "sn": "79",
+                "name": "Lal Bahadur Rai",
+                "designation": "Sr. AHW",
+                "office": "Siddhipur Health Post - Ward No. 8",
+                "contact": ""
+            },
+            {
+                "sn": "80",
+                "name": "Chiran Rai",
+                "designation": "Sr. ANM Inspector",
+                "office": "Siddhipur Health Post - Ward No. 8",
+                "contact": ""
+            },
+            {
+                "sn": "81",
+                "name": "Bhagwati Rana Magar",
+                "designation": "Sr. ANM",
+                "office": "Siddhipur Health Post - Ward No. 8",
+                "contact": ""
+            },
+            {
+                "sn": "82",
+                "name": "Parbati Bista",
+                "designation": "Office Assistant",
+                "office": "Siddhipur Health Post - Ward No. 8",
+                "contact": ""
+            },
+            {
+                "sn": "83",
+                "name": "Debila Rai",
+                "designation": "Office Assistant",
+                "office": "Siddhipur Health Post - Ward No. 8",
+                "contact": ""
+            },
+            {
+                "sn": "84",
+                "name": "Laxmi Prasad Chaudhary",
+                "designation": "Sr. AHW Officer",
+                "office": "Hadia Health Post - Ward No. 9",
+                "contact": ""
+            },
+            {
+                "sn": "85",
+                "name": "Milan Khadka",
+                "designation": "Sr. AHW",
+                "office": "Hadia Health Post - Ward No. 9",
+                "contact": ""
+            },
+            {
+                "sn": "86",
+                "name": "Rabin Chaudhary",
+                "designation": "Sr. AHW",
+                "office": "Hadia Health Post - Ward No. 9",
+                "contact": ""
+            },
+            {
+                "sn": "87",
+                "name": "Kavita Chaudhary",
+                "designation": "Sr. ANM Inspector",
+                "office": "Hadia Health Post - Ward No. 9",
+                "contact": ""
+            },
+            {
+                "sn": "88",
+                "name": "Ram Kumari Chaudhary",
+                "designation": "ANM",
+                "office": "Hadia Health Post - Ward No. 9",
+                "contact": ""
+            },
+            {
+                "sn": "89",
+                "name": "Mina Khadka",
+                "designation": "Lab Assistant",
+                "office": "Hadia Health Post - Ward No. 9",
+                "contact": ""
+            },
+            {
+                "sn": "90",
+                "name": "Sambhu Kumar Sah",
+                "designation": "Office Assistant",
+                "office": "Hadia Health Post - Ward No. 9",
+                "contact": ""
+            },
+            {
+                "sn": "91",
+                "name": "Sabita Dangal",
+                "designation": "Office Assistant",
+                "office": "Hadia Health Post - Ward No. 9",
+                "contact": ""
+            },
+            {
+                "sn": "92",
+                "name": "Dayaram Chaudhary",
+                "designation": "Sr. AHW Officer",
+                "office": "Hadia Basic Health Center - Ward No. 10",
+                "contact": ""
+            },
+            {
+                "sn": "93",
+                "name": "Sujita Kumari Chaudhary",
+                "designation": "ANM",
+                "office": "Hadia Basic Health Center - Ward No. 10",
+                "contact": ""
+            },
+            {
+                "sn": "94",
+                "name": "Bhawani Khatiwada Paudel",
+                "designation": "Office Assistant",
+                "office": "Hadia Basic Health Center - Ward No. 10",
+                "contact": ""
+            },
+            {
+                "sn": "95",
+                "name": "Sharada Raut",
+                "designation": "Sr. ANM Inspector",
+                "office": "Khairajhoda Basic Health Center - Ward No. 10",
+                "contact": ""
+            }
+        ]
+    }
+}

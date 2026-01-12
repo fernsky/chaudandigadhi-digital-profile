@@ -1,0 +1,31 @@
+{
+    "id": "Schedule - 6",
+    "title": "Data Collection and Photographs taken for Digital Profile Preparation",
+    "images": [
+        {
+            "id": "img-1",
+            "caption": "Data Collection Activity",
+            "placeholder": "Data Collection Photo 1"
+        },
+        {
+            "id": "img-2",
+            "caption": "Field Inspection",
+            "placeholder": "Data Collection Photo 2"
+        },
+        {
+            "id": "img-3",
+            "caption": "Technical Survey",
+            "placeholder": "Data Collection Photo 3"
+        },
+        {
+            "id": "img-4",
+            "caption": "Stakeholder Discussion",
+            "placeholder": "Data Collection Photo 4"
+        },
+        {
+            "id": "img-5",
+            "caption": "Final Stage of Digital Profile Preparation",
+            "placeholder": "Data Collection Photo 5"
+        }
+    ]
+}

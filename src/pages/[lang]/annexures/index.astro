@@ -7,6 +7,10 @@ import { getTranslations } from "../../../lib/i18n";
 import AnnexureHero from "../../../components/chapters/annexures/AnnexureHero.astro";
 import ElectedRepresentatives from "../../../components/chapters/annexures/ElectedRepresentatives.astro";
 import AgricultureGroups from "../../../components/chapters/annexures/AgricultureGroups.astro";
+import HealthWorkers from "../../../components/chapters/annexures/HealthWorkers.astro";
+import ToleDevelopment from "../../../components/chapters/annexures/ToleDevelopment.astro";
+import WardWomenNetwork from "../../../components/chapters/annexures/WardWomenNetwork.astro";
+import DataCollectionPhotos from "../../../components/chapters/annexures/DataCollectionPhotos.astro";
 
 export async function getStaticPaths() {
     return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
@@ -30,6 +34,10 @@ const description =
             <div class="max-w-6xl mx-auto">
                 <ElectedRepresentatives lang={lang} />
                 <AgricultureGroups lang={lang} />
+                <HealthWorkers lang={lang} />
+                <ToleDevelopment lang={lang} />
+                <WardWomenNetwork lang={lang} />
+                <DataCollectionPhotos lang={lang} />
             </div>
         </div>
     </section>

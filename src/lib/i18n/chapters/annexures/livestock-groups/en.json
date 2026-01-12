@@ -1,0 +1,1742 @@
+{
+    "title": "Table No. 75: Details of Livestock Groups in the Municipality",
+    "source": "Office of Municipal Executive",
+    "headers": [
+        "S.N.",
+        "Group Name",
+        "Operator",
+        "Ward No.",
+        "Contact Person No."
+    ],
+    "rows": [
+        {
+            "sn": "1",
+            "name": "Triyuga Buffalo Farm",
+            "operator": "Uddhav Karki",
+            "ward": "10",
+            "contact": "9842543493"
+        },
+        {
+            "sn": "2",
+            "name": "Laxmi Chicken Poultry Farm",
+            "operator": "Hasta Bahadur Karki",
+            "ward": "6",
+            "contact": "9825700600"
+        },
+        {
+            "sn": "3",
+            "name": "Dashamayo Pig Farm",
+            "operator": "Raju Rai",
+            "ward": "4",
+            "contact": ""
+        },
+        {
+            "sn": "4",
+            "name": "Improved Pig Breeding Center",
+            "operator": "Bhuidal Singh Rai",
+            "ward": "6",
+            "contact": "9843549277"
+        },
+        {
+            "sn": "5",
+            "name": "Chhatra Bahadur Agriculture Farm and Cutting Center",
+            "operator": "Chhatra Bahadur Rai",
+            "ward": "8",
+            "contact": "9863403812"
+        },
+        {
+            "sn": "6",
+            "name": "Sangharshashil Yuwa Ekta Livestock Farm",
+            "operator": "Karna Ghimire",
+            "ward": "8",
+            "contact": "9863734105"
+        },
+        {
+            "sn": "7",
+            "name": "Shree Panchami Livestock Farm",
+            "operator": "Rabin Kumar Katuwal",
+            "ward": "7",
+            "contact": "9871182511"
+        },
+        {
+            "sn": "8",
+            "name": "Pragati Pig Farm",
+            "operator": "Samjhana Rai",
+            "ward": "4",
+            "contact": "9807794602"
+        },
+        {
+            "sn": "9",
+            "name": "Warnashankar Agriculture Farm",
+            "operator": "Bhim Kumar Wantawa",
+            "ward": "4",
+            "contact": "9741103894"
+        },
+        {
+            "sn": "10",
+            "name": "Hang Bazar Fresh",
+            "operator": "Pujan Rai",
+            "ward": "7",
+            "contact": "9808233397"
+        },
+        {
+            "sn": "11",
+            "name": "Kanchan Integrated Livestock and Agriculture Farm",
+            "operator": "Muna Maya Khadka",
+            "ward": "9",
+            "contact": "9841711285"
+        },
+        {
+            "sn": "12",
+            "name": "Chaudandi Goat Farm",
+            "operator": "Mani Ram Rai",
+            "ward": "1",
+            "contact": "9862838081"
+        },
+        {
+            "sn": "13",
+            "name": "Sagarmatha Poultry and Suppliers",
+            "operator": "Krishna Rai",
+            "ward": "9",
+            "contact": "9814301094"
+        },
+        {
+            "sn": "14",
+            "name": "Shree Rajaji Cow Farm",
+            "operator": "Keshav Khadka",
+            "ward": "9",
+            "contact": ""
+        },
+        {
+            "sn": "15",
+            "name": "Gita Buffalo and Goat Farm",
+            "operator": "Gita Kumari Magar",
+            "ward": "7",
+            "contact": "9807703680"
+        },
+        {
+            "sn": "16",
+            "name": "Madibas Goat Farm",
+            "operator": "Nani Maya Rai",
+            "ward": "2",
+            "contact": "9842927835"
+        },
+        {
+            "sn": "17",
+            "name": "Ajay Pig Farm",
+            "operator": "Ajay Kumar Rai",
+            "ward": "8",
+            "contact": "9863825932"
+        },
+        {
+            "sn": "18",
+            "name": "Niramaya Goat Farm",
+            "operator": "Kul Bahadur Tamang",
+            "ward": "10",
+            "contact": "9861794551"
+        },
+        {
+            "sn": "19",
+            "name": "Namuna Cow Farm",
+            "operator": "Ganga Bahadur Khatri",
+            "ward": "10",
+            "contact": "9814742913"
+        },
+        {
+            "sn": "20",
+            "name": "Aarati Goat Farm",
+            "operator": "Nani Maya Rai",
+            "ward": "8",
+            "contact": "9862829164"
+        },
+        {
+            "sn": "21",
+            "name": "Rai Fresh House",
+            "operator": "Krishna Rai",
+            "ward": "4",
+            "contact": "9862199900"
+        },
+        {
+            "sn": "22",
+            "name": "Purveli Rai Fresh House",
+            "operator": "Krishna Rai",
+            "ward": "4",
+            "contact": "9862199900"
+        },
+        {
+            "sn": "23",
+            "name": "Prakash Meat Shop Fresh House",
+            "operator": "Yash Bahadur Basnet",
+            "ward": "9",
+            "contact": "9816728573"
+        },
+        {
+            "sn": "24",
+            "name": "Deusanli Pig and Chicken Farm",
+            "operator": "Kumar Rai",
+            "ward": "4",
+            "contact": "9862258135"
+        },
+        {
+            "sn": "25",
+            "name": "Ven Pig Farm",
+            "operator": "Sarkibir Rai",
+            "ward": "4",
+            "contact": "9811717547"
+        },
+        {
+            "sn": "26",
+            "name": "Sadiksha Livestock Farm",
+            "operator": "Hom Bahadur Raut",
+            "ward": "9",
+            "contact": "9816717373"
+        },
+        {
+            "sn": "27",
+            "name": "Sagarmatha Fresh Meat House",
+            "operator": "Sumita Rai",
+            "ward": "3",
+            "contact": "9823396182"
+        },
+        {
+            "sn": "28",
+            "name": "Kakalini Commercial Goat Farm",
+            "operator": "Yuvak Kumar Basnet",
+            "ward": "5",
+            "contact": "9811708837"
+        },
+        {
+            "sn": "29",
+            "name": "Radha Krishna Chicken and Goat Farm",
+            "operator": "Krishna Dev Chaudhary",
+            "ward": "5",
+            "contact": "9861480553"
+        },
+        {
+            "sn": "30",
+            "name": "Angel Pig Farm",
+            "operator": "Lungaraj Rai",
+            "ward": "4",
+            "contact": "9861480553"
+        },
+        {
+            "sn": "31",
+            "name": "Maiya Pig Farm",
+            "operator": "Jitiya Rai",
+            "ward": "4",
+            "contact": "9823083592"
+        },
+        {
+            "sn": "32",
+            "name": "Milijuli Agriculture Pig Farm",
+            "operator": "Rajan Kumar Dahal",
+            "ward": "2",
+            "contact": "9823617315"
+        },
+        {
+            "sn": "33",
+            "name": "Rayamajhi Agriculture and Chicken Farm",
+            "operator": "Ganesh Jang Rayamajhi",
+            "ward": "10",
+            "contact": "9862241001"
+        },
+        {
+            "sn": "34",
+            "name": "Hanakhim Livestock and Agriculture Farm",
+            "operator": "Devimaya Rai",
+            "ward": "3",
+            "contact": "9862941156"
+        },
+        {
+            "sn": "35",
+            "name": "Bramha Veterinary Center",
+            "operator": "Tikaram Bishwokarma",
+            "ward": "4",
+            "contact": "9842908014"
+        },
+        {
+            "sn": "36",
+            "name": "Sangharshashil Yuwa Ekta Livestock Cow Farm",
+            "operator": "Karna Ghimire",
+            "ward": "8",
+            "contact": "9863373410"
+        },
+        {
+            "sn": "37",
+            "name": "Krishna Suppliers",
+            "operator": "Krishna Bahadur Rai",
+            "ward": "6",
+            "contact": ""
+        },
+        {
+            "sn": "38",
+            "name": "Samir Poultry Farm",
+            "operator": "Govinda Bahadur Thapa",
+            "ward": "6",
+            "contact": "9807762390"
+        },
+        {
+            "sn": "39",
+            "name": "Pragati Pig Farm",
+            "operator": "",
+            "ward": "4",
+            "contact": ""
+        },
+        {
+            "sn": "40",
+            "name": "Balahang Pig Farm",
+            "operator": "Shyam Kumari Karki",
+            "ward": "4",
+            "contact": "9842958800"
+        },
+        {
+            "sn": "41",
+            "name": "Rojina Multipurpose Agriculture Farm",
+            "operator": "Sharda Karki",
+            "ward": "9",
+            "contact": ""
+        },
+        {
+            "sn": "42",
+            "name": "Vaibhav Laxmi Dairy Industry",
+            "operator": "Ghanashyam Pokharel",
+            "ward": "9",
+            "contact": "9852835791"
+        },
+        {
+            "sn": "43",
+            "name": "Chaudandi Livestock Farm and Goat Keeping",
+            "operator": "Shyam Kumari Karki",
+            "ward": "1",
+            "contact": "9863873508"
+        },
+        {
+            "sn": "44",
+            "name": "Amrit Poultry Farm",
+            "operator": "Amrit Kumar Rai",
+            "ward": "2",
+            "contact": "9862934312"
+        },
+        {
+            "sn": "45",
+            "name": "Amrit Pig Farm",
+            "operator": "Phulmaya Rai",
+            "ward": "2",
+            "contact": "9862934313"
+        },
+        {
+            "sn": "46",
+            "name": "Sagar Multipurpose Agriculture and Livestock",
+            "operator": "Ram Sagar Chaudhary",
+            "ward": "10",
+            "contact": "9819955213"
+        },
+        {
+            "sn": "47",
+            "name": "Khadka Agrovet Center",
+            "operator": "Hari Bahadur Khadka",
+            "ward": "6",
+            "contact": ""
+        },
+        {
+            "sn": "48",
+            "name": "Ranitar Fresh House",
+            "operator": "Mawahang Kirat",
+            "ward": "1",
+            "contact": "9819932998"
+        },
+        {
+            "sn": "49",
+            "name": "Bhandari Cow Buffalo and Agriculture Farm",
+            "operator": "Santosh Bhandari",
+            "ward": "4",
+            "contact": "9823247630"
+        },
+        {
+            "sn": "50",
+            "name": "Namuna Improved Breed Cow Buffalo Farm",
+            "operator": "Ambika Raut",
+            "ward": "9",
+            "contact": "9842916872"
+        },
+        {
+            "sn": "51",
+            "name": "Shree Yuwa Collective Integrated Livestock and Agriculture Farm",
+            "operator": "Bhavin Bista",
+            "ward": "5",
+            "contact": "9818434960"
+        },
+        {
+            "sn": "52",
+            "name": "Shree Soroli Collective Pig Farm",
+            "operator": "Vijay Kumar Rai",
+            "ward": "3",
+            "contact": "8905375635"
+        },
+        {
+            "sn": "53",
+            "name": "Budhathoki Goat Farm",
+            "operator": "Tilak Bahadur Budhathoki",
+            "ward": "2",
+            "contact": ""
+        },
+        {
+            "sn": "54",
+            "name": "Hajudar Goat Farm",
+            "operator": "Shyam Kumar Hajudar",
+            "ward": "9",
+            "contact": "9804799955"
+        },
+        {
+            "sn": "55",
+            "name": "Karki Buffalo Farm",
+            "operator": "Krishna Bahadur Karki",
+            "ward": "9",
+            "contact": "8903050390"
+        },
+        {
+            "sn": "56",
+            "name": "Raktamala Goat Farm",
+            "operator": "Dambar Bahadur Adhikari",
+            "ward": "2",
+            "contact": "9810040306"
+        },
+        {
+            "sn": "57",
+            "name": "Diksha Chicken Farm",
+            "operator": "Sangita Rana Magar",
+            "ward": "6",
+            "contact": ""
+        },
+        {
+            "sn": "58",
+            "name": "Beltar Multipurpose Agriculture Herb Farm Pvt. Ltd.",
+            "operator": "Chandra Prakash Rajthala",
+            "ward": "4",
+            "contact": "9841257724"
+        },
+        {
+            "sn": "59",
+            "name": "Nanako Pig Farm",
+            "operator": "Devi Kumari Rai",
+            "ward": "4",
+            "contact": "9842907596"
+        },
+        {
+            "sn": "60",
+            "name": "Thapa Poultry Farm",
+            "operator": "Dipesh Thapa",
+            "ward": "2",
+            "contact": "9808195748"
+        },
+        {
+            "sn": "61",
+            "name": "Sathi Sathi Livestock and Agriculture Farm",
+            "operator": "Sushma Rai",
+            "ward": "1",
+            "contact": "9817702808"
+        },
+        {
+            "sn": "62",
+            "name": "Sailung Chamling Pig Farm",
+            "operator": "Vinod Rai",
+            "ward": "2",
+            "contact": "9806766962"
+        },
+        {
+            "sn": "63",
+            "name": "Panchakanya Pvt. Ltd. Farm",
+            "operator": "Ghanashyam Kumari Chaudhary",
+            "ward": "9",
+            "contact": "9827710690"
+        },
+        {
+            "sn": "64",
+            "name": "Hamro Fish Pond Farm",
+            "operator": "Kalpana Tamang",
+            "ward": "2",
+            "contact": ""
+        },
+        {
+            "sn": "65",
+            "name": "Kholichaki Multipurpose Agriculture Farm",
+            "operator": "Lakhman Rai",
+            "ward": "4",
+            "contact": ""
+        },
+        {
+            "sn": "66",
+            "name": "Ratna Maya Multipurpose Agriculture Farm",
+            "operator": "Raju Rai",
+            "ward": "4",
+            "contact": "9841404891"
+        },
+        {
+            "sn": "67",
+            "name": "Rai Fresh House",
+            "operator": "Susmita Rai",
+            "ward": "6",
+            "contact": "9823396182"
+        },
+        {
+            "sn": "68",
+            "name": "Rai Fresh House",
+            "operator": "Raj Kumar Rai",
+            "ward": "6",
+            "contact": "9814761136"
+        },
+        {
+            "sn": "69",
+            "name": "Chandra Agriculture Farm",
+            "operator": "Chandra Bahadur Tamang",
+            "ward": "4",
+            "contact": "9823501036"
+        },
+        {
+            "sn": "70",
+            "name": "Community Self-employment Meat Cutting Center",
+            "operator": "Pabitra Rai",
+            "ward": "7",
+            "contact": ""
+        },
+        {
+            "sn": "71",
+            "name": "New Chaudandi Agriculture and Pig Chicken Farm",
+            "operator": "Dhan Kumari Rai",
+            "ward": "1",
+            "contact": "9861339399"
+        },
+        {
+            "sn": "72",
+            "name": "Utsav Agriculture and Livestock Multipurpose Farm",
+            "operator": "Umesh Kumar Chaudhary",
+            "ward": "9",
+            "contact": "9851177357"
+        },
+        {
+            "sn": "73",
+            "name": "Mad Multipurpose Agriculture Farm",
+            "operator": "Narayan Chaudhary",
+            "ward": "5",
+            "contact": "98047996777"
+        },
+        {
+            "sn": "74",
+            "name": "Sita Multipurpose Agriculture Farm",
+            "operator": "Sita Khadka",
+            "ward": "9",
+            "contact": "9814745466"
+        },
+        {
+            "sn": "75",
+            "name": "Dumi Fresh House",
+            "operator": "Dharma Singh Rai",
+            "ward": "4",
+            "contact": "9807749734"
+        },
+        {
+            "sn": "76",
+            "name": "Dudh Koshi Multipurpose Agriculture Farm",
+            "operator": "Shukra Bahadur Rai",
+            "ward": "8",
+            "contact": "9862969731"
+        },
+        {
+            "sn": "77",
+            "name": "Sumnima Multipurpose Agriculture Farm",
+            "operator": "Prem Kumar Rai",
+            "ward": "5",
+            "contact": ""
+        },
+        {
+            "sn": "78",
+            "name": "Shrestha Multipurpose Livestock and Agriculture Farm",
+            "operator": "Durga Kumari Shrestha",
+            "ward": "2",
+            "contact": "9814701979"
+        },
+        {
+            "sn": "79",
+            "name": "Sagarmatha Multipurpose Agriculture Farm and Suppliers",
+            "operator": "Krishna Rai",
+            "ward": "3",
+            "contact": "9862199900"
+        },
+        {
+            "sn": "80",
+            "name": "Ratna Multipurpose Agriculture Farm",
+            "operator": "Chandra Bahadur Basnet",
+            "ward": "5",
+            "contact": "9817783006"
+        },
+        {
+            "sn": "81",
+            "name": "Yomo Multipurpose Agriculture Pvt. Ltd.",
+            "operator": "Durga Bahadur Tamang",
+            "ward": "4",
+            "contact": "9818632898"
+        },
+        {
+            "sn": "82",
+            "name": "Avinas Goat Keeping Farm",
+            "operator": "Tilak Bahadur Rai",
+            "ward": "8",
+            "contact": ""
+        },
+        {
+            "sn": "83",
+            "name": "Saira Chicken Keeping Farm",
+            "operator": "Tara Khadka",
+            "ward": "9",
+            "contact": ""
+        },
+        {
+            "sn": "84",
+            "name": "Chamling Multipurpose Agriculture and Livestock Farm",
+            "operator": "Jit Bahadur Rai",
+            "ward": "3",
+            "contact": "98429445726"
+        },
+        {
+            "sn": "85",
+            "name": "Menuka Goat Business Farm",
+            "operator": "Bhim Kumar Rai",
+            "ward": "4",
+            "contact": "9808369179"
+        },
+        {
+            "sn": "86",
+            "name": "Bindabasini Multipurpose Farm",
+            "operator": "Kamal Bahadur Rai",
+            "ward": "9",
+            "contact": "9808369179"
+        },
+        {
+            "sn": "87",
+            "name": "Sungabha Fish and Pig Keeping Farm",
+            "operator": "Nipraraj Magar",
+            "ward": "9",
+            "contact": ""
+        },
+        {
+            "sn": "88",
+            "name": "Ar Ke Chicken and Multipurpose Farm",
+            "operator": "Rajkumar Chaudhary",
+            "ward": "5",
+            "contact": ""
+        },
+        {
+            "sn": "89",
+            "name": "Bhagwati Multipurpose Livestock and Agriculture Farm",
+            "operator": "Kalpana Subedi",
+            "ward": "9",
+            "contact": "9816704845"
+        },
+        {
+            "sn": "90",
+            "name": "Eliza Pig Farm",
+            "operator": "Suresh Magar",
+            "ward": "4",
+            "contact": "9829767812"
+        },
+        {
+            "sn": "91",
+            "name": "Kirat Pig Farm",
+            "operator": "Santa Kumar Rai",
+            "ward": "8",
+            "contact": "9865444645"
+        },
+        {
+            "sn": "92",
+            "name": "Yonzon Creative Multipurpose Farm",
+            "operator": "Avatar Yonzon",
+            "ward": "4",
+            "contact": "9808594232"
+        },
+        {
+            "sn": "93",
+            "name": "Arun Multipurpose Agriculture Farm",
+            "operator": "Dinesh Kumar Chaudhary",
+            "ward": "5",
+            "contact": "9815767423"
+        },
+        {
+            "sn": "94",
+            "name": "Shwas Multipurpose Agriculture and Livestock Farm",
+            "operator": "Shree Subas Khadka",
+            "ward": "6",
+            "contact": "9861674366"
+        },
+        {
+            "sn": "95",
+            "name": "Merika Multipurpose Agriculture and Livestock Farm",
+            "operator": "Shree Merika Thulung",
+            "ward": "4",
+            "contact": "18157224128"
+        },
+        {
+            "sn": "96",
+            "name": "Rajnagi Multipurpose Agriculture and Livestock Farm",
+            "operator": "Shree Shankhar Tamang",
+            "ward": "3",
+            "contact": "9814701268"
+        },
+        {
+            "sn": "97",
+            "name": "Gauri Shankar Multipurpose Agriculture and Livestock Keeping Farm",
+            "operator": "Dhanmaya Tamang",
+            "ward": "3",
+            "contact": "9824792603"
+        },
+        {
+            "sn": "98",
+            "name": "Navadurga Multipurpose and Agriculture Farm",
+            "operator": "Gyanendra Kumar Basnet",
+            "ward": "7",
+            "contact": ""
+        },
+        {
+            "sn": "99",
+            "name": "Sabina Multipurpose Livestock Keeping Farm",
+            "operator": "Bhima Kumari Layo Magar",
+            "ward": "3",
+            "contact": "98411789329"
+        },
+        {
+            "sn": "100",
+            "name": "Thapa Agriculture Fish Agriculture and Livestock Farm",
+            "operator": "Dipendra Thapa",
+            "ward": "2",
+            "contact": "9847486264"
+        },
+        {
+            "sn": "101",
+            "name": "Thapa Agriculture Livestock and Fishery Farm and Suppliers",
+            "operator": "Renuka Khadka",
+            "ward": "2",
+            "contact": ""
+        },
+        {
+            "sn": "102",
+            "name": "Sarthak Multipurpose Livestock and Agriculture Farm",
+            "operator": "Kabin K.C.",
+            "ward": "7",
+            "contact": "9863873938"
+        },
+        {
+            "sn": "103",
+            "name": "Walahang Pig Keeping Farm",
+            "operator": "Shyam Kumar Rai",
+            "ward": "4",
+            "contact": "8963873938"
+        },
+        {
+            "sn": "104",
+            "name": "Kushal Buffalo Keeping Farm",
+            "operator": "Sharda Devi Paudel",
+            "ward": "9",
+            "contact": "9817795332"
+        },
+        {
+            "sn": "105",
+            "name": "Raktamala Goat Farm",
+            "operator": "Dambar Bahadur Adhikari",
+            "ward": "2",
+            "contact": "9810040306"
+        },
+        {
+            "sn": "106",
+            "name": "Panchakanya Goat Keeping and Multipurpose Agriculture Farm",
+            "operator": "Saroj Dulal",
+            "ward": "10",
+            "contact": "9818401853"
+        },
+        {
+            "sn": "107",
+            "name": "Rama Buffalo Keeping Farm",
+            "operator": "Chhatra Bahadur Basnet",
+            "ward": "9",
+            "contact": "9816762354"
+        },
+        {
+            "sn": "108",
+            "name": "Khadka Cow Keeping Farm",
+            "operator": "Bimala Khadka",
+            "ward": "9",
+            "contact": "9823790506"
+        },
+        {
+            "sn": "109",
+            "name": "Thapa Pig and Chicken Farm",
+            "operator": "Pramila Magar",
+            "ward": "4",
+            "contact": "9827726181"
+        },
+        {
+            "sn": "110",
+            "name": "Binu Pig Farm",
+            "operator": "Binu Rai",
+            "ward": "7",
+            "contact": "9848010362"
+        },
+        {
+            "sn": "111",
+            "name": "Devithan Multipurpose Agriculture Farm and Goat Keeping Pvt. Ltd.",
+            "operator": "Nawaraj Dulal",
+            "ward": "10",
+            "contact": "9848010362"
+        },
+        {
+            "sn": "112",
+            "name": "Basaha Barshedanda Agriculture and Livestock Multipurpose Farm",
+            "operator": "Shree Jang Bahadur Rai",
+            "ward": "4",
+            "contact": "9818465259"
+        },
+        {
+            "sn": "113",
+            "name": "Ranjana Multipurpose Agriculture and Livestock Farm",
+            "operator": "Lila Kumari Thapa",
+            "ward": "9",
+            "contact": "9825760038"
+        },
+        {
+            "sn": "114",
+            "name": "Juran Pig Farm",
+            "operator": "Juran Rai",
+            "ward": "6",
+            "contact": "9823356473"
+        },
+        {
+            "sn": "115",
+            "name": "Thapa Multipurpose Livestock and Agriculture Farm",
+            "operator": "Indira Thapa",
+            "ward": "9",
+            "contact": "9823647544"
+        },
+        {
+            "sn": "116",
+            "name": "Gaurikhola Livestock Keeping and Agriculture and Vegetable Fruit Farm",
+            "operator": "Dev Kala Rai",
+            "ward": "8",
+            "contact": "9819957661"
+        },
+        {
+            "sn": "117",
+            "name": "Shambhu Livestock and Agriculture Farm",
+            "operator": "Shambhu Kumar Bista",
+            "ward": "2",
+            "contact": "9863742107"
+        },
+        {
+            "sn": "118",
+            "name": "Laxmi Multipurpose Livestock and Agriculture Farm",
+            "operator": "Ayodhya Lamichhane",
+            "ward": "3",
+            "contact": "9861308363"
+        },
+        {
+            "sn": "119",
+            "name": "Matharam Multipurpose Livestock and Agriculture Farm",
+            "operator": "Matharam Chaudhary",
+            "ward": "10",
+            "contact": "9805975660"
+        },
+        {
+            "sn": "120",
+            "name": "Aruna Chicken and Duck Keeping Farm",
+            "operator": "Babita Kumari Chaudhary",
+            "ward": "9",
+            "contact": "9815774753"
+        },
+        {
+            "sn": "121",
+            "name": "Uttam Multipurpose Livestock and Agriculture Farm",
+            "operator": "Pabitra Rajbhandari",
+            "ward": "3",
+            "contact": "9849391076"
+        },
+        {
+            "sn": "122",
+            "name": "Katuwal Multipurpose Livestock and Agriculture Farm",
+            "operator": "Chakra Bahadur Katuwal",
+            "ward": "7",
+            "contact": "9842991701"
+        },
+        {
+            "sn": "123",
+            "name": "Manjari Pig and Agriculture Farm",
+            "operator": "Man Kumari Rai",
+            "ward": "4",
+            "contact": "9807759602"
+        },
+        {
+            "sn": "124",
+            "name": "Bantawa Fresh House",
+            "operator": "Lal Maya Tamang",
+            "ward": "4",
+            "contact": "9803921047"
+        },
+        {
+            "sn": "125",
+            "name": "Baral Multipurpose Livestock and Agriculture Farm",
+            "operator": "Rajan Kumar Baral",
+            "ward": "9",
+            "contact": "9813545436"
+        },
+        {
+            "sn": "126",
+            "name": "Jyotsana Multipurpose Livestock and Agriculture Farm",
+            "operator": "Indra Jit Rai",
+            "ward": "3",
+            "contact": "9819957366"
+        },
+        {
+            "sn": "127",
+            "name": "Maharaji Livestock Cattle Agriculture Farm",
+            "operator": "Raj Kumar Khadka",
+            "ward": "9",
+            "contact": "9811796414"
+        },
+        {
+            "sn": "128",
+            "name": "Samdima Multipurpose Agriculture and Livestock Keeping Farm",
+            "operator": "Bimala Rai",
+            "ward": "4",
+            "contact": "9807773710"
+        },
+        {
+            "sn": "129",
+            "name": "Limmahit Multipurpose Agriculture Farm",
+            "operator": "Ganga Prasad Rai",
+            "ward": "7",
+            "contact": "9847164798"
+        },
+        {
+            "sn": "130",
+            "name": "Tayama Agriculture and Livestock Farm",
+            "operator": "Rabina Rai",
+            "ward": "7",
+            "contact": "9862918921"
+        },
+        {
+            "sn": "131",
+            "name": "Khiyama Agriculture and Livestock Farm",
+            "operator": "Chita Devi Rai",
+            "ward": "7",
+            "contact": "9807708860"
+        },
+        {
+            "sn": "132",
+            "name": "Sushma Multipurpose Livestock and Agriculture Farm",
+            "operator": "Dang Bahadur Rai",
+            "ward": "3",
+            "contact": "9823279715"
+        },
+        {
+            "sn": "133",
+            "name": "Bajko Multipurpose Pig Farm",
+            "operator": "Ram Kumari Magar",
+            "ward": "4",
+            "contact": "9860220814"
+        },
+        {
+            "sn": "134",
+            "name": "Sushana Multipurpose Livestock and Agriculture Farm",
+            "operator": "Dilli Bahadur Rai",
+            "ward": "3",
+            "contact": "9819707561"
+        },
+        {
+            "sn": "135",
+            "name": "Sabita Multipurpose Pig Farm",
+            "operator": "Munesh Thapa Magar",
+            "ward": "4",
+            "contact": "9803811078"
+        },
+        {
+            "sn": "136",
+            "name": "Gita Oli Livestock Keeping and Agriculture Farm",
+            "operator": "Gita Oli",
+            "ward": "5",
+            "contact": "9862042415"
+        },
+        {
+            "sn": "137",
+            "name": "Tamalshila Multipurpose Agriculture and Livestock Farm",
+            "operator": "Tamalshila Kumari Chaudhary",
+            "ward": "10",
+            "contact": "9863979014"
+        },
+        {
+            "sn": "138",
+            "name": "Khimbule Multipurpose Livestock Agriculture Farm",
+            "operator": "Anita Rai",
+            "ward": "7",
+            "contact": "9862806897"
+        },
+        {
+            "sn": "139",
+            "name": "Anil Chicken Keeping",
+            "operator": "Samwati Chaudhary",
+            "ward": "9",
+            "contact": "9807701354"
+        },
+        {
+            "sn": "140",
+            "name": "Pilami Pig Farm",
+            "operator": "Sarita Pulami Magar",
+            "ward": "4",
+            "contact": "9814715912"
+        },
+        {
+            "sn": "141",
+            "name": "Kanan Multipurpose and Agriculture Farm",
+            "operator": "Harka Bahadur Rai",
+            "ward": "5",
+            "contact": "9804707909"
+        },
+        {
+            "sn": "142",
+            "name": "Baishna Multipurpose Agriculture and Livestock Farm",
+            "operator": "Baishna Rai",
+            "ward": "4",
+            "contact": "9819908792"
+        },
+        {
+            "sn": "143",
+            "name": "Chisapani Multipurpose Livestock and Agriculture Farm",
+            "operator": "Til Bikram Ban",
+            "ward": "3",
+            "contact": "9819992642"
+        },
+        {
+            "sn": "144",
+            "name": "Sandesh Multipurpose Livestock Keeping and Agriculture Farm",
+            "operator": "Renuka Raut",
+            "ward": "10",
+            "contact": "9819751820"
+        },
+        {
+            "sn": "145",
+            "name": "Basaha Farm",
+            "operator": "Suraj Shrestha",
+            "ward": "4",
+            "contact": "9844381310"
+        },
+        {
+            "sn": "146",
+            "name": "Barsha Multipurpose Livestock and Agriculture Farm",
+            "operator": "Kopila Bishwokarma",
+            "ward": "4",
+            "contact": "9809923079"
+        },
+        {
+            "sn": "147",
+            "name": "Ganga Maya Pig Farm",
+            "operator": "Birdhan Rai",
+            "ward": "4",
+            "contact": "9818016613"
+        },
+        {
+            "sn": "148",
+            "name": "Sita Multipurpose Livestock and Agriculture Farm",
+            "operator": "Sita Rai",
+            "ward": "7",
+            "contact": "9819707464"
+        },
+        {
+            "sn": "149",
+            "name": "Shriyana Multipurpose Livestock Keeping and Agriculture Farm",
+            "operator": "Prabha Kumari Ray Khadka",
+            "ward": "10",
+            "contact": "9807853221"
+        },
+        {
+            "sn": "150",
+            "name": "Astitwa Multipurpose Livestock and Agriculture Farm",
+            "operator": "Janak Bahadur Bista",
+            "ward": "4",
+            "contact": "9851100624"
+        },
+        {
+            "sn": "151",
+            "name": "Goma Devi Livestock Farm",
+            "operator": "Dhyan Kumar Katuwal",
+            "ward": "2",
+            "contact": "9843332831"
+        },
+        {
+            "sn": "152",
+            "name": "Shree Shivalaya Livestock and Agriculture Farm",
+            "operator": "Saraswati Khadka",
+            "ward": "2",
+            "contact": "9817769623"
+        },
+        {
+            "sn": "153",
+            "name": "Sawali Multipurpose Agriculture Farm",
+            "operator": "Nabin Suptihan Rai",
+            "ward": "4",
+            "contact": "9818216303"
+        },
+        {
+            "sn": "154",
+            "name": "Bangur Multipurpose Agriculture Farm",
+            "operator": "Bibek Chaudhary",
+            "ward": "5",
+            "contact": ""
+        },
+        {
+            "sn": "155",
+            "name": "Kirat Multipurpose Livestock Agriculture Farm",
+            "operator": "Dinesh Chandra Rai",
+            "ward": "4",
+            "contact": "9825700671"
+        },
+        {
+            "sn": "156",
+            "name": "Pathibhara Devi Multipurpose Agriculture and Livestock Farm",
+            "operator": "Debit Khadka",
+            "ward": "2",
+            "contact": "9862849905"
+        },
+        {
+            "sn": "157",
+            "name": "Sambha Multipurpose Agriculture and Livestock Farm",
+            "operator": "Sambha Devi Chaudhary",
+            "ward": "5",
+            "contact": "9819725020"
+        },
+        {
+            "sn": "158",
+            "name": "B.B.E. Multipurpose Agriculture Livestock Goat Farm",
+            "operator": "Indira Basnet",
+            "ward": "10",
+            "contact": "9824785229"
+        },
+        {
+            "sn": "159",
+            "name": "R.R.A. Pariyar Goat Farm",
+            "operator": "Arjun Kumar Chaudhary",
+            "ward": "10",
+            "contact": "9840984600"
+        },
+        {
+            "sn": "160",
+            "name": "Selima Multipurpose Fishery and Livestock Keeping Farm",
+            "operator": "Niramaya Rai",
+            "ward": "3",
+            "contact": "9814787033"
+        },
+        {
+            "sn": "161",
+            "name": "Sunita Multipurpose Pig and Agriculture Farm",
+            "operator": "Rita Kumari Nepali",
+            "ward": "9",
+            "contact": "9829946958"
+        },
+        {
+            "sn": "162",
+            "name": "Dhrang Cheng Multipurpose Pig and Agriculture Farm",
+            "operator": "Manju Kumari Magar",
+            "ward": "4",
+            "contact": "9805968639"
+        },
+        {
+            "sn": "163",
+            "name": "Radha Multipurpose Livestock Farm",
+            "operator": "Radha Rai",
+            "ward": "2",
+            "contact": "9811670777"
+        },
+        {
+            "sn": "164",
+            "name": "Dipson Multipurpose Livestock Farm",
+            "operator": "Dinesh Kumar Thapa",
+            "ward": "2",
+            "contact": "9841226628"
+        },
+        {
+            "sn": "165",
+            "name": "Katuwal Multipurpose Agriculture and Livestock Farm",
+            "operator": "Maiya Kumari Khadka Katuwal",
+            "ward": "5",
+            "contact": "9807712409"
+        },
+        {
+            "sn": "166",
+            "name": "Bhumedhan Multipurpose Fishery and Livestock Farm",
+            "operator": "Dinesh Rai",
+            "ward": "4",
+            "contact": "9840335500"
+        },
+        {
+            "sn": "167",
+            "name": "Chamling Pig Farm",
+            "operator": "Hari Rai",
+            "ward": "8",
+            "contact": "974174602"
+        },
+        {
+            "sn": "168",
+            "name": "Triyuga Livestock Keeping and Agriculture Farm",
+            "operator": "Tej Bahadur Khadka",
+            "ward": "9",
+            "contact": "9819761529"
+        },
+        {
+            "sn": "169",
+            "name": "Asma Pig Farm",
+            "operator": "Asma Rai",
+            "ward": "7",
+            "contact": "9863844922"
+        },
+        {
+            "sn": "170",
+            "name": "Siddhartha Multipurpose Fishery and Livestock Farm",
+            "operator": "Bijay Chaudhary",
+            "ward": "6",
+            "contact": "986296317"
+        },
+        {
+            "sn": "171",
+            "name": "Nita Multipurpose Livestock Farm",
+            "operator": "Tara Nand Chaudhary",
+            "ward": "6",
+            "contact": "9811704138"
+        },
+        {
+            "sn": "172",
+            "name": "Sambriddhi Multipurpose Livestock Farm",
+            "operator": "Santosh Khadka",
+            "ward": "2",
+            "contact": "9843342119"
+        },
+        {
+            "sn": "173",
+            "name": "Lafa Multipurpose Fishery and Livestock Farm",
+            "operator": "Yadav Kumari Magar",
+            "ward": "3",
+            "contact": "9842948392"
+        },
+        {
+            "sn": "174",
+            "name": "Immanuel Multipurpose Livestock and Pig Keeping Farm",
+            "operator": "Nirmala Rai",
+            "ward": "3",
+            "contact": "9829716632"
+        },
+        {
+            "sn": "175",
+            "name": "Thulang Multipurpose Fishery and Livestock Keeping Farm",
+            "operator": "Champa Rai",
+            "ward": "3",
+            "contact": "9827903823"
+        },
+        {
+            "sn": "176",
+            "name": "Rajnagi Multipurpose Pig and Livestock Keeping Farm",
+            "operator": "Devikala Gahataraj",
+            "ward": "3",
+            "contact": "9808257393"
+        },
+        {
+            "sn": "177",
+            "name": "Hira Multipurpose Livestock and Agriculture Farm",
+            "operator": "Hira Kumari Bishwokarma",
+            "ward": "3",
+            "contact": "9805903414"
+        },
+        {
+            "sn": "178",
+            "name": "Uttam Pig and Livestock Farm",
+            "operator": "Narrottam Rai",
+            "ward": "6",
+            "contact": "9861237953"
+        },
+        {
+            "sn": "179",
+            "name": "Shanti Multipurpose Agriculture Farm",
+            "operator": "Shantimaya Rai",
+            "ward": "6",
+            "contact": "9852835070"
+        },
+        {
+            "sn": "180",
+            "name": "Sabita Multipurpose Livestock and Pig Keeping Farm",
+            "operator": "Sabita Tamang",
+            "ward": "3",
+            "contact": "9800988548"
+        },
+        {
+            "sn": "181",
+            "name": "Namuna Multipurpose Livestock Keeping and Agriculture Farm",
+            "operator": "Rajnarayan Chaudhary",
+            "ward": "5",
+            "contact": "9811749414"
+        },
+        {
+            "sn": "182",
+            "name": "Shrestha Multipurpose Livestock and Agriculture Farm",
+            "operator": "Kabita Shrestha",
+            "ward": "2",
+            "contact": "9805949680"
+        },
+        {
+            "sn": "183",
+            "name": "Ramu Multipurpose Livestock Farm",
+            "operator": "Ram Kumari Rai",
+            "ward": "4",
+            "contact": "9814717891"
+        },
+        {
+            "sn": "184",
+            "name": "Sudarshan Multipurpose Livestock and Goat Keeping Farm",
+            "operator": "Sujan Ghimire",
+            "ward": "3",
+            "contact": "9852844078"
+        },
+        {
+            "sn": "185",
+            "name": "Butang Multipurpose Livestock and Agriculture Farm",
+            "operator": "Dipa Rai",
+            "ward": "3",
+            "contact": "9817364957"
+        },
+        {
+            "sn": "186",
+            "name": "Shree Puja Multipurpose Livestock and Agriculture Farm",
+            "operator": "Diwakar Basnet",
+            "ward": "7",
+            "contact": "9842067216"
+        },
+        {
+            "sn": "187",
+            "name": "Siosha Multipurpose Livestock and Agriculture Farm",
+            "operator": "Chitrakala Rai",
+            "ward": "4",
+            "contact": "9845238033"
+        },
+        {
+            "sn": "188",
+            "name": "Achhami Multipurpose Livestock and Agriculture Farm",
+            "operator": "Mina Kumari Achhami Magar",
+            "ward": "2",
+            "contact": ""
+        },
+        {
+            "sn": "189",
+            "name": "Nishu Multipurpose Livestock and Agriculture Farm",
+            "operator": "Amrita Rai",
+            "ward": "4",
+            "contact": "9862926687"
+        },
+        {
+            "sn": "190",
+            "name": "Indra Multipurpose Livestock and Agriculture Farm",
+            "operator": "Indra Bahadur Rai",
+            "ward": "1",
+            "contact": "9806185096"
+        },
+        {
+            "sn": "191",
+            "name": "Pratibha Chamling Multipurpose Agriculture and Livestock Farm",
+            "operator": "Pranam Rai",
+            "ward": "3",
+            "contact": "9825752376"
+        },
+        {
+            "sn": "192",
+            "name": "Salemichha Multipurpose Agriculture and Livestock Keeping Farm",
+            "operator": "Sumina Rai",
+            "ward": "3",
+            "contact": "9825734953"
+        },
+        {
+            "sn": "193",
+            "name": "Hang Multipurpose Livestock and Agriculture Farm",
+            "operator": "Subuhang Thulung Rai",
+            "ward": "4",
+            "contact": "9804789050"
+        },
+        {
+            "sn": "194",
+            "name": "Himali Livestock and Multipurpose Agriculture Farm",
+            "operator": "Dipen Rai",
+            "ward": "6",
+            "contact": "9863240091"
+        },
+        {
+            "sn": "195",
+            "name": "Asha Multipurpose Livestock and Agriculture Farm",
+            "operator": "Khetmaya Rai",
+            "ward": "2",
+            "contact": "9827703052"
+        },
+        {
+            "sn": "196",
+            "name": "Rejun Multipurpose Livestock and Agriculture Farm",
+            "operator": "Chitra Bahadur Kepchhaki",
+            "ward": "7",
+            "contact": "9865227271"
+        },
+        {
+            "sn": "197",
+            "name": "Saureli Multipurpose Fishery and Livestock Farm",
+            "operator": "Bal Chandra Rai",
+            "ward": "3",
+            "contact": "9814795424"
+        },
+        {
+            "sn": "198",
+            "name": "Uma Multipurpose Livestock and Agriculture Farm",
+            "operator": "Uma Nirala",
+            "ward": "1",
+            "contact": "9842879836"
+        },
+        {
+            "sn": "199",
+            "name": "Purbachhane Multipurpose Livestock Keeping and Agriculture Farm",
+            "operator": "Peshal Kumar Thapa Magar",
+            "ward": "9",
+            "contact": "981834683"
+        },
+        {
+            "sn": "200",
+            "name": "Sumnima Pig Farm",
+            "operator": "Kabi Rai",
+            "ward": "7",
+            "contact": "9861560625"
+        },
+        {
+            "sn": "201",
+            "name": "Kanchan Multipurpose Livestock and Agriculture Farm",
+            "operator": "Phulmaya Tamang",
+            "ward": "1",
+            "contact": "9844436508"
+        },
+        {
+            "sn": "202",
+            "name": "Ajay Multipurpose Livestock and Agriculture Farm",
+            "operator": "Deepak Tamang",
+            "ward": "8",
+            "contact": "9867120977"
+        },
+        {
+            "sn": "203",
+            "name": "Durga Multipurpose Livestock and Agriculture Farm",
+            "operator": "Durga Rai",
+            "ward": "7",
+            "contact": "9807785564"
+        },
+        {
+            "sn": "204",
+            "name": "Krishma Multipurpose Livestock and Agriculture Farm",
+            "operator": "Milaram Rai",
+            "ward": "4",
+            "contact": "9818139655"
+        },
+        {
+            "sn": "205",
+            "name": "Laxmi Piuja Multipurpose Livestock and Agriculture Farm",
+            "operator": "Bhoj Kumar Rai",
+            "ward": "4",
+            "contact": "9813307772"
+        },
+        {
+            "sn": "206",
+            "name": "Bista Multipurpose Agriculture and Livestock Farm",
+            "operator": "Januka Devi Bhattarai",
+            "ward": "2",
+            "contact": "9842934653"
+        },
+        {
+            "sn": "207",
+            "name": "Shree Kuwakhani Multipurpose Agriculture and Livestock Farm",
+            "operator": "Bhim Bahadur Khadka",
+            "ward": "2",
+            "contact": "9824778537"
+        },
+        {
+            "sn": "208",
+            "name": "Baliraj Multipurpose Livestock and Agriculture Farm",
+            "operator": "Baliraj Rai",
+            "ward": "7",
+            "contact": "9817786563"
+        },
+        {
+            "sn": "209",
+            "name": "Man Kumari Multipurpose Livestock and Agriculture Farm",
+            "operator": "Mankumari Chemjong",
+            "ward": "7",
+            "contact": "9825790259"
+        },
+        {
+            "sn": "210",
+            "name": "Kamala Integrated Agriculture and Livestock Farm",
+            "operator": "Kamala Karki Khatri",
+            "ward": "2",
+            "contact": "9862129103"
+        },
+        {
+            "sn": "211",
+            "name": "Subedi Multipurpose Livestock and Agriculture Farm",
+            "operator": "Goma Subedi",
+            "ward": "2",
+            "contact": "9842579583"
+        },
+        {
+            "sn": "212",
+            "name": "Rabindra Multipurpose Livestock and Agriculture Farm",
+            "operator": "Rabindra Nepali",
+            "ward": "7",
+            "contact": "9762856728"
+        },
+        {
+            "sn": "213",
+            "name": "Bista Multipurpose Livestock and Agriculture Farm",
+            "operator": "Mina Adhikari",
+            "ward": "4",
+            "contact": "9819987607"
+        },
+        {
+            "sn": "214",
+            "name": "Banjra Green Agro Farm",
+            "operator": "Mahesh Banjra",
+            "ward": "5",
+            "contact": "9842907600"
+        },
+        {
+            "sn": "215",
+            "name": "Chawa Pig and Chicken Farm",
+            "operator": "Renuka Rai",
+            "ward": "6",
+            "contact": "9862381854"
+        },
+        {
+            "sn": "216",
+            "name": "Reshimansi Agriculture and Livestock Multipurpose Agriculture Farm",
+            "operator": "Nagendra Timsina",
+            "ward": "7",
+            "contact": "9827750496"
+        },
+        {
+            "sn": "217",
+            "name": "Bhagwati Agriculture and Livestock Multipurpose Farm",
+            "operator": "Bhagwati Devi Khatri",
+            "ward": "5",
+            "contact": "9805993383"
+        },
+        {
+            "sn": "218",
+            "name": "Jimba Multipurpose Livestock and Agriculture Farm",
+            "operator": "Padma Kumari Tamang",
+            "ward": "4",
+            "contact": "9815784782"
+        },
+        {
+            "sn": "219",
+            "name": "Namuna Improved Breed Cow Farm",
+            "operator": "Ambika Raut",
+            "ward": "9",
+            "contact": "9842916872"
+        },
+        {
+            "sn": "220",
+            "name": "Pushpahari Multipurpose Livestock Keeping and Agriculture Farm",
+            "operator": "Saraswati Rai",
+            "ward": "5",
+            "contact": "9862861269"
+        },
+        {
+            "sn": "221",
+            "name": "Kutte Multipurpose Livestock and Agriculture Farm",
+            "operator": "Kamala Rai",
+            "ward": "3",
+            "contact": "9841539769"
+        },
+        {
+            "sn": "222",
+            "name": "Jaljala Goat Farm",
+            "operator": "Nawaraj Rai",
+            "ward": "7",
+            "contact": "9843060807"
+        },
+        {
+            "sn": "223",
+            "name": "Shree Menuka Multipurpose Livestock and Agriculture Farm",
+            "operator": "Ramji Rai",
+            "ward": "3",
+            "contact": "9826706750"
+        },
+        {
+            "sn": "224",
+            "name": "Sarvajit Multipurpose Livestock and Agriculture Farm",
+            "operator": "Sarvajit Rai",
+            "ward": "4",
+            "contact": "9814756030"
+        },
+        {
+            "sn": "225",
+            "name": "Gauri Gosai Livestock Keeping",
+            "operator": "Radhika Dahal",
+            "ward": "9",
+            "contact": "9816717375"
+        },
+        {
+            "sn": "226",
+            "name": "Panjiyar Multipurpose Agriculture and Livestock Farm",
+            "operator": "Sushila Kumari Chaudhary",
+            "ward": "9",
+            "contact": "9804700075"
+        },
+        {
+            "sn": "227",
+            "name": "Kalika Pond Conservation and Agriculture Promotion Group",
+            "operator": "Samuha (Group)",
+            "ward": "6",
+            "contact": "9816753199"
+        },
+        {
+            "sn": "228",
+            "name": "Dipson and Thapa Livestock Keeping and Agriculture Multipurpose Farm",
+            "operator": "Dipson Thapa",
+            "ward": "9",
+            "contact": "9807772980"
+        },
+        {
+            "sn": "229",
+            "name": "Laxmi Multipurpose Agriculture and Livestock Farm",
+            "operator": "Laxmi Bista",
+            "ward": "5",
+            "contact": "9844381855"
+        },
+        {
+            "sn": "230",
+            "name": "Saure Chipruk Agriculture and Livestock Farm",
+            "operator": "Narendra Bishwokarma",
+            "ward": "3",
+            "contact": "9767373292"
+        },
+        {
+            "sn": "231",
+            "name": "Anita Fishery Keeping and Chicken Keeping",
+            "operator": "Ramu Prasad Chaudhary",
+            "ward": "5",
+            "contact": "9807701538"
+        },
+        {
+            "sn": "232",
+            "name": "Anuja Multipurpose Livestock and Agriculture Farm",
+            "operator": "Krishna Kumar Khadka",
+            "ward": "9",
+            "contact": "9811746664"
+        },
+        {
+            "sn": "233",
+            "name": "Kalikote Multipurpose Livestock and Agriculture Farm",
+            "operator": "Kumar Bishwokarma",
+            "ward": "4",
+            "contact": "9801769587"
+        },
+        {
+            "sn": "234",
+            "name": "Juna Pig Farm",
+            "operator": "June Rai",
+            "ward": "7",
+            "contact": "9805960277"
+        },
+        {
+            "sn": "235",
+            "name": "Shrimrika Multipurpose Agriculture and Livestock Keeping Farm",
+            "operator": "Mina Kumari Rai",
+            "ward": "2",
+            "contact": "9706552171"
+        },
+        {
+            "sn": "236",
+            "name": "Sagarmatha Agriculture and Livestock Business Farm",
+            "operator": "Bisika Rai",
+            "ward": "4",
+            "contact": "9841066303"
+        },
+        {
+            "sn": "237",
+            "name": "Januka Multipurpose Livestock and Agriculture Farm",
+            "operator": "Dhak Bahadur Khatri",
+            "ward": "9",
+            "contact": "9816722402"
+        },
+        {
+            "sn": "238",
+            "name": "Magar Multipurpose Livestock and Agriculture Farm",
+            "operator": "Indra Bahadur Khatri",
+            "ward": "9",
+            "contact": "9761864505"
+        },
+        {
+            "sn": "239",
+            "name": "Nabin Multipurpose Livestock and Agriculture Farm",
+            "operator": "Nabinraj Bhandari",
+            "ward": "4",
+            "contact": ""
+        },
+        {
+            "sn": "240",
+            "name": "Mangalbare Multipurpose Livestock and Agriculture Farm",
+            "operator": "",
+            "ward": "3",
+            "contact": "9827762385"
+        },
+        {
+            "sn": "241",
+            "name": "Dipson and Thapa Livestock Keeping and Agriculture Multipurpose Farm",
+            "operator": "Lok Bahadur Thapa",
+            "ward": "9",
+            "contact": "9807772980"
+        },
+        {
+            "sn": "242",
+            "name": "Jamuna Multipurpose Livestock and Agriculture Farm",
+            "operator": "Jamuna Devi Thapa",
+            "ward": "9",
+            "contact": "9811793899"
+        },
+        {
+            "sn": "243",
+            "name": "Shanti Multipurpose Livestock and Agriculture Farm",
+            "operator": "Shanti Rai",
+            "ward": "8",
+            "contact": "9742563658"
+        },
+        {
+            "sn": "244",
+            "name": "Sangam Cow Buffalo Livestock Agriculture Farm",
+            "operator": "Krishna Bahadur Karki",
+            "ward": "9",
+            "contact": "9815799868"
+        },
+        {
+            "sn": "245",
+            "name": "Rnikamal Cow Buffalo Livestock Agriculture Farm",
+            "operator": "Tekbahadur Karki",
+            "ward": "9",
+            "contact": "9842927937"
+        },
+        {
+            "sn": "246",
+            "name": "Amrit Pig Farm",
+            "operator": "Amrit Kumar Rai",
+            "ward": "2",
+            "contact": "9862934312"
+        },
+        {
+            "sn": "247",
+            "name": "Ambika Milk Dairy Industry",
+            "operator": "Ambika Raut",
+            "ward": "9",
+            "contact": "9842916872"
+        }
+    ]
+}
