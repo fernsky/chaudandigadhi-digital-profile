@@ -1,0 +1,49 @@
+{
+    "title": "Objectives",
+    "sectionId": "1.2",
+    "intro": "The main objective of preparing the profile is to systematically document information about the municipality's overall status and to update such data or information and make it available to stakeholders when needed. The other specific objectives of the profile are as follows:",
+    "objectives": [
+        {
+            "marker": "a",
+            "title": "",
+            "description": "To prepare records of information and data on the municipality's overall physical infrastructure, economic aspects, social aspects, natural resources, and disaster management-related aspects.",
+            "icon": ""
+        },
+        {
+            "marker": "b",
+            "title": "",
+            "description": "To prepare records of information and data on service delivery and institutional mechanisms.",
+            "icon": ""
+        },
+        {
+            "marker": "c",
+            "title": "",
+            "description": "To analyze strengths, weaknesses, opportunities, challenges, and possibilities.",
+            "icon": ""
+        },
+        {
+            "marker": "d",
+            "title": "",
+            "description": "To prepare various thematic base maps.",
+            "icon": ""
+        },
+        {
+            "marker": "e",
+            "title": "",
+            "description": "To interpret and analyze overall demographic, economic, social, physical, natural, historical, religious, and cultural data.",
+            "icon": ""
+        },
+        {
+            "marker": "f",
+            "title": "",
+            "description": "To classify the obtained information and present it in various sections in a well-organized and simple manner that the general public can understand.",
+            "icon": ""
+        },
+        {
+            "marker": "g",
+            "title": "",
+            "description": "To prepare a comprehensive statistical base related to all the above-mentioned topics.",
+            "icon": ""
+        }
+    ]
+}
