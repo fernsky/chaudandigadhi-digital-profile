@@ -1,0 +1,65 @@
+{
+    "title": "Description of Slope",
+    "intro": "Studying the land of Chaudandigadhi Municipality based on land structure, ecological system, and landslides trends, the classification of land is placed in the order of degrading usability and intensity. In other words, the trend of landslide or soil erosion varies according to land structure. In that order, soil condition and slope have been analyzed based on physical characteristics of measures to strengthen land stability. Looking at land classification based on elements like land structure, ecological system, and landslides in the municipality, a slope from a minimum of 0 degrees to a maximum of 63 degrees is seen in the municipality's land. Which is mentioned in the map.",
+    "mapReference": {
+        "number": 3,
+        "title": "Municipality Slope Distribution Map",
+        "image": "/images/chapters/2/slope-map.jpg"
+    },
+    "categories": [
+        {
+            "marker": "a",
+            "title": "Slope 0°– 5° (Sufficient soil depth, suitable for farming by making terraces with good water drainage)",
+            "description": "In such land, the soil depth is sufficient, and water easily drains on the surface and even in semi-underground conditions. Terraces should be made on such land for monsoon farming. Control measures should be adopted so that surface water flow and semi-underground water drainage do not cause soil erosion. Special attention should be given to conserve land of this class because new gullies are formed from rainwater due to physical properties of soil and land slope, and these gullies eventually widen, increasing the trend of soil erosion."
+        },
+        {
+            "marker": "b",
+            "title": "Slope 5º - 30º (Soil depth 50–100 cm, farming possible only by making terraces with good water drainage)",
+            "description": "Land with 50–300 slope, good water drainage, and soil layer depth from 50 cm to 100 cm falls in this class. Trends of soil erosion like landslides and land subsidence appear normally in land of this class. Therefore, if the land is not managed properly, such trends will increase further. This land is not that easy for forests and vegetation. Since soil erosion increases due to the movement of cattle, it is not right to encourage grazing development on this type of land. But, if cattle are grazed by confining them to certain places in turn, it can also help in the productivity of the land. It is mandatory to make terraces to prevent soil erosion for monsoon farming on this type of land. Traditional and medium-level technology of farming has to be adopted in this. When farming on land with this type of slope, the mixture of management skills with physical properties of soil plays a main role. If irrigation has been used regularly from before, soil erosion problems do not occur during irrigation, but if a new irrigation system is to be started, precautions should be taken initially. If there is sudden excessive irrigation, the trend of soil erosion can start immediately. Traditional methods or modern methods can be used for farming on land of this class. Due to the rain during monsoon, grazing and vegetation also benefit significantly. Paddy farming can be done on such land. Irrigation facility is available. Paddy crops can be planted even if the soil is granular. If there is irrigation, winter and monsoon crops can also be planted."
+        },
+        {
+            "marker": "c",
+            "title": "Slope 30º - 40º (Soil depth only 20 cm, easy water drainage, and land slope more than 300 (1 m in 1.7 m), suitable for producing timber firewood)",
+            "description": "Land with soil layer depth of only 20 cm, easy water drainage, and land slope more than 300 (1 m in 1.7 m) falls in this class. It does not seem beneficial to farm by making terraces on land with such high slope. There is a high possibility of quick formation of gullies or damage by floods from rainwater on this type of land. It seems suitable to plant vegetation on this type of land. It is appropriate to increase the production of forest products for timber and fuel here. The trend of landslides or damage from floods are common symptoms of this type of land. Forests can be developed in such areas to produce fuel, animal feed, and timber. Even if deforestation has occurred, plants can either be regrown or afforestation can be done in such areas. The practice of grazing cattle on lands falling in this class should be strictly controlled. Even if it is to be used for fuel, animals, feed, and grazing, annual use should not be such that it jeopardizes future productivity. Road expansion and safe planning should be done for methods, location, and access to use such forest products in this type of area. Such land is not suitable for farming."
+        },
+        {
+            "marker": "d",
+            "title": "Slope >40º (Soil depth less than 20 cm, recurring soil erosion, low possibility of regeneration)",
+            "description": "Land that is very steep, or has soil layer less than 20 cm even if moderately steep, or damaged by monsoon rain regardless of slope, and where many gullies are created falls in this class. This type of land should be kept green by planting grass or plants because, as mentioned above, on one hand, the trend of soil erosion is rapid in such land, and on the other hand, it is impossible to reclaim an area where landslides have once occurred. Since soil temperature remains low in high areas and due to slope, soil flows easily. The details of the slope of Chaudandigadhi Municipality are mentioned in the table below."
+        }
+    ],
+    "tableTitle": "Table No. 2: Details of Municipality Slope",
+    "tableData": [
+        {
+            "slopeRange": "0 degree to 5 degree",
+            "area": 119.53,
+            "percentage": 42.12
+        },
+        {
+            "slopeRange": "5 degree to 15 degree",
+            "area": 82.40,
+            "percentage": 29.04
+        },
+        {
+            "slopeRange": "15 degree to 30 degree",
+            "area": 65.82,
+            "percentage": 23.19
+        },
+        {
+            "slopeRange": "30 degree to 45 degree",
+            "area": 15.37,
+            "percentage": 5.42
+        },
+        {
+            "slopeRange": "45 degree to 63 degree",
+            "area": 0.65,
+            "percentage": 0.23
+        }
+    ],
+    "total": {
+        "area": 283.78,
+        "percentage": 100
+    },
+    "source": "Field-based data based on GIS",
+    "conclusion": "About 42.12 percent of the land area here is in the condition of slope from 0 degrees to 5 degrees, 29.04 percent from 5 degrees to 15 degrees, 23.19 percent from 15 degrees to 30 degrees, 5.42 percent from 30 degrees to 45 degrees, and 0.23 percent from 45 degrees to 63 degrees. This means it is very easy to do farming on the land here. The municipality holds the capacity to become a food storehouse through farming. If the land here can be utilized correctly, Chaudandigadhi Municipality, rich in natural resources, holds the capacity to revolutionize development."
+}

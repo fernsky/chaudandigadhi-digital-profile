@@ -1,0 +1,57 @@
+{
+    "title": "Description of Land Aspect",
+    "intro": "Land slope and aspect are generally complementary to each other. That is, when slope is uneven, there is unevenness in aspect too. Although there is no unevenness in aspect in flat areas, the municipality has the following aspect description.",
+    "tableTitle": "Table No. 3: Description of Land Aspect",
+    "tableData": [
+        {
+            "aspect": "North Aspect",
+            "area": 38.63,
+            "percentage": 13.61
+        },
+        {
+            "aspect": "North-East Aspect",
+            "area": 32.81,
+            "percentage": 11.56
+        },
+        {
+            "aspect": "East Aspect",
+            "area": 31.84,
+            "percentage": 11.22
+        },
+        {
+            "aspect": "South-East Aspect",
+            "area": 37.97,
+            "percentage": 13.38
+        },
+        {
+            "aspect": "South Aspect",
+            "area": 39.43,
+            "percentage": 13.90
+        },
+        {
+            "aspect": "South-West Aspect",
+            "area": 35.97,
+            "percentage": 12.67
+        },
+        {
+            "aspect": "West Aspect",
+            "area": 32.25,
+            "percentage": 11.36
+        },
+        {
+            "aspect": "North-West Aspect",
+            "area": 34.89,
+            "percentage": 12.29
+        }
+    ],
+    "total": {
+        "area": 283.79,
+        "percentage": 100
+    },
+    "source": "Based on GIS Data",
+    "mapReference": {
+        "number": 4,
+        "title": "Municipality Aspect Map",
+        "image": "/images/chapters/2/aspect-map.jpg"
+    }
+}

@@ -1,0 +1,85 @@
+{
+    "title": "Political and Administrative Structure",
+    "sectionId": "2.3",
+    "intro": "Beltar Basaha Municipality, formed by merging the former Beltar and Basaha VDCs, was established by incorporating Chaudandi, Siddhipur, Hadiya, and Sundarpur VDCs. Currently, there are 10 wards in this municipality. The detailed description is presented in the table below.",
+    "tableTitle": "Table No. 1: Political and Administrative Structure",
+    "tableData": [
+        {
+            "wardNo": "1",
+            "includedVDC": "Chaudandi (1-9)",
+            "population": 3882,
+            "area": 47.94
+        },
+        {
+            "wardNo": "2",
+            "includedVDC": "Beltar Basaha (5,6)",
+            "population": 4059,
+            "area": 13.74
+        },
+        {
+            "wardNo": "3",
+            "includedVDC": "Beltar Basaha (9,10)",
+            "population": 3871,
+            "area": 17.02
+        },
+        {
+            "wardNo": "4",
+            "includedVDC": "Beltar Basaha (7,8,11)",
+            "population": 6235,
+            "area": 19.76
+        },
+        {
+            "wardNo": "5",
+            "includedVDC": "Sundarpur (1-9)",
+            "population": 5673,
+            "area": 43.64
+        },
+        {
+            "wardNo": "6",
+            "includedVDC": "Beltar Basaha (2,3)",
+            "population": 4516,
+            "area": 9.01
+        },
+        {
+            "wardNo": "7",
+            "includedVDC": "Beltar Basaha (1,4)",
+            "population": 5237,
+            "area": 9.37
+        },
+        {
+            "wardNo": "8",
+            "includedVDC": "Siddhipur (1-9)",
+            "population": 3770,
+            "area": 44.09
+        },
+        {
+            "wardNo": "9",
+            "includedVDC": "Hadiya (2-6)",
+            "population": 6753,
+            "area": 49.43
+        },
+        {
+            "wardNo": "10",
+            "includedVDC": "Hadiya (1,7-9)",
+            "population": 4578,
+            "area": 29.76
+        }
+    ],
+    "total": {
+        "population": 48574,
+        "area": 283.78
+    },
+    "source": "Field-based data based on GIS",
+    "maps": [
+        {
+            "number": 1,
+            "title": "Administrative Division Map",
+            "image": "/images/chapters/2/administrative-map.jpg"
+        },
+        {
+            "number": 2,
+            "title": "Municipality Ward Division Map",
+            "image": "/images/chapters/2/ward-map.jpg"
+        }
+    ]
+}

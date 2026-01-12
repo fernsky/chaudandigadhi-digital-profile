@@ -1,66 +1,66 @@
 {
     "title": "राजनीतिक र प्रशासनिक संरचना",
-    "sectionId": "political-structure",
+    "sectionId": "2.3",
     "intro": "साविकका बेल्टार र बसाहा गाविसहरु मिलेर बनेको बेल्टार बसाहा नगरपालिका, चौदण्डी, सिद्धीपुर, हडिया र सुन्दरपुर गा.वि.स.हरुलाई समेटेर यस नगरपालिकाको स्थापना भएको हो । हाल यस नगरपालिकामा १० वटा वडाहरु रहेका छन् । जसको विस्तृत विवरण तलको तालिकामा प्रस्तुत गरिएको छ ।",
-    "tableTitle": "तालिका नं. 1: राजनीतिक र प्रशासनिक संरचना",
+    "tableTitle": "तालिका नं. १: राजनीतिक र प्रशासनिक संरचना",
     "tableData": [
         {
             "wardNo": "१",
-            "includedVDC": "चौदण्डी (१–९)",
+            "includedVDC": "चौदण्डी (१-९)",
             "population": 3882,
             "area": 47.94
         },
         {
             "wardNo": "२",
-            "includedVDC": "बेल्टार बसाह (५,६)",
+            "includedVDC": "बेल्टार बसाहा (५,६)",
             "population": 4059,
             "area": 13.74
         },
         {
             "wardNo": "३",
-            "includedVDC": "बेल्टार बसाह (९,१०)",
+            "includedVDC": "बेल्टार बसाहा (९,१०)",
             "population": 3871,
             "area": 17.02
         },
         {
             "wardNo": "४",
-            "includedVDC": "बेल्टार बसाह (७,८,११)",
+            "includedVDC": "बेल्टार बसाहा (७,८,११)",
             "population": 6235,
             "area": 19.76
         },
         {
             "wardNo": "५",
-            "includedVDC": "सुन्दरपुर (१–९)",
+            "includedVDC": "सुन्दरपुर (१-९)",
             "population": 5673,
             "area": 43.64
         },
         {
             "wardNo": "६",
-            "includedVDC": "बेल्टार बसाह (२,३)",
+            "includedVDC": "बेल्टार बसाहा (२,३)",
             "population": 4516,
             "area": 9.01
         },
         {
             "wardNo": "७",
-            "includedVDC": "बेल्टार बसाह (१,४)",
+            "includedVDC": "बेल्टार बसाहा (१,४)",
             "population": 5237,
             "area": 9.37
         },
         {
             "wardNo": "८",
-            "includedVDC": "सिद्दिपुर (१–९)",
+            "includedVDC": "सिद्दिपुर (१-९)",
             "population": 3770,
             "area": 44.09
         },
         {
             "wardNo": "९",
-            "includedVDC": "हडिया (२–६)",
+            "includedVDC": "हडिया (२-६)",
             "population": 6753,
             "area": 49.43
         },
         {
             "wardNo": "१०",
-            "includedVDC": "हडिया (१,७–९)",
+            "includedVDC": "हडिया (१,७-९)",
             "population": 4578,
             "area": 29.76
         }
@@ -73,13 +73,13 @@
     "maps": [
         {
             "number": 1,
-            "title": "प्रशासनिक विभाजन नक्शा",
-            "image": "/images/maps/chapter-2/administrative-division.png"
+            "title": "प्रशासनिक विभाजन नक्सा",
+            "image": "/images/chapters/2/administrative-map.jpg"
         },
         {
             "number": 2,
-            "title": "नगरपालिकाको वडा विभाजन नक्शा",
-            "image": "/images/maps/chapter-2/ward-division.png"
+            "title": "नगरपालिकाको वडा विभाजन नक्सा",
+            "image": "/images/chapters/2/ward-map.jpg"
         }
     ]
 }
