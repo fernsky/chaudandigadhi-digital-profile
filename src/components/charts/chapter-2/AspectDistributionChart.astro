@@ -7,6 +7,14 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+const locale = lang === "ne" ? "ne-NP" : "en-US";
+const t = {
+    aspect: lang === "ne" ? "जमिनको मोहडा" : "Aspect",
+    areaSqKm: lang === "ne" ? "क्षेत्रफल (वर्ग कि.मि.)" : "Area (sq km)",
+    areaPercent: lang === "ne" ? "क्षेत्रफल प्रतिशतमा" : "Area (%)",
+    total: lang === "ne" ? "जम्मा" : "Total",
+    source: lang === "ne" ? "स्रोत" : "Source",
+};
 
 const content = await loadChapterSection<any>(2, "terrain-aspect", lang);
 
@@ -19,7 +27,7 @@ const data = content.tableData;
 
 <div class="space-y-6">
     <h4
-        class="font-serif text-xl md:text-2xl text-[#ea1d24] font-medium text-center font-bold"
+        class="font-serif text-xl md:text-2xl text-white font-medium text-center font-bold"
     >
         {content.tableTitle}
     </h4>
@@ -33,15 +41,15 @@ const data = content.tableData;
                 <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
                     <th
                         class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                        >जमिनको मोहडा</th
+                        >{t.aspect}</th
                     >
                     <th
                         class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                        >क्षेत्रफल (वर्ग कि.मि.)</th
+                        >{t.areaSqKm}</th
                     >
                     <th
                         class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
-                        >क्षेत्रफल प्रतिशतमा</th
+                        >{t.areaPercent}</th
                     >
                 </tr>
             </thead>
@@ -53,10 +61,16 @@ const data = content.tableData;
                                 {row.aspect}
                             </td>
                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                {row.area.toFixed(2)}
+                                {row.area.toLocaleString(locale, {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                })}
                             </td>
                             <td class="px-4 py-3 font-serif text-zinc-100 text-right">
-                                {row.percentage.toFixed(2)}
+                                {row.percentage.toLocaleString(locale, {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                })}
                             </td>
                         </tr>
                     ))
@@ -66,15 +80,25 @@ const data = content.tableData;
                 >
                     <td
                         class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                        >जम्मा</td
+                        >{t.total}</td
                     >
                     <td
                         class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                     >
-                        {content.total.area.toFixed(2)}
+                        {
+                            content.total.area.toLocaleString(locale, {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                            })
+                        }
                     </td>
                     <td class="px-4 py-3 font-serif text-zinc-100 text-right">
-                        {content.total.percentage}
+                        {
+                            content.total.percentage.toLocaleString(locale, {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                            })
+                        }
                     </td>
                 </tr>
             </tbody>
@@ -82,6 +106,6 @@ const data = content.tableData;
     </div>
 
     <p class="text-zinc-400 font-serif text-sm italic text-center">
-        स्रोत: {content.source}
+        {t.source}: {content.source}
     </p>
 </div>

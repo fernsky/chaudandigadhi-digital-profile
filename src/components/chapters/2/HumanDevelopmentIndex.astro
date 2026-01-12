@@ -32,12 +32,13 @@ if (!content) {
     class="relative bg-[#050505] py-8 md:py-12"
 >
     <div class="container mx-auto px-8">
-        <div class="max-w-2xl mx-auto">
+        <div class="w-full">
             <div class="mb-4">
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    २.९ {content.title}
+                    {lang === "ne" ? "२.९" : "2.9"}
+                    {content.title}
                 </h2>
             </div>
             <div class="space-y-4">
