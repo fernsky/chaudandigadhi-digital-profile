@@ -760,6 +760,41 @@
       ]
     }
   },
+  "annexures": {
+    "title": "Schedules",
+    "sections": [
+      {
+        "id": "Schedule - 1",
+        "title": "Details of Elected Representatives of Municipality",
+        "slug": "elected-representatives"
+      },
+      {
+        "id": "Schedule - 2",
+        "title": "Details of Agriculture and Livestock Groups under Municipality",
+        "slug": "agriculture-livestock-groups"
+      },
+      {
+        "id": "Schedule - 3",
+        "title": "Details of Health Workers in Health Institutions under Municipality",
+        "slug": "health-workers"
+      },
+      {
+        "id": "Schedule - 4",
+        "title": "Details regarding Tole Development Organizations in Municipality",
+        "slug": "tole-development-organizations"
+      },
+      {
+        "id": "Schedule - 5",
+        "title": "Details regarding Ward-level Women Network Committee in Municipality",
+        "slug": "women-network-committee"
+      },
+      {
+        "id": "Schedule - 6",
+        "title": "Data Collection and Photographs taken for Digital Profile Preparation",
+        "slug": "data-collection-photos"
+      }
+    ]
+  },
   "labels": {
     "male": "Male",
     "female": "Female",

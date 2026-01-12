@@ -90,6 +90,66 @@ const initialChapter = currentChapter || 1;
       );
     })
   }
+  
+  <!-- Annexures Content -->
+  <div
+    data-section-content="annexures"
+    class="mega-menu-content w-full h-full flex-col hidden"
+  >
+    <!-- Header -->
+    <div class="relative w-full">
+      <div class="pl-6 pr-12 py-8">
+        <h4 class="text-2xl font-serif font-semibold text-white">
+          {t.annexures.title}
+        </h4>
+      </div>
+    </div>
+
+    <!-- Scrollable sections -->
+    <div class="flex-1 overflow-y-auto pl-6 pr-12 py-8 pb-32 custom-scrollbar min-h-0">
+      <div class="grid grid-cols-2 gap-x-16 gap-y-6">
+        {t.annexures.sections.map((section: any) => (
+          <a
+            href={`/${lang}/annexures#${section.slug}`}
+            class="group/item flex items-start justify-between transition-all duration-300"
+          >
+            <div class="flex-1 min-w-0 pr-4">
+              <div class="text-lg font-serif text-primary-400 group-hover/item:text-primary-50 group-hover/item:translate-x-1 group-hover/item:underline decoration-white/30 underline-offset-4 decoration-1 transition-all duration-300">
+                {section.title}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- View Full Annexures Link -->
+    <div class="relative w-full pl-6 pr-12 py-6">
+      <a
+        href={`/${lang}/annexures`}
+        class="inline-flex items-center gap-2 text-base font-medium text-primary-300 hover:text-primary-50 transition-colors group/link hover:translate-x-1 duration-300"
+      >
+        <span>
+          {lang === "ne"
+            ? "पूर्ण अनुसूचीहरू हेर्नुहोस्"
+            : "View Full Schedules"}
+        </span>
+        <svg
+          class="w-5 h-5 transform group-hover/link:translate-x-1 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
 </div>
 
 <style>
@@ -141,6 +201,7 @@ const initialChapter = currentChapter || 1;
   // Listen for category change events
   document.addEventListener("megamenu:categoryChange", ((e: CustomEvent) => {
     const selectedChapter = e.detail.chapter;
+    const selectedSection = e.detail.section;
 
     // Hide all content sections
     const allContent = document.querySelectorAll(".mega-menu-content");
@@ -149,13 +210,19 @@ const initialChapter = currentChapter || 1;
       content.classList.remove("flex");
     });
 
-    // Show selected chapter content
-    const selectedContent = document.querySelector(
-      `[data-chapter-content="${selectedChapter}"]`,
-    );
-    if (selectedContent) {
-      selectedContent.classList.remove("hidden");
-      selectedContent.classList.add("flex");
+    let selector = "";
+    if (selectedChapter) {
+      selector = `[data-chapter-content="${selectedChapter}"]`;
+    } else if (selectedSection) {
+      selector = `[data-section-content="${selectedSection}"]`;
+    }
+
+    if (selector) {
+      const selectedContent = document.querySelector(selector);
+      if (selectedContent) {
+        selectedContent.classList.remove("hidden");
+        selectedContent.classList.add("flex");
+      }
     }
   }) as EventListener);
 </script>
