@@ -1,5 +1,6 @@
 ---
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
 
 interface Props {
@@ -95,14 +96,14 @@ const wardStaff = (await loadChapterSection(
                     <!-- 8.3 Header -->
                     <div class="mb-8">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {legal.number} {legal.title}
+                            {formatNumber(legal.number, lang)} {legal.title}
                         </h2>
                     </div>
 
                     <!-- 8.3.1 Approved Acts Table -->
                     <div id="approved-acts" class="mb-16">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {legal.subNumber} {legal.subTitle}
+                            {formatNumber(legal.subNumber, lang)} {legal.subTitle}
                         </h3>
                         
                         <div class="overflow-x-auto">
@@ -118,10 +119,10 @@ const wardStaff = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {legal.tableData.map((row) => (
+                                    {legal.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-3 py-3 border-r border-[#f2e25d]/5 text-center font-medium font-serif">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif">
                                                 {row.title}
@@ -137,7 +138,7 @@ const wardStaff = (await loadChapterSection(
                     {staff && (
                         <div id="staff" class="mb-16">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4">
-                                {staff.number} {staff.title}
+                                {formatNumber(staff.number, lang)} {staff.title}
                             </h3>
                             <p class="text-[#f2e25d] font-serif text-lg mb-6">{staff.tableName}</p>
                             
@@ -163,11 +164,11 @@ const wardStaff = (await loadChapterSection(
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {staff.tableData.map((group) => {
+                                        {staff.tableData.map((group: any) => {
                                             const isTotal = group.branch === "जम्मा" || group.branch === "Total";
                                             return (
                                                 <>
-                                                    {group.rows.map((row, idx) => (
+                                                    {group.rows.map((row: any, idx: number) => (
                                                         <tr class={`text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200 ${isTotal ? 'bg-[#f2e25d]/10 font-bold' : ''}`}>
                                                             {idx === 0 && (
                                                                 <td 
@@ -181,13 +182,13 @@ const wardStaff = (await loadChapterSection(
                                                                 {row.level}
                                                             </td>
                                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-serif">
-                                                                {row.permanent}
+                                                                {formatNumber(row.permanent, lang)}
                                                             </td>
                                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-serif">
-                                                                {row.contract}
+                                                                {formatNumber(row.contract, lang)}
                                                             </td>
                                                             <td class="px-4 py-3 text-center font-serif">
-                                                                {row.wage}
+                                                                {formatNumber(row.wage, lang)}
                                                             </td>
                                                         </tr>
                                                     ))}
@@ -204,7 +205,7 @@ const wardStaff = (await loadChapterSection(
                     {wardStaff && (
                         <div id="ward-staff" class="mb-10">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4">
-                                {wardStaff.number} {wardStaff.title}
+                                {formatNumber(wardStaff.number, lang)} {wardStaff.title}
                             </h3>
                             <p class="text-[#f2e25d] font-serif text-lg mb-6">{wardStaff.tableName}</p>
                             
@@ -227,9 +228,9 @@ const wardStaff = (await loadChapterSection(
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {wardStaff.tableData.map((group) => (
+                                        {wardStaff.tableData.map((group: any) => (
                                             <>
-                                                {group.rows.map((row, idx) => (
+                                                {group.rows.map((row: any, idx: number) => (
                                                     <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                                         {idx === 0 && (
                                                             <td 
@@ -243,10 +244,10 @@ const wardStaff = (await loadChapterSection(
                                                             {row.level}
                                                         </td>
                                                         <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-serif">
-                                                            {row.permanent}
+                                                            {formatNumber(row.permanent, lang)}
                                                         </td>
                                                         <td class="px-4 py-3 text-center font-serif">
-                                                            {row.contract}
+                                                            {formatNumber(row.contract, lang)}
                                                         </td>
                                                     </tr>
                                                 ))}

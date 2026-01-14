@@ -1,0 +1,731 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const formatNumber = (num: number, decimals = 0) => {
+    const formatted = num.toLocaleString("en-US", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+    });
+    if (lang !== "ne") return formatted;
+    const nepaliDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+    return formatted.replace(/\d/g, (digit) => nepaliDigits[parseInt(digit)]);
+};
+
+type EconomicActivityContent = {
+    title: string;
+    sectionId: string;
+    number: string;
+    table13: {
+        title: string;
+        data: Array<{
+            duration: string;
+            male: number;
+            female: number;
+            total: number;
+            percentage: number;
+        }>;
+        total: {
+            male: number;
+            female: number;
+            total: number;
+            percentage: number;
+        };
+        source: string;
+    };
+    table14: {
+        title: string;
+        data: Array<{
+            category: string;
+            male: number;
+            female: number;
+            total: number;
+        }>;
+        total: {
+            male: number;
+            female: number;
+            total: number;
+        };
+        percentages: {
+            active: number;
+            inactive: number;
+        };
+        source: string;
+    };
+    intro: string;
+    chart13_title: string;
+    chart14_title: string;
+};
+
+const content = await loadChapterSection<EconomicActivityContent>(
+    3,
+    "economically-active",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Economic activity section content not found");
+}
+
+const pieData = content.table13.data.map((d) => ({
+    label: d.duration,
+    value: d.percentage,
+}));
+
+const barData = content.table14.data.map((d) => ({
+    category: d.category,
+    male: d.male,
+    female: d.female,
+}));
+---
+
+<section
+    id="economically-active"
+    class="relative bg-[#050505] pb-8 md:pb-12 border-t border-[#f2e25d]/10 pt-8 mt-8"
+>
+    <div class="container mx-auto px-8">
+        <div class="w-full">
+            <div class="mb-8">
+                <h3
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+                >
+                    {content.number}
+                    {content.title}
+                </h3>
+            </div>
+
+            <p
+                class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-8 text-justify"
+            >
+                {content.intro}
+            </p>
+
+            <!-- Table 13 -->
+            <div class="mb-12 w-full overflow-hidden">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center"
+                >
+                    {content.table13.title}
+                </h4>
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-xs md:text-sm text-center"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20 text-zinc-100"
+                            >
+                                <th
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium sticky left-0 bg-[#0a0a0a] z-10"
+                                    >{lang === "ne" ? "लिङ्ग" : "Gender"}</th
+                                >
+                                {
+                                    content.table13.data.map((d) => (
+                                        <th class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium uppercase text-[10px] md:text-xs">
+                                            {d.duration}
+                                        </th>
+                                    ))
+                                }
+                                <th class="px-2 py-3 font-serif font-medium"
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody class="text-zinc-100 font-serif">
+                            <tr>
+                                <td
+                                    class="px-2 py-3 border-r border-[#f2e25d]/5 font-medium sticky left-0 bg-[#0a0a0a] z-10"
+                                    >{lang === "ne" ? "पुरुष" : "Male"}</td
+                                >
+                                {
+                                    content.table13.data.map((d) => (
+                                        <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                            {formatNumber(d.male)}
+                                        </td>
+                                    ))
+                                }
+                                <td class="px-2 py-3"
+                                    >{
+                                        formatNumber(content.table13.total.male)
+                                    }</td
+                                >
+                            </tr>
+                            <tr>
+                                <td
+                                    class="px-2 py-3 border-r border-[#f2e25d]/5 font-medium sticky left-0 bg-[#0a0a0a] z-10"
+                                    >{lang === "ne" ? "महिला" : "Female"}</td
+                                >
+                                {
+                                    content.table13.data.map((d) => (
+                                        <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                            {formatNumber(d.female)}
+                                        </td>
+                                    ))
+                                }
+                                <td class="px-2 py-3"
+                                    >{
+                                        formatNumber(
+                                            content.table13.total.female,
+                                        )
+                                    }</td
+                                >
+                            </tr>
+                            <tr
+                                class="bg-[#f2e25d]/10 font-bold border-t-2 border-[#f2e25d]/30"
+                            >
+                                <td
+                                    class="px-2 py-3 border-r border-[#f2e25d]/5 sticky left-0 bg-[#1a1a1a] z-10"
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</td
+                                >
+                                {
+                                    content.table13.data.map((d) => (
+                                        <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                            {formatNumber(d.total)}
+                                        </td>
+                                    ))
+                                }
+                                <td class="px-2 py-3"
+                                    >{
+                                        formatNumber(
+                                            content.table13.total.total,
+                                        )
+                                    }</td
+                                >
+                            </tr>
+                            <tr
+                                class="bg-[#f2e25d]/5 text-zinc-400 italic text-[10px] md:text-xs"
+                            >
+                                <td
+                                    class="px-2 py-2 border-r border-[#f2e25d]/5 sticky left-0 bg-[#0a0a0a] z-10"
+                                    >{
+                                        lang === "ne" ? "प्रतिशत" : "Percentage"
+                                    }</td
+                                >
+                                {
+                                    content.table13.data.map((d) => (
+                                        <td class="px-2 py-2 border-r border-[#f2e25d]/5">
+                                            {formatNumber(d.percentage, 2)}%
+                                        </td>
+                                    ))
+                                }
+                                <td class="px-2 py-2"
+                                    >{
+                                        formatNumber(
+                                            content.table13.total.percentage,
+                                            2,
+                                        )
+                                    }%</td
+                                >
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div
+                    class="text-right text-zinc-400 font-serif italic text-sm mt-2"
+                >
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.table13.source
+                    }
+                </div>
+            </div>
+
+            <!-- D3 Pie Chart -->
+            <div
+                class="mb-16 w-full bg-[#0a0a0a] border border-[#f2e25d]/10 p-4 md:p-8 rounded-xl shadow-2xl relative overflow-hidden"
+            >
+                <h4
+                    class="font-serif text-xl md:text-2xl text-white font-medium mb-12 text-center px-4"
+                >
+                    {content.chart13_title}
+                </h4>
+                <div
+                    id="duration-pie-chart"
+                    class="w-full h-[400px] md:h-[500px]"
+                >
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4 md:gap-6 mt-8">
+                    {
+                        pieData.map((d, i) => (
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="w-3 h-3 md:w-4 md:h-4 rounded-full"
+                                    style={`background-color: ${["#4e95d5", "#ef7d31", "#a5a5a5", "#ffc000"][i]}`}
+                                />
+                                <span class="text-zinc-300 font-serif text-[10px] md:text-sm">
+                                    {d.label}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Table 14 -->
+            <div class="mb-12 w-full overflow-hidden">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center"
+                >
+                    {content.table14.title}
+                </h4>
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-xs md:text-sm text-center"
+                    >
+                        <thead class="bg-[#f2e25d]/20 text-white font-serif">
+                            <tr>
+                                <th
+                                    class="px-4 py-3 border-r border-[#f2e25d]/10"
+                                    >{lang === "ne" ? "लिङ्ग" : "Gender"}</th
+                                >
+                                {
+                                    content.table14.data.map((d) => (
+                                        <th class="px-4 py-3 border-r border-[#f2e25d]/10 uppercase text-[10px]">
+                                            {d.category}
+                                        </th>
+                                    ))
+                                }
+                                <th class="px-4 py-3 uppercase text-[10px]"
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody class="text-zinc-100 font-serif">
+                            <tr>
+                                <td
+                                    class="px-4 py-3 border-r border-[#f2e25d]/5 font-medium"
+                                    >{lang === "ne" ? "पुरुष" : "Male"}</td
+                                >
+                                {
+                                    content.table14.data.map((d) => (
+                                        <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                            {formatNumber(d.male)}
+                                        </td>
+                                    ))
+                                }
+                                <td class="px-4 py-3"
+                                    >{
+                                        formatNumber(content.table14.total.male)
+                                    }</td
+                                >
+                            </tr>
+                            <tr>
+                                <td
+                                    class="px-4 py-3 border-r border-[#f2e25d]/5 font-medium"
+                                    >{lang === "ne" ? "महिला" : "Female"}</td
+                                >
+                                {
+                                    content.table14.data.map((d) => (
+                                        <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                            {formatNumber(d.female)}
+                                        </td>
+                                    ))
+                                }
+                                <td class="px-4 py-3"
+                                    >{
+                                        formatNumber(
+                                            content.table14.total.female,
+                                        )
+                                    }</td
+                                >
+                            </tr>
+                            <tr
+                                class="bg-[#f2e25d]/10 font-bold border-t-2 border-[#f2e25d]/30"
+                            >
+                                <td
+                                    class="px-4 py-3 border-r border-[#f2e25d]/5"
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</td
+                                >
+                                {
+                                    content.table14.data.map((d) => (
+                                        <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                            {formatNumber(d.total)}
+                                        </td>
+                                    ))
+                                }
+                                <td class="px-4 py-3"
+                                    >{
+                                        formatNumber(
+                                            content.table14.total.total,
+                                        )
+                                    }</td
+                                >
+                            </tr>
+                            <tr
+                                class="bg-[#f2e25d]/5 text-zinc-400 italic text-[10px]"
+                            >
+                                <td
+                                    class="px-4 py-2 border-r border-[#f2e25d]/5"
+                                    >{
+                                        lang === "ne" ? "प्रतिशत" : "Percentage"
+                                    }</td
+                                >
+                                <td
+                                    class="px-4 py-2 border-r border-[#f2e25d]/5"
+                                    >{
+                                        formatNumber(
+                                            content.table14.percentages.active,
+                                            2,
+                                        )
+                                    }%</td
+                                >
+                                <td
+                                    class="px-4 py-2 border-r border-[#f2e25d]/5"
+                                    >{
+                                        formatNumber(
+                                            content.table14.percentages
+                                                .inactive,
+                                            2,
+                                        )
+                                    }%</td
+                                >
+                                <td class="px-4 py-2">{formatNumber(100)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div
+                    class="text-right text-zinc-400 font-serif italic text-sm mt-2"
+                >
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.table14.source
+                    }
+                </div>
+            </div>
+
+            <!-- D3 Grouped Bar Chart -->
+            <div
+                class="mb-16 w-full bg-[#0a0a0a] border border-[#f2e25d]/10 p-4 md:p-8 rounded-xl shadow-2xl relative overflow-hidden"
+            >
+                <h4
+                    class="font-serif text-xl md:text-2xl text-white font-medium mb-12 text-center"
+                >
+                    {content.chart14_title}
+                </h4>
+                <div
+                    id="active-inactive-chart"
+                    class="w-full h-[400px] md:h-[500px]"
+                >
+                </div>
+
+                <div class="flex justify-center gap-8 md:gap-12 mt-8">
+                    <div class="flex items-center gap-2 md:gap-3">
+                        <div
+                            class="w-4 h-4 md:w-5 md:h-5 rounded-sm bg-[#4e95d5]"
+                        >
+                        </div>
+                        <span
+                            class="text-zinc-300 font-serif text-xs md:text-base"
+                            >{lang === "ne" ? "पुरूष" : "Male"}</span
+                        >
+                    </div>
+                    <div class="flex items-center gap-2 md:gap-3">
+                        <div
+                            class="w-4 h-4 md:w-5 md:h-5 rounded-sm bg-[#ef7d31]"
+                        >
+                        </div>
+                        <span
+                            class="text-zinc-300 font-serif text-xs md:text-base"
+                            >{lang === "ne" ? "महिला" : "Female"}</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+<script define:vars={{ pieData, barData, lang }}>
+    document.addEventListener("DOMContentLoaded", () => {
+        const formatValue = (num, decimals = 0) => {
+            const formatted = num.toLocaleString("en-US", {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals,
+            });
+            if (lang !== "ne") return formatted;
+            const nepaliDigits = [
+                "०",
+                "१",
+                "२",
+                "३",
+                "४",
+                "५",
+                "६",
+                "७",
+                "८",
+                "९",
+            ];
+            return formatted.replace(
+                /\d/g,
+                (digit) => nepaliDigits[parseInt(digit)],
+            );
+        };
+
+        // --- Pie Chart ---
+        const drawPie = () => {
+            const container = document.getElementById("duration-pie-chart");
+            if (!container) return;
+
+            const width = container.clientWidth;
+            const height = container.clientHeight || 500;
+            const radius = Math.min(width, height) / 2 - 40;
+
+            const svg = d3
+                .select("#duration-pie-chart")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+            const colors = ["#4e95d5", "#ef7d31", "#a5a5a5", "#ffc000"];
+            const color = d3
+                .scaleOrdinal()
+                .domain(pieData.map((d) => d.label))
+                .range(colors);
+
+            const pie = d3
+                .pie()
+                .value((d) => d.value)
+                .sort(null);
+            const arc = d3
+                .arc()
+                .innerRadius(radius * 0.4)
+                .outerRadius(radius);
+            const hoverArc = d3
+                .arc()
+                .innerRadius(radius * 0.4)
+                .outerRadius(radius * 1.1);
+
+            const path = svg
+                .selectAll("path")
+                .data(pie(pieData))
+                .enter()
+                .append("path")
+                .attr("d", arc)
+                .attr("fill", (d, i) => color(d.data.label))
+                .attr("stroke", "#0a0a0a")
+                .attr("stroke-width", "2px")
+                .style("cursor", "pointer");
+
+            path.transition()
+                .duration(1500)
+                .attrTween("d", function (d) {
+                    const i = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+                    return function (t) {
+                        return arc(i(t));
+                    };
+                });
+            path.on("mouseover", function (event, d) {
+                d3.select(this).transition().duration(300).attr("d", hoverArc);
+
+                const tooltip = d3.select("#economic-tooltip");
+                tooltip.transition().duration(200).style("opacity", 0.9);
+                tooltip
+                    .html(
+                        `
+                    <div class="font-serif p-2">
+                        <div class="font-bold text-sm mb-1">${d.data.label}</div>
+                        <div class="text-xs text-zinc-300">
+                            ${lang === "ne" ? "प्रतिशत" : "Percentage"}: ${formatValue(d.data.value, 1)}%
+                        </div>
+                    </div>
+                `,
+                    )
+                    .style("left", event.clientX + 10 + "px")
+                    .style("top", event.clientY - 28 + "px");
+            })
+                .on("mousemove", function (event) {
+                    d3.select("#economic-tooltip")
+                        .style("left", event.clientX + 10 + "px")
+                        .style("top", event.clientY - 28 + "px");
+                })
+                .on("mouseout", function (event, d) {
+                    d3.select(this).transition().duration(300).attr("d", arc);
+                    d3.select("#economic-tooltip")
+                        .transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
+        };
+
+        // --- Bar Chart ---
+        const drawBar = () => {
+            const container = document.getElementById("active-inactive-chart");
+            if (!container) return;
+
+            const margin = { top: 50, right: 30, bottom: 70, left: 60 };
+            const width = container.clientWidth - margin.left - margin.right;
+            const height =
+                (container.clientHeight || 500) - margin.top - margin.bottom;
+
+            const svg = d3
+                .select("#active-inactive-chart")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            const x0 = d3
+                .scaleBand()
+                .rangeRound([0, width])
+                .paddingInner(0.4)
+                .domain(barData.map((d) => d.category));
+            const x1 = d3
+                .scaleBand()
+                .padding(0.1)
+                .domain(["male", "female"])
+                .rangeRound([0, x0.bandwidth()]);
+            const y = d3
+                .scaleLinear()
+                .rangeRound([height, 0])
+                .domain([
+                    0,
+                    d3.max(barData, (d) => Math.max(d.male, d.female)) * 1.2,
+                ]);
+
+            const depth = width < 600 ? 8 : 15;
+
+            barData.forEach((d) => {
+                const group = svg
+                    .append("g")
+                    .attr("transform", `translate(${x0(d.category)},0)`);
+
+                ["male", "female"].forEach((key) => {
+                    const colorVal = key === "male" ? "#4e95d5" : "#ef7d31";
+                    const barG = group
+                        .append("g")
+                        .attr("transform", `translate(${x1(key)},0)`);
+
+                    // 3D faces
+                    barG.append("path")
+                        .attr("fill", d3.color(colorVal).darker(0.8))
+                        .attr(
+                            "d",
+                            `M ${x1.bandwidth()} ${height} L ${x1.bandwidth() + depth} ${height - depth} L ${x1.bandwidth() + depth} ${height - depth} L ${x1.bandwidth()} ${height} Z`,
+                        )
+                        .transition()
+                        .duration(1200)
+                        .attr(
+                            "d",
+                            `M ${x1.bandwidth()} ${height} L ${x1.bandwidth() + depth} ${height - depth} L ${x1.bandwidth() + depth} ${y(d[key]) - depth} L ${x1.bandwidth()} ${y(d[key])} Z`,
+                        );
+
+                    barG.append("path")
+                        .attr("fill", d3.color(colorVal).brighter(0.4))
+                        .attr(
+                            "d",
+                            `M 0 ${height} L ${depth} ${height - depth} L ${x1.bandwidth() + depth} ${height - depth} L ${x1.bandwidth()} ${height} Z`,
+                        )
+                        .transition()
+                        .duration(1200)
+                        .attr(
+                            "d",
+                            `M 0 ${y(d[key])} L ${depth} ${y(d[key]) - depth} L ${x1.bandwidth() + depth} ${y(d[key]) - depth} L ${x1.bandwidth()} ${y(d[key])} Z`,
+                        );
+
+                    barG.append("rect")
+                        .attr("width", x1.bandwidth())
+                        .attr("height", 0)
+                        .attr("y", height)
+                        .attr("fill", colorVal)
+                        .transition()
+                        .duration(1200)
+                        .attr("y", y(d[key]))
+                        .attr("height", height - y(d[key]));
+
+                    // Tooltip interaction
+                    barG.style("cursor", "pointer")
+                        .on("mouseover", function (event) {
+                            d3.select(this)
+                                .select("rect")
+                                .transition()
+                                .duration(200)
+                                .attr("opacity", 0.8);
+
+                            const tooltip = d3.select("#economic-tooltip");
+                            tooltip
+                                .transition()
+                                .duration(200)
+                                .style("opacity", 0.9);
+                            tooltip
+                                .html(
+                                    `
+                                <div class="font-serif p-2">
+                                    <div class="font-bold text-sm mb-1">${d.category}</div>
+                                    <div class="text-sm text-zinc-100 mb-1">
+                                        ${key === "male" ? (lang === "ne" ? "पुरुष" : "Male") : lang === "ne" ? "महिला" : "Female"}
+                                    </div>
+                                    <div class="text-xs text-zinc-300">
+                                        ${lang === "ne" ? "संख्या" : "Number"}: ${formatValue(d[key])}
+                                    </div>
+                                </div>
+                            `,
+                                )
+                                .style("left", event.clientX + 10 + "px")
+                                .style("top", event.clientY - 28 + "px");
+                        })
+                        .on("mousemove", function (event) {
+                            d3.select("#economic-tooltip")
+                                .style("left", event.clientX + 10 + "px")
+                                .style("top", event.clientY - 28 + "px");
+                        })
+                        .on("mouseout", function () {
+                            d3.select(this)
+                                .select("rect")
+                                .transition()
+                                .duration(200)
+                                .attr("opacity", 1);
+
+                            d3.select("#economic-tooltip")
+                                .transition()
+                                .duration(500)
+                                .style("opacity", 0);
+                        });
+                });
+            });
+
+            svg.append("g")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x0))
+                .selectAll("text")
+                .attr("fill", "#cbd5e1")
+                .style("font-size", (d) => (width < 600 ? "10px" : "14px"))
+                .attr("dy", "1em");
+            svg.append("g")
+                .call(d3.axisLeft(y).ticks(5))
+                .selectAll("text")
+                .attr("fill", "#cbd5e1")
+                .text((d) => formatValue(d));
+
+            svg.selectAll(".domain, .tick line").attr(
+                "stroke",
+                "rgba(255,255,255,0.1)",
+            );
+        };
+
+        drawPie();
+        drawBar();
+    });
+</script>
+
+<div
+    id="economic-tooltip"
+    class="fixed opacity-0 pointer-events-none bg-[#111111] border border-[#f2e25d]/30 text-white rounded px-2 py-1 z-[9999] shadow-2xl"
+>
+</div>
+
+<style is:global>
+    #economic-tooltip {
+        transition: opacity 0.2s;
+        backdrop-filter: blur(4px);
+    }
+</style>

@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -23,7 +24,8 @@ if (!content) {
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100"
                 >
-                    ५.४ {content.title}
+                    {formatNumber("5.4", lang)}
+                    {content.title}
                 </h2>
                 <p
                     class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
@@ -37,7 +39,8 @@ if (!content) {
                 <h3
                     class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium"
                 >
-                    ५.४.१ {content.sportsVenues.title}
+                    {formatNumber("5.4.1", lang)}
+                    {content.sportsVenues.title}
                 </h3>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -45,7 +48,8 @@ if (!content) {
                         content.sportsVenues.venues.map((venue: any) => (
                             <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 hover:border-[#f2e25d]/30 transition-all">
                                 <div class="text-[#f2e25d] font-bold mb-3">
-                                    वडा नं. {venue.ward}
+                                    {lang === "ne" ? "वडा नं." : "Ward No."}{" "}
+                                    {formatNumber(venue.ward, lang)}
                                 </div>
                                 <ul class="space-y-2">
                                     {venue.facilities.map(
@@ -113,7 +117,8 @@ if (!content) {
                 <h3
                     class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium"
                 >
-                    ५.४.२ {content.youthClubs.title}
+                    {formatNumber("5.4.2", lang)}
+                    {content.youthClubs.title}
                 </h3>
                 <div
                     class="bg-[#0a0a0a] border border-[#f2e25d]/10 overflow-hidden"
@@ -125,15 +130,19 @@ if (!content) {
                             <tr>
                                 <th
                                     class="px-4 py-3 text-left font-serif text-sm text-zinc-100"
-                                    >क्र.सं.</th
+                                    >{lang === "ne" ? "क्र.सं." : "SN"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-sm text-zinc-100"
-                                    >युवा क्लबको नाम</th
+                                    >{
+                                        lang === "ne"
+                                            ? "युवा क्लबको नाम"
+                                            : "Youth Club Name"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-sm text-zinc-100"
-                                    >वडा नं</th
+                                    >{lang === "ne" ? "वडा नं" : "Ward No"}</th
                                 >
                             </tr>
                         </thead>
@@ -142,13 +151,13 @@ if (!content) {
                                 content.youthClubs.clubs.map((club: any) => (
                                     <tr class="border-b border-[#f2e25d]/5 hover:bg-[#050505] transition-colors">
                                         <td class="px-4 py-3 font-serif text-sm text-zinc-100">
-                                            {club.sn}
+                                            {formatNumber(club.sn, lang)}
                                         </td>
                                         <td class="px-4 py-3 font-serif text-sm text-zinc-100">
                                             {club.name}
                                         </td>
                                         <td class="px-4 py-3 font-serif text-sm text-zinc-100">
-                                            {club.ward}
+                                            {formatNumber(club.ward, lang)}
                                         </td>
                                     </tr>
                                 ))

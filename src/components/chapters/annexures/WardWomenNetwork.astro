@@ -1,5 +1,6 @@
 ---
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
 
 interface Props {
@@ -39,15 +40,15 @@ const typedData = data as unknown as SectionData;
 >
     <div>
         <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-8">
-            <span class="text-[#f2e25d]">{typedData.id}</span>: {
-                typedData.title
-            }
+            <span class="text-[#f2e25d]"
+                >{formatNumber(typedData.id, lang)}</span
+            >: {typedData.title}
         </h2>
     </div>
 
     {
         typedData.wards && typedData.wards.length > 0 ? (
-            typedData.wards.map((ward) => (
+            typedData.wards.map((ward: WardData) => (
                 <div class="mb-16">
                     <h3 class="text-xl md:text-2xl font-serif font-semibold text-white mb-6 text-center opacity-90">
                         {ward.title}
@@ -57,7 +58,7 @@ const typedData = data as unknown as SectionData;
                         <table class="w-full text-left border-collapse">
                             <thead class="bg-[#f2e25d]/10 text-white font-serif text-lg">
                                 <tr>
-                                    {ward.headers.map((header) => (
+                                    {ward.headers.map((header: string) => (
                                         <th class="px-6 py-4 border-b border-[#f2e25d]/20 font-bold tracking-wide text-[#f2e25d]">
                                             {header}
                                         </th>
@@ -65,10 +66,10 @@ const typedData = data as unknown as SectionData;
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-[#f2e25d]/10 text-zinc-300 font-serif">
-                                {ward.rows.map((row) => (
+                                {ward.rows.map((row: any) => (
                                     <tr class="hover:bg-[#f2e25d]/5 transition-colors group">
                                         <td class="px-6 py-3 opacity-70 border-r border-[#f2e25d]/10">
-                                            {row.sn}
+                                            {formatNumber(row.sn, lang)}
                                         </td>
                                         <td class="px-6 py-3 font-medium text-white border-r border-[#f2e25d]/10">
                                             {row.name || "-"}
@@ -77,7 +78,12 @@ const typedData = data as unknown as SectionData;
                                             {row.post || "-"}
                                         </td>
                                         <td class="px-6 py-3">
-                                            {row.contact || "-"}
+                                            {row.contact
+                                                ? formatNumber(
+                                                      row.contact,
+                                                      lang,
+                                                  )
+                                                : "-"}
                                         </td>
                                     </tr>
                                 ))}

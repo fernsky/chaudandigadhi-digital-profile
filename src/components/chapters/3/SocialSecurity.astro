@@ -1,52 +1,32 @@
 ---
-import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
-import SocialSecurityChart from "../../charts/chapter-3/SocialSecurityChart.astro";
+import { formatNumber } from "../../../lib/i18n/formatters";
+import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
 }
 
 const { lang } = Astro.props;
+const locale = lang === "ne" ? "ne-NP" : "en-US";
 
 type SocialSecurityContent = {
     title: string;
     sectionId: string;
     number: string;
-    tableTitle: string;
-    tableData: Array<{
-        ward: string;
-        elderlyGeneral: number;
-        elderlyDalit: number;
-        elderlySingleWomen: number;
-        widow: number;
-        disabilityFull: number;
-        disabilitySevere: number;
-        dalitChildren: number;
-        total: number;
-    }>;
-    total: {
-        elderlyGeneral: number;
-        elderlyDalit: number;
-        elderlySingleWomen: number;
-        widow: number;
-        disabilityFull: number;
-        disabilitySevere: number;
-        dalitChildren: number;
-        total: number;
+    table22: {
+        title: string;
+        header: string[];
+        tableData: Array<{
+            title: string;
+            values: number[];
+            total: number;
+        }>;
+        totalRow: number[];
+        grandTotal: number;
+        source: string;
     };
-    source: string;
-    categories: {
-        elderlyGeneral: string;
-        elderlyDalit: string;
-        elderlySingleWomen: string;
-        widow: string;
-        disabilityFull: string;
-        disabilitySevere: string;
-        dalitChildren: string;
-    };
-    intro: string;
-    policyInfo: string[];
+    paragraphs: string[];
 };
 
 const content = await loadChapterSection<SocialSecurityContent>(
@@ -56,191 +36,145 @@ const content = await loadChapterSection<SocialSecurityContent>(
 );
 
 if (!content) {
-    throw new Error("Social security content not found");
+    throw new Error("Social security section content not found");
 }
+
+const parseParagraph = (p: string) => {
+    // Replace markdown-style bold with HTML
+    return p.replace(
+        /\*\*(.*?)\*\*/g,
+        '<b class="text-white font-bold">$1</b>',
+    );
+};
 ---
 
-<section id="social-security" class="relative bg-[#050505] py-8 md:py-12">
+<section
+    id="social-security"
+    class="relative bg-[#050505] pb-8 md:pb-12 border-t border-[#f2e25d]/10 pt-8 mt-8"
+>
     <div class="container mx-auto px-8">
-        <div class="w-full mx-auto">
-            <!-- Section Header -->
-            <div class="mb-6">
-                <h2
-                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
+        <div class="w-full">
+            <!-- 3.13 Header -->
+            <div class="mb-8">
+                <h3
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
                 >
-                    {content.number}
+                    {formatNumber(content.number, lang)}
                     {content.title}
-                </h2>
-                <p
-                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6"
+                </h3>
+            </div>
+
+            <!-- Table 22 -->
+            <div class="mb-12 w-full overflow-hidden">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4"
                 >
-                    {content.intro}
-                </p>
-            </div>
-
-            <!-- Table Title -->
-            <h4
-                class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
-            >
-                {content.tableTitle}
-            </h4>
-
-            <!-- Social Security Chart -->
-            <div class="mb-12">
-                <SocialSecurityChart lang={lang} />
-            </div>
-
-            <!-- Premium Table -->
-            <div class="overflow-x-auto mb-6">
-                <table
-                    class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm"
-                >
-                    <thead>
-                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >वडा न.</th
+                    <h4
+                        class="font-serif text-xl md:text-2xl text-zinc-100 font-medium text-center md:text-left"
+                    >
+                        {content.table22.title}
+                    </h4>
+                </div>
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-xs md:text-sm text-center"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/20 border-b border-[#f2e25d]/20 text-white"
                             >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >{content.categories.elderlyGeneral}</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >{content.categories.elderlyDalit}</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >{content.categories.elderlySingleWomen}</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >{content.categories.widow}</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >{content.categories.disabilityFull}</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >{content.categories.disabilitySevere}</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >{content.categories.dalitChildren}</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium"
-                                >जम्मा</th
-                            >
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            content.tableData.map((row) => (
-                                <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5">
-                                        {row.ward}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.elderlyGeneral.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.elderlyDalit.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.elderlySingleWomen.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.widow.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.disabilityFull.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.disabilitySevere.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.dalitChildren.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right">
-                                        {row.total.toLocaleString()}
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                        <!-- Total Row -->
-                        <tr
-                            class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
-                        >
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/10"
-                                >जम्मा</td
-                            >
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {content.total.elderlyGeneral.toLocaleString()}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {content.total.elderlyDalit.toLocaleString()}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-4 border-r border-[#f2e25d]/10 font-serif font-medium sticky left-0 bg-[#1a1a14] z-10 min-w-[150px]"
+                                >
+                                    {content.table22.header[0]}
+                                </th>
+                                <th
+                                    colspan="10"
+                                    class="px-2 py-2 border-b border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "वडा नं." : "Ward No."}
+                                </th>
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-4 font-serif font-bold"
+                                >
+                                    {content.table22.header[11]}
+                                </th>
+                            </tr>
+                            <tr class="bg-[#f2e25d]/10 text-zinc-100">
                                 {
-                                    content.total.elderlySingleWomen.toLocaleString()
+                                    content.table22.header
+                                        .slice(1, 11)
+                                        .map((h: string) => (
+                                            <th class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium w-12">
+                                                {formatNumber(h, lang)}
+                                            </th>
+                                        ))
                                 }
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            </tr>
+                        </thead>
+                        <tbody class="text-zinc-300 font-serif">
+                            {
+                                content.table22.tableData.map((row) => (
+                                    <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                        <td class="px-3 py-3 border-r border-[#f2e25d]/5 text-left sticky left-0 bg-[#0a0a0a] z-10">
+                                            {row.title}
+                                        </td>
+                                        {row.values.map((val: number) => (
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(val, lang)}
+                                            </td>
+                                        ))}
+                                        <td class="px-2 py-3 font-medium text-white bg-[#f2e25d]/5">
+                                            {formatNumber(row.total, lang)}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                            <tr
+                                class="bg-[#f2e25d]/20 font-bold text-white uppercase"
                             >
-                                {content.total.widow.toLocaleString()}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {content.total.disabilityFull.toLocaleString()}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
+                                <td
+                                    class="px-3 py-4 border-r border-[#f2e25d]/10 text-left sticky left-0 bg-[#1a1a14] z-10"
+                                >
+                                    {lang === "ne" ? "जम्मा" : "Total"}
+                                </td>
                                 {
-                                    content.total.disabilitySevere.toLocaleString()
+                                    content.table22.totalRow.map(
+                                        (val: number) => (
+                                            <td class="px-2 py-4 border-r border-[#f2e25d]/10">
+                                                {formatNumber(val, lang)}
+                                            </td>
+                                        ),
+                                    )
                                 }
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {content.total.dalitChildren.toLocaleString()}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right"
-                            >
-                                {content.total.total.toLocaleString()}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                <td class="px-2 py-4">
+                                    {
+                                        formatNumber(
+                                            content.table22.grandTotal,
+                                            lang,
+                                        )
+                                    }
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {lang === "ne" ? "स्रोत" : "Source"}: {content.table22.source}
             </div>
+        </div>
 
-            <!-- Source -->
-            <p class="text-zinc-400 font-serif text-sm italic mb-8">
-                स्रोत: {content.source}
-            </p>
-
-            <!-- Policy Information -->
-            <div class="space-y-4 mt-8">
-                {
-                    content.policyInfo.map((para) => (
-                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
-                            {para}
-                        </p>
-                    ))
-                }
-            </div>
+        <!-- Paragraphs -->
+        <div class="space-y-6 mt-12 pb-12">
+            {
+                content.paragraphs.map((p: string) => (
+                    <p
+                        class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed text-justify"
+                        set:html={parseParagraph(p)}
+                    />
+                ))
+            }
         </div>
     </div>
 </section>

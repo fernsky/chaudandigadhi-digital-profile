@@ -1,0 +1,430 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type EthnicityContent = {
+    title: string;
+    number: string;
+    content: string;
+    table_title: string;
+    table_number: string;
+    source: string;
+    table_data: Array<{
+        caste: string;
+        male: string;
+        female: string;
+        total: string;
+        percentage: string;
+    }>;
+    chart_title: string;
+    content_final: string;
+};
+
+const content = await loadChapterSection<EthnicityContent>(
+    3,
+    "ethnicity",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Ethnicity section content not found");
+}
+
+// Prepare data for D3
+const nepaliToEnglish = (str: string) =>
+    str.replace(/[०१२३४५६७८९]/g, (d) => "0123456789"["०१२३४५६७८९".indexOf(d)]);
+
+const chartData = content.table_data
+    .filter((row) => row.caste !== (lang === "ne" ? "जम्मा" : "Total"))
+    .map((row) => ({
+        label: row.caste,
+        value: parseInt(nepaliToEnglish(row.total.replace(/,/g, ""))),
+    }));
+---
+
+<section
+    id="ethnicity"
+    class="relative bg-[#050505] pb-8 md:pb-12 border-t border-[#f2e25d]/10 pt-8 mt-8"
+>
+    <div class="container mx-auto px-8">
+        <div class="w-full">
+            <!-- 3.6 Header -->
+            <div class="mb-8">
+                <h3
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+                >
+                    {formatNumber(content.number, lang)}
+                    {content.title}
+                </h3>
+            </div>
+
+            <p
+                class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10 text-justify"
+            >
+                {content.content}
+            </p>
+
+            <!-- Table -->
+            <div class="mb-10 w-full overflow-hidden">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center"
+                >
+                    {formatNumber(content.table_number, lang)}: {
+                        content.table_title
+                    }
+                </h4>
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-lg text-center"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20 text-zinc-100"
+                            >
+                                <th
+                                    rowspan="2"
+                                    class="px-4 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "जातजाति" : "Ethnicity"}
+                                </th>
+                                <th
+                                    colspan="3"
+                                    class="px-4 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "लिङ्ग" : "Gender"}
+                                </th>
+                                <th
+                                    rowspan="2"
+                                    class="px-4 py-3 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "प्रतिशत" : "Percentage"}
+                                </th>
+                            </tr>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20 text-zinc-100"
+                            >
+                                <th
+                                    class="px-4 py-2 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "पुरुष" : "Male"}
+                                </th>
+                                <th
+                                    class="px-4 py-2 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "महिला" : "Female"}
+                                </th>
+                                <th
+                                    class="px-4 py-2 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "जम्मा" : "Total"}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.table_data.map((row: any) => {
+                                    const isTotal =
+                                        row.caste === "जम्मा" ||
+                                        row.caste === "Total";
+                                    return (
+                                        <tr
+                                            class={`border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200 text-zinc-100 font-serif ${isTotal ? "bg-[#f2e25d]/10 font-bold border-t-2 border-[#f2e25d]/30" : ""}`}
+                                        >
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 font-medium text-left">
+                                                {row.caste}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(row.male, lang)}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(row.female, lang)}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(row.total, lang)}
+                                            </td>
+                                            <td class="px-4 py-3">
+                                                {formatNumber(
+                                                    row.percentage,
+                                                    lang,
+                                                    2,
+                                                )}
+                                                {row.percentage === "१००" ||
+                                                row.percentage === "100"
+                                                    ? ""
+                                                    : "%"}
+                                            </td>
+                                        </tr>
+                                    );
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div
+                    class="text-right text-zinc-400 font-serif italic text-sm mt-2"
+                >
+                    {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
+                </div>
+            </div>
+
+            <!-- Professional Ethnicity Chart -->
+            <div
+                class="mb-12 w-full bg-[#0a0a0a] border border-[#f2e25d]/10 p-8 rounded-xl overflow-hidden shadow-2xl"
+            >
+                <h4
+                    class="font-serif text-2xl md:text-3xl text-white font-medium mb-12 text-center"
+                >
+                    {content.chart_title}
+                </h4>
+                <div
+                    id="ethnicity-3d-chart-container"
+                    class="w-full h-[550px] relative"
+                >
+                </div>
+            </div>
+
+            <p
+                class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6 text-justify"
+            >
+                {content.content_final}
+            </p>
+        </div>
+    </div>
+</section>
+
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+<script define:vars={{ chartData, lang }}>
+    document.addEventListener("DOMContentLoaded", () => {
+        const tooltipId = "ethnicity-tooltip-unique";
+        const containerId = "ethnicity-3d-chart-container";
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const data = chartData;
+
+        const formatValue = (num, decimals = 0) => {
+            const formatted = num.toLocaleString("en-US", {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals,
+            });
+            if (lang !== "ne") return formatted;
+            const nepaliDigits = [
+                "०",
+                "१",
+                "२",
+                "३",
+                "४",
+                "५",
+                "६",
+                "७",
+                "८",
+                "९",
+            ];
+            return formatted.replace(
+                /\d/g,
+                (digit) => nepaliDigits[parseInt(digit)],
+            );
+        };
+
+        const margin = { top: 50, right: 30, bottom: 120, left: 80 };
+        const width = container.clientWidth - margin.left - margin.right;
+        const height = 550 - margin.top - margin.bottom;
+
+        const svg = d3
+            .select("#" + containerId)
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const colors = [
+            "#ff0000",
+            "#90EE90",
+            "#0066cc",
+            "#ff8000",
+            "#808000",
+            "#663399",
+            "#00cccc",
+            "#009933",
+            "#004d99",
+            "#002b80",
+            "#0066cc",
+        ];
+
+        // X scale
+        const x = d3
+            .scaleBand()
+            .range([0, width])
+            .domain(data.map((d) => d.label))
+            .padding(0.4);
+
+        // Y scale
+        const y = d3
+            .scaleLinear()
+            .domain([0, d3.max(data, (d) => d.value) * 1.1])
+            .range([height, 0]);
+
+        // Grid lines
+        svg.append("g")
+            .attr("class", "grid")
+            .attr("opacity", 0.05)
+            .call(d3.axisLeft(y).tickSize(-width).tickFormat(""));
+
+        // X Axis
+        svg.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x))
+            .selectAll("text")
+            .attr("transform", "translate(-10,10)rotate(-45)")
+            .style("text-anchor", "end")
+            .attr("fill", "#94a3b8")
+            .style("font-size", "14px")
+            .style("font-family", "serif");
+
+        // Y Axis
+        svg.append("g")
+            .call(d3.axisLeft(y).ticks(5))
+            .selectAll("text")
+            .attr("fill", "#94a3b8")
+            .style("font-size", "14px")
+            .style("font-family", "serif")
+            .text((d) => formatValue(d));
+
+        // Skew/3D Effect helper
+        const skew = 12;
+
+        const barGroups = svg
+            .selectAll(".bar-group")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("class", "bar-group");
+
+        barGroups.each(function (d, i) {
+            const g = d3.select(this);
+            const barWidth = x.bandwidth();
+            const barHeight = height - y(d.value);
+            const xPos = x(d.label);
+            const yPos = y(d.value);
+            const color = colors[i % colors.length];
+
+            // 1. Front face
+            g.append("rect")
+                .attr("x", xPos)
+                .attr("y", height)
+                .attr("width", barWidth)
+                .attr("height", 0)
+                .attr("fill", color)
+                .attr("stroke", "rgba(255,255,255,0.05)")
+                .transition()
+                .duration(1000)
+                .delay(i * 100)
+                .attr("y", yPos)
+                .attr("height", barHeight);
+
+            // 2. Side face
+            g.append("path")
+                .attr(
+                    "d",
+                    `M ${xPos + barWidth} ${height} L ${xPos + barWidth + skew} ${height - skew} L ${xPos + barWidth + skew} ${height - skew} L ${xPos + barWidth} ${height} Z`,
+                )
+                .attr("fill", d3.color(color).darker(1))
+                .transition()
+                .duration(1000)
+                .delay(i * 100)
+                .attr(
+                    "d",
+                    `M ${xPos + barWidth} ${height} L ${xPos + barWidth + skew} ${height - skew} L ${xPos + barWidth + skew} ${yPos - skew} L ${xPos + barWidth} ${yPos} Z`,
+                );
+
+            // 3. Top face
+            g.append("path")
+                .attr(
+                    "d",
+                    `M ${xPos} ${height} L ${xPos + skew} ${height - skew} L ${xPos + barWidth + skew} ${height - skew} L ${xPos + barWidth} ${height} Z`,
+                )
+                .attr("fill", d3.color(color).brighter(0.5))
+                .transition()
+                .duration(1000)
+                .delay(i * 100)
+                .attr("transform", `translate(0, ${yPos - height})`);
+        });
+
+        // Hover effects with Tooltip
+        barGroups
+            .style("cursor", "pointer")
+            .on("mouseover", function (event, d) {
+                d3.select(this)
+                    .selectAll("rect, path")
+                    .transition()
+                    .duration(200)
+                    .attr("opacity", 0.8);
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("transform", "translate(0, -10)");
+
+                const tooltip = d3.select("#" + tooltipId);
+                tooltip.transition().duration(200).style("opacity", 0.9);
+                tooltip
+                    .html(
+                        `
+                    <div class="font-serif p-2">
+                        <div class="font-bold text-sm mb-1">${d.label}</div>
+                        <div class="text-xs text-zinc-300">
+                            ${lang === "ne" ? "संख्या" : "Number"}: ${formatValue(d.value)}
+                        </div>
+                    </div>
+                `,
+                    )
+                    .style("left", event.clientX + 10 + "px")
+                    .style("top", event.clientY - 28 + "px");
+            })
+            .on("mousemove", function (event) {
+                d3.select("#" + tooltipId)
+                    .style("left", event.clientX + 10 + "px")
+                    .style("top", event.clientY - 28 + "px");
+            })
+            .on("mouseout", function () {
+                d3.select(this)
+                    .selectAll("rect, path")
+                    .transition()
+                    .duration(200)
+                    .attr("opacity", 1);
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("transform", "translate(0, 0)");
+
+                d3.select("#" + tooltipId)
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
+
+        // Legend/Axis Cleanup
+        svg.selectAll(".domain").attr("stroke", "#475569");
+        svg.selectAll(".tick line").attr("stroke", "#475569");
+    });
+</script>
+
+<div
+    id="ethnicity-tooltip-unique"
+    class="fixed opacity-0 pointer-events-none bg-[#111111] border border-[#f2e25d]/30 text-white rounded px-2 py-1 z-[9999] shadow-2xl"
+>
+</div>
+
+<style is:global>
+    #ethnicity-tooltip-unique {
+        transition: opacity 0.2s;
+        backdrop-filter: blur(4px);
+    }
+</style>

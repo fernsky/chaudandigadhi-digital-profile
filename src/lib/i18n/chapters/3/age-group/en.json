@@ -1,0 +1,138 @@
+{
+    "title": "Population Details by Age Group and Sex",
+    "number": "3.3",
+    "table_title": "Population Details by Age and Sex",
+    "table_number": "Table No. 7",
+    "source": "National Census, 2078",
+    "table_data": [
+        {
+            "age_group": "00-04 Years",
+            "male": "2140",
+            "female": "2014",
+            "total": "4154"
+        },
+        {
+            "age_group": "05-09 Years",
+            "male": "2471",
+            "female": "2410",
+            "total": "4881"
+        },
+        {
+            "age_group": "10-14 Years",
+            "male": "2532",
+            "female": "2623",
+            "total": "5155"
+        },
+        {
+            "age_group": "15-19 Years",
+            "male": "2809",
+            "female": "2849",
+            "total": "5658"
+        },
+        {
+            "age_group": "20-24 Years",
+            "male": "2191",
+            "female": "2728",
+            "total": "4919"
+        },
+        {
+            "age_group": "25-29 Years",
+            "male": "1764",
+            "female": "2431",
+            "total": "4195"
+        },
+        {
+            "age_group": "30-34 Years",
+            "male": "1628",
+            "female": "2179",
+            "total": "3807"
+        },
+        {
+            "age_group": "35-39 Years",
+            "male": "1585",
+            "female": "1771",
+            "total": "3356"
+        },
+        {
+            "age_group": "40-44 Years",
+            "male": "1398",
+            "female": "1759",
+            "total": "3157"
+        },
+        {
+            "age_group": "45-49 Years",
+            "male": "1232",
+            "female": "1390",
+            "total": "2622"
+        },
+        {
+            "age_group": "50-54 Years",
+            "male": "1398",
+            "female": "1524",
+            "total": "2922"
+        },
+        {
+            "age_group": "55-59 Years",
+            "male": "1004",
+            "female": "1110",
+            "total": "2114"
+        },
+        {
+            "age_group": "60-64 Years",
+            "male": "895",
+            "female": "1139",
+            "total": "2034"
+        },
+        {
+            "age_group": "65-69 Years",
+            "male": "789",
+            "female": "831",
+            "total": "1620"
+        },
+        {
+            "age_group": "70-74 Years",
+            "male": "589",
+            "female": "676",
+            "total": "1265"
+        },
+        {
+            "age_group": "75-79 Years",
+            "male": "373",
+            "female": "440",
+            "total": "813"
+        },
+        {
+            "age_group": "80-84 Years",
+            "male": "199",
+            "female": "210",
+            "total": "409"
+        },
+        {
+            "age_group": "85-89 Years",
+            "male": "114",
+            "female": "111",
+            "total": "225"
+        },
+        {
+            "age_group": "90-94 Years",
+            "male": "32",
+            "female": "52",
+            "total": "84"
+        },
+        {
+            "age_group": "95+ Years",
+            "male": "14",
+            "female": "27",
+            "total": "41"
+        },
+        {
+            "age_group": "Total",
+            "male": "25157",
+            "female": "28474",
+            "total": "53631"
+        }
+    ],
+    "content_after_table": "Out of the total population of 53,631 in the municipality, there are 25,157 males and 28,474 females. The male population is dominant in the age groups of 0-9 years and 85-89 years, while the female population is dominant in the remaining age groups. Analyzing by age group, it is essential to formulate plans that address the physical, mental, social, and economic issues of adolescent girls and women within the 15-39 age group and elderly women. Issues such as reproductive health, sexual health, menstruation-related problems, female-friendly toilets, counseling centers, violence against women, human trafficking, domestic and gender-based violence, uterine prolapse, the dowry system, child marriage, women's empowerment, and rights are prominent and sensitive concerns for women. The overall statistics indicate that the municipality must create and implement effective plans for these matters. Detailed ward-wise information is presented in the table.",
+    "chart_title": "Population Distribution by Age Group and Sex",
+    "content_after_chart": "Although a high population of youth (age 15 to 39, totaling 27,940) is beneficial, the state needs to invest significantly in their education, health, and human resource development. A large youth population is considered a demographic dividend. On the other hand, it is the responsibility of society and the state to orient the youth in the right direction and involve them in nation-building by creating employment opportunities. The low number of children and infants suggests a gradually declining fertility rate, while the low number of elderly and senior citizens indicates a lower average life expectancy compared to other countries and a higher mortality rate among the elderly due to diseases prevalent in old age. However, a decrease in number with increasing age is natural. When analyzing the population by age, it is challenging to address the needs of each age group and ensure their proper management. Children's nutrition and care/education, proper employment for the youth, and necessary social security, health services, and care for the elderly fall within the state's obligations."
+}

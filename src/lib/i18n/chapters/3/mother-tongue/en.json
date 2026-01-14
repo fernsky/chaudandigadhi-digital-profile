@@ -1,0 +1,98 @@
+{
+    "title": "Population Details by Mother Tongue",
+    "number": "3.4",
+    "content": "Nepal is a nation with multi-ethnic, multi-lingual, and multi-cultural characteristics. Linguistic diversity is also evident in this municipality. Out of the total population of 53,631, the highest number, 24,970 or 46.6 percent, speak Nepali, while 7,641 or 14.2 percent speak Tharu, and 4,082 or 7.6 percent speak Chamling. Article 32 of the Constitution establishes the right to language and culture as a fundamental right, and Article 31, Clause 5, explicitly states that every Nepali community has the right to education in their mother tongue. The municipality has provisions to make special arrangements for students wishing to study in their mother tongue. Detailed information by mother tongue is mentioned in the table.",
+    "table_title": "Population Distribution by Mother Tongue",
+    "table_number": "Table No. 8",
+    "source": "National Census, 2078",
+    "table_data": [
+        {
+            "language": "Nepali",
+            "male": "11658",
+            "female": "13312",
+            "total": "24970",
+            "percentage": "46.56"
+        },
+        {
+            "language": "Tharu",
+            "male": "3524",
+            "female": "4117",
+            "total": "7641",
+            "percentage": "14.25"
+        },
+        {
+            "language": "Chamling",
+            "male": "1922",
+            "female": "2160",
+            "total": "4082",
+            "percentage": "7.61"
+        },
+        {
+            "language": "Bantawa",
+            "male": "1569",
+            "female": "1826",
+            "total": "3395",
+            "percentage": "6.33"
+        },
+        {
+            "language": "Magar Dhut",
+            "male": "1556",
+            "female": "1756",
+            "total": "3312",
+            "percentage": "6.18"
+        },
+        {
+            "language": "Maithili",
+            "male": "1062",
+            "female": "1047",
+            "total": "2109",
+            "percentage": "3.93"
+        },
+        {
+            "language": "Puma",
+            "male": "878",
+            "female": "990",
+            "total": "1868",
+            "percentage": "3.48"
+        },
+        {
+            "language": "Tamang",
+            "male": "767",
+            "female": "867",
+            "total": "1634",
+            "percentage": "3.05"
+        },
+        {
+            "language": "Thulung",
+            "male": "462",
+            "female": "520",
+            "total": "982",
+            "percentage": "1.83"
+        },
+        {
+            "language": "Others",
+            "male": "1759",
+            "female": "1879",
+            "total": "3638",
+            "percentage": "6.78"
+        },
+        {
+            "language": "Total",
+            "male": "25157",
+            "female": "28474",
+            "total": "53631",
+            "percentage": "100"
+        }
+    ],
+    "chart_title": "Population Distribution Based on Language Spoken in the Municipality",
+    "subsections": {
+        "indigenous": {
+            "title": "(A) Indigenous Peoples",
+            "content": "According to the National Foundation for Development of Indigenous Nationalities Act, 2058, indigenous nationalities refer to communities with their own mother tongue, traditional customs, distinct cultural identity, social structure, and written or unwritten history. In this municipality, 14.25 percent (7,641 people) of the total population belong to the Tharu community. Similarly, other communities include Chamling (7.61%), Bantawa (6.33%), Magar Dhut (6.18%), Maithili (3.93%), Puma (3.48%), Tamang (3.05%), and Thulung (1.83%). Although these communities contribute to keeping the municipality's original culture alive, they remain backward in social, political, and economic development. Special programs like capacity building and empowerment are necessary to uplift these communities."
+        },
+        "marginalized": {
+            "title": "(B) Oppressed and Marginalized Communities",
+            "content": "Article 306 (W) of the Constitution of Nepal defines marginalized communities as those socially, economically, and politically backward, experiencing discrimination and oppression, and unable to enjoy facilities due to geographical distance or other factors. These communities face inhuman discrimination like untouchability and feel neglected in various sectors. The number of students from these communities in primary and secondary schools is relatively low. Despite their traditional skills, poverty and social neglect prevent them from progressing. Their presence in civil and non-governmental services is minimal. Political representation is also limited. Most individuals live as unskilled or semi-unskilled laborers. Special campaigns are needed to uplift these communities for the municipality's development."
+        }
+    }
+}

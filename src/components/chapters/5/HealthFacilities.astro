@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -39,32 +40,33 @@ if (!content) throw new Error("Health facilities content not found");
             <h3
                 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
             >
-                ५.२.१ {content.title}
+                {formatNumber("5.2.1", lang)}
+                {content.title}
             </h3>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
                     <div class="text-[#f2e25d] font-serif text-4xl font-bold">
-                        {content.summary.hospitals}
+                        {formatNumber(content.summary.hospitals, lang)}
                     </div>
                     <div class="text-zinc-100 font-serif text-sm mt-2">
-                        नगर अस्पताल
+                        {lang === "ne" ? "नगर अस्पताल" : "Municipal Hospital"}
                     </div>
                 </div>
                 <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
                     <div class="text-[#f2e25d] font-serif text-4xl font-bold">
-                        {content.summary.healthPosts}
+                        {formatNumber(content.summary.healthPosts, lang)}
                     </div>
                     <div class="text-zinc-100 font-serif text-sm mt-2">
-                        स्वास्थ्य चौकी
+                        {lang === "ne" ? "स्वास्थ्य चौकी" : "Health Post"}
                     </div>
                 </div>
                 <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
                     <div class="text-[#f2e25d] font-serif text-4xl font-bold">
-                        {content.summary.basicHealthCenters}
+                        {formatNumber(content.summary.basicHealthCenters, lang)}
                     </div>
                     <div class="text-zinc-100 font-serif text-sm mt-2">
-                        स्वास्थ्य केन्द्र
+                        {lang === "ne" ? "स्वास्थ्य केन्द्र" : "Health Center"}
                     </div>
                 </div>
             </div>
@@ -77,28 +79,32 @@ if (!content) throw new Error("Health facilities content not found");
                         <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
                             <th
                                 class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10 w-16"
-                                >क्र.सं.</th
+                                >{lang === "ne" ? "क्र.सं." : "SN"}</th
                             >
                             <th
                                 class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >स्वास्थ्य संस्थाको नाम</th
+                                >{
+                                    lang === "ne"
+                                        ? "स्वास्थ्य संस्थाको नाम"
+                                        : "Health Facility Name"
+                                }</th
                             >
                             <th
                                 class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >ठेगाना</th
+                                >{lang === "ne" ? "ठेगाना" : "Address"}</th
                             >
                             <th
                                 class="px-4 py-3 text-left font-serif text-zinc-100 font-medium"
-                                >सेवा</th
+                                >{lang === "ne" ? "सेवा" : "Services"}</th
                             >
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            content.facilities.map((facility) => (
+                            content.facilities.map((facility: any) => (
                                 <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors">
                                     <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
-                                        {facility.sn}
+                                        {formatNumber(facility.sn, lang)}
                                     </td>
                                     <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
                                         {facility.name}

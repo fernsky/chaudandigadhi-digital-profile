@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import ForeignEmploymentChart from "../../charts/chapter-4/ForeignEmploymentChart.astro";
 
 interface Props {
@@ -53,19 +54,58 @@ if (!content) {
 }
 
 const chartData = [
-    { label: "भारत", value: content.grandTotal.india },
-    { label: "सार्क", value: content.grandTotal.saarc },
-    { label: "एशियन", value: content.grandTotal.asian },
-    { label: "मध्यपूर्व", value: content.grandTotal.middleEast },
-    { label: "अन्य एशियन", value: content.grandTotal.otherAsian },
-    { label: "युरोप", value: content.grandTotal.europe },
-    { label: "अन्य युरोप", value: content.grandTotal.otherEurope },
-    { label: "उत्तर अमेरिका", value: content.grandTotal.northAmerica },
-    { label: "दक्षिण अमेरिका", value: content.grandTotal.southAmerica },
-    { label: "अफ्रिका", value: content.grandTotal.africa },
-    { label: "प्यासिफिक", value: content.grandTotal.pacific },
-    { label: "अन्य", value: content.grandTotal.other },
-    { label: "खुल्न नसकेको", value: content.grandTotal.undisclosed },
+    {
+        label: lang === "ne" ? "भारत" : "India",
+        value: content.grandTotal.india,
+    },
+    {
+        label: lang === "ne" ? "सार्क" : "SAARC",
+        value: content.grandTotal.saarc,
+    },
+    {
+        label: lang === "ne" ? "एशियन" : "Asian",
+        value: content.grandTotal.asian,
+    },
+    {
+        label: lang === "ne" ? "मध्यपूर्व" : "Middle East",
+        value: content.grandTotal.middleEast,
+    },
+    {
+        label: lang === "ne" ? "अन्य एशियन" : "Other Asian",
+        value: content.grandTotal.otherAsian,
+    },
+    {
+        label: lang === "ne" ? "युरोप" : "Europe",
+        value: content.grandTotal.europe,
+    },
+    {
+        label: lang === "ne" ? "अन्य युरोप" : "Other Europe",
+        value: content.grandTotal.otherEurope,
+    },
+    {
+        label: lang === "ne" ? "उत्तर अमेरिका" : "North America",
+        value: content.grandTotal.northAmerica,
+    },
+    {
+        label: lang === "ne" ? "दक्षिण अमेरिका" : "South America",
+        value: content.grandTotal.southAmerica,
+    },
+    {
+        label: lang === "ne" ? "अफ्रिका" : "Africa",
+        value: content.grandTotal.africa,
+    },
+    {
+        label: lang === "ne" ? "प्यासिफिक" : "Pacific",
+        value: content.grandTotal.pacific,
+    },
+    {
+        label: lang === "ne" ? "अन्य" : "Other",
+        value: content.grandTotal.other,
+    },
+    {
+        label: lang === "ne" ? "खुल्न नसकेको" : "Undisclosed",
+        value: content.grandTotal.undisclosed,
+    },
 ].filter((d) => d.value > 0);
 ---
 
@@ -78,7 +118,7 @@ const chartData = [
             <h2
                 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100"
             >
-                {content.number}
+                {formatNumber(content.number, lang)}
                 {content.title}
             </h2>
 
@@ -99,53 +139,65 @@ const chartData = [
                         <tr class="border-b border-zinc-700">
                             <th
                                 class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                                >उमेर समूह</th
+                                >{lang === "ne" ? "उमेर समूह" : "Age Group"}</th
                             >
                             <th
                                 class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                                >लिङ्ग</th
+                                >{lang === "ne" ? "लिङ्ग" : "Gender"}</th
                             >
                             <th
                                 class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                                >भारत</th
+                                >{lang === "ne" ? "भारत" : "India"}</th
                             >
                             <th
                                 class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                                >सार्क</th
+                                >{lang === "ne" ? "सार्क" : "SAARC"}</th
                             >
                             <th
                                 class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                                >एशियन</th
+                                >{lang === "ne" ? "एशियन" : "Asian"}</th
                             >
                             <th
                                 class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                                >मध्यपूर्व</th
+                                >{
+                                    lang === "ne" ? "मध्यपूर्व" : "Middle East"
+                                }</th
                             >
                             <th
                                 class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                                >अन्य एशियन</th
+                                >{
+                                    lang === "ne" ? "अन्य एशियन" : "Other Asian"
+                                }</th
                             >
                             <th
                                 class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                                >युरोप</th
+                                >{lang === "ne" ? "युरोप" : "Europe"}</th
                             >
                             <th
                                 class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                                >अन्य युरोप</th
+                                >{
+                                    lang === "ne"
+                                        ? "अन्य युरोप"
+                                        : "Other Europe"
+                                }</th
                             >
                             <th
                                 class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                                >उत्तर अमेरिका</th
+                                >{
+                                    lang === "ne"
+                                        ? "उत्तर अमेरिका"
+                                        : "North America"
+                                }</th
                             >
                             <th
                                 class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                                >जम्मा</th
+                                >{lang === "ne" ? "जम्मा" : "Total"}</th
                             >
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            content.tableData.map((row) => (
+                            content.tableData.map((row: any) => (
                                 <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                                     <td class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
                                         {row.ageGroup}
@@ -154,31 +206,31 @@ const chartData = [
                                         {row.gender}
                                     </td>
                                     <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
-                                        {row.india}
+                                        {formatNumber(row.india, lang)}
                                     </td>
                                     <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
-                                        {row.saarc}
+                                        {formatNumber(row.saarc, lang)}
                                     </td>
                                     <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
-                                        {row.asian}
+                                        {formatNumber(row.asian, lang)}
                                     </td>
                                     <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
-                                        {row.middleEast}
+                                        {formatNumber(row.middleEast, lang)}
                                     </td>
                                     <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
-                                        {row.otherAsian}
+                                        {formatNumber(row.otherAsian, lang)}
                                     </td>
                                     <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
-                                        {row.europe}
+                                        {formatNumber(row.europe, lang)}
                                     </td>
                                     <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
-                                        {row.otherEurope}
+                                        {formatNumber(row.otherEurope, lang)}
                                     </td>
                                     <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
-                                        {row.northAmerica}
+                                        {formatNumber(row.northAmerica, lang)}
                                     </td>
                                     <td class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300 font-medium">
-                                        {row.total.toLocaleString()}
+                                        {formatNumber(row.total, lang)}
                                     </td>
                                 </tr>
                             ))
@@ -187,43 +239,76 @@ const chartData = [
                             <td
                                 colspan="2"
                                 class="py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                                >जम्मा</td
+                                >{lang === "ne" ? "जम्मा" : "Total"}</td
                             >
                             <td
                                 class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                                >{content.grandTotal.india}</td
+                                >{
+                                    formatNumber(content.grandTotal.india, lang)
+                                }</td
                             >
                             <td
                                 class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                                >{content.grandTotal.saarc}</td
+                                >{
+                                    formatNumber(content.grandTotal.saarc, lang)
+                                }</td
                             >
                             <td
                                 class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                                >{content.grandTotal.asian}</td
+                                >{
+                                    formatNumber(content.grandTotal.asian, lang)
+                                }</td
                             >
                             <td
                                 class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                                >{content.grandTotal.middleEast}</td
+                                >{
+                                    formatNumber(
+                                        content.grandTotal.middleEast,
+                                        lang,
+                                    )
+                                }</td
                             >
                             <td
                                 class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                                >{content.grandTotal.otherAsian}</td
+                                >{
+                                    formatNumber(
+                                        content.grandTotal.otherAsian,
+                                        lang,
+                                    )
+                                }</td
                             >
                             <td
                                 class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                                >{content.grandTotal.europe}</td
+                                >{
+                                    formatNumber(
+                                        content.grandTotal.europe,
+                                        lang,
+                                    )
+                                }</td
                             >
                             <td
                                 class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                                >{content.grandTotal.otherEurope}</td
+                                >{
+                                    formatNumber(
+                                        content.grandTotal.otherEurope,
+                                        lang,
+                                    )
+                                }</td
                             >
                             <td
                                 class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                                >{content.grandTotal.northAmerica}</td
+                                >{
+                                    formatNumber(
+                                        content.grandTotal.northAmerica,
+                                        lang,
+                                    )
+                                }</td
                             >
                             <td
                                 class="text-right py-3 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                                >{content.grandTotal.total.toLocaleString()}</td
+                                >{
+                                    formatNumber(content.grandTotal.total, lang)
+                                }</td
                             >
                         </tr>
                     </tbody>
@@ -234,13 +319,17 @@ const chartData = [
                 class="mt-8 border border-zinc-800 rounded-xl p-6 bg-zinc-900/30"
             >
                 <h4 class="text-zinc-400 font-serif text-sm mb-4">
-                    वैदेशिक रोजगार गन्तव्य (जम्मा)
+                    {
+                        lang === "ne"
+                            ? "वैदेशिक रोजगार गन्तव्य (जम्मा)"
+                            : "Foreign Employment Destinations (Total)"
+                    }
                 </h4>
                 <ForeignEmploymentChart data={chartData} />
             </div>
 
             <p class="text-sm text-zinc-400 font-serif italic">
-                स्रोत: {content.source}
+                {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
             </p>
 
             <!-- Landless Section -->
@@ -248,7 +337,7 @@ const chartData = [
                 <h3
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
                 >
-                    {content.landless.number}
+                    {formatNumber(content.landless.number, lang)}
                     {content.landless.title}
                 </h3>
                 <p class="font-serif text-base text-zinc-300 leading-relaxed">

@@ -1,5 +1,6 @@
 ---
 import type { Language } from "../../../lib/i18n";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -21,7 +22,7 @@ const vaccinationData = data || [
 
 <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
     <h4 class="font-serif text-xl text-zinc-100 font-medium mb-6 text-center">
-        खोप कभरेज दर (%)
+        {lang === "ne" ? "खोप कभरेज दर (%)" : "Vaccination Coverage Rate (%)"}
     </h4>
 
     <div class="space-y-4">
@@ -33,7 +34,7 @@ const vaccinationData = data || [
                             {item.vaccine}
                         </span>
                         <span class="text-[#f2e25d] font-bold text-lg">
-                            {item.coverage}%
+                            {formatNumber(item.coverage, lang)}%
                         </span>
                     </div>
                     <div class="bg-[#050505] h-6 relative border border-[#f2e25d]/10 overflow-hidden">
@@ -49,7 +50,11 @@ const vaccinationData = data || [
 
     <div class="mt-6 pt-6 border-t border-[#f2e25d]/10 text-center">
         <p class="text-zinc-400 font-serif text-xs italic">
-            स्रोत: नगर कार्यपालिकाको कार्यालय (श्रावण २०८१/ असार ८२)
+            {lang === "ne" ? "स्रोत" : "Source"}: {
+                lang === "ne"
+                    ? "नगर कार्यपालिकाको कार्यालय (श्रावण २०८१/ असार ८२)"
+                    : "Municipal Executive Office (July 2024 / June 2025)"
+            }
         </p>
     </div>
 </div>

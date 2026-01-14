@@ -48,7 +48,7 @@ if (!content) throw new Error("Major diseases content not found");
                 }
             </div>
             <p class="text-zinc-400 font-serif text-sm italic mt-6">
-                स्रोत: {content.source}
+                {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
             </p>
         </div>
     </div>

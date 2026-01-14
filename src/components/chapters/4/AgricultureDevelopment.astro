@@ -1,6 +1,7 @@
 ---
-import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
+import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
@@ -149,7 +150,7 @@ const collectionCenters = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {agricultureDevelopment.number}{" "}
+                            {formatNumber(agricultureDevelopment.number, lang)}{" "}
                             {agricultureDevelopment.title}
                         </h2>
                     </div>
@@ -192,7 +193,7 @@ const collectionCenters = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {cropDiseases.number} {cropDiseases.title}
+                                {formatNumber(cropDiseases.number, lang)} {cropDiseases.title}
                             </h3>
                         </div>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-8">
@@ -203,7 +204,7 @@ const collectionCenters = (await loadChapterSection(
                     <!-- Table 4.3.1 -->
                     <div class="mb-10">
                         <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {cropDiseases.tableNumber}:{" "}
+                            {formatNumber(cropDiseases.tableNumber, lang)}:{" "}
                             {cropDiseases.tableTitle}
                         </h4>
                         <div class="overflow-x-auto">
@@ -229,10 +230,10 @@ const collectionCenters = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {cropDiseases.tableData.map((row) => (
+                                    {cropDiseases.tableData.map((row: CropDiseasesSection['tableData'][number]) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 font-medium">
                                                 {row.crop}
@@ -249,7 +250,7 @@ const collectionCenters = (await loadChapterSection(
                             </table>
                         </div>
                         <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
-                            स्रोत: {cropDiseases.source}
+                            {lang === "ne" ? "स्रोत" : "Source"}: {cropDiseases.source}
                         </div>
                     </div>
                 </div>
@@ -270,7 +271,7 @@ const collectionCenters = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {vegFruitDiseases.number} {vegFruitDiseases.title}
+                                {formatNumber(vegFruitDiseases.number, lang)} {vegFruitDiseases.title}
                             </h3>
                         </div>
                     </div>
@@ -278,7 +279,7 @@ const collectionCenters = (await loadChapterSection(
                     <!-- Table 4.3.2 -->
                     <div class="mb-10">
                         <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {vegFruitDiseases.tableNumber}:{" "}
+                            {formatNumber(vegFruitDiseases.tableNumber, lang)}:{" "}
                             {vegFruitDiseases.tableTitle}
                         </h4>
                         <div class="overflow-x-auto">
@@ -304,10 +305,10 @@ const collectionCenters = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {vegFruitDiseases.tableData.map((row) => (
+                                    {vegFruitDiseases.tableData.map((row: VegFruitDiseasesSection['tableData'][number]) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 font-medium">
                                                 {row.crop}
@@ -324,7 +325,7 @@ const collectionCenters = (await loadChapterSection(
                             </table>
                         </div>
                         <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
-                            स्रोत: {vegFruitDiseases.source}
+                            {lang === "ne" ? "स्रोत" : "Source"}: {vegFruitDiseases.source}
                         </div>
                     </div>
                 </div>
@@ -344,7 +345,7 @@ const collectionCenters = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {livestockDiseases.number} {livestockDiseases.title}
+                            {formatNumber(livestockDiseases.number, lang)} {livestockDiseases.title}
                         </h3>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
@@ -371,7 +372,7 @@ const collectionCenters = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {commercialFarms.number} {commercialFarms.title}
+                                {formatNumber(commercialFarms.number, lang)} {commercialFarms.title}
                             </h3>
                         </div>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-8">
@@ -382,7 +383,7 @@ const collectionCenters = (await loadChapterSection(
                     <!-- Table 4.3.4 (Orange Header) -->
                     <div class="mb-10 w-full">
                         <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {commercialFarms.tableNumber}:{" "}
+                            {formatNumber(commercialFarms.tableNumber, lang)}:{" "}
                             {commercialFarms.tableTitle}
                         </h4>
                         <div class="overflow-x-auto">
@@ -402,10 +403,10 @@ const collectionCenters = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {commercialFarms.tableData.map((row) => (
+                                    {commercialFarms.tableData.map((row: CommercialFarmsSection['tableData'][number]) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5">
                                                 {row.firmName}
@@ -416,7 +417,7 @@ const collectionCenters = (await loadChapterSection(
                             </table>
                         </div>
                         <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
-                            स्रोत: {commercialFarms.source}
+                            {lang === "ne" ? "स्रोत" : "Source"}: {commercialFarms.source}
                         </div>
                     </div>
                 </div>
@@ -437,7 +438,7 @@ const collectionCenters = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {agricultureHr.number} {agricultureHr.title}
+                                {formatNumber(agricultureHr.number, lang)} {agricultureHr.title}
                             </h3>
                         </div>
                     </div>
@@ -445,7 +446,7 @@ const collectionCenters = (await loadChapterSection(
                     <!-- Table 1 -->
                     <div class="mb-10 w-full">
                         <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {agricultureHr.tableNumber1}:{" "}
+                            {formatNumber(agricultureHr.tableNumber1, lang)}:{" "}
                             {agricultureHr.tableTitle1}
                         </h4>
                         <div class="overflow-x-auto">
@@ -473,10 +474,10 @@ const collectionCenters = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {agricultureHr.tableData1.map((row) => (
+                                    {agricultureHr.tableData1.map((row: AgricultureHrSection['tableData1'][number]) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5">
                                                 {row.name}
@@ -485,7 +486,7 @@ const collectionCenters = (await loadChapterSection(
                                                 {row.designation}
                                             </td>
                                             <td class="px-4 py-3">
-                                                {row.contact}
+                                                {formatNumber(row.contact, lang)}
                                             </td>
                                         </tr>
                                     ))}
@@ -497,7 +498,7 @@ const collectionCenters = (await loadChapterSection(
                     <!-- Table 2 -->
                     <div class="mb-10 w-full mx-auto">
                         <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {agricultureHr.tableNumber2}:{" "}
+                            {formatNumber(agricultureHr.tableNumber2, lang)}:{" "}
                             {agricultureHr.tableTitle2}
                         </h4>
                         <div class="overflow-x-auto">
@@ -528,10 +529,10 @@ const collectionCenters = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {agricultureHr.tableData2.map((row) => (
+                                    {agricultureHr.tableData2.map((row: AgricultureHrSection['tableData2'][number]) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5">
                                                 {row.name}
@@ -540,7 +541,7 @@ const collectionCenters = (await loadChapterSection(
                                                 {row.designation}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5">
-                                                {row.contact}
+                                                {formatNumber(row.contact, lang)}
                                             </td>
                                             <td class="px-4 py-3">
                                                 {row.branch}
@@ -551,7 +552,7 @@ const collectionCenters = (await loadChapterSection(
                             </table>
                         </div>
                         <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
-                            स्रोत: {agricultureHr.source}
+                            {lang === "ne" ? "स्रोत" : "Source"}: {agricultureHr.source}
                         </div>
                     </div>
                 </div>
@@ -572,7 +573,7 @@ const collectionCenters = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {agriculturalGroups.number}{" "}
+                                {formatNumber(agriculturalGroups.number, lang)}{" "}
                                 {agriculturalGroups.title}
                             </h3>
                             <h4 class="font-serif text-xl md:text-2xl text-zinc-300 font-medium mb-4">
@@ -587,7 +588,7 @@ const collectionCenters = (await loadChapterSection(
                     <!-- Table 4.3.6 -->
                     <div class="mb-10 w-full">
                         <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {agriculturalGroups.tableNumber}:{" "}
+                            {formatNumber(agriculturalGroups.tableNumber, lang)}:{" "}
                             {agriculturalGroups.tableTitle}
                         </h4>
                         <div class="overflow-x-auto">
@@ -610,16 +611,16 @@ const collectionCenters = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {agriculturalGroups.tableData.map((row) => (
+                                    {agriculturalGroups.tableData.map((row: AgriculturalGroupsSection['tableData'][number]) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
                                             <td class="px-4 py-3">
-                                                {row.groupName}
+                                                {formatNumber(row.groupName, lang)}
                                             </td>
                                         </tr>
                                     ))}
@@ -627,7 +628,7 @@ const collectionCenters = (await loadChapterSection(
                             </table>
                         </div>
                         <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
-                            स्रोत: {agriculturalGroups.source}
+                            {lang === "ne" ? "स्रोत" : "Source"}: {agriculturalGroups.source}
                         </div>
                     </div>
                 </div>
@@ -647,7 +648,7 @@ const collectionCenters = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {collectionCenters.number} {collectionCenters.title}
+                            {formatNumber(collectionCenters.number, lang)} {collectionCenters.title}
                         </h3>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">

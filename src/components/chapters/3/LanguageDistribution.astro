@@ -1,0 +1,446 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const formatNumber = (val: string | number, decimals = 0) => {
+    const nepaliToEnglish = (str: string) =>
+        str.replace(
+            /[०१२३४५६७८९]/g,
+            (d) => "0123456789"["०१२३४५६७८९".indexOf(d)],
+        );
+
+    let num: number;
+    if (typeof val === "string") {
+        const cleaned = val.replace(/,/g, "");
+        num = parseFloat(nepaliToEnglish(cleaned));
+    } else {
+        num = val;
+    }
+
+    if (isNaN(num)) return val.toString();
+
+    const formatted = num.toLocaleString("en-US", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+    });
+
+    if (lang !== "ne") return formatted;
+
+    const nepaliDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+    return formatted.replace(/\d/g, (digit) => nepaliDigits[parseInt(digit)]);
+};
+
+type MotherTongueContent = {
+    title: string;
+    number: string;
+    content: string;
+    table_title: string;
+    table_number: string;
+    source: string;
+    chart_title: string;
+    table_data: Array<{
+        language: string;
+        male: string;
+        female: string;
+        total: string;
+        percentage: string;
+    }>;
+    subsections: {
+        indigenous: { title: string; content: string };
+        marginalized: { title: string; content: string };
+    };
+};
+
+const content = await loadChapterSection<MotherTongueContent>(
+    3,
+    "mother-tongue",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Mother tongue section content not found");
+}
+
+// Helper to convert Nepali numbers to English for D3
+const nepaliToEnglish = (str: string) => {
+    return str.replace(
+        /[०१२३४५६७८९]/g,
+        (d) => "0123456789"["०१२३४५६७८९".indexOf(d)],
+    );
+};
+
+const cleanChartData = content.table_data
+    .filter((row) => row.language !== "जम्मा" && row.language !== "Total")
+    .map((row) => ({
+        label: row.language,
+        value: parseFloat(nepaliToEnglish(row.total.replace(/,/g, ""))),
+        percentage: row.percentage,
+    }));
+---
+
+<section
+    id="mother-tongue"
+    class="relative bg-[#050505] pb-8 md:pb-12 border-t border-[#f2e25d]/10 pt-8 mt-8"
+>
+    <div class="container mx-auto px-8">
+        <div class="w-full">
+            <!-- 3.4 Header -->
+            <div class="mb-8">
+                <h3
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+                >
+                    {content.number}
+                    {content.title}
+                </h3>
+            </div>
+
+            <p
+                class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10 text-justify"
+            >
+                {content.content}
+            </p>
+
+            <!-- Table -->
+            <div class="mb-10 w-full overflow-hidden">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center"
+                >
+                    {content.table_number}: {content.table_title}
+                </h4>
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-lg text-center"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20 text-zinc-100"
+                            >
+                                <th
+                                    rowspan="2"
+                                    class="px-4 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {
+                                        lang === "ne"
+                                            ? "मातृभाषा"
+                                            : "Mother Tongue"
+                                    }
+                                </th>
+                                <th
+                                    colspan="3"
+                                    class="px-4 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {
+                                        lang === "ne"
+                                            ? "जम्मा जनसंख्या"
+                                            : "Total Population"
+                                    }
+                                </th>
+                                <th
+                                    rowspan="2"
+                                    class="px-4 py-3 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "प्रतिशत" : "Percentage"}
+                                </th>
+                            </tr>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20 text-zinc-100"
+                            >
+                                <th
+                                    class="px-4 py-2 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "पुरूष" : "Male"}
+                                </th>
+                                <th
+                                    class="px-4 py-2 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "महिला" : "Female"}
+                                </th>
+                                <th
+                                    class="px-4 py-2 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "जम्मा" : "Total"}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.table_data.map((row) => {
+                                    const isTotal =
+                                        row.language === "जम्मा" ||
+                                        row.language === "Total";
+                                    return (
+                                        <tr
+                                            class={`border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200 text-zinc-100 font-serif ${isTotal ? "bg-[#f2e25d]/10 font-bold border-t-2 border-[#f2e25d]/30" : ""}`}
+                                        >
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 font-medium text-left">
+                                                {row.language}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(row.male)}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(row.female)}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(row.total)}
+                                            </td>
+                                            <td class="px-4 py-3">
+                                                {formatNumber(
+                                                    row.percentage,
+                                                    2,
+                                                )}
+                                                %
+                                            </td>
+                                        </tr>
+                                    );
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div
+                    class="text-right text-zinc-400 font-serif italic text-sm mt-2"
+                >
+                    {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
+                </div>
+            </div>
+
+            <!-- Professional Chart -->
+            <div
+                class="mb-12 w-full bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 rounded-lg overflow-hidden"
+            >
+                <h4
+                    class="font-bold text-xl md:text-2xl text-white font-medium mb-8 text-center font-serif"
+                >
+                    {content.chart_title}
+                </h4>
+                <div id="language-bar-chart" class="w-full h-[500px]"></div>
+            </div>
+
+            <!-- Subsections -->
+            <div class="space-y-12 mb-8">
+                <div>
+                    <h4
+                        class="font-serif text-xl md:text-2xl font-medium text-zinc-100 mb-4"
+                    >
+                        {content.subsections.indigenous.title}
+                    </h4>
+                    <p
+                        class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed text-justify"
+                    >
+                        {content.subsections.indigenous.content}
+                    </p>
+                </div>
+
+                <div>
+                    <h4
+                        class="font-serif text-xl md:text-2xl font-medium text-zinc-100 mb-4"
+                    >
+                        {content.subsections.marginalized.title}
+                    </h4>
+                    <p
+                        class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed text-justify"
+                    >
+                        {content.subsections.marginalized.content}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+<script define:vars={{ cleanChartData, lang }}>
+    document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById("language-bar-chart");
+        if (!container) return;
+
+        const formatValue = (num, decimals = 0) => {
+            const formatted = num.toLocaleString("en-US", {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals,
+            });
+            if (lang !== "ne") return formatted;
+            const nepaliDigits = [
+                "०",
+                "१",
+                "२",
+                "३",
+                "४",
+                "५",
+                "६",
+                "७",
+                "८",
+                "९",
+            ];
+            return formatted.replace(
+                /\d/g,
+                (digit) => nepaliDigits[parseInt(digit)],
+            );
+        };
+
+        const data = cleanChartData;
+        const margin = { top: 40, right: 30, bottom: 80, left: 70 };
+        const width = container.clientWidth - margin.left - margin.right;
+        const height = 500 - margin.top - margin.bottom;
+
+        const svg = d3
+            .select("#language-bar-chart")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // X axis
+        const x = d3
+            .scaleBand()
+            .range([0, width])
+            .domain(data.map((d) => d.label))
+            .padding(0.3);
+
+        svg.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x))
+            .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end")
+            .attr("fill", "#cbd5e1")
+            .attr("font-family", "serif")
+            .attr("font-size", "14px");
+
+        // Y axis
+        const y = d3
+            .scaleLinear()
+            .domain([0, d3.max(data, (d) => d.value) * 1.1])
+            .range([height, 0]);
+
+        svg.append("g")
+            .call(d3.axisLeft(y).ticks(5))
+            .selectAll("text")
+            .attr("fill", "#cbd5e1")
+            .attr("font-family", "serif")
+            .attr("font-size", "14px")
+            .text((d) => formatValue(d));
+
+        // Premium Colors
+        const colors = [
+            "#f2e25d",
+            "#eab308",
+            "#ca8a04",
+            "#a16207",
+            "#60a5fa",
+            "#3b82f6",
+            "#f472b6",
+            "#ec4899",
+            "#34d399",
+            "#10b981",
+        ];
+
+        // Gridlines
+        svg.append("g")
+            .attr("class", "grid")
+            .attr("opacity", 0.1)
+            .call(d3.axisLeft(y).tickSize(-width).tickFormat(""))
+            .selectAll("line")
+            .attr("stroke", "#f2e25d");
+
+        // Bars with Gradients
+        data.forEach((d, i) => {
+            const gradientId = `grad-${i}`;
+            const defs = svg.append("defs");
+            const gradient = defs
+                .append("linearGradient")
+                .attr("id", gradientId)
+                .attr("x1", "0%")
+                .attr("y1", "0%")
+                .attr("x2", "0%")
+                .attr("y2", "100%");
+
+            gradient
+                .append("stop")
+                .attr("offset", "0%")
+                .attr("stop-color", colors[i % colors.length]);
+
+            gradient
+                .append("stop")
+                .attr("offset", "100%")
+                .attr(
+                    "stop-color",
+                    d3.color(colors[i % colors.length]).darker(1.5),
+                );
+
+            svg.append("rect")
+                .attr("x", x(d.label))
+                .attr("y", height)
+                .attr("width", x.bandwidth())
+                .attr("height", 0)
+                .attr("fill", `url(#${gradientId})`)
+                .attr("rx", 4)
+                .transition()
+                .duration(1000)
+                .delay(i * 100)
+                .attr("y", y(d.value))
+                .attr("height", height - y(d.value));
+        });
+
+        // Tooltip interactions
+        svg.selectAll("rect")
+            .style("cursor", "pointer")
+            .on("mouseover", function (event, d) {
+                d3.select(this).attr("opacity", 0.8);
+
+                const tooltip = d3.select("#language-tooltip");
+                tooltip.transition().duration(200).style("opacity", 0.9);
+                tooltip
+                    .html(
+                        `
+                    <div class="font-serif p-2">
+                        <div class="font-bold text-sm mb-1">${d.label}</div>
+                        <div class="text-xs text-zinc-300">
+                            ${lang === "ne" ? "संख्या" : "Number"}: ${formatValue(d.value)}
+                        </div>
+                    </div>
+                `,
+                    )
+                    .style("left", event.clientX + 10 + "px")
+                    .style("top", event.clientY - 28 + "px");
+            })
+            .on("mousemove", function (event) {
+                d3.select("#language-tooltip")
+                    .style("left", event.clientX + 10 + "px")
+                    .style("top", event.clientY - 28 + "px");
+            })
+            .on("mouseout", function () {
+                d3.select(this).attr("opacity", 1);
+
+                d3.select("#language-tooltip")
+                    .transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
+
+        // Axis styling
+        svg.selectAll(".domain").attr("stroke", "#475569");
+        svg.selectAll(".tick line").attr("stroke", "#475569");
+    });
+</script>
+
+<div
+    id="language-tooltip"
+    class="fixed opacity-0 pointer-events-none bg-[#111111] border border-[#f2e25d]/30 text-white rounded px-2 py-1 z-[9999] shadow-2xl"
+>
+</div>
+
+<style is:global>
+    #language-tooltip {
+        transition: opacity 0.2s;
+        backdrop-filter: blur(4px);
+    }
+</style>

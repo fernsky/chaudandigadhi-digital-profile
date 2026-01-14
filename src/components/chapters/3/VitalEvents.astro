@@ -1,0 +1,1517 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+const locale = lang === "ne" ? "ne-NP" : "en-US";
+
+const formatNumber = (num: number, decimals = 0) => {
+    const formatted = num.toLocaleString("en-US", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+    });
+    if (lang !== "ne") return formatted;
+    const nepaliDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+    return formatted.replace(/\d/g, (digit) => nepaliDigits[parseInt(digit)]);
+};
+
+type VitalEventsContent = {
+    title: string;
+    sectionId: string;
+    number: string;
+    intro: string;
+    table18: {
+        title: string;
+        tableData: Array<{
+            ward: string;
+            birthMale: number;
+            birthFemale: number;
+            birthTotal: number;
+            deathMale: number;
+            deathFemale: number;
+            deathTotal: number;
+            divorce: number;
+            marriage: number;
+            migrationIn: number;
+            migrationInMembers: number;
+            migrationOut: number;
+            migrationOutMembers: number;
+            total: number;
+        }>;
+        total: {
+            birthMale: number;
+            birthFemale: number;
+            birthTotal: number;
+            deathMale: number;
+            deathFemale: number;
+            deathTotal: number;
+            divorce: number;
+            marriage: number;
+            migrationIn: number;
+            migrationInMembers: number;
+            migrationOut: number;
+            migrationOutMembers: number;
+            total: number;
+        };
+        source: string;
+    };
+    table19: {
+        title: string;
+        tableTitle: string;
+        analysis: string;
+        tableData: Array<{
+            ward: string;
+            छ: { male: number; female: number; total: number };
+            छैन: { male: number; female: number; total: number };
+            जम्मा: { male: number; female: number; total: number };
+        }>;
+        total: {
+            छ: { male: number; female: number; total: number };
+            छैन: { male: number; female: number; total: number };
+            जम्मा: { male: number; female: number; total: number };
+        };
+        source: string;
+        chartTitle: string;
+        chartData: Array<{ label: string; value: number; color: string }>;
+    };
+    deathDetails: {
+        title: string;
+        intro: string;
+        equation: {
+            label: string;
+            numerator: string;
+            denominator: string;
+            multiplier: string;
+        };
+        conclusion: string;
+    };
+    table20: {
+        title: string;
+        tableTitle: string;
+        chartTitle: string;
+        tableData: Array<{
+            ageGroup: string;
+            male: number;
+            female: number;
+            total: number;
+        }>;
+        total: { male: number; female: number; total: number };
+        source: string;
+        analysisAfterChart: string;
+    };
+    table21: {
+        title: string;
+        tableTitle: string;
+        tableData: Array<{
+            ageGroup: string;
+            values: number[];
+            total: number;
+        }>;
+        columns: string[];
+        total: { values: number[]; total: number };
+        source: string;
+        analysisAfterTable: string;
+    };
+    deathCausePie: {
+        title: string;
+        chartData: Array<{ label: string; value: number; color: string }>;
+    };
+};
+
+const content = await loadChapterSection<VitalEventsContent>(
+    3,
+    "personal-events",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Vital events section content not found");
+}
+
+const table18Cols = [
+    {
+        key: "birth",
+        label: lang === "ne" ? "जन्म" : "Birth",
+        sub: [
+            { key: "birthMale", label: lang === "ne" ? "पुरूष" : "M" },
+            { key: "birthFemale", label: lang === "ne" ? "महिला" : "F" },
+            { key: "birthTotal", label: lang === "ne" ? "जम्मा" : "Total" },
+        ],
+    },
+    {
+        key: "death",
+        label: lang === "ne" ? "मृत्यु" : "Death",
+        sub: [
+            { key: "deathMale", label: lang === "ne" ? "पुरूष" : "M" },
+            { key: "deathFemale", label: lang === "ne" ? "महिला" : "F" },
+            { key: "deathTotal", label: lang === "ne" ? "जम्मा" : "Total" },
+        ],
+    },
+    { key: "divorce", label: lang === "ne" ? "सम्बन्ध विच्छेद" : "Divorce" },
+    { key: "marriage", label: lang === "ne" ? "विवाह" : "Marriage" },
+    {
+        key: "migrationIn",
+        label: lang === "ne" ? "बसाइँ सरी आएको" : "Migrated In",
+        sub: [
+            {
+                key: "migrationIn",
+                label: lang === "ne" ? "दर्ता संख्या" : "Reg No",
+            },
+            {
+                key: "migrationInMembers",
+                label: lang === "ne" ? "सदस्य संख्या" : "Members",
+            },
+        ],
+    },
+    {
+        key: "migrationOut",
+        label: lang === "ne" ? "बसाइँ सरी जाने" : "Migrated Out",
+        sub: [
+            {
+                key: "migrationOut",
+                label: lang === "ne" ? "दर्ता संख्या" : "Reg No",
+            },
+            {
+                key: "migrationOutMembers",
+                label: lang === "ne" ? "सदस्य संख्या" : "Members",
+            },
+        ],
+    },
+    { key: "total", label: lang === "ne" ? "जम्मा" : "Total" },
+];
+
+const birthRegChartData = content.table19.chartData;
+const deathAgeChartData = content.table20.tableData;
+const deathCausePieData = content.deathCausePie.chartData;
+---
+
+<section
+    id="vital-events"
+    class="relative bg-[#050505] pb-8 md:pb-12 border-t border-[#f2e25d]/10 pt-8 mt-8"
+>
+    <div class="container mx-auto px-8">
+        <div class="w-full">
+            <!-- 3.12 Header -->
+            <div class="mb-8">
+                <h3
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+                >
+                    {content.number}
+                    {content.title}
+                </h3>
+            </div>
+
+            <p
+                class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10 text-justify"
+            >
+                {content.intro}
+            </p>
+
+            <!-- Table 18 -->
+            <div class="mb-12 w-full overflow-hidden">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4"
+                >
+                    <h4
+                        class="font-serif text-xl md:text-2xl text-zinc-100 font-medium text-center md:text-left"
+                    >
+                        {content.table18.title}
+                    </h4>
+                </div>
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-[9px] md:text-xs text-center"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/20 border-b border-[#f2e25d]/20 text-white"
+                            >
+                                <th
+                                    rowspan="2"
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10 font-serif font-medium sticky left-0 bg-[#1a1a14] z-10 w-12"
+                                >
+                                    {lang === "ne" ? "वडा नं." : "Ward No."}
+                                </th>
+                                {
+                                    table18Cols.map((col) => (
+                                        <th
+                                            colspan={
+                                                col.sub ? col.sub.length : 1
+                                            }
+                                            class="px-1 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                        >
+                                            {col.label}
+                                        </th>
+                                    ))
+                                }
+                            </tr>
+                            <tr
+                                class="bg-[#f2e25d]/10 border-b border-[#f2e25d]/20 text-zinc-100"
+                            >
+                                {
+                                    table18Cols.map((col) =>
+                                        col.sub
+                                            ? col.sub.map((sub) => (
+                                                  <th class="px-1 py-2 border-r border-[#f2e25d]/10 font-serif font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-[50px]">
+                                                      {sub.label}
+                                                  </th>
+                                              ))
+                                            : null,
+                                    )
+                                }
+                            </tr>
+                        </thead>
+                        <tbody class="text-zinc-300 font-serif">
+                            {
+                                content.table18.tableData.map((row) => (
+                                    <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5 font-medium sticky left-0 bg-[#0a0a0a] z-10">
+                                            {row.ward}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {row.birthMale.toLocaleString(
+                                                locale,
+                                            )}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {row.birthFemale.toLocaleString(
+                                                locale,
+                                            )}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5 font-medium text-white">
+                                            {row.birthTotal.toLocaleString(
+                                                locale,
+                                            )}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {formatNumber(row.birthMale)}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {formatNumber(row.birthFemale)}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5 font-medium text-white">
+                                            {formatNumber(row.birthTotal)}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {formatNumber(row.deathMale)}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {formatNumber(row.deathFemale)}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5 font-medium text-white">
+                                            {formatNumber(row.deathTotal)}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {formatNumber(row.divorce)}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {formatNumber(row.marriage)}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {formatNumber(row.migrationIn)}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {formatNumber(
+                                                row.migrationInMembers,
+                                            )}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {formatNumber(row.migrationOut)}
+                                        </td>
+                                        <td class="px-1 py-2 border-r border-[#f2e25d]/5">
+                                            {formatNumber(
+                                                row.migrationOutMembers,
+                                            )}
+                                        </td>
+                                        <td class="px-1 py-2 font-medium text-white bg-[#f2e25d]/5">
+                                            {formatNumber(row.total)}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                            <tr class="bg-[#f2e25d]/20 font-bold text-white">
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10 sticky left-0 bg-[#1a1a14] z-10"
+                                >
+                                    {lang === "ne" ? "जम्मा" : "Total"}
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total.birthMale,
+                                        )
+                                    }
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total.birthFemale,
+                                        )
+                                    }
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total.birthTotal,
+                                        )
+                                    }
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total.deathMale,
+                                        )
+                                    }
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total.deathFemale,
+                                        )
+                                    }
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total.deathTotal,
+                                        )
+                                    }
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total.divorce,
+                                        )
+                                    }
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total.marriage,
+                                        )
+                                    }
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total.migrationIn,
+                                        )
+                                    }
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total
+                                                .migrationInMembers,
+                                        )
+                                    }
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total.migrationOut,
+                                        )
+                                    }
+                                </td>
+                                <td
+                                    class="px-1 py-3 border-r border-[#f2e25d]/10"
+                                >
+                                    {
+                                        formatNumber(
+                                            content.table18.total
+                                                .migrationOutMembers,
+                                        )
+                                    }
+                                </td>
+                                <td class="px-1 py-3">
+                                    {formatNumber(content.table18.total.total)}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div
+                    class="text-right text-zinc-400 font-serif italic text-sm mt-2"
+                >
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.table18.source
+                    }
+                </div>
+            </div>
+
+            <!-- Subsection A: Birth Registration -->
+            <div class="mb-12 pt-8">
+                <h4
+                    class="font-serif text-xl md:text-2xl font-medium text-white mb-6 uppercase tracking-wider"
+                >
+                    {content.table19.title}
+                </h4>
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-8 text-justify"
+                >
+                    {content.table19.analysis}
+                </p>
+
+                <!-- Table 19 -->
+                <div class="mb-12 w-full overflow-hidden">
+                    <h5
+                        class="font-serif text-lg md:text-xl text-zinc-100 font-medium mb-4 text-center"
+                    >
+                        {content.table19.tableTitle}
+                    </h5>
+                    <div class="overflow-x-auto">
+                        <table
+                            class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-xs md:text-sm text-center"
+                        >
+                            <thead>
+                                <tr
+                                    class="bg-[#f2e25d]/20 border-b border-[#f2e25d]/20 text-white"
+                                >
+                                    <th
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium sticky left-0 bg-[#1a1a14] z-10 w-24"
+                                    >
+                                        {lang === "ne" ? "वडा" : "Ward"}
+                                    </th>
+                                    <th
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >
+                                        {
+                                            lang === "ne"
+                                                ? "जन्मदर्ता"
+                                                : "Birth Reg"
+                                        }
+                                    </th>
+                                    <th
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >
+                                        {lang === "ne" ? "बालक" : "Boys"}
+                                    </th>
+                                    <th
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >
+                                        {lang === "ne" ? "बालिका" : "Girls"}
+                                    </th>
+                                    <th
+                                        class="px-2 py-3 font-serif font-medium"
+                                    >
+                                        {lang === "ne" ? "जम्मा" : "Total"}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-zinc-300 font-serif">
+                                {
+                                    content.table19.tableData.map((row) => (
+                                        <>
+                                            <tr class="border-b border-[#f2e25d]/5">
+                                                <td
+                                                    rowspan="3"
+                                                    class="px-2 py-3 border-r border-[#f2e25d]/5 font-medium sticky left-0 bg-[#0a0a0a] z-10"
+                                                >
+                                                    {row.ward}
+                                                </td>
+                                                <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                    {lang === "ne"
+                                                        ? "छ"
+                                                        : "Yes"}
+                                                </td>
+                                                <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                    {formatNumber(row.छ.male)}
+                                                </td>
+                                                <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                    {formatNumber(row.छ.female)}
+                                                </td>
+                                                <td class="px-2 py-3">
+                                                    {formatNumber(row.छ.total)}
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-[#f2e25d]/5 bg-[#f2e25d]/5">
+                                                <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                    {lang === "ne"
+                                                        ? "छैन"
+                                                        : "No"}
+                                                </td>
+                                                <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                    {formatNumber(row.छैन.male)}
+                                                </td>
+                                                <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                    {formatNumber(
+                                                        row.छैन.female,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-3">
+                                                    {formatNumber(
+                                                        row.छैन.total,
+                                                    )}
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-[#f2e25d]/10 font-bold bg-[#f2e25d]/10 text-white">
+                                                <td class="px-2 py-3 border-r border-[#f2e25d]/5 uppercase text-[10px]">
+                                                    {lang === "ne"
+                                                        ? "जम्मा"
+                                                        : "Total"}
+                                                </td>
+                                                <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                    {formatNumber(
+                                                        row.जम्मा.male,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                    {formatNumber(
+                                                        row.जम्मा.female,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-3">
+                                                    {formatNumber(
+                                                        row.जम्मा.total,
+                                                    )}
+                                                </td>
+                                            </tr>
+                                        </>
+                                    ))
+                                }
+                                <!-- Total Row -->
+                                <tr
+                                    class="bg-[#f2e25d]/30 font-bold text-white uppercase"
+                                >
+                                    <td
+                                        rowspan="3"
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10 sticky left-0 bg-[#1a1a14] z-10"
+                                    >
+                                        {lang === "ne" ? "जम्मा" : "Total"}
+                                    </td>
+                                    <td
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10"
+                                    >
+                                        {lang === "ne" ? "छ" : "Yes"}
+                                    </td>
+                                    <td
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10"
+                                    >
+                                        {
+                                            formatNumber(
+                                                content.table19.total.छ.male,
+                                            )
+                                        }
+                                    </td>
+                                    <td
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10"
+                                    >
+                                        {
+                                            formatNumber(
+                                                content.table19.total.छ.female,
+                                            )
+                                        }
+                                    </td>
+                                    <td class="px-2 py-3">
+                                        {
+                                            formatNumber(
+                                                content.table19.total.छ.total,
+                                            )
+                                        }
+                                    </td>
+                                </tr>
+                                <tr
+                                    class="bg-[#f2e25d]/20 font-bold text-white uppercase"
+                                >
+                                    <td
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10"
+                                    >
+                                        {lang === "ne" ? "छैन" : "No"}
+                                    </td>
+                                    <td
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10"
+                                    >
+                                        {
+                                            formatNumber(
+                                                content.table19.total.छैन.male,
+                                            )
+                                        }
+                                    </td>
+                                    <td
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10"
+                                    >
+                                        {
+                                            formatNumber(
+                                                content.table19.total.छैन
+                                                    .female,
+                                            )
+                                        }
+                                    </td>
+                                    <td class="px-2 py-3">
+                                        {
+                                            formatNumber(
+                                                content.table19.total.छैन.total,
+                                            )
+                                        }
+                                    </td>
+                                </tr>
+                                <tr
+                                    class="bg-[#f2e25d]/40 font-bold text-white uppercase border-t-2 border-white/20"
+                                >
+                                    <td
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10"
+                                    >
+                                        {lang === "ne" ? "जम्मा" : "Total"}
+                                    </td>
+                                    <td
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10"
+                                    >
+                                        {
+                                            formatNumber(
+                                                content.table19.total.जम्मा
+                                                    .male,
+                                            )
+                                        }
+                                    </td>
+                                    <td
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10"
+                                    >
+                                        {
+                                            formatNumber(
+                                                content.table19.total.जम्मा
+                                                    .female,
+                                            )
+                                        }
+                                    </td>
+                                    <td class="px-2 py-3">
+                                        {
+                                            formatNumber(
+                                                content.table19.total.जम्मा
+                                                    .total,
+                                            )
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- D3 Pie Chart for Birth Registration -->
+                <div
+                    class="mb-16 w-full bg-[#0a0a0a] border border-[#f2e25d]/10 p-4 md:p-8 rounded-xl shadow-2xl relative overflow-hidden"
+                >
+                    <h4
+                        class="font-serif text-xl md:text-2xl text-white font-medium mb-12 text-center px-4"
+                    >
+                        {content.table19.chartTitle}
+                    </h4>
+                    <div
+                        id="birth-reg-pie-chart"
+                        class="w-full h-[350px] md:h-[450px]"
+                    >
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-6 mt-8">
+                        {
+                            content.table19.chartData.map((d) => (
+                                <div class="flex items-center gap-2">
+                                    <div
+                                        class="w-4 h-4 rounded-sm"
+                                        style={`background-color: ${d.color}`}
+                                    />
+                                    <span class="text-zinc-300 font-serif text-sm md:text-base">
+                                        {d.label} ({formatNumber(d.value, 2)}%)
+                                    </span>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div
+                    class="text-right text-zinc-400 font-serif italic text-sm mt-2"
+                >
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.table19.source
+                    }
+                </div>
+            </div>
+
+            <!-- Subsection B: Death Details -->
+            <div class="mb-12 pt-8">
+                <h4
+                    class="font-serif text-xl md:text-2xl font-medium text-white mb-6 uppercase tracking-wider"
+                >
+                    {content.deathDetails.title}
+                </h4>
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6 text-justify"
+                >
+                    {content.deathDetails.intro}
+                </p>
+
+                <!-- Equation Box -->
+                <div class="my-10 flex justify-center">
+                    <div
+                        class="bg-[#1a1a1a] border border-[#f2e25d]/20 p-6 md:p-10 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-4 md:gap-8 max-w-3xl"
+                    >
+                        <div
+                            class="text-zinc-100 font-serif text-xl md:text-2xl font-bold whitespace-nowrap"
+                        >
+                            {content.deathDetails.equation.label} =
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="flex flex-col items-center">
+                                <span
+                                    class="text-zinc-100 font-serif text-base md:text-lg pb-2 text-center"
+                                >
+                                    {content.deathDetails.equation.numerator}
+                                </span>
+                                <div class="w-full h-[2px] bg-zinc-500"></div>
+                                <span
+                                    class="text-zinc-100 font-serif text-base md:text-lg pt-2 text-center"
+                                >
+                                    {content.deathDetails.equation.denominator}
+                                </span>
+                            </div>
+                            <div
+                                class="text-zinc-100 font-serif text-xl md:text-2xl font-bold"
+                            >
+                                × {content.deathDetails.equation.multiplier}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-12 text-justify"
+                >
+                    {content.deathDetails.conclusion}
+                </p>
+
+                <!-- Table 20 -->
+                <div class="mb-12 w-full overflow-hidden">
+                    <h5
+                        class="font-serif text-lg md:text-xl text-zinc-100 font-medium mb-4 text-center"
+                    >
+                        {content.table20.tableTitle}
+                    </h5>
+                    <div class="overflow-x-auto">
+                        <table
+                            class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-lg text-center"
+                        >
+                            <thead>
+                                <tr
+                                    class="bg-[#f2e25d]/20 border-b border-[#f2e25d]/20 text-white"
+                                >
+                                    <th
+                                        class="px-4 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >
+                                        {
+                                            lang === "ne"
+                                                ? "मृतकको उमेर समूह"
+                                                : "Age Group"
+                                        }
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >
+                                        {lang === "ne" ? "पुरुष" : "Male"}
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >
+                                        {lang === "ne" ? "महिला" : "Female"}
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 font-serif font-medium"
+                                    >
+                                        {lang === "ne" ? "जम्मा" : "Total"}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-zinc-300 font-serif">
+                                {
+                                    content.table20.tableData.map((row) => (
+                                        <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-left">
+                                                {row.ageGroup}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(row.male)}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(row.female)}
+                                            </td>
+                                            <td class="px-4 py-3 font-medium text-white">
+                                                {formatNumber(row.total)}
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                                <tr
+                                    class="bg-[#f2e25d]/20 font-bold text-white uppercase"
+                                >
+                                    <td
+                                        class="px-4 py-3 border-r border-[#f2e25d]/10 text-left"
+                                    >
+                                        {lang === "ne" ? "जम्मा" : "Total"}
+                                    </td>
+                                    <td
+                                        class="px-4 py-3 border-r border-[#f2e25d]/10"
+                                    >
+                                        {
+                                            formatNumber(
+                                                content.table20.total.male,
+                                            )
+                                        }
+                                    </td>
+                                    <td
+                                        class="px-4 py-3 border-r border-[#f2e25d]/10"
+                                    >
+                                        {
+                                            formatNumber(
+                                                content.table20.total.female,
+                                            )
+                                        }
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        {
+                                            formatNumber(
+                                                content.table20.total.total,
+                                            )
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- NEW: Bar Chart (Step 1 Graph) -->
+                <div
+                    class="mb-16 w-full bg-[#0a0a0a] border border-[#f2e25d]/10 p-4 md:p-8 rounded-xl shadow-2xl relative overflow-hidden"
+                >
+                    <h4
+                        class="font-serif text-xl md:text-2xl text-white font-medium mb-12 text-center"
+                    >
+                        {content.table20.chartTitle}
+                    </h4>
+                    <div
+                        id="death-age-bar-chart"
+                        class="w-full h-[400px] md:h-[500px]"
+                    >
+                    </div>
+                    <div class="flex justify-center gap-8 mt-6">
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 rounded-sm bg-[#ed7d31]"></div>
+                            <span class="text-zinc-300 font-serif text-sm">
+                                {lang === "ne" ? "पुरुष" : "Male"}
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 rounded-sm bg-[#4472c4]"></div>
+                            <span class="text-zinc-300 font-serif text-sm">
+                                {lang === "ne" ? "महिला" : "Female"}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paragraph After Chart -->
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-12 text-justify"
+                >
+                    {content.table20.analysisAfterChart}
+                </p>
+
+                <!-- NEW: Table 21 (Matrix Cause of Death) -->
+                <div class="mb-12 w-full overflow-hidden">
+                    <h5
+                        class="font-serif text-lg md:text-xl text-zinc-100 font-medium mb-6 text-center"
+                    >
+                        {content.table21.tableTitle}
+                    </h5>
+                    <div class="overflow-x-auto">
+                        <table
+                            class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-[10px] md:text-xs text-center"
+                        >
+                            <thead>
+                                <tr class="bg-[#f2e25d]/20 text-white">
+                                    <th
+                                        rowspan="2"
+                                        class="px-2 py-3 border-r border-[#f2e25d]/10 sticky left-0 bg-[#1a1a14] z-10 w-24"
+                                    >
+                                        {
+                                            lang === "ne"
+                                                ? "मृतकको उमेर समूह"
+                                                : "Age Group"
+                                        }
+                                    </th>
+                                    <th
+                                        colspan={content.table21.columns.length}
+                                        class="px-2 py-2 border-b border-[#f2e25d]/10"
+                                    >
+                                        {
+                                            lang === "ne"
+                                                ? "मृत्युको कारण"
+                                                : "Cause of Death"
+                                        }
+                                    </th>
+                                    <th
+                                        rowspan="2"
+                                        class="px-2 py-3 font-medium"
+                                    >
+                                        {lang === "ne" ? "जम्मा" : "Total"}
+                                    </th>
+                                </tr>
+                                <tr class="bg-[#f2e25d]/10 text-zinc-100">
+                                    {
+                                        content.table21.columns.map((col) => (
+                                            <th class="px-1 py-3 border-r border-[#f2e25d]/10 font-serif font-normal min-w-[70px]">
+                                                {col}
+                                            </th>
+                                        ))
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody class="text-zinc-300 font-serif">
+                                {
+                                    content.table21.tableData.map((row) => (
+                                        <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5 text-left sticky left-0 bg-[#0a0a0a] z-10">
+                                                {row.ageGroup}
+                                            </td>
+                                            {row.values.map((val) => (
+                                                <td class="px-1 py-3 border-r border-[#f2e25d]/5">
+                                                    {formatNumber(val)}
+                                                </td>
+                                            ))}
+                                            <td class="px-2 py-3 font-medium text-white bg-[#f2e25d]/5">
+                                                {formatNumber(row.total)}
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                                <tr
+                                    class="bg-[#f2e25d]/20 font-bold text-white uppercase"
+                                >
+                                    <td
+                                        class="px-2 py-4 border-r border-[#f2e25d]/10 text-left sticky left-0 bg-[#1a1a14] z-10"
+                                    >
+                                        {lang === "ne" ? "जम्मा" : "Total"}
+                                    </td>
+                                    {
+                                        content.table21.total.values.map(
+                                            (val) => (
+                                                <td class="px-1 py-4 border-r border-[#f2e25d]/10">
+                                                    {formatNumber(val)}
+                                                </td>
+                                            ),
+                                        )
+                                    }
+                                    <td class="px-2 py-4">
+                                        {
+                                            formatNumber(
+                                                content.table21.total.total,
+                                            )
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div
+                        class="text-right text-zinc-400 font-serif italic text-sm mt-3"
+                    >
+                        {lang === "ne" ? "स्रोत" : "Source"}: {
+                            content.table21.source
+                        }
+                    </div>
+                </div>
+
+                <!-- Paragraph After Table 21 -->
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-12 text-justify"
+                >
+                    {content.table21.analysisAfterTable}
+                </p>
+
+                <!-- NEW: Pie Chart for Cause of Death (Step 4) -->
+                <div
+                    class="mb-16 w-full bg-[#0a0a0a] border border-[#f2e25d]/10 p-4 md:p-8 rounded-xl shadow-2xl relative overflow-hidden"
+                >
+                    <h4
+                        class="font-serif text-xl md:text-2xl text-white font-medium mb-12 text-center px-4"
+                    >
+                        {content.deathCausePie.title}
+                    </h4>
+                    <div
+                        id="death-cause-pie-chart"
+                        class="w-full h-[400px] md:h-[550px]"
+                    >
+                    </div>
+
+                    <div
+                        class="flex flex-wrap justify-center gap-x-8 gap-y-4 mt-12 bg-white/5 p-6 rounded-lg pointer-events-none"
+                    >
+                        {
+                            content.deathCausePie.chartData.map((d) => (
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-4 h-4 rounded-full border border-white/20 shadow-sm"
+                                        style={`background-color: ${d.color}`}
+                                    />
+                                    <span class="text-zinc-300 font-serif text-sm md:text-base">
+                                        {d.label} ({formatNumber(d.value, 2)}
+                                        %)
+                                    </span>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+<script
+    define:vars={{
+        birthRegChartData,
+        deathAgeChartData,
+        deathCausePieData,
+        lang,
+    }}
+>
+    document.addEventListener("DOMContentLoaded", () => {
+        const locale = lang === "ne" ? "ne-NP" : "en-US";
+
+        const formatValue = (v, decimals = 0) => {
+            const formatted = v.toLocaleString("en-US", {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals,
+            });
+            if (lang !== "ne") return formatted;
+            const nepaliDigits = [
+                "०",
+                "१",
+                "२",
+                "३",
+                "४",
+                "५",
+                "६",
+                "७",
+                "८",
+                "९",
+            ];
+            return formatted.replace(/\d/g, (d) => nepaliDigits[parseInt(d)]);
+        };
+
+        const midAngle = (d) => d.startAngle + (d.endAngle - d.startAngle) / 2;
+
+        // --- 1. Birth Registration Pie ---
+        const renderBirthPie = () => {
+            const container = document.getElementById("birth-reg-pie-chart");
+            if (!container) return;
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            const radius = Math.min(width, height) / 2 - 40;
+            const svg = d3
+                .select("#birth-reg-pie-chart")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", `translate(${width / 2},${height / 2})`);
+
+            const pie = d3
+                .pie()
+                .value((d) => d.value)
+                .sort(null);
+            const arc = d3
+                .arc()
+                .innerRadius(radius * 0.4)
+                .outerRadius(radius);
+            const outerArc = d3
+                .arc()
+                .innerRadius(radius * 1.1)
+                .outerRadius(radius * 1.1);
+
+            const g = svg
+                .selectAll(".arc")
+                .data(pie(birthRegChartData))
+                .enter()
+                .append("g")
+                .attr("class", "arc");
+            g.append("path")
+                .attr("d", arc)
+                .attr("fill", (d) => d.data.color)
+                .attr("stroke", "rgba(255,255,255,0.2)")
+                .style("stroke-width", "2px")
+                .attr("cursor", "pointer")
+                .on("mouseover", function (event, d) {
+                    d3.select(this)
+                        .transition()
+                        .duration(300)
+                        .attr("transform", (d) => {
+                            const a = (d.startAngle + d.endAngle) / 2;
+                            return `translate(${Math.sin(a) * 15},${-Math.cos(a) * 15}) scale(1.05)`;
+                        });
+
+                    const tooltip = d3.select("#vital-tooltip");
+                    tooltip.transition().duration(200).style("opacity", 0.9);
+                    tooltip
+                        .html(
+                            `
+                        <div class="font-serif p-2">
+                            <div class="font-bold text-sm mb-1">${d.data.label}</div>
+                            <div class="text-xs text-zinc-300">
+                                ${lang === "ne" ? "प्रतिशत" : "Percentage"}: ${formatValue(d.data.value, 2)}%
+                            </div>
+                        </div>
+                    `,
+                        )
+                        .style("left", event.clientX + 10 + "px")
+                        .style("top", event.clientY - 28 + "px");
+                })
+                .on("mousemove", function (event) {
+                    d3.select("#vital-tooltip")
+                        .style("left", event.clientX + 10 + "px")
+                        .style("top", event.clientY - 28 + "px");
+                })
+                .on("mouseout", function () {
+                    d3.select(this)
+                        .transition()
+                        .duration(300)
+                        .attr("transform", "translate(0,0) scale(1)");
+
+                    d3.select("#vital-tooltip")
+                        .transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                })
+                .transition()
+                .duration(1500)
+                .attrTween("d", function (d) {
+                    const i = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+                    return (t) => arc(i(t));
+                });
+        };
+
+        // --- 2. Death Age Bar Chart ---
+        const renderDeathAgeBar = () => {
+            const container = document.getElementById("death-age-bar-chart");
+            if (!container) return;
+            const margin = { top: 40, right: 30, bottom: 80, left: 50 };
+            const width = container.clientWidth - margin.left - margin.right;
+            const height = container.clientHeight - margin.top - margin.bottom;
+
+            const svg = d3
+                .select("#death-age-bar-chart")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            const x0 = d3
+                .scaleBand()
+                .rangeRound([0, width])
+                .paddingInner(0.15)
+                .domain(deathAgeChartData.map((d) => d.ageGroup));
+            const x1 = d3
+                .scaleBand()
+                .padding(0.05)
+                .domain(["male", "female"])
+                .rangeRound([0, x0.bandwidth()]);
+            const y = d3
+                .scaleLinear()
+                .rangeRound([height, 0])
+                .domain([
+                    0,
+                    d3.max(deathAgeChartData, (d) =>
+                        Math.max(d.male, d.female),
+                    ) * 1.1,
+                ]);
+
+            svg.append("g")
+                .attr("class", "grid")
+                .attr("color", "rgba(255,255,255,0.05)")
+                .call(d3.axisLeft(y).tickSize(-width).tickFormat(""));
+
+            const xAxis = d3.axisBottom(x0);
+            svg.append("g")
+                .attr("transform", `translate(0,${height})`)
+                .call(xAxis)
+                .selectAll("text")
+                .attr("transform", "rotate(-45)")
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", ".15em")
+                .attr("fill", "#94a3b8")
+                .style("font-family", "serif");
+
+            svg.append("g")
+                .call(
+                    d3
+                        .axisLeft(y)
+                        .ticks(8)
+                        .tickFormat((d) => formatValue(d)),
+                )
+                .attr("color", "#94a3b8")
+                .style("font-family", "serif");
+
+            const slice = svg
+                .selectAll(".slice")
+                .data(deathAgeChartData)
+                .enter()
+                .append("g")
+                .attr("class", "slice")
+                .attr("transform", (d) => `translate(${x0(d.ageGroup)},0)`);
+
+            slice
+                .selectAll("rect")
+                .data((d) => [
+                    {
+                        key: "male",
+                        value: d.male,
+                        ageGroup: d.ageGroup,
+                    },
+                    {
+                        key: "female",
+                        value: d.female,
+                        ageGroup: d.ageGroup,
+                    },
+                ])
+                .enter()
+                .append("rect")
+                .attr("width", x1.bandwidth())
+                .attr("x", (d) => x1(d.key))
+                .attr("y", height)
+                .attr("fill", (d) => (d.key === "male" ? "#ed7d31" : "#4472c4"))
+                .attr("rx", 2)
+                .transition()
+                .duration(1500)
+                .delay((d, i) => i * 200)
+                .attr("y", (d) => y(d.value))
+                .attr("height", (d) => height - y(d.value));
+
+            // Tooltips on bars
+            slice
+                .selectAll("rect")
+                .style("cursor", "pointer")
+                .on("mouseover", function (event, d) {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr("opacity", 0.8);
+
+                    const tooltip = d3.select("#vital-tooltip");
+                    tooltip.transition().duration(200).style("opacity", 0.9);
+                    tooltip
+                        .html(
+                            `
+                        <div class="font-serif p-2">
+                            <div class="font-bold text-sm mb-1">${d.ageGroup}</div>
+                            <div class="text-sm text-zinc-100 mb-1">
+                                ${d.key === "male" ? (lang === "ne" ? "पुरुष" : "Male") : lang === "ne" ? "महिला" : "Female"}
+                            </div>
+                            <div class="text-xs text-zinc-300">
+                                ${lang === "ne" ? "संख्या" : "Number"}: ${formatValue(d.value)}
+                            </div>
+                        </div>
+                    `,
+                        )
+                        .style("left", event.clientX + 10 + "px")
+                        .style("top", event.clientY - 28 + "px");
+                })
+                .on("mousemove", function (event) {
+                    d3.select("#vital-tooltip")
+                        .style("left", event.clientX + 10 + "px")
+                        .style("top", event.clientY - 28 + "px");
+                })
+                .on("mouseout", function () {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr("opacity", 1);
+
+                    d3.select("#vital-tooltip")
+                        .transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
+        };
+
+        // --- 3. Death Cause Pie (3D feel) ---
+        const renderDeathCausePie = () => {
+            const container = document.getElementById("death-cause-pie-chart");
+            if (!container) return;
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            const radius = Math.min(width, height) / 2 - 60;
+            const svg = d3
+                .select("#death-cause-pie-chart")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", `translate(${width / 2},${height / 2})`);
+
+            // Drop shadow filter for 3D feel
+            const defs = svg.append("defs");
+            const filter = defs
+                .append("filter")
+                .attr("id", "pie-shadow")
+                .attr("height", "130%");
+            filter
+                .append("feGaussianBlur")
+                .attr("in", "SourceAlpha")
+                .attr("stdDeviation", 3);
+            filter
+                .append("feOffset")
+                .attr("dx", 2)
+                .attr("dy", 4)
+                .attr("result", "offsetblur");
+            const feMerge = filter.append("feMerge");
+            feMerge.append("feMergeNode").attr("in", "offsetblur");
+            feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+            const pie = d3
+                .pie()
+                .value((d) => d.value)
+                .sort(null);
+            const arc = d3.arc().innerRadius(0).outerRadius(radius);
+            const outerArc = d3
+                .arc()
+                .innerRadius(radius * 1.05)
+                .outerRadius(radius * 1.05);
+
+            const pieData = pie(deathCausePieData.filter((d) => d.value > 0));
+
+            // Separate into Left and Right for label relaxation
+            const leftSide = pieData
+                .filter((d) => midAngle(d) >= Math.PI)
+                .sort(
+                    (a, b) => outerArc.centroid(a)[1] - outerArc.centroid(b)[1],
+                );
+            const rightSide = pieData
+                .filter((d) => midAngle(d) < Math.PI)
+                .sort(
+                    (a, b) => outerArc.centroid(a)[1] - outerArc.centroid(b)[1],
+                );
+
+            const relax = (side) => {
+                const minGap = 16;
+                for (let i = 1; i < side.length; i++) {
+                    const prevPos =
+                        outerArc.centroid(side[i - 1])[1] +
+                        (side[i - 1].yOffset || 0);
+                    const currPos = outerArc.centroid(side[i])[1];
+                    if (currPos - prevPos < minGap) {
+                        side[i].yOffset = prevPos + minGap - currPos;
+                    }
+                }
+            };
+            relax(leftSide);
+            relax(rightSide);
+
+            const slice = svg
+                .selectAll(".slice")
+                .data(pieData)
+                .enter()
+                .append("g")
+                .attr("class", "slice");
+
+            slice
+                .append("path")
+                .attr("d", arc)
+                .attr("fill", (d) => d.data.color)
+                .attr("stroke", "#111")
+                .style("stroke-width", "1px")
+                .style("filter", "url(#pie-shadow)")
+                .attr("cursor", "pointer")
+                .on("mouseover", function (event, d) {
+                    d3.select(this)
+                        .transition()
+                        .duration(300)
+                        .attr("transform", (d) => {
+                            const a = (d.startAngle + d.endAngle) / 2;
+                            return `translate(${Math.sin(a) * 15},${-Math.cos(a) * 15}) scale(1.05)`;
+                        });
+
+                    const tooltip = d3.select("#vital-tooltip");
+                    tooltip.transition().duration(200).style("opacity", 0.9);
+                    tooltip
+                        .html(
+                            `
+                        <div class="font-serif p-2">
+                            <div class="font-bold text-sm mb-1">${d.data.label}</div>
+                            <div class="text-xs text-zinc-300">
+                                ${lang === "ne" ? "संख्या" : "Count"}: ${formatValue(d.data.rawValue || d.data.value)}<br/>
+                                ${lang === "ne" ? "प्रतिशत" : "Percentage"}: ${formatValue(d.data.value, 2)}%
+                            </div>
+                        </div>
+                    `,
+                        )
+                        .style("left", event.clientX + 10 + "px")
+                        .style("top", event.clientY - 28 + "px");
+                })
+                .on("mousemove", function (event) {
+                    d3.select("#vital-tooltip")
+                        .style("left", event.clientX + 10 + "px")
+                        .style("top", event.clientY - 28 + "px");
+                })
+                .on("mouseout", function () {
+                    d3.select(this)
+                        .transition()
+                        .duration(300)
+                        .attr("transform", "translate(0,0) scale(1)");
+
+                    d3.select("#vital-tooltip")
+                        .transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                })
+                .attrTween("d", function (d) {
+                    const i = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+                    return (t) => arc(i(t));
+                });
+        };
+
+        renderBirthPie();
+        renderDeathAgeBar();
+        renderDeathCausePie();
+    });
+</script>
+
+<div
+    id="vital-tooltip"
+    class="fixed opacity-0 pointer-events-none bg-[#111111] border border-[#f2e25d]/30 text-white rounded px-2 py-1 z-[9999] shadow-2xl"
+>
+</div>
+
+<style is:global>
+    #vital-tooltip {
+        transition: opacity 0.2s;
+        backdrop-filter: blur(4px);
+    }
+</style>

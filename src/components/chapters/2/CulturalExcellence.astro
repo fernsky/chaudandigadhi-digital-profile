@@ -1,5 +1,6 @@
 ---
 import type { Language } from "../../../lib/i18n";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
 
 interface Props {
@@ -37,7 +38,7 @@ if (!content) {
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    {lang === "ne" ? "२.६" : "2.6"}
+                    {formatNumber("2.6", lang)}
                     {content.title}
                 </h2>
             </div>

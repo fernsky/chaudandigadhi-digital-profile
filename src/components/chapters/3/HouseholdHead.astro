@@ -1,6 +1,7 @@
 ---
-import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
+import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
@@ -10,26 +11,18 @@ const { lang } = Astro.props;
 
 type HouseholdHeadContent = {
     title: string;
-    sectionId: string;
     number: string;
-    tableTitle: string;
-    tableData: Array<{
-        ageGroup: string;
-        maleHead: number;
-        femaleHead: number;
-        total: number;
-    }>;
-    total: {
-        maleHead: number;
-        femaleHead: number;
-        total: number;
-    };
-    percentages: {
-        male: number;
-        female: number;
-    };
+    table_title: string;
+    table_number: string;
     source: string;
-    analysis: string;
+    table_data: Array<{
+        age_group: string;
+        male_head: string;
+        female_head: string;
+        total_households: string;
+    }>;
+    content: string;
+    chart_title: string;
 };
 
 const content = await loadChapterSection<HouseholdHeadContent>(
@@ -39,137 +32,373 @@ const content = await loadChapterSection<HouseholdHeadContent>(
 );
 
 if (!content) {
-    throw new Error("Household head content not found");
+    throw new Error("Household Head section content not found");
 }
+
+// Prepare data for D3 grouped bar chart
+const nepaliToEnglish = (str: string) =>
+    str.replace(/[०१२३४५६७८९]/g, (d) => "0123456789"["०१२३४५६७८९".indexOf(d)]);
+
+const chartData = content.table_data
+    .filter(
+        (row) =>
+            row.age_group !== (lang === "ne" ? "जम्मा" : "Total") &&
+            row.age_group !== (lang === "ne" ? "प्रतिशत" : "Percentage"),
+    )
+    .map((row) => ({
+        group: row.age_group,
+        male: parseFloat(nepaliToEnglish(row.male_head.replace(/,/g, ""))),
+        female: parseFloat(nepaliToEnglish(row.female_head.replace(/,/g, ""))),
+    }));
 ---
 
-<section id="household-head" class="relative bg-[#050505] py-8 md:py-12">
+<section
+    id="household-head"
+    class="relative bg-[#050505] pb-8 md:pb-12 border-t border-[#f2e25d]/10 pt-8 mt-8"
+>
     <div class="container mx-auto px-8">
         <div class="w-full">
-            <!-- Section Header -->
-            <div class="mb-6">
-                <h2
-                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
+            <!-- 3.7 Header -->
+            <div class="mb-8">
+                <h3
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
                 >
-                    {content.number}
+                    {formatNumber(content.number, lang)}
                     {content.title}
-                </h2>
+                </h3>
             </div>
 
-            <!-- Table Title -->
-            <h4
-                class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
-            >
-                {content.tableTitle}
-            </h4>
-
-            <!-- Premium Table -->
-            <div class="overflow-x-auto mb-6">
-                <table
-                    class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10"
+            <!-- Table -->
+            <div class="mb-10 w-full overflow-hidden">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center"
                 >
-                    <thead>
-                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
-                            <th
-                                class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >उमेर समूह</th
+                    {formatNumber(content.table_number, lang)}: {
+                        content.table_title
+                    }
+                </h4>
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-lg text-center"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20 text-zinc-100"
                             >
-                            <th
-                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >पुरुष परिवारमूली</th
-                            >
-                            <th
-                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >महिला परिवारमूली</th
-                            >
-                            <th
-                                class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
-                                >जम्मा परिवार संख्या</th
-                            >
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            content.tableData.map((row) => (
-                                <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
-                                    <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
-                                        {row.ageGroup}
-                                    </td>
-                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.maleHead.toLocaleString()}
-                                    </td>
-                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.femaleHead.toLocaleString()}
-                                    </td>
-                                    <td class="px-4 py-3 font-serif text-zinc-100 text-right">
-                                        {row.total.toLocaleString()}
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                        <!-- Total Row -->
-                        <tr
-                            class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
-                        >
-                            <td
-                                class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                                >जम्मा</td
-                            >
-                            <td
-                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {content.total.maleHead.toLocaleString()}
-                            </td>
-                            <td
-                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {content.total.femaleHead.toLocaleString()}
-                            </td>
-                            <td
-                                class="px-4 py-3 font-serif text-zinc-100 text-right"
-                            >
-                                {content.total.total.toLocaleString()}
-                            </td>
-                        </tr>
-                        <!-- Percentage Row -->
-                        <tr class="bg-[#f2e25d]/5">
-                            <td
-                                class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                                >प्रतिशत</td
-                            >
-                            <td
-                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {content.percentages.male.toFixed(2)}
-                            </td>
-                            <td
-                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {content.percentages.female.toFixed(2)}
-                            </td>
-                            <td
-                                class="px-4 py-3 font-serif text-zinc-100 text-right"
-                            >
-                                100
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                <th
+                                    class="px-4 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "उमेर समूह" : "Age Group"}
+                                </th>
+                                <th
+                                    class="px-4 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {
+                                        lang === "ne"
+                                            ? "पुरुष परिवारमूली"
+                                            : "Male Household Head"
+                                    }
+                                </th>
+                                <th
+                                    class="px-4 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {
+                                        lang === "ne"
+                                            ? "महिला परिवारमूली"
+                                            : "Female Household Head"
+                                    }
+                                </th>
+                                <th class="px-4 py-3 font-serif font-medium">
+                                    {
+                                        lang === "ne"
+                                            ? "जम्मा परिवार संख्या"
+                                            : "Total Households"
+                                    }
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.table_data.map((row: any) => {
+                                    const isTotal =
+                                        row.age_group === "जम्मा" ||
+                                        row.age_group === "Total";
+                                    const isPercentage =
+                                        row.age_group === "प्रतिशत" ||
+                                        row.age_group === "Percentage";
+                                    return (
+                                        <tr
+                                            class={`border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200 text-zinc-100 font-serif ${isTotal || isPercentage ? "bg-[#f2e25d]/10 font-bold border-t-2 border-[#f2e25d]/30" : ""}`}
+                                        >
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 font-medium">
+                                                {row.age_group}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.male_head,
+                                                    lang,
+                                                    isPercentage ? 2 : 0,
+                                                )}
+                                                {isPercentage ? "%" : ""}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.female_head,
+                                                    lang,
+                                                    isPercentage ? 2 : 0,
+                                                )}
+                                                {isPercentage ? "%" : ""}
+                                            </td>
+                                            <td class="px-4 py-3">
+                                                {formatNumber(
+                                                    row.total_households,
+                                                    lang,
+                                                    isPercentage ? 2 : 0,
+                                                )}
+                                                {isPercentage ? "%" : ""}
+                                            </td>
+                                        </tr>
+                                    );
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div
+                    class="text-right text-zinc-400 font-serif italic text-sm mt-2"
+                >
+                    {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
+                </div>
             </div>
 
-            <!-- Source -->
-            <p class="text-zinc-400 font-serif text-sm italic mb-6">
-                स्रोतM {content.source}
+            <p
+                class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10 text-justify"
+            >
+                {content.content}
             </p>
 
-            <!-- Analysis -->
-            <div class="mt-6">
-                <p
-                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+            <!-- Grouped Bar Chart -->
+            <div
+                class="mb-12 w-full bg-[#0a0a0a] border border-[#f2e25d]/10 p-8 rounded-xl overflow-hidden shadow-2xl"
+            >
+                <h4
+                    class="font-serif text-2xl md:text-3xl text-white font-medium mb-12 text-center"
                 >
-                    {content.analysis}
-                </p>
+                    {content.chart_title}
+                </h4>
+                <div
+                    id="household-head-chart-container"
+                    class="w-full h-[500px] relative"
+                >
+                </div>
+
+                <!-- Legend -->
+                <div class="flex justify-center gap-12 mt-8">
+                    <div class="flex items-center gap-3">
+                        <div class="w-5 h-5 rounded-sm bg-[#4e95d5]"></div>
+                        <span class="text-zinc-300 font-serif text-lg"
+                            >{lang === "ne" ? "पुरुष" : "Male"}</span
+                        >
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-5 h-5 rounded-sm bg-[#ef7d31]"></div>
+                        <span class="text-zinc-300 font-serif text-lg"
+                            >{lang === "ne" ? "महिला" : "Female"}</span
+                        >
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+<script define:vars={{ chartData, lang }}>
+    document.addEventListener("DOMContentLoaded", () => {
+        const tooltipId = "household-head-tooltip-unique";
+        const containerId = "household-head-chart-container";
+        const formatValue = (num, decimals = 0) => {
+            const formatted = num.toLocaleString("en-US", {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals,
+            });
+            if (lang !== "ne") return formatted;
+            const nepaliDigits = [
+                "०",
+                "१",
+                "२",
+                "३",
+                "४",
+                "५",
+                "६",
+                "७",
+                "८",
+                "९",
+            ];
+            return formatted.replace(
+                /\d/g,
+                (digit) => nepaliDigits[parseInt(digit)],
+            );
+        };
+
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const data = chartData;
+        const margin = { top: 40, right: 30, bottom: 60, left: 80 };
+        const width = container.clientWidth - margin.left - margin.right;
+        const height = 500 - margin.top - margin.bottom;
+
+        const svg = d3
+            .select("#" + containerId)
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Scales
+        const x0 = d3
+            .scaleBand()
+            .rangeRound([0, width])
+            .paddingInner(0.2)
+            .domain(data.map((d) => d.group));
+
+        const x1 = d3
+            .scaleBand()
+            .padding(0.1)
+            .domain(["male", "female"])
+            .rangeRound([0, x0.bandwidth()]);
+
+        const y = d3
+            .scaleLinear()
+            .rangeRound([height, 0])
+            .domain([0, d3.max(data, (d) => Math.max(d.male, d.female)) * 1.1]);
+
+        const colorScale = d3
+            .scaleOrdinal()
+            .range(["#4e95d5", "#ef7d31"])
+            .domain(["male", "female"]);
+
+        // Grid lines
+        svg.append("g")
+            .attr("class", "grid")
+            .attr("opacity", 0.05)
+            .call(d3.axisLeft(y).tickSize(-width).tickFormat(""));
+
+        // X Axis
+        svg.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x0))
+            .selectAll("text")
+            .attr("fill", "#94a3b8")
+            .style("font-size", "14px")
+            .style("font-family", "serif");
+
+        // Y Axis
+        svg.append("g")
+            .call(d3.axisLeft(y).ticks(5))
+            .selectAll("text")
+            .attr("fill", "#cbd5e1")
+            .text((d) => formatValue(d))
+            .style("font-size", "14px")
+            .style("font-family", "serif");
+
+        // Tooltip
+        const tooltip = d3.select("#" + tooltipId);
+
+        // Grouped Bars
+        const groups = svg
+            .selectAll(".group")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("transform", (d) => `translate(${x0(d.group)},0)`);
+
+        groups
+            .selectAll("rect")
+            .data((d) =>
+                Object.keys(d)
+                    .filter((k) => k !== "group")
+                    .map((k) => ({ key: k, value: d[k], group: d.group })),
+            )
+            .enter()
+            .append("rect")
+            .attr("x", (d) => x1(d.key))
+            .attr("y", height)
+            .attr("width", x1.bandwidth())
+            .attr("height", 0)
+            .attr("fill", (d) => colorScale(d.key))
+            .attr("rx", 2)
+            .on("mouseover", function (event, d) {
+                d3.select(this).attr("opacity", 0.8);
+                tooltip.transition().duration(200).style("opacity", 0.9);
+                tooltip
+                    .html(
+                        `
+                    <div class="font-serif p-2">
+                        <div class="font-bold text-sm mb-1">${d.group}</div>
+                        <div class="text-xs text-zinc-300">
+                            ${d.key === "male" ? (lang === "ne" ? "पुरुष" : "Male") : lang === "ne" ? "महिला" : "Female"}: ${formatValue(d.value)}
+                        </div>
+                    </div>
+                `,
+                    )
+                    .style("left", event.clientX + 10 + "px")
+                    .style("top", event.clientY - 28 + "px");
+            })
+            .on("mousemove", function (event) {
+                tooltip
+                    .style("left", event.clientX + 10 + "px")
+                    .style("top", event.clientY - 28 + "px");
+            })
+            .on("mouseout", function () {
+                d3.select(this).attr("opacity", 1);
+                tooltip.transition().duration(500).style("opacity", 0);
+            })
+            .transition()
+            .duration(1000)
+            .delay((d, i) => i * 100)
+            .attr("y", (d) => y(d.value))
+            .attr("height", (d) => height - y(d.value));
+
+        // Labels
+        groups
+            .selectAll(".label")
+            .data((d) =>
+                Object.keys(d)
+                    .filter((k) => k !== "group")
+                    .map((k) => ({ key: k, value: d[k] })),
+            )
+            .enter()
+            .append("text")
+            .attr("class", "label")
+            .attr("x", (d) => x1(d.key) + x1.bandwidth() / 2)
+            .attr("y", height)
+            .attr("text-anchor", "middle")
+            .attr("fill", "white")
+            .attr("font-size", "12px")
+            .attr("font-family", "serif")
+            .text((d) => (d.value > 0 ? formatValue(d.value) : ""))
+            .attr("opacity", 0)
+            .transition()
+            .duration(1000)
+            .delay(800)
+            .attr("y", (d) => y(d.value) - 8)
+            .attr("opacity", 1);
+
+        svg.selectAll(".domain").attr("stroke", "#475569");
+        svg.selectAll(".tick line").attr("stroke", "#475569");
+    });
+</script>
+<div
+    id="household-head-tooltip-unique"
+    class="fixed opacity-0 pointer-events-none bg-[#111111] border border-[#f2e25d]/30 text-white rounded px-2 py-1 z-[9999] shadow-2xl transition-opacity duration-200 backdrop-blur-sm"
+>
+</div>
+
+<style is:global>
+    #household-head-tooltip-unique {
+        font-family: serif;
+    }
+</style>

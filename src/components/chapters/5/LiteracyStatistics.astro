@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import LiteracyChart from "../../charts/chapter-5/LiteracyChart.astro";
 
 interface Props {
@@ -63,7 +64,7 @@ if (!content) {
                 <h3
                     class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4"
                 >
-                    {content.sectionId}
+                    {formatNumber(content.sectionId, lang)}
                     {content.title}
                 </h3>
             </div>
@@ -112,44 +113,79 @@ if (!content) {
                     <div
                         class="text-[#f2e25d] font-serif text-4xl font-bold mb-2"
                     >
-                        {content.table40.summary.literacyRate}%
+                        {
+                            formatNumber(
+                                content.table40.summary.literacyRate,
+                                lang,
+                            )
+                        }%
                     </div>
-                    <div class="text-zinc-100 font-serif text-sm">साक्षर</div>
+                    <div class="text-zinc-100 font-serif text-sm">
+                        {lang === "ne" ? "साक्षर" : "Literate"}
+                    </div>
                     <div class="text-zinc-400 font-serif text-xs mt-1">
-                        {content.table40.summary.totalLiterate.toLocaleString()} जना
+                        {
+                            formatNumber(
+                                content.table40.summary.totalLiterate,
+                                lang,
+                            )
+                        }
+                        {lang === "ne" ? "जना" : "People"}
                     </div>
                 </div>
                 <div class="bg-[#0a0a0a] border border-zinc-500/20 p-6">
                     <div
                         class="text-zinc-400 font-serif text-4xl font-bold mb-2"
                     >
-                        {content.table40.summary.readOnlyRate}%
+                        {
+                            formatNumber(
+                                content.table40.summary.readOnlyRate,
+                                lang,
+                            )
+                        }%
                     </div>
                     <div class="text-zinc-100 font-serif text-sm">
-                        पढ्न मात्र जान्ने
+                        {lang === "ne" ? "पढ्न मात्र जान्ने" : "Read Only"}
                     </div>
                     <div class="text-zinc-400 font-serif text-xs mt-1">
-                        {content.table40.summary.totalReadOnly} जना
+                        {
+                            formatNumber(
+                                content.table40.summary.totalReadOnly,
+                                lang,
+                            )
+                        }
+                        {lang === "ne" ? "जना" : "People"}
                     </div>
                 </div>
                 <div class="bg-[#0a0a0a] border border-zinc-700/20 p-6">
                     <div
                         class="text-zinc-500 font-serif text-4xl font-bold mb-2"
                     >
-                        {content.table40.summary.illiteracyRate}%
+                        {
+                            formatNumber(
+                                content.table40.summary.illiteracyRate,
+                                lang,
+                            )
+                        }%
                     </div>
-                    <div class="text-zinc-100 font-serif text-sm">निरक्षर</div>
+                    <div class="text-zinc-100 font-serif text-sm">
+                        {lang === "ne" ? "निरक्षर" : "Illiterate"}
+                    </div>
                     <div class="text-zinc-400 font-serif text-xs mt-1">
                         {
-                            content.table40.summary.totalIlliterate.toLocaleString()
-                        } जना
+                            formatNumber(
+                                content.table40.summary.totalIlliterate,
+                                lang,
+                            )
+                        }
+                        {lang === "ne" ? "जना" : "People"}
                     </div>
                 </div>
             </div>
 
             <!-- Source -->
             <p class="text-zinc-400 font-serif text-sm italic mb-8">
-                स्रोत: {content.table40.source}
+                {lang === "ne" ? "स्रोत" : "Source"}: {content.table40.source}
             </p>
 
             <!-- Formal Education Section -->
@@ -177,17 +213,29 @@ if (!content) {
                             class="text-[#f2e25d] font-serif text-3xl font-bold mb-2"
                         >
                             {
-                                content.formalEducation.summary
-                                    .currentlyAttendingPercent
+                                formatNumber(
+                                    content.formalEducation.summary
+                                        .currentlyAttendingPercent,
+                                    lang,
+                                )
                             }%
                         </div>
                         <div class="text-zinc-100 font-serif text-sm">
-                            हाल विद्यालय/कलेज गइरहेका
+                            {
+                                lang === "ne"
+                                    ? "हाल विद्यालय/कलेज गइरहेका"
+                                    : "Currently attending school/college"
+                            }
                         </div>
                         <div class="text-zinc-400 font-serif text-xs mt-1">
                             {
-                                content.formalEducation.summary.currentlyAttending.toLocaleString()
-                            } जना
+                                formatNumber(
+                                    content.formalEducation.summary
+                                        .currentlyAttending,
+                                    lang,
+                                )
+                            }
+                            {lang === "ne" ? "जना" : "People"}
                         </div>
                     </div>
                     <div class="bg-[#0a0a0a] border border-zinc-500/20 p-6">
@@ -195,17 +243,29 @@ if (!content) {
                             class="text-zinc-400 font-serif text-3xl font-bold mb-2"
                         >
                             {
-                                content.formalEducation.summary
-                                    .previouslyAttendedPercent
+                                formatNumber(
+                                    content.formalEducation.summary
+                                        .previouslyAttendedPercent,
+                                    lang,
+                                )
                             }%
                         </div>
                         <div class="text-zinc-100 font-serif text-sm">
-                            पहिला गएका
+                            {
+                                lang === "ne"
+                                    ? "पहिला गएका"
+                                    : "Previously attended"
+                            }
                         </div>
                         <div class="text-zinc-400 font-serif text-xs mt-1">
                             {
-                                content.formalEducation.summary.previouslyAttended.toLocaleString()
-                            } जना
+                                formatNumber(
+                                    content.formalEducation.summary
+                                        .previouslyAttended,
+                                    lang,
+                                )
+                            }
+                            {lang === "ne" ? "जना" : "People"}
                         </div>
                     </div>
                     <div class="bg-[#0a0a0a] border border-zinc-700/20 p-6">
@@ -213,21 +273,33 @@ if (!content) {
                             class="text-zinc-500 font-serif text-3xl font-bold mb-2"
                         >
                             {
-                                content.formalEducation.summary
-                                    .neverAttendedPercent
+                                formatNumber(
+                                    content.formalEducation.summary
+                                        .neverAttendedPercent,
+                                    lang,
+                                )
                             }%
                         </div>
                         <div class="text-zinc-100 font-serif text-sm">
-                            कहिले नगएका
+                            {lang === "ne" ? "कहिले नगएका" : "Never attended"}
                         </div>
                         <div class="text-zinc-400 font-serif text-xs mt-1">
-                            {content.formalEducation.summary.neverAttended} जना
+                            {
+                                formatNumber(
+                                    content.formalEducation.summary
+                                        .neverAttended,
+                                    lang,
+                                )
+                            }
+                            {lang === "ne" ? "जना" : "People"}
                         </div>
                     </div>
                 </div>
 
                 <p class="text-zinc-400 font-serif text-sm italic">
-                    स्रोत: {content.formalEducation.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.formalEducation.source
+                    }
                 </p>
             </div>
         </div>

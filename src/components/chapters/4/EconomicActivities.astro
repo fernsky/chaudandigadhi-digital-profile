@@ -1,6 +1,7 @@
 ---
-import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
+import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
@@ -113,7 +114,8 @@ const headers =
                 <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {importExport.number} {importExport.title}
+                            {formatNumber(importExport.number, lang)}{" "}
+                            {importExport.title}
                         </h2>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
@@ -136,7 +138,8 @@ const headers =
                 <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {rawMaterials.number} {rawMaterials.title}
+                            {formatNumber(rawMaterials.number, lang)}{" "}
+                            {rawMaterials.title}
                         </h2>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
@@ -160,7 +163,7 @@ const headers =
                     <div class="w-full">
                         <div class="mb-6">
                             <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                                {foreignEmployment.number}{" "}
+                                {formatNumber(foreignEmployment.number, lang)}{" "}
                                 {foreignEmployment.title}
                             </h2>
                         </div>
@@ -172,8 +175,11 @@ const headers =
                     {foreignEmployment.tableData && (
                         <div>
                             <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 w-full">
-                                {foreignEmployment.tableNumber}:{" "}
-                                {foreignEmployment.tableTitle}
+                                {formatNumber(
+                                    foreignEmployment.tableNumber || "",
+                                    lang,
+                                )}
+                                : {foreignEmployment.tableTitle}
                             </h4>
                             <div class="overflow-x-auto mb-2">
                                 <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm">
@@ -205,16 +211,18 @@ const headers =
                                             </th>
                                         </tr>
                                         <tr class="bg-[#2440A5] text-white">
-                                            {countries.map((country) => (
-                                                <th class="px-2 py-2 border border-blue-400/30 whitespace-nowrap font-normal">
-                                                    {country}
-                                                </th>
-                                            ))}
+                                            {countries.map(
+                                                (country: string) => (
+                                                    <th class="px-2 py-2 border border-blue-400/30 whitespace-nowrap font-normal">
+                                                        {country}
+                                                    </th>
+                                                ),
+                                            )}
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {foreignEmployment.tableData.map(
-                                            (row, index) => (
+                                            (row: any, index: number) => (
                                                 <>
                                                     {/* Age Group Row Span (3 rows) */}
                                                     {/* Male Row */}
@@ -228,11 +236,16 @@ const headers =
                                                         <td class="px-2 py-2 border border-[#f2e25d]/10 bg-[#f2e25d]/5">
                                                             {genderLabels.male}
                                                         </td>
-                                                        {row.male.map((val) => (
-                                                            <td class="px-2 py-2 border border-[#f2e25d]/10 text-right">
-                                                                {val || 0}
-                                                            </td>
-                                                        ))}
+                                                        {row.male.map(
+                                                            (val: number) => (
+                                                                <td class="px-2 py-2 border border-[#f2e25d]/10 text-right">
+                                                                    {formatNumber(
+                                                                        val,
+                                                                        lang,
+                                                                    )}
+                                                                </td>
+                                                            ),
+                                                        )}
                                                     </tr>
                                                     {/* Female Row */}
                                                     <tr class="text-zinc-100">
@@ -242,9 +255,12 @@ const headers =
                                                             }
                                                         </td>
                                                         {row.female.map(
-                                                            (val) => (
+                                                            (val: number) => (
                                                                 <td class="px-2 py-2 border border-[#f2e25d]/10 text-right">
-                                                                    {val || 0}
+                                                                    {formatNumber(
+                                                                        val,
+                                                                        lang,
+                                                                    )}
                                                                 </td>
                                                             ),
                                                         )}
@@ -255,9 +271,12 @@ const headers =
                                                             {genderLabels.total}
                                                         </td>
                                                         {row.total.map(
-                                                            (val) => (
+                                                            (val: number) => (
                                                                 <td class="px-2 py-2 border border-[#f2e25d]/10 text-right">
-                                                                    {val || 0}
+                                                                    {formatNumber(
+                                                                        val,
+                                                                        lang,
+                                                                    )}
                                                                 </td>
                                                             ),
                                                         )}
@@ -274,9 +293,12 @@ const headers =
                                                     {genderLabels.total}
                                                 </td>
                                                 {foreignEmployment.grandTotal.map(
-                                                    (val) => (
+                                                    (val: number) => (
                                                         <td class="px-2 py-2 border border-[#f2e25d]/10 text-right">
-                                                            {val}
+                                                            {formatNumber(
+                                                                val,
+                                                                lang,
+                                                            )}
                                                         </td>
                                                     ),
                                                 )}
@@ -287,7 +309,8 @@ const headers =
                             </div>
                             {foreignEmployment.source && (
                                 <div class="text-right text-zinc-400 font-serif italic text-sm mb-6 w-full mx-auto">
-                                    स्रोत: {foreignEmployment.source}
+                                    {lang === "ne" ? "स्रोत" : "Source"}:{" "}
+                                    {foreignEmployment.source}
                                 </div>
                             )}
                         </div>
@@ -309,7 +332,8 @@ const headers =
                 <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {landless.number} {landless.title}
+                            {formatNumber(landless.number, lang)}{" "}
+                            {landless.title}
                         </h2>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">

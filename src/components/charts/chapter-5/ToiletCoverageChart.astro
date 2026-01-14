@@ -1,5 +1,6 @@
 ---
 import type { Language } from "../../../lib/i18n";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -14,11 +15,31 @@ const { lang, data } = Astro.props;
 
 // Toilet coverage data (fallback)
 const toiletData = data || [
-    { type: "खाल्डे चर्पी", percent: 64.87, color: "#f2e25d" },
-    { type: "फ्लस (सेप्टिक ट्याङ्क)", percent: 29.04, color: "#a3a3a3" },
-    { type: "फ्लस (सार्वजनिक ढल)", percent: 2.83, color: "#737373" },
-    { type: "चर्पी नभएको", percent: 2.72, color: "#dc2626" },
-    { type: "सामुदायिक चर्पी", percent: 0.54, color: "#525252" },
+    {
+        type: lang === "ne" ? "खाल्डे चर्पी" : "Pit toilet",
+        percent: 64.87,
+        color: "#f2e25d",
+    },
+    {
+        type: lang === "ne" ? "फ्लस (सेप्टिक ट्याङ्क)" : "Flush (septic tank)",
+        percent: 29.04,
+        color: "#a3a3a3",
+    },
+    {
+        type: lang === "ne" ? "फ्लस (सार्वजनिक ढल)" : "Flush (public sewer)",
+        percent: 2.83,
+        color: "#737373",
+    },
+    {
+        type: lang === "ne" ? "चर्पी नभएको" : "No toilet",
+        percent: 2.72,
+        color: "#dc2626",
+    },
+    {
+        type: lang === "ne" ? "सामुदायिक चर्पी" : "Community toilet",
+        percent: 0.54,
+        color: "#525252",
+    },
 ];
 
 let currentAngle = 0;
@@ -35,7 +56,7 @@ const totalCoverage = toiletData
 
 <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
     <h4 class="font-serif text-xl text-zinc-100 font-medium mb-6 text-center">
-        शौचालय कभरेज
+        {lang === "ne" ? "शौचालय कभरेज" : "Toilet Coverage"}
     </h4>
 
     <div class="flex flex-col md:flex-row items-center justify-center gap-8">
@@ -87,7 +108,7 @@ const totalCoverage = toiletData
                 text-anchor="middle"
                 class="fill-zinc-100 font-serif text-xl font-bold"
             >
-                {totalCoverage.toFixed(2)}%
+                {formatNumber(totalCoverage.toFixed(2), lang)}%
             </text>
             <text
                 x="100"
@@ -95,7 +116,7 @@ const totalCoverage = toiletData
                 text-anchor="middle"
                 class="fill-zinc-400 font-serif text-xs"
             >
-                कभरेज
+                {lang === "ne" ? "कभरेज" : "Coverage"}
             </text>
         </svg>
 
@@ -113,7 +134,7 @@ const totalCoverage = toiletData
                                 {item.type}
                             </div>
                             <div class="text-zinc-400 font-serif text-xs">
-                                {item.percent}%
+                                {formatNumber(item.percent, lang)}%
                             </div>
                         </div>
                     </div>

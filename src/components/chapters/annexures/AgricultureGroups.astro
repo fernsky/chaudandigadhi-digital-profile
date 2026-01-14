@@ -1,5 +1,6 @@
 ---
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
 
 interface Props {
@@ -36,7 +37,7 @@ const livestockData = await loadChapterSection<TableData<LivestockRow>>(
         >
             <div>
                 <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-8">
-                    <span class="text-[#f2e25d]">{agricultureData.id}</span>: {agricultureData.title}
+                    <span class="text-[#f2e25d]">{formatNumber(agricultureData.id || "", lang)}</span>: {agricultureData.title}
                 </h2>
 
                 <!-- Agriculture Groups Table -->
@@ -63,18 +64,18 @@ const livestockData = await loadChapterSection<TableData<LivestockRow>>(
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-[#f2e25d]/10 text-zinc-300 font-serif">
-                                {agricultureData.table.rows.map((row) => (
+                                {agricultureData.table.rows.map((row: any) => (
                                     <tr class="hover:bg-[#f2e25d]/5 transition-colors">
                                         <td class="px-6 py-3 text-center opacity-70">
-                                            {row.sn}
+                                            {formatNumber(row.sn, lang)}
                                         </td>
                                         <td class="px-6 py-3 font-medium text-white">
                                             {row.name}
                                         </td>
                                         <td class="px-6 py-3 text-center">
-                                            {row.ward}
+                                            {formatNumber(row.ward, lang)}
                                         </td>
-                                        <td class="px-6 py-3">{row.contact}</td>
+                                        <td class="px-6 py-3">{formatNumber(row.contact, lang)}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -115,10 +116,10 @@ const livestockData = await loadChapterSection<TableData<LivestockRow>>(
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-[#f2e25d]/10 text-zinc-300 font-serif">
-                                    {livestockData.rows.map((row) => (
+                                    {livestockData.rows.map((row: any) => (
                                         <tr class="hover:bg-[#f2e25d]/5 transition-colors">
                                             <td class="px-6 py-3 text-center opacity-70">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-6 py-3 font-medium text-white">
                                                 {row.name}
@@ -127,9 +128,9 @@ const livestockData = await loadChapterSection<TableData<LivestockRow>>(
                                                 {row.operator}
                                             </td>
                                             <td class="px-6 py-3 text-center">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
-                                            <td class="px-6 py-3">{row.contact}</td>
+                                            <td class="px-6 py-3">{formatNumber(row.contact, lang)}</td>
                                         </tr>
                                     ))}
                                 </tbody>

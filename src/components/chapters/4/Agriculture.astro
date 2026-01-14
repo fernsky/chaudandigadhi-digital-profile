@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -24,7 +25,7 @@ if (!content) {
             <h2
                 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100"
             >
-                {content.number}
+                {formatNumber(content.number, lang)}
                 {content.title}
             </h2>
 
@@ -38,13 +39,19 @@ if (!content) {
             <div class="my-6">
                 <img
                     src="/images/chapter-4/banana-farming.jpg"
-                    alt="व्यवसायिक केरा खेति वार्ड ८ (चिनी चम्पा)"
+                    alt={lang === "ne"
+                        ? "व्यवसायिक केरा खेति वार्ड ८ (चिनी चम्पा)"
+                        : "Commercial Banana Farming Ward 8 (Chini Champa)"}
                     class="w-full w-full rounded-lg border border-zinc-800"
                 />
                 <p
                     class="text-center text-sm text-zinc-400 font-serif italic mt-2"
                 >
-                    व्यवसायिक केरा खेति वार्ड ८ (चिनी चम्पा)
+                    {
+                        lang === "ne"
+                            ? "व्यवसायिक केरा खेति वार्ड ८ (चिनी चम्पा)"
+                            : "Commercial Banana Farming Ward 8 (Chini Champa)"
+                    }
                 </p>
             </div>
 
@@ -53,7 +60,7 @@ if (!content) {
                 <h3
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
                 >
-                    {content.cropDiseases.number}
+                    {formatNumber(content.cropDiseases.number, lang)}
                     {content.cropDiseases.title}
                 </h3>
 
@@ -73,29 +80,37 @@ if (!content) {
                             <tr class="border-b border-zinc-700">
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >क्र.सं.</th
+                                    >{lang === "ne" ? "क्र.सं." : "SN"}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >बाली</th
+                                    >{lang === "ne" ? "बाली" : "Crop"}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >प्रमुख शत्रु जीव</th
+                                    >{
+                                        lang === "ne"
+                                            ? "प्रमुख शत्रु जीव"
+                                            : "Major Pest"
+                                    }</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >प्रमुख रोग</th
+                                    >{
+                                        lang === "ne"
+                                            ? "प्रमुख रोग"
+                                            : "Major Disease"
+                                    }</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.cropDiseases.tableData.map(
-                                    (row, idx) => (
+                                    (row: any, idx: number) => (
                                         <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {idx + 1}
+                                                {formatNumber(idx + 1, lang)}
                                             </td>
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
                                                 {row.crop}
@@ -114,7 +129,9 @@ if (!content) {
                     </table>
                 </div>
                 <p class="text-sm text-zinc-400 font-serif italic">
-                    स्रोत: {content.cropDiseases.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.cropDiseases.source
+                    }
                 </p>
             </div>
 
@@ -123,7 +140,7 @@ if (!content) {
                 <h3
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
                 >
-                    {content.vegetableDiseases.number}
+                    {formatNumber(content.vegetableDiseases.number, lang)}
                     {content.vegetableDiseases.title}
                 </h3>
 
@@ -139,29 +156,37 @@ if (!content) {
                             <tr class="border-b border-zinc-700">
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >क्र.सं.</th
+                                    >{lang === "ne" ? "क्र.सं." : "SN"}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >बाली</th
+                                    >{lang === "ne" ? "बाली" : "Crop"}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >प्रमुख रोग</th
+                                    >{
+                                        lang === "ne"
+                                            ? "प्रमुख रोग"
+                                            : "Major Disease"
+                                    }</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >प्रमुख शत्रु जीव</th
+                                    >{
+                                        lang === "ne"
+                                            ? "प्रमुख शत्रु जीव"
+                                            : "Major Pest"
+                                    }</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.vegetableDiseases.tableData.map(
-                                    (row, idx) => (
+                                    (row: any, idx: number) => (
                                         <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {idx + 1}
+                                                {formatNumber(idx + 1, lang)}
                                             </td>
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
                                                 {row.crop}
@@ -180,7 +205,9 @@ if (!content) {
                     </table>
                 </div>
                 <p class="text-sm text-zinc-400 font-serif italic">
-                    स्रोत: {content.vegetableDiseases.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.vegetableDiseases.source
+                    }
                 </p>
             </div>
 
@@ -189,7 +216,7 @@ if (!content) {
                 <h3
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
                 >
-                    {content.animalDiseases.number}
+                    {formatNumber(content.animalDiseases.number, lang)}
                     {content.animalDiseases.title}
                 </h3>
 
@@ -203,7 +230,7 @@ if (!content) {
                 <h3
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
                 >
-                    {content.farms.number}
+                    {formatNumber(content.farms.number, lang)}
                     {content.farms.title}
                 </h3>
 
@@ -223,21 +250,26 @@ if (!content) {
                             <tr class="border-b border-zinc-700">
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >वडा नं.</th
+                                    >{
+                                        lang === "ne" ? "वडा नं." : "Ward No."
+                                    }</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >व्यवसायिक कृषि तथा पशुपंक्षीपालन फर्महरूको
-                                    विवरण</th
+                                    >{
+                                        lang === "ne"
+                                            ? "व्यवसायिक कृषि तथा पशुपंक्षीपालन फर्महरूको विवरण"
+                                            : "Details of Commercial Agriculture and Livestock Farms"
+                                    }</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                content.farms.tableData.map((row) => (
+                                content.farms.tableData.map((row: any) => (
                                     <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                                         <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                            {row.ward}
+                                            {formatNumber(row.ward, lang)}
                                         </td>
                                         <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
                                             {row.name}
@@ -249,7 +281,7 @@ if (!content) {
                     </table>
                 </div>
                 <p class="text-sm text-zinc-400 font-serif italic">
-                    स्रोत: {content.farms.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {content.farms.source}
                 </p>
             </div>
 
@@ -258,7 +290,7 @@ if (!content) {
                 <h3
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
                 >
-                    {content.humanResources.number}
+                    {formatNumber(content.humanResources.number, lang)}
                     {content.humanResources.title}
                 </h3>
 
@@ -275,29 +307,37 @@ if (!content) {
                             <tr class="border-b border-zinc-700">
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >क्र.सं.</th
+                                    >{lang === "ne" ? "क्र.सं." : "SN"}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >कर्मचारीको नाम</th
+                                    >{
+                                        lang === "ne"
+                                            ? "कर्मचारीको नाम"
+                                            : "Staff Name"
+                                    }</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >पद</th
+                                    >{lang === "ne" ? "पद" : "Position"}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >सम्पर्क नं.</th
+                                    >{
+                                        lang === "ne"
+                                            ? "सम्पर्क नं."
+                                            : "Contact No."
+                                    }</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.humanResources.agriculture.tableData.map(
-                                    (row, idx) => (
+                                    (row: any, idx: number) => (
                                         <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {idx + 1}
+                                                {formatNumber(idx + 1, lang)}
                                             </td>
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
                                                 {row.name}
@@ -306,7 +346,10 @@ if (!content) {
                                                 {row.position}
                                             </td>
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {row.contact}
+                                                {formatNumber(
+                                                    row.contact,
+                                                    lang,
+                                                )}
                                             </td>
                                         </tr>
                                     ),
@@ -316,7 +359,9 @@ if (!content) {
                     </table>
                 </div>
                 <p class="text-sm text-zinc-400 font-serif italic">
-                    स्रोत: {content.humanResources.agriculture.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.humanResources.agriculture.source
+                    }
                 </p>
 
                 <!-- Livestock Staff -->
@@ -332,33 +377,41 @@ if (!content) {
                             <tr class="border-b border-zinc-700">
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >क्र.सं.</th
+                                    >{lang === "ne" ? "क्र.सं." : "SN"}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >कर्मचारीको नाम</th
+                                    >{
+                                        lang === "ne"
+                                            ? "कर्मचारीको नाम"
+                                            : "Staff Name"
+                                    }</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >पद</th
+                                    >{lang === "ne" ? "पद" : "Position"}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >सम्पर्क नं.</th
+                                    >{
+                                        lang === "ne"
+                                            ? "सम्पर्क नं."
+                                            : "Contact No."
+                                    }</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >शाखा</th
+                                    >{lang === "ne" ? "शाखा" : "Branch"}</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.humanResources.livestock.tableData.map(
-                                    (row, idx) => (
+                                    (row: any, idx: number) => (
                                         <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {idx + 1}
+                                                {formatNumber(idx + 1, lang)}
                                             </td>
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
                                                 {row.name}
@@ -367,7 +420,10 @@ if (!content) {
                                                 {row.position}
                                             </td>
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {row.contact}
+                                                {formatNumber(
+                                                    row.contact,
+                                                    lang,
+                                                )}
                                             </td>
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
                                                 {row.branch}
@@ -380,7 +436,9 @@ if (!content) {
                     </table>
                 </div>
                 <p class="text-sm text-zinc-400 font-serif italic">
-                    स्रोत: {content.humanResources.livestock.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.humanResources.livestock.source
+                    }
                 </p>
             </div>
 
@@ -389,7 +447,7 @@ if (!content) {
                 <h3
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
                 >
-                    {content.farmerGroups.number}
+                    {formatNumber(content.farmerGroups.number, lang)}
                     {content.farmerGroups.title}
                 </h3>
 
@@ -415,31 +473,37 @@ if (!content) {
                             <tr class="border-b border-zinc-700">
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >क्र.सं.</th
+                                    >{lang === "ne" ? "क्र.सं." : "SN"}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >वडा नं.</th
+                                    >{
+                                        lang === "ne" ? "वडा नं." : "Ward No."
+                                    }</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >नविकरण भएका कृषि समूहरुको संख्या</th
+                                    >{
+                                        lang === "ne"
+                                            ? "नविकरण भएका कृषि समूहरुको संख्या"
+                                            : "Number of Renewed Agriculture Groups"
+                                    }</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.farmerGroups.tableData.map(
-                                    (row, idx) => (
+                                    (row: any, idx: number) => (
                                         <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {idx + 1}
+                                                {formatNumber(idx + 1, lang)}
                                             </td>
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
                                             <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                                {row.name}
+                                                {formatNumber(row.name, lang)}
                                             </td>
                                         </tr>
                                     ),
@@ -449,7 +513,9 @@ if (!content) {
                     </table>
                 </div>
                 <p class="text-sm text-zinc-400 font-serif italic">
-                    स्रोत: {content.farmerGroups.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.farmerGroups.source
+                    }
                 </p>
             </div>
 
@@ -458,7 +524,7 @@ if (!content) {
                 <h3
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
                 >
-                    {content.collectionCenter.number}
+                    {formatNumber(content.collectionCenter.number, lang)}
                     {content.collectionCenter.title}
                 </h3>
 

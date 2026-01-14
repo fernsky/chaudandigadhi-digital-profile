@@ -2,15 +2,271 @@
     "title": "बसाइँसराई सम्बन्धी विवरण",
     "sectionId": "migration",
     "number": "३.११",
+    "intro": "चौदण्डीगढी नगरपालिकाको कुल जनसंख्या ५३,६३१ मध्ये ५३,२३० जना अर्थात ९९.२५ प्रतिशत जनसंख्याको नेपालमा नै जन्म भएको पाइयो । यही नगरपालिका जन्म लिनेको संख्या ३३,९३७ जना, उदयपुर जिल्लाकै अर्को पालिकामा जन्म लिनेको संख्या २,४२३ रहेका छन् भने अर्को जिल्लामा जन्म लिनेको संख्या १६,८७० र विदेशमा जन्मेकाहरूको हाल बसोबास यसै पालिकामा रहेको संख्या ३९९ जना र जन्म स्थान नखुलेको २ जना रहेको छ । नगरपालिकाको आर्थिक, भौतिक, सामाजिक क्षेत्रहरूको विकास हुँदा अन्य स्थानबाट बसाइँ सरेर आउने जनसंख्यामा वृद्धि हुने देखिन्छ । जसको विस्तृत विवरण तालिकामा उल्लेख गरिएको छ ।",
     "subsections": {
         "birthplace": {
-            "title": "जन्म स्थानको आधारमा जनसंख्या विवरण",
-            "tableTitle": "तालिका नं. 16: जन्म स्थानको आधारमा जनसंख्या विवरण",
-            "analysis": "चौदण्डीगढी नगरपालिकाको कुल जनसंख्या ५३,६३१ मध्ये ५३,२३० जना अर्थात ९९.२५ प्रतिशत जनसंख्याको नेपालमा नै जन्म भएको पाइयो । यही नगरपालिका जन्म लिनेको संख्या ३३,९३७ जना, उदयपुर जिल्लाकै अर्को पालिकामा जन्म लिनेको संख्या २,४२३ रहेका छन् भने अर्को जिल्लामा जन्म लिनेको संख्या १६,८७० र विदेशमा जन्मेकाहरूको हाल बसोबास यसै पालिकामा रहेको संख्या ३९९ जना र जन्म स्थान नखुलेको २ जना रहेको छ ।"
+            "title": "क) जन्म स्थानको आधारमा जनसंख्या विवरण",
+            "tableTitle": "तालिका नं. १६: जन्म स्थानको आधारमा जनसंख्या विवरण",
+            "tableData": [
+                {
+                    "ageGroup": "०-४ वर्ष",
+                    "withinNepal": 4146,
+                    "thisMunicipality": 4020,
+                    "otherMunicipality": 8,
+                    "anotherDistrictHills": 2,
+                    "anotherDistrictMountains": 78,
+                    "anotherDistrictTerai": 38,
+                    "anotherDistrictTotal": 118,
+                    "foreign": 8,
+                    "undisclosed": 0,
+                    "total": 4154
+                },
+                {
+                    "ageGroup": "५-९ वर्ष",
+                    "withinNepal": 4861,
+                    "thisMunicipality": 4450,
+                    "otherMunicipality": 50,
+                    "anotherDistrictHills": 5,
+                    "anotherDistrictMountains": 288,
+                    "anotherDistrictTerai": 68,
+                    "anotherDistrictTotal": 361,
+                    "foreign": 20,
+                    "undisclosed": 0,
+                    "total": 4881
+                },
+                {
+                    "ageGroup": "१०-१४ वर्ष",
+                    "withinNepal": 5120,
+                    "thisMunicipality": 4436,
+                    "otherMunicipality": 55,
+                    "anotherDistrictHills": 12,
+                    "anotherDistrictMountains": 526,
+                    "anotherDistrictTerai": 91,
+                    "anotherDistrictTotal": 629,
+                    "foreign": 34,
+                    "undisclosed": 1,
+                    "total": 5155
+                },
+                {
+                    "ageGroup": "१५-१९ वर्ष",
+                    "withinNepal": 5611,
+                    "thisMunicipality": 4564,
+                    "otherMunicipality": 117,
+                    "anotherDistrictHills": 20,
+                    "anotherDistrictMountains": 758,
+                    "anotherDistrictTerai": 152,
+                    "anotherDistrictTotal": 930,
+                    "foreign": 47,
+                    "undisclosed": 0,
+                    "total": 5658
+                },
+                {
+                    "ageGroup": "२०-२४ वर्ष",
+                    "withinNepal": 4896,
+                    "thisMunicipality": 3425,
+                    "otherMunicipality": 290,
+                    "anotherDistrictHills": 26,
+                    "anotherDistrictMountains": 847,
+                    "anotherDistrictTerai": 308,
+                    "anotherDistrictTotal": 1181,
+                    "foreign": 23,
+                    "undisclosed": 0,
+                    "total": 4919
+                },
+                {
+                    "ageGroup": "२५-२९ वर्ष",
+                    "withinNepal": 4156,
+                    "thisMunicipality": 2495,
+                    "otherMunicipality": 306,
+                    "anotherDistrictHills": 34,
+                    "anotherDistrictMountains": 932,
+                    "anotherDistrictTerai": 389,
+                    "anotherDistrictTotal": 1355,
+                    "foreign": 39,
+                    "undisclosed": 0,
+                    "total": 4195
+                },
+                {
+                    "ageGroup": "३०-३४ वर्ष",
+                    "withinNepal": 3771,
+                    "thisMunicipality": 2124,
+                    "otherMunicipality": 292,
+                    "anotherDistrictHills": 57,
+                    "anotherDistrictMountains": 950,
+                    "anotherDistrictTerai": 348,
+                    "anotherDistrictTotal": 1355,
+                    "foreign": 36,
+                    "undisclosed": 0,
+                    "total": 3807
+                },
+                {
+                    "ageGroup": "३५-३९ वर्ष",
+                    "withinNepal": 3512,
+                    "thisMunicipality": 1817,
+                    "otherMunicipality": 282,
+                    "anotherDistrictHills": 65,
+                    "anotherDistrictMountains": 1007,
+                    "anotherDistrictTerai": 351,
+                    "anotherDistrictTotal": 1423,
+                    "foreign": 33,
+                    "undisclosed": 1,
+                    "total": 3546
+                },
+                {
+                    "ageGroup": "४०-४४ वर्ष",
+                    "withinNepal": 3123,
+                    "thisMunicipality": 1563,
+                    "otherMunicipality": 212,
+                    "anotherDistrictHills": 68,
+                    "anotherDistrictMountains": 972,
+                    "anotherDistrictTerai": 308,
+                    "anotherDistrictTotal": 1348,
+                    "foreign": 34,
+                    "undisclosed": 0,
+                    "total": 3157
+                },
+                {
+                    "ageGroup": "४५-४९ वर्ष",
+                    "withinNepal": 2596,
+                    "thisMunicipality": 1202,
+                    "otherMunicipality": 181,
+                    "anotherDistrictHills": 67,
+                    "anotherDistrictMountains": 936,
+                    "anotherDistrictTerai": 210,
+                    "anotherDistrictTotal": 1213,
+                    "foreign": 26,
+                    "undisclosed": 0,
+                    "total": 2622
+                },
+                {
+                    "ageGroup": "५०-५४ वर्ष",
+                    "withinNepal": 2888,
+                    "thisMunicipality": 1145,
+                    "otherMunicipality": 183,
+                    "anotherDistrictHills": 99,
+                    "anotherDistrictMountains": 1215,
+                    "anotherDistrictTerai": 246,
+                    "anotherDistrictTotal": 1560,
+                    "foreign": 34,
+                    "undisclosed": 0,
+                    "total": 2922
+                },
+                {
+                    "ageGroup": "५५-५९ वर्ष",
+                    "withinNepal": 2085,
+                    "thisMunicipality": 716,
+                    "otherMunicipality": 123,
+                    "anotherDistrictHills": 92,
+                    "anotherDistrictMountains": 1015,
+                    "anotherDistrictTerai": 139,
+                    "anotherDistrictTotal": 1246,
+                    "foreign": 29,
+                    "undisclosed": 0,
+                    "total": 2114
+                },
+                {
+                    "ageGroup": "६०-६४ वर्ष",
+                    "withinNepal": 2014,
+                    "thisMunicipality": 625,
+                    "otherMunicipality": 121,
+                    "anotherDistrictHills": 90,
+                    "anotherDistrictMountains": 1046,
+                    "anotherDistrictTerai": 132,
+                    "anotherDistrictTotal": 1268,
+                    "foreign": 20,
+                    "undisclosed": 0,
+                    "total": 2034
+                },
+                {
+                    "ageGroup": "६५-६९ वर्ष",
+                    "withinNepal": 1615,
+                    "thisMunicipality": 517,
+                    "otherMunicipality": 76,
+                    "anotherDistrictHills": 104,
+                    "anotherDistrictMountains": 819,
+                    "anotherDistrictTerai": 99,
+                    "anotherDistrictTotal": 1022,
+                    "foreign": 5,
+                    "undisclosed": 0,
+                    "total": 1620
+                },
+                {
+                    "ageGroup": "७०-७४ वर्ष",
+                    "withinNepal": 1256,
+                    "thisMunicipality": 402,
+                    "otherMunicipality": 58,
+                    "anotherDistrictHills": 79,
+                    "anotherDistrictMountains": 658,
+                    "anotherDistrictTerai": 59,
+                    "anotherDistrictTotal": 796,
+                    "foreign": 9,
+                    "undisclosed": 0,
+                    "total": 1265
+                },
+                {
+                    "ageGroup": "७५ वर्षमाथि",
+                    "withinNepal": 1570,
+                    "thisMunicipality": 436,
+                    "otherMunicipality": 69,
+                    "anotherDistrictHills": 67,
+                    "anotherDistrictMountains": 952,
+                    "anotherDistrictTerai": 46,
+                    "anotherDistrictTotal": 1065,
+                    "foreign": 2,
+                    "undisclosed": 0,
+                    "total": 1572
+                }
+            ],
+            "total": {
+                "withinNepal": 53230,
+                "thisMunicipality": 33937,
+                "otherMunicipality": 2423,
+                "anotherDistrictHills": 887,
+                "anotherDistrictMountains": 12999,
+                "anotherDistrictTerai": 2984,
+                "anotherDistrictTotal": 16870,
+                "foreign": 399,
+                "undisclosed": 2,
+                "total": 53631
+            },
+            "chartTitle": "जन्म स्थानको आधारमा जनसंख्या विवरण",
+            "chartData": [
+                {
+                    "label": "नेपाल भित्र जन्मेको संख्या",
+                    "value": 53230,
+                    "color": "#00aed9"
+                },
+                {
+                    "label": "यही नगरपालिकामा",
+                    "value": 33937,
+                    "color": "#92d050"
+                },
+                {
+                    "label": "अर्को पालिकामा",
+                    "value": 2423,
+                    "color": "#70ad47"
+                },
+                {
+                    "label": "अर्को जिल्लामा जन्मेको",
+                    "value": 16870,
+                    "color": "#9e480e"
+                },
+                {
+                    "label": "विदेशमा जन्मेको",
+                    "value": 399,
+                    "color": "#7c7c00"
+                },
+                {
+                    "label": "उल्लेख नभएको",
+                    "value": 2,
+                    "color": "#385623"
+                }
+            ],
+            "source": "राष्ट्रिय जनगणना, २०७८"
         },
         "previousResidence": {
-            "title": "बसाइँसराई गरेका व्यक्तिको यस अघि बसोबास गरेको स्थान अनुसारको जनसंख्या विवरण",
-            "tableTitle": "तालिका नं. 17: बसाइँसराई गरेका व्यक्तिको यस अघि बसोबास गरेको स्थान अनुसारको जनसंख्या विवरण",
+            "title": "ख) बसाइँसराई गरेका व्यक्तिको यस अघि बसोबास गरेको स्थान अनुसारको जनसंख्या विवरण",
+            "tableTitle": "तालिका नं. १७: बसाइँसराई गरेका व्यक्तिको यस अघि बसोबास गरेको स्थान अनुसारको जनसंख्या विवरण",
             "tableData": [
                 {
                     "type": "यही नगरपालिकामा",

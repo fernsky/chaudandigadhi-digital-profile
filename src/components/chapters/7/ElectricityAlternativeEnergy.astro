@@ -192,7 +192,7 @@ const equationHtml = energy?.equation
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {cookingFuel.tableData.map((row) => (
+                                            {cookingFuel.tableData.map((row: any) => (
                                                 <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                                     <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center font-medium bg-[#f2e25d]/5">
                                                         {row.ward}
@@ -294,7 +294,7 @@ const equationHtml = energy?.equation
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {lightingFuel.tableData.map((row) => (
+                                            {lightingFuel.tableData.map((row: any) => (
                                                 <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                                     <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center font-medium bg-[#f2e25d]/5">
                                                         {row.ward}
@@ -388,7 +388,7 @@ const equationHtml = energy?.equation
             .append("g")
             .attr("transform", `translate(${width / 2},${height / 2})`);
 
-        const pie = d3.pie<any>().value((d) => d.value);
+        const pie = d3.pie<any>().value((d: any) => d.value);
         const arc = d3.arc<any>().innerRadius(0).outerRadius(radius * 0.8);
         const arcHover = d3.arc<any>().innerRadius(0).outerRadius(radius * 0.9);
 
@@ -451,7 +451,7 @@ const equationHtml = energy?.equation
                 .enter()
                 .append("g")
                 .attr("class", "legend")
-                .attr("transform", (d, i) => `translate(0, ${i * 25})`);
+                .attr("transform", (d: any, i: number) => `translate(0, ${i * 25})`);
 
             legend.append("rect")
                 .attr("width", 18)

@@ -1,6 +1,7 @@
 ---
-import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
+import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
@@ -8,116 +9,118 @@ interface Props {
 
 const { lang } = Astro.props;
 
-type MainSettlementsContent = {
+type SettlementsContent = {
     title: string;
-    sectionId: string;
-    subsections: {
-        mainSettlements: {
-            title: string;
-            number: string;
-            intro: string[];
-            tableTitle: string;
-            tableData: Array<{
-                wardNo: string;
-                settlements: string;
-            }>;
-            source: string;
-        };
-    };
+    number: string;
+    subsection_title: string;
+    subsection_number: string;
+    content: string;
+    table_title: string;
+    table_number: string;
+    source: string;
+    table_data: Array<{
+        ward: string;
+        settlements: string;
+    }>;
 };
 
-const content = await loadChapterSection<MainSettlementsContent>(
+const content = await loadChapterSection<SettlementsContent>(
     3,
-    "main-settlements",
+    "settlements",
     lang,
 );
 
 if (!content) {
-    throw new Error("Main settlements content not found");
+    throw new Error("Settlements section content not found");
 }
-
-const { mainSettlements } = content.subsections;
 ---
 
-<section id="main-settlements" class="relative bg-[#050505] py-8 md:py-12">
+<section
+    id="settlements"
+    class="relative bg-[#050505] py-8 md:py-12 border-t border-[#f2e25d]/10"
+>
     <div class="container mx-auto px-8">
         <div class="w-full">
-            <!-- Section Header -->
-            <div class="mb-6">
+            <!-- 3.1 Header -->
+            <div class="mb-8">
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    ३.१ {content.title}
+                    {formatNumber(content.number, lang)}
+                    {content.title}
                 </h2>
             </div>
 
-            <!-- Subsection: Main Settlements -->
-            <div class="mb-8">
+            <!-- 3.1.1 Subsection -->
+            <div id="main-settlements" class="mb-12">
                 <h3
-                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4"
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
                 >
-                    {mainSettlements.number}
-                    {mainSettlements.title}
+                    {formatNumber(content.subsection_number, lang)}
+                    {content.subsection_title}
                 </h3>
 
-                <!-- Intro Paragraphs -->
-                <div class="space-y-4 mb-6">
-                    {
-                        mainSettlements.intro.map((para) => (
-                            <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
-                                {para}
-                            </p>
-                        ))
-                    }
-                </div>
-
-                <!-- Table Title -->
-                <h4
-                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+                <p
+                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10 whitespace-pre-line"
                 >
-                    {mainSettlements.tableTitle}
-                </h4>
-
-                <!-- Premium Table -->
-                <div class="overflow-x-auto mb-4">
-                    <table
-                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10"
-                    >
-                        <thead>
-                            <tr
-                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20"
-                            >
-                                <th
-                                    class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10 w-24"
-                                    >वडा नं.</th
-                                >
-                                <th
-                                    class="px-4 py-3 text-left font-serif text-zinc-100 font-medium"
-                                    >नगरपालिकाका मुख्य बस्तीहरुको विवरण</th
-                                >
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                mainSettlements.tableData.map((row) => (
-                                    <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
-                                        <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5 font-medium">
-                                            {row.wardNo}
-                                        </td>
-                                        <td class="px-4 py-3 font-serif text-zinc-100">
-                                            {row.settlements}
-                                        </td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Source -->
-                <p class="text-zinc-400 font-serif text-sm italic">
-                    स्रोतM {mainSettlements.source}
+                    {content.content}
                 </p>
+
+                <!-- Table -->
+                <div class="mb-10 w-full">
+                    <h4
+                        class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center"
+                    >
+                        {formatNumber(content.table_number, lang)}: {
+                            content.table_title
+                        }
+                    </h4>
+                    <div class="overflow-x-auto">
+                        <table
+                            class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-lg"
+                        >
+                            <thead>
+                                <tr
+                                    class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20"
+                                >
+                                    <th
+                                        class="px-4 py-3 border-r border-[#f2e25d]/10 text-center w-24 font-serif text-zinc-100 font-medium"
+                                    >
+                                        {lang === "ne" ? "वडा नं." : "Ward No."}
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-left font-serif text-zinc-100 font-medium"
+                                    >
+                                        {
+                                            lang === "ne"
+                                                ? "नगरपालिकाका मुख्य बस्तीहरुको विवरण"
+                                                : "Details of Main Settlements"
+                                        }
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    content.table_data.map((row: any) => (
+                                        <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
+                                            <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium text-zinc-100 font-serif">
+                                                {formatNumber(row.ward, lang)}
+                                            </td>
+                                            <td class="px-4 py-3 text-zinc-100 font-serif">
+                                                {row.settlements}
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div
+                        class="text-right text-zinc-400 font-serif italic text-sm mt-2"
+                    >
+                        {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

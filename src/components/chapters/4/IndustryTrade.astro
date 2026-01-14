@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -136,7 +137,7 @@ const cooperatives = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                                {industryIntro.number} {industryIntro.title}
+                                {formatNumber(industryIntro.number, lang)} {industryIntro.title}
                             </h2>
                         </div>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
@@ -165,16 +166,16 @@ const cooperatives = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {industryIntro.tableData.map((row) => (
+                                    {industryIntro.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5">
                                                 {row.description}
                                             </td>
                                             <td class="px-4 py-3">
-                                                {row.number}
+                                                {formatNumber(row.number, lang)}
                                             </td>
                                         </tr>
                                     ))}
@@ -182,7 +183,7 @@ const cooperatives = (await loadChapterSection(
                             </table>
                         </div>
                         <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
-                            स्रोत: {industryIntro.source}
+                            {lang === "ne" ? "स्रोत" : "Source"}: {industryIntro.source}
                         </div>
                     </div>
                 </div>
@@ -199,7 +200,7 @@ const cooperatives = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {industrialDevelopment.number} {industrialDevelopment.title}
+                            {formatNumber(industrialDevelopment.number, lang)} {industrialDevelopment.title}
                         </h3>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
@@ -222,7 +223,7 @@ const cooperatives = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {tradeBusiness.number} {tradeBusiness.title}
+                            {formatNumber(tradeBusiness.number, lang)} {tradeBusiness.title}
                         </h3>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
@@ -242,7 +243,7 @@ const cooperatives = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {mineralsMines.number} {mineralsMines.title}
+                            {formatNumber(mineralsMines.number, lang)} {mineralsMines.title}
                         </h3>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
@@ -266,7 +267,7 @@ const cooperatives = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {localMarkets.number} {localMarkets.title}
+                                {formatNumber(localMarkets.number, lang)} {localMarkets.title}
                             </h3>
                         </div>
                         
@@ -295,7 +296,7 @@ const cooperatives = (await loadChapterSection(
                     <!-- Table 37 Markets -->
                     <div class="mb-10 w-full mx-auto">
                         <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {localMarkets.tableNumber}: {localMarkets.tableTitle}
+                            {formatNumber(localMarkets.tableNumber, lang)}: {localMarkets.tableTitle}
                         </h4>
                         <div class="overflow-x-auto">
                             <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
@@ -313,16 +314,16 @@ const cooperatives = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {localMarkets.tableData.map((row) => (
+                                    {localMarkets.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5">
                                                 {row.name}
                                             </td>
                                             <td class="px-4 py-3">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
                                         </tr>
                                     ))}
@@ -330,7 +331,7 @@ const cooperatives = (await loadChapterSection(
                             </table>
                         </div>
                         <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
-                            स्रोत: {localMarkets.source}
+                            {lang === "ne" ? "स्रोत" : "Source"}: {localMarkets.source}
                         </div>
                     </div>
                 </div>
@@ -348,7 +349,7 @@ const cooperatives = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {bankingFinance.number} {bankingFinance.title}
+                                {formatNumber(bankingFinance.number, lang)} {bankingFinance.title}
                             </h3>
                         </div>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
@@ -359,7 +360,7 @@ const cooperatives = (await loadChapterSection(
                     <!-- Table 38 Banking -->
                     <div class="mb-10 w-full mx-auto">
                         <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {bankingFinance.tableNumber}: {bankingFinance.tableTitle}
+                            {formatNumber(bankingFinance.tableNumber, lang)}: {bankingFinance.tableTitle}
                         </h4>
                         <div class="overflow-x-auto">
                             <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
@@ -377,10 +378,10 @@ const cooperatives = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {bankingFinance.tableData.map((row) => (
+                                    {bankingFinance.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5">
                                                 {row.name}
@@ -394,7 +395,7 @@ const cooperatives = (await loadChapterSection(
                             </table>
                         </div>
                         <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
-                            स्रोत: {bankingFinance.source}
+                            {lang === "ne" ? "स्रोत" : "Source"}: {bankingFinance.source}
                         </div>
                     </div>
                 </div>
@@ -412,7 +413,7 @@ const cooperatives = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {cooperatives.number} {cooperatives.title}
+                                {formatNumber(cooperatives.number, lang)} {cooperatives.title}
                             </h3>
                         </div>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
@@ -423,7 +424,7 @@ const cooperatives = (await loadChapterSection(
                     <!-- Table 39 Cooperatives -->
                     <div class="mb-10 w-full mx-auto">
                         <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {cooperatives.tableNumber}: {cooperatives.tableTitle}
+                            {formatNumber(cooperatives.tableNumber, lang)}: {cooperatives.tableTitle}
                         </h4>
                         <div class="overflow-x-auto">
                             <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
@@ -444,10 +445,10 @@ const cooperatives = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {cooperatives.tableData.map((row) => (
+                                    {cooperatives.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5">
                                                 {row.name}
@@ -464,7 +465,7 @@ const cooperatives = (await loadChapterSection(
                             </table>
                         </div>
                         <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
-                            स्रोत: {cooperatives.source}
+                            {lang === "ne" ? "स्रोत" : "Source"}: {cooperatives.source}
                         </div>
                     </div>
                 </div>

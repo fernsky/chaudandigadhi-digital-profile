@@ -1,0 +1,163 @@
+{
+    "title": "Details of Beneficiaries of Social Security Program",
+    "sectionId": "social-security",
+    "number": "3.13",
+    "table22": {
+        "title": "Table No. 22: Numerical Details of Beneficiaries Receiving Social Security Allowance",
+        "header": [
+            "Details Title",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "Total"
+        ],
+        "tableData": [
+            {
+                "title": "Other Senior Citizen Allowance",
+                "values": [
+                    1241,
+                    1513,
+                    981,
+                    1967,
+                    1692,
+                    1438,
+                    1520,
+                    960,
+                    1182,
+                    1389
+                ],
+                "total": 14643
+            },
+            {
+                "title": "Senior Citizen Allowance (Dalit)",
+                "values": [
+                    85,
+                    205,
+                    215,
+                    342,
+                    72,
+                    132,
+                    130,
+                    40,
+                    115,
+                    51
+                ],
+                "total": 1387
+            },
+            {
+                "title": "Senior Citizen Allowance (Single Women)",
+                "values": [
+                    81,
+                    125,
+                    113,
+                    243,
+                    185,
+                    166,
+                    216,
+                    107,
+                    197,
+                    147
+                ],
+                "total": 1580
+            },
+            {
+                "title": "Widow",
+                "values": [
+                    183,
+                    319,
+                    254,
+                    443,
+                    236,
+                    344,
+                    301,
+                    189,
+                    360,
+                    292
+                ],
+                "total": 2921
+            },
+            {
+                "title": "Full Disability Allowance",
+                "values": [
+                    36,
+                    63,
+                    80,
+                    56,
+                    66,
+                    65,
+                    55,
+                    76,
+                    87,
+                    37
+                ],
+                "total": 621
+            },
+            {
+                "title": "Severe Disability Allowance",
+                "values": [
+                    128,
+                    111,
+                    107,
+                    173,
+                    112,
+                    76,
+                    93,
+                    140,
+                    244,
+                    157
+                ],
+                "total": 1341
+            },
+            {
+                "title": "Dalit Children",
+                "values": [
+                    112,
+                    439,
+                    318,
+                    381,
+                    145,
+                    215,
+                    137,
+                    147,
+                    258,
+                    120
+                ],
+                "total": 2402
+            }
+        ],
+        "totalRow": [
+            1866,
+            2775,
+            2148,
+            3605,
+            2508,
+            2436,
+            2452,
+            1659,
+            3243,
+            2193
+        ],
+        "grandTotal": 24895,
+        "source": "Office of the Municipal Executive"
+    },
+    "paragraphs": [
+        "In this municipality, in F.Y. 2080/081, the number of people receiving other senior citizen allowances is 14,683, the number of people receiving senior citizen allowances from the Dalit community is 1,387, and the number of women receiving single woman allowances is 1,580. Similarly, the number of women receiving widow allowances is 2,921, those receiving full disability allowances (Category A) total 621, those receiving severe disability allowances (Category B) total 1,341, and Dalit children receiving allowances total 2,402, making a total of 24,935 beneficiaries of social security allowances, whose ward-wise details are presented in the table. The concept of supporting senior citizens, single women, and persons with disabilities from the state treasury in the name of social security allowances is the concept of a welfare state. Initiated in 2051 B.S. with the slogan of providing a monthly allowance of 100 rupees to senior citizens, social security allowances are now provided to senior citizens as well as single women, persons with disabilities, and Dalit senior citizens. It is believed that this encourages vulnerable members of society to live with dignity.",
+        "According to the Social Security Act, 2075, the following Nepali citizens are mentioned as eligible for social security allowance.",
+        "(A) Senior citizens, (B) Economically indigent, (C) Persons in vulnerable and helpless conditions, (D) Helpless single women, (E) Persons with disabilities, (F) Children, (G) Those unable to care for themselves, (H) Endangered groups, etc.",
+        "Senior Citizen Allowance: (1) Dalit and single woman senior citizens after completing sixty years of age and other senior citizens after completing sixty-eight years of age receive senior citizen allowances as prescribed by the Government of Nepal as social security allowances.",
+        "**Indigent Citizen Allowance:** Economically indigent citizens receive the amount prescribed by the Government of Nepal as a social security allowance in the form of an indigent citizen allowance.",
+        "**Helpless and Vulnerable Allowance:** Citizens in helpless and vulnerable conditions receive the amount prescribed by the Government of Nepal as a social security allowance in the form of a helpless and vulnerable allowance.",
+        "**Helpless Single Woman Allowance:** Widow women and other single women who have lower income than prescribed by the Government of Nepal by publication of notice in the Gazette and have no family member to support and care for them, or even if such a member exists, are in an economically indigent condition, or such a member does not provide support, receive this allowance.",
+        "**Disability Allowance:** Citizens with full disability and severe disability receive the disability allowance as prescribed by the Government of Nepal as a social security allowance.",
+        "**Child Nutrition Allowance:** Children from extremely indigent, endangered groups, and those prescribed by the Government of Nepal who has not completed five years of age receive child nutrition allowance as prescribed by the Government of Nepal as a social security allowance.",
+        "**Endangered Group Allowance:** Citizens of endangered groups receive social security allowance as prescribed by the Government of Nepal.",
+        "**Care Allowance for those unable to care for themselves:** Citizens unable to care for themselves receive social security allowance as prescribed by the Government of Nepal."
+    ]
+}

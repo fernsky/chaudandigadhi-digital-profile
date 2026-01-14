@@ -1,5 +1,6 @@
 ---
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
 
 interface Props {
@@ -83,7 +84,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                 <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {forestArea.number} {forestArea.title}
+                            {formatNumber(forestArea.number, lang)} {forestArea.title}
                         </h2>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
@@ -104,7 +105,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {forestManagement.number} {forestManagement.title}
+                                {formatNumber(forestManagement.number, lang)} {forestManagement.title}
                             </h3>
                         </div>
 
@@ -125,7 +126,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                     <!-- Community Forest Table -->
                     <div class="mb-10 w-full mx-auto">
                         <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {forestManagement.sections.communityForest.tableNumber}: {forestManagement.sections.communityForest.tableTitle}
+                            {formatNumber(forestManagement.sections.communityForest.tableNumber, lang)}: {forestManagement.sections.communityForest.tableTitle}
                         </h5>
                         <div class="overflow-x-auto">
                             <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
@@ -143,10 +144,10 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {forestManagement.sections.communityForest.tableData.map((row) => (
+                                    {forestManagement.sections.communityForest.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5">
                                                 {row.name}
@@ -239,7 +240,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {plantationAreas.number} {plantationAreas.title}
+                            {formatNumber(plantationAreas.number, lang)} {plantationAreas.title}
                         </h3>
                     </div>
                     <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-4">
@@ -263,7 +264,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {herbs.number} {herbs.title}
+                                {formatNumber(herbs.number, lang)} {herbs.title}
                             </h3>
                         </div>
                         <h4 class="font-serif text-xl md:text-2xl text-white font-medium mb-4">
@@ -277,7 +278,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                     <!-- Medicinal Plants Table -->
                     <div class="mb-10 w-full mx-auto">
                         <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {herbs.tableNumber}: {herbs.tableTitle}
+                            {formatNumber(herbs.tableNumber, lang)}: {herbs.tableTitle}
                         </h5>
                         <div class="overflow-x-auto">
                             <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
@@ -298,10 +299,10 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {herbs.tableData.map((row) => (
+                                    {herbs.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5">
                                                 {row.nepaliName}
@@ -332,7 +333,7 @@ const forestProducts = (await loadChapterSection(6, "forest-products", lang)) as
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {forestProducts.number} {forestProducts.title}
+                            {formatNumber(forestProducts.number, lang)} {forestProducts.title}
                         </h3>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">

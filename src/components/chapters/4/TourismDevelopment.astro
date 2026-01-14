@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -87,7 +88,7 @@ const tourismHotels = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {tourismDevelopment.number} {tourismDevelopment.title}
+                            {formatNumber(tourismDevelopment.number, lang)} {tourismDevelopment.title}
                         </h2>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
@@ -144,7 +145,7 @@ const tourismHotels = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {tourismSites.number} {tourismSites.title}
+                            {formatNumber(tourismSites.number, lang)} {tourismSites.title}
                         </h3>
                     </div>
 
@@ -219,7 +220,7 @@ const tourismHotels = (await loadChapterSection(
                 <!-- Table 35 -->
                 <div class="w-full mx-auto mb-10">
                     <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                        {tourismSites.tableNumber}: {tourismSites.tableTitle}
+                        {formatNumber(tourismSites.tableNumber, lang)}: {tourismSites.tableTitle}
                     </h4>
                     <div class="overflow-x-auto">
                         <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
@@ -243,7 +244,7 @@ const tourismHotels = (await loadChapterSection(
                                 {tourismSites.tableData.map((row) => (
                                     <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                         <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                            {row.sn}
+                                            {formatNumber(row.sn, lang)}
                                         </td>
                                         <td class="px-4 py-3 border-r border-[#f2e25d]/5">
                                             {row.name}
@@ -260,7 +261,7 @@ const tourismHotels = (await loadChapterSection(
                         </table>
                     </div>
                     <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
-                        स्रोत: {tourismSites.source}
+                        {lang === "ne" ? "स्रोत" : "Source"}: {tourismSites.source}
                     </div>
                 </div>
 
@@ -312,7 +313,7 @@ const tourismHotels = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {tourismHotels.number} {tourismHotels.title}
+                                {formatNumber(tourismHotels.number, lang)} {tourismHotels.title}
                             </h3>
                         </div>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
@@ -323,7 +324,7 @@ const tourismHotels = (await loadChapterSection(
                     <!-- Table 36 Hotels -->
                     <div class="mb-10 w-full mx-auto">
                         <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {tourismHotels.tableNumber}:{" "}
+                            {formatNumber(tourismHotels.tableNumber, lang)}:{" "}
                             {tourismHotels.tableTitle}
                         </h4>
                         <div class="overflow-x-auto">
@@ -354,7 +355,7 @@ const tourismHotels = (await loadChapterSection(
                                     {tourismHotels.tableData.map((row) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5">
                                                 {row.name}
@@ -371,7 +372,7 @@ const tourismHotels = (await loadChapterSection(
                             </table>
                         </div>
                         <div class="text-right text-zinc-400 font-serif italic text-sm mt-2">
-                            स्रोत: {tourismHotels.source}
+                            {lang === "ne" ? "स्रोत" : "Source"}: {tourismHotels.source}
                         </div>
                     </div>
                 </div>

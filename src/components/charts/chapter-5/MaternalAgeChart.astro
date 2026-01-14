@@ -1,5 +1,6 @@
 ---
 import type { Language } from "../../../lib/i18n";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -24,7 +25,11 @@ const maxPercent = Math.max(...ageGroups.map((g) => g.percent));
 
 <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
     <h4 class="font-serif text-xl text-zinc-100 font-medium mb-6 text-center">
-        पहिलो बच्चा जन्मदिँदा महिलाको उमेर
+        {
+            lang === "ne"
+                ? "पहिलो बच्चा जन्मदिँदा महिलाको उमेर"
+                : "Age of woman at first birth"
+        }
     </h4>
 
     <div class="space-y-4">
@@ -33,14 +38,16 @@ const maxPercent = Math.max(...ageGroups.map((g) => g.percent));
                 <div class="space-y-1">
                     <div class="flex justify-between items-center text-sm">
                         <span class="text-zinc-100 font-serif">
-                            {group.range} वर्ष
+                            {formatNumber(group.range, lang)}{" "}
+                            {lang === "ne" ? "वर्ष" : "Years"}
                         </span>
                         <div class="flex gap-4">
                             <span class="text-zinc-400 font-serif">
-                                {group.count.toLocaleString()} जना
+                                {formatNumber(group.count, lang)}{" "}
+                                {lang === "ne" ? "जना" : "People"}
                             </span>
                             <span class="text-[#f2e25d] font-bold">
-                                {group.percent}%
+                                {formatNumber(group.percent, lang)}%
                             </span>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -43,7 +44,8 @@ if (!content) {
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    ५.१ {content.title}
+                    {formatNumber("5.1", lang)}
+                    {content.title}
                 </h2>
             </div>
 
@@ -78,7 +80,7 @@ if (!content) {
                             (provision, index) => (
                                 <li class="text-zinc-100 font-serif text-base md:text-lg font-light leading-relaxed flex">
                                     <span class="mr-3 text-[#f2e25d]">
-                                        {index + 1}.
+                                        {formatNumber(index + 1, lang)}.
                                     </span>
                                     <span>{provision}</span>
                                 </li>
@@ -103,7 +105,8 @@ if (!content) {
                     />
                 </div>
                 <p class="text-zinc-100 font-serif text-sm text-center">
-                    नक्सा नं. {content.mapReference.number}: {
+                    {lang === "ne" ? "नक्सा नं." : "Map No."}
+                    {formatNumber(content.mapReference.number, lang)}: {
                         content.mapReference.title
                     }
                 </p>

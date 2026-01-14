@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSections } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import VaccinationChart from "../../charts/chapter-5/VaccinationChart.astro";
 import MaternalAgeChart from "../../charts/chapter-5/MaternalAgeChart.astro";
 
@@ -25,7 +26,7 @@ const subsections = await loadChapterSections(
                 subsections["health-nutrition"] && (
                     <div class="space-y-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100">
-                            ५.२ {subsections["health-nutrition"].title}
+                            {formatNumber("5.2", lang)} {subsections["health-nutrition"].title}
                         </h2>
                         {subsections["health-nutrition"].intro.map((para: any) => (
                             <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
@@ -41,23 +42,23 @@ const subsections = await loadChapterSections(
                 subsections["health-facilities"] && (
                     <div id="health-facilities" class="space-y-6">
                         <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
-                            ५.२.१ {subsections["health-facilities"].title}
+                            {formatNumber("5.2.1", lang)} {subsections["health-facilities"].title}
                         </h3>
                         <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 overflow-hidden">
                             <div class="overflow-x-auto">
                                 <table class="w-full">
                                     <thead class="bg-[#050505] border-b border-[#f2e25d]/20">
                                         <tr>
-                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">क्र.सं.</th>
-                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">स्वास्थ्य संस्थाको नाम</th>
-                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">ठेगाना</th>
-                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">सेवा</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "क्र.सं." : "SN"}</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "स्वास्थ्य संस्थाको नाम" : "Health Facility Name"}</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "ठेगाना" : "Address"}</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "सेवा" : "Services"}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {subsections["health-facilities"].facilities.map((facility: any) => (
                                             <tr class="border-b border-[#f2e25d]/5 hover:bg-[#050505] transition-colors">
-                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{facility.sn}</td>
+                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{formatNumber(facility.sn, lang)}</td>
                                                 <td class="px-4 py-3 font-serif text-sm text-zinc-100">{facility.name}</td>
                                                 <td class="px-4 py-3 font-serif text-sm text-zinc-100">{facility.address}</td>
                                                 <td class="px-4 py-3 font-serif text-sm text-zinc-100">{facility.services}</td>
@@ -76,7 +77,7 @@ const subsections = await loadChapterSections(
                 subsections["vaccination-data"] && (
                     <div id="vaccination" class="space-y-6">
                         <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
-                            ५.२.२ {subsections["vaccination-data"].title}
+                            {formatNumber("5.2.2", lang)} {subsections["vaccination-data"].title}
                         </h3>
                         
                         <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
@@ -107,7 +108,7 @@ const subsections = await loadChapterSections(
                 subsections["maternal-health"] && (
                     <div id="maternal-health" class="space-y-6">
                         <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
-                            ५.२.५ {subsections["maternal-health"].title}
+                            {formatNumber("5.2.5", lang)} {subsections["maternal-health"].title}
                         </h3>
 
                         <!-- Maternal Age Chart -->
@@ -130,13 +131,13 @@ const subsections = await loadChapterSections(
                                 {subsections["maternal-health"].ageGroupAnalysis.ageGroups.map((group: any) => (
                                     <div class="bg-[#050505] p-4 border border-[#f2e25d]/5">
                                         <div class="text-[#f2e25d] text-2xl font-bold mb-2">
-                                            {group.percent}%
+                                            {formatNumber(group.percent, lang)}%
                                         </div>
                                         <div class="text-zinc-100 font-serif text-xs mb-1">
-                                            {group.range} वर्ष
+                                            {formatNumber(group.range, lang)} {lang === "ne" ? "वर्ष" : "Years"}
                                         </div>
                                         <div class="text-zinc-400 font-serif text-xs">
-                                            {group.count} जना
+                                            {formatNumber(group.count, lang)} {lang === "ne" ? "जना" : "People"}
                                         </div>
                                     </div>
                                 ))}
@@ -156,7 +157,7 @@ const subsections = await loadChapterSections(
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {subsections["health-nutrition"].topDiseases.diseases.map((disease: string, index: number) => (
                                 <div class="flex items-center space-x-3 bg-[#050505] p-3 border border-[#f2e25d]/5">
-                                    <span class="text-[#f2e25d] font-bold text-lg">{index + 1}.</span>
+                                    <span class="text-[#f2e25d] font-bold text-lg">{formatNumber(index + 1, lang)}.</span>
                                     <span class="text-zinc-100 font-serif text-sm">{disease}</span>
                                 </div>
                             ))}

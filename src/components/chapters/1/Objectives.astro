@@ -1,5 +1,6 @@
 ---
 import type { Language } from "../../../lib/i18n";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
 
 interface Props {
@@ -52,7 +53,8 @@ if (!content) {
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    १.२ {content.title}
+                    {formatNumber("1.2", lang)}
+                    {content.title}
                 </h2>
 
                 <!-- Introduction -->
@@ -66,7 +68,7 @@ if (!content) {
             <!-- Objectives List (Lettered as per image) -->
             <div class="space-y-4">
                 {
-                    content.objectives.map((objective, index) => (
+                    content.objectives.map((objective: any, index: number) => (
                         <div class="flex items-start gap-4">
                             <span class="text-zinc-100 font-serif text-lg md:text-xl shrink-0 font-light">
                                 {lang === "ne"

@@ -42,7 +42,7 @@ const chartData = Object.entries(content.vaccinationCoverage).map(
             </h3>
             <VaccinationChart lang={lang} data={chartData} />
             <p class="text-zinc-400 font-serif text-sm italic mt-4">
-                स्रोत: {content.source}
+                {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
             </p>
         </div>
     </div>

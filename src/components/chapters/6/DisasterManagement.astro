@@ -1,5 +1,6 @@
 ---
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
 
 interface Props {
@@ -61,7 +62,7 @@ const emergencyTransport = (await loadChapterSection(6, "emergency-transport", l
                 <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {disasterManagement.number} {disasterManagement.title}
+                            {formatNumber(disasterManagement.number, lang)} {disasterManagement.title}
                         </h2>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
@@ -81,7 +82,7 @@ const emergencyTransport = (await loadChapterSection(6, "emergency-transport", l
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {disasterDamage.number} {disasterDamage.title}
+                            {formatNumber(disasterDamage.number, lang)} {disasterDamage.title}
                         </h3>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
@@ -101,14 +102,14 @@ const emergencyTransport = (await loadChapterSection(6, "emergency-transport", l
                 <div class="w-full mx-auto">
                     <div class="w-full mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {disasterRiskTime.number} {disasterRiskTime.title}
+                            {formatNumber(disasterRiskTime.number, lang)} {disasterRiskTime.title}
                         </h3>
                     </div>
 
                     <!-- Risk Time Table -->
                     <div class="mb-4 w-full mx-auto">
                         <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {disasterRiskTime.tableNumber}: {disasterRiskTime.tableTitle}
+                            {formatNumber(disasterRiskTime.tableNumber, lang)}: {disasterRiskTime.tableTitle}
                         </h5>
                         <div class="overflow-x-auto">
                             <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
@@ -129,10 +130,10 @@ const emergencyTransport = (await loadChapterSection(6, "emergency-transport", l
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {disasterRiskTime.tableData.map((row) => (
+                                    {disasterRiskTime.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 font-medium">
                                                 {row.type}
@@ -166,7 +167,7 @@ const emergencyTransport = (await loadChapterSection(6, "emergency-transport", l
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {disasterPreparedness.number} {disasterPreparedness.title}
+                            {formatNumber(disasterPreparedness.number, lang)} {disasterPreparedness.title}
                         </h3>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
@@ -186,7 +187,7 @@ const emergencyTransport = (await loadChapterSection(6, "emergency-transport", l
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {emergencyTransport.number} {emergencyTransport.title}
+                            {formatNumber(emergencyTransport.number, lang)} {emergencyTransport.title}
                         </h3>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">

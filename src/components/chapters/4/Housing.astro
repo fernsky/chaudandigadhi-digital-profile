@@ -51,33 +51,39 @@ if (!content) {
                             <tr class="border-b border-zinc-700">
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >वडा नं.</th
+                                    >{
+                                        lang === "ne" ? "वडा नं." : "Ward No."
+                                    }</th
                                 >
                                 <th
                                     class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >निजी</th
+                                    >{lang === "ne" ? "निजी" : "Private"}</th
                                 >
                                 <th
                                     class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >भाडामा</th
+                                    >{lang === "ne" ? "भाडामा" : "Rented"}</th
                                 >
                                 <th
                                     class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >संस्थागत</th
+                                    >{
+                                        lang === "ne"
+                                            ? "संस्थागत"
+                                            : "Institutional"
+                                    }</th
                                 >
                                 <th
                                     class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >अन्य</th
+                                    >{lang === "ne" ? "अन्य" : "Other"}</th
                                 >
                                 <th
                                     class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >जम्मा</th
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                content.ownership.tableData.map((row) => (
+                                content.ownership.tableData.map((row: any) => (
                                     <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                                         <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
                                             {row.ward}
@@ -140,7 +146,7 @@ if (!content) {
                 <tr class="border-t-2 border-zinc-600 bg-zinc-900/50">
                     <td
                         class="py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
-                        >जम्मा</td
+                        >{lang === "ne" ? "जम्मा" : "Total"}</td
                     >
                     <td
                         class="text-right py-3 px-4 font-serif text-sm md:text-base text-zinc-100 font-bold"
@@ -168,7 +174,7 @@ if (!content) {
                 <tr class="bg-zinc-900/30">
                     <td
                         class="py-2 px-4 font-serif text-sm md:text-base text-zinc-200"
-                        >प्रतिशत</td
+                        >{lang === "ne" ? "प्रतिशत" : "Percentage"}</td
                     >
                     <td
                         class="text-right py-2 px-4 font-serif text-sm md:text-base text-zinc-200"
@@ -218,37 +224,39 @@ if (!content) {
                 <tr class="border-b border-zinc-700">
                     <th
                         class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >वडा</th
+                        >{lang === "ne" ? "वडा" : "Ward"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >माटोको जोडाइ</th
+                        >{lang === "ne" ? "माटोको जोडाइ" : "Mud Stone"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >सिमेन्टको जोडाइ</th
+                        >{
+                            lang === "ne" ? "सिमेन्टको जोडाइ" : "Cement Stone"
+                        }</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >ढलान पिल्लर</th
+                        >{lang === "ne" ? "ढलान पिल्लर" : "RCC"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >काठको खम्बा</th
+                        >{lang === "ne" ? "काठको खम्बा" : "Wooden Pillar"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >अन्य</th
+                        >{lang === "ne" ? "अन्य" : "Other"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >जम्मा</th
+                        >{lang === "ne" ? "जम्मा" : "Total"}</th
                     >
                 </tr>
             </thead>
             <tbody>
                 {
-                    content.foundation.tableData.map((row) => (
+                    content.foundation.tableData.map((row: any) => (
                         <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                             <td class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
                                 {row.ward}
@@ -277,7 +285,7 @@ if (!content) {
                 <tr class="border-t-2 border-zinc-600 bg-zinc-900/50">
                     <td
                         class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                        >जम्मा</td
+                        >{lang === "ne" ? "जम्मा" : "Total"}</td
                     >
                     <td
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
@@ -314,7 +322,7 @@ if (!content) {
         </table>
     </div>
     <p class="text-sm text-zinc-400 font-serif italic">
-        स्रोत: {content.foundation.source}
+        {lang === "ne" ? "स्रोत" : "Source"}: {content.foundation.source}
     </p>
 </div>
 
@@ -334,45 +342,45 @@ if (!content) {
                 <tr class="border-b border-zinc-700">
                     <th
                         class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >वडा</th
+                        >{lang === "ne" ? "वडा" : "Ward"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >माटो ढुङ्गा</th
+                        >{lang === "ne" ? "माटो ढुङ्गा" : "Mud Stone"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >सिमेन्ट ढुङ्गा</th
+                        >{lang === "ne" ? "सिमेन्ट ढुङ्गा" : "Cement Stone"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >काठ</th
+                        >{lang === "ne" ? "काठ" : "Wood"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >बाँस</th
+                        >{lang === "ne" ? "बाँस" : "Bamboo"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >इँटा</th
+                        >{lang === "ne" ? "इँटा" : "Brick"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >जस्ता</th
+                        >{lang === "ne" ? "जस्ता" : "Zinc"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >अन्य</th
+                        >{lang === "ne" ? "अन्य" : "Other"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >जम्मा</th
+                        >{lang === "ne" ? "जम्मा" : "Total"}</th
                     >
                 </tr>
             </thead>
             <tbody>
                 {
-                    content.outerWall.tableData.map((row) => (
+                    content.outerWall.tableData.map((row: any) => (
                         <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                             <td class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
                                 {row.ward}
@@ -407,7 +415,7 @@ if (!content) {
                 <tr class="border-t-2 border-zinc-600 bg-zinc-900/50">
                     <td
                         class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                        >जम्मा</td
+                        >{lang === "ne" ? "जम्मा" : "Total"}</td
                     >
                     <td
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
@@ -452,7 +460,7 @@ if (!content) {
         </table>
     </div>
     <p class="text-sm text-zinc-400 font-serif italic">
-        स्रोत: {content.outerWall.source}
+        {lang === "ne" ? "स्रोत" : "Source"}: {content.outerWall.source}
     </p>
 </div>
 
@@ -475,41 +483,41 @@ if (!content) {
                 <tr class="border-b border-zinc-700">
                     <th
                         class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >वडा</th
+                        >{lang === "ne" ? "वडा" : "Ward"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >माटो</th
+                        >{lang === "ne" ? "माटो" : "Mud"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >काठ/बाँस</th
+                        >{lang === "ne" ? "काठ/बाँस" : "Wood/Bamboo"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >इँटा/ढुङ्गा</th
+                        >{lang === "ne" ? "इँटा/ढुङ्गा" : "Brick/Stone"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >टायल</th
+                        >{lang === "ne" ? "टायल" : "Tile"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >सिमेन्ट</th
+                        >{lang === "ne" ? "सिमेन्ट" : "Cement"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >अन्य</th
+                        >{lang === "ne" ? "अन्य" : "Other"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >जम्मा</th
+                        >{lang === "ne" ? "जम्मा" : "Total"}</th
                     >
                 </tr>
             </thead>
             <tbody>
                 {
-                    content.floor.tableData.map((row) => (
+                    content.floor.tableData.map((row: any) => (
                         <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                             <td class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
                                 {row.ward}
@@ -541,7 +549,7 @@ if (!content) {
                 <tr class="border-t-2 border-zinc-600 bg-zinc-900/50">
                     <td
                         class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                        >जम्मा</td
+                        >{lang === "ne" ? "जम्मा" : "Total"}</td
                     >
                     <td
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
@@ -576,7 +584,7 @@ if (!content) {
         </table>
     </div>
     <p class="text-sm text-zinc-400 font-serif italic">
-        स्रोत: {content.floor.source}
+        {lang === "ne" ? "स्रोत" : "Source"}: {content.floor.source}
     </p>
 </div>
 
@@ -592,45 +600,45 @@ if (!content) {
                 <tr class="border-b border-zinc-700">
                     <th
                         class="text-left py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >वडा</th
+                        >{lang === "ne" ? "वडा" : "Ward"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >जस्ता/टिन</th
+                        >{lang === "ne" ? "जस्ता/टिन" : "Zinc/Tin"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >सिमेन्ट</th
+                        >{lang === "ne" ? "सिमेन्ट" : "Cement"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >फूस</th
+                        >{lang === "ne" ? "फूस" : "Straw"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >टायल/खपडा</th
+                        >{lang === "ne" ? "टायल/खपडा" : "Tile"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >ढुङ्गा</th
+                        >{lang === "ne" ? "ढुङ्गा" : "Stone"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >काठ</th
+                        >{lang === "ne" ? "काठ" : "Wood"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >अन्य</th
+                        >{lang === "ne" ? "अन्य" : "Other"}</th
                     >
                     <th
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-300"
-                        >जम्मा</th
+                        >{lang === "ne" ? "जम्मा" : "Total"}</th
                     >
                 </tr>
             </thead>
             <tbody>
                 {
-                    content.roof.tableData.map((row) => (
+                    content.roof.tableData.map((row: any) => (
                         <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
                             <td class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-300">
                                 {row.ward}
@@ -665,7 +673,7 @@ if (!content) {
                 <tr class="border-t-2 border-zinc-600 bg-zinc-900/50">
                     <td
                         class="py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
-                        >जम्मा</td
+                        >{lang === "ne" ? "जम्मा" : "Total"}</td
                     >
                     <td
                         class="text-right py-2 px-2 font-serif text-xs md:text-sm text-zinc-100 font-bold"
@@ -704,6 +712,6 @@ if (!content) {
         </table>
     </div>
     <p class="text-sm text-zinc-400 font-serif italic">
-        स्रोत: {content.roof.source}
+        {lang === "ne" ? "स्रोत" : "Source"}: {content.roof.source}
     </p>
 </div>

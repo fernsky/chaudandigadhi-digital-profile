@@ -1,0 +1,71 @@
+{
+    "title": "Household Head Details",
+    "number": "3.7",
+    "table_title": "Household Head Details by Gender",
+    "table_number": "Table No. 11",
+    "source": "National Census, 2021",
+    "table_data": [
+        {
+            "age_group": "10-14",
+            "male_head": "4",
+            "female_head": "11",
+            "total_households": "15"
+        },
+        {
+            "age_group": "15-19",
+            "male_head": "36",
+            "female_head": "48",
+            "total_households": "84"
+        },
+        {
+            "age_group": "20-29",
+            "male_head": "519",
+            "female_head": "669",
+            "total_households": "1188"
+        },
+        {
+            "age_group": "30-39",
+            "male_head": "1417",
+            "female_head": "1352",
+            "total_households": "2769"
+        },
+        {
+            "age_group": "40-49",
+            "male_head": "1819",
+            "female_head": "1061",
+            "total_households": "2880"
+        },
+        {
+            "age_group": "50-59",
+            "male_head": "1907",
+            "female_head": "742",
+            "total_households": "2649"
+        },
+        {
+            "age_group": "60-69",
+            "male_head": "1331",
+            "female_head": "586",
+            "total_households": "1917"
+        },
+        {
+            "age_group": "Above 70 years",
+            "male_head": "847",
+            "female_head": "354",
+            "total_households": "1201"
+        },
+        {
+            "age_group": "Total",
+            "male_head": "7880",
+            "female_head": "4823",
+            "total_households": "12703"
+        },
+        {
+            "age_group": "Percentage",
+            "male_head": "62.03",
+            "female_head": "37.97",
+            "total_households": "100"
+        }
+    ],
+    "content": "Out of the total 12,703 households in the municipality, 7,880 or 62.03 percent of the households have male household heads, while 4,832 or 37.97 percent of the households have female household heads. The detailed distribution is mentioned in the table.",
+    "chart_title": "Household Distribution by Age and Gender of the Household Head"
+}

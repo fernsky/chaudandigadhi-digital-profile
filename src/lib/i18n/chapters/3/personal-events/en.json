@@ -1,0 +1,916 @@
+{
+    "title": "Vital Events Details",
+    "sectionId": "vital-events",
+    "number": "3.12",
+    "intro": "Citizens must follow legal processes to exercise their personal rights. To obtain citizenship, passports, or other identity cards, to engage in employment or enterprise, or to go abroad, certain legal processes must be completed. For this, the government provides official certificates. Events such as birth, death, migration, marriage, and divorce must be registered in a timely manner. The Constitution has guaranteed various rights to citizens. Its starting point is vital event registration. It is an international recognition to create national statistics based on those vital event registrations. Where? How many were born? How many died? How many migrated? How many got divorced? The state must have information about such things. Based on this, the government formulates policies related to service delivery, so it is necessary to increase public awareness to register vital events on time. The details of vital events registered in this municipality are presented in the table below.",
+    "table18": {
+        "title": "Table No. 18: Details of Vital Events Registered in the Municipality",
+        "tableData": [
+            {
+                "ward": "1",
+                "birthMale": 44,
+                "birthFemale": 41,
+                "birthTotal": 85,
+                "deathMale": 19,
+                "deathFemale": 17,
+                "deathTotal": 36,
+                "divorce": 9,
+                "marriage": 37,
+                "migrationIn": 14,
+                "migrationInMembers": 29,
+                "migrationOut": 19,
+                "migrationOutMembers": 55,
+                "total": 200
+            },
+            {
+                "ward": "2",
+                "birthMale": 59,
+                "birthFemale": 61,
+                "birthTotal": 120,
+                "deathMale": 21,
+                "deathFemale": 12,
+                "deathTotal": 33,
+                "divorce": 12,
+                "marriage": 44,
+                "migrationIn": 20,
+                "migrationInMembers": 53,
+                "migrationOut": 13,
+                "migrationOutMembers": 33,
+                "total": 242
+            },
+            {
+                "ward": "3",
+                "birthMale": 56,
+                "birthFemale": 56,
+                "birthTotal": 112,
+                "deathMale": 19,
+                "deathFemale": 18,
+                "deathTotal": 37,
+                "divorce": 22,
+                "marriage": 38,
+                "migrationIn": 13,
+                "migrationInMembers": 29,
+                "migrationOut": 17,
+                "migrationOutMembers": 36,
+                "total": 239
+            },
+            {
+                "ward": "4",
+                "birthMale": 62,
+                "birthFemale": 75,
+                "birthTotal": 137,
+                "deathMale": 33,
+                "deathFemale": 26,
+                "deathTotal": 59,
+                "divorce": 18,
+                "marriage": 70,
+                "migrationIn": 24,
+                "migrationInMembers": 61,
+                "migrationOut": 11,
+                "migrationOutMembers": 22,
+                "total": 319
+            },
+            {
+                "ward": "5",
+                "birthMale": 66,
+                "birthFemale": 59,
+                "birthTotal": 125,
+                "deathMale": 23,
+                "deathFemale": 34,
+                "deathTotal": 57,
+                "divorce": 3,
+                "marriage": 43,
+                "migrationIn": 4,
+                "migrationInMembers": 11,
+                "migrationOut": 11,
+                "migrationOutMembers": 36,
+                "total": 243
+            },
+            {
+                "ward": "6",
+                "birthMale": 49,
+                "birthFemale": 45,
+                "birthTotal": 94,
+                "deathMale": 25,
+                "deathFemale": 13,
+                "deathTotal": 38,
+                "divorce": 9,
+                "marriage": 39,
+                "migrationIn": 24,
+                "migrationInMembers": 64,
+                "migrationOut": 12,
+                "migrationOutMembers": 37,
+                "total": 216
+            },
+            {
+                "ward": "7",
+                "birthMale": 43,
+                "birthFemale": 46,
+                "birthTotal": 89,
+                "deathMale": 16,
+                "deathFemale": 16,
+                "deathTotal": 32,
+                "divorce": 18,
+                "marriage": 46,
+                "migrationIn": 38,
+                "migrationInMembers": 97,
+                "migrationOut": 10,
+                "migrationOutMembers": 32,
+                "total": 233
+            },
+            {
+                "ward": "8",
+                "birthMale": 47,
+                "birthFemale": 35,
+                "birthTotal": 82,
+                "deathMale": 9,
+                "deathFemale": 12,
+                "deathTotal": 21,
+                "divorce": 4,
+                "marriage": 48,
+                "migrationIn": 13,
+                "migrationInMembers": 26,
+                "migrationOut": 18,
+                "migrationOutMembers": 39,
+                "total": 186
+            },
+            {
+                "ward": "9",
+                "birthMale": 86,
+                "birthFemale": 72,
+                "birthTotal": 158,
+                "deathMale": 24,
+                "deathFemale": 24,
+                "deathTotal": 48,
+                "divorce": 10,
+                "marriage": 62,
+                "migrationIn": 31,
+                "migrationInMembers": 85,
+                "migrationOut": 22,
+                "migrationOutMembers": 69,
+                "total": 331
+            },
+            {
+                "ward": "10",
+                "birthMale": 50,
+                "birthFemale": 42,
+                "birthTotal": 92,
+                "deathMale": 20,
+                "deathFemale": 9,
+                "deathTotal": 29,
+                "divorce": 4,
+                "marriage": 41,
+                "migrationIn": 15,
+                "migrationInMembers": 40,
+                "migrationOut": 18,
+                "migrationOutMembers": 48,
+                "total": 199
+            }
+        ],
+        "total": {
+            "birthMale": 562,
+            "birthFemale": 532,
+            "birthTotal": 1094,
+            "deathMale": 209,
+            "deathFemale": 181,
+            "deathTotal": 390,
+            "divorce": 109,
+            "marriage": 468,
+            "migrationIn": 196,
+            "migrationInMembers": 495,
+            "migrationOut": 151,
+            "migrationOutMembers": 407,
+            "total": 2408
+        },
+        "source": "Office of the Municipal Executive"
+    },
+    "table19": {
+        "title": "A) Ward-wise details based on birth registration of children under five years",
+        "tableTitle": "Table No. 19: Ward-wise details based on birth registration of children under five years",
+        "analysis": "Major personal vital events of life such as birth, death, migration, and marriage must be registered mandatorily and timely. This helps the local government to prepare records of exact statistics, and on the other hand, it is necessary for citizens to establish their identity for services and facilities received from the state and for other legal activities; therefore, the local government should encourage child registration mandatorily. Out of the 5,108 children under five years born in this municipality, 4,157 children's births have been registered, while the remaining 951 children's births have not been registered based on the statistics. The detailed ward-wise distribution of birth registration is presented in the table below.",
+        "tableData": [
+            {
+                "ward": "1",
+                "छ": {
+                    "male": 177,
+                    "female": 177,
+                    "total": 354
+                },
+                "छैन": {
+                    "male": 117,
+                    "female": 118,
+                    "total": 235
+                },
+                "जम्मा": {
+                    "male": 294,
+                    "female": 295,
+                    "total": 589
+                }
+            },
+            {
+                "ward": "2",
+                "छ": {
+                    "male": 452,
+                    "female": 237,
+                    "total": 715
+                },
+                "छैन": {
+                    "male": 96,
+                    "female": 46,
+                    "total": 142
+                },
+                "जम्मा": {
+                    "male": 548,
+                    "female": 283,
+                    "total": 857
+                }
+            },
+            {
+                "ward": "3",
+                "छ": {
+                    "male": 143,
+                    "female": 155,
+                    "total": 298
+                },
+                "छैन": {
+                    "male": 39,
+                    "female": 47,
+                    "total": 86
+                },
+                "जम्मा": {
+                    "male": 182,
+                    "female": 202,
+                    "total": 384
+                }
+            },
+            {
+                "ward": "4",
+                "छ": {
+                    "male": 280,
+                    "female": 243,
+                    "total": 523
+                },
+                "छैन": {
+                    "male": 67,
+                    "female": 62,
+                    "total": 129
+                },
+                "जम्मा": {
+                    "male": 347,
+                    "female": 305,
+                    "total": 652
+                }
+            },
+            {
+                "ward": "5",
+                "छ": {
+                    "male": 302,
+                    "female": 266,
+                    "total": 568
+                },
+                "छैन": {
+                    "male": 38,
+                    "female": 32,
+                    "total": 70
+                },
+                "जम्मा": {
+                    "male": 340,
+                    "female": 298,
+                    "total": 638
+                }
+            },
+            {
+                "ward": "6",
+                "छ": {
+                    "male": 223,
+                    "female": 179,
+                    "total": 402
+                },
+                "छैन": {
+                    "male": 68,
+                    "female": 34,
+                    "total": 102
+                },
+                "जम्मा": {
+                    "male": 291,
+                    "female": 213,
+                    "total": 504
+                }
+            },
+            {
+                "ward": "7",
+                "छ": {
+                    "male": 209,
+                    "female": 204,
+                    "total": 413
+                },
+                "छैन": {
+                    "male": 47,
+                    "female": 57,
+                    "total": 104
+                },
+                "जम्मा": {
+                    "male": 256,
+                    "female": 261,
+                    "total": 517
+                }
+            },
+            {
+                "ward": "8",
+                "छ": {
+                    "male": 130,
+                    "female": 127,
+                    "total": 257
+                },
+                "छैन": {
+                    "male": 16,
+                    "female": 15,
+                    "total": 31
+                },
+                "जम्मा": {
+                    "male": 146,
+                    "female": 142,
+                    "total": 288
+                }
+            },
+            {
+                "ward": "9",
+                "छ": {
+                    "male": 290,
+                    "female": 291,
+                    "total": 581
+                },
+                "छैन": {
+                    "male": 84,
+                    "female": 55,
+                    "total": 139
+                },
+                "जम्मा": {
+                    "male": 347,
+                    "female": 246,
+                    "total": 720
+                }
+            },
+            {
+                "ward": "10",
+                "छ": {
+                    "male": 196,
+                    "female": 232,
+                    "total": 428
+                },
+                "छैन": {
+                    "male": 36,
+                    "female": 39,
+                    "total": 75
+                },
+                "जम्मा": {
+                    "male": 232,
+                    "female": 271,
+                    "total": 503
+                }
+            }
+        ],
+        "total": {
+            "छ": {
+                "male": 2127,
+                "female": 2030,
+                "total": 4157
+            },
+            "छैन": {
+                "male": 501,
+                "female": 450,
+                "total": 951
+            },
+            "जम्मा": {
+                "male": 2628,
+                "female": 2480,
+                "total": 5108
+            }
+        },
+        "source": "National Census, 2078",
+        "chartTitle": "Birth Registration Details of Children Under Five Years",
+        "chartData": [
+            {
+                "label": "Birth Registered",
+                "value": 81.38,
+                "color": "#0070c0"
+            },
+            {
+                "label": "Birth Not Registered",
+                "value": 18.62,
+                "color": "#00b050"
+            }
+        ]
+    },
+    "deathDetails": {
+        "title": "B) Death Details for the Last 12 Months",
+        "intro": "Out of the total population of 53,631 in this municipality, 413 deaths occurred in the last 12 months. Among them, 248 (60.05%) were males and 165 (39.95%) were females. The highest number of deaths was recorded in the age group above 80 years, with 107 deaths. Detailed age-wise statistics are presented in the table.",
+        "equation": {
+            "label": "Crude Death Rate",
+            "numerator": "Number of deaths in the last 12 months",
+            "denominator": "Mid-year population",
+            "multiplier": "1000"
+        },
+        "conclusion": "This shows that 7.70 people die per thousand population per year. However, the crude death rate does not provide a realistic picture of the death situation."
+    },
+    "table20": {
+        "title": "C) Details of deaths by Gender and Age group during the last 12 months",
+        "tableTitle": "Table No. 20: Details of deaths by Gender and Age group during the last 12 months",
+        "chartTitle": "Distribution of Deceased by Age Group and Gender",
+        "tableData": [
+            {
+                "ageGroup": "1 Year",
+                "male": 5,
+                "female": 3,
+                "total": 8
+            },
+            {
+                "ageGroup": "1-4 Years",
+                "male": 6,
+                "female": 3,
+                "total": 9
+            },
+            {
+                "ageGroup": "5-9 Years",
+                "male": 3,
+                "female": 1,
+                "total": 4
+            },
+            {
+                "ageGroup": "10-14 Years",
+                "male": 1,
+                "female": 2,
+                "total": 3
+            },
+            {
+                "ageGroup": "15-19 Years",
+                "male": 3,
+                "female": 5,
+                "total": 8
+            },
+            {
+                "ageGroup": "20-24 Years",
+                "male": 6,
+                "female": 2,
+                "total": 8
+            },
+            {
+                "ageGroup": "25-29 Years",
+                "male": 7,
+                "female": 6,
+                "total": 13
+            },
+            {
+                "ageGroup": "30-34 Years",
+                "male": 7,
+                "female": 2,
+                "total": 9
+            },
+            {
+                "ageGroup": "35-39 Years",
+                "male": 5,
+                "female": 4,
+                "total": 9
+            },
+            {
+                "ageGroup": "40-44 Years",
+                "male": 13,
+                "female": 9,
+                "total": 22
+            },
+            {
+                "ageGroup": "45-49 Years",
+                "male": 16,
+                "female": 5,
+                "total": 21
+            },
+            {
+                "ageGroup": "50-54 Years",
+                "male": 13,
+                "female": 7,
+                "total": 20
+            },
+            {
+                "ageGroup": "55-59 Years",
+                "male": 11,
+                "female": 3,
+                "total": 14
+            },
+            {
+                "ageGroup": "60-64 Years",
+                "male": 17,
+                "female": 19,
+                "total": 36
+            },
+            {
+                "ageGroup": "65-69 Years",
+                "male": 26,
+                "female": 12,
+                "total": 38
+            },
+            {
+                "ageGroup": "70-74 Years",
+                "male": 28,
+                "female": 22,
+                "total": 50
+            },
+            {
+                "ageGroup": "75-79 Years",
+                "male": 20,
+                "female": 14,
+                "total": 34
+            },
+            {
+                "ageGroup": "Above 80",
+                "male": 61,
+                "female": 46,
+                "total": 107
+            }
+        ],
+        "total": {
+            "male": 248,
+            "female": 165,
+            "total": 413
+        },
+        "source": "National Census, 2078",
+        "analysisAfterChart": "Looking at the number of deaths in the last 12 months in the municipality, the highest is in the age group above 80 years with 61 males and 46 females. Details according to age group are presented in the table. According to the 16th Plan, the average life expectancy of Nepalese is 70.4 years. Generally, natural death at an older age can be considered normal, so the age group with the most deaths in this municipality is seen above 60 years."
+    },
+    "table21": {
+        "title": "D) Number of Deaths by Cause of Death",
+        "tableTitle": "Table No. 21: Details of Number of Deaths by Cause of Death",
+        "tableData": [
+            {
+                "ageGroup": "1 Year",
+                "values": [
+                    1,
+                    3,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    4,
+                    0
+                ],
+                "total": 8
+            },
+            {
+                "ageGroup": "1-4 Years",
+                "values": [
+                    2,
+                    5,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2,
+                    0
+                ],
+                "total": 9
+            },
+            {
+                "ageGroup": "5-9 Years",
+                "values": [
+                    2,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "total": 4
+            },
+            {
+                "ageGroup": "10-14 Years",
+                "values": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2,
+                    0,
+                    1,
+                    0
+                ],
+                "total": 3
+            },
+            {
+                "ageGroup": "15-19 Years",
+                "values": [
+                    0,
+                    2,
+                    1,
+                    1,
+                    0,
+                    0,
+                    3,
+                    0,
+                    1,
+                    0
+                ],
+                "total": 8
+            },
+            {
+                "ageGroup": "20-24 Years",
+                "values": [
+                    1,
+                    3,
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    1,
+                    0
+                ],
+                "total": 8
+            },
+            {
+                "ageGroup": "25-29 Years",
+                "values": [
+                    2,
+                    5,
+                    0,
+                    2,
+                    0,
+                    0,
+                    2,
+                    0,
+                    2,
+                    0
+                ],
+                "total": 13
+            },
+            {
+                "ageGroup": "30-34 Years",
+                "values": [
+                    1,
+                    4,
+                    1,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    2,
+                    0
+                ],
+                "total": 9
+            },
+            {
+                "ageGroup": "35-39 Years",
+                "values": [
+                    0,
+                    6,
+                    2,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0
+                ],
+                "total": 9
+            },
+            {
+                "ageGroup": "40-44 Years",
+                "values": [
+                    6,
+                    9,
+                    1,
+                    2,
+                    0,
+                    0,
+                    1,
+                    0,
+                    3,
+                    0
+                ],
+                "total": 22
+            },
+            {
+                "ageGroup": "45-49 Years",
+                "values": [
+                    1,
+                    11,
+                    0,
+                    3,
+                    0,
+                    0,
+                    1,
+                    1,
+                    4,
+                    0
+                ],
+                "total": 21
+            },
+            {
+                "ageGroup": "50-54 Years",
+                "values": [
+                    4,
+                    12,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    3,
+                    0
+                ],
+                "total": 20
+            },
+            {
+                "ageGroup": "55-59 Years",
+                "values": [
+                    4,
+                    6,
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                    2,
+                    0
+                ],
+                "total": 14
+            },
+            {
+                "ageGroup": "60-64 Years",
+                "values": [
+                    5,
+                    21,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2,
+                    7,
+                    0
+                ],
+                "total": 36
+            },
+            {
+                "ageGroup": "65-69 Years",
+                "values": [
+                    4,
+                    25,
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    8,
+                    0
+                ],
+                "total": 38
+            },
+            {
+                "ageGroup": "70-74 Years",
+                "values": [
+                    11,
+                    30,
+                    0,
+                    2,
+                    0,
+                    0,
+                    0,
+                    1,
+                    6,
+                    0
+                ],
+                "total": 50
+            },
+            {
+                "ageGroup": "75-79 Years",
+                "values": [
+                    4,
+                    14,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    3,
+                    11,
+                    1
+                ],
+                "total": 34
+            },
+            {
+                "ageGroup": "Above 80",
+                "values": [
+                    8,
+                    56,
+                    0,
+                    2,
+                    0,
+                    2,
+                    1,
+                    4,
+                    34,
+                    0
+                ],
+                "total": 107
+            }
+        ],
+        "columns": [
+            "Communicable Disease",
+            "Non-Communicable Disease",
+            "Road Accident",
+            "Other Accident",
+            "Maternity Related",
+            "Homicide",
+            "Suicide",
+            "Natural Disaster",
+            "Others",
+            "Not Disclosed"
+        ],
+        "total": {
+            "values": [
+                56,
+                213,
+                11,
+                13,
+                0,
+                4,
+                11,
+                12,
+                92,
+                1
+            ],
+            "total": 413
+        },
+        "source": "National Census, 2078",
+        "analysisAfterTable": "Looking at the details of family members who died in the last 12 months in the municipality, 413 people have died. Among these, the highest number of 213 people died due to non-communicable diseases, and 92 people died due to other reasons. Similarly, 56 people died due to communicable diseases, 13 people due to other accidents, 12 people due to natural disasters, and 11 each due to road accidents and suicide."
+    },
+    "deathCausePie": {
+        "title": "Details of the Deceased Population by Cause of Death",
+        "chartData": [
+            {
+                "label": "Non-Communicable Disease",
+                "value": 51.57,
+                "color": "#a45318"
+            },
+            {
+                "label": "Others",
+                "value": 22.28,
+                "color": "#8c8c8c"
+            },
+            {
+                "label": "Communicable Disease",
+                "value": 13.56,
+                "color": "#4472c4"
+            },
+            {
+                "label": "Other Accident",
+                "value": 3.15,
+                "color": "#bf9000"
+            },
+            {
+                "label": "Natural Disaster",
+                "value": 2.91,
+                "color": "#ed7d31"
+            },
+            {
+                "label": "Road Accident",
+                "value": 2.66,
+                "color": "#5b9bd5"
+            },
+            {
+                "label": "Suicide",
+                "value": 2.66,
+                "color": "#70ad47"
+            },
+            {
+                "label": "Homicide",
+                "value": 0.97,
+                "color": "#255e91"
+            },
+            {
+                "label": "Not Disclosed",
+                "value": 0.24,
+                "color": "#ffc000"
+            },
+            {
+                "label": "Maternity Related",
+                "value": 0.00,
+                "color": "#264478"
+            }
+        ]
+    }
+}

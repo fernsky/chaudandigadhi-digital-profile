@@ -7,7 +7,17 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const locale = lang === "ne" ? "ne-NP" : "en-US";
+
+const formatNumber = (num: number, decimals = 0) => {
+    const formatted = num.toLocaleString("en-US", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+    });
+    if (lang !== "ne") return formatted;
+    const nepaliDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+    return formatted.replace(/\d/g, (digit) => nepaliDigits[parseInt(digit)]);
+};
+
 const t = {
     mapNo: lang === "ne" ? "नक्सा नं." : "Map No.",
     wardNo: lang === "ne" ? "वडा नं." : "Ward No.",
@@ -83,7 +93,7 @@ if (!content) {
                                 </div>
                             </div>
                             <p class="text-zinc-100 font-serif text-lg font-bold text-center">
-                                {t.mapNo} {map.number.toLocaleString(locale)}:{" "}
+                                {t.mapNo} {formatNumber(map.number)}:{" "}
                                 {map.title}
                             </p>
                         </div>
@@ -142,13 +152,10 @@ if (!content) {
                                         {row.includedVDC}
                                     </td>
                                     <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.population.toLocaleString(locale)}
+                                        {formatNumber(row.population)}
                                     </td>
                                     <td class="px-4 py-3 font-serif text-zinc-100 text-right">
-                                        {row.area.toLocaleString(locale, {
-                                            minimumFractionDigits: 2,
-                                            maximumFractionDigits: 2,
-                                        })}
+                                        {formatNumber(row.area, 2)}
                                     </td>
                                 </tr>
                             ))
@@ -164,21 +171,12 @@ if (!content) {
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                             >
-                                {
-                                    content.total.population.toLocaleString(
-                                        locale,
-                                    )
-                                }
+                                {formatNumber(content.total.population)}
                             </td>
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-right"
                             >
-                                {
-                                    content.total.area.toLocaleString(locale, {
-                                        minimumFractionDigits: 2,
-                                        maximumFractionDigits: 2,
-                                    })
-                                }
+                                {formatNumber(content.total.area, 2)}
                             </td>
                         </tr>
                     </tbody>
