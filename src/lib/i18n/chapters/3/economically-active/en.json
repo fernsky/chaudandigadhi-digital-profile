@@ -1,0 +1,75 @@
+{
+    "title": "Economic Active Population Details",
+    "sectionId": "economic-activity",
+    "number": "3.9",
+    "table13": {
+        "title": "Table No. 13: Population Description by Duration of Economic Work (Months) over 12 Months",
+        "data": [
+            {
+                "duration": "Less than 3 months",
+                "male": 2200,
+                "female": 3233,
+                "total": 5433,
+                "percentage": 12.18
+            },
+            {
+                "duration": "3 months or more",
+                "male": 2390,
+                "female": 3413,
+                "total": 5803,
+                "percentage": 13.01
+            },
+            {
+                "duration": "6 months or more",
+                "male": 9424,
+                "female": 8341,
+                "total": 17765,
+                "percentage": 39.8
+            },
+            {
+                "duration": "Did not do any economic work",
+                "male": 6532,
+                "female": 9063,
+                "total": 15595,
+                "percentage": 35
+            }
+        ],
+        "total": {
+            "male": 20546,
+            "female": 24050,
+            "total": 44596,
+            "percentage": 100
+        },
+        "source": "National Census, 2021"
+    },
+    "table14": {
+        "title": "Table No. 14: Population Distribution by Economically Active/Inactive Status",
+        "data": [
+            {
+                "category": "Economically Active",
+                "male": 10658,
+                "female": 9415,
+                "total": 20073
+            },
+            {
+                "category": "Economically Inactive",
+                "male": 4024,
+                "female": 6224,
+                "total": 10248
+            }
+        ],
+        "total": {
+            "male": 14682,
+            "female": 15639,
+            "total": 30321
+        },
+        "percentages": {
+            "active": 66.20,
+            "inactive": 33.80
+        },
+        "source": "National Census, 2021"
+    },
+    "intro": "The detailed distribution of the population aged 10 and above according to the period (months) of economic work performed in the 12 months preceding the census is presented in the table below.",
+    "chart13_title": "Population Distribution by Duration of Economic Work",
+    "chart14_title": "Economically Active and Inactive Population Details"
+}

@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -21,7 +22,7 @@ if (!content) {
             <h2
                 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100"
             >
-                {content.number}
+                {formatNumber(content.number, lang)}
                 {content.title}
             </h2>
 
@@ -200,7 +201,7 @@ if (!content) {
                 <h3
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
                 >
-                    {content.sites.number}
+                    {formatNumber(content.sites.number, lang)}
                     {content.sites.title}
                 </h3>
 
@@ -220,46 +221,50 @@ if (!content) {
                             <tr class="border-b border-zinc-700">
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >क्र.सं.</th
+                                    >{lang === "ne" ? "क्र.सं." : "S.N."}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >नाम</th
+                                    >{lang === "ne" ? "नाम" : "Name"}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >स्थान</th
+                                    >{lang === "ne" ? "स्थान" : "Location"}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >महत्व</th
+                                    >{
+                                        lang === "ne" ? "महत्व" : "Significance"
+                                    }</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                content.sites.tableData.map((row, idx) => (
-                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
-                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                            {idx + 1}
-                                        </td>
-                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                            {row.name}
-                                        </td>
-                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                            {row.location}
-                                        </td>
-                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                            {row.significance}
-                                        </td>
-                                    </tr>
-                                ))
+                                content.sites.tableData.map(
+                                    (row: any, idx: number) => (
+                                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {formatNumber(idx + 1, lang)}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.name}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.location}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.significance}
+                                            </td>
+                                        </tr>
+                                    ),
+                                )
                             }
                         </tbody>
                     </table>
                 </div>
                 <p class="text-sm text-zinc-400 font-serif italic">
-                    स्रोत: {content.sites.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {content.sites.source}
                 </p>
             </div>
 
@@ -268,7 +273,7 @@ if (!content) {
                 <h3
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
                 >
-                    {content.hotels.number}
+                    {formatNumber(content.hotels.number, lang)}
                     {content.hotels.title}
                 </h3>
 
@@ -288,46 +293,62 @@ if (!content) {
                             <tr class="border-b border-zinc-700">
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >क्र.सं.</th
+                                    >{lang === "ne" ? "क्र.सं." : "S.N."}</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >होटल, रिसोर्ट तथा रेष्टुरेन्टको नाम</th
+                                    >{
+                                        lang === "ne"
+                                            ? "होटल, रिसोर्ट तथा रेष्टुरेन्टको नाम"
+                                            : "Hotel, Resort & Restaurant Name"
+                                    }</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >सञ्चालकको नाम</th
+                                    >{
+                                        lang === "ne"
+                                            ? "सञ्चालकको नाम"
+                                            : "Operator Name"
+                                    }</th
                                 >
                                 <th
                                     class="text-left py-3 px-4 font-serif text-sm md:text-base text-zinc-300"
-                                    >सम्पर्क नम्बर</th
+                                    >{
+                                        lang === "ne"
+                                            ? "सम्पर्क नम्बर"
+                                            : "Contact No."
+                                    }</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                content.hotels.tableData.map((row, idx) => (
-                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
-                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                            {idx + 1}
-                                        </td>
-                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                            {row.name}
-                                        </td>
-                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                            {row.operator}
-                                        </td>
-                                        <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
-                                            {row.contact}
-                                        </td>
-                                    </tr>
-                                ))
+                                content.hotels.tableData.map(
+                                    (row: any, idx: number) => (
+                                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {idx + 1}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.name}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.operator}
+                                            </td>
+                                            <td class="py-2 px-4 font-serif text-sm md:text-base text-zinc-300">
+                                                {row.contact}
+                                            </td>
+                                        </tr>
+                                    ),
+                                )
                             }
                         </tbody>
                     </table>
                 </div>
                 <p class="text-sm text-zinc-400 font-serif italic">
-                    स्रोत: {content.hotels.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.hotels.source
+                    }
                 </p>
             </div>
         </div>

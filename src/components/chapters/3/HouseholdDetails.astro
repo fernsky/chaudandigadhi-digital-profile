@@ -1,6 +1,7 @@
 ---
-import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
+import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
@@ -8,253 +9,500 @@ interface Props {
 
 const { lang } = Astro.props;
 
-type HouseholdDetailsContent = {
+type HouseholdContent = {
     title: string;
-    sectionId: string;
-    subsection: {
-        title: string;
-        number: string;
-        tableTitle: string;
-        tableData: Array<{
-            ward: string;
-            households: number;
-            population2068: number;
-            male: number;
-            female: number;
-            total2078: number;
-            growthRate: number;
-            area: number;
-            density: number;
-            avgFamilySize: number;
-            genderRatio: number;
-        }>;
-        total: {
-            households: number;
-            population2068: number;
-            male: number;
-            female: number;
-            total2078: number;
-            growthRate: number;
-            area: number;
-            density: number;
-            avgFamilySize: number;
-            genderRatio: number;
-        };
-        source: string;
-        analysis: string;
-    };
+    number: string;
+    content: string;
+    table_title: string;
+    table_number: string;
+    source: string;
+    chart_title: string;
+    table_data: Array<{
+        ward: string;
+        households: string;
+        pop_2068: string;
+        male_2078: string;
+        female_2078: string;
+        total_2078: string;
+        growth_rate: string;
+        area: string;
+        density: string;
+        avg_family: string;
+        sex_ratio: string;
+    }>;
 };
 
-const content = await loadChapterSection<HouseholdDetailsContent>(
+const content = await loadChapterSection<HouseholdContent>(
     3,
-    "household-details",
+    "household",
     lang,
 );
 
 if (!content) {
-    throw new Error("Household details content not found");
+    throw new Error("Household section content not found");
 }
 
-const { subsection } = content;
+// Helper to convert Nepali numbers to English for D3
+const nepaliToEnglish = (str: string) => {
+    return str.replace(
+        /[०१२३४५६७८९]/g,
+        (d) => "0123456789"["०१२३४५६७८९".indexOf(d)],
+    );
+};
+
+const cleanChartData = content.table_data
+    .filter((row) => row.ward !== "जम्मा" && row.ward !== "Total")
+    .map((row) => ({
+        ward: row.ward,
+        male: parseFloat(nepaliToEnglish(row.male_2078)),
+        female: parseFloat(nepaliToEnglish(row.female_2078)),
+    }));
 ---
 
-<section id="household-details" class="relative bg-[#050505] py-8 md:py-12">
+<section id="household-details" class="relative bg-[#050505] pb-8 md:pb-12">
     <div class="container mx-auto px-8">
-        <div class="w-full mx-auto">
-            <!-- Subsection Header -->
-            <div class="mb-6">
-                <h3
-                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4"
-                >
-                    {subsection.number}
-                    {subsection.title}
-                </h3>
-            </div>
-
-            <!-- Table Title -->
-            <h4
-                class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
+        <div class="w-full">
+            <h3
+                class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
             >
-                {subsection.tableTitle}
-            </h4>
+                {formatNumber(content.number, lang)}
+                {content.title}
+            </h3>
 
             <!-- Premium Table -->
-            <div class="overflow-x-auto mb-6">
-                <table
-                    class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm"
+            <div class="mb-10 w-full overflow-x-auto">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center"
                 >
-                    <thead>
-                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                rowspan="2">वडा</th
+                    {formatNumber(content.table_number, lang)}: {
+                        content.table_title
+                    }
+                </h4>
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-xs md:text-sm text-center"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20 text-zinc-100"
                             >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                rowspan="2">घरधुरी</th
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >{lang === "ne" ? "वडा" : "Ward"}</th
+                                >
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >{
+                                        lang === "ne" ? "घरधुरी" : "Households"
+                                    }</th
+                                >
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >{
+                                        lang === "ne"
+                                            ? "२०६८ को जनसंख्या"
+                                            : "Population 2068"
+                                    }</th
+                                >
+                                <th
+                                    colspan="3"
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >{
+                                        lang === "ne"
+                                            ? "२०७८ को जम्मा जनसंख्या"
+                                            : "Total Population 2078"
+                                    }</th
+                                >
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >{
+                                        lang === "ne"
+                                            ? "जनसंख्या वृद्धिदर"
+                                            : "Growth Rate"
+                                    }</th
+                                >
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >{
+                                        lang === "ne"
+                                            ? "क्षेत्रफल (वर्ग कि.मि.)"
+                                            : "Area (sq.km.)"
+                                    }</th
+                                >
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >{lang === "ne" ? "जनघनत्व" : "Density"}</th
+                                >
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >{
+                                        lang === "ne"
+                                            ? "औषत परिवार आकार"
+                                            : "Avg Family Size"
+                                    }</th
+                                >
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-3 font-serif font-medium"
+                                    >{
+                                        lang === "ne"
+                                            ? "लैङ्गिक अनुपात"
+                                            : "Sex Ratio"
+                                    }</th
+                                >
+                            </tr>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20 text-zinc-100"
                             >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                rowspan="2">२०६८ को जनसंख्या</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                colspan="3">२०७८ को जम्मा जनसंख्या</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                rowspan="2">जनसंख्या वृद्धिदर</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                rowspan="2">क्षेत्रफल (वर्ग कि.मि.)</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                rowspan="2">जनघनत्व</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                rowspan="2">औषत परिवार आकार</th
-                            >
-                            <th
-                                class="px-3 py-3 text-center font-serif text-zinc-100 font-medium"
-                                rowspan="2">लैङ्गिक अनुपात</th
-                            >
-                        </tr>
-                        <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
-                            <th
-                                class="px-3 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >पुरूष</th
-                            >
-                            <th
-                                class="px-3 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >महिला</th
-                            >
-                            <th
-                                class="px-3 py-2 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >जम्मा</th
-                            >
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            subsection.tableData.map((row) => (
-                                <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5">
-                                        {row.ward}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.households.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.population2068.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.male.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.female.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.total2078.toLocaleString()}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.growthRate.toFixed(2)}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.area.toFixed(2)}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.density.toFixed(2)}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.avgFamilySize.toFixed(2)}
-                                    </td>
-                                    <td class="px-3 py-3 font-serif text-zinc-100 text-right">
-                                        {row.genderRatio.toFixed(2)}
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                        <!-- Total Row -->
-                        <tr
-                            class="bg-[#f2e25d]/10 border-t-2 border-[#f2e25d]/30 font-medium"
-                        >
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/10"
-                                >जम्मा</td
-                            >
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {subsection.total.households.toLocaleString()}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {
-                                    subsection.total.population2068.toLocaleString()
-                                }
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {subsection.total.male.toLocaleString()}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {subsection.total.female.toLocaleString()}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {subsection.total.total2078.toLocaleString()}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {subsection.total.growthRate.toFixed(2)}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {subsection.total.area.toFixed(2)}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {subsection.total.density.toFixed(2)}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {subsection.total.avgFamilySize.toFixed(2)}
-                            </td>
-                            <td
-                                class="px-3 py-3 font-serif text-zinc-100 text-right"
-                            >
-                                {subsection.total.genderRatio.toFixed(2)}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                <th
+                                    class="px-2 py-2 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >{lang === "ne" ? "पुरूष" : "Male"}</th
+                                >
+                                <th
+                                    class="px-2 py-2 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >{lang === "ne" ? "महिला" : "Female"}</th
+                                >
+                                <th
+                                    class="px-2 py-2 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.table_data.map((row: any) => {
+                                    const isTotal =
+                                        row.ward === "जम्मा" ||
+                                        row.ward === "Total";
+                                    return (
+                                        <tr
+                                            class={`border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200 text-zinc-100 font-serif ${isTotal ? "bg-[#f2e25d]/10 font-bold border-t-2 border-[#f2e25d]/30" : ""}`}
+                                        >
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5 font-medium">
+                                                {formatNumber(row.ward, lang)}
+                                            </td>
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.households,
+                                                    lang,
+                                                )}
+                                            </td>
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.pop_2068,
+                                                    lang,
+                                                )}
+                                            </td>
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.male_2078,
+                                                    lang,
+                                                )}
+                                            </td>
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.female_2078,
+                                                    lang,
+                                                )}
+                                            </td>
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.total_2078,
+                                                    lang,
+                                                )}
+                                            </td>
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.growth_rate,
+                                                    lang,
+                                                    2,
+                                                )}
+                                            </td>
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.area,
+                                                    lang,
+                                                    2,
+                                                )}
+                                            </td>
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.density,
+                                                    lang,
+                                                    2,
+                                                )}
+                                            </td>
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.avg_family,
+                                                    lang,
+                                                    2,
+                                                )}
+                                            </td>
+                                            <td class="px-2 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row.sex_ratio,
+                                                    lang,
+                                                    2,
+                                                )}
+                                            </td>
+                                        </tr>
+                                    );
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div
+                    class="text-right text-zinc-400 font-serif italic text-sm mt-2"
+                >
+                    {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
+                </div>
             </div>
 
-            <!-- Source -->
-            <p class="text-zinc-400 font-serif text-sm italic mb-6">
-                स्रोतM {subsection.source}
+            <p
+                class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10"
+            >
+                {content.content}
             </p>
 
-            <!-- Analysis -->
-            <div class="mt-6">
-                <p
-                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+            <!-- Premium Dark Chart -->
+            <div
+                class="mb-10 w-full bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 rounded-lg"
+            >
+                <h4
+                    class="font-bold text-xl md:text-2xl text-white font-medium mb-6 text-center font-serif"
                 >
-                    {subsection.analysis}
-                </p>
+                    {content.chart_title}
+                </h4>
+                <div
+                    id="population-chart-container"
+                    class="w-full h-[400px] relative"
+                >
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+<script define:vars={{ cleanChartData, lang }}>
+    // D3 Chart Implementation
+    document.addEventListener("DOMContentLoaded", () => {
+        const containerId = "population-chart-container";
+        const tooltipId = "population-tooltip-unique";
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const formatValue = (num, decimals = 0) => {
+            const formatted = num.toLocaleString("en-US", {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals,
+            });
+            if (lang !== "ne") return formatted;
+            const nepaliDigits = [
+                "०",
+                "१",
+                "२",
+                "३",
+                "४",
+                "५",
+                "६",
+                "७",
+                "८",
+                "९",
+            ];
+            return formatted.replace(
+                /\d/g,
+                (digit) => nepaliDigits[parseInt(digit)],
+            );
+        };
+
+        const data = cleanChartData;
+
+        const margin = { top: 40, right: 30, bottom: 60, left: 60 };
+        const width = container.clientWidth - margin.left - margin.right;
+        const height = 400 - margin.top - margin.bottom;
+
+        const svg = d3
+            .select("#" + containerId)
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // X axis
+        const x0 = d3
+            .scaleBand()
+            .domain(data.map((d) => d.ward))
+            .rangeRound([0, width])
+            .paddingInner(0.4);
+
+        const x1 = d3
+            .scaleBand()
+            .domain(["male", "female"])
+            .rangeRound([0, x0.bandwidth()])
+            .padding(0.05);
+
+        // Y axis
+        const y = d3
+            .scaleLinear()
+            .domain([0, d3.max(data, (d) => Math.max(d.male, d.female)) * 1.1])
+            .nice()
+            .rangeRound([height, 0]);
+
+        // Colors
+        const colorScale = d3
+            .scaleOrdinal()
+            .domain(["male", "female"])
+            .range(["#60a5fa", "#f472b6"]);
+
+        // Gridlines
+        svg.append("g")
+            .attr("class", "grid")
+            .call(d3.axisLeft(y).tickSize(-width).tickFormat(""))
+            .selectAll("line")
+            .attr("stroke", "#334155")
+            .attr("stroke-dasharray", "2,2");
+
+        // Tooltip
+        const tooltip = d3.select("#" + tooltipId);
+
+        // Bars
+        const groups = svg
+            .append("g")
+            .selectAll("g")
+            .data(data)
+            .join("g")
+            .attr("transform", (d) => `translate(${x0(d.ward)},0)`);
+
+        groups
+            .selectAll("rect")
+            .data((d) => [
+                { key: "male", value: d.male, ward: d.ward },
+                { key: "female", value: d.female, ward: d.ward },
+            ])
+            .join("rect")
+            .attr("x", (d) => x1(d.key))
+            .attr("y", height)
+            .attr("width", x1.bandwidth())
+            .attr("height", 0)
+            .attr("fill", (d) => colorScale(d.key))
+            .attr("opacity", 0.8)
+            .on("mouseover", function (event, d) {
+                d3.select(this).attr("opacity", 1);
+                tooltip.transition().duration(200).style("opacity", 0.9);
+                tooltip
+                    .html(
+                        `
+                    <div class="font-serif p-2">
+                        <div class="font-bold text-sm mb-1">${d.ward}</div>
+                        <div class="text-xs text-zinc-300">
+                            ${
+                                d.key === "male"
+                                    ? lang === "ne"
+                                        ? "पुरूष"
+                                        : "Male"
+                                    : lang === "ne"
+                                      ? "महिला"
+                                      : "Female"
+                            }: ${formatValue(d.value)}
+                        </div>
+                    </div>
+                `,
+                    )
+                    .style("left", event.clientX + 10 + "px")
+                    .style("top", event.clientY - 28 + "px");
+            })
+            .on("mousemove", function (event) {
+                tooltip
+                    .style("left", event.clientX + 10 + "px")
+                    .style("top", event.clientY - 28 + "px");
+            })
+            .on("mouseout", function () {
+                d3.select(this).attr("opacity", 0.8);
+                tooltip.transition().duration(500).style("opacity", 0);
+            })
+            .transition()
+            .duration(1000)
+            .attr("y", (d) => y(d.value))
+            .attr("height", (d) => height - y(d.value));
+
+        // Axes
+        svg.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x0))
+            .selectAll("text")
+            .attr("fill", "#cbd5e1")
+            .attr("font-family", "serif")
+            .attr("font-size", "14px");
+
+        svg.append("g")
+            .call(d3.axisLeft(y).ticks(5))
+            .selectAll("text")
+            .attr("fill", "#cbd5e1")
+            .attr("font-family", "serif")
+            .attr("font-size", "14px")
+            .text((d) => formatValue(d));
+
+        // Legend
+        const legend = svg
+            .append("g")
+            .attr("transform", `translate(${width / 2 - 60}, ${height + 45})`);
+
+        // Male Legend
+        legend
+            .append("rect")
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", "#60a5fa");
+
+        legend
+            .append("text")
+            .attr("x", 20)
+            .attr("y", 12)
+            .text(lang === "ne" ? "पुरूष" : "Male")
+            .attr("fill", "#e2e8f0")
+            .attr("font-family", "serif")
+            .attr("font-size", "14px");
+
+        // Female Legend
+        legend
+            .append("rect")
+            .attr("x", 80)
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", "#f472b6");
+
+        legend
+            .append("text")
+            .attr("x", 100)
+            .attr("y", 12)
+            .text(lang === "ne" ? "महिला" : "Female")
+            .attr("fill", "#e2e8f0")
+            .attr("font-family", "serif")
+            .attr("font-size", "14px");
+
+        svg.selectAll(".domain").attr("stroke", "#475569");
+        svg.selectAll(".tick line").attr("stroke", "#475569");
+    });
+</script>
+<div
+    id="population-tooltip-unique"
+    class="fixed opacity-0 pointer-events-none bg-[#111111] border border-[#f2e25d]/30 text-white rounded px-2 py-1 z-[9999] shadow-2xl transition-opacity duration-200 backdrop-blur-sm"
+>
+</div>
+
+<style is:global>
+    #population-tooltip-unique {
+        font-family: serif;
+    }
+</style>

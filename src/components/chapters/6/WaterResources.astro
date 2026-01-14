@@ -1,5 +1,6 @@
 ---
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
 
 interface Props {
@@ -39,7 +40,7 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
                 <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {waterResources.number} {waterResources.title}
+                            {formatNumber(waterResources.number, lang)} {waterResources.title}
                         </h2>
                     </div>
                     
@@ -81,7 +82,7 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {rivers.number} {rivers.title}
+                                {formatNumber(rivers.number, lang)} {rivers.title}
                             </h3>
                         </div>
 
@@ -123,7 +124,7 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
                     <!-- Rivers and Streams Table -->
                     <div class="mb-10 w-full mx-auto">
                         <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {rivers.tableNumber}: {rivers.tableTitle}
+                            {formatNumber(rivers.tableNumber, lang)}: {rivers.tableTitle}
                         </h5>
                         <div class="overflow-x-auto">
                             <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
@@ -141,10 +142,10 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {rivers.tableData.map((row) => (
+                                    {rivers.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 border-r border-[#f2e25d]/5">
                                                 {row.name}

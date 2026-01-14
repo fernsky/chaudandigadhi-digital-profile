@@ -1,5 +1,8 @@
 ---
+import type { Language } from "../../../lib/i18n";
+
 interface Props {
+    lang: Language;
     data: Array<{
         sector: string;
         sixMonthsPlus: number;
@@ -9,17 +12,21 @@ interface Props {
     }>;
 }
 
-const { data } = Astro.props;
+const { lang, data } = Astro.props;
+
+const key6Plus = lang === "ne" ? "6 महिना+" : "6 Months+";
+const key3to5 = lang === "ne" ? "3-5 महिना" : "3-5 Months";
+const key1to2 = lang === "ne" ? "1-2 महिना" : "1-2 Months";
 
 const chartData = data.map((d) => ({
     sector: d.sector,
-    "6 महिना+": d.sixMonthsPlus,
-    "3-5 महिना": d.threeToFive,
-    "1-2 महिना": d.oneToTwo,
+    [key6Plus]: d.sixMonthsPlus,
+    [key3to5]: d.threeToFive,
+    [key1to2]: d.oneToTwo,
     total: d.total,
 }));
 
-const subgroups = ["6 महिना+", "3-5 महिना", "1-2 महिना"];
+const subgroups = [key6Plus, key3to5, key1to2];
 const groups = chartData.map((d) => d.sector);
 ---
 

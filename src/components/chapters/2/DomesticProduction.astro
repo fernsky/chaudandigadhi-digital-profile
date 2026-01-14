@@ -1,5 +1,6 @@
 ---
 import type { Language } from "../../../lib/i18n";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
 
 interface Props {
@@ -34,13 +35,13 @@ if (!content) {
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    {lang === "ne" ? "२.८" : "2.8"}
+                    {formatNumber("2.8", lang)}
                     {content.title}
                 </h2>
             </div>
             <div class="space-y-4">
                 {
-                    content.content.map((para) => (
+                    content.content.map((para: any) => (
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
                             {para.text}
                         </p>

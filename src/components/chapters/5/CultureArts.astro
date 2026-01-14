@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSections } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -23,7 +24,7 @@ const subsections = await loadChapterSections(
                 subsections["culture-arts"] && (
                     <div class="space-y-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100">
-                            ५.५ {subsections["culture-arts"].title}
+                            {formatNumber("5.5", lang)} {subsections["culture-arts"].title}
                         </h2>
                     </div>
                 )
@@ -34,7 +35,7 @@ const subsections = await loadChapterSections(
                 subsections["culture-arts"]?.publicSpaces && (
                     <div id="public-spaces" class="space-y-6">
                         <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
-                            ५.५.१ {subsections["culture-arts"].publicSpaces.title}
+                            {formatNumber("5.5.1", lang)} {subsections["culture-arts"].publicSpaces.title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
                             {subsections["culture-arts"].publicSpaces.intro}
@@ -43,7 +44,7 @@ const subsections = await loadChapterSections(
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {subsections["culture-arts"].publicSpaces.locations.map((location: any) => (
                                 <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 hover:border-[#f2e25d]/30 transition-all">
-                                    <div class="text-[#f2e25d] font-bold mb-3">वडा नं. {location.ward}</div>
+                                    <div class="text-[#f2e25d] font-bold mb-3">{lang === "ne" ? "वडा नं." : "Ward No."} {formatNumber(location.ward, lang)}</div>
                                     <ul class="space-y-2">
                                         {location.places.map((place: string) => (
                                             <li class="text-zinc-100 font-serif text-sm flex items-start">
@@ -64,7 +65,7 @@ const subsections = await loadChapterSections(
                 subsections["festivals-events"] && (
                     <div id="festivals" class="space-y-6">
                         <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
-                            ५.५.२ {subsections["festivals-events"].title}
+                            {formatNumber("5.5.2", lang)} {subsections["festivals-events"].title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-base md:text-lg font-light leading-relaxed">
                             {subsections["festivals-events"].intro}
@@ -76,16 +77,16 @@ const subsections = await loadChapterSections(
                                 <table class="w-full">
                                     <thead class="bg-[#050505] border-b border-[#f2e25d]/20">
                                         <tr>
-                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">क्र.सं.</th>
-                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">चाडपर्व/जात्रा/मेला</th>
-                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">कहिले मनाइन्छ</th>
-                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">मनाउने जातजाति/समुदाय</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "क्र.सं." : "SN"}</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "चाडपर्व/जात्रा/मेला" : "Festival/Event"}</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "कहिले मनाइन्छ" : "When Celebrated"}</th>
+                                            <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "मनाउने जातजाति/समुदाय" : "Caste/Community"}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {subsections["festivals-events"].festivals.map((festival: any) => (
                                             <tr class="border-b border-[#f2e25d]/5 hover:bg-[#050505] transition-colors">
-                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{festival.sn}</td>
+                                                <td class="px-4 py-3 font-serif text-sm text-zinc-100">{formatNumber(festival.sn, lang)}</td>
                                                 <td class="px-4 py-3 font-serif text-sm text-zinc-100">{festival.name}</td>
                                                 <td class="px-4 py-3 font-serif text-sm text-zinc-100">{festival.time}</td>
                                                 <td class="px-4 py-3 font-serif text-sm text-zinc-100">{festival.community}</td>
@@ -99,7 +100,7 @@ const subsections = await loadChapterSections(
                         <!-- Major Festivals Grid -->
                         <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
                             <h4 class="font-serif text-xl text-zinc-100 font-medium mb-4">
-                                प्रमुख चाडपर्वहरू
+                                {lang === "ne" ? "प्रमुख चाडपर्वहरू" : "Major Festivals"}
                             </h4>
                             <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                                 {subsections["festivals-events"].majorFestivals.map((festival: string) => (

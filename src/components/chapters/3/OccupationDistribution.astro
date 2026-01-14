@@ -1,0 +1,236 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const formatNumber = (num: number, decimals = 0) => {
+    const formatted = num.toLocaleString("en-US", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+    });
+    if (lang !== "ne") return formatted;
+    const nepaliDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+    return formatted.replace(/\d/g, (digit) => nepaliDigits[parseInt(digit)]);
+};
+
+const formatAgeGroup = (group: string) => {
+    if (lang !== "ne") return group;
+    const nepaliDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+    return group.replace(/\d/g, (digit) => nepaliDigits[parseInt(digit)]);
+};
+
+type OccupationContent = {
+    title: string;
+    number: string;
+    tableTitle: string;
+    tableData: Array<{
+        occupation: string;
+        "10-14": number;
+        "15-19": number;
+        "20-24": number;
+        "25-29": number;
+        "30-34": number;
+        "35-39": number;
+        "40-44": number;
+        "45-49": number;
+        "50-54": number;
+        "55-59": number;
+        "60-64": number;
+        "65-70": number;
+        total: number;
+        percentage: number;
+    }>;
+    total: {
+        "10-14": number;
+        "15-19": number;
+        "20-24": number;
+        "25-29": number;
+        "30-34": number;
+        "35-39": number;
+        "40-44": number;
+        "45-49": number;
+        "50-54": number;
+        "55-59": number;
+        "60-64": number;
+        "65-70": number;
+        total: number;
+        percentage: number;
+    };
+    source: string;
+    analysis: string;
+};
+
+const content = await loadChapterSection<OccupationContent>(
+    3,
+    "occupation",
+    lang,
+);
+
+if (!content) {
+    throw new Error("Occupation section content not found");
+}
+
+const ageGroups = [
+    "10-14",
+    "15-19",
+    "20-24",
+    "25-29",
+    "30-34",
+    "35-39",
+    "40-44",
+    "45-49",
+    "50-54",
+    "55-59",
+    "60-64",
+    "65-70",
+];
+---
+
+<section
+    id="occupation"
+    class="relative bg-[#050505] pb-8 md:pb-12 border-t border-[#f2e25d]/10 pt-8 mt-8"
+>
+    <div class="container mx-auto px-8">
+        <div class="w-full">
+            <div class="mb-8">
+                <h3
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+                >
+                    {content.number}
+                    {content.title}
+                </h3>
+            </div>
+
+            <!-- Table 12 -->
+            <div class="mb-10 w-full overflow-hidden">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center"
+                >
+                    {content.tableTitle}
+                </h4>
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-xs md:text-sm text-center"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20 text-zinc-100"
+                            >
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium sticky left-0 bg-[#0a0a0a] z-10 w-48"
+                                >
+                                    {
+                                        lang === "ne"
+                                            ? "परिवारको मुख्य पेशा"
+                                            : "Main Occupation of Household"
+                                    }
+                                </th>
+                                <th
+                                    colspan={ageGroups.length}
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium text-center"
+                                >
+                                    {lang === "ne" ? "उमेर समूह" : "Age Group"}
+                                </th>
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-3 border-r border-[#f2e25d]/10 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "जम्मा" : "Total"}
+                                </th>
+                                <th
+                                    rowspan="2"
+                                    class="px-2 py-3 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "प्रतिशत" : "Percentage"}
+                                </th>
+                            </tr>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20 text-zinc-100"
+                            >
+                                {
+                                    ageGroups.map((group) => (
+                                        <th class="px-1 py-2 border-r border-[#f2e25d]/10 font-serif font-medium text-[10px] md:text-xs min-w-[40px]">
+                                            {formatAgeGroup(group)}
+                                        </th>
+                                    ))
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.tableData.map((row) => (
+                                    <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200 text-zinc-100 font-serif">
+                                        <td class="px-2 py-3 border-r border-[#f2e25d]/5 font-medium text-left sticky left-0 bg-[#0a0a0a] z-10">
+                                            {row.occupation}
+                                        </td>
+                                        {ageGroups.map((group) => (
+                                            <td class="px-1 py-3 border-r border-[#f2e25d]/5">
+                                                {formatNumber(
+                                                    row[
+                                                        group as keyof typeof row
+                                                    ] as number,
+                                                )}
+                                            </td>
+                                        ))}
+                                        <td class="px-2 py-3 border-r border-[#f2e25d]/5 font-medium">
+                                            {formatNumber(row.total)}
+                                        </td>
+                                        <td class="px-2 py-3">
+                                            {formatNumber(row.percentage, 2)}%
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                            <!-- Total Row -->
+                            <tr
+                                class="bg-[#f2e25d]/10 font-bold border-t-2 border-[#f2e25d]/30 text-zinc-100 font-serif"
+                            >
+                                <td
+                                    class="px-2 py-3 border-r border-[#f2e25d]/5 text-left sticky left-0 bg-[#1a1a1a] z-10"
+                                >
+                                    {lang === "ne" ? "जम्मा" : "Total"}
+                                </td>
+                                {
+                                    ageGroups.map((group) => (
+                                        <td class="px-1 py-3 border-r border-[#f2e25d]/5">
+                                            {formatNumber(
+                                                content.total[
+                                                    group as keyof typeof content.total
+                                                ] as number,
+                                            )}
+                                        </td>
+                                    ))
+                                }
+                                <td
+                                    class="px-2 py-3 border-r border-[#f2e25d]/5"
+                                >
+                                    {formatNumber(content.total.total)}
+                                </td>
+                                <td class="px-2 py-3">
+                                    {formatNumber(content.total.percentage, 2)}%
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div
+                    class="text-right text-zinc-400 font-serif italic text-sm mt-2"
+                >
+                    {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
+                </div>
+            </div>
+
+            <p
+                class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6 text-justify"
+            >
+                {content.analysis}
+            </p>
+        </div>
+    </div>
+</section>

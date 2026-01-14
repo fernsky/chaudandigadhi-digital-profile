@@ -1,0 +1,53 @@
+{
+    "title": "Population Details by Religion",
+    "number": "3.5",
+    "content_1": "There is religious freedom and diversity in Nepal. Formally, the Interim Constitution of Nepal 2063, through the historic declaration of the reinstated Parliament on Jestha 4, 2063 BS, declared Nepal a secular state. Similarly, the preamble of the Constitution of Nepal, 2072, expresses the commitment to build an egalitarian society by assimilating multi-ethnic, multi-lingual, multi-religious, and multi-cultural characteristics, maintaining unity in diversity, and ending all forms of discrimination. Consequently, religious freedom and harmony prevail in Nepal.",
+    "content_2": "Due to the residence of various communities in the municipality, they have their own festivals, such as Dashain, Tihar, Ram Navami, Maha Shivaratri, Haritalika, Shree Panchami, Janmashtami, Holi, Chaite Dashain, Sakela, Lhosar, Buddha Jayanti, and more.",
+    "table_title": "Population Distribution by Religion",
+    "table_number": "Table No. 9",
+    "source": "National Census, 2078",
+    "table_data": [
+        {
+            "gender": "Male",
+            "hindu": "17374",
+            "buddhist": "1941",
+            "islam": "195",
+            "kirat": "4896",
+            "christian": "680",
+            "prakriti": "71",
+            "total": "25157"
+        },
+        {
+            "gender": "Female",
+            "hindu": "19638",
+            "buddhist": "2202",
+            "islam": "215",
+            "kirat": "5554",
+            "christian": "797",
+            "prakriti": "68",
+            "total": "28474"
+        },
+        {
+            "gender": "Total",
+            "hindu": "37012",
+            "buddhist": "4143",
+            "islam": "410",
+            "kirat": "10450",
+            "christian": "1477",
+            "prakriti": "139",
+            "total": "53631"
+        },
+        {
+            "gender": "Percentage",
+            "hindu": "69.01",
+            "buddhist": "7.73",
+            "islam": "0.76",
+            "kirat": "19.48",
+            "christian": "2.75",
+            "prakriti": "0.26",
+            "total": "100"
+        }
+    ],
+    "content_final": "Out of the total population of 53,631 in the municipality, 37,012 or 69.01 percent follow Hinduism, followed by Kirat religion with 10,450 or 19.48 percent. Similarly, 7.73 percent are Buddhists, 2.75 percent are Christians, and the remaining follow Islam (0.76%) and Prakriti religion (0.26%). Despite religious diversity, Hinduism remains predominant. The religious tolerance that has existed in Nepal for centuries continues in this municipality. Detailed information by religion is presented in the table.",
+    "chart_title": "Population Distribution by Religion"
+}

@@ -1,6 +1,7 @@
 ---
-import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
+import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
@@ -53,7 +54,7 @@ if (!content) {
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    {content.number}
+                    {formatNumber(content.number, lang)}
                     {content.title}
                 </h2>
             </div>
@@ -62,7 +63,7 @@ if (!content) {
             <h4
                 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
             >
-                {content.tableNumber}: {content.tableTitle}
+                {formatNumber(content.tableNumber, lang)}: {content.tableTitle}
             </h4>
 
             <!-- Premium Table -->
@@ -74,12 +75,20 @@ if (!content) {
                         <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
                             <th
                                 class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >आर्थिक कामको क्षेत्र वा उत्पादन</th
+                                >{
+                                    lang === "ne"
+                                        ? "आर्थिक कामको क्षेत्र वा उत्पादन"
+                                        : "Economic Activity Sector or Production"
+                                }</th
                             >
                             <th
                                 colspan="4"
                                 class="px-4 py-3 text-center font-serif text-zinc-100 font-medium"
-                                >कामको अवधि</th
+                                >{
+                                    lang === "ne"
+                                        ? "कामको अवधि"
+                                        : "Work Duration"
+                                }</th
                             >
                         </tr>
                         <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
@@ -87,40 +96,58 @@ if (!content) {
                             ></th>
                             <th
                                 class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >६ महिना वा सो भन्दा बढी</th
+                                >{
+                                    lang === "ne"
+                                        ? `${formatNumber(6, lang)} महिना वा सो भन्दा बढी`
+                                        : `${formatNumber(6, lang)} Months or More`
+                                }</th
                             >
                             <th
                                 class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >३ देखि ५ महिना</th
+                                >{
+                                    lang === "ne"
+                                        ? `${formatNumber(3, lang)} देखि ${formatNumber(5, lang)} महिना`
+                                        : `${formatNumber(3, lang)} to ${formatNumber(5, lang)} Months`
+                                }</th
                             >
                             <th
                                 class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >१ देखि २ महिना</th
+                                >{
+                                    lang === "ne"
+                                        ? `${formatNumber(1, lang)} देखि ${formatNumber(2, lang)} महिना`
+                                        : `${formatNumber(1, lang)} to ${formatNumber(2, lang)} Months`
+                                }</th
                             >
                             <th
                                 class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
-                                >जम्मा</th
+                                >{lang === "ne" ? "जम्मा" : "Total"}</th
                             >
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            content.tableData.map((row) => (
+                            content.tableData.map((row: any) => (
                                 <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                     <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
                                         {row.sector}
                                     </td>
                                     <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.sixMonthsOrMore.toLocaleString()}
+                                        {formatNumber(
+                                            row.sixMonthsOrMore,
+                                            lang,
+                                        )}
                                     </td>
                                     <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.threeToFiveMonths.toLocaleString()}
+                                        {formatNumber(
+                                            row.threeToFiveMonths,
+                                            lang,
+                                        )}
                                     </td>
                                     <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                        {row.oneToTwoMonths.toLocaleString()}
+                                        {formatNumber(row.oneToTwoMonths, lang)}
                                     </td>
                                     <td class="px-4 py-3 font-serif text-zinc-100 text-right">
-                                        {row.total.toLocaleString()}
+                                        {formatNumber(row.total, lang)}
                                     </td>
                                 </tr>
                             ))
@@ -131,29 +158,42 @@ if (!content) {
                         >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                                >जम्मा</td
+                                >{lang === "ne" ? "जम्मा" : "Total"}</td
                             >
-                            <td
-                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
-                            >
-                                {content.total.sixMonthsOrMore.toLocaleString()}
-                            </td>
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                             >
                                 {
-                                    content.total.threeToFiveMonths.toLocaleString()
+                                    formatNumber(
+                                        content.total.sixMonthsOrMore,
+                                        lang,
+                                    )
                                 }
                             </td>
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                             >
-                                {content.total.oneToTwoMonths.toLocaleString()}
+                                {
+                                    formatNumber(
+                                        content.total.threeToFiveMonths,
+                                        lang,
+                                    )
+                                }
+                            </td>
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                            >
+                                {
+                                    formatNumber(
+                                        content.total.oneToTwoMonths,
+                                        lang,
+                                    )
+                                }
                             </td>
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-right"
                             >
-                                {content.total.total.toLocaleString()}
+                                {formatNumber(content.total.total, lang)}
                             </td>
                         </tr>
                     </tbody>
@@ -162,7 +202,7 @@ if (!content) {
 
             <!-- Source -->
             <p class="text-zinc-400 font-serif text-sm italic mb-6">
-                स्रोत: {content.source}
+                {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
             </p>
 
             <!-- Analysis -->

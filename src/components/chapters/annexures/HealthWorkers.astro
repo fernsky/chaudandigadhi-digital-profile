@@ -1,5 +1,6 @@
 ---
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
 
 interface Props {
@@ -29,7 +30,7 @@ const data = await loadChapterSection<SectionData<HealthWorkerRow>>(
         >
             <div>
                 <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-8">
-                    <span class="text-[#f2e25d]">{data.id}</span>: {data.title}
+                    <span class="text-[#f2e25d]">{formatNumber(data.id, lang)}</span>: {data.title}
                 </h2>
 
                 <!-- Health Workers Table -->
@@ -59,10 +60,10 @@ const data = await loadChapterSection<SectionData<HealthWorkerRow>>(
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-[#f2e25d]/10 text-zinc-300 font-serif">
-                                {data.table.rows.map((row) => (
+                                {data.table.rows.map((row: any) => (
                                     <tr class="hover:bg-[#f2e25d]/5 transition-colors">
                                         <td class="px-6 py-3 text-center opacity-70">
-                                            {row.sn}
+                                            {formatNumber(row.sn, lang)}
                                         </td>
                                         <td class="px-6 py-3 font-medium text-white">
                                             {row.name}
@@ -73,7 +74,7 @@ const data = await loadChapterSection<SectionData<HealthWorkerRow>>(
                                         <td class="px-6 py-3">
                                             {row.office}
                                         </td>
-                                        <td class="px-6 py-3">{row.contact}</td>
+                                        <td class="px-6 py-3">{formatNumber(row.contact, lang)}</td>
                                     </tr>
                                 ))}
                             </tbody>

@@ -1,135 +1,112 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { languages, getTranslations } from "../../../lib/i18n";
 import { ArrowLeft, ArrowRight } from "lucide-astro";
-import type { Language } from "../../../lib/i18n";
 
-// Chapter 3 Components
+// Components
 import ChapterHero from "../../../components/chapters/3/ChapterHero.astro";
 import MainSettlements from "../../../components/chapters/3/MainSettlements.astro";
 import HouseholdDetails from "../../../components/chapters/3/HouseholdDetails.astro";
 import PopulationDistribution from "../../../components/chapters/3/PopulationDistribution.astro";
-import AgeGenderDistribution from "../../../components/chapters/3/AgeGenderDistribution.astro";
-import MotherTongue from "../../../components/chapters/3/MotherTongue.astro";
-import Religion from "../../../components/chapters/3/Religion.astro";
-import CasteEthnicity from "../../../components/chapters/3/CasteEthnicity.astro";
+import AgeGroup from "../../../components/chapters/3/AgeGroup.astro";
+import LanguageDistribution from "../../../components/chapters/3/LanguageDistribution.astro";
+import ReligionDistribution from "../../../components/chapters/3/ReligionDistribution.astro";
+import EthnicityDistribution from "../../../components/chapters/3/EthnicityDistribution.astro";
 import HouseholdHead from "../../../components/chapters/3/HouseholdHead.astro";
-import Occupation from "../../../components/chapters/3/Occupation.astro";
-import EconomicActivity from "../../../components/chapters/3/EconomicActivity.astro";
-import Disability from "../../../components/chapters/3/Disability.astro";
-import Migration from "../../../components/chapters/3/Migration.astro";
-import PersonalEvents from "../../../components/chapters/3/PersonalEvents.astro";
+import OccupationDistribution from "../../../components/chapters/3/OccupationDistribution.astro";
+import EconomicActiveDistribution from "../../../components/chapters/3/EconomicActiveDistribution.astro";
+import DisabilityDistribution from "../../../components/chapters/3/DisabilityDistribution.astro";
+import MigrationDetails from "../../../components/chapters/3/MigrationDetails.astro";
+import VitalEvents from "../../../components/chapters/3/VitalEvents.astro";
 import SocialSecurity from "../../../components/chapters/3/SocialSecurity.astro";
 
 export async function getStaticPaths() {
-    return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
+    return Object.keys(languages).map((lang) => ({ params: { lang } }));
 }
 
-const { lang } = Astro.params as { lang: Language };
+const { lang } = Astro.params;
+if (!(lang in languages)) {
+    return Astro.redirect("/ne/chapters/3");
+}
 
-const title =
-    lang === "ne"
-        ? "परिच्छेद – ३: पारिवारिक तथा जनसांख्यिक विवरण"
-        : "Chapter 3: Family and Demographic Details";
-const description =
-    lang === "ne"
-        ? "चौदण्डीगढी नगरपालिकाको जनसांख्यिक संरचना, पारिवारिक विवरण, भाषिक विविधता, धार्मिक संरचना र सामाजिक सुरक्षा कार्यक्रमहरू"
-        : "Demographic structure, family details, linguistic diversity, religious composition and social security programs of Chaudandigadhi Municipality";
+const t = await getTranslations(lang as keyof typeof languages);
+const pageTitle = t.chapters[3].title;
+const description = t.chapters[3].description || pageTitle;
 ---
 
-<BaseLayout title={title} description={description} lang={lang}>
-    <!-- Chapter Hero -->
-    <ChapterHero lang={lang} />
+<BaseLayout
+    title={pageTitle}
+    description={description}
+    lang={lang as any}
+    currentChapter={3}
+>
+    <main class="bg-[#050505] min-h-screen">
+        <ChapterHero lang={lang as any} />
 
-    <!-- 3.1.1 Main Settlements -->
-    <MainSettlements lang={lang} />
-
-    <!-- 3.1.2 Household Details -->
-    <HouseholdDetails lang={lang} />
-
-    <!-- 3.2 Population Distribution -->
-    <PopulationDistribution lang={lang} />
-
-    <!-- 3.3 Age-Gender Distribution -->
-    <AgeGenderDistribution lang={lang} />
-
-    <!-- 3.4 Mother Tongue -->
-    <MotherTongue lang={lang} />
-
-    <!-- 3.5 Religion -->
-    <Religion lang={lang} />
-
-    <!-- 3.6 Caste/Ethnicity -->
-    <CasteEthnicity lang={lang} />
-
-    <!-- 3.7 Household Head -->
-    <HouseholdHead lang={lang} />
-
-    <!-- 3.8 Occupation -->
-    <Occupation lang={lang} />
-
-    <!-- 3.9 Economic Activity -->
-    <EconomicActivity lang={lang} />
-
-    <!-- 3.10 Disability -->
-    <Disability lang={lang} />
-
-    <!-- 3.11 Migration -->
-    <Migration lang={lang} />
-
-    <!-- 3.12 Personal Events -->
-    <PersonalEvents lang={lang} />
-
-    <!-- 3.13 Social Security -->
-    <SocialSecurity lang={lang} />
-    <!-- Chapter Navigation -->
-    <section
-        class="relative bg-[#050505] py-8 md:py-12 border-t border-zinc-900"
-    >
-        <div class="container mx-auto px-8 relative z-10">
-            <nav
-                class="w-full mx-auto flex flex-row items-center justify-between gap-4"
-            >
-                <a
-                    href={`/${lang}/chapters/2`}
-                    class="group flex items-center gap-3 text-zinc-500 hover:text-white transition-all duration-300"
-                >
-                    <div
-                        class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/10 bg-white/5 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300"
-                    >
-                        <ArrowLeft
-                            class="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-1"
-                        />
-                    </div>
-                    <span
-                        class="font-serif text-base md:text-lg tracking-wide whitespace-nowrap"
-                        >{lang === "ne" ? "परिच्छेद – २" : "Chapter 2"}</span
-                    >
-                </a>
-
-                <a
-                    href={`/${lang}/chapters/4`}
-                    class="group flex flex-row items-center gap-3 text-white hover:text-obsidian-accent transition-all duration-300"
-                >
-                    <span
-                        class="font-serif text-base md:text-lg tracking-wide whitespace-nowrap"
-                        >{lang === "ne" ? "परिच्छेद – ४" : "Chapter 4"}</span
-                    >
-                    <div
-                        class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/10 bg-white/5 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300"
-                    >
-                        <ArrowRight
-                            class="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
-                        />
-                    </div>
-                </a>
-            </nav>
+        <div class="relative overflow-hidden">
+            <MainSettlements lang={lang as any} />
+            <HouseholdDetails lang={lang as any} />
+            <PopulationDistribution lang={lang as any} />
+            <AgeGroup lang={lang as any} />
+            <LanguageDistribution lang={lang as any} />
+            <ReligionDistribution lang={lang as any} />
+            <EthnicityDistribution lang={lang as any} />
+            <HouseholdHead lang={lang as any} />
+            <OccupationDistribution lang={lang as any} />
+            <EconomicActiveDistribution lang={lang as any} />
+            <DisabilityDistribution lang={lang as any} />
+            <MigrationDetails lang={lang as any} />
+            <VitalEvents lang={lang as any} />
+            <SocialSecurity lang={lang as any} />
         </div>
-    </section>
-</BaseLayout>
 
-<style>
-    /* Smooth scroll behavior */
-    :global(html) {
-        scroll-behavior: smooth;
-    }
-</style>
+        <!-- Chapter Navigation -->
+        <section
+            class="relative bg-[#050505] py-8 md:py-12 border-t border-zinc-900"
+        >
+            <div class="container mx-auto px-8 relative z-10">
+                <nav
+                    class="w-full mx-auto flex flex-row items-center justify-between gap-4"
+                >
+                    <a
+                        href={`/${lang}/chapters/2`}
+                        class="group flex items-center gap-3 text-zinc-500 hover:text-white transition-all duration-300"
+                    >
+                        <div
+                            class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/10 bg-white/5 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300"
+                        >
+                            <ArrowLeft
+                                class="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-1"
+                            />
+                        </div>
+                        <span
+                            class="font-serif text-base md:text-lg tracking-wide whitespace-nowrap"
+                            >{
+                                lang === "ne" ? "परिच्छेद – २" : "Chapter 2"
+                            }</span
+                        >
+                    </a>
+
+                    <a
+                        href={`/${lang}/chapters/4`}
+                        class="group flex flex-row items-center gap-3 text-white hover:text-obsidian-accent transition-all duration-300"
+                    >
+                        <span
+                            class="font-serif text-base md:text-lg tracking-wide whitespace-nowrap"
+                            >{
+                                lang === "ne" ? "परिच्छेद – ४" : "Chapter 4"
+                            }</span
+                        >
+                        <div
+                            class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/10 bg-white/5 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300"
+                        >
+                            <ArrowRight
+                                class="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
+                            />
+                        </div>
+                    </a>
+                </nav>
+            </div>
+        </section>
+    </main>
+</BaseLayout>

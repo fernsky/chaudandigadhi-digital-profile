@@ -1,5 +1,6 @@
 ---
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
 
 interface Props {
@@ -90,14 +91,14 @@ const busParks = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                                {transportation.number} {transportation.title}
+                                {formatNumber(transportation.number, lang)} {transportation.title}
                             </h2>
                         </div>
 
                         <!-- 7.1.1 Road Network -->
                         <div class="mb-8">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {transportation.subNumber}{" "}
+                                {formatNumber(transportation.subNumber, lang)}{" "}
                                 {transportation.subTitle}
                             </h3>
                             
@@ -153,10 +154,10 @@ const busParks = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {transportation.tableData1.map((row) => (
+                                    {transportation.tableData1.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5">
                                                 {row.drain}
@@ -198,16 +199,16 @@ const busParks = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {transportation.tableData2.map((row) => (
+                                    {transportation.tableData2.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5">
                                                 {row.name}
                                             </td>
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5">
                                                 {row.remarks}
@@ -244,7 +245,7 @@ const busParks = (await loadChapterSection(
                     <!-- 7.1.2 -->
                     <div class="mb-8">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {transportFacilities.number} {transportFacilities.title}
+                            {formatNumber(transportFacilities.number, lang)} {transportFacilities.title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
                             {transportFacilities.content}
@@ -254,7 +255,7 @@ const busParks = (await loadChapterSection(
                     <!-- 7.1.3 -->
                     <div class="mb-8">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {transportFacilities.vehicles.number}{" "}
+                            {formatNumber(transportFacilities.vehicles.number, lang)}{" "}
                             {transportFacilities.vehicles.title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
@@ -277,7 +278,7 @@ const busParks = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {busParks.number} {busParks.title}
+                            {formatNumber(busParks.number, lang)} {busParks.title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-8">
                             {busParks.content}
@@ -287,7 +288,7 @@ const busParks = (await loadChapterSection(
                     <!-- Bus Park Table -->
                     <div class="mb-10">
                         <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center">
-                            {busParks.tableNumber}: {busParks.tableTitle}
+                            {formatNumber(busParks.tableNumber, lang)}: {busParks.tableTitle}
                         </h5>
                         <div class="overflow-x-auto">
                             <table class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-base">
@@ -311,16 +312,16 @@ const busParks = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {busParks.tableData.map((row) => (
+                                    {busParks.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5">
                                                 {row.name}
                                             </td>
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5">
                                                 {row.status}

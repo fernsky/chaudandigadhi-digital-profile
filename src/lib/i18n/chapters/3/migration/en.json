@@ -1,0 +1,310 @@
+{
+    "title": "Migration Details",
+    "sectionId": "migration",
+    "number": "3.11",
+    "intro": "Out of the total population of 53,631 in Chaudandigadhi Municipality, 53,230 people, or 99.25 percent, were found to have been born in Nepal. The number of people born in this municipality is 33,937, while those born in another municipality within Udaipur district is 2,423. Additionally, there are 16,870 people born in other districts, 399 people born abroad who currently reside in this municipality, and 2 people whose birthplace is undisclosed. With the economic, physical, and social development of the municipality, the population migrating from other locations is expected to increase. The detailed distribution is mentioned in the table.",
+    "subsections": {
+        "birthplace": {
+            "title": "A) Population Distribution by Birthplace",
+            "tableTitle": "Table No. 16: Population Distribution by Birthplace",
+            "tableData": [
+                {
+                    "ageGroup": "0-4 years",
+                    "withinNepal": 4146,
+                    "thisMunicipality": 4020,
+                    "otherMunicipality": 8,
+                    "anotherDistrictHills": 2,
+                    "anotherDistrictMountains": 78,
+                    "anotherDistrictTerai": 38,
+                    "anotherDistrictTotal": 118,
+                    "foreign": 8,
+                    "undisclosed": 0,
+                    "total": 4154
+                },
+                {
+                    "ageGroup": "5-9 years",
+                    "withinNepal": 4861,
+                    "thisMunicipality": 4450,
+                    "otherMunicipality": 50,
+                    "anotherDistrictHills": 5,
+                    "anotherDistrictMountains": 288,
+                    "anotherDistrictTerai": 68,
+                    "anotherDistrictTotal": 361,
+                    "foreign": 20,
+                    "undisclosed": 0,
+                    "total": 4881
+                },
+                {
+                    "ageGroup": "10-14 years",
+                    "withinNepal": 5120,
+                    "thisMunicipality": 4436,
+                    "otherMunicipality": 55,
+                    "anotherDistrictHills": 12,
+                    "anotherDistrictMountains": 526,
+                    "anotherDistrictTerai": 91,
+                    "anotherDistrictTotal": 629,
+                    "foreign": 34,
+                    "undisclosed": 1,
+                    "total": 5155
+                },
+                {
+                    "ageGroup": "15-19 years",
+                    "withinNepal": 5611,
+                    "thisMunicipality": 4564,
+                    "otherMunicipality": 117,
+                    "anotherDistrictHills": 20,
+                    "anotherDistrictMountains": 758,
+                    "anotherDistrictTerai": 152,
+                    "anotherDistrictTotal": 930,
+                    "foreign": 47,
+                    "undisclosed": 0,
+                    "total": 5658
+                },
+                {
+                    "ageGroup": "20-24 years",
+                    "withinNepal": 4896,
+                    "thisMunicipality": 3425,
+                    "otherMunicipality": 290,
+                    "anotherDistrictHills": 26,
+                    "anotherDistrictMountains": 847,
+                    "anotherDistrictTerai": 308,
+                    "anotherDistrictTotal": 1181,
+                    "foreign": 23,
+                    "undisclosed": 0,
+                    "total": 4919
+                },
+                {
+                    "ageGroup": "25-29 years",
+                    "withinNepal": 4156,
+                    "thisMunicipality": 2495,
+                    "otherMunicipality": 306,
+                    "anotherDistrictHills": 34,
+                    "anotherDistrictMountains": 932,
+                    "anotherDistrictTerai": 389,
+                    "anotherDistrictTotal": 1355,
+                    "foreign": 39,
+                    "undisclosed": 0,
+                    "total": 4195
+                },
+                {
+                    "ageGroup": "30-34 years",
+                    "withinNepal": 3771,
+                    "thisMunicipality": 2124,
+                    "otherMunicipality": 292,
+                    "anotherDistrictHills": 57,
+                    "anotherDistrictMountains": 950,
+                    "anotherDistrictTerai": 348,
+                    "anotherDistrictTotal": 1355,
+                    "foreign": 36,
+                    "undisclosed": 0,
+                    "total": 3807
+                },
+                {
+                    "ageGroup": "35-39 years",
+                    "withinNepal": 3512,
+                    "thisMunicipality": 1817,
+                    "otherMunicipality": 282,
+                    "anotherDistrictHills": 65,
+                    "anotherDistrictMountains": 1007,
+                    "anotherDistrictTerai": 351,
+                    "anotherDistrictTotal": 1423,
+                    "foreign": 33,
+                    "undisclosed": 1,
+                    "total": 3546
+                },
+                {
+                    "ageGroup": "40-44 years",
+                    "withinNepal": 3123,
+                    "thisMunicipality": 1563,
+                    "otherMunicipality": 212,
+                    "anotherDistrictHills": 68,
+                    "anotherDistrictMountains": 972,
+                    "anotherDistrictTerai": 308,
+                    "anotherDistrictTotal": 1348,
+                    "foreign": 34,
+                    "undisclosed": 0,
+                    "total": 3157
+                },
+                {
+                    "ageGroup": "45-49 years",
+                    "withinNepal": 2596,
+                    "thisMunicipality": 1202,
+                    "otherMunicipality": 181,
+                    "anotherDistrictHills": 67,
+                    "anotherDistrictMountains": 936,
+                    "anotherDistrictTerai": 210,
+                    "anotherDistrictTotal": 1213,
+                    "foreign": 26,
+                    "undisclosed": 0,
+                    "total": 2622
+                },
+                {
+                    "ageGroup": "50-54 years",
+                    "withinNepal": 2888,
+                    "thisMunicipality": 1145,
+                    "otherMunicipality": 183,
+                    "anotherDistrictHills": 99,
+                    "anotherDistrictMountains": 1215,
+                    "anotherDistrictTerai": 246,
+                    "anotherDistrictTotal": 1560,
+                    "foreign": 34,
+                    "undisclosed": 0,
+                    "total": 2922
+                },
+                {
+                    "ageGroup": "55-59 years",
+                    "withinNepal": 2085,
+                    "thisMunicipality": 716,
+                    "otherMunicipality": 123,
+                    "anotherDistrictHills": 92,
+                    "anotherDistrictMountains": 1015,
+                    "anotherDistrictTerai": 139,
+                    "anotherDistrictTotal": 1246,
+                    "foreign": 29,
+                    "undisclosed": 0,
+                    "total": 2114
+                },
+                {
+                    "ageGroup": "60-64 years",
+                    "withinNepal": 2014,
+                    "thisMunicipality": 625,
+                    "otherMunicipality": 121,
+                    "anotherDistrictHills": 90,
+                    "anotherDistrictMountains": 1046,
+                    "anotherDistrictTerai": 132,
+                    "anotherDistrictTotal": 1268,
+                    "foreign": 20,
+                    "undisclosed": 0,
+                    "total": 2034
+                },
+                {
+                    "ageGroup": "65-69 years",
+                    "withinNepal": 1615,
+                    "thisMunicipality": 517,
+                    "otherMunicipality": 76,
+                    "anotherDistrictHills": 104,
+                    "anotherDistrictMountains": 819,
+                    "anotherDistrictTerai": 99,
+                    "anotherDistrictTotal": 1022,
+                    "foreign": 5,
+                    "undisclosed": 0,
+                    "total": 1620
+                },
+                {
+                    "ageGroup": "70-74 years",
+                    "withinNepal": 1256,
+                    "thisMunicipality": 402,
+                    "otherMunicipality": 58,
+                    "anotherDistrictHills": 79,
+                    "anotherDistrictMountains": 658,
+                    "anotherDistrictTerai": 59,
+                    "anotherDistrictTotal": 796,
+                    "foreign": 9,
+                    "undisclosed": 0,
+                    "total": 1265
+                },
+                {
+                    "ageGroup": "Above 75 years",
+                    "withinNepal": 1570,
+                    "thisMunicipality": 436,
+                    "otherMunicipality": 69,
+                    "anotherDistrictHills": 67,
+                    "anotherDistrictMountains": 952,
+                    "anotherDistrictTerai": 46,
+                    "anotherDistrictTotal": 1065,
+                    "foreign": 2,
+                    "undisclosed": 0,
+                    "total": 1572
+                }
+            ],
+            "total": {
+                "withinNepal": 53230,
+                "thisMunicipality": 33937,
+                "otherMunicipality": 2423,
+                "anotherDistrictHills": 887,
+                "anotherDistrictMountains": 12999,
+                "anotherDistrictTerai": 2984,
+                "anotherDistrictTotal": 16870,
+                "foreign": 399,
+                "undisclosed": 2,
+                "total": 53631
+            },
+            "chartTitle": "Population Distribution by Birthplace",
+            "chartData": [
+                {
+                    "label": "Born within Nepal",
+                    "value": 53230,
+                    "color": "#00aed9"
+                },
+                {
+                    "label": "Within this Municipality",
+                    "value": 33937,
+                    "color": "#92d050"
+                },
+                {
+                    "label": "In another Municipality",
+                    "value": 2423,
+                    "color": "#70ad47"
+                },
+                {
+                    "label": "Born in another District",
+                    "value": 16870,
+                    "color": "#9e480e"
+                },
+                {
+                    "label": "Born Abroad",
+                    "value": 399,
+                    "color": "#7c7c00"
+                },
+                {
+                    "label": "Undisclosed",
+                    "value": 2,
+                    "color": "#385623"
+                }
+            ],
+            "source": "National Census, 2021"
+        },
+        "previousResidence": {
+            "title": "B) Population Distribution by Previous Residence of Migrated Persons",
+            "tableTitle": "Table No. 17: Population Distribution by Previous Residence of Migrated Persons",
+            "tableData": [
+                {
+                    "type": "Within this Municipality",
+                    "male": 17586,
+                    "female": 16010,
+                    "total": 33596,
+                    "percentage": 62.64
+                },
+                {
+                    "type": "Another local level within Udaipur district",
+                    "male": 708,
+                    "female": 2187,
+                    "total": 2895,
+                    "percentage": 5.40
+                },
+                {
+                    "type": "Another District",
+                    "male": 6619,
+                    "female": 10007,
+                    "total": 16626,
+                    "percentage": 31.00
+                },
+                {
+                    "type": "Abroad",
+                    "male": 244,
+                    "female": 270,
+                    "total": 514,
+                    "percentage": 0.96
+                }
+            ],
+            "total": {
+                "male": 25157,
+                "female": 28474,
+                "total": 53631,
+                "percentage": 100
+            },
+            "source": "National Census, 2021",
+            "analysis": "In the last 12 months, based on the previous place of residence, out of the total population of 53,631 in the municipality, the highest number 33,596 or 62.64 percent population reside in this municipality, while 2,895 or 5.40 percent have come from other local levels within this district. Similarly, 16,626 or 31 percent have migrated here from other districts, while the lowest number, 514 or 0.96 percent, have come from abroad."
+        }
+    }
+}

@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -75,7 +76,8 @@ if (!content) throw new Error("Teachers staff content not found");
             <h3
                 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
             >
-                ५.१.४ {content.title}
+                {formatNumber("5.1.4", lang)}
+                {content.title}
             </h3>
 
             <div class="overflow-x-auto mb-8">
@@ -86,27 +88,29 @@ if (!content) throw new Error("Teachers staff content not found");
                         <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
                             <th
                                 class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >तह</th
+                                >{lang === "ne" ? "तह" : "Level"}</th
                             >
                             <th
                                 class="px-4 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >स्थायी</th
+                                >{lang === "ne" ? "स्थायी" : "Permanent"}</th
                             >
                             <th
                                 class="px-4 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >करार</th
+                                >{lang === "ne" ? "करार" : "Contract"}</th
                             >
                             <th
                                 class="px-4 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >जम्मा</th
+                                >{lang === "ne" ? "जम्मा" : "Total"}</th
                             >
                             <th
                                 class="px-4 py-3 text-center font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                >राहत</th
+                                >{lang === "ne" ? "राहत" : "Relief"}</th
                             >
                             <th
                                 class="px-4 py-3 text-center font-serif text-zinc-100 font-medium"
-                                >कुल जम्मा</th
+                                >{
+                                    lang === "ne" ? "कुल जम्मा" : "Grand Total"
+                                }</th
                             >
                         </tr>
                     </thead>
@@ -116,28 +120,54 @@ if (!content) throw new Error("Teachers staff content not found");
                         >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5"
-                                >प्राथमिक</td
+                                >{lang === "ne" ? "प्राथमिक" : "Primary"}</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
-                                >{content.teachersByLevel.primary.permanent}</td
+                                >{
+                                    formatNumber(
+                                        content.teachersByLevel.primary
+                                            .permanent,
+                                        lang,
+                                    )
+                                }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
-                                >{content.teachersByLevel.primary.contract}</td
+                                >{
+                                    formatNumber(
+                                        content.teachersByLevel.primary
+                                            .contract,
+                                        lang,
+                                    )
+                                }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
-                                >{content.teachersByLevel.primary.total}</td
+                                >{
+                                    formatNumber(
+                                        content.teachersByLevel.primary.total,
+                                        lang,
+                                    )
+                                }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
-                                >{content.teachersByLevel.primary.relief}</td
+                                >{
+                                    formatNumber(
+                                        content.teachersByLevel.primary.relief,
+                                        lang,
+                                    )
+                                }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-[#f2e25d] font-bold text-center"
                                 >{
-                                    content.teachersByLevel.primary.grandTotal
+                                    formatNumber(
+                                        content.teachersByLevel.primary
+                                            .grandTotal,
+                                        lang,
+                                    )
                                 }</td
                             >
                         </tr>
@@ -146,40 +176,60 @@ if (!content) throw new Error("Teachers staff content not found");
                         >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5"
-                                >निम्न माध्यमिक</td
-                            >
-                            <td
-                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
                                 >{
-                                    content.teachersByLevel.lowerSecondary
-                                        .permanent
+                                    lang === "ne"
+                                        ? "निम्न माध्यमिक"
+                                        : "Lower Secondary"
                                 }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
                                 >{
-                                    content.teachersByLevel.lowerSecondary
-                                        .contract
+                                    formatNumber(
+                                        content.teachersByLevel.lowerSecondary
+                                            .permanent,
+                                        lang,
+                                    )
                                 }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
                                 >{
-                                    content.teachersByLevel.lowerSecondary.total
+                                    formatNumber(
+                                        content.teachersByLevel.lowerSecondary
+                                            .contract,
+                                        lang,
+                                    )
                                 }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
                                 >{
-                                    content.teachersByLevel.lowerSecondary
-                                        .relief
+                                    formatNumber(
+                                        content.teachersByLevel.lowerSecondary
+                                            .total,
+                                        lang,
+                                    )
+                                }</td
+                            >
+                            <td
+                                class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
+                                >{
+                                    formatNumber(
+                                        content.teachersByLevel.lowerSecondary
+                                            .relief,
+                                        lang,
+                                    )
                                 }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-[#f2e25d] font-bold text-center"
                                 >{
-                                    content.teachersByLevel.lowerSecondary
-                                        .grandTotal
+                                    formatNumber(
+                                        content.teachersByLevel.lowerSecondary
+                                            .grandTotal,
+                                        lang,
+                                    )
                                 }</td
                             >
                         </tr>
@@ -188,32 +238,55 @@ if (!content) throw new Error("Teachers staff content not found");
                         >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5"
-                                >माध्यमिक</td
+                                >{lang === "ne" ? "माध्यमिक" : "Secondary"}</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
                                 >{
-                                    content.teachersByLevel.secondary.permanent
+                                    formatNumber(
+                                        content.teachersByLevel.secondary
+                                            .permanent,
+                                        lang,
+                                    )
                                 }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
                                 >{
-                                    content.teachersByLevel.secondary.contract
+                                    formatNumber(
+                                        content.teachersByLevel.secondary
+                                            .contract,
+                                        lang,
+                                    )
                                 }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
-                                >{content.teachersByLevel.secondary.total}</td
+                                >{
+                                    formatNumber(
+                                        content.teachersByLevel.secondary.total,
+                                        lang,
+                                    )
+                                }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-zinc-100 text-center border-r border-[#f2e25d]/5"
-                                >{content.teachersByLevel.secondary.relief}</td
+                                >{
+                                    formatNumber(
+                                        content.teachersByLevel.secondary
+                                            .relief,
+                                        lang,
+                                    )
+                                }</td
                             >
                             <td
                                 class="px-4 py-3 font-serif text-[#f2e25d] font-bold text-center"
                                 >{
-                                    content.teachersByLevel.secondary.grandTotal
+                                    formatNumber(
+                                        content.teachersByLevel.secondary
+                                            .grandTotal,
+                                        lang,
+                                    )
                                 }</td
                             >
                         </tr>
@@ -224,34 +297,62 @@ if (!content) throw new Error("Teachers staff content not found");
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-4">
                     <div class="text-[#f2e25d] font-serif text-2xl font-bold">
-                        {content.supportStaff.earlyChildhoodFacilitators}
+                        {
+                            formatNumber(
+                                content.supportStaff.earlyChildhoodFacilitators,
+                                lang,
+                            )
+                        }
                     </div>
                     <div class="text-zinc-100 font-serif text-xs mt-1">
-                        बाल विकास सहजकर्ता
+                        {
+                            lang === "ne"
+                                ? "बाल विकास सहजकर्ता"
+                                : "EC Facilitators"
+                        }
                     </div>
                 </div>
                 <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-4">
                     <div class="text-[#f2e25d] font-serif text-2xl font-bold">
-                        {content.supportStaff.municipalFacilitators}
+                        {
+                            formatNumber(
+                                content.supportStaff.municipalFacilitators,
+                                lang,
+                            )
+                        }
                     </div>
                     <div class="text-zinc-100 font-serif text-xs mt-1">
-                        नगर सहजकर्ता
+                        {
+                            lang === "ne"
+                                ? "नगर सहजकर्ता"
+                                : "Municipal Facilitators"
+                        }
                     </div>
                 </div>
                 <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-4">
                     <div class="text-[#f2e25d] font-serif text-2xl font-bold">
-                        {content.supportStaff.accountAssistants}
+                        {
+                            formatNumber(
+                                content.supportStaff.accountAssistants,
+                                lang,
+                            )
+                        }
                     </div>
                     <div class="text-zinc-100 font-serif text-xs mt-1">
-                        लेखा सहायक
+                        {lang === "ne" ? "लेखा सहायक" : "Account Assistants"}
                     </div>
                 </div>
                 <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-4">
                     <div class="text-[#f2e25d] font-serif text-2xl font-bold">
-                        {content.supportStaff.totalMunicipalStaff}
+                        {
+                            formatNumber(
+                                content.supportStaff.totalMunicipalStaff,
+                                lang,
+                            )
+                        }
                     </div>
                     <div class="text-zinc-100 font-serif text-xs mt-1">
-                        कुल जनशक्ति
+                        {lang === "ne" ? "कुल जनशक्ति" : "Total Manpower"}
                     </div>
                 </div>
             </div>

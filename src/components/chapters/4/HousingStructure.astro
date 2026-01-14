@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import BarChart from "../../charts/BarChart.astro";
 import PieChart from "../../charts/PieChart.astro";
 
@@ -204,7 +205,12 @@ if (!content) {
 }
 
 // Ownership Chart Data
-const ownershipChartLabels = ["गिनी", "भाडामा", "संस्थागत", "अन्य (खुलाउने)"];
+const ownershipChartLabels = [
+    lang === "ne" ? "निजी" : "Private",
+    lang === "ne" ? "भाडामा" : "Rented",
+    lang === "ne" ? "संस्थागत" : "Institutional",
+    lang === "ne" ? "अन्य" : "Other",
+];
 const ownershipChartData = [
     content.subsections.ownershipDetails.total.owned,
     content.subsections.ownershipDetails.total.rented,
@@ -214,11 +220,11 @@ const ownershipChartData = [
 
 // Foundation Chart Data
 const foundationChartLabels = [
-    "माटोको जोडाइ भएको ईँटा/ढुङ्गा",
-    "सिमेन्टको जोडाइ भएको ईँटा/ढुङ्गा",
-    "ढलान पिल्लर सहितको",
-    "काठको खम्बा",
-    "अन्य (खुलाउने)",
+    lang === "ne" ? "माटोको जोडाइ" : "Mud Bonded",
+    lang === "ne" ? "सिमेन्टको जोडाइ" : "Cement Bonded",
+    lang === "ne" ? "ढलान पिल्लर" : "RCC Pillar",
+    lang === "ne" ? "काठको खम्बा" : "Wooden Pillar",
+    lang === "ne" ? "अन्य" : "Other",
 ];
 const foundationChartData = [
     content.subsections.foundationDetails.total.mudBonded,
@@ -230,13 +236,13 @@ const foundationChartData = [
 
 // Outer Wall Chart Data
 const outerWallChartLabels = [
-    "माटो र ईट्टाको जोडाइ",
-    "सिमेन्ट र ईँट्टाको जोडाइ",
-    "काठ",
-    "बाँस",
-    "काँचो ईँट्टा",
-    "जस्तापाता",
-    "अन्य",
+    lang === "ne" ? "माटो–ईट्टा" : "Mud-Brick",
+    lang === "ne" ? "सिमेन्ट–ईँट्टा" : "Cement-Brick",
+    lang === "ne" ? "काठ" : "Wood",
+    lang === "ne" ? "बाँस" : "Bamboo",
+    lang === "ne" ? "काँचो ईँट्टा" : "Unbaked Brick",
+    lang === "ne" ? "जस्तापाता" : "Galvanized",
+    lang === "ne" ? "अन्य" : "Other",
 ];
 const outerWallChartData = [
     content.subsections.outerWallDetails.total.mudBonded,
@@ -250,12 +256,12 @@ const outerWallChartData = [
 
 // Floor Chart Data
 const floorChartLabels = [
-    "माटो",
-    "काठको फल्याक/बाँस",
-    "इँटा/ढुङ्गा",
-    "सेरामिक टायल",
-    "सिमेन्ट ढलान",
-    "अन्य",
+    lang === "ne" ? "माटो" : "Mud",
+    lang === "ne" ? "काठ/बाँस" : "Wood/Bamboo",
+    lang === "ne" ? "इँटा/ढुङ्गा" : "Brick/Stone",
+    lang === "ne" ? "टायल" : "Tile",
+    lang === "ne" ? "सिमेन्ट" : "Cement",
+    lang === "ne" ? "अन्य" : "Other",
 ];
 const floorChartData = [
     content.subsections.floorDetails.total.mud,
@@ -268,13 +274,13 @@ const floorChartData = [
 
 // Roof Chart Data
 const roofChartLabels = [
-    "जस्ता/टिन",
-    "सिमेन्ट ढलान",
-    "खर/पराल/छाली",
-    "टायल/खपडा/झिँगटी",
-    "ढुङ्गा/स्लेट",
-    "काठ/फल्याक",
-    "अन्य",
+    lang === "ne" ? "जस्ता/टिन" : "Zinc/Tin",
+    lang === "ne" ? "सिमेन्ट" : "Cement",
+    lang === "ne" ? "फूस" : "Straw",
+    lang === "ne" ? "टायल/खपडा" : "Tile/Khapada",
+    lang === "ne" ? "ढुङ्गा" : "Stone",
+    lang === "ne" ? "काठ" : "Wood",
+    lang === "ne" ? "अन्य" : "Other",
 ];
 const roofChartData = [
     content.subsections.roofDetails.total.zinc,
@@ -295,7 +301,7 @@ const roofChartData = [
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    {content.number}
+                    {formatNumber(content.number, lang)}
                     {content.title}
                 </h2>
             </div>
@@ -319,9 +325,12 @@ const roofChartData = [
                 <h4
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
                 >
-                    {content.subsections.ownershipDetails.tableNumber}: {
-                        content.subsections.ownershipDetails.tableTitle
-                    }
+                    {
+                        formatNumber(
+                            content.subsections.ownershipDetails.tableNumber,
+                            lang,
+                        )
+                    }: {content.subsections.ownershipDetails.tableTitle}
                 </h4>
 
                 <!-- Ownership Table -->
@@ -335,48 +344,61 @@ const roofChartData = [
                             >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >वडा नं.</th
+                                    >{
+                                        lang === "ne" ? "वडा नं." : "Ward No."
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >भाडामा</th
+                                    >{lang === "ne" ? "निजी" : "Private"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >संस्थागत</th
+                                    >{lang === "ne" ? "भाडामा" : "Rented"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >अन्य (खुलाउने)</th
+                                    >{
+                                        lang === "ne"
+                                            ? "संस्थागत"
+                                            : "Institutional"
+                                    }</th
+                                >
+                                <th
+                                    class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
+                                    >{lang === "ne" ? "अन्य" : "Other"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
-                                    >जम्मा</th
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.subsections.ownershipDetails.tableData.map(
-                                    (row) => (
+                                    (row: any) => (
                                         <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.owned.toLocaleString()}
+                                                {formatNumber(row.owned, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.rented.toLocaleString()}
+                                                {formatNumber(row.rented, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.institutional.toLocaleString()}
+                                                {formatNumber(
+                                                    row.institutional,
+                                                    lang,
+                                                )}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.other.toLocaleString()}
+                                                {formatNumber(row.other, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right">
-                                                {row.total.toLocaleString()}
+                                                {formatNumber(row.total, lang)}
                                             </td>
                                         </tr>
                                     ),
@@ -388,41 +410,61 @@ const roofChartData = [
                             >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                                    >जम्मा</td
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                 >
                                     {
-                                        content.subsections.ownershipDetails.total.owned.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.ownershipDetails
+                                                .total.owned,
+                                            lang,
+                                        )
                                     }
                                 </td>
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                 >
                                     {
-                                        content.subsections.ownershipDetails.total.rented.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.ownershipDetails
+                                                .total.rented,
+                                            lang,
+                                        )
                                     }
                                 </td>
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                 >
                                     {
-                                        content.subsections.ownershipDetails.total.institutional.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.ownershipDetails
+                                                .total.institutional,
+                                            lang,
+                                        )
                                     }
                                 </td>
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                 >
                                     {
-                                        content.subsections.ownershipDetails.total.other.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.ownershipDetails
+                                                .total.other,
+                                            lang,
+                                        )
                                     }
                                 </td>
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right font-bold"
                                 >
                                     {
-                                        content.subsections.ownershipDetails.total.total.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.ownershipDetails
+                                                .total.total,
+                                            lang,
+                                        )
                                     }
                                 </td>
                             </tr>
@@ -432,7 +474,9 @@ const roofChartData = [
 
                 <!-- Source 1 -->
                 <p class="text-zinc-400 font-serif text-sm italic mb-8">
-                    स्रोत: {content.subsections.ownershipDetails.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.subsections.ownershipDetails.source
+                    }
                 </p>
 
                 <!-- Ownership Bar Chart -->
@@ -459,9 +503,12 @@ const roofChartData = [
                 <h4
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
                 >
-                    {content.subsections.foundationDetails.tableNumber}: {
-                        content.subsections.foundationDetails.tableTitle
-                    }
+                    {
+                        formatNumber(
+                            content.subsections.foundationDetails.tableNumber,
+                            lang,
+                        )
+                    }: {content.subsections.foundationDetails.tableTitle}
                 </h4>
 
                 <!-- Foundation Table -->
@@ -475,59 +522,83 @@ const roofChartData = [
                             >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >वडा नं.</th
+                                    >{
+                                        lang === "ne" ? "वडा नं." : "Ward No."
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >माटोको जोडाइ भएको ईँटा/ढुङ्गा</th
+                                    >{
+                                        lang === "ne"
+                                            ? "माटोको जोडाइ"
+                                            : "Mud Bonded"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >सिमेन्टको जोडाइ भएको ईँटा/ढुङ्गा</th
+                                    >{
+                                        lang === "ne"
+                                            ? "सिमेन्टको जोडाइ"
+                                            : "Cement Bonded"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >ढलान पिल्लर सहितको</th
+                                    >{
+                                        lang === "ne"
+                                            ? "ढलान पिल्लर"
+                                            : "RCC Pillar"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >काठको खम्बा</th
+                                    >{
+                                        lang === "ne"
+                                            ? "काठको खम्बा"
+                                            : "Wooden Pillar"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >अन्य (खुलाउने)</th
+                                    >{lang === "ne" ? "अन्य" : "Other"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
-                                    >जम्मा</th
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.subsections.foundationDetails.tableData.map(
-                                    (row) => (
+                                    (row: any) => (
                                         <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.mudBonded.toLocaleString()}
+                                                {formatNumber(
+                                                    row.mudBonded,
+                                                    lang,
+                                                )}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.cementBonded.toLocaleString()}
+                                                {formatNumber(
+                                                    row.cementBonded,
+                                                    lang,
+                                                )}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.rcc.toLocaleString()}
+                                                {formatNumber(row.rcc, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.wooden.toLocaleString()}
+                                                {formatNumber(row.wooden, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.other.toLocaleString()}
+                                                {formatNumber(row.other, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right">
-                                                {row.total.toLocaleString()}
+                                                {formatNumber(row.total, lang)}
                                             </td>
                                         </tr>
                                     ),
@@ -538,42 +609,68 @@ const roofChartData = [
                             >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                                    >जम्मा</td
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.foundationDetails.total.mudBonded.toLocaleString()
+                                        formatNumber(
+                                            content.subsections
+                                                .foundationDetails.total
+                                                .mudBonded,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.foundationDetails.total.cementBonded.toLocaleString()
+                                        formatNumber(
+                                            content.subsections
+                                                .foundationDetails.total
+                                                .cementBonded,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.foundationDetails.total.rcc.toLocaleString()
+                                        formatNumber(
+                                            content.subsections
+                                                .foundationDetails.total.rcc,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.foundationDetails.total.wooden.toLocaleString()
+                                        formatNumber(
+                                            content.subsections
+                                                .foundationDetails.total.wooden,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.foundationDetails.total.other.toLocaleString()
+                                        formatNumber(
+                                            content.subsections
+                                                .foundationDetails.total.other,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right font-bold"
                                     >{
-                                        content.subsections.foundationDetails.total.total.toLocaleString()
+                                        formatNumber(
+                                            content.subsections
+                                                .foundationDetails.total.total,
+                                            lang,
+                                        )
                                     }</td
                                 >
                             </tr>
@@ -583,7 +680,9 @@ const roofChartData = [
 
                 <!-- Source 2 -->
                 <p class="text-zinc-400 font-serif text-sm italic mb-8">
-                    स्रोत: {content.subsections.foundationDetails.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.subsections.foundationDetails.source
+                    }
                 </p>
 
                 <!-- Foundation Bar Chart -->
@@ -610,9 +709,12 @@ const roofChartData = [
                 <h4
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
                 >
-                    {content.subsections.outerWallDetails.tableNumber}: {
-                        content.subsections.outerWallDetails.tableTitle
-                    }
+                    {
+                        formatNumber(
+                            content.subsections.outerWallDetails.tableNumber,
+                            lang,
+                        )
+                    }: {content.subsections.outerWallDetails.tableTitle}
                 </h4>
 
                 <!-- Outer Wall Table -->
@@ -626,73 +728,103 @@ const roofChartData = [
                             >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >वडा नं.</th
+                                    >{
+                                        lang === "ne" ? "वडा नं." : "Ward No."
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >माटो र ईट्टाको जोडाइ</th
+                                    >{
+                                        lang === "ne"
+                                            ? "माटो–ईट्टा"
+                                            : "Mud-Brick"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >सिमेन्ट र ईँट्टाको जोडाइ</th
+                                    >{
+                                        lang === "ne"
+                                            ? "सिमेन्ट–ईँट्टा"
+                                            : "Cement-Brick"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >काठ</th
+                                    >{lang === "ne" ? "काठ" : "Wood"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >बाँस</th
+                                    >{lang === "ne" ? "बाँस" : "Bamboo"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >काँचो ईँट्टा</th
+                                    >{
+                                        lang === "ne"
+                                            ? "काँचो ईँट्टा"
+                                            : "Unbaked Brick"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >जस्तापाता</th
+                                    >{
+                                        lang === "ne"
+                                            ? "जस्तापाता"
+                                            : "Galvanized"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >अन्य</th
+                                    >{lang === "ne" ? "अन्य" : "Other"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
-                                    >जम्मा</th
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.subsections.outerWallDetails.tableData.map(
-                                    (row) => (
+                                    (row: any) => (
                                         <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.mudBonded.toLocaleString()}
+                                                {formatNumber(
+                                                    row.mudBonded,
+                                                    lang,
+                                                )}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.cementBonded.toLocaleString()}
+                                                {formatNumber(
+                                                    row.cementBonded,
+                                                    lang,
+                                                )}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.wood.toLocaleString()}
+                                                {formatNumber(row.wood, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.bamboo.toLocaleString()}
+                                                {formatNumber(row.bamboo, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.unbakedBrick.toLocaleString()}
+                                                {formatNumber(
+                                                    row.unbakedBrick,
+                                                    lang,
+                                                )}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.galvanized.toLocaleString()}
+                                                {formatNumber(
+                                                    row.galvanized,
+                                                    lang,
+                                                )}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.other.toLocaleString()}
+                                                {formatNumber(row.other, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right">
-                                                {row.total.toLocaleString()}
+                                                {formatNumber(row.total, lang)}
                                             </td>
                                         </tr>
                                     ),
@@ -703,54 +835,86 @@ const roofChartData = [
                             >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                                    >जम्मा</td
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails.total.mudBonded.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .total.mudBonded,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails.total.cementBonded.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .total.cementBonded,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails.total.wood.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .total.wood,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails.total.bamboo.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .total.bamboo,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails.total.unbakedBrick.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .total.unbakedBrick,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails.total.galvanized.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .total.galvanized,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails.total.other.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .total.other,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right font-bold"
                                     >{
-                                        content.subsections.outerWallDetails.total.total.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .total.total,
+                                            lang,
+                                        )
                                     }</td
                                 >
                             </tr>
@@ -759,60 +923,83 @@ const roofChartData = [
                             >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                                    >प्रतिशत</td
-                                >
-                                <td
-                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails
-                                            .percentage.mudBonded
+                                        lang === "ne" ? "प्रतिशत" : "Percentage"
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails
-                                            .percentage.cementBonded
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .percentage.mudBonded,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails
-                                            .percentage.wood
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .percentage.cementBonded,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails
-                                            .percentage.bamboo
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .percentage.wood,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails
-                                            .percentage.unbakedBrick
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .percentage.bamboo,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails
-                                            .percentage.galvanized
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .percentage.unbakedBrick,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.outerWallDetails
-                                            .percentage.other
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .percentage.galvanized,
+                                            lang,
+                                        )
+                                    }</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                    >{
+                                        formatNumber(
+                                            content.subsections.outerWallDetails
+                                                .percentage.other,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right"
-                                    >100</td
+                                    >{formatNumber(100, lang)}</td
                                 >
                             </tr>
                         </tbody>
@@ -821,7 +1008,9 @@ const roofChartData = [
 
                 <!-- Source 3 -->
                 <p class="text-zinc-400 font-serif text-sm italic mb-8">
-                    स्रोत: {content.subsections.outerWallDetails.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.subsections.outerWallDetails.source
+                    }
                 </p>
 
                 <!-- Outer Wall Pie Chart -->
@@ -868,9 +1057,12 @@ const roofChartData = [
                 <h4
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
                 >
-                    {content.subsections.floorDetails.tableNumber}: {
-                        content.subsections.floorDetails.tableTitle
-                    }
+                    {
+                        formatNumber(
+                            content.subsections.floorDetails.tableNumber,
+                            lang,
+                        )
+                    }: {content.subsections.floorDetails.tableTitle}
                 </h4>
 
                 <!-- Floor Table -->
@@ -884,66 +1076,82 @@ const roofChartData = [
                             >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >वडा नं.</th
+                                    >{
+                                        lang === "ne" ? "वडा नं." : "Ward No."
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >माटो</th
+                                    >{lang === "ne" ? "माटो" : "Mud"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >काठको फल्याक/बाँस</th
+                                    >{
+                                        lang === "ne"
+                                            ? "काठ/बाँस"
+                                            : "Wood/Bamboo"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >इँटा/ढुङ्गा</th
+                                    >{
+                                        lang === "ne"
+                                            ? "इँटा/ढुङ्गा"
+                                            : "Brick/Stone"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >सेरामिक टायल</th
+                                    >{lang === "ne" ? "टायल" : "Tile"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >सिमेन्ट ढलान</th
+                                    >{lang === "ne" ? "सिमेन्ट" : "Cement"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >अन्य</th
+                                    >{lang === "ne" ? "अन्य" : "Other"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
-                                    >जम्मा</th
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.subsections.floorDetails.tableData.map(
-                                    (row) => (
+                                    (row: any) => (
                                         <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.mud.toLocaleString()}
+                                                {formatNumber(row.mud, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.woodBamboo.toLocaleString()}
+                                                {formatNumber(
+                                                    row.woodBamboo,
+                                                    lang,
+                                                )}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.brickStone.toLocaleString()}
+                                                {formatNumber(
+                                                    row.brickStone,
+                                                    lang,
+                                                )}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.tile.toLocaleString()}
+                                                {formatNumber(row.tile, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.cement.toLocaleString()}
+                                                {formatNumber(row.cement, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.other.toLocaleString()}
+                                                {formatNumber(row.other, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right">
-                                                {row.total.toLocaleString()}
+                                                {formatNumber(row.total, lang)}
                                             </td>
                                         </tr>
                                     ),
@@ -954,48 +1162,76 @@ const roofChartData = [
                             >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                                    >जम्मा</td
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails.total.mud.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .total.mud,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails.total.woodBamboo.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .total.woodBamboo,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails.total.brickStone.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .total.brickStone,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails.total.tile.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .total.tile,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails.total.cement.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .total.cement,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails.total.other.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .total.other,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right font-bold"
                                     >{
-                                        content.subsections.floorDetails.total.total.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .total.total,
+                                            lang,
+                                        )
                                     }</td
                                 >
                             </tr>
@@ -1004,53 +1240,73 @@ const roofChartData = [
                             >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                                    >प्रतिशत</td
+                                    >{
+                                        lang === "ne" ? "प्रतिशत" : "Percentage"
+                                    }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails
-                                            .percentage.mud
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .percentage.mud,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails
-                                            .percentage.woodBamboo
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .percentage.woodBamboo,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails
-                                            .percentage.brickStone
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .percentage.brickStone,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails
-                                            .percentage.tile
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .percentage.tile,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails
-                                            .percentage.cement
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .percentage.cement,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.floorDetails
-                                            .percentage.other
+                                        formatNumber(
+                                            content.subsections.floorDetails
+                                                .percentage.other,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right"
-                                    >100%</td
+                                    >{formatNumber(100, lang)}%</td
                                 >
                             </tr>
                         </tbody>
@@ -1101,9 +1357,12 @@ const roofChartData = [
                 <h4
                     class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4"
                 >
-                    {content.subsections.roofDetails.tableNumber}: {
-                        content.subsections.roofDetails.tableTitle
-                    }
+                    {
+                        formatNumber(
+                            content.subsections.roofDetails.tableNumber,
+                            lang,
+                        )
+                    }: {content.subsections.roofDetails.tableTitle}
                 </h4>
 
                 <!-- Roof Table -->
@@ -1117,73 +1376,91 @@ const roofChartData = [
                             >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >वडा नं.</th
+                                    >{
+                                        lang === "ne" ? "वडा नं." : "Ward No."
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >जस्ता/टिन</th
+                                    >{
+                                        lang === "ne" ? "जस्ता/टिन" : "Zinc/Tin"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >सिमेन्ट ढलान</th
+                                    >{lang === "ne" ? "सिमेन्ट" : "Cement"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >खर/पराल/छाली</th
+                                    >{lang === "ne" ? "फूस" : "Straw"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >टायल/खपडा/झिँगटी</th
+                                    >{
+                                        lang === "ne"
+                                            ? "टायल/खपडा"
+                                            : "Tile/Khapada"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >ढुङ्गा/स्लेट</th
+                                    >{lang === "ne" ? "ढुङ्गा" : "Stone"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >काठ/फल्याक</th
+                                    >{lang === "ne" ? "काठ" : "Wood"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >अन्य</th
+                                    >{lang === "ne" ? "अन्य" : "Other"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-right font-serif text-zinc-100 font-medium"
-                                    >जम्मा</th
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.subsections.roofDetails.tableData.map(
-                                    (row) => (
+                                    (row: {
+                                        ward: number;
+                                        zinc: number;
+                                        cement: number;
+                                        straw: number;
+                                        tile: number;
+                                        stone: number;
+                                        wood: number;
+                                        other: number;
+                                        total: number;
+                                    }) => (
                                         <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
-                                                {row.ward}
+                                                {formatNumber(row.ward, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.zinc.toLocaleString()}
+                                                {formatNumber(row.zinc, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.cement.toLocaleString()}
+                                                {formatNumber(row.cement, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.straw.toLocaleString()}
+                                                {formatNumber(row.straw, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.tile.toLocaleString()}
+                                                {formatNumber(row.tile, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.stone.toLocaleString()}
+                                                {formatNumber(row.stone, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.wood.toLocaleString()}
+                                                {formatNumber(row.wood, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/5">
-                                                {row.other.toLocaleString()}
+                                                {formatNumber(row.other, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right">
-                                                {row.total.toLocaleString()}
+                                                {formatNumber(row.total, lang)}
                                             </td>
                                         </tr>
                                     ),
@@ -1194,54 +1471,86 @@ const roofChartData = [
                             >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                                    >जम्मा</td
+                                    >{lang === "ne" ? "जम्मा" : "Total"}</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails.total.zinc.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .total.zinc,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails.total.cement.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .total.cement,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails.total.straw.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .total.straw,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails.total.tile.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .total.tile,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails.total.stone.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .total.stone,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails.total.wood.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .total.wood,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails.total.other.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .total.other,
+                                            lang,
+                                        )
                                     }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right font-bold"
                                     >{
-                                        content.subsections.roofDetails.total.total.toLocaleString()
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .total.total,
+                                            lang,
+                                        )
                                     }</td
                                 >
                             </tr>
@@ -1250,60 +1559,83 @@ const roofChartData = [
                             >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
-                                    >प्रतिशत</td
+                                    >{
+                                        lang === "ne" ? "प्रतिशत" : "Percentage"
+                                    }</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails
-                                            .percentage.zinc
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .percentage.zinc,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails
-                                            .percentage.cement
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .percentage.cement,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails
-                                            .percentage.straw
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .percentage.straw,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails
-                                            .percentage.tile
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .percentage.tile,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails
-                                            .percentage.stone
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .percentage.stone,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails
-                                            .percentage.wood
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .percentage.wood,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
                                     >{
-                                        content.subsections.roofDetails
-                                            .percentage.other
+                                        formatNumber(
+                                            content.subsections.roofDetails
+                                                .percentage.other,
+                                            lang,
+                                        )
                                     }%</td
                                 >
                                 <td
                                     class="px-4 py-3 font-serif text-zinc-100 text-right"
-                                    >100%</td
+                                    >{formatNumber(100, lang)}%</td
                                 >
                             </tr>
                         </tbody>

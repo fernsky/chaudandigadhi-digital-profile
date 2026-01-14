@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -32,37 +33,37 @@ if (!content) throw new Error("Marital status content not found");
             <h3
                 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
             >
-                {content.sectionId}
+                {formatNumber(content.sectionId, lang)}
                 {content.title}
             </h3>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
                     <div class="text-[#f2e25d] font-serif text-3xl font-bold">
-                        {content.married.toLocaleString()}
+                        {formatNumber(content.married, lang)}
                     </div>
                     <div class="text-zinc-100 font-serif text-sm mt-2">
-                        विवाहित
+                        {lang === "ne" ? "विवाहित" : "Married"}
                     </div>
                 </div>
                 <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
                     <div class="text-[#f2e25d] font-serif text-3xl font-bold">
-                        {content.unmarried.toLocaleString()}
+                        {formatNumber(content.unmarried, lang)}
                     </div>
                     <div class="text-zinc-100 font-serif text-sm mt-2">
-                        अविवाहित
+                        {lang === "ne" ? "अविवाहित" : "Unmarried"}
                     </div>
                 </div>
                 <div class="bg-[#0a0a0a] border border-[#f2e25d]/20 p-6">
                     <div class="text-[#f2e25d] font-serif text-3xl font-bold">
-                        {content.widowed.toLocaleString()}
+                        {formatNumber(content.widowed, lang)}
                     </div>
                     <div class="text-zinc-100 font-serif text-sm mt-2">
-                        विधवा/विधुर
+                        {lang === "ne" ? "विधवा/विधुर" : "Widowed"}
                     </div>
                 </div>
             </div>
             <p class="text-zinc-400 font-serif text-sm italic mt-6">
-                स्रोत: {content.source}
+                {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
             </p>
         </div>
     </div>

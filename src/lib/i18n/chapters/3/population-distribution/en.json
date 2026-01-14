@@ -1,0 +1,47 @@
+{
+    "title": "Status of Population Distribution",
+    "number": "3.2",
+    "intro_content": "The population of any place is both the means and the end of development. Since the mobilization of other economic and physical resources required for development is done by human resources, it is necessary to study and analyze the various aspects of its composition when formulating development plans. In Nepal, data on various aspects of the population is obtained through the national census conducted every 10 years as well as household surveys at the municipal level. Here, various aspects of the population have been analyzed based on the data obtained from the National Census, 2078.",
+    "table_title": "Population Details",
+    "table_number": "Table No. 6",
+    "source": "National Census, 2078",
+    "table_data": [
+        {
+            "label": "Total Population",
+            "value": "53631"
+        },
+        {
+            "label": "Total Male",
+            "value": "25157"
+        },
+        {
+            "label": "Total Female",
+            "value": "28474"
+        },
+        {
+            "label": "Sex Ratio (Males per 100 Females)",
+            "value": "88.35"
+        },
+        {
+            "label": "Total Households",
+            "value": "12703"
+        },
+        {
+            "label": "Average Family Size",
+            "value": "4.2"
+        },
+        {
+            "label": "Population Density (per sq. km.)",
+            "value": "188.99"
+        },
+        {
+            "label": "Population Growth Rate (%)",
+            "value": "0.80"
+        },
+        {
+            "label": "Literacy Rate (5 years and above)",
+            "value": "77.7%"
+        }
+    ],
+    "content": "The table above presents the population details of Chaudandigadhi Municipality. According to the National Census 2078 data, the total population of the municipality is 53,631, of which males are 46.91 percent (25,157) and females are 53.09 percent (28,474). Accordingly, the sex ratio is 88.35 males per 100 females. The population density is 188.99 persons per square kilometer. Among the total population of this municipality, 1,562 people, or 2.9 percent, are persons with disabilities. In this municipality with a total of 12,703 households, the average family size appears to be 4.22 members per family."
+}

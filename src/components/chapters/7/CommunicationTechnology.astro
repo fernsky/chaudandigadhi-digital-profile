@@ -1,5 +1,6 @@
 ---
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
 
 interface Props {
@@ -65,7 +66,7 @@ const modernAmenities = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {communication.number} {communication.title}
+                            {formatNumber(communication.number, lang)} {communication.title}
                         </h2>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
                             {communication.content}
@@ -93,10 +94,10 @@ const modernAmenities = (await loadChapterSection(
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {communication.tableData.map((row) => (
+                                    {communication.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5 text-center font-medium">
-                                                {row.sn}
+                                                {formatNumber(row.sn, lang)}
                                             </td>
                                             <td class="px-3 py-2 border-r border-[#f2e25d]/5">
                                                 {row.name}
@@ -130,7 +131,7 @@ const modernAmenities = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {modernAmenities.number} {modernAmenities.title}
+                                {formatNumber(modernAmenities.number, lang)} {modernAmenities.title}
                             </h3>
                         </div>
                     </div>
@@ -166,51 +167,49 @@ const modernAmenities = (await loadChapterSection(
                                     <tr class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20">
                                         {Array.from({ length: 10 }, (_, i) => (
                                             <th class="px-2 py-2 border-r border-[#f2e25d]/10 text-center font-serif text-zinc-100 font-medium">
-                                                {lang === "ne"
-                                                    ? (i + 1).toLocaleString("ne-NP")
-                                                    : i + 1}
+                                                {formatNumber(i + 1, lang)}
                                             </th>
                                         ))}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {modernAmenities.tableData.map((row) => (
+                                    {modernAmenities.tableData.map((row: any) => (
                                         <tr class="text-zinc-100 border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-2 py-2 border-r border-[#f2e25d]/5 font-medium">
                                                 {row.amenity}
                                             </td>
                                             <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.w1}
+                                                {formatNumber(row.w1, lang)}
                                             </td>
                                             <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.w2}
+                                                {formatNumber(row.w2, lang)}
                                             </td>
                                             <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.w3}
+                                                {formatNumber(row.w3, lang)}
                                             </td>
                                             <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.w4}
+                                                {formatNumber(row.w4, lang)}
                                             </td>
                                             <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.w5}
+                                                {formatNumber(row.w5, lang)}
                                             </td>
                                             <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.w6}
+                                                {formatNumber(row.w6, lang)}
                                             </td>
                                             <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.w7}
+                                                {formatNumber(row.w7, lang)}
                                             </td>
                                             <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.w8}
+                                                {formatNumber(row.w8, lang)}
                                             </td>
                                             <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.w9}
+                                                {formatNumber(row.w9, lang)}
                                             </td>
                                             <td class="px-2 py-2 border-r border-[#f2e25d]/5 text-center">
-                                                {row.w10}
+                                                {formatNumber(row.w10, lang)}
                                             </td>
                                             <td class="px-2 py-2 text-center font-bold text-[#f2e25d]">
-                                                {row.total}
+                                                {formatNumber(row.total, lang)}
                                             </td>
                                         </tr>
                                     ))}
@@ -262,12 +261,31 @@ const modernAmenities = (await loadChapterSection(
         const chartWidth = width - margin.left - margin.right;
         const chartHeight = Math.max(height - margin.top - margin.bottom, 100);
 
+        const lang = document.documentElement.lang || "ne";
+        const formatValue = (val: number | string) => {
+            if (lang === "en") return val.toString();
+            const nepalDigits: { [key: string]: string } = {
+                "0": "०", "1": "१", "2": "२", "3": "३", "4": "४",
+                "5": "५", "6": "६", "7": "७", "8": "८", "9": "९", ".": "."
+            };
+            return val.toString().split("").map(d => nepalDigits[d] || d).join("");
+        };
+
         const svg = d3.select(container)
             .append("svg")
             .attr("width", width)
             .attr("height", height)
             .append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Tooltip
+        const tooltipId = "amenities-tooltip";
+        let tooltip = d3.select(`#${tooltipId}`);
+        if (tooltip.empty()) {
+            tooltip = d3.select("body").append("div")
+                .attr("id", tooltipId)
+                .attr("class", "fixed bg-black/90 border border-[#f2e25d]/30 text-white text-sm px-3 py-2 rounded pointer-events-none opacity-0 transition-opacity z-50");
+        }
 
         // X Axis
         const x = d3.scaleBand()
@@ -292,7 +310,7 @@ const modernAmenities = (await loadChapterSection(
             .range([chartHeight, 0]);
 
         svg.append("g")
-            .call(d3.axisLeft(y))
+            .call(d3.axisLeft(y).tickFormat((d: any) => formatValue(d)))
             .selectAll("text")
             .style("fill", "#d4d4d8")
             .attr("class", "font-serif");
@@ -309,6 +327,21 @@ const modernAmenities = (await loadChapterSection(
             .attr("width", x.bandwidth())
             .attr("height", 0)
             .attr("fill", "#86efac")
+            .style("cursor", "pointer")
+            .on("mouseover", function (event, d: any) {
+                d3.select(this).attr("fill", "#4ade80");
+                tooltip.style("opacity", 1)
+                    .html(`<div class="font-serif"><strong>${d.label}</strong><br/>${formatValue(d.value)}</div>`);
+            })
+            .on("mousemove", function(event) {
+                tooltip
+                    .style("left", (event.clientX + 10) + "px")
+                    .style("top", (event.clientY - 10) + "px");
+            })
+            .on("mouseout", function () {
+                d3.select(this).attr("fill", "#86efac");
+                tooltip.style("opacity", 0);
+            })
             .transition()
             .duration(800)
             .attr("y", (d: any) => {

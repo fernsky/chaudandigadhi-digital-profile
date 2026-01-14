@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSections } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import LiteracyChart from "../../charts/chapter-5/LiteracyChart.astro";
 import SchoolEnrollmentChart from "../../charts/chapter-5/SchoolEnrollmentChart.astro";
 
@@ -26,7 +27,7 @@ const subsections = await loadChapterSections(
                 subsections["literacy-stats"] && (
                     <div id="literacy-stats" class="space-y-6">
                         <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
-                            ५.१.१ {subsections["literacy-stats"].title}
+                            {formatNumber("5.1.1", lang)} {subsections["literacy-stats"].title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
                             {subsections["literacy-stats"].intro}
@@ -43,31 +44,31 @@ const subsections = await loadChapterSections(
                                 {subsections["literacy-stats"].formalEducation.title}
                             </h4>
                             <p class="text-zinc-100 font-serif text-base md:text-lg font-light mb-4">
-                                आयु समूह: {subsections["literacy-stats"].formalEducation.ageGroup}
+                                {lang === "ne" ? "आयु समूह:" : "Age Group:"} {subsections["literacy-stats"].formalEducation.ageGroup}
                             </p>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div class="bg-[#050505] p-4 border border-[#f2e25d]/5">
                                     <div class="text-[#f2e25d] text-3xl font-bold mb-2">
-                                        {subsections["literacy-stats"].formalEducation.currentlyAttending.percent}%
+                                        {formatNumber(subsections["literacy-stats"].formalEducation.currentlyAttending.percent, lang)}%
                                     </div>
                                     <div class="text-zinc-100 font-serif text-sm">
-                                        हाल विद्यालय/कलेज गएका
+                                        {lang === "ne" ? "हाल विद्यालय/कलेज गएका" : "Currently attending school/college"}
                                     </div>
                                 </div>
                                 <div class="bg-[#050505] p-4 border border-[#f2e25d]/5">
                                     <div class="text-[#f2e25d] text-3xl font-bold mb-2">
-                                        {subsections["literacy-stats"].formalEducation.previouslyAttended.percent}%
+                                        {formatNumber(subsections["literacy-stats"].formalEducation.previouslyAttended.percent, lang)}%
                                     </div>
                                     <div class="text-zinc-100 font-serif text-sm">
-                                        पहिला विद्यालय/कलेज गएका
+                                        {lang === "ne" ? "पहिला विद्यालय/कलेज गएका" : "Previously attended school/college"}
                                     </div>
                                 </div>
                                 <div class="bg-[#050505] p-4 border border-[#f2e25d]/5">
                                     <div class="text-[#f2e25d] text-3xl font-bold mb-2">
-                                        {subsections["literacy-stats"].formalEducation.neverAttended.percent}%
+                                        {formatNumber(subsections["literacy-stats"].formalEducation.neverAttended.percent, lang)}%
                                     </div>
                                     <div class="text-zinc-100 font-serif text-sm">
-                                        कहिले विद्यालय/कलेज नगएका
+                                        {lang === "ne" ? "कहिले विद्यालय/कलेज नगएका" : "Never attended school/college"}
                                     </div>
                                 </div>
                             </div>
@@ -81,32 +82,32 @@ const subsections = await loadChapterSections(
                 subsections["schools-list"] && (
                     <div id="schools-list" class="space-y-6">
                         <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
-                            ५.१.२ {subsections["schools-list"].title}
+                            {formatNumber("5.1.2", lang)} {subsections["schools-list"].title}
                         </h3>
 
                         <!-- Community Schools -->
                         <div class="space-y-4">
                             <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium">
-                                क) {subsections["schools-list"].communitySchools.title}
+                                {lang === "ne" ? "क)" : "a)"} {subsections["schools-list"].communitySchools.title}
                             </h4>
                             <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 overflow-hidden">
                                 <div class="overflow-x-auto">
                                     <table class="w-full">
                                         <thead class="bg-[#050505] border-b border-[#f2e25d]/20">
                                             <tr>
-                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">क्र.स.</th>
-                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">विद्यालयको नाम</th>
-                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">ठेगाना</th>
-                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">विद्यार्थी</th>
+                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "क्र.सं." : "SN"}</th>
+                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "विद्यालयको नाम" : "School Name"}</th>
+                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "ठेगाना" : "Address"}</th>
+                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "विद्यार्थी" : "Students"}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {subsections["schools-list"].communitySchools.schools.map((school: any) => (
                                                 <tr class="border-b border-[#f2e25d]/5 hover:bg-[#050505] transition-colors">
-                                                    <td class="px-4 py-3 font-serif text-sm text-zinc-100">{school.sn}</td>
+                                                    <td class="px-4 py-3 font-serif text-sm text-zinc-100">{formatNumber(school.sn, lang)}</td>
                                                     <td class="px-4 py-3 font-serif text-sm text-zinc-100">{school.name}</td>
                                                     <td class="px-4 py-3 font-serif text-sm text-zinc-100">{school.address}</td>
-                                                    <td class="px-4 py-3 font-serif text-sm text-zinc-100">{school.students}</td>
+                                                    <td class="px-4 py-3 font-serif text-sm text-zinc-100">{formatNumber(school.students, lang)}</td>
                                                 </tr>
                                             ))}
                                         </tbody>
@@ -118,26 +119,26 @@ const subsections = await loadChapterSections(
                         <!-- Institutional Schools -->
                         <div class="space-y-4">
                             <h4 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium">
-                                ख) {subsections["schools-list"].institutionalSchools.title}
+                                {lang === "ne" ? "ख)" : "b)"} {subsections["schools-list"].institutionalSchools.title}
                             </h4>
                             <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 overflow-hidden">
                                 <div class="overflow-x-auto">
                                     <table class="w-full">
                                         <thead class="bg-[#050505] border-b border-[#f2e25d]/20">
                                             <tr>
-                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">क्र.स.</th>
-                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">विद्यालयको नाम</th>
-                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">ठेगाना</th>
-                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">विद्यार्थी</th>
+                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "क्र.सं." : "SN"}</th>
+                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "विद्यालयको नाम" : "School Name"}</th>
+                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "ठेगाना" : "Address"}</th>
+                                                <th class="px-4 py-3 text-left font-serif text-sm text-zinc-100">{lang === "ne" ? "विद्यार्थी" : "Students"}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {subsections["schools-list"].institutionalSchools.schools.map((school: any) => (
                                                 <tr class="border-b border-[#f2e25d]/5 hover:bg-[#050505] transition-colors">
-                                                    <td class="px-4 py-3 font-serif text-sm text-zinc-100">{school.sn}</td>
+                                                    <td class="px-4 py-3 font-serif text-sm text-zinc-100">{formatNumber(school.sn, lang)}</td>
                                                     <td class="px-4 py-3 font-serif text-sm text-zinc-100">{school.name}</td>
                                                     <td class="px-4 py-3 font-serif text-sm text-zinc-100">{school.address}</td>
-                                                    <td class="px-4 py-3 font-serif text-sm text-zinc-100">{school.students}</td>
+                                                    <td class="px-4 py-3 font-serif text-sm text-zinc-100">{formatNumber(school.students, lang)}</td>
                                                 </tr>
                                             ))}
                                         </tbody>
@@ -159,7 +160,7 @@ const subsections = await loadChapterSections(
                 subsections["teachers-staff"] && (
                     <div id="teachers-staff" class="space-y-6">
                         <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
-                            ५.१.४ {subsections["teachers-staff"].title}
+                            {formatNumber("5.1.4", lang)} {subsections["teachers-staff"].title}
                         </h3>
 
                         <!-- Quality Indicators -->

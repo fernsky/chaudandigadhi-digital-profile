@@ -1,0 +1,138 @@
+{
+    "title": "Population Details by Age Group and Sex",
+    "sectionId": "age-gender",
+    "number": "3.3",
+    "tableTitle": "Table No. 7: Population Details by Age and Sex",
+    "tableData": [
+        {
+            "ageGroup": "00-04 Years",
+            "male": 2140,
+            "female": 2014,
+            "total": 4154
+        },
+        {
+            "ageGroup": "05-09 Years",
+            "male": 2471,
+            "female": 2410,
+            "total": 4881
+        },
+        {
+            "ageGroup": "10-14 Years",
+            "male": 2532,
+            "female": 2623,
+            "total": 5155
+        },
+        {
+            "ageGroup": "15-19 Years",
+            "male": 2809,
+            "female": 2849,
+            "total": 5658
+        },
+        {
+            "ageGroup": "20-24 Years",
+            "male": 2191,
+            "female": 2728,
+            "total": 4919
+        },
+        {
+            "ageGroup": "25-29 Years",
+            "male": 1764,
+            "female": 2431,
+            "total": 4195
+        },
+        {
+            "ageGroup": "30-34 Years",
+            "male": 1628,
+            "female": 2179,
+            "total": 3807
+        },
+        {
+            "ageGroup": "35-39 Years",
+            "male": 1585,
+            "female": 1971,
+            "total": 3556
+        },
+        {
+            "ageGroup": "40-44 Years",
+            "male": 1398,
+            "female": 1759,
+            "total": 3157
+        },
+        {
+            "ageGroup": "45-49 Years",
+            "male": 1232,
+            "female": 1390,
+            "total": 2622
+        },
+        {
+            "ageGroup": "50-54 Years",
+            "male": 1398,
+            "female": 1524,
+            "total": 2922
+        },
+        {
+            "ageGroup": "55-59 Years",
+            "male": 1004,
+            "female": 1110,
+            "total": 2114
+        },
+        {
+            "ageGroup": "60-64 Years",
+            "male": 895,
+            "female": 1139,
+            "total": 2034
+        },
+        {
+            "ageGroup": "65-69 Years",
+            "male": 789,
+            "female": 831,
+            "total": 1620
+        },
+        {
+            "ageGroup": "70-74 Years",
+            "male": 589,
+            "female": 676,
+            "total": 1265
+        },
+        {
+            "ageGroup": "75-79 Years",
+            "male": 373,
+            "female": 440,
+            "total": 813
+        },
+        {
+            "ageGroup": "80-84 Years",
+            "male": 199,
+            "female": 210,
+            "total": 409
+        },
+        {
+            "ageGroup": "85-89 Years",
+            "male": 114,
+            "female": 111,
+            "total": 225
+        },
+        {
+            "ageGroup": "90-94 Years",
+            "male": 32,
+            "female": 52,
+            "total": 84
+        },
+        {
+            "ageGroup": "95+ Years",
+            "male": 14,
+            "female": 27,
+            "total": 41
+        }
+    ],
+    "total": {
+        "male": 25157,
+        "female": 28474,
+        "total": 53631
+    },
+    "source": "National Census, 2078",
+    "analysis": [
+        "Out of the total 53,631 population in the municipality, there are 25,157 males and 28,474 females. The male population is dominant in the 0-9 age group and the 85-89 age group, while the female population is dominant in the remaining age groups. Considering the age categories, it is imperative to formulate plans that address the physical, mental, social, and economic issues of adolescent girls and women in the 15-39 age group, as well as elderly women.",
+        "While a large youth population (aged 15 to 39, totaling 27,940) is advantageous, the state must invest heavily in their education, health, and human resource development. This age structure represents a demographic dividend. Conversely, it is the duty of society and the state to guide youth in the right direction and involve them in nation-building by creating employment opportunities."
+    ]
+}

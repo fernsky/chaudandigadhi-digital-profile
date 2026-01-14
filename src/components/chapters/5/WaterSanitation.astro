@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSections } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import WaterSourceChart from "../../charts/chapter-5/WaterSourceChart.astro";
 import ToiletCoverageChart from "../../charts/chapter-5/ToiletCoverageChart.astro";
 
@@ -25,7 +26,7 @@ const subsections = await loadChapterSections(
                 subsections["water-sanitation"] && (
                     <div class="space-y-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100">
-                            ५.३ {subsections["water-sanitation"].title}
+                            {formatNumber("5.3", lang)} {subsections["water-sanitation"].title}
                         </h2>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
                             {subsections["water-sanitation"].intro}
@@ -38,12 +39,12 @@ const subsections = await loadChapterSections(
                             </h4>
                             <div class="flex flex-wrap gap-4">
                                 <div class="bg-[#050505] p-4 border border-[#f2e25d]/5">
-                                    <div class="text-[#f2e25d] text-2xl font-bold">{subsections["water-sanitation"].sdgTarget.baseline2015}%</div>
-                                    <div class="text-zinc-400 font-serif text-xs">२०१५ (आधार वर्ष)</div>
+                                    <div class="text-[#f2e25d] text-2xl font-bold">{formatNumber(subsections["water-sanitation"].sdgTarget.baseline2015, lang)}%</div>
+                                    <div class="text-zinc-400 font-serif text-xs">{lang === "ne" ? "२०१५ (आधार वर्ष)" : "2015 (Baseline Year)"}</div>
                                 </div>
                                 <div class="bg-[#050505] p-4 border border-[#f2e25d]/5">
-                                    <div class="text-[#f2e25d] text-2xl font-bold">{subsections["water-sanitation"].sdgTarget.target2030}%</div>
-                                    <div class="text-zinc-400 font-serif text-xs">२०३० (लक्ष्य)</div>
+                                    <div class="text-[#f2e25d] text-2xl font-bold">{formatNumber(subsections["water-sanitation"].sdgTarget.target2030, lang)}%</div>
+                                    <div class="text-zinc-400 font-serif text-xs">{lang === "ne" ? "२०३० (लक्ष्य)" : "2030 (Target)"}</div>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +57,7 @@ const subsections = await loadChapterSections(
                 subsections["water-sources"] && (
                     <div id="water-sources" class="space-y-6">
                         <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
-                            ५.३.१ {subsections["water-sources"].title}
+                            {formatNumber("5.3.1", lang)} {subsections["water-sources"].title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-base md:text-lg font-light">
                             {subsections["water-sources"].analysis}
@@ -74,7 +75,7 @@ const subsections = await loadChapterSections(
                 subsections["toilet-facilities"] && (
                     <div id="toilet-facilities" class="space-y-6">
                         <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
-                            ५.३.२ {subsections["toilet-facilities"].title}
+                            {formatNumber("5.3.2", lang)} {subsections["toilet-facilities"].title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-base md:text-lg font-light">
                             {subsections["toilet-facilities"].intro}
@@ -94,9 +95,9 @@ const subsections = await loadChapterSections(
                                     <div class="flex items-center justify-between bg-[#050505] p-4 border border-[#f2e25d]/5">
                                         <div>
                                             <span class="text-zinc-100 font-serif text-sm">{location.location}</span>
-                                            <span class="text-zinc-400 font-serif text-xs ml-2">(वडा नं. {location.ward})</span>
+                                            <span class="text-zinc-400 font-serif text-xs ml-2">({lang === "ne" ? "वडा नं." : "Ward No."} {formatNumber(location.ward, lang)})</span>
                                         </div>
-                                        <div class="text-[#f2e25d] font-bold">{location.count}</div>
+                                        <div class="text-[#f2e25d] font-bold">{formatNumber(location.count, lang)}</div>
                                     </div>
                                 ))}
                             </div>
@@ -110,7 +111,7 @@ const subsections = await loadChapterSections(
                 subsections["waste-management"] && (
                     <div id="waste-management" class="space-y-6">
                         <h3 class="font-serif text-2xl md:text-3xl text-zinc-100 font-medium">
-                            ५.३.४ {subsections["waste-management"].title}
+                            {formatNumber("5.3.4", lang)} {subsections["waste-management"].title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-base md:text-lg font-light">
                             {subsections["waste-management"].intro}
@@ -119,7 +120,7 @@ const subsections = await loadChapterSections(
                         <!-- Problems -->
                         <div class="bg-[#0a0a0a] border border-red-500/20 p-6 md:p-8">
                             <h4 class="font-serif text-lg text-zinc-100 font-medium mb-4">
-                                समस्याहरू:
+                                {lang === "ne" ? "समस्याहरू:" : "Problems:"}
                             </h4>
                             <ul class="space-y-2">
                                 {subsections["waste-management"].problems.map((problem: string) => (
@@ -134,7 +135,7 @@ const subsections = await loadChapterSections(
                         <!-- Recommendations -->
                         <div class="bg-[#0a0a0a] border border-green-500/20 p-6 md:p-8">
                             <h4 class="font-serif text-lg text-zinc-100 font-medium mb-4">
-                                सिफारिसहरू:
+                                {lang === "ne" ? "सिफारिसहरू:" : "Recommendations:"}
                             </h4>
                             <ul class="space-y-2">
                                 {subsections["waste-management"].recommendations.map((rec: string) => (

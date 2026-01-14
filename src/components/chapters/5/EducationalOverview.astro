@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -45,7 +46,7 @@ if (!content) {
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    {content.sectionId}
+                    {formatNumber(content.sectionId, lang)}
                     {content.title}
                 </h2>
             </div>
@@ -75,7 +76,7 @@ if (!content) {
                         content.constitutionalRights.rights.map((right) => (
                             <div class="flex gap-4">
                                 <span class="text-[#f2e25d] font-serif font-bold flex-shrink-0">
-                                    {right.number}.
+                                    {formatNumber(right.number, lang)}.
                                 </span>
                                 <p class="text-zinc-100 font-serif text-base md:text-lg leading-relaxed">
                                     {right.text}

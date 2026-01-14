@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSections } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import SlopeDistributionChart from "../../charts/chapter-2/SlopeDistributionChart.astro";
 import AspectDistributionChart from "../../charts/chapter-2/AspectDistributionChart.astro";
 
@@ -65,7 +66,7 @@ const subsections = await loadChapterSections(
                                     </div>
                                 </div>
                                 <p class="text-zinc-100 font-serif text-lg font-bold text-center">
-                                    {mapLabel} {subsections["terrain-slope"].mapReference.number.toLocaleString(locale)}: {subsections["terrain-slope"].mapReference.title}
+                                    {mapLabel} {formatNumber(subsections["terrain-slope"].mapReference.number, lang)}: {subsections["terrain-slope"].mapReference.title}
                                 </p>
                             </div>
                         )}
@@ -127,7 +128,7 @@ const subsections = await loadChapterSections(
                                     </div>
                                 </div>
                                 <p class="text-zinc-100 font-serif text-lg font-bold text-center">
-                                    {mapLabel} {subsections["terrain-aspect"].mapReference.number.toLocaleString(locale)}: {subsections["terrain-aspect"].mapReference.title}
+                                    {mapLabel} {formatNumber(subsections["terrain-aspect"].mapReference.number, lang)}: {subsections["terrain-aspect"].mapReference.title}
                                 </p>
                             </div>
                         )}

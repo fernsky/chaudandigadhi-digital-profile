@@ -1,6 +1,7 @@
 ---
-import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
+import type { Language } from "../../../lib/i18n";
 
 interface Props {
     lang: Language;
@@ -8,94 +9,114 @@ interface Props {
 
 const { lang } = Astro.props;
 
-type PopulationDistributionContent = {
+type PopulationContent = {
     title: string;
-    sectionId: string;
     number: string;
-    intro: string[];
-    tableTitle: string;
-    stats: Array<{
+    intro_content: string;
+    table_title: string;
+    table_number: string;
+    source: string;
+    table_data: Array<{
         label: string;
         value: string;
     }>;
-    source: string;
-    analysis: string;
+    content: string;
 };
 
-const content = await loadChapterSection<PopulationDistributionContent>(
+const content = await loadChapterSection<PopulationContent>(
     3,
     "population-distribution",
     lang,
 );
 
 if (!content) {
-    throw new Error("Population distribution content not found");
+    throw new Error("Population distribution section content not found");
 }
 ---
 
 <section
     id="population-distribution"
-    class="relative bg-[#050505] py-8 md:py-12"
+    class="relative bg-[#050505] pb-8 md:pb-12 border-t border-[#f2e25d]/10 pt-8 mt-8"
 >
     <div class="container mx-auto px-8">
         <div class="w-full">
-            <!-- Section Header -->
+            <!-- 3.2 Header -->
             <div class="mb-6">
-                <h2
-                    class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
+                <h3
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
                 >
-                    {content.number}
+                    {formatNumber(content.number, lang)}
                     {content.title}
-                </h2>
+                </h3>
             </div>
 
-            <!-- Intro Paragraphs -->
-            <div class="space-y-4 mb-6">
-                {
-                    content.intro.map((para) => (
-                        <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
-                            {para}
-                        </p>
-                    ))
-                }
-            </div>
-
-            <!-- Table Title -->
-            <h4
-                class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-6"
+            <p
+                class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10"
             >
-                {content.tableTitle}
-            </h4>
-
-            <!-- Stats Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                {
-                    content.stats.map((stat) => (
-                        <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 hover:border-[#f2e25d]/30 transition-all duration-300">
-                            <p class="text-zinc-400 font-serif text-sm mb-2">
-                                {stat.label}
-                            </p>
-                            <p class="text-[#f2e25d] font-serif text-2xl md:text-3xl font-medium">
-                                {stat.value}
-                            </p>
-                        </div>
-                    ))
-                }
-            </div>
-
-            <!-- Source -->
-            <p class="text-zinc-400 font-serif text-sm italic mb-6">
-                स्रोतM {content.source}
+                {content.intro_content}
             </p>
 
-            <!-- Analysis -->
-            <div class="mt-6">
-                <p
-                    class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
+            <!-- Table -->
+            <div class="mb-10 w-full">
+                <h4
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-4 text-center"
                 >
-                    {content.analysis}
-                </p>
+                    {formatNumber(content.table_number, lang)}: {
+                        content.table_title
+                    }
+                </h4>
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full border-collapse bg-[#0a0a0a] border border-[#f2e25d]/10 text-sm md:text-lg"
+                    >
+                        <thead>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-b border-[#f2e25d]/20 text-zinc-100"
+                            >
+                                <th
+                                    class="px-4 py-3 border-r border-[#f2e25d]/10 text-left w-1/2 font-serif font-medium"
+                                >
+                                    {lang === "ne" ? "विवरण" : "Description"}
+                                </th>
+                                <th
+                                    class="px-4 py-3 text-center w-1/2 font-serif font-medium"
+                                >
+                                    {
+                                        lang === "ne"
+                                            ? `वि.सं. ${formatNumber("२०७८", lang)}`
+                                            : `B.S. ${formatNumber("2078", lang)}`
+                                    }
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                content.table_data.map((row: any) => (
+                                    <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200 text-zinc-100 font-serif">
+                                        <td class="px-4 py-3 border-r border-[#f2e25d]/5 font-medium">
+                                            {row.label}
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            {formatNumber(row.value, lang)}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div
+                    class="text-right text-zinc-400 font-serif italic text-sm mt-2"
+                >
+                    {lang === "ne" ? "स्रोत" : "Source"}: {content.source}
+                </div>
             </div>
+
+            <p
+                class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6"
+            >
+                {content.content}
+            </p>
         </div>
     </div>
 </section>

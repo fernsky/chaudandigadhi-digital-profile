@@ -42,16 +42,20 @@ const data = content.tableData;
     <div class="flex items-center justify-center gap-8">
         <div class="flex items-center gap-2">
             <div class="w-4 h-4 bg-[#60a5fa] opacity-80"></div>
-            <span class="text-zinc-300 font-serif text-sm">पुरूष (Male)</span>
+            <span class="text-zinc-300 font-serif text-sm"
+                >{lang === "ne" ? "पुरूष" : "Male"}</span
+            >
         </div>
         <div class="flex items-center gap-2">
             <div class="w-4 h-4 bg-[#f472b6] opacity-80"></div>
-            <span class="text-zinc-300 font-serif text-sm">महिला (Female)</span>
+            <span class="text-zinc-300 font-serif text-sm"
+                >{lang === "ne" ? "महिला" : "Female"}</span
+            >
         </div>
     </div>
 </div>
 
-<script define:vars={{ data }}>
+<script define:vars={{ data, lang }}>
     function createPopulationPyramid() {
         const svg = document.getElementById("population-pyramid");
         if (!svg) return;
@@ -59,21 +63,58 @@ const data = content.tableData;
         // Clear existing content
         svg.innerHTML = "";
 
+        const formatValue = (num, decimals = 0) => {
+            if (num === undefined || num === null || isNaN(num)) return "0";
+            const formatted = num.toLocaleString("en-US", {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals,
+            });
+            if (lang !== "ne") return formatted;
+            const nepaliDigits = [
+                "०",
+                "१",
+                "२",
+                "३",
+                "४",
+                "५",
+                "६",
+                "७",
+                "८",
+                "९",
+            ];
+            return formatted.replace(
+                /\d/g,
+                (digit) => nepaliDigits[parseInt(digit)],
+            );
+        };
+
+        const translateAgeGroup = (ageStr) => ageStr;
+
         const width = 800;
         const height = 600;
-        const margin = { top: 40, right: 40, bottom: 50, left: 40 };
+        const margin = { top: 40, right: 40, bottom: 60, left: 40 };
         const chartWidth = width - margin.left - margin.right;
         const chartHeight = height - margin.top - margin.bottom;
         const centerX = width / 2;
-        const centerGap = 60; // Gap for age labels in the middle
+        const centerGap = 80; // Increased gap for age labels
 
-        // Calculate scales
+        // Filter out any invalid items
+        const validData = data.filter(
+            (d) =>
+                d &&
+                d.ageGroup &&
+                d.male !== undefined &&
+                d.female !== undefined,
+        );
+
         // Find max value across both male and female to symmetrical scale
-        const maxVal = Math.max(...data.map((d) => Math.max(d.male, d.female)));
-        // Add some padding to max value
+        const maxVal = Math.max(
+            ...validData.map((d) => Math.max(d.male || 0, d.female || 0)),
+            1,
+        );
         const xDomain = maxVal * 1.1;
 
-        const barHeight = chartHeight / data.length;
+        const barHeight = chartHeight / validData.length;
         const barPadding = 4;
         const actualBarHeight = barHeight - barPadding;
 
@@ -81,15 +122,11 @@ const data = content.tableData;
         const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
         svg.appendChild(g);
 
-        // Male Bars (Left Side)
-        // x scale goes from center-gap/2 to 0 (visually leftwards)
-        // Female Bars (Right Side)
-        // x scale goes from center+gap/2 to width
-
         const maxBarWidth = (chartWidth - centerGap) / 2;
 
-        data.forEach((item, i) => {
+        validData.forEach((item, i) => {
             const y = margin.top + i * barHeight;
+            const translatedAge = translateAgeGroup(item.ageGroup);
 
             // Calculate widths
             const maleWidth = (item.male / xDomain) * maxBarWidth;
@@ -107,21 +144,22 @@ const data = content.tableData;
             maleRect.setAttribute("y", y.toString());
             maleRect.setAttribute("width", maleWidth.toString());
             maleRect.setAttribute("height", actualBarHeight.toString());
-            maleRect.setAttribute("fill", "#60a5fa"); // Blue for male
+            maleRect.setAttribute("fill", "#60a5fa");
             maleRect.setAttribute("opacity", "0.8");
             maleRect.setAttribute(
                 "class",
                 "bar-hover transition-opacity duration-300",
             );
 
-            // Add tooltip logic or title
             const maleTitle = document.createElementNS(
                 "http://www.w3.org/2000/svg",
                 "title",
             );
-            maleTitle.textContent = `Male (${item.ageGroup}): ${item.male.toLocaleString()}`;
+            maleTitle.textContent =
+                lang === "ne"
+                    ? `पुरूष (${translatedAge}): ${formatValue(item.male)}`
+                    : `Male (${translatedAge}): ${formatValue(item.male)}`;
             maleRect.appendChild(maleTitle);
-
             g.appendChild(maleRect);
 
             // FEMALE BAR (Right)
@@ -133,7 +171,7 @@ const data = content.tableData;
             femaleRect.setAttribute("y", y.toString());
             femaleRect.setAttribute("width", femaleWidth.toString());
             femaleRect.setAttribute("height", actualBarHeight.toString());
-            femaleRect.setAttribute("fill", "#f472b6"); // Pink for female
+            femaleRect.setAttribute("fill", "#f472b6");
             femaleRect.setAttribute("opacity", "0.8");
             femaleRect.setAttribute(
                 "class",
@@ -144,9 +182,11 @@ const data = content.tableData;
                 "http://www.w3.org/2000/svg",
                 "title",
             );
-            femaleTitle.textContent = `Female (${item.ageGroup}): ${item.female.toLocaleString()}`;
+            femaleTitle.textContent =
+                lang === "ne"
+                    ? `महिला (${translatedAge}): ${formatValue(item.female)}`
+                    : `Female (${translatedAge}): ${formatValue(item.female)}`;
             femaleRect.appendChild(femaleTitle);
-
             g.appendChild(femaleRect);
 
             // AGE LABEL (Center)
@@ -155,50 +195,47 @@ const data = content.tableData;
                 "text",
             );
             ageText.setAttribute("x", centerX.toString());
-            ageText.setAttribute("y", (y + actualBarHeight / 2 + 5).toString()); // Center vertically
+            ageText.setAttribute("y", (y + actualBarHeight / 2 + 5).toString());
             ageText.setAttribute("text-anchor", "middle");
             ageText.setAttribute("fill", "#e4e4e7");
-            ageText.setAttribute("font-size", "12");
+            ageText.setAttribute("font-size", "11");
             ageText.setAttribute("font-family", "serif");
-            ageText.textContent = item.ageGroup;
+            ageText.textContent = translatedAge;
             g.appendChild(ageText);
-
-            // Value Labels (Optional - only if space permits or on hover? Let's hide for clean look unless bars are wide enough)
-            // Or maybe place them outside?
         });
 
-        // X-Axis Gridlines and Labels (Bottom)
-        const ticks = 5;
-        const tickStep = Math.round(xDomain / ticks / 500) * 500; // Round to nearest 500
+        // X-Axis Gridlines and Labels
+        const ticksCount = 5;
+        const tickStep = Math.max(
+            100,
+            Math.round(xDomain / ticksCount / 100) * 100,
+        );
 
         for (let val = 0; val <= xDomain; val += tickStep) {
-            if (val === 0) continue; // Skip 0 as it's implied in center
-
-            // Left side (Male)
             const xLeft =
                 centerX - centerGap / 2 - (val / xDomain) * maxBarWidth;
-
-            // Right side (Female)
             const xRight =
                 centerX + centerGap / 2 + (val / xDomain) * maxBarWidth;
 
-            // Gridlines
             [xLeft, xRight].forEach((x) => {
-                const line = document.createElementNS(
-                    "http://www.w3.org/2000/svg",
-                    "line",
-                );
-                line.setAttribute("x1", x.toString());
-                line.setAttribute("y1", margin.top.toString());
-                line.setAttribute("x2", x.toString());
-                line.setAttribute("y2", (height - margin.bottom).toString());
-                line.setAttribute("stroke", "#f2e25d");
-                line.setAttribute("stroke-width", "1");
-                line.setAttribute("opacity", "0.1");
-                line.setAttribute("stroke-dasharray", "4 4");
-                g.appendChild(line);
+                if (val !== 0) {
+                    const line = document.createElementNS(
+                        "http://www.w3.org/2000/svg",
+                        "line",
+                    );
+                    line.setAttribute("x1", x.toString());
+                    line.setAttribute("y1", margin.top.toString());
+                    line.setAttribute("x2", x.toString());
+                    line.setAttribute(
+                        "y2",
+                        (height - margin.bottom).toString(),
+                    );
+                    line.setAttribute("stroke", "#f2e25d");
+                    line.setAttribute("opacity", "0.1");
+                    line.setAttribute("stroke-dasharray", "4 4");
+                    g.appendChild(line);
+                }
 
-                // Labels
                 const text = document.createElementNS(
                     "http://www.w3.org/2000/svg",
                     "text",
@@ -212,45 +249,45 @@ const data = content.tableData;
                 text.setAttribute("fill", "#a1a1aa");
                 text.setAttribute("font-size", "10");
                 text.setAttribute("font-family", "serif");
-                text.textContent = val.toLocaleString();
+                text.textContent = formatValue(val);
                 g.appendChild(text);
             });
         }
 
         // Axis Titles
-        const maleLabel = document.createElementNS(
+        const maleAxisTitle = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "text",
         );
-        maleLabel.setAttribute(
+        maleAxisTitle.setAttribute(
             "x",
-            (centerX - maxBarWidth / 2 - centerGap / 2).toString(),
+            (centerX - centerGap / 2 - maxBarWidth / 2).toString(),
         );
-        maleLabel.setAttribute("y", (height - 10).toString());
-        maleLabel.setAttribute("text-anchor", "middle");
-        maleLabel.setAttribute("fill", "#60a5fa");
-        maleLabel.setAttribute("font-size", "14");
-        maleLabel.setAttribute("font-weight", "bold");
-        maleLabel.setAttribute("font-family", "serif");
-        maleLabel.textContent = "पुरूष जनसंख्या";
-        g.appendChild(maleLabel);
+        maleAxisTitle.setAttribute("y", (height - 5).toString());
+        maleAxisTitle.setAttribute("text-anchor", "middle");
+        maleAxisTitle.setAttribute("fill", "#60a5fa");
+        maleAxisTitle.setAttribute("font-size", "14");
+        maleAxisTitle.setAttribute("font-weight", "500");
+        maleAxisTitle.textContent =
+            lang === "ne" ? "पुरूष जनसंख्या" : "Male Population";
+        g.appendChild(maleAxisTitle);
 
-        const femaleLabel = document.createElementNS(
+        const femaleAxisTitle = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "text",
         );
-        femaleLabel.setAttribute(
+        femaleAxisTitle.setAttribute(
             "x",
-            (centerX + maxBarWidth / 2 + centerGap / 2).toString(),
+            (centerX + centerGap / 2 + maxBarWidth / 2).toString(),
         );
-        femaleLabel.setAttribute("y", (height - 10).toString());
-        femaleLabel.setAttribute("text-anchor", "middle");
-        femaleLabel.setAttribute("fill", "#f472b6");
-        femaleLabel.setAttribute("font-size", "14");
-        femaleLabel.setAttribute("font-weight", "bold");
-        femaleLabel.setAttribute("font-family", "serif");
-        femaleLabel.textContent = "महिला जनसंख्या";
-        g.appendChild(femaleLabel);
+        femaleAxisTitle.setAttribute("y", (height - 5).toString());
+        femaleAxisTitle.setAttribute("text-anchor", "middle");
+        femaleAxisTitle.setAttribute("fill", "#f472b6");
+        femaleAxisTitle.setAttribute("font-size", "14");
+        femaleAxisTitle.setAttribute("font-weight", "500");
+        femaleAxisTitle.textContent =
+            lang === "ne" ? "महिला जनसंख्या" : "Female Population";
+        g.appendChild(femaleAxisTitle);
     }
 
     // Initialize

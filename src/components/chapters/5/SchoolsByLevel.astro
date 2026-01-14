@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -51,7 +52,7 @@ if (!content) {
                 <h3
                     class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4"
                 >
-                    {content.sectionId}
+                    {formatNumber(content.sectionId, lang)}
                     {content.title}
                 </h3>
             </div>
@@ -74,25 +75,29 @@ if (!content) {
                             >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10 w-16"
-                                    >क्र.स.</th
+                                    >{lang === "ne" ? "क्र.सं." : "SN"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >विद्यालयको नाम</th
+                                    >{
+                                        lang === "ne"
+                                            ? "विद्यालयको नाम"
+                                            : "School Name"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium"
-                                    >ठेगाना</th
+                                    >{lang === "ne" ? "ठेगाना" : "Address"}</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.communitySchools.schools.map(
-                                    (school) => (
+                                    (school: any) => (
                                         <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
-                                                {school.sn}
+                                                {formatNumber(school.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
                                                 {school.name}
@@ -109,7 +114,9 @@ if (!content) {
                 </div>
 
                 <p class="text-zinc-400 font-serif text-sm italic">
-                    स्रोत: {content.communitySchools.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.communitySchools.source
+                    }
                 </p>
             </div>
 
@@ -131,29 +138,37 @@ if (!content) {
                             >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10 w-16"
-                                    >क्र.सं.</th
+                                    >{lang === "ne" ? "क्र.सं." : "SN"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >विद्यालयको नाम</th
+                                    >{
+                                        lang === "ne"
+                                            ? "विद्यालयको नाम"
+                                            : "School Name"
+                                    }</th
                                 >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium border-r border-[#f2e25d]/10"
-                                    >ठेगाना</th
+                                    >{lang === "ne" ? "ठेगाना" : "Address"}</th
                                 >
                                 <th
                                     class="px-4 py-3 text-left font-serif text-zinc-100 font-medium"
-                                    >विद्यार्थी संख्या</th
+                                    >{
+                                        lang === "ne"
+                                            ? "विद्यार्थी संख्या"
+                                            : "Student Count"
+                                    }</th
                                 >
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 content.institutionalSchools.schools.map(
-                                    (school) => (
+                                    (school: any) => (
                                         <tr class="border-b border-[#f2e25d]/5 hover:bg-[#f2e25d]/5 transition-colors duration-200">
                                             <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
-                                                {school.sn}
+                                                {formatNumber(school.sn, lang)}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/5">
                                                 {school.name}
@@ -162,7 +177,10 @@ if (!content) {
                                                 {school.address}
                                             </td>
                                             <td class="px-4 py-3 font-serif text-zinc-100 text-right">
-                                                {school.students}
+                                                {formatNumber(
+                                                    school.students,
+                                                    lang,
+                                                )}
                                             </td>
                                         </tr>
                                     ),
@@ -173,7 +191,9 @@ if (!content) {
                 </div>
 
                 <p class="text-zinc-400 font-serif text-sm italic">
-                    स्रोत: {content.institutionalSchools.source}
+                    {lang === "ne" ? "स्रोत" : "Source"}: {
+                        content.institutionalSchools.source
+                    }
                 </p>
             </div>
         </div>

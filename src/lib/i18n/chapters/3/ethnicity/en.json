@@ -1,0 +1,96 @@
+{
+    "title": "Population Distribution by Ethnicity",
+    "number": "3.6",
+    "content": "Looking at the population distribution by ethnicity in the municipality, the highest is Chhetri with 12,960 or 24.17 percent, followed by Rai with 12,254 or 22.85 percent, and Tharu with 7,462 or 13.91 percent. Similarly, Magar, Vishwakarma, Brahmin-Hill, Tamang, Pariyar, Mijar, Newar, and other ethnicities reside in the municipality. In this ethnically diverse society, locals are found to live with social tolerance. It is necessary to create programs that protect the original culture, traditions, language, and lifestyles of various ethnicities living in the municipality, including the marginalized castes of Nepal who have their own separate language, culture, and lifestyle, and maintain their identity. Detailed distribution is presented in the table below.",
+    "table_title": "Population Distribution by Ethnicity",
+    "table_number": "Table No. 10",
+    "source": "National Census, 2021",
+    "table_data": [
+        {
+            "caste": "Chhetri",
+            "male": "6,090",
+            "female": "6,870",
+            "total": "12,960",
+            "percentage": "24.17"
+        },
+        {
+            "caste": "Rai",
+            "male": "5,743",
+            "female": "6,511",
+            "total": "12,254",
+            "percentage": "22.85"
+        },
+        {
+            "caste": "Tharu",
+            "male": "3,438",
+            "female": "4,024",
+            "total": "7,462",
+            "percentage": "13.91"
+        },
+        {
+            "caste": "Magar",
+            "male": "1,737",
+            "female": "1,989",
+            "total": "3,726",
+            "percentage": "6.95"
+        },
+        {
+            "caste": "Vishwakarma",
+            "male": "1,657",
+            "female": "1,966",
+            "total": "3,623",
+            "percentage": "6.76"
+        },
+        {
+            "caste": "Brahmin-Hill",
+            "male": "1,003",
+            "female": "1,110",
+            "total": "2,113",
+            "percentage": "3.94"
+        },
+        {
+            "caste": "Tamang",
+            "male": "912",
+            "female": "1,047",
+            "total": "1,959",
+            "percentage": "3.65"
+        },
+        {
+            "caste": "Pariyar",
+            "male": "719",
+            "female": "805",
+            "total": "1,524",
+            "percentage": "2.84"
+        },
+        {
+            "caste": "Mijar",
+            "male": "707",
+            "female": "766",
+            "total": "1,473",
+            "percentage": "2.75"
+        },
+        {
+            "caste": "Newar",
+            "male": "639",
+            "female": "686",
+            "total": "1,325",
+            "percentage": "2.47"
+        },
+        {
+            "caste": "Others",
+            "male": "2,512",
+            "female": "2,700",
+            "total": "5,212",
+            "percentage": "9.72"
+        },
+        {
+            "caste": "Total",
+            "male": "25,157",
+            "female": "28,474",
+            "total": "53,631",
+            "percentage": "100"
+        }
+    ],
+    "chart_title": "Population Distribution by Ethnicity",
+    "content_final": "Note: Others include Thakuri, Yakthung, Dhanuk, Kumal, Teli, Sanyasi/Dashnami, Muslim, Sonar, Sundi, Halwa, Majhi, Santhal, Marwari, Rajput, Ghale, Sunuwar, Nuniya, Sunar, Gharti, Brahmin Terai, Kathbaniya, Hajam, Baniya, Rauniyar, Khaling, Sampang, Khavas, Dum, and other ethnicities. The description of ethnicities is also presented in the bar chart."
+}

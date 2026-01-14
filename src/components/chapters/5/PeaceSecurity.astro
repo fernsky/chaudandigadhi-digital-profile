@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 
 interface Props {
     lang: Language;
@@ -23,7 +24,8 @@ if (!content) {
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100"
                 >
-                    ५.६ {content.title}
+                    {formatNumber("5.6", lang)}
+                    {content.title}
                 </h2>
                 <p
                     class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed"
@@ -50,15 +52,23 @@ if (!content) {
                                 <tr>
                                     <th
                                         class="px-4 py-3 text-left font-serif text-sm text-zinc-100"
-                                        >क्र.सं.</th
+                                        >{lang === "ne" ? "क्र.सं." : "SN"}</th
                                     >
                                     <th
                                         class="px-4 py-3 text-left font-serif text-sm text-zinc-100"
-                                        >सुरक्षा निकायहरूको नाम</th
+                                        >{
+                                            lang === "ne"
+                                                ? "सुरक्षा निकायहरूको नाम"
+                                                : "Security Force Name"
+                                        }</th
                                     >
                                     <th
                                         class="px-4 py-3 text-left font-serif text-sm text-zinc-100"
-                                        >रहेको स्थान</th
+                                        >{
+                                            lang === "ne"
+                                                ? "रहेको स्थान"
+                                                : "Location"
+                                        }</th
                                     >
                                 </tr>
                             </thead>
@@ -68,7 +78,10 @@ if (!content) {
                                         (force: any) => (
                                             <tr class="border-b border-[#f2e25d]/5 hover:bg-[#050505] transition-colors">
                                                 <td class="px-4 py-3 font-serif text-sm text-zinc-100">
-                                                    {force.sn}
+                                                    {formatNumber(
+                                                        force.sn,
+                                                        lang,
+                                                    )}
                                                 </td>
                                                 <td class="px-4 py-3 font-serif text-sm text-zinc-100">
                                                     {force.name}
@@ -94,7 +107,7 @@ if (!content) {
                     {content.crimeStatus.intro}
                 </p>
                 <h4 class="font-serif text-lg text-zinc-100 font-medium mb-3">
-                    सामान्य समस्याहरू:
+                    {lang === "ne" ? "सामान्य समस्याहरू:" : "Common Issues:"}
                 </h4>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {

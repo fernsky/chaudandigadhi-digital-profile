@@ -1,5 +1,6 @@
 ---
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
 
 interface Props {
@@ -30,7 +31,10 @@ const data = await loadChapterSection<SectionData>(
         <div id="elected-representatives" class="scroll-mt-32 space-y-12 mb-16">
             <div>
                 <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-8">
-                    <span class="text-[#f2e25d]">{data.id}</span>: {data.title}
+                    <span class="text-[#f2e25d]">
+                        {formatNumber(data.id, lang)}
+                    </span>
+                    : {data.title}
                 </h2>
 
                 {/* Executive Table */}
@@ -43,7 +47,7 @@ const data = await loadChapterSection<SectionData>(
                             <thead class="bg-[#f2e25d]/10 text-white font-serif text-lg">
                                 <tr>
                                     {data.executiveTable.headers.map(
-                                        (header) => (
+                                        (header: string) => (
                                             <th class="px-6 py-4 border-b border-[#f2e25d]/20 font-bold tracking-wide text-[#f2e25d]">
                                                 {header}
                                             </th>
@@ -52,16 +56,20 @@ const data = await loadChapterSection<SectionData>(
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-[#f2e25d]/10 text-zinc-300 font-serif">
-                                {data.executiveTable.rows.map((row) => (
+                                {data.executiveTable.rows.map((row: Row) => (
                                     <tr class="hover:bg-[#f2e25d]/5 transition-colors">
-                                        <td class="px-6 py-4">{row.sn}</td>
+                                        <td class="px-6 py-4">
+                                            {formatNumber(row.sn, lang)}
+                                        </td>
                                         <td class="px-6 py-4 font-medium text-white">
                                             {row.name}
                                         </td>
                                         <td class="px-6 py-4">
                                             {row.position}
                                         </td>
-                                        <td class="px-6 py-4">{row.ward}</td>
+                                        <td class="px-6 py-4">
+                                            {formatNumber(row.ward, lang)}
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -78,17 +86,21 @@ const data = await loadChapterSection<SectionData>(
                         <table class="w-full text-left border-collapse">
                             <thead class="bg-[#f2e25d]/10 text-white font-serif text-lg">
                                 <tr>
-                                    {data.wardTable.headers.map((header) => (
-                                        <th class="px-6 py-4 border-b border-[#f2e25d]/20 font-bold tracking-wide text-[#f2e25d]">
-                                            {header}
-                                        </th>
-                                    ))}
+                                    {data.wardTable.headers.map(
+                                        (header: string) => (
+                                            <th class="px-6 py-4 border-b border-[#f2e25d]/20 font-bold tracking-wide text-[#f2e25d]">
+                                                {header}
+                                            </th>
+                                        ),
+                                    )}
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-[#f2e25d]/10 text-zinc-300 font-serif">
-                                {data.wardTable.rows.map((row) => (
+                                {data.wardTable.rows.map((row: Row) => (
                                     <tr class="hover:bg-[#f2e25d]/5 transition-colors">
-                                        <td class="px-6 py-4">{row.sn}</td>
+                                        <td class="px-6 py-4">
+                                            {formatNumber(row.sn, lang)}
+                                        </td>
                                         <td class="px-6 py-4 font-medium text-white">
                                             {row.name}
                                         </td>
@@ -96,7 +108,7 @@ const data = await loadChapterSection<SectionData>(
                                             {row.position}
                                         </td>
                                         <td class="px-6 py-4 text-center">
-                                            {row.ward}
+                                            {formatNumber(row.ward, lang)}
                                         </td>
                                     </tr>
                                 ))}

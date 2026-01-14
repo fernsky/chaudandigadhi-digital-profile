@@ -1,5 +1,6 @@
 ---
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
 
 interface Props {
@@ -38,18 +39,18 @@ const services = (await loadChapterSection(
                     <!-- 8.2 Header -->
                     <div class="mb-8">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {services.number} {services.title}
+                            {formatNumber(services.number, lang)} {services.title}
                         </h2>
                     </div>
 
                     <!-- 8.2.1 Service Types -->
                     <div id="service-types" class="mb-12">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {services.typesNumber} {services.typesTitle}
+                            {formatNumber(services.typesNumber, lang)} {services.typesTitle}
                         </h3>
                         <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 rounded-lg p-6 md:p-8">
                             <ul class="space-y-3">
-                                {services.serviceTypes.map((item) => (
+                                {services.serviceTypes.map((item: string) => (
                                     <li class="flex items-start text-zinc-300 font-serif text-lg leading-relaxed">
                                         <span class="text-[#f2e25d] mr-3 mt-1.5 text-xs">◆</span>
                                         <span>{item}</span>
@@ -62,10 +63,10 @@ const services = (await loadChapterSection(
                     <!-- 8.2.2 Service Processes -->
                     <div id="service-process" class="mb-12">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {services.processNumber} {services.processTitle}
+                            {formatNumber(services.processNumber, lang)} {services.processTitle}
                         </h3>
                          <div class="space-y-6">
-                            {services.serviceProcesses.map((process) => {
+                            {services.serviceProcesses.map((process: string) => {
                                 const parts = process.split(':');
                                 const hasTitle = parts.length > 1;
                                 const title = hasTitle ? parts[0] + ":" : "";
@@ -86,7 +87,7 @@ const services = (await loadChapterSection(
                     <!-- 8.2.3 Mediation -->
                     <div id="mediation" class="mb-8">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {services.mediationNumber} {services.mediationTitle}
+                            {formatNumber(services.mediationNumber, lang)} {services.mediationTitle}
                         </h3>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
                             {services.mediationContent}
