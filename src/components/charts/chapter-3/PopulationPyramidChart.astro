@@ -55,6 +55,23 @@ const data = content.tableData;
     </div>
 </div>
 
+<div
+    id="pyramid-tooltip"
+    class="fixed opacity-0 pointer-events-none bg-[#111111] border border-[#f2e25d]/30 text-white rounded px-2 py-1 z-[9999] shadow-2xl transition-opacity duration-200 backdrop-blur-sm"
+>
+</div>
+
+<style is:global>
+    #pyramid-tooltip {
+        font-family: serif;
+    }
+    .bar-hover:hover {
+        opacity: 1 !important;
+        stroke: white;
+        stroke-width: 1px;
+    }
+</style>
+
 <script define:vars={{ data, lang }}>
     function createPopulationPyramid() {
         const svg = document.getElementById("population-pyramid");
@@ -151,15 +168,33 @@ const data = content.tableData;
                 "bar-hover transition-opacity duration-300",
             );
 
-            const maleTitle = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "title",
-            );
-            maleTitle.textContent =
-                lang === "ne"
-                    ? `पुरूष (${translatedAge}): ${formatValue(item.male)}`
-                    : `Male (${translatedAge}): ${formatValue(item.male)}`;
-            maleRect.appendChild(maleTitle);
+            maleRect.addEventListener("mouseover", (event) => {
+                const tooltip = document.getElementById("pyramid-tooltip");
+                if (tooltip) {
+                    tooltip.style.opacity = "0.9";
+                    tooltip.innerHTML = `
+                        <div class="font-serif p-2">
+                            <div class="font-bold text-sm mb-1">${translatedAge}</div>
+                            <div class="text-xs text-zinc-300">
+                                ${lang === "ne" ? "पुरूष" : "Male"}: ${formatValue(item.male)}
+                            </div>
+                        </div>
+                    `;
+                    tooltip.style.left = event.clientX + 10 + "px";
+                    tooltip.style.top = event.clientY - 28 + "px";
+                }
+            });
+            maleRect.addEventListener("mousemove", (event) => {
+                const tooltip = document.getElementById("pyramid-tooltip");
+                if (tooltip) {
+                    tooltip.style.left = event.clientX + 10 + "px";
+                    tooltip.style.top = event.clientY - 28 + "px";
+                }
+            });
+            maleRect.addEventListener("mouseout", () => {
+                const tooltip = document.getElementById("pyramid-tooltip");
+                if (tooltip) tooltip.style.opacity = "0";
+            });
             g.appendChild(maleRect);
 
             // FEMALE BAR (Right)
@@ -178,15 +213,33 @@ const data = content.tableData;
                 "bar-hover transition-opacity duration-300",
             );
 
-            const femaleTitle = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "title",
-            );
-            femaleTitle.textContent =
-                lang === "ne"
-                    ? `महिला (${translatedAge}): ${formatValue(item.female)}`
-                    : `Female (${translatedAge}): ${formatValue(item.female)}`;
-            femaleRect.appendChild(femaleTitle);
+            femaleRect.addEventListener("mouseover", (event) => {
+                const tooltip = document.getElementById("pyramid-tooltip");
+                if (tooltip) {
+                    tooltip.style.opacity = "0.9";
+                    tooltip.innerHTML = `
+                        <div class="font-serif p-2">
+                            <div class="font-bold text-sm mb-1">${translatedAge}</div>
+                            <div class="text-xs text-zinc-300">
+                                ${lang === "ne" ? "महिला" : "Female"}: ${formatValue(item.female)}
+                            </div>
+                        </div>
+                    `;
+                    tooltip.style.left = event.clientX + 10 + "px";
+                    tooltip.style.top = event.clientY - 28 + "px";
+                }
+            });
+            femaleRect.addEventListener("mousemove", (event) => {
+                const tooltip = document.getElementById("pyramid-tooltip");
+                if (tooltip) {
+                    tooltip.style.left = event.clientX + 10 + "px";
+                    tooltip.style.top = event.clientY - 28 + "px";
+                }
+            });
+            femaleRect.addEventListener("mouseout", () => {
+                const tooltip = document.getElementById("pyramid-tooltip");
+                if (tooltip) tooltip.style.opacity = "0";
+            });
             g.appendChild(femaleRect);
 
             // AGE LABEL (Center)

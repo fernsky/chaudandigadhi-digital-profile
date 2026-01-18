@@ -60,7 +60,6 @@ const chartData = content.table_data
                 <h3
                     class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
                 >
-                    {formatNumber(content.number, lang)}
                     {content.title}
                 </h3>
             </div>
@@ -318,6 +317,7 @@ const chartData = content.table_data
 
             // 1. Front face
             g.append("rect")
+                .datum(d)
                 .attr("x", xPos)
                 .attr("y", height)
                 .attr("width", barWidth)
@@ -332,6 +332,7 @@ const chartData = content.table_data
 
             // 2. Side face
             g.append("path")
+                .datum(d)
                 .attr(
                     "d",
                     `M ${xPos + barWidth} ${height} L ${xPos + barWidth + skew} ${height - skew} L ${xPos + barWidth + skew} ${height - skew} L ${xPos + barWidth} ${height} Z`,
@@ -347,6 +348,7 @@ const chartData = content.table_data
 
             // 3. Top face
             g.append("path")
+                .datum(d)
                 .attr(
                     "d",
                     `M ${xPos} ${height} L ${xPos + skew} ${height - skew} L ${xPos + barWidth + skew} ${height - skew} L ${xPos + barWidth} ${height} Z`,
