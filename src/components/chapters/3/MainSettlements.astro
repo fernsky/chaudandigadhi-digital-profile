@@ -36,7 +36,7 @@ if (!content) {
 ---
 
 <section
-    id="settlements"
+    id="settlements-households"
     class="relative bg-[#050505] py-8 md:py-12 border-t border-[#f2e25d]/10"
 >
     <div class="container mx-auto px-8">
@@ -46,7 +46,6 @@ if (!content) {
                 <h2
                     class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6"
                 >
-                    {formatNumber(content.number, lang)}
                     {content.title}
                 </h2>
             </div>
@@ -56,7 +55,6 @@ if (!content) {
                 <h3
                     class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
                 >
-                    {formatNumber(content.subsection_number, lang)}
                     {content.subsection_title}
                 </h3>
 

@@ -74,12 +74,12 @@
         {
             "number": 1,
             "title": "Administrative Division Map",
-            "image": "/images/chapters/2/administrative-map.jpg"
+            "image": "/images/chapter-2/Map Image 1.png"
         },
         {
             "number": 2,
             "title": "Municipality Ward Division Map",
-            "image": "/images/chapters/2/ward-map.jpg"
+            "image": "/images/chapter-2/Map Image 2.png"
         }
     ]
 }

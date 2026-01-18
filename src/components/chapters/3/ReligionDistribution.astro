@@ -55,6 +55,7 @@ type ReligionContent = {
         total: string;
     }>;
     content_final: string;
+    chart_title: string;
 };
 
 const content = await loadChapterSection<ReligionContent>(3, "religion", lang);
@@ -75,7 +76,6 @@ if (!content) {
                 <h3
                     class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
                 >
-                    {content.number}
                     {content.title}
                 </h3>
             </div>
@@ -243,11 +243,7 @@ if (!content) {
                 <h4
                     class="font-serif text-2xl md:text-3xl text-white font-medium mb-12 text-center"
                 >
-                    {
-                        lang === "ne"
-                            ? "धर्मअनुसार जनसंख्याको विवरण"
-                            : "Population Distribution by Religion"
-                    }
+                    {content.chart_title}
                 </h4>
                 <div id="religion-3d-chart" class="w-full h-[500px] relative">
                 </div>
@@ -299,6 +295,12 @@ if (!content) {
         </div>
     </div>
 </section>
+
+<div
+    id="religion-tooltip"
+    class="fixed opacity-0 pointer-events-none bg-[#111111] border border-[#f2e25d]/30 text-white rounded px-2 py-1 z-[9999] shadow-2xl transition-opacity duration-200"
+>
+</div>
 
 <script is:inline src="https://d3js.org/d3.v7.min.js"></script>
 <script define:vars={{ content, lang }}>
@@ -455,6 +457,7 @@ if (!content) {
 
             // Side face
             g.append("path")
+                .datum(d)
                 .attr("fill", d3.color(d.color).darker(0.8))
                 .attr(
                     "d",
@@ -470,6 +473,7 @@ if (!content) {
 
             // Top face
             g.append("path")
+                .datum(d)
                 .attr("fill", d3.color(d.color).brighter(0.4))
                 .attr(
                     "d",
@@ -485,6 +489,7 @@ if (!content) {
 
             // Front face
             g.append("rect")
+                .datum(d)
                 .attr("x", xPos)
                 .attr("y", height)
                 .attr("width", barWidth)
@@ -502,10 +507,13 @@ if (!content) {
         barGroups
             .style("cursor", "pointer")
             .on("mouseover", function (event, d) {
-                d3.select(this)
+                const target = d3.select(this);
+                target
                     .transition()
                     .duration(200)
-                    .attr("transform", "translate(0, -5)");
+                    .attr("transform", "translate(0, -5)")
+                    .selectAll("rect, path")
+                    .attr("opacity", 0.8);
 
                 const tooltip = d3.select("#religion-tooltip");
                 tooltip.transition().duration(200).style("opacity", 0.9);
@@ -529,10 +537,13 @@ if (!content) {
                     .style("top", event.clientY - 28 + "px");
             })
             .on("mouseout", function () {
-                d3.select(this)
+                const target = d3.select(this);
+                target
                     .transition()
                     .duration(200)
-                    .attr("transform", "translate(0, 0)");
+                    .attr("transform", "translate(0, 0)")
+                    .selectAll("rect, path")
+                    .attr("opacity", 1);
 
                 d3.select("#religion-tooltip")
                     .transition()
@@ -544,3 +555,9 @@ if (!content) {
         svg.selectAll(".tick line").attr("stroke", "#475569");
     });
 </script>
+
+<style is:global>
+    #religion-tooltip {
+        backdrop-filter: blur(4px);
+    }
+</style>
