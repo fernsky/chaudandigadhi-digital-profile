@@ -236,147 +236,147 @@
       "sections": [
         {
           "id": "4.1",
-          "title": "Economic Overview",
+          "title": "4.1 Economic Overview",
           "slug": "economic-overview"
         },
         {
           "id": "4.1.1",
-          "title": "Industrial Classification",
+          "title": "4.1.1 Industrial Classification",
           "slug": "industrial-classification"
         },
         {
           "id": "4.1.2",
-          "title": "Housing Structure",
+          "title": "4 Housing Structure",
           "slug": "housing-structure"
         },
         {
           "id": "4.1.3",
-          "title": "Import and Export",
+          "title": "4.1.3 Import and Export",
           "slug": "import-export"
         },
         {
           "id": "4.1.4",
-          "title": "Raw Materials Production",
+          "title": "4 Raw Materials Production",
           "slug": "raw-materials"
         },
         {
           "id": "4.1.5",
-          "title": "Foreign Employment",
+          "title": "4.1.5 Foreign Employment",
           "slug": "foreign-employment"
         },
         {
           "id": "4.1.6",
-          "title": "Landless Population",
+          "title": "4.1.6 Landless Population",
           "slug": "landless"
         },
         {
           "id": "4.2",
-          "title": "Land Use and Ownership",
+          "title": "4.2 Land Use and Ownership",
           "slug": "land-use"
         },
         {
           "id": "4.2.1",
-          "title": "Land Distribution",
+          "title": "4.2.1 Land Distribution",
           "slug": "land-distribution"
         },
         {
           "id": "4.2.2",
-          "title": "Agricultural Land",
+          "title": "4.2.2 Agricultural Land",
           "slug": "agricultural-land"
         },
         {
           "id": "4.2.3",
-          "title": "Barren Land",
+          "title": "4.2.3 Barren Land",
           "slug": "barren-land"
         },
         {
           "id": "4.3",
-          "title": "Agriculture and Livestock",
+          "title": "4.3 Agriculture and Livestock",
           "slug": "agriculture-development"
         },
         {
           "id": "4.3.1",
-          "title": "Crop Diseases and Pests",
+          "title": "4.3.1 Crop Diseases and Pests",
           "slug": "crop-diseases"
         },
         {
           "id": "4.3.2",
-          "title": "Vegetable and Fruit Diseases",
+          "title": "4.3.2 Vegetable and Fruit Diseases",
           "slug": "vegetable-fruit-diseases"
         },
         {
           "id": "4.3.3",
-          "title": "Livestock Diseases",
+          "title": "4.3.3 Livestock Diseases",
           "slug": "livestock-diseases"
         },
         {
           "id": "4.3.4",
-          "title": "Commercial Farms",
+          "title": "4.3.4 Commercial Farms",
           "slug": "commercial-farms"
         },
         {
           "id": "4.3.5",
-          "title": "Agriculture Human Resources",
+          "title": "4.3.5 Agriculture Human Resources",
           "slug": "agriculture-hr"
         },
         {
           "id": "4.3.6",
-          "title": "Agriculture Groups and Organizations",
+          "title": "4.3.6 Agriculture Groups and Organizations",
           "slug": "agricultural-groups"
         },
         {
           "id": "4.3.7",
-          "title": "Collection Centers",
+          "title": "4.3.7 Collection Centers",
           "slug": "collection-centers"
         },
         {
           "id": "4.4",
-          "title": "Tourism Development",
+          "title": "4.4 Tourism Development",
           "slug": "tourism-development"
         },
         {
           "id": "4.4.1",
-          "title": "Tourist Sites",
+          "title": "4.4.1 Tourist Sites",
           "slug": "tourism-sites"
         },
         {
           "id": "4.4.2",
-          "title": "Hospitality Services",
+          "title": "4.4.2 Hospitality Services",
           "slug": "tourism-hotels"
         },
         {
           "id": "4.5",
-          "title": "Industry, Trade and Banking",
+          "title": "4.5 Industry, Trade and Banking",
           "slug": "industry-intro"
         },
         {
           "id": "4.5.1",
-          "title": "Industrial Development",
+          "title": "5 Industrial Development",
           "slug": "industrial-development"
         },
         {
           "id": "4.5.2",
-          "title": "Trade and Business",
+          "title": "4.5.2 Trade and Business",
           "slug": "trade-business"
         },
         {
           "id": "4.5.3",
-          "title": "Minerals and Mining",
+          "title": "4.5.3 Minerals and Mining",
           "slug": "minerals-mines"
         },
         {
           "id": "4.5.4",
-          "title": "Local Markets",
+          "title": "4.5.4 Local Markets",
           "slug": "local-markets"
         },
         {
           "id": "4.5.5",
-          "title": "Banking and Financial Institutions",
+          "title": "4.5.5 Banking and Financial Institutions",
           "slug": "banking-finance"
         },
         {
           "id": "4.5.6",
-          "title": "Cooperatives",
+          "title": "4.5.6 Cooperatives",
           "slug": "cooperatives"
         }
       ]

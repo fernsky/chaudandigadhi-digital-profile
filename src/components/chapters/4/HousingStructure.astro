@@ -2,8 +2,8 @@
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
 import { formatNumber } from "../../../lib/i18n/formatters";
-import BarChart from "../../charts/BarChart.astro";
-import PieChart from "../../charts/PieChart.astro";
+import D3BarChart from "../../charts/D3BarChart.astro";
+import D3PieChart from "../../charts/D3PieChart.astro";
 
 interface Props {
     lang: Language;
@@ -468,6 +468,60 @@ const roofChartData = [
                                     }
                                 </td>
                             </tr>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-t border-[#f2e25d]/20 font-medium"
+                            >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
+                                    >{
+                                        lang === "ne" ? "प्रतिशत" : "Percentage"
+                                    }</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                    >{
+                                        formatNumber(
+                                            content.subsections.ownershipDetails
+                                                .percentage.owned,
+                                            lang,
+                                        )
+                                    }%</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                    >{
+                                        formatNumber(
+                                            content.subsections.ownershipDetails
+                                                .percentage.rented,
+                                            lang,
+                                        )
+                                    }%</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                    >{
+                                        formatNumber(
+                                            content.subsections.ownershipDetails
+                                                .percentage.institutional,
+                                            lang,
+                                        )
+                                    }%</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                    >{
+                                        formatNumber(
+                                            content.subsections.ownershipDetails
+                                                .percentage.other,
+                                            lang,
+                                        )
+                                    }%</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right"
+                                    >{formatNumber(100, lang)}%</td
+                                >
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -479,14 +533,12 @@ const roofChartData = [
                     }
                 </p>
 
-                <!-- Ownership Bar Chart -->
-                <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6">
-                    <BarChart
+                <div class="bg-[#0a0a0a]/50 p-6 rounded-lg">
+                    <D3BarChart
                         id="housing-ownership-chart"
                         title={content.subsections.ownershipDetails.chartTitle}
                         labels={ownershipChartLabels}
                         data={ownershipChartData}
-                        backgroundColor="rgba(242, 226, 93, 0.8)"
                         lang={lang}
                     />
                 </div>
@@ -674,6 +726,75 @@ const roofChartData = [
                                     }</td
                                 >
                             </tr>
+                            <tr
+                                class="bg-[#f2e25d]/5 border-t border-[#f2e25d]/20 font-medium"
+                            >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 border-r border-[#f2e25d]/10"
+                                    >{
+                                        lang === "ne" ? "प्रतिशत" : "Percentage"
+                                    }</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                    >{
+                                        formatNumber(
+                                            content.subsections
+                                                .foundationDetails.percentage
+                                                .mudBonded,
+                                            lang,
+                                        )
+                                    }%</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                    >{
+                                        formatNumber(
+                                            content.subsections
+                                                .foundationDetails.percentage
+                                                .cementBonded,
+                                            lang,
+                                        )
+                                    }%</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                    >{
+                                        formatNumber(
+                                            content.subsections
+                                                .foundationDetails.percentage
+                                                .rcc,
+                                            lang,
+                                        )
+                                    }%</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                    >{
+                                        formatNumber(
+                                            content.subsections
+                                                .foundationDetails.percentage
+                                                .wooden,
+                                            lang,
+                                        )
+                                    }%</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right border-r border-[#f2e25d]/10"
+                                    >{
+                                        formatNumber(
+                                            content.subsections
+                                                .foundationDetails.percentage
+                                                .other,
+                                            lang,
+                                        )
+                                    }%</td
+                                >
+                                <td
+                                    class="px-4 py-3 font-serif text-zinc-100 text-right"
+                                    >{formatNumber(100, lang)}%</td
+                                >
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -686,13 +807,12 @@ const roofChartData = [
                 </p>
 
                 <!-- Foundation Bar Chart -->
-                <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6">
-                    <BarChart
+                <div class="bg-[#0a0a0a]/50 p-6 rounded-lg">
+                    <D3BarChart
                         id="housing-foundation-chart"
                         title={content.subsections.foundationDetails.chartTitle}
                         labels={foundationChartLabels}
                         data={foundationChartData}
-                        backgroundColor="rgba(96, 165, 250, 0.8)"
                         lang={lang}
                     />
                 </div>
@@ -1014,29 +1134,15 @@ const roofChartData = [
                 </p>
 
                 <!-- Outer Wall Pie Chart -->
-                <div
-                    class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 flex justify-center"
-                >
-                    <div class="w-full w-full">
-                        <PieChart
-                            id="housing-outerwall-chart"
-                            title={content.subsections.outerWallDetails
-                                .chartTitle}
-                            labels={outerWallChartLabels}
-                            data={outerWallChartData}
-                            lang={lang}
-                            type="doughnut"
-                            backgroundColor={[
-                                "#4472C4",
-                                "#ED7D31",
-                                "#A5A5A5",
-                                "#FFC000",
-                                "#5B9BD5",
-                                "#70AD47",
-                                "#255E91",
-                            ]}
-                        />
-                    </div>
+                <div class="bg-[#0a0a0a]/50 p-6 rounded-lg">
+                    <D3PieChart
+                        id="housing-outerwall-chart"
+                        title={content.subsections.outerWallDetails.chartTitle}
+                        labels={outerWallChartLabels}
+                        data={outerWallChartData}
+                        lang={lang}
+                        height={400}
+                    />
                 </div>
             </div>
 
@@ -1314,27 +1420,15 @@ const roofChartData = [
                 </div>
 
                 <!-- Floor Pie Chart -->
-                <div
-                    class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 flex justify-center"
-                >
-                    <div class="w-full w-full">
-                        <PieChart
-                            id="housing-floor-chart"
-                            title={content.subsections.floorDetails.chartTitle}
-                            labels={floorChartLabels}
-                            data={floorChartData}
-                            lang={lang}
-                            type="pie"
-                            backgroundColor={[
-                                "#92D050",
-                                "#C0504D",
-                                "#7030A0",
-                                "#00B0F0",
-                                "#FFC000",
-                                "#FF0000",
-                            ]}
-                        />
-                    </div>
+                <div class="bg-[#0a0a0a]/50 p-6 rounded-lg">
+                    <D3PieChart
+                        id="housing-floor-chart"
+                        title={content.subsections.floorDetails.chartTitle}
+                        labels={floorChartLabels}
+                        data={floorChartData}
+                        lang={lang}
+                        height={400}
+                    />
                 </div>
             </div>
 
@@ -1643,28 +1737,15 @@ const roofChartData = [
                 </div>
 
                 <!-- Roof Pie Chart -->
-                <div
-                    class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 flex justify-center"
-                >
-                    <div class="w-full w-full">
-                        <PieChart
-                            id="housing-roof-chart"
-                            title={content.subsections.roofDetails.chartTitle}
-                            labels={roofChartLabels}
-                            data={roofChartData}
-                            lang={lang}
-                            type="pie"
-                            backgroundColor={[
-                                "#5B9BD5",
-                                "#ED7D31",
-                                "#70AD47",
-                                "#FFC000",
-                                "#FF0000",
-                                "#A5A5A5",
-                                "#264478",
-                            ]}
-                        />
-                    </div>
+                <div class="bg-[#0a0a0a]/50 p-6 rounded-lg">
+                    <D3PieChart
+                        id="housing-roof-chart"
+                        title={content.subsections.roofDetails.chartTitle}
+                        labels={roofChartLabels}
+                        data={roofChartData}
+                        lang={lang}
+                        height={400}
+                    />
                 </div>
             </div>
         </div>

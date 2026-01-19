@@ -1,0 +1,203 @@
+---
+import type { Language } from "../../lib/i18n";
+
+interface Props {
+    id: string;
+    title: string;
+    labels: string[];
+    data: number[];
+    lang: Language;
+    height?: number;
+}
+
+const { id, title, labels, data, lang, height = 400 } = Astro.props;
+---
+
+<div class="d3-chart-container my-8" id={`${id}-wrapper`}>
+    <h3 class="text-center font-serif text-zinc-100 font-bold mb-4">{title}</h3>
+    <div id={id} class="w-full" style={`height: ${height}px;`}></div>
+</div>
+
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+<script is:inline define:vars={{ id, labels, data, lang, height }}>
+    function initD3BarChart() {
+        const container = document.getElementById(id);
+        if (!container) return;
+
+        // Clear previous content
+        container.innerHTML = "";
+
+        const margin = { top: 30, right: 30, bottom: 60, left: 60 };
+        const width = container.clientWidth - margin.left - margin.right;
+        const chartHeight = height - margin.top - margin.bottom;
+
+        const svg = d3
+            .select(`#${id}`)
+            .append("svg")
+            .attr("width", "100%")
+            .attr("height", height)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // X axis
+        const x = d3.scaleBand().range([0, width]).domain(labels).padding(0.3);
+
+        svg.append("g")
+            .attr("transform", `translate(0, ${chartHeight})`)
+            .call(d3.axisBottom(x))
+            .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-20)")
+            .style("text-anchor", "end")
+            .style("fill", "#cbd5e1")
+            .style(
+                "font-family",
+                lang === "ne"
+                    ? "'Noto Sans Devanagari', sans-serif"
+                    : "'Inter', sans-serif",
+            )
+            .style("font-size", "12px");
+
+        // Y axis
+        const y = d3
+            .scaleLinear()
+            .domain([0, d3.max(data) * 1.1 || 10])
+            .range([chartHeight, 0]);
+
+        const yAxis = d3.axisLeft(y).ticks(5);
+
+        if (lang === "ne") {
+            const nepaliDigits = [
+                "०",
+                "१",
+                "२",
+                "३",
+                "४",
+                "५",
+                "६",
+                "७",
+                "८",
+                "९",
+            ];
+            yAxis.tickFormat((d) => {
+                return String(d).replace(
+                    /\d/g,
+                    (digit) => nepaliDigits[parseInt(digit)],
+                );
+            });
+        }
+
+        svg.append("g")
+            .call(yAxis)
+            .selectAll("text")
+            .style("fill", "#cbd5e1")
+            .style(
+                "font-family",
+                lang === "ne"
+                    ? "'Noto Sans Devanagari', sans-serif"
+                    : "'Inter', sans-serif",
+            );
+
+        // Tooltip
+        const tooltip = d3
+            .select("body")
+            .append("div")
+            .style("opacity", 0)
+            .attr("class", "d3-tooltip")
+            .style("background-color", "rgba(0, 0, 0, 0.8)")
+            .style("color", "white")
+            .style("padding", "10px")
+            .style("border-radius", "5px")
+            .style("position", "absolute")
+            .style("pointer-events", "none")
+            .style(
+                "font-family",
+                lang === "ne"
+                    ? "'Noto Sans Devanagari', sans-serif"
+                    : "'Inter', sans-serif",
+            )
+            .style("z-index", "1000")
+            .style("border", "1px solid #f2e25d");
+
+        const nepaliDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+        const formatNum = (n) => {
+            if (lang !== "ne") return n.toLocaleString();
+            return String(n).replace(
+                /\d/g,
+                (digit) => nepaliDigits[parseInt(digit)],
+            );
+        };
+
+        // Bars
+        svg.selectAll("rect")
+            .data(data.map((d, i) => ({ value: d, index: i })))
+            .enter()
+            .append("rect")
+            .attr("x", (d) => x(labels[d.index]))
+            .attr("width", x.bandwidth())
+            .attr("fill", "#f2e25d")
+            .attr("opacity", 0.8)
+            .attr("y", chartHeight) // Initial position for animation
+            .attr("height", 0) // Initial height for animation
+            .on("mouseover", function (event, d) {
+                const i = d.index;
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("opacity", 1)
+                    .attr("fill", "#eab308");
+                tooltip.transition().duration(200).style("opacity", 1);
+                tooltip
+                    .html(`${labels[i]}: ${formatNum(d.value)}`)
+                    .style("left", event.pageX + 10 + "px")
+                    .style("top", event.pageY - 28 + "px");
+            })
+            .on("mousemove", function (event) {
+                tooltip
+                    .style("left", event.pageX + 10 + "px")
+                    .style("top", event.pageY - 28 + "px");
+            })
+            .on("mouseout", function () {
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("opacity", 0.8)
+                    .attr("fill", "#f2e25d");
+                tooltip.transition().duration(200).style("opacity", 0);
+            })
+            .transition() // Animation
+            .duration(1000)
+            .attr("y", (d) => y(d.value))
+            .attr("height", (d) => chartHeight - y(d.value))
+            .delay((d, i) => i * 100);
+    }
+
+    // Initialize
+    if (document.readyState === "complete") {
+        initD3BarChart();
+    } else {
+        window.addEventListener("load", initD3BarChart);
+    }
+
+    // For Astro View Transitions
+    document.addEventListener("astro:page-load", initD3BarChart);
+
+    // Responsive
+    window.addEventListener("resize", initD3BarChart);
+</script>
+
+<style>
+    .d3-chart-container {
+        background: rgba(10, 10, 10, 0.5);
+        border: 1px solid rgba(242, 226, 93, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .domain {
+        stroke: #475569;
+    }
+
+    .tick line {
+        stroke: #475569;
+    }
+</style>

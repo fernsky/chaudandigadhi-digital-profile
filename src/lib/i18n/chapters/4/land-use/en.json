@@ -1,55 +1,55 @@
 {
-    "title": "भू–उपयोग तथा स्वामित्व",
+    "title": "4.2 Land Use and Ownership",
     "sectionId": "land-use",
-    "number": "४.२",
-    "intro": "भूमि महत्वपूर्ण प्राकृतिक साधन हो । आर्थिक विकासको लागि यसको समुचित उपयोग गर्नु पर्दछ । भूमिलाई कृषि, आवास, सडक, पिउने पानी, सिँचाई, विद्युत तथा उर्जा, सूचना तथा सञ्चार आदिको प्रवन्धको लागि प्रयोग गर्ने गरिन्छ । यस खण्डमा विशेष गरी नगरपालिकाको भू–उपयोग र भू–आवरणको वस्तुगत चित्रण गरिएको छ ।",
+    "number": "",
+    "intro": "Land is an important natural resource. For economic development, it must be used properly. Land is used for agriculture, housing, roads, drinking water, irrigation, electricity and energy, information and communication, etc. This section specifically depicts the municipality's land use and land cover.",
     "distribution": {
-        "title": "भू–उपयोगको वितरण",
-        "number": "४.२.१",
-        "content": "यस नगरपालिकाको वर्तमान भू–उपयोगलाई हेर्दा ५७.७५ प्रतिशत अर्थात् सबैभन्दा धेरै वन क्षेत्रले ओगटेको छ भने दोस्रोमा कृषिले ओगटेको क्षेत्र रहेको छ । उपलब्ध जमिन मध्ये खेतीयोग्य जमिनको अंश राम्रो रहेको छ । सम्पूर्ण खेतीयोग्य जमिनमा वैज्ञानिक कृषि प्रणाली अवलम्बन गर्न सके उत्पादनको राम्रो सम्भावना देखिन्छ । यस पालिकाको भू-उपयोगको अर्को उल्लेखनीय पक्ष भनेको यहाँको वनजंगल तथा वनस्पतीले ढाकेको क्षेत्र हो । समग्र भू-भागको ५७.७५ प्रतिशत वनक्षेत्र रहनु पालिकाबासीको लागि सुखद रहेको छ । यहाँको अन्य भू-उपयोगको विस्तृत विवरण तालिकामा उल्लेख गरिएको छ:",
+        "title": "Distribution of Land Use",
+        "number": "4.2.1",
+        "content": "Looking at the current land use of this municipality, 57.75 percent, which is the largest area, is covered by forest, followed by agriculture. Among the available land, the portion of cultivable land is good. If scientific agriculture systems can be adopted in all cultivable land, there is a good possibility of production. Another notable aspect of this municipality's land use is the area covered by forests and vegetation. 57.75 percent of the total area being forest is positive for the residents. Detailed information on other land uses is mentioned in the table:",
         "tableData": [
             {
-                "category": "कृषि",
+                "category": "Agriculture",
                 "area": 84.29,
                 "percentage": 29.70
             },
             {
-                "category": "व्यवसायिक क्षेत्र",
+                "category": "Commercial Area",
                 "area": 0.37,
                 "percentage": 0.13
             },
             {
-                "category": "धार्मिक क्षेत्र",
+                "category": "Religious Area",
                 "area": 0.13,
                 "percentage": 0.05
             },
             {
-                "category": "वनजंगल क्षेत्र",
+                "category": "Forest Area",
                 "area": 163.88,
                 "percentage": 57.75
             },
             {
-                "category": "जल क्षेत्र",
+                "category": "Water Body",
                 "area": 23.89,
                 "percentage": 8.42
             },
             {
-                "category": "औद्योगिक क्षेत्र",
+                "category": "Industrial Area",
                 "area": 0.19,
                 "percentage": 0.07
             },
             {
-                "category": "अन्य",
+                "category": "Other",
                 "area": 0.26,
                 "percentage": 0.09
             },
             {
-                "category": "सार्वजनिक उपयोगको क्षेत्र",
+                "category": "Public Utility Area",
                 "area": 3.79,
                 "percentage": 1.34
             },
             {
-                "category": "आवास क्षेत्र",
+                "category": "Residential Area",
                 "area": 6.98,
                 "percentage": 2.46
             }
@@ -58,46 +58,46 @@
             "area": 283.78,
             "percentage": 100
         },
-        "source": "GIS तथ्याङ्कमा आधारित"
+        "source": "Based on GIS Data"
     },
     "agricultural": {
-        "title": "खेतीयोग्य जमिन सम्बन्धी विवरण",
-        "number": "४.२.२",
-        "content": "वैज्ञानिक र व्यवसायिक ढङ्गले भू–उपयोग नहुँदा कृषि क्षेत्रमा ठुलो घाटा व्यहोर्नु परेको अवस्था छ । नगरमा उपलब्ध सम्पूर्ण खेतियोग्य जमिनको वैज्ञानिक र व्यवसायिक ढङ्गले सदुपयोग हुन सकेको पाइँदैन् खेतीयोग्य जमिनको उपलब्धता भएपनि पूर्ण सदुपयोग नहुँदा एकातर्फ जमिन बाँझो हुँदै जाने त अर्कोतर्फ कृषि उत्पादनमा कमी भई आयात गर्नुपर्ने अवस्था श्रृजना हुन सक्छ । भू–सूचना प्रणालीबाट प्राप्त तथ्याङ्क अनुसार नगरपालिकामा ८४.२९ वर्ग कि.मि. अर्थात २९.७० प्रतिशत जमिन खेतीयोग्य रहेको छ ।",
+        "title": "Cultivable Land Details",
+        "number": "4.2.2",
+        "content": "A large loss is faced in the agriculture sector when land use is not scientific and commercial. Not all available cultivable land in the city is utilized scientifically and commercially. Although cultivable land is available, lack of full utilization can lead to land becoming barren on one hand, and a decrease in agricultural production necessitating imports on the other. According to data obtained from the Land Information System, 84.29 sq. km. or 29.70 percent of land in the municipality is cultivable.",
         "irrigation": {
-            "intro": "जमिन खेतीयोग्य भएर मात्र हुँदैन् त्यसमा सिँचाईको सुविधा हुनुपर्दछ । खेतीयोग्य जमिनमा खेतीपाती गरी पूर्ण सदुपयोग गर्न त्यसमा सिँचाईको सुविधा पुर्‍याउनु अनिवार्य हुन्छ । तसर्थ स्थानीय तहहरूले आफ्नो क्षेत्रमा रहेको खेतीयोग्य जमिनको यथार्थ विवरण तयार पारी त्यसमध्ये सिँचाई पुगेको र नपुगेको जमिनको समेत सही तथ्याङ्क हुनुपर्दछ । यस पश्चात सिँचाई नपुगेको जमिनमा एक वा वैकल्पिक उपायले सिँचाई पुर्‍याउन प्राथमिकता केन्द्रीत गर्नु आवश्यक हुन्छ । यस पालिकामा रहेका खेतीयोग्य जमिनमा विभिन्न सिँचाई आयोजनाहरु मार्फत सिँचाई गरिदै आइएको छ । नगरपालिकाबाट प्राप्त पछिल्लो तथ्याङ्क अनुसार पालिकामा रहेका सिँचाई आयोजनाहरुको विस्तृत विवरण तालिकामा प्रस्तुत गरिएको छ ।",
+            "intro": "It is not enough for land to be cultivable; it must have irrigation facilities. To fully utilize cultivable land for farming, providing irrigation facilities is mandatory. Therefore, local levels must prepare factual details of cultivable land in their area, including accurate data on irrigated and non-irrigated land. After this, priority must be focused on providing irrigation to non-irrigated land through one or alternative measures. In this municipality, irrigation is being done through various irrigation projects. Detailed information on irrigation projects in the municipality is presented in the table.",
             "projects": [
                 {
-                    "name": "पँधेरे खोला सिँचाई योजना",
-                    "area": "१२ हेक्टर"
+                    "name": "Pandhere Khola Irrigation Project",
+                    "area": "12 Hactare"
                 },
                 {
-                    "name": "चिसापानी कुलो",
-                    "area": "६ हेक्टर"
+                    "name": "Chisapani Kulo",
+                    "area": "6 Hactare"
                 },
                 {
-                    "name": "खुरखुरे साना सिँचाई योजना",
-                    "area": "२१ हेक्टर"
+                    "name": "Khurkhure Small Irrigation Project",
+                    "area": "21 Hactare"
                 },
                 {
-                    "name": "सुन्दरी खोला सिँचाई योजना",
-                    "area": "१९ हेक्टर"
+                    "name": "Sundari Khola Irrigation Project",
+                    "area": "19 Hactare"
                 },
                 {
-                    "name": "विष्णुजग सिँचाई योजना",
-                    "area": "२१ हेक्टर"
+                    "name": "Bishnujag Irrigation Project",
+                    "area": "21 Hactare"
                 },
                 {
-                    "name": "कालीटार तल्लो सिँचाई योजना",
-                    "area": "६ हेक्टर"
+                    "name": "Kalitar Lower Irrigation Project",
+                    "area": "6 Hactare"
                 }
             ],
-            "source": "नगर कार्यपालिकाको कार्यालय"
+            "source": "Office of the Municipal Executive"
         }
     },
     "barren": {
-        "title": "बाँझो जमिन सम्बन्धी विवरण",
-        "number": "४.२.३",
-        "content": "नगरहरुमा कतिपय क्षेत्रहरू प्रयोगहीन अवस्थामा बाँझो रहेका हुन्छन् । सबै प्रकारका जमिनहरूको एक वा अर्को प्रकारले सदुपयोग गर्न सकिन्छ । जमिन आफैमा एक अमूल्य प्राकृतिक सम्पदा हो । खेती नहुने क्षेत्रमा डालेघाँस वा जडिबुटी लगाउन सकिन्छ भने उपयुक्त स्थानहरूलाई खुल्ला क्षेत्र, मनोरञ्जन स्थल, पार्क वा बगैंचाको रुपमा समेत विकास गर्न सकिन्छ । खेती नहुने अवस्थामा आवास विकासका लागि समेत यस्तो जमिनको सदुपयोग गर्न सकिन्छ । यस नगरपालिकामा खोलाको किनारा तथा भिराला पाखा पखेराका जमिनहरु बाँझो अवस्थामा रहेका छन् ।"
+        "title": "Barren Land Details",
+        "number": "4.2.3",
+        "content": "In cities, many areas remain barren and unused. All types of land can be utilized in one way or another. Land itself is an invaluable natural heritage. In areas where farming is not possible, fodder trees or herbs can be planted, while suitable locations can be developed as open spaces, recreational spots, parks, or gardens. In case farming is not possible, such land can be utilized for housing development as well. In this municipality, land on the banks of rivers and steep slopes remains barren."
     }
 }
