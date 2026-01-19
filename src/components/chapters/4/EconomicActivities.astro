@@ -28,16 +28,6 @@ type ForeignEmploymentSection = SimpleSection & {
     grandTotal?: number[];
 };
 
-const importExport = (await loadChapterSection(
-    4,
-    "import-export",
-    lang,
-)) as SimpleSection;
-const rawMaterials = (await loadChapterSection(
-    4,
-    "raw-materials",
-    lang,
-)) as SimpleSection;
 const foreignEmployment = (await loadChapterSection(
     4,
     "foreign-employment",
@@ -104,55 +94,7 @@ const headers =
           };
 ---
 
-<!-- 4.1.3 Import/Export -->{
-    importExport && (
-        <section
-            id="import-export"
-            class="relative bg-[#050505] py-8 md:py-12 border-t border-[#f2e25d]/10"
-        >
-            <div class="container mx-auto px-8">
-                <div class="w-full">
-                    <div class="mb-6">
-                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(importExport.number, lang)}{" "}
-                            {importExport.title}
-                        </h2>
-                    </div>
-                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
-                        {importExport.content}
-                    </p>
-                </div>
-            </div>
-        </section>
-    )
-}
-
-<!-- 4.1.4 Raw Materials -->
-{
-    rawMaterials && (
-        <section
-            id="raw-materials"
-            class="relative bg-[#050505] py-8 md:py-12 border-t border-[#f2e25d]/10"
-        >
-            <div class="container mx-auto px-8">
-                <div class="w-full">
-                    <div class="mb-6">
-                        <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(rawMaterials.number, lang)}{" "}
-                            {rawMaterials.title}
-                        </h2>
-                    </div>
-                    <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
-                        {rawMaterials.content}
-                    </p>
-                </div>
-            </div>
-        </section>
-    )
-}
-
-<!-- 4.1.5 Foreign Employment -->
-{
+<!-- 4.1.5 Foreign Employment -->{
     foreignEmployment && (
         <section
             id="foreign-employment"

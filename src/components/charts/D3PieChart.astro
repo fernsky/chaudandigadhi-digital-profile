@@ -1,0 +1,274 @@
+---
+import type { Language } from "../../lib/i18n";
+
+interface Props {
+    id: string;
+    title: string;
+    labels: string[];
+    data: number[];
+    lang: Language;
+    height?: number; // User wants it small, so default will be smaller
+}
+
+const { id, title, labels, data, lang, height = 350 } = Astro.props;
+---
+
+<div class="d3-pie-container my-8" id={`${id}-wrapper`}>
+    <h3 class="text-center font-serif text-zinc-100 font-bold mb-6">{title}</h3>
+    <div
+        class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12"
+    >
+        <div
+            id={id}
+            class="w-full md:w-3/5 flex justify-center items-center"
+            style={`height: ${height}px;`}
+        >
+        </div>
+        <div
+            id={`${id}-legend`}
+            class="flex flex-wrap md:flex-col justify-center md:justify-start gap-x-6 gap-y-3 w-full md:w-2/5 max-h-[400px] overflow-y-auto custom-scrollbar pr-2"
+        >
+        </div>
+    </div>
+</div>
+
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+<script is:inline define:vars={{ id, labels, data, lang, height }}>
+    function initD3PieChart() {
+        const container = document.getElementById(id);
+        if (!container) return;
+
+        // Clear previous content
+        container.innerHTML = "";
+        document.getElementById(`${id}-legend`).innerHTML = "";
+
+        const width = container.clientWidth;
+        const radius = Math.min(width, height) / 2 - 40;
+
+        const svg = d3
+            .select(`#${id}`)
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+        // Premium Color Palette (Inspiration from Chapter 3)
+        const colors = [
+            "#f2e25d", // Gold
+            "#3b82f6", // Blue-500
+            "#10b981", // Emerald-500
+            "#8b5cf6", // Violet-500
+            "#f97316", // Orange-500
+            "#ec4899", // Pink-500
+            "#06b6d4", // Cyan-500
+            "#84cc16", // Lime-500
+        ];
+
+        const colorScale = d3.scaleOrdinal().domain(labels).range(colors);
+
+        const pie = d3
+            .pie()
+            .value((d) => d)
+            .sort(null);
+
+        const arc = d3
+            .arc()
+            .innerRadius(radius * 0.5) // Doughnut style for premium look
+            .outerRadius(radius);
+
+        const outerArc = d3
+            .arc()
+            .innerRadius(radius * 1.05)
+            .outerRadius(radius * 1.05);
+
+        // Tooltip
+        const tooltip = d3
+            .select("body")
+            .append("div")
+            .style("opacity", 0)
+            .attr("class", "d3-tooltip")
+            .style("background-color", "rgba(0, 0, 0, 0.8)")
+            .style("color", "white")
+            .style("padding", "10px")
+            .style("border-radius", "5px")
+            .style("position", "absolute")
+            .style("pointer-events", "none")
+            .style(
+                "font-family",
+                lang === "ne"
+                    ? "'Noto Sans Devanagari', sans-serif"
+                    : "'Inter', sans-serif",
+            )
+            .style("z-index", "1000")
+            .style("border", "1px solid #f2e25d");
+
+        const nepaliDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+        const formatNum = (n) => {
+            if (lang !== "ne") return n.toLocaleString();
+            return String(n).replace(
+                /\d/g,
+                (digit) => nepaliDigits[parseInt(digit)],
+            );
+        };
+
+        const totalValue = d3.sum(data);
+
+        // Drawing paths
+        const arcs = svg
+            .selectAll(".arc")
+            .data(pie(data))
+            .enter()
+            .append("g")
+            .attr("class", "arc");
+
+        arcs.append("path")
+            .attr("d", arc)
+            .attr("fill", (d, i) => colorScale(labels[i]))
+            .attr("stroke", "#1e293b")
+            .style("stroke-width", "2px")
+            .style("opacity", 0.8)
+            .on("mouseover", function (event, d) {
+                const i = d.index;
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("opacity", 1)
+                    .style("transform", "scale(1.05)");
+                tooltip.transition().duration(200).style("opacity", 1);
+
+                const percentage = ((d.data / totalValue) * 100).toFixed(2);
+                tooltip
+                    .html(
+                        `${labels[i]}: ${formatNum(d.data)} (${formatNum(percentage)}%)`,
+                    )
+                    .style("left", event.pageX + 10 + "px")
+                    .style("top", event.pageY - 28 + "px");
+            })
+            .on("mousemove", function (event) {
+                tooltip
+                    .style("left", event.pageX + 10 + "px")
+                    .style("top", event.pageY - 28 + "px");
+            })
+            .on("mouseout", function () {
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr("opacity", 0.8)
+                    .style("transform", "scale(1)");
+                tooltip.transition().duration(200).style("opacity", 0);
+            })
+            .transition() // Entry animation
+            .duration(1000)
+            .attrTween("d", function (d) {
+                const i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
+                return function (t) {
+                    d.endAngle = i(t);
+                    return arc(d);
+                };
+            });
+
+        // Center Text
+        svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("dy", "0.35em")
+            .style("fill", "#f2e25d")
+            .style("font-size", "20px")
+            .style("font-weight", "bold")
+            .style(
+                "font-family",
+                lang === "ne"
+                    ? "'Noto Sans Devanagari', sans-serif"
+                    : "'Inter', sans-serif",
+            )
+            .text(formatNum(totalValue));
+
+        svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("dy", "1.7em")
+            .style("fill", "#cbd5e1")
+            .style("font-size", "12px")
+            .style(
+                "font-family",
+                lang === "ne"
+                    ? "'Noto Sans Devanagari', sans-serif"
+                    : "'Inter', sans-serif",
+            )
+            .text(lang === "ne" ? "जम्मा" : "Total");
+
+        // Legend
+        const legendContainer = d3.select(`#${id}-legend`);
+        labels.forEach((label, i) => {
+            const item = legendContainer
+                .append("div")
+                .attr("class", "flex items-center gap-2 cursor-pointer")
+                .on("mouseover", () => {
+                    svg.selectAll("path")
+                        .filter((d, idx) => idx === i)
+                        .transition()
+                        .duration(200)
+                        .attr("opacity", 1)
+                        .style("transform", "scale(1.05)");
+                })
+                .on("mouseout", () => {
+                    svg.selectAll("path")
+                        .filter((d, idx) => idx === i)
+                        .transition()
+                        .duration(200)
+                        .attr("opacity", 0.8)
+                        .style("transform", "scale(1)");
+                });
+
+            item.append("div")
+                .style("width", "12px")
+                .style("height", "12px")
+                .style("border-radius", "50%")
+                .style("background-color", colorScale(label));
+
+            item.append("span")
+                .attr("class", "text-zinc-300 text-xs font-serif")
+                .text(label);
+        });
+    }
+
+    // Initialize
+    if (document.readyState === "complete") {
+        initD3PieChart();
+    } else {
+        window.addEventListener("load", initD3PieChart);
+    }
+
+    // For Astro View Transitions
+    document.addEventListener("astro:page-load", initD3PieChart);
+
+    // Responsive
+    window.addEventListener("resize", initD3PieChart);
+</script>
+
+<style>
+    .d3-pie-container {
+        background: rgba(10, 10, 10, 0.5);
+        border: 1px solid rgba(242, 226, 93, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .arc path {
+        transition: transform 0.3s ease;
+        transform-origin: center;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(242, 226, 93, 0.2);
+        border-radius: 20px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(242, 226, 93, 0.4);
+    }
+</style>

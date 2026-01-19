@@ -1,6 +1,6 @@
 {
-    "title": "तरकारी तथा फलफूलमा लाग्ने रोग तथा किरा",
-    "number": "४.३.२",
+    "title": "४.३.२ तरकारी तथा फलफूलमा लाग्ने रोग तथा किराहरूको विवरण",
+    "number": "",
     "tableTitle": "तरकारी तथा फलफूलमा लाग्ने रोग तथा किरा",
     "tableNumber": "तालिका नं. ३०",
     "source": "नगर कार्यपालिकाको कार्यालय",
@@ -8,50 +8,50 @@
         {
             "sn": "१.",
             "crop": "गोलभेडा",
-            "majorDisease": "टुटायप्सूलूटा, सेतो झिंगा, लाही, फलको गवारो, पतेरो आदि ।",
-            "majorPest": "उडुवा—अगौटे, पछौटे आईलाउने, ममाजाइक आदि ।"
+            "majorDisease": "डढुवा (अगौटे तथा पछौटे), ओइलाउने रोग (Wilt), मोजाइक भाइरस आदि ।",
+            "majorPest": "ट्युटा एब्सोलुटा (Tuta absoluta), सेतो झिंगा, लाही, फल गवारो, पतेरो आदि ।"
         },
         {
             "sn": "२.",
             "crop": "काउली, बन्दा",
-            "majorDisease": "डाईमण्ड ब्याक मोथ, टोवाको क्याटरपिलर, लाही, उफ्रने फडके आदि ।",
-            "majorPest": "सफटरट, ब्लाक रट, अल्टरवेरिया, क्लव रुट डेम्पीङ अफ आदि ।"
+            "majorDisease": "कमलो कुहिने (Soft rot), कालो कुहिने (Black rot), अल्टरनेरिया (Alternaria), क्लव रुट (Club root), फेद कुहिने (Damping off) आदि ।",
+            "majorPest": "डाइमण्ड ब्याक मोथ (DBM), सुर्तीको झुसिलकिरा (Tobacco caterpillar), लाही, उफ्रने फड्के आदि ।"
         },
         {
             "sn": "३.",
             "crop": "आलू",
-            "majorDisease": "डढुवा, मोजाइफ खैरो पिप, फेदकटुवा, लाही, चक्के आदि ।",
-            "majorPest": "आलुको पुतली, रातो कमिला, पात खाने लाभ्रे आदि ।"
+            "majorDisease": "डढुवा, मोजाइक, खैरो पिप (Brown rot) आदि ।",
+            "majorPest": "फेदकटुवा (Cutworm), लाही (Aphid), चक्के, आलुको पुतली (Potato tuber moth), रातो कमिला, पात खाने लाभ्रे आदि ।"
         },
         {
             "sn": "४.",
             "crop": "रायो",
-            "majorDisease": "डाईमण्ड ब्याक मोथ, टोवाको क्याटरपिलर, लाही, उफ्रने फडके आदि ।",
-            "majorPest": "सफटरट , ब्लाक रट, अल्टरवेरिया, क्लव रुट डेम्पीङ अफ आदि ।"
+            "majorDisease": "कमलो कुहिने (Soft rot), कालो कुहिने (Black rot), अल्टरनेरिया (Alternaria), क्लव रुट (Club root), फेद कुहिने (Damping off) आदि ।",
+            "majorPest": "डाइमण्ड ब्याक मोथ (DBM), सुर्तीको झुसिलकिरा (Tobacco caterpillar), लाही, उफ्रने फड्के आदि ।"
         },
         {
             "sn": "५.",
             "crop": "सुन्तला/कागती",
-            "majorDisease": "पतेरो, लाही, फ्रुट फ्लाई, स्केल लिफ, जरा कुहिने रोग, फेद कुहिने, खरानेस/धुले, भाईनर, pink disease, anthracnose, दादे रोग (citrus scab), गुद निस्किने रोग (Gummosis), कालो ध्वाँसे (sooty mould), Canker, Citrus greening, (Citrus tristeza virus CTV) लेमन डग आदि ।",
-            "majorPest": "क्याकर, फ्रुट रट, रुटरघ, हरियो पतेरा, फल कुहाउने झिंगा (fruit fly), स्वीटीमोल्ड, citrus psylla, Leaf miner, Red spider mite, blue bettle, stem & trunk borer, लाही, थ्रिप्स, निमाटोड, Lemon butterfly किरा आदि ।"
+            "majorDisease": "क्याङ्कर (Canker), जरा कुहिने रोग, फेद कुहिने, गुलाबी रोग (Pink disease), एन्थ्राकनोज (Anthracnose), दादे रोग (Citrus scab), गुद निस्किने रोग (Gummosis), सिट्रस ग्रिनिङ (Citrus greening), सिट्रस ट्रिस्टेजा भाइरस (CTV), कालो ध्वाँसे (Sooty mould) आदि ।",
+            "majorPest": "पतेरो, लाही, फल कुहाउने झिंगा (Fruit fly), लिफ माइनर (Leaf miner), रातो माकुरे सुलसुले (Red spider mite), नीलो बीटल (Blue beetle), काण्ड तथा फेद गवारो (Stem & trunk borer), कागतीको पुतली (Lemon butterfly/dog) आदि ।"
         },
         {
             "sn": "",
             "crop": "काँक्रो/फर्सी",
-            "majorDisease": "पाउडररी मिल्ड्यू, डाउनी मिल्ड्यू, मोजाइक भाईरस",
-            "majorPest": "Red pumpkin beetle, Aulacophora foveicollis, Fruit flies, Bacterocera cucurbitae, Aphids, Aphis gossyypii"
+            "majorDisease": "धुलो ढुसी (Powdery mildew), भुवादार ढुसी (Downy mildew), मोजाइक भाइरस (Mosaic virus)",
+            "majorPest": "रातो फर्सी बीटल (Red pumpkin beetle), आउलाकोफोरा फोभिकोलीस (Aulacophora foveicollis), फल कुहाउने झिंगा (Fruit flies), ब्याक्टेरोसेरा कुकुरबिटे (Bacterocera cucurbitae), लाही (Aphids), एफिस गोसिपी (Aphis gossyypii)"
         },
         {
             "sn": "",
             "crop": "सिमी/केराउ",
             "majorDisease": "सिन्दुरे रोग, खराने रोग",
-            "majorPest": "Soyabean hairy caterpillar, Spilarctia casigneta, Pod borers, Helicoverpa armigera, Coepea aphids, Aphis craccivora"
+            "majorPest": "भटमासको झुसिलकिरा (Soyabean hairy caterpillar), स्पिलार्क्टिया क्यासिग्नेटा (Spilarctia casigneta), कोसा गवारो (Pod borers), हेलिकोभर्पा आर्मीजेरा (Helicoverpa armigera), बोडीको लाही (Cowpea aphids), एफिस क्राक्सीभोरा (Aphis craccivora)"
         },
         {
             "sn": "",
             "crop": "आँप",
             "majorDisease": "खराने रोग, आँप फुट्ने रोग, ब्याक्टेरियल कालो थोप्ले रोग, धुलो ढुसी",
-            "majorPest": "Fruitfly, Stem Broer, Leaf webber, Stone weevil"
+            "majorPest": "फल कुहाउने झिंगा (Fruitfly), काण्ड गवारो (Stem Borer), पात जालो बुन्ने किरा (Leaf webber), कोयाको घुन (Stone weevil)"
         },
         {
             "sn": "",
