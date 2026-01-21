@@ -61,6 +61,8 @@ const data = content.tableData;
 >
 </div>
 
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+
 <style is:global>
     #pyramid-tooltip {
         font-family: serif;
@@ -154,18 +156,23 @@ const data = content.tableData;
                 "http://www.w3.org/2000/svg",
                 "rect",
             );
+            // Start at center
+            maleRect.setAttribute("x", (centerX - centerGap / 2).toString());
+            maleRect.setAttribute("y", y.toString());
+            maleRect.setAttribute("width", "0"); // Start with 0 width
+            // Store final values for D3 animation
             maleRect.setAttribute(
-                "x",
+                "data-final-x",
                 (centerX - centerGap / 2 - maleWidth).toString(),
             );
-            maleRect.setAttribute("y", y.toString());
-            maleRect.setAttribute("width", maleWidth.toString());
+            maleRect.setAttribute("data-final-width", maleWidth.toString());
+
             maleRect.setAttribute("height", actualBarHeight.toString());
             maleRect.setAttribute("fill", "#60a5fa");
             maleRect.setAttribute("opacity", "0.8");
             maleRect.setAttribute(
                 "class",
-                "bar-hover transition-opacity duration-300",
+                "bar-hover transition-opacity duration-300 male-bar",
             );
 
             maleRect.addEventListener("mouseover", (event) => {
@@ -204,13 +211,16 @@ const data = content.tableData;
             );
             femaleRect.setAttribute("x", (centerX + centerGap / 2).toString());
             femaleRect.setAttribute("y", y.toString());
-            femaleRect.setAttribute("width", femaleWidth.toString());
+            femaleRect.setAttribute("width", "0"); // Start with 0 width
+            // Store final width for D3 animation
+            femaleRect.setAttribute("data-final-width", femaleWidth.toString());
+
             femaleRect.setAttribute("height", actualBarHeight.toString());
             femaleRect.setAttribute("fill", "#f472b6");
             femaleRect.setAttribute("opacity", "0.8");
             femaleRect.setAttribute(
                 "class",
-                "bar-hover transition-opacity duration-300",
+                "bar-hover transition-opacity duration-300 female-bar",
             );
 
             femaleRect.addEventListener("mouseover", (event) => {
@@ -341,6 +351,46 @@ const data = content.tableData;
         femaleAxisTitle.textContent =
             lang === "ne" ? "महिला जनसंख्या" : "Female Population";
         g.appendChild(femaleAxisTitle);
+
+        // D3 Animation Logic
+        if (typeof d3 !== "undefined") {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            // Animate Male Bars (Leftward growth)
+                            d3.select(svg)
+                                .selectAll(".male-bar")
+                                .transition()
+                                .duration(1000)
+                                .ease(d3.easeCubicOut)
+                                .attr("x", function () {
+                                    return this.getAttribute("data-final-x");
+                                })
+                                .attr("width", function () {
+                                    return this.getAttribute(
+                                        "data-final-width",
+                                    );
+                                });
+
+                            // Animate Female Bars (Rightward growth)
+                            d3.select(svg)
+                                .selectAll(".female-bar")
+                                .transition()
+                                .duration(1000)
+                                .ease(d3.easeCubicOut)
+                                .attr("width", function () {
+                                    return this.getAttribute(
+                                        "data-final-width",
+                                    );
+                                });
+                        }
+                    });
+                },
+                { threshold: 0.2 },
+            );
+            observer.observe(svg);
+        }
     }
 
     // Initialize

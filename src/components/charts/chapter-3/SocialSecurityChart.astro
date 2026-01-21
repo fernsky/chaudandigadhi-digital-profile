@@ -48,6 +48,8 @@ const chartData = Object.entries(total)
     </div>
 </div>
 
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+
 <script define:vars={{ data: chartData }}>
     function createSocialSecurityChart() {
         const svg = document.getElementById("social-security-chart");
@@ -121,12 +123,16 @@ const chartData = Object.entries(total)
             );
             rect.setAttribute("x", margin.left.toString());
             rect.setAttribute("y", y.toString());
-            rect.setAttribute("width", barWidth.toString());
+            rect.setAttribute("width", "0"); // Start 0
+            rect.setAttribute("data-width", barWidth.toString());
             rect.setAttribute("height", barHeight.toString());
             rect.setAttribute("fill", "#f2e25d");
             rect.setAttribute("opacity", "0.8");
             rect.setAttribute("rx", "4");
-            rect.setAttribute("class", "bar-hover transition-all duration-300");
+            rect.setAttribute(
+                "class",
+                "bar-hover transition-all duration-300 ss-bar",
+            );
             g.appendChild(rect);
 
             // Count
@@ -150,6 +156,30 @@ const chartData = Object.entries(total)
             tooltip.textContent = `${item.category}: ${item.count.toLocaleString()}`;
             rect.appendChild(tooltip);
         });
+
+        // D3 Animation
+        if (typeof d3 !== "undefined") {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            d3.select(svg)
+                                .selectAll(".ss-bar")
+                                .transition()
+                                .duration(1000)
+                                .ease(d3.easeCubicOut)
+                                .attr("width", function () {
+                                    return this.getAttribute("data-width");
+                                });
+
+                            observer.unobserve(svg);
+                        }
+                    });
+                },
+                { threshold: 0.2 },
+            );
+            observer.observe(svg);
+        }
     }
 
     if (document.readyState === "complete") {

@@ -2,6 +2,7 @@
 import type { Language } from "../../lib/i18n";
 import { getTranslations } from "../../lib/i18n";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 import MegaMenu from "./megamenu/MegaMenu.astro";
 import MobileMegaMenu from "./megamenu/MobileMegaMenu.astro";
 import { Menu, X } from "lucide-astro";
@@ -88,8 +89,11 @@ const navLinkInactive = "text-zinc-400 hover:text-white";
           }
         </div>
 
-        <!-- Right side: Language Switcher -->
-        <LanguageSwitcher lang={lang} currentPath={Astro.url.pathname} />
+        <!-- Right side: Theme Toggle and Language Switcher -->
+        <div class="flex items-center gap-3">
+          <ThemeToggle />
+          <LanguageSwitcher lang={lang} currentPath={Astro.url.pathname} />
+        </div>
       </nav>
 
       <!-- Mobile Menu Button -->
@@ -149,8 +153,15 @@ const navLinkInactive = "text-zinc-400 hover:text-white";
           {t.nav.annexures}
         </a>
 
-        <!-- Language Switcher -->
+        <!-- Theme Toggle -->
         <div class="pt-6">
+          <div class="scale-110 origin-left">
+            <ThemeToggle />
+          </div>
+        </div>
+
+        <!-- Language Switcher -->
+        <div class="pt-2">
           <div class="scale-110 origin-left">
             <LanguageSwitcher lang={lang} currentPath={Astro.url.pathname} />
           </div>

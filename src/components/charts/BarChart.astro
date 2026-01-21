@@ -108,7 +108,117 @@ const chartConfig = {
     function initChart() {
         const ctx = document.getElementById(id);
         if (ctx && typeof Chart !== "undefined") {
-            new Chart(ctx, chartConfig);
+            const existingChart = Chart.getChart(ctx);
+            if (existingChart) {
+                existingChart.destroy();
+            }
+
+            // Theme colors
+            const darkTheme = {
+                titleColor: "#e2e8f0",
+                textColor: "#cbd5e1",
+                gridColor: "rgba(71, 85, 105, 0.3)",
+                tooltipBg: "rgba(0, 0, 0, 0.9)",
+                tooltipText: "#fff",
+                tooltipBorder: "#f2e25d",
+            };
+
+            const lightTheme = {
+                titleColor: "#0f172a",
+                textColor: "#334155",
+                gridColor: "rgba(100, 116, 139, 0.2)",
+                tooltipBg: "rgba(255, 255, 255, 0.98)",
+                tooltipText: "#0f172a",
+                tooltipBorder: "#d4a017",
+            };
+
+            const isLight =
+                document.documentElement.classList.contains("light-mode");
+            const currentTheme = isLight ? lightTheme : darkTheme;
+
+            // Apply theme to configs
+            const config = JSON.parse(JSON.stringify(chartConfig)); // Clone config
+
+            // Update scale colors
+            if (config.options.scales.x) {
+                config.options.scales.x.ticks.color = currentTheme.textColor;
+                config.options.scales.x.grid.color = currentTheme.gridColor;
+            }
+            if (config.options.scales.y) {
+                config.options.scales.y.ticks.color = currentTheme.textColor;
+                config.options.scales.y.grid = {
+                    color: currentTheme.gridColor,
+                };
+            }
+
+            // Update plugins
+            if (!config.options.plugins) config.options.plugins = {};
+
+            // Title
+            if (config.options.plugins.title) {
+                config.options.plugins.title.color = currentTheme.titleColor;
+            }
+
+            // Tooltip
+            if (!config.options.plugins.tooltip)
+                config.options.plugins.tooltip = {};
+            config.options.plugins.tooltip.backgroundColor =
+                currentTheme.tooltipBg;
+            config.options.plugins.tooltip.titleColor =
+                currentTheme.tooltipText;
+            config.options.plugins.tooltip.bodyColor = currentTheme.tooltipText;
+            config.options.plugins.tooltip.borderColor =
+                currentTheme.tooltipBorder;
+            config.options.plugins.tooltip.borderWidth = 1;
+            config.options.plugins.tooltip.padding = 10;
+            config.options.plugins.tooltip.displayColors = true;
+
+            const chart = new Chart(ctx, config);
+
+            // Listen for theme changes
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.attributeName === "class") {
+                        const isNowLight =
+                            document.documentElement.classList.contains(
+                                "light-mode",
+                            );
+                        const newTheme = isNowLight ? lightTheme : darkTheme;
+
+                        if (chart.options.scales.x) {
+                            chart.options.scales.x.ticks.color =
+                                newTheme.textColor;
+                            chart.options.scales.x.grid.color =
+                                newTheme.gridColor;
+                        }
+                        if (chart.options.scales.y) {
+                            chart.options.scales.y.ticks.color =
+                                newTheme.textColor;
+                            // chart.options.scales.y.grid could be undefined in some configs, but safe to set here
+                            chart.options.scales.y.grid = {
+                                color: newTheme.gridColor,
+                            };
+                        }
+                        if (chart.options.plugins.title) {
+                            chart.options.plugins.title.color =
+                                newTheme.titleColor;
+                        }
+
+                        chart.options.plugins.tooltip.backgroundColor =
+                            newTheme.tooltipBg;
+                        chart.options.plugins.tooltip.titleColor =
+                            newTheme.tooltipText;
+                        chart.options.plugins.tooltip.bodyColor =
+                            newTheme.tooltipText;
+                        chart.options.plugins.tooltip.borderColor =
+                            newTheme.tooltipBorder;
+
+                        chart.update();
+                    }
+                });
+            });
+
+            observer.observe(document.documentElement, { attributes: true });
         }
     }
 </script>

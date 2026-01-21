@@ -213,9 +213,36 @@ const chartData = content.table_data
 
 <script is:inline src="https://d3js.org/d3.v7.min.js"></script>
 <script define:vars={{ chartData, lang }}>
-    document.addEventListener("DOMContentLoaded", () => {
+    function initHouseholdHeadChart() {
         const tooltipId = "household-head-tooltip-unique";
         const containerId = "household-head-chart-container";
+        const container = document.getElementById(containerId);
+
+        if (!container) return;
+
+        // Observer
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        renderHouseholdHeadChart(
+                            container,
+                            containerId,
+                            tooltipId,
+                        );
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2 },
+        );
+        observer.observe(container);
+    }
+
+    function renderHouseholdHeadChart(container, containerId, tooltipId) {
+        // Clear previous
+        container.innerHTML = "";
+
         const formatValue = (num, decimals = 0) => {
             const formatted = num.toLocaleString("en-US", {
                 minimumFractionDigits: decimals,
@@ -239,9 +266,6 @@ const chartData = content.table_data
                 (digit) => nepaliDigits[parseInt(digit)],
             );
         };
-
-        const container = document.getElementById(containerId);
-        if (!container) return;
 
         const data = chartData;
         const margin = { top: 40, right: 30, bottom: 60, left: 80 };
@@ -388,7 +412,14 @@ const chartData = content.table_data
 
         svg.selectAll(".domain").attr("stroke", "#475569");
         svg.selectAll(".tick line").attr("stroke", "#475569");
-    });
+    }
+
+    if (document.readyState === "complete") {
+        initHouseholdHeadChart();
+    } else {
+        document.addEventListener("DOMContentLoaded", initHouseholdHeadChart);
+    }
+    document.addEventListener("astro:page-load", initHouseholdHeadChart);
 </script>
 <div
     id="household-head-tooltip-unique"

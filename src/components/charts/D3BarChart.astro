@@ -24,6 +24,12 @@ const { id, title, labels, data, lang, height = 400 } = Astro.props;
         const container = document.getElementById(id);
         if (!container) return;
 
+        // Clean up any existing observer
+        if (container._observer) {
+            container._observer.disconnect();
+            delete container._observer;
+        }
+
         // Clear previous content
         container.innerHTML = "";
 
@@ -127,8 +133,9 @@ const { id, title, labels, data, lang, height = 400 } = Astro.props;
             );
         };
 
-        // Bars
-        svg.selectAll("rect")
+        // Create bars but don't animate yet
+        const bars = svg
+            .selectAll("rect")
             .data(data.map((d, i) => ({ value: d, index: i })))
             .enter()
             .append("rect")
@@ -136,8 +143,8 @@ const { id, title, labels, data, lang, height = 400 } = Astro.props;
             .attr("width", x.bandwidth())
             .attr("fill", "#f2e25d")
             .attr("opacity", 0.8)
-            .attr("y", chartHeight) // Initial position for animation
-            .attr("height", 0) // Initial height for animation
+            .attr("y", chartHeight) // Start at bottom
+            .attr("height", 0) // Start with 0 height
             .on("mouseover", function (event, d) {
                 const i = d.index;
                 d3.select(this)
@@ -147,7 +154,9 @@ const { id, title, labels, data, lang, height = 400 } = Astro.props;
                     .attr("fill", "#eab308");
                 tooltip.transition().duration(200).style("opacity", 1);
                 tooltip
-                    .html(`${labels[i]}: ${formatNum(d.value)}`)
+                    .html(
+                        `${labels[i]}: ${formatNum(d.value)} (${formatNum(((d.value / d3.sum(data)) * 100).toFixed(2))}%)`,
+                    )
                     .style("left", event.pageX + 10 + "px")
                     .style("top", event.pageY - 28 + "px");
             })
@@ -163,12 +172,33 @@ const { id, title, labels, data, lang, height = 400 } = Astro.props;
                     .attr("opacity", 0.8)
                     .attr("fill", "#f2e25d");
                 tooltip.transition().duration(200).style("opacity", 0);
-            })
-            .transition() // Animation
-            .duration(1000)
-            .attr("y", (d) => y(d.value))
-            .attr("height", (d) => chartHeight - y(d.value))
-            .delay((d, i) => i * 100);
+            });
+
+        // Intersection Observer logic
+        // Intersection Observer logic
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Animate bars up
+                    d3.select(`#${id}`)
+                        .selectAll("rect")
+                        .transition()
+                        .duration(1000)
+                        .attr("y", (d) => y(d.value))
+                        .attr("height", (d) => chartHeight - y(d.value))
+                        .delay((d, i) => i * 100);
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, {
+            threshold: 0.2, // Trigger when 20% visible
+        });
+
+        observer.observe(svg.node());
+        container._observer = observer; // Store observer to clean up later
     }
 
     // Initialize

@@ -1085,7 +1085,7 @@ const deathCausePieData = content.deathCausePie.chartData;
         lang,
     }}
 >
-    document.addEventListener("DOMContentLoaded", () => {
+    const initVitalCharts = () => {
         const locale = lang === "ne" ? "ne-NP" : "en-US";
 
         const formatValue = (v, decimals = 0) => {
@@ -1345,13 +1345,13 @@ const deathCausePieData = content.deathCausePie.chartData;
                 });
         };
 
-        // --- 3. Death Cause Pie (3D feel) ---
         const renderDeathCausePie = () => {
             const container = document.getElementById("death-cause-pie-chart");
             if (!container) return;
             const width = container.clientWidth;
             const height = container.clientHeight;
-            const radius = Math.min(width, height) / 2 - 60;
+            const radius = Math.min(width, height) / 2 - 40;
+
             const svg = d3
                 .select("#death-cause-pie-chart")
                 .append("svg")
@@ -1364,7 +1364,7 @@ const deathCausePieData = content.deathCausePie.chartData;
             const defs = svg.append("defs");
             const filter = defs
                 .append("filter")
-                .attr("id", "pie-shadow")
+                .attr("id", "death-cause-pie-shadow")
                 .attr("height", "130%");
             filter
                 .append("feGaussianBlur")
@@ -1384,39 +1384,8 @@ const deathCausePieData = content.deathCausePie.chartData;
                 .value((d) => d.value)
                 .sort(null);
             const arc = d3.arc().innerRadius(0).outerRadius(radius);
-            const outerArc = d3
-                .arc()
-                .innerRadius(radius * 1.05)
-                .outerRadius(radius * 1.05);
 
             const pieData = pie(deathCausePieData.filter((d) => d.value > 0));
-
-            // Separate into Left and Right for label relaxation
-            const leftSide = pieData
-                .filter((d) => midAngle(d) >= Math.PI)
-                .sort(
-                    (a, b) => outerArc.centroid(a)[1] - outerArc.centroid(b)[1],
-                );
-            const rightSide = pieData
-                .filter((d) => midAngle(d) < Math.PI)
-                .sort(
-                    (a, b) => outerArc.centroid(a)[1] - outerArc.centroid(b)[1],
-                );
-
-            const relax = (side) => {
-                const minGap = 16;
-                for (let i = 1; i < side.length; i++) {
-                    const prevPos =
-                        outerArc.centroid(side[i - 1])[1] +
-                        (side[i - 1].yOffset || 0);
-                    const currPos = outerArc.centroid(side[i])[1];
-                    if (currPos - prevPos < minGap) {
-                        side[i].yOffset = prevPos + minGap - currPos;
-                    }
-                }
-            };
-            relax(leftSide);
-            relax(rightSide);
 
             const slice = svg
                 .selectAll(".slice")
@@ -1431,7 +1400,7 @@ const deathCausePieData = content.deathCausePie.chartData;
                 .attr("fill", (d) => d.data.color)
                 .attr("stroke", "#111")
                 .style("stroke-width", "1px")
-                .style("filter", "url(#pie-shadow)")
+                .style("filter", "url(#death-cause-pie-shadow)")
                 .attr("cursor", "pointer")
                 .on("mouseover", function (event, d) {
                     d3.select(this)
@@ -1475,16 +1444,44 @@ const deathCausePieData = content.deathCausePie.chartData;
                         .duration(500)
                         .style("opacity", 0);
                 })
+                .transition() // Animate Appearance
+                .duration(1000)
                 .attrTween("d", function (d) {
                     const i = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
                     return (t) => arc(i(t));
                 });
         };
 
-        renderBirthPie();
-        renderDeathAgeBar();
-        renderDeathCausePie();
-    });
+        const observeAndRender = (id, renderFn) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.innerHTML = ""; // Clear previous
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            renderFn();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.2 },
+            );
+            observer.observe(el);
+        };
+
+        observeAndRender("birth-reg-pie-chart", renderBirthPie);
+        observeAndRender("death-age-bar-chart", renderDeathAgeBar);
+        observeAndRender("death-cause-pie-chart", renderDeathCausePie);
+    };
+
+    if (document.readyState === "complete") {
+        initVitalCharts();
+    } else {
+        document.addEventListener("DOMContentLoaded", initVitalCharts);
+    }
+    document.addEventListener("astro:page-load", initVitalCharts);
 </script>
 
 <div

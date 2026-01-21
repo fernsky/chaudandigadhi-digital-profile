@@ -38,13 +38,7 @@ const totalPopulation = content.subsections.previousResidence.total.total;
 >
     <!-- Chart -->
     <div class="relative aspect-square max-w-[400px] mx-auto w-full">
-        <svg
-            id="migration-chart"
-            class="w-full h-full transform -rotate-90"
-            viewBox="0 0 100 100"
-        >
-            <!-- Chart will be rendered by script -->
-        </svg>
+        <svg id="migration-chart"></svg>
         <!-- Center Text -->
         <div
             class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
@@ -89,107 +83,99 @@ const totalPopulation = content.subsections.previousResidence.total.total;
     </div>
 </div>
 
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
 <script define:vars={{ data }}>
     function createMigrationChart() {
-        const svg = document.getElementById("migration-chart");
-        if (!svg) return;
+        const svgEl = document.getElementById("migration-chart");
+        if (!svgEl) return;
 
-        svg.innerHTML = "";
+        // Reset
+        svgEl.innerHTML = "";
 
-        const radius = 50;
-        const center = 50;
-        const total = data.reduce((acc, curr) => acc + curr.total, 0);
-        let currentAngle = 0;
+        const width = 100;
+        const height = 100;
+        const radius = Math.min(width, height) / 2;
 
-        // Premium Color Palette
+        // Setup D3
+        const svg = d3
+            .select(svgEl)
+            .attr("viewBox", `0 0 ${width} ${height}`)
+            .append("g")
+            .attr("transform", `translate(${width / 2},${height / 2})`);
+
         const colors = [
-            "#f2e25d", // Gold (Primary)
+            "#f2e25d", // Gold
             "#60a5fa", // Blue
             "#f472b6", // Pink
             "#34d399", // Green
             "#a78bfa", // Purple
         ];
 
-        data.forEach((item, index) => {
-            const percentage = item.total / total;
-            const angle = percentage * 360;
-            const color = colors[index % colors.length];
+        const pie = d3
+            .pie()
+            .value((d) => d.total)
+            .sort(null);
 
-            // Update legend color
+        const arc = d3.arc().innerRadius(35).outerRadius(50);
+
+        const paths = svg
+            .selectAll("path")
+            .data(pie(data))
+            .enter()
+            .append("path")
+            .attr("fill", (d, i) => colors[i % colors.length])
+            .attr("d", arc)
+            .attr("opacity", "0.9")
+            .attr(
+                "class",
+                "hover:opacity-100 transition-opacity duration-300 cursor-pointer",
+            )
+            .each(function (d) {
+                this._current = d;
+            }); // Store initial angles
+
+        // Legend Interaction
+        data.forEach((item, index) => {
             const legendDot = document.getElementById(
                 `migration-legend-color-${index}`,
             );
-            if (legendDot) {
-                legendDot.style.backgroundColor = color;
-            }
-
-            // Create Slice
-            const startRad = (currentAngle * Math.PI) / 180;
-            const endRad = ((currentAngle + angle) * Math.PI) / 180;
-
-            const x1 = center + radius * Math.cos(startRad);
-            const y1 = center + radius * Math.sin(startRad);
-            const x2 = center + radius * Math.cos(endRad);
-            const y2 = center + radius * Math.sin(endRad);
-
-            const largeArcFlag = angle > 180 ? 1 : 0;
-            const innerRadius = 35; // Donut thickness
-
-            const x3 = center + innerRadius * Math.cos(endRad);
-            const y3 = center + innerRadius * Math.sin(endRad);
-            const x4 = center + innerRadius * Math.cos(startRad);
-            const y4 = center + innerRadius * Math.sin(startRad);
-
-            const pathData = [
-                `M ${x1} ${y1}`,
-                `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
-                `L ${x3} ${y3}`,
-                `A ${innerRadius} ${innerRadius} 0 ${largeArcFlag} 0 ${x4} ${y4}`,
-                `Z`,
-            ].join(" ");
-
-            const path = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "path",
-            );
-            path.setAttribute("d", pathData);
-            path.setAttribute("fill", color);
-            path.setAttribute("opacity", "0.9");
-            path.setAttribute(
-                "class",
-                "hover:opacity-100 transition-opacity duration-300 cursor-pointer",
-            );
-
-            const title = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "title",
-            );
-            title.textContent = `${item.type}: ${item.total.toLocaleString()} (${item.percentage.toFixed(2)}%)`;
-            path.appendChild(title);
-
-            svg.appendChild(path);
-
-            const separator = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "line",
-            );
-            separator.setAttribute("x1", center.toString());
-            separator.setAttribute("y1", center.toString());
-            separator.setAttribute("x2", x2.toString());
-            separator.setAttribute("y2", y2.toString());
-            separator.setAttribute("stroke", "#0a0a0a");
-            separator.setAttribute("stroke-width", "0.5");
-            svg.appendChild(separator);
-
-            currentAngle += angle;
+            if (legendDot)
+                legendDot.style.backgroundColor = colors[index % colors.length];
         });
+
+        // Animation: Start from 0 angle
+        paths
+            .transition()
+            .duration(1000)
+            .attrTween("d", function (d) {
+                var i = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+                return function (t) {
+                    return arc(i(t));
+                };
+            });
     }
+
+    const initMigration = () => {
+        const el = document.getElementById("migration-chart");
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        createMigrationChart();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2 },
+        );
+        observer.observe(el);
+    };
 
     if (document.readyState === "complete") {
-        createMigrationChart();
+        initMigration();
     } else {
-        window.addEventListener("load", createMigrationChart);
+        window.addEventListener("load", initMigration);
     }
-
-    document.addEventListener("astro:page-load", createMigrationChart);
+    document.addEventListener("astro:page-load", initMigration);
 </script>
