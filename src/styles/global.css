@@ -77,6 +77,16 @@ html {
   height: 100%;
 }
 
+/* Light mode styles */
+html.light-mode {
+  background-color: #ffffff;
+}
+
+html.light-mode body {
+  background-color: #ffffff;
+  color: #0a0a0a;
+}
+
 body {
   font-family: var(--font-serif);
   background-color: #050505;
@@ -84,6 +94,7 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 main {
@@ -170,4 +181,787 @@ main {
 *:focus-visible {
   outline: 2px solid var(--color-primary-600);
   outline-offset: 2px;
+}
+
+/* ===== LIGHT MODE THEME OVERRIDES ===== */
+
+/* Text colors in light mode */
+html.light-mode {
+  /* Primary text colors */
+  --text-primary: #0a0a0a;
+  --text-secondary: #404040;
+  --text-tertiary: #737373;
+  --text-muted: #a3a3a3;
+}
+
+/* Light mode text utilities */
+html.light-mode .text-zinc-100,
+html.light-mode .text-zinc-200,
+html.light-mode .text-white {
+  color: #0a0a0a !important;
+}
+
+html.light-mode .text-zinc-400,
+html.light-mode .text-zinc-500 {
+  color: #404040 !important;
+}
+
+html.light-mode .text-zinc-600,
+html.light-mode .text-zinc-700 {
+  color: #525252 !important;
+}
+
+/* Border colors in light mode */
+html.light-mode .border-white\/5,
+html.light-mode .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Background colors in light mode */
+html.light-mode .bg-\[\#050505\]\/95,
+html.light-mode .bg-\[\#050505\]\/90,
+html.light-mode .bg-\[\#050505\]\/98,
+html.light-mode .bg-black\/40 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Glassmorphism in light mode */
+html.light-mode .glass {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Hover states in light mode */
+html.light-mode .hover\:text-white:hover {
+  color: #0a0a0a !important;
+}
+
+html.light-mode .hover\:text-zinc-400:hover {
+  color: #525252 !important;
+}
+
+html.light-mode .hover\:bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Card and shadow adjustments for light mode */
+html.light-mode .shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+html.light-mode .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+html.light-mode .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Backdrop blur adjustments */
+html.light-mode .backdrop-blur-md,
+html.light-mode .backdrop-blur-xl {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Primary color adjustments for light mode */
+html.light-mode .text-primary-400 {
+  color: #3f3f46 !important;
+}
+
+html.light-mode .bg-primary-500\/20 {
+  background-color: rgba(63, 63, 70, 0.1) !important;
+}
+
+/* Focus styles for light mode */
+html.light-mode *:focus-visible {
+  outline: 2px solid #3f3f46;
+  outline-offset: 2px;
+}
+
+/* Scrollbar styles for light mode */
+html.light-mode .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+html.light-mode .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+html.light-mode .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Pie chart legend text */
+html.light-mode #d3-pie-chart-legend span,
+html.light-mode [id$="-legend"] span {
+  color: #404040 !important;
+}
+
+html.light-mode .text-zinc-300 {
+  color: #404040 !important;
+}
+
+/* Chart legend items */
+html.light-mode .chart-legend-item,
+html.light-mode [class*="legend"] span {
+  color: #404040 !important;
+}
+
+/* Custom scrollbar in chart containers for light mode */
+html.light-mode .d3-pie-container .custom-scrollbar::-webkit-scrollbar-track,
+html.light-mode .d3-bar-container .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light-mode .d3-pie-container .custom-scrollbar::-webkit-scrollbar-thumb,
+html.light-mode .d3-bar-container .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(212, 160, 23, 0.4) !important;
+}
+
+html.light-mode .d3-pie-container .custom-scrollbar::-webkit-scrollbar-thumb:hover,
+html.light-mode .d3-bar-container .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 160, 23, 0.6) !important;
+}
+
+
+/* Hero section gradients in light mode */
+html.light-mode .bg-gradient-to-br.from-black\/90,
+html.light-mode .bg-gradient-to-br.from-black\/95 {
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.95), rgba(240, 240, 240, 0.95), rgba(255, 255, 255, 0.95)) !important;
+}
+
+html.light-mode .bg-\[radial-gradient\(ellipse_at_top\,_var\(--tw-gradient-stops\)\)\] {
+  background: radial-gradient(ellipse at top, rgba(0, 0, 0, 0.03), transparent, transparent) !important;
+}
+
+/* Text color overrides for specific elements in light mode */
+html.light-mode .text-zinc-300 {
+  color: #404040 !important;
+}
+
+html.light-mode .text-zinc-200 {
+  color: #262626 !important;
+}
+
+html.light-mode .text-white\/50 {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Border utilities in light mode */
+html.light-mode .border-zinc-500 {
+  border-color: #a3a3a3 !important;
+}
+
+html.light-mode .border-white\/5 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Button and CTA styles in light mode */
+html.light-mode .bg-white {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+}
+
+html.light-mode .text-black {
+  color: #ffffff !important;
+}
+
+html.light-mode .hover\:bg-zinc-100:hover {
+  background-color: #171717 !important;
+}
+
+/* Sticky columns in tables need background update in light mode */
+html.light-mode .sticky.left-0 {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-right-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Hardcoded dark backgrounds in components override */
+html.light-mode [class*="bg-[#0a0a0a]"],
+html.light-mode [class*="bg-[#1a1a14]"],
+html.light-mode [class*="bg-[#1a1a1a]"],
+html.light-mode [class*="bg-[#333]"] {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Math equation boxes or similar dark containers */
+html.light-mode .bg-zinc-900,
+html.light-mode .bg-zinc-950,
+html.light-mode .bg-neutral-900,
+html.light-mode .bg-neutral-950 {
+  background-color: #f1f5f9 !important;
+  /* slate-100 */
+  color: #0f172a !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light-mode header.absolute {
+  background-color: transparent !important;
+}
+
+/* Specific overrides for header in light mode */
+html.light-mode header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light-mode header.absolute {
+  background-color: transparent !important;
+}
+
+/* Footer in light mode */
+html.light-mode footer {
+  background-color: #f5f5f5 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Opacity utilities */
+html.light-mode .opacity-70 {
+  opacity: 0.8;
+}
+
+html.light-mode .opacity-40 {
+  opacity: 0.6;
+}
+
+/* ===== BORDER AND DECORATION EFFECTS ===== */
+
+/* Border decorations in light mode */
+html.light-mode .border-b {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light-mode .border-t {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light-mode .border-l {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light-mode .border-r {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Footer link underlines */
+html.light-mode footer a {
+  border-bottom-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+html.light-mode footer a:hover {
+  border-bottom-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Link border effects */
+html.light-mode .border-b.border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+html.light-mode .hover\:border-white:hover {
+  border-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Decoration colors for links */
+html.light-mode .decoration-zinc-500\/30 {
+  text-decoration-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+html.light-mode a.border-b {
+  border-bottom-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+html.light-mode a.border-b:hover {
+  border-bottom-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+
+/* Chart and visualization styles for light mode */
+html.light-mode .d3-pie-container,
+html.light-mode .d3-bar-container {
+  background: rgba(245, 245, 245, 0.8) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light-mode .d3-tooltip {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: #0a0a0a !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* D3 tooltip border color override */
+html.light-mode .d3-tooltip[style*="border: 1px solid #f2e25d"] {
+  border-color: #d4a017 !important;
+}
+
+/* All tooltip variants - comprehensive coverage */
+html.light-mode [class*="tooltip"],
+html.light-mode [id*="tooltip"],
+html.light-mode div[style*="position: absolute"][style*="pointer-events: none"] {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  color: #0a0a0a !important;
+  border: 2px solid #d4a017 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Chart.js tooltips */
+html.light-mode .chartjs-tooltip {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  color: #0a0a0a !important;
+  border: 2px solid #d4a017 !important;
+}
+
+/* SVG title elements (native tooltips) */
+html.light-mode svg title {
+  color: #0a0a0a !important;
+}
+
+/* ===== NAVIGATION DROPDOWN UNDERLINE EFFECTS ===== */
+
+/* Mega menu category underlines */
+html.light-mode .mega-menu-category p {
+  text-decoration-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+html.light-mode .mega-menu-category:hover p,
+html.light-mode .mega-menu-category.active p {
+  text-decoration-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Mega menu content section link underlines */
+html.light-mode .mega-menu-content a div {
+  text-decoration-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+html.light-mode .mega-menu-content a:hover div {
+  text-decoration-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Generic underline decoration overrides */
+html.light-mode .decoration-white\/30 {
+  text-decoration-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+html.light-mode .hover\:underline:hover {
+  text-decoration-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+html.light-mode .underline {
+  text-decoration-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Group hover underline effects */
+html.light-mode .group:hover .group-hover\/cat\:underline,
+html.light-mode .group:hover .group-hover\/item\:underline {
+  text-decoration-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+html.light-mode .group-hover\/cat\:underline,
+html.light-mode .group-hover\/item\:underline {
+  text-decoration-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Underline offset visibility */
+html.light-mode .underline-offset-4 {
+  text-decoration-thickness: 1.5px !important;
+}
+
+html.light-mode .decoration-1 {
+  text-decoration-thickness: 1.5px !important;
+}
+
+
+/* Bar chart hover effects */
+html.light-mode .bar-hover:hover {
+  fill: #b8860b !important;
+  /* Darker gold on hover */
+}
+
+/* Chart backgrounds */
+html.light-mode svg[style*="background: transparent"] {
+  background: transparent !important;
+}
+
+
+/* SVG text elements in light mode */
+html.light-mode svg text {
+  fill: #0a0a0a !important;
+}
+
+/* Specific SVG text color overrides */
+html.light-mode svg text[fill="#e4e4e7"],
+html.light-mode svg text[fill="#cbd5e1"],
+html.light-mode svg text[fill="#e2e8f0"] {
+  fill: #262626 !important;
+}
+
+/* SVG labels and axis text */
+html.light-mode svg text[text-anchor="end"],
+html.light-mode svg text[text-anchor="middle"],
+html.light-mode svg text[text-anchor="start"] {
+  fill: #404040 !important;
+}
+
+/* Chart.js canvas text colors */
+html.light-mode canvas {
+  filter: none !important;
+}
+
+/* Override Chart.js default colors via CSS variables if possible */
+html.light-mode .chart-container canvas {
+  background-color: transparent !important;
+}
+
+
+/* Chart stroke colors in light mode */
+html.light-mode svg path[stroke="#1e293b"],
+html.light-mode svg path[stroke="#050505"] {
+  stroke: #e5e5e5 !important;
+}
+
+/* Table styles for light mode */
+html.light-mode table {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #262626 !important;
+}
+
+html.light-mode th,
+html.light-mode td {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #262626 !important;
+}
+
+html.light-mode thead {
+  background-color: #f5f5f5 !important;
+}
+
+html.light-mode thead th {
+  color: #0a0a0a !important;
+  font-weight: 600 !important;
+}
+
+html.light-mode tbody tr {
+  background-color: #ffffff !important;
+}
+
+html.light-mode tbody tr:nth-child(even) {
+  background-color: #fafafa !important;
+}
+
+html.light-mode tbody tr:hover {
+  background-color: #f5f5f5 !important;
+}
+
+html.light-mode tbody td {
+  color: #262626 !important;
+}
+
+/* Table with specific styling classes */
+html.light-mode table.w-full {
+  background-color: transparent !important;
+}
+
+html.light-mode table th.text-left,
+html.light-mode table td.text-left,
+html.light-mode table th.text-right,
+html.light-mode table td.text-right,
+html.light-mode table th.text-center,
+html.light-mode table td.text-center {
+  color: #262626 !important;
+}
+
+
+/* ===== YELLOW ACCENT COLOR - DARKER IN LIGHT MODE ===== */
+/* Make the yellow #f2e25d much darker for visibility in light mode */
+html.light-mode [fill="#f2e25d"],
+html.light-mode rect[fill="#f2e25d"],
+html.light-mode path[fill="#f2e25d"] {
+  fill: #d4a017 !important;
+  /* Dark gold */
+}
+
+html.light-mode text[fill="#f2e25d"] {
+  fill: #b8860b !important;
+  /* Even darker for text */
+}
+
+html.light-mode .text-\[#f2e25d\] {
+  color: #b8860b !important;
+}
+
+html.light-mode .bg-\[#f2e25d\] {
+  background-color: #d4a017 !important;
+}
+
+html.light-mode .border-\[#f2e25d\]\/10,
+html.light-mode .border-\[#f2e25d\]\/20,
+html.light-mode .border-\[#f2e25d\]\/30 {
+  border-color: rgba(212, 160, 23, 0.3) !important;
+}
+
+/* ===== TABLE CONTAINERS ===== */
+html.light-mode .overflow-x-auto {
+  background-color: rgba(245, 245, 245, 0.5) !important;
+}
+
+html.light-mode .overflow-x-auto.rounded-lg {
+  background-color: rgba(250, 250, 250, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light-mode .overflow-x-auto.border {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Table container with specific classes */
+html.light-mode .rounded-lg.border.bg-white\/5,
+html.light-mode div[class*="border"][class*="bg-white/5"] {
+  background-color: rgba(250, 250, 250, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ===== CHART CONTAINERS ===== */
+html.light-mode .chart-container {
+  background-color: rgba(250, 250, 250, 0.5) !important;
+}
+
+/* D3 chart containers */
+html.light-mode .d3-pie-container,
+html.light-mode .d3-bar-container {
+  background: rgba(250, 250, 250, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ===== IMAGE CONTAINERS ===== */
+html.light-mode .bg-\[#0a0a0a\] {
+  background-color: #fafafa !important;
+}
+
+html.light-mode div[class*="bg-[#0a0a0a]"] {
+  background-color: #fafafa !important;
+}
+
+/* Container boxes with borders */
+html.light-mode .border.rounded-lg {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light-mode .border.rounded-lg.p-4,
+html.light-mode .border.rounded-lg.p-6 {
+  background-color: rgba(250, 250, 250, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+
+/* ===== MEGA MENU LIGHT MODE ===== */
+html.light-mode #mega-menu-dropdown {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+html.light-mode #mega-menu-dropdown .bg-\[\#050505\] {
+  background-color: #ffffff !important;
+}
+
+html.light-mode #mega-menu-dropdown .border-\[#f2e25d\]\/30,
+html.light-mode #mega-menu-dropdown .border-\[#f2e25d\]\/10 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light-mode header.menu-open {
+  background-color: #ffffff !important;
+  border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Mega menu category items */
+html.light-mode .mega-menu-category-item {
+  color: #404040 !important;
+}
+
+html.light-mode .mega-menu-category-item:hover,
+html.light-mode .mega-menu-category-item.active {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  color: #0a0a0a !important;
+}
+
+/* Mega menu using existing classes */
+html.light-mode .mega-menu-category {
+  color: #404040 !important;
+}
+
+html.light-mode .mega-menu-category:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  color: #0a0a0a !important;
+}
+
+html.light-mode .mega-menu-category.text-primary-50 {
+  color: #0a0a0a !important;
+}
+
+html.light-mode .mega-menu-category .text-primary-400 {
+  color: #525252 !important;
+}
+
+html.light-mode .bg-primary-500\/10 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light-mode .hover\:bg-primary-500\/10:hover {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light-mode .text-primary-50 {
+  color: #0a0a0a !important;
+}
+
+html.light-mode .text-primary-400 {
+  color: #525252 !important;
+}
+
+html.light-mode .hover\:text-primary-50:hover {
+  color: #0a0a0a !important;
+}
+
+/* Mega menu content section links */
+html.light-mode .mega-menu-content a {
+  color: #525252 !important;
+}
+
+html.light-mode .mega-menu-content a:hover {
+  color: #0a0a0a !important;
+}
+
+html.light-mode .mega-menu-content h4 {
+  color: #0a0a0a !important;
+}
+
+html.light-mode .text-primary-300 {
+  color: #525252 !important;
+}
+
+html.light-mode .hover\:text-primary-50:hover {
+  color: #0a0a0a !important;
+}
+
+
+/* ===== CHAPTER PAGES LIGHT MODE ===== */
+html.light-mode section {
+  background-color: #ffffff !important;
+}
+
+html.light-mode .bg-\[\#050505\] {
+  background-color: #ffffff !important;
+}
+
+html.light-mode .border-zinc-900 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light-mode .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light-mode .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Chapter navigation arrows */
+html.light-mode .text-obsidian-accent {
+  color: #3f3f46 !important;
+}
+
+html.light-mode .hover\:text-obsidian-accent:hover {
+  color: #18181b !important;
+}
+
+/* ===== HOMEPAGE HERO OVERLAY - LESS OPAQUE IN LIGHT MODE ===== */
+/* Target hero section overlays specifically */
+html.light-mode section>div[class*="bg-gradient-to-br"] {
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.6), rgba(240, 240, 240, 0.5), rgba(255, 255, 255, 0.6)) !important;
+}
+
+/* Additional gradient overrides */
+html.light-mode .absolute.inset-0[class*="bg-gradient"] {
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.65), rgba(245, 245, 245, 0.55), rgba(255, 255, 255, 0.65)) !important;
+}
+
+/* ===== ADDITIONAL UTILITY OVERRIDES ===== */
+html.light-mode .text-obsidian-accent {
+  color: #3f3f46 !important;
+}
+
+/* Card backgrounds */
+html.light-mode .bg-zinc-900,
+html.light-mode .bg-zinc-800 {
+  background-color: #f5f5f5 !important;
+}
+
+html.light-mode .bg-zinc-900\/50 {
+  background-color: rgba(245, 245, 245, 0.5) !important;
+}
+
+/* Dividers and separators */
+html.light-mode .divide-zinc-800>*+* {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ring utilities */
+html.light-mode .ring-white\/10 {
+  --tw-ring-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Placeholder text */
+html.light-mode ::placeholder {
+  color: #a3a3a3 !important;
+}
+
+/* Selection */
+html.light-mode ::selection {
+  background-color: #3f3f46 !important;
+  color: #ffffff !important;
+}
+
+/* Scrollbar for light mode (global) */
+html.light-mode ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html.light-mode ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+html.light-mode ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+html.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure all text is readable in light mode */
+html.light-mode h1,
+html.light-mode h2,
+html.light-mode h3,
+html.light-mode h4,
+html.light-mode h5,
+html.light-mode h6 {
+  color: #0a0a0a !important;
+}
+
+html.light-mode p {
+  color: #262626 !important;
+}
+
+html.light-mode a {
+  color: #404040 !important;
+}
+
+html.light-mode a:hover {
+  color: #0a0a0a !important;
 }

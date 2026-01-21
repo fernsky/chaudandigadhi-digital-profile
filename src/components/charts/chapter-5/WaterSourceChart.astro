@@ -63,7 +63,10 @@ const waterSources = (
 const maxValue = Math.max(...waterSources.map((s) => s.percent));
 ---
 
-<div class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8">
+<div
+    id="water-source-chart"
+    class="bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 md:p-8"
+>
     <h4 class="font-serif text-xl text-zinc-100 font-medium mb-6 text-center">
         {lang === "ne" ? "खानेपानीको स्रोत वितरण" : "Water Source Distribution"}
     </h4>
@@ -84,6 +87,7 @@ const maxValue = Math.max(...waterSources.map((s) => s.percent));
                     <div class="bg-[#050505] h-8 relative border border-[#f2e25d]/10">
                         <div
                             class="absolute inset-y-0 left-0 transition-all duration-500 flex items-center justify-end pr-2"
+                            data-width={`${(source.percent / maxValue) * 100}%`}
                             style={`width: ${(source.percent / maxValue) * 100}%; background-color: ${source.color}`}
                         >
                             {source.percent > 10 && (
@@ -105,3 +109,47 @@ const maxValue = Math.max(...waterSources.map((s) => s.percent));
         </p>
     </div>
 </div>
+
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+<script is:inline>
+    function initWaterSourceAnimations() {
+        const bars = document.querySelectorAll(
+            "#water-source-chart [data-width]",
+        ); // Add ID to container to be safe
+        if (bars.length === 0) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const width = bar.getAttribute("data-width");
+
+                        if (typeof d3 !== "undefined") {
+                            d3.select(bar)
+                                .transition()
+                                .duration(1000)
+                                .ease(d3.easeCubicOut)
+                                .style("width", width);
+                        } else {
+                            bar.style.width = width;
+                        }
+                    }
+                });
+            },
+            { threshold: 0.2 },
+        );
+
+        bars.forEach((bar) => {
+            bar.style.width = "0%";
+            observer.observe(bar);
+        });
+    }
+
+    if (document.readyState === "complete") {
+        initWaterSourceAnimations();
+    } else {
+        window.addEventListener("load", initWaterSourceAnimations);
+    }
+    document.addEventListener("astro:page-load", initWaterSourceAnimations);
+</script>

@@ -41,6 +41,7 @@ const maxValue = Math.max(...enrollmentData.flatMap(d => [d.community, d.institu
                             <div class="flex-1 bg-[#050505] h-8 relative border border-[#f2e25d]/10">
                                 <div
                                     class="absolute inset-y-0 left-0 bg-[#f2e25d] transition-all duration-500 flex items-center justify-end pr-2"
+                                    data-width={`${(item.community / maxValue) * 100}%`}
                                     style={`width: ${(item.community / maxValue) * 100}%`}
                                 >
                                     <span class="text-black font-bold text-xs">{item.community}</span>
@@ -53,6 +54,7 @@ const maxValue = Math.max(...enrollmentData.flatMap(d => [d.community, d.institu
                             <div class="flex-1 bg-[#050505] h-8 relative border border-[#f2e25d]/10">
                                 <div
                                     class="absolute inset-y-0 left-0 bg-zinc-500 transition-all duration-500 flex items-center justify-end pr-2"
+                                    data-width={`${(item.institutional / maxValue) * 100}%`}
                                     style={`width: ${(item.institutional / maxValue) * 100}%`}
                                 >
                                     <span class="text-white font-bold text-xs">{item.institutional}</span>
@@ -77,3 +79,45 @@ const maxValue = Math.max(...enrollmentData.flatMap(d => [d.community, d.institu
         </div>
     </div>
 </div>
+
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+<script is:inline>
+    function initEnrollmentAnimations() {
+        const bars = document.querySelectorAll('[data-width]');
+        if (bars.length === 0) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    const width = bar.getAttribute('data-width');
+                    
+                    // Use D3 for smooth casing animation if available, otherwise CSS
+                    if (typeof d3 !== 'undefined') {
+                        d3.select(bar)
+                          .transition() // D3 Transition
+                          .duration(1000)
+                          .ease(d3.easeCubicOut)
+                          .style('width', width);
+                    } else {
+                        bar.style.width = width;
+                    }
+                }
+            });
+        }, { threshold: 0.2 });
+
+        bars.forEach(bar => {
+            // Set initial width to 0
+            bar.style.width = '0%';
+            observer.observe(bar);
+        });
+    }
+
+    if (document.readyState === 'complete') {
+        initEnrollmentAnimations();
+    } else {
+        window.addEventListener('load', initEnrollmentAnimations);
+    }
+    
+    document.addEventListener('astro:page-load', initEnrollmentAnimations);
+</script>

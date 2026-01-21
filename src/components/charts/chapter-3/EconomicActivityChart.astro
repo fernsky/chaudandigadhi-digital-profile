@@ -116,201 +116,170 @@ const table14Data = content.table14;
     </div>
 </div>
 
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
 <script define:vars={{ table13Data, table14Data }}>
-    function createEconomicCharts() {
-        createDurationChart();
-        createActivityStatusChart();
+    function initEconomicCharts() {
+        const observeChart = (id, renderFn) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.innerHTML = ""; // Clear
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            renderFn();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.2 },
+            );
+            observer.observe(el);
+        };
+
+        observeChart("duration-chart", renderDurationChart);
+        observeChart("activity-status-chart", renderActivityStatusChart);
     }
 
-    function createDurationChart() {
-        const svg = document.getElementById("duration-chart");
-        if (!svg) return;
-        svg.innerHTML = "";
+    function renderDurationChart() {
+        const svgEl = document.getElementById("duration-chart");
+        if (!svgEl) return;
 
         const data = table13Data.data;
         const margin = { top: 20, right: 40, bottom: 20, left: 160 };
-        const width = 500; // working width
+        const width = 500;
         const barHeight = 40;
         const gap = 15;
         const height =
             margin.top + margin.bottom + data.length * (barHeight + gap);
-
-        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
         const chartWidth = width - margin.left - margin.right;
         const maxPercentage = Math.max(...data.map((d) => d.percentage));
 
-        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        svg.appendChild(g);
+        const svg = d3.select(svgEl).attr("viewBox", `0 0 ${width} ${height}`);
+
+        const g = svg.append("g");
 
         data.forEach((item, i) => {
             const y = margin.top + i * (barHeight + gap);
             const barWidth = (item.percentage / maxPercentage) * chartWidth;
 
             // Label
-            const label = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "text",
-            );
-            label.setAttribute("x", (margin.left - 10).toString());
-            label.setAttribute("y", (y + barHeight / 2 + 5).toString());
-            label.setAttribute("text-anchor", "end");
-            label.setAttribute("fill", "#e4e4e7");
-            label.setAttribute("font-family", "serif");
-            label.setAttribute("font-size", "12");
-
-            // Shorten label if needed
             let labelText = item.duration;
-            if (labelText.length > 20) {
+            if (labelText.length > 20)
                 labelText = labelText.substring(0, 18) + "...";
-                const title = document.createElementNS(
-                    "http://www.w3.org/2000/svg",
-                    "title",
-                );
-                title.textContent = item.duration;
-                label.appendChild(title);
-            }
-            label.textContent = labelText;
-            g.appendChild(label);
 
-            // Bar Bg
-            const bgRect = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "rect",
-            );
-            bgRect.setAttribute("x", margin.left.toString());
-            bgRect.setAttribute("y", y.toString());
-            bgRect.setAttribute("width", chartWidth.toString());
-            bgRect.setAttribute("height", barHeight.toString());
-            bgRect.setAttribute("fill", "#f2e25d");
-            bgRect.setAttribute("opacity", "0.05");
-            bgRect.setAttribute("rx", "4");
-            g.appendChild(bgRect);
+            g.append("text")
+                .attr("x", margin.left - 10)
+                .attr("y", y + barHeight / 2 + 5)
+                .attr("text-anchor", "end")
+                .attr("fill", "#e4e4e7")
+                .attr("font-family", "serif")
+                .attr("font-size", "12")
+                .text(labelText)
+                .append("title")
+                .text(item.duration);
+
+            // Bg
+            g.append("rect")
+                .attr("x", margin.left)
+                .attr("y", y)
+                .attr("width", chartWidth)
+                .attr("height", barHeight)
+                .attr("fill", "#f2e25d")
+                .attr("opacity", "0.05")
+                .attr("rx", 4);
 
             // Bar
-            const rect = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "rect",
-            );
-            rect.setAttribute("x", margin.left.toString());
-            rect.setAttribute("y", y.toString());
-            rect.setAttribute("width", barWidth.toString());
-            rect.setAttribute("height", barHeight.toString());
-            rect.setAttribute("fill", "#f2e25d");
-            rect.setAttribute("opacity", "0.8");
-            rect.setAttribute("rx", "4");
-            rect.setAttribute("class", "bar-hover transition-all duration-300");
-            g.appendChild(rect);
+            g.append("rect")
+                .attr("x", margin.left)
+                .attr("y", y)
+                .attr("height", barHeight)
+                .attr("fill", "#f2e25d")
+                .attr("opacity", "0.8")
+                .attr("rx", 4)
+                .attr("class", "bar-hover transition-all duration-300")
+                .attr("width", 0) // Start 0
+                .transition()
+                .duration(1000)
+                .attr("width", barWidth);
 
-            // Percentage
-            const text = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "text",
-            );
-            text.setAttribute("x", (margin.left + barWidth + 5).toString());
-            text.setAttribute("y", (y + barHeight / 2 + 5).toString());
-            text.setAttribute("fill", "#f2e25d");
-            text.setAttribute("font-family", "serif");
-            text.setAttribute("font-size", "12");
-            text.textContent = `${item.percentage}%`;
-            g.appendChild(text);
-
-            // Tooltip
-            const tooltip = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "title",
-            );
-            tooltip.textContent = `${item.duration}: ${item.total.toLocaleString()} (${item.percentage}%)`;
-            rect.appendChild(tooltip);
+            // Text
+            g.append("text")
+                .attr("x", margin.left + barWidth + 5)
+                .attr("y", y + barHeight / 2 + 5)
+                .attr("fill", "#f2e25d")
+                .attr("font-family", "serif")
+                .attr("font-size", "12")
+                .text(`${item.percentage}%`)
+                .attr("opacity", 0)
+                .transition()
+                .delay(800)
+                .duration(500)
+                .attr("opacity", 1);
         });
     }
 
-    function createActivityStatusChart() {
-        const svg = document.getElementById("activity-status-chart");
-        if (!svg) return;
-        svg.innerHTML = "";
+    function renderActivityStatusChart() {
+        const svgEl = document.getElementById("activity-status-chart");
+        if (!svgEl) return;
 
         const activePct = table14Data.percentages.active;
         const inactivePct = table14Data.percentages.inactive;
-
-        // Data for pie
         const data = [
             { value: activePct, color: "#f2e25d", label: "Active" },
-            { value: inactivePct, color: "#a1a1aa", label: "Inactive" }, // Gray for inactive
+            { value: inactivePct, color: "#a1a1aa", label: "Inactive" },
         ];
 
+        const width = 100;
+        const height = 100;
         const radius = 50;
-        const center = 50;
-        let currentAngle = 0;
 
-        data.forEach((item) => {
-            const angle = (item.value / 100) * 360;
+        const svg = d3
+            .select(svgEl)
+            .attr("viewBox", `0 0 ${width} ${height}`) // Ensure viewbox
+            .append("g")
+            .attr("transform", `translate(${width / 2},${height / 2})`);
 
-            // Calc coordinates
-            const startRad = (currentAngle * Math.PI) / 180;
-            const endRad = ((currentAngle + angle) * Math.PI) / 180;
+        const pie = d3
+            .pie()
+            .value((d) => d.value)
+            .sort(null);
+        const arc = d3.arc().innerRadius(38).outerRadius(50);
 
-            const x1 = center + radius * Math.cos(startRad);
-            const y1 = center + radius * Math.sin(startRad);
-            const x2 = center + radius * Math.cos(endRad);
-            const y2 = center + radius * Math.sin(endRad);
+        const paths = svg
+            .selectAll("path")
+            .data(pie(data))
+            .enter()
+            .append("path")
+            .attr("fill", (d) => d.data.color)
+            .attr("d", arc)
+            .attr("class", "bar-hover transition-all duration-300")
+            .each(function (d) {
+                this._current = d;
+            });
 
-            const largeArcFlag = angle > 180 ? 1 : 0;
-            const innerRadius = 38; // Thinner donut
+        // Animate
+        paths
+            .transition()
+            .duration(1000)
+            .attrTween("d", function (d) {
+                var i = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+                return function (t) {
+                    return arc(i(t));
+                };
+            });
 
-            const x3 = center + innerRadius * Math.cos(endRad);
-            const y3 = center + innerRadius * Math.sin(endRad);
-            const x4 = center + innerRadius * Math.cos(startRad);
-            const y4 = center + innerRadius * Math.sin(startRad);
-
-            const pathData = [
-                `M ${x1} ${y1}`,
-                `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
-                `L ${x3} ${y3}`,
-                `A ${innerRadius} ${innerRadius} 0 ${largeArcFlag} 0 ${x4} ${y4}`,
-                `Z`,
-            ].join(" ");
-
-            const path = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "path",
-            );
-            path.setAttribute("d", pathData);
-            path.setAttribute("fill", item.color);
-            path.setAttribute("class", "bar-hover transition-all duration-300");
-
-            const title = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "title",
-            );
-            title.textContent = `${item.label}: ${item.value}%`;
-            path.appendChild(title);
-
-            svg.appendChild(path);
-
-            // Separator
-            const separator = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "line",
-            );
-            separator.setAttribute("x1", center.toString());
-            separator.setAttribute("y1", center.toString());
-            separator.setAttribute("x2", x2.toString());
-            separator.setAttribute("y2", y2.toString());
-            separator.setAttribute("stroke", "#0a0a0a");
-            separator.setAttribute("stroke-width", "1");
-            svg.appendChild(separator);
-
-            currentAngle += angle;
-        });
+        // Separators
+        // (Skipping separators for cleaner D3 look, or add if critical)
     }
 
     if (document.readyState === "complete") {
-        createEconomicCharts();
+        initEconomicCharts();
     } else {
-        window.addEventListener("load", createEconomicCharts);
+        window.addEventListener("load", initEconomicCharts);
     }
-
-    document.addEventListener("astro:page-load", createEconomicCharts);
+    document.addEventListener("astro:page-load", initEconomicCharts);
 </script>
 
 <style>

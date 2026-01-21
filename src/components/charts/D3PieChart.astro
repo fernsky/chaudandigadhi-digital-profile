@@ -7,10 +7,23 @@ interface Props {
     labels: string[];
     data: number[];
     lang: Language;
-    height?: number; // User wants it small, so default will be smaller
+    height?: number;
+    colors?: string[];
+    centerText?: string;
+    centerLabel?: string;
 }
 
-const { id, title, labels, data, lang, height = 350 } = Astro.props;
+const {
+    id,
+    title,
+    labels,
+    data,
+    lang,
+    height = 350,
+    colors: customColors,
+    centerText,
+    centerLabel,
+} = Astro.props;
 ---
 
 <div class="d3-pie-container my-8" id={`${id}-wrapper`}>
@@ -33,10 +46,28 @@ const { id, title, labels, data, lang, height = 350 } = Astro.props;
 </div>
 
 <script is:inline src="https://d3js.org/d3.v7.min.js"></script>
-<script is:inline define:vars={{ id, labels, data, lang, height }}>
+<script
+    is:inline
+    define:vars={{
+        id,
+        labels,
+        data,
+        lang,
+        height,
+        customColors,
+        centerText,
+        centerLabel,
+    }}
+>
     function initD3PieChart() {
         const container = document.getElementById(id);
         if (!container) return;
+
+        // Clean up observer
+        if (container._observer) {
+            container._observer.disconnect();
+            delete container._observer;
+        }
 
         // Clear previous content
         container.innerHTML = "";
@@ -53,8 +84,8 @@ const { id, title, labels, data, lang, height = 350 } = Astro.props;
             .append("g")
             .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-        // Premium Color Palette (Inspiration from Chapter 3)
-        const colors = [
+        // Premium Color Palette
+        const colors = customColors || [
             "#f2e25d", // Gold
             "#3b82f6", // Blue-500
             "#10b981", // Emerald-500
@@ -74,7 +105,7 @@ const { id, title, labels, data, lang, height = 350 } = Astro.props;
 
         const arc = d3
             .arc()
-            .innerRadius(radius * 0.5) // Doughnut style for premium look
+            .innerRadius(radius * 0.5)
             .outerRadius(radius);
 
         const outerArc = d3
@@ -113,21 +144,20 @@ const { id, title, labels, data, lang, height = 350 } = Astro.props;
         };
 
         const totalValue = d3.sum(data);
+        const pieData = pie(data);
 
-        // Drawing paths
-        const arcs = svg
+        // Drawing paths - initially empty (endAngle = startAngle)
+        const paths = svg
             .selectAll(".arc")
-            .data(pie(data))
+            .data(pieData)
             .enter()
-            .append("g")
-            .attr("class", "arc");
-
-        arcs.append("path")
-            .attr("d", arc)
+            .append("path")
+            .attr("class", "arc")
             .attr("fill", (d, i) => colorScale(labels[i]))
             .attr("stroke", "#1e293b")
             .style("stroke-width", "2px")
             .style("opacity", 0.8)
+            .attr("d", (d) => arc({ ...d, endAngle: d.startAngle })) // Initial state: empty wedges
             .on("mouseover", function (event, d) {
                 const i = d.index;
                 d3.select(this)
@@ -157,15 +187,6 @@ const { id, title, labels, data, lang, height = 350 } = Astro.props;
                     .attr("opacity", 0.8)
                     .style("transform", "scale(1)");
                 tooltip.transition().duration(200).style("opacity", 0);
-            })
-            .transition() // Entry animation
-            .duration(1000)
-            .attrTween("d", function (d) {
-                const i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
-                return function (t) {
-                    d.endAngle = i(t);
-                    return arc(d);
-                };
             });
 
         // Center Text
@@ -181,7 +202,7 @@ const { id, title, labels, data, lang, height = 350 } = Astro.props;
                     ? "'Noto Sans Devanagari', sans-serif"
                     : "'Inter', sans-serif",
             )
-            .text(formatNum(totalValue));
+            .text(centerText || formatNum(totalValue));
 
         svg.append("text")
             .attr("text-anchor", "middle")
@@ -194,7 +215,34 @@ const { id, title, labels, data, lang, height = 350 } = Astro.props;
                     ? "'Noto Sans Devanagari', sans-serif"
                     : "'Inter', sans-serif",
             )
-            .text(lang === "ne" ? "जम्मा" : "Total");
+            .text(centerLabel || (lang === "ne" ? "कुल" : "Total"));
+
+        // Intersection Observer for Animation
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Animate wedges to full size
+                    d3.select(`#${id}`)
+                        .selectAll(".arc")
+                        .transition()
+                        .duration(1000)
+                        .attrTween("d", function (d) {
+                            const i = d3.interpolate(d.startAngle, d.endAngle);
+                            return function (t) {
+                                d.endAngle = i(t);
+                                return arc(d);
+                            };
+                        });
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, {
+            threshold: 0.2,
+        });
+        observer.observe(svg.node());
+        container._observer = observer;
 
         // Legend
         const legendContainer = d3.select(`#${id}-legend`);

@@ -294,11 +294,28 @@ const cleanChartData = content.table_data
 <script is:inline src="https://d3js.org/d3.v7.min.js"></script>
 <script define:vars={{ cleanChartData, lang }}>
     // D3 Chart Implementation
-    document.addEventListener("DOMContentLoaded", () => {
+    function initHouseholdChart() {
         const containerId = "population-chart-container";
         const tooltipId = "population-tooltip-unique";
         const container = document.getElementById(containerId);
         if (!container) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        renderHouseholdChart(container, containerId, tooltipId);
+                        observer.unobserve(entry.target); // Play once
+                    }
+                });
+            },
+            { threshold: 0.2 },
+        );
+        observer.observe(container);
+    }
+
+    function renderHouseholdChart(container, containerId, tooltipId) {
+        container.innerHTML = "";
 
         const formatValue = (num, decimals = 0) => {
             const formatted = num.toLocaleString("en-US", {
@@ -492,7 +509,14 @@ const cleanChartData = content.table_data
 
         svg.selectAll(".domain").attr("stroke", "#475569");
         svg.selectAll(".tick line").attr("stroke", "#475569");
-    });
+    } // End render
+
+    if (document.readyState === "complete") {
+        initHouseholdChart();
+    } else {
+        document.addEventListener("DOMContentLoaded", initHouseholdChart);
+    }
+    document.addEventListener("astro:page-load", initHouseholdChart);
 </script>
 <div
     id="population-tooltip-unique"

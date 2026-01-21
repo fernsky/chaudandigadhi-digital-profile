@@ -1,6 +1,7 @@
 ---
 import type { Language } from "../../../lib/i18n";
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import D3PieChart from "../D3PieChart.astro";
 
 interface Props {
     lang: Language;
@@ -30,29 +31,14 @@ const data = content.tableData;
 <div
     class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 rounded-lg"
 >
-    <!-- Chart -->
-    <div class="relative aspect-square max-w-[400px] mx-auto w-full">
-        <svg
-            id="religion-chart"
-            class="w-full h-full transform -rotate-90"
-            viewBox="0 0 100 100"
-        >
-            <!-- Chart will be rendered by script -->
-        </svg>
-        <!-- Center Text -->
-        <div
-            class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
-        >
-            <span class="text-zinc-500 font-serif text-sm">कुल जनसंख्या</span>
-            <span class="text-[#f2e25d] font-serif text-2xl font-bold">
-                {
-                    data
-                        .reduce((acc, curr) => acc + curr.total, 0)
-                        .toLocaleString()
-                }
-            </span>
-        </div>
-    </div>
+    <D3PieChart
+        id="religion-chart"
+        title=""
+        labels={data.map((d) => d.religion)}
+        data={data.map((d) => d.total)}
+        lang={lang}
+        height={400}
+    />
 
     <!-- Legend -->
     <div class="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
@@ -81,115 +67,6 @@ const data = content.tableData;
         }
     </div>
 </div>
-
-<script define:vars={{ data }}>
-    function createReligionChart() {
-        const svg = document.getElementById("religion-chart");
-        if (!svg) return;
-
-        // Clear existing content
-        svg.innerHTML = "";
-
-        const radius = 50;
-        const center = 50;
-        const total = data.reduce((acc, curr) => acc + curr.total, 0);
-        let currentAngle = 0;
-
-        // Colors
-        const colors = [
-            "#f2e25d", // Gold
-            "#eab308", // Yellow-600
-            "#ca8a04", // Yellow-700
-            "#a16207", // Yellow-800
-            "#60a5fa", // Blue-400
-            "#3b82f6", // Blue-500
-            "#f472b6", // Pink-400
-            "#ec4899", // Pink-500
-        ];
-
-        data.forEach((item, index) => {
-            const percentage = item.total / total;
-            const angle = percentage * 360;
-            const color = colors[index % colors.length];
-
-            // Update legend color
-            const legendDot = document.getElementById(
-                `religion-legend-color-${index}`,
-            );
-            if (legendDot) {
-                legendDot.style.backgroundColor = color;
-            }
-
-            // Create Slice
-            const startRad = (currentAngle * Math.PI) / 180;
-            const endRad = ((currentAngle + angle) * Math.PI) / 180;
-
-            const x1 = center + radius * Math.cos(startRad);
-            const y1 = center + radius * Math.sin(startRad);
-            const x2 = center + radius * Math.cos(endRad);
-            const y2 = center + radius * Math.sin(endRad);
-
-            const largeArcFlag = angle > 180 ? 1 : 0;
-
-            const innerRadius = 35;
-            const x3 = center + innerRadius * Math.cos(endRad);
-            const y3 = center + innerRadius * Math.sin(endRad);
-            const x4 = center + innerRadius * Math.cos(startRad);
-            const y4 = center + innerRadius * Math.sin(startRad);
-
-            const pathData = [
-                `M ${x1} ${y1}`,
-                `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
-                `L ${x3} ${y3}`,
-                `A ${innerRadius} ${innerRadius} 0 ${largeArcFlag} 0 ${x4} ${y4}`,
-                `Z`,
-            ].join(" ");
-
-            const path = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "path",
-            );
-            path.setAttribute("d", pathData);
-            path.setAttribute("fill", color);
-            path.setAttribute("opacity", "0.9");
-            path.setAttribute(
-                "class",
-                "hover:opacity-100 transition-opacity duration-300 cursor-pointer",
-            );
-
-            const title = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "title",
-            );
-            title.textContent = `${item.religion}: ${item.total.toLocaleString()} (${item.percentage.toFixed(2)}%)`;
-            path.appendChild(title);
-
-            svg.appendChild(path);
-
-            const separator = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "line",
-            );
-            separator.setAttribute("x1", center.toString());
-            separator.setAttribute("y1", center.toString());
-            separator.setAttribute("x2", x2.toString());
-            separator.setAttribute("y2", y2.toString());
-            separator.setAttribute("stroke", "#0a0a0a");
-            separator.setAttribute("stroke-width", "0.5");
-            svg.appendChild(separator);
-
-            currentAngle += angle;
-        });
-    }
-
-    if (document.readyState === "complete") {
-        createReligionChart();
-    } else {
-        window.addEventListener("load", createReligionChart);
-    }
-
-    document.addEventListener("astro:page-load", createReligionChart);
-</script>
 
 <style>
     .custom-scrollbar::-webkit-scrollbar {
