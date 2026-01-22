@@ -28,58 +28,11 @@ if (!content) {
 const data = content.tableData;
 ---
 
-<div
-    class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 rounded-lg"
->
-    <D3PieChart
-        id="religion-chart"
-        title=""
-        labels={data.map((d) => d.religion)}
-        data={data.map((d) => d.total)}
-        lang={lang}
-        height={400}
-    />
-
-    <!-- Legend -->
-    <div class="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
-        {
-            data.map((item, index) => (
-                <div class="flex items-center justify-between group p-2 rounded hover:bg-[#f2e25d]/5 transition-colors">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="w-4 h-4 rounded-sm"
-                            id={`religion-legend-color-${index}`}
-                        />
-                        <span class="text-zinc-100 font-serif">
-                            {item.religion}
-                        </span>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-[#f2e25d] font-serif font-medium">
-                            {item.percentage.toFixed(2)}%
-                        </div>
-                        <div class="text-zinc-500 text-xs font-serif">
-                            {item.total.toLocaleString()}
-                        </div>
-                    </div>
-                </div>
-            ))
-        }
-    </div>
-</div>
-
-<style>
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 4px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-        background: #0a0a0a;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #f2e25d33;
-        border-radius: 2px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #f2e25d66;
-    }
-</style>
+<D3PieChart
+    id="religion-chart"
+    title=""
+    labels={data.map((d) => d.religion)}
+    data={data.map((d) => d.total)}
+    lang={lang}
+    height={400}
+/>
