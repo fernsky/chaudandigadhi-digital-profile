@@ -689,17 +689,17 @@ html.light-mode text[fill="#f2e25d"] {
   /* Even darker for text */
 }
 
-html.light-mode .text-\[#f2e25d\] {
+html.light-mode .text-\[\#f2e25d\] {
   color: #b8860b !important;
 }
 
-html.light-mode .bg-\[#f2e25d\] {
+html.light-mode .bg-\[\#f2e25d\] {
   background-color: #d4a017 !important;
 }
 
-html.light-mode .border-\[#f2e25d\]\/10,
-html.light-mode .border-\[#f2e25d\]\/20,
-html.light-mode .border-\[#f2e25d\]\/30 {
+html.light-mode .border-\[\#f2e25d\]\/10,
+html.light-mode .border-\[\#f2e25d\]\/20,
+html.light-mode .border-\[\#f2e25d\]\/30 {
   border-color: rgba(212, 160, 23, 0.3) !important;
 }
 
@@ -737,7 +737,7 @@ html.light-mode .d3-bar-container {
 }
 
 /* ===== IMAGE CONTAINERS ===== */
-html.light-mode .bg-\[#0a0a0a\] {
+html.light-mode .bg-\[\#0a0a0a\] {
   background-color: #fafafa !important;
 }
 
