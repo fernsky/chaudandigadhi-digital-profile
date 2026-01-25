@@ -482,7 +482,7 @@ html.light-mode a.border-b:hover {
 /* Chart and visualization styles for light mode */
 html.light-mode .d3-pie-container,
 html.light-mode .d3-bar-container {
-  background: rgba(245, 245, 245, 0.8) !important;
+  background: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
@@ -584,6 +584,14 @@ html.light-mode .bar-hover:hover {
 /* Chart backgrounds */
 html.light-mode svg[style*="background: transparent"] {
   background: transparent !important;
+}
+
+/* All SVG elements in chart containers should have white background in light mode */
+html.light-mode .d3-pie-container svg,
+html.light-mode .d3-bar-container svg,
+html.light-mode .d3-chart-container svg,
+html.light-mode .chart-container svg {
+  background: #ffffff !important;
 }
 
 
@@ -726,14 +734,23 @@ html.light-mode div[class*="border"][class*="bg-white/5"] {
 
 /* ===== CHART CONTAINERS ===== */
 html.light-mode .chart-container {
-  background-color: rgba(250, 250, 250, 0.5) !important;
+  background-color: #ffffff !important;
 }
 
-/* D3 chart containers */
+/* D3 chart containers - using higher specificity to override component styles */
 html.light-mode .d3-pie-container,
-html.light-mode .d3-bar-container {
-  background: rgba(250, 250, 250, 0.9) !important;
+html.light-mode .d3-bar-container,
+html.light-mode .d3-chart-container {
+  background: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Additional override for any nested containers */
+html.light-mode div.d3-chart-container,
+html.light-mode div.d3-bar-container,
+html.light-mode div.d3-pie-container {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
 }
 
 /* ===== IMAGE CONTAINERS ===== */
