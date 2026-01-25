@@ -243,6 +243,33 @@ const {
             )
             .text(centerLabel || (lang === "ne" ? "कुल" : "Total"));
 
+        // Intersection Observer for Animation
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Animate wedges to full size
+                    d3.select(`#${id}`)
+                        .selectAll(".arc")
+                        .transition()
+                        .duration(1000)
+                        .attrTween("d", function (d) {
+                            const i = d3.interpolate(d.startAngle, d.endAngle);
+                            return function (t) {
+                                d.endAngle = i(t);
+                                return arc(d);
+                            };
+                        });
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, {
+            threshold: 0.2,
+        });
+        observer.observe(svg.node());
+        container._observer = observer;
+
         // Legend
         if (legendContainer) {
             const d3Legend = d3.select(legendContainer);
