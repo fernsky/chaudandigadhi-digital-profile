@@ -164,7 +164,7 @@ const {
             );
         };
 
-        const totalValue = d3.sum(data);
+        const totalValue = Math.round(d3.sum(data) * 100) / 100;
         const pieData = pie(data);
 
         // Drawing paths with animation

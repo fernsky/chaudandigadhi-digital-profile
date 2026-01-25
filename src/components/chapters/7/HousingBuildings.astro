@@ -2,6 +2,7 @@
 import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
 import { formatNumber } from "../../../lib/i18n/formatters";
 import type { Language } from "../../../lib/i18n";
+import D3PieChart from "../../charts/D3PieChart.astro";
 
 interface Props {
     lang: Language;
@@ -105,7 +106,7 @@ const crematorium = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(housing.number, lang)} {housing.title}
+                            {housing.number}&nbsp; {housing.title}
                         </h2>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
                             {housing.content}
@@ -116,7 +117,7 @@ const crematorium = (await loadChapterSection(
                     {roofType && (
                         <div id="roof-types" class="mb-16">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {formatNumber(roofType.number, lang)} {roofType.title}
+                                {roofType.number}&nbsp; {roofType.title}
                             </h3>
                             
                             <!-- Table 70 -->
@@ -199,12 +200,15 @@ const crematorium = (await loadChapterSection(
 
                             <!-- Pie Chart -->
                             <div class="mb-10">
-                                <h5 class="font-serif text-xl md:text-2xl text-zinc-100 font-medium mb-6 text-center">
-                                    {roofType.chartTitle}
-                                </h5>
-                                <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 rounded-lg p-6 flex flex-col items-center">
-                                    <div id="roof-type-chart" class="w-full h-[450px]" data-chart-data={JSON.stringify(roofType.chartData)}></div>
-                                </div>
+                                <D3PieChart
+                                    id="roof-type-chart"
+                                    title={roofType.chartTitle}
+                                    labels={roofType.chartData.map(d => d.label)}
+                                    data={roofType.chartData.map(d => d.value)}
+                                    colors={roofType.chartData.map(d => d.color)}
+                                    lang={lang}
+                                    height={450}
+                                />
                             </div>
 
                             <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
@@ -217,7 +221,7 @@ const crematorium = (await loadChapterSection(
                      {govtBuildings && (
                         <div id="govt-buildings" class="mb-16">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {formatNumber(govtBuildings.number, lang)} {govtBuildings.title}
+                                {govtBuildings.number}&nbsp; {govtBuildings.title}
                             </h3>
                             <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
                                 {govtBuildings.content1}
@@ -282,8 +286,8 @@ const crematorium = (await loadChapterSection(
 
                             <!-- Ward 1 Office Image -->
                             <figure class="mb-10">
-                                <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
-                                    <span class="font-serif italic">[Image: Ward 1 Office]</span>
+                                <div class="w-full h-[500px] bg-zinc-900/50 rounded overflow-hidden border border-[#f2e25d]/20 mb-4">
+                                    <img src="/images/chapter-7/वार्ड १ अफिस.png" alt="Ward 1 Office" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
                                 </div>
                                 <figcaption class="text-center font-bold text-zinc-200 font-serif text-lg md:text-xl">
                                     {govtBuildings.imageCaption1}
@@ -292,8 +296,8 @@ const crematorium = (await loadChapterSection(
 
                             <!-- Ward 4 Office Image -->
                             <figure class="mb-10">
-                                <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
-                                     <span class="font-serif italic">[Image: Ward 4 Office]</span>
+                                <div class="w-full h-[500px] bg-zinc-900/50 rounded overflow-hidden border border-[#f2e25d]/20 mb-4">
+                                     <img src="/images/chapter-7/वार्ड ४ अफिस.png" alt="Ward 4 Office" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
                                 </div>
                                 <figcaption class="text-center font-bold text-zinc-200 font-serif text-lg md:text-xl">
                                     {govtBuildings.imageCaption2}
@@ -306,7 +310,7 @@ const crematorium = (await loadChapterSection(
                      {slaughterhouse && (
                         <div id="slaughterhouse" class="mb-16">
                              <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {formatNumber(slaughterhouse.number, lang)} {slaughterhouse.title}
+                                {slaughterhouse.number}&nbsp; {slaughterhouse.title}
                             </h3>
                             <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
                                 {slaughterhouse.content}
@@ -318,7 +322,7 @@ const crematorium = (await loadChapterSection(
                      {crematorium && (
                         <div id="crematorium">
                              <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {formatNumber(crematorium.number, lang)} {crematorium.title}
+                                {crematorium.number}&nbsp; {crematorium.title}
                             </h3>
                             <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
                                 {crematorium.content}
@@ -331,145 +335,4 @@ const crematorium = (await loadChapterSection(
     )
 }
 
-<script>
-    import * as d3 from "d3";
 
-    const initRoofTypeChart = () => {
-        const container = document.getElementById("roof-type-chart");
-        if (!container) return;
-
-        const dataStr = container.dataset.chartData;
-        if (!dataStr) return;
-        const data = JSON.parse(dataStr);
-
-        container.innerHTML = "";
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-        const radius = Math.min(width, height) / 2.5;
-
-        if (radius <= 0 || !data || data.length === 0) {
-            console.warn("Invalid chart dimensions or data");
-            return;
-        }
-
-        const svg = d3.select(container)
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .append("g")
-            .attr("transform", `translate(${width / 2},${height / 2})`);
-
-        const pie = d3.pie<any>().value((d: any) => d.value);
-        const arc = d3.arc<any>().innerRadius(0).outerRadius(radius * 0.75);
-        const arcHover = d3.arc<any>().innerRadius(0).outerRadius(radius * 0.85);
-        const outerArc = d3.arc<any>().innerRadius(radius * 0.8).outerRadius(radius * 0.8);
-
-        const lang = document.documentElement.lang || "ne";
-        const formatValue = (val: number | string) => {
-            if (lang === "en") return val.toString();
-            const nepalDigits: { [key: string]: string } = {
-                "0": "०", "1": "१", "2": "२", "3": "३", "4": "४",
-                "5": "५", "6": "६", "7": "७", "8": "८", "9": "९", ".": "."
-            };
-            return val.toString().split("").map(d => nepalDigits[d] || d).join("");
-        };
-
-        // Tooltip
-        const tooltipId = "roof-type-tooltip";
-        let tooltip = d3.select(`#${tooltipId}`);
-        if (tooltip.empty()) {
-            tooltip = d3.select("body").append("div")
-                .attr("id", tooltipId)
-                .attr("class", "fixed bg-black/90 border border-[#f2e25d]/30 text-white text-sm px-3 py-2 rounded pointer-events-none opacity-0 transition-opacity z-50");
-        }
-
-        const slices = svg.selectAll("path")
-            .data(pie(data))
-            .enter()
-            .append("path")
-            .attr("d", arc)
-            .attr("fill", (d: any) => d.data.color)
-            .attr("stroke", "#0a0a0a")
-            .attr("stroke-width", "2px")
-            .style("cursor", "pointer")
-            .transition()
-            .duration(1000)
-             .attrTween("d", function (d: any) {
-                const i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
-                return function (t) {
-                    d.endAngle = i(t);
-                    return arc(d) as string;
-                }
-            });
-
-        svg.selectAll("path")
-            .on("mouseover", function (event, d: any) {
-                d3.select(this)
-                    .transition()
-                    .duration(200)
-                    .attr("d", arcHover);
-                
-                tooltip.style("opacity", 1)
-                    .html(`<div class="font-serif"><strong>${d.data.label}</strong><br/>${formatValue(d.data.value)}%</div>`);
-            })
-            .on("mousemove", function(event) {
-                tooltip
-                    .style("left", (event.clientX + 10) + "px")
-                    .style("top", (event.clientY - 10) + "px");
-            })
-            .on("mouseout", function () {
-                d3.select(this)
-                    .transition()
-                    .duration(200)
-                    .attr("d", arc);
-                tooltip.style("opacity", 0);
-            });
-
-        // Legends
-        const legendGroup = svg.append("g")
-            .attr("transform", `translate(${radius + 20}, ${-height/4})`);
-            
-        const legend = legendGroup.selectAll(".legend")
-            .data(data)
-            .enter()
-            .append("g")
-            .attr("class", "legend")
-            .attr("transform", (d: any, i: number) => `translate(0, ${i * 25})`);
-        
-        if(width > 600) {
-             legend.append("rect")
-                .attr("width", 18)
-                .attr("height", 18)
-                .style("fill", (d: any) => d.color);
-
-            legend.append("text")
-                .attr("x", 24)
-                .attr("y", 14)
-                .text((d: any) => `${d.label} (${formatValue(d.value)}%)`)
-                .style("font-size", "14px")
-                .style("fill", "#e4e4e7")
-                .attr("class", "font-serif");
-        }
- else {
-             // For small screens, we might want to append HTML legends outside. 
-             // But for now, let's rely on tooltip and simple color blocks below if needed.
-             // Or simply let the user hover/tap.
-        }
-    }
-
-    document.addEventListener("astro:page-load", () => {
-        initRoofTypeChart();
-    });
-
-    initRoofTypeChart();
-    
-    const resizeObserver = new ResizeObserver(() => {
-         window.requestAnimationFrame(() => {
-            initRoofTypeChart();
-        });
-    });
-
-    const container = document.getElementById("roof-type-chart");
-    if (container) resizeObserver.observe(container);
-
-</script>

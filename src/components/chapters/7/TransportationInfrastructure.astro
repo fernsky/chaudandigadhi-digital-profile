@@ -91,21 +91,27 @@ const busParks = (await loadChapterSection(
                     <div class="w-full">
                         <div class="mb-6">
                             <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                                {formatNumber(transportation.number, lang)} {transportation.title}
+                                {transportation.number}&nbsp; {transportation.title}
                             </h2>
+                        </div>
+                        
+                        <!-- Image Container below Title 7.1 -->
+                        <div class="mb-8">
+                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg overflow-hidden border border-[#f2e25d]/10">
+                                <img src="/images/chapter-7/यातायात पूर्वाधार.png" alt="यातायात पूर्वाधार" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                            </div>
                         </div>
 
                         <!-- 7.1.1 Road Network -->
                         <div class="mb-8">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {formatNumber(transportation.subNumber, lang)}{" "}
-                                {transportation.subTitle}
+                                {transportation.subNumber}&nbsp; {transportation.subTitle}
                             </h3>
                             
                             <!-- Map Placeholder Container -->
                             <figure class="mb-8">
-                                <div class="w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4">
-                                    <span class="font-serif italic">Map Placeholder</span>
+                                <div class="w-full h-[500px] bg-zinc-900/50 rounded overflow-hidden border border-[#f2e25d]/20 mb-4">
+                                     <img src="/images/chapter-7/Map Image 9.png" alt="Map 9" class="w-full h-full object-contain p-2" />
                                 </div>
                                 <figcaption class="text-center font-bold text-zinc-200 font-serif text-lg md:text-xl underline decoration-[#f2e25d]/30 underline-offset-4">
                                     {transportation.mapCaption}
@@ -118,8 +124,8 @@ const busParks = (await loadChapterSection(
                         </div>
                         
                          <!-- Image Container -->
-                        <div class="mb-8 w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500">
-                             <span class="font-serif italic">Image Placeholder</span>
+                        <div class="mb-8 w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg overflow-hidden border border-[#f2e25d]/10">
+                             <img src="/images/chapter-7/सडक सञ्जालको विद्यमान अवस्था  Image 1.png" alt="सडक सञ्जालको विद्यमान अवस्था 1" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
                         </div>
 
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
@@ -128,6 +134,13 @@ const busParks = (await loadChapterSection(
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-10">
                             {transportation.content3}
                         </p>
+                    </div>
+
+                    <!-- Image Container above Table 63 -->
+                    <div class="mb-8">
+                        <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg overflow-hidden border border-[#f2e25d]/10">
+                            <img src="/images/chapter-7/सडक सञ्जालको विद्यमान अवस्था  Image 2.png" alt="सडक सञ्जालको विद्यमान अवस्था 2" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                        </div>
                     </div>
 
                     <!-- Table 63 -->
@@ -224,8 +237,8 @@ const busParks = (await loadChapterSection(
                     </div>
 
                     <!-- Image Container after tables -->
-                    <div class="mb-12 w-full w-full h-80 bg-zinc-800 rounded flex items-center justify-center text-zinc-500">
-                         <span class="font-serif italic">Image Placeholder</span>
+                    <div class="mb-12 w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg overflow-hidden border border-[#f2e25d]/10">
+                         <img src="/images/chapter-7/सडक सञ्जालको विद्यमान अवस्था  Image 3.png" alt="सडक सञ्जालको विद्यमान अवस्था 3" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
                     </div>
 
                 </div>
@@ -245,7 +258,7 @@ const busParks = (await loadChapterSection(
                     <!-- 7.1.2 -->
                     <div class="mb-8">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(transportFacilities.number, lang)} {transportFacilities.title}
+                            {transportFacilities.number}&nbsp; {transportFacilities.title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
                             {transportFacilities.content}
@@ -255,8 +268,7 @@ const busParks = (await loadChapterSection(
                     <!-- 7.1.3 -->
                     <div class="mb-8">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(transportFacilities.vehicles.number, lang)}{" "}
-                            {transportFacilities.vehicles.title}
+                            {transportFacilities.vehicles.number}&nbsp; {transportFacilities.vehicles.title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">
                             {transportFacilities.vehicles.content1}
@@ -278,7 +290,7 @@ const busParks = (await loadChapterSection(
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(busParks.number, lang)} {busParks.title}
+                            {busParks.number}&nbsp; {busParks.title}
                         </h3>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-8">
                             {busParks.content}
