@@ -96,14 +96,14 @@ const wardStaff = (await loadChapterSection(
                     <!-- 8.3 Header -->
                     <div class="mb-8">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(legal.number, lang)} {legal.title}
+                            {legal.number}&nbsp; {legal.title}
                         </h2>
                     </div>
 
                     <!-- 8.3.1 Approved Acts Table -->
                     <div id="approved-acts" class="mb-16">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(legal.subNumber, lang)} {legal.subTitle}
+                            {legal.subNumber}&nbsp; {legal.subTitle}
                         </h3>
                         
                         <div class="overflow-x-auto">
@@ -138,7 +138,7 @@ const wardStaff = (await loadChapterSection(
                     {staff && (
                         <div id="staff" class="mb-16">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4">
-                                {formatNumber(staff.number, lang)} {staff.title}
+                                {staff.number}&nbsp; {staff.title}
                             </h3>
                             <p class="text-[#f2e25d] font-serif text-lg mb-6">{staff.tableName}</p>
                             
@@ -205,7 +205,7 @@ const wardStaff = (await loadChapterSection(
                     {wardStaff && (
                         <div id="ward-staff" class="mb-10">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-4">
-                                {formatNumber(wardStaff.number, lang)} {wardStaff.title}
+                                {wardStaff.number}&nbsp; {wardStaff.title}
                             </h3>
                             <p class="text-[#f2e25d] font-serif text-lg mb-6">{wardStaff.tableName}</p>
                             
