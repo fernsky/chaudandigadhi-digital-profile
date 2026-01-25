@@ -33,20 +33,20 @@ const organization = (await loadChapterSection(
                     <!-- 8.1 Header -->
                     <div class="mb-8">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(organization.number, lang)} {organization.title}
+                            {organization.number}&nbsp; {organization.title}
                         </h2>
                     </div>
 
                     <!-- 8.1.1 Subsection -->
                     <div id="organizational-structure" class="mb-10">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(organization.subNumber, lang)} {organization.subTitle}
+                            {organization.subNumber}&nbsp; {organization.subTitle}
                         </h3>
                         
                         <!-- Image Placeholder -->
                         <figure class="mb-10">
-                            <div class="w-full h-[600px] bg-zinc-800 rounded flex items-center justify-center text-zinc-500 mb-4 border border-[#f2e25d]/10">
-                                <span class="font-serif italic text-lg">[Image: {organization.imageCaption}]</span>
+                            <div class="w-full h-auto bg-zinc-900/50 rounded overflow-hidden border border-[#f2e25d]/10 mb-4 p-4">
+                                <img src="/images/chapter-8/Image 1.png" alt={organization.imageCaption} class="w-full h-full object-contain" />
                             </div>
                             <figcaption class="text-center font-bold text-zinc-200 font-serif text-lg md:text-xl">
                                 {organization.imageCaption}

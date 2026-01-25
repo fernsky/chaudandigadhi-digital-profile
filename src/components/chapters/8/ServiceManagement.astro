@@ -39,14 +39,14 @@ const services = (await loadChapterSection(
                     <!-- 8.2 Header -->
                     <div class="mb-8">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(services.number, lang)} {services.title}
+                            {services.number}&nbsp; {services.title}
                         </h2>
                     </div>
 
                     <!-- 8.2.1 Service Types -->
                     <div id="service-types" class="mb-12">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(services.typesNumber, lang)} {services.typesTitle}
+                            {services.typesNumber}&nbsp; {services.typesTitle}
                         </h3>
                         <div class="bg-[#0a0a0a] border border-[#f2e25d]/10 rounded-lg p-6 md:p-8">
                             <ul class="space-y-3">
@@ -63,7 +63,7 @@ const services = (await loadChapterSection(
                     <!-- 8.2.2 Service Processes -->
                     <div id="service-process" class="mb-12">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(services.processNumber, lang)} {services.processTitle}
+                            {services.processNumber}&nbsp; {services.processTitle}
                         </h3>
                          <div class="space-y-6">
                             {services.serviceProcesses.map((process: string) => {
@@ -87,7 +87,7 @@ const services = (await loadChapterSection(
                     <!-- 8.2.3 Mediation -->
                     <div id="mediation" class="mb-8">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(services.mediationNumber, lang)} {services.mediationTitle}
+                            {services.mediationNumber}&nbsp; {services.mediationTitle}
                         </h3>
                         <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed">
                             {services.mediationContent}
