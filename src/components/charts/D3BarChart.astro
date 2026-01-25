@@ -33,7 +33,7 @@ const { id, title, labels, data, lang, height = 400 } = Astro.props;
         // Clear previous content
         container.innerHTML = "";
 
-        const margin = { top: 30, right: 30, bottom: 60, left: 60 };
+        const margin = { top: 30, right: 30, bottom: 150, left: 60 };
         const width = container.clientWidth - margin.left - margin.right;
         const chartHeight = height - margin.top - margin.bottom;
 
@@ -52,7 +52,7 @@ const { id, title, labels, data, lang, height = 400 } = Astro.props;
             .attr("transform", `translate(0, ${chartHeight})`)
             .call(d3.axisBottom(x))
             .selectAll("text")
-            .attr("transform", "translate(-10,0)rotate(-20)")
+            .attr("transform", "translate(-10,0)rotate(-45)")
             .style("text-anchor", "end")
             .style("fill", "#cbd5e1")
             .style(
