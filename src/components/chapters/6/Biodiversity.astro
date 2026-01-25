@@ -40,14 +40,14 @@ const biodiversityPlants = (await loadChapterSection(6, "biodiversity-plants", l
                     <!-- 6.3 Main Section -->
                     <div class="mb-8">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {lang === "ne" ? "६.३ जैविक विविधता र वातावरणीय सेवा" : "6.3 Biodiversity and Environmental Services"}
+                            {lang === "ne" ? "६.३\u00A0जैविक विविधता र वातावरणीय सेवा" : "6.3\u00A0Biodiversity and Environmental Services"}
                         </h2>
                     </div>
 
                     <!-- 6.3.1 Local Animals -->
                     <div id="wildlife" class="scroll-mt-24 mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {biodiversityAnimals.number} {biodiversityAnimals.title}
+                            {biodiversityAnimals.number}&nbsp; {biodiversityAnimals.title}
                         </h3>
                     </div>
 
@@ -106,7 +106,7 @@ const biodiversityPlants = (await loadChapterSection(6, "biodiversity-plants", l
                 <div class="w-full">
                     <div class="mb-6">
                         <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                            {biodiversityPlants.number} {biodiversityPlants.title}
+                            {biodiversityPlants.number}&nbsp; {biodiversityPlants.title}
                         </h3>
                     </div>
                     <p class="text-zinc-100 font-serif text-lg md:text-xl font-light leading-relaxed mb-6">

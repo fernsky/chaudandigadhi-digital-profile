@@ -40,15 +40,17 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
                 <div class="w-full">
                     <div class="mb-6">
                         <h2 class="font-serif text-3xl md:text-4xl font-medium text-zinc-100 mb-6">
-                            {formatNumber(waterResources.number, lang)} {waterResources.title}
+                            {waterResources.number}&nbsp; {waterResources.title}
                         </h2>
                     </div>
                     
                     <!-- Image Container 1: Badel Pokhari -->
                     <div class="mb-6">
-                        <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
-                            <span class="text-zinc-500 font-serif">[Image: Badel Pokhari]</span>
-                        </div>
+                        <img 
+                            src="/images/chapter-6/बदेल पोखरी.png" 
+                            alt={lang === "ne" ? "बदेल पोखरी" : "Badel Pokhari"}
+                            class="w-full h-auto rounded-lg shadow-lg"
+                        />
                         <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
                             {lang === "ne" ? "बदेल पोखरी" : "Badel Pokhari"}
                         </p>
@@ -60,9 +62,11 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
 
                     <!-- Image Container 2: Tin Dobhaneko Talau -->
                     <div class="mb-10">
-                        <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
-                            <span class="text-zinc-500 font-serif">[Image: Tin Dobhaneko Talau]</span>
-                        </div>
+                        <img 
+                            src="/images/chapter-6/तिन दोभानेको तलाउ.png" 
+                            alt={lang === "ne" ? "तिन दोभानेको तलाउ" : "Tin Dobhaneko Talau"}
+                            class="w-full h-auto rounded-lg shadow-lg"
+                        />
                         <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
                             {lang === "ne" ? "तिन दोभानेको तलाउ" : "Tin Dobhaneko Talau"}
                         </p>
@@ -82,15 +86,17 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
                     <div class="w-full">
                         <div class="mb-6">
                             <h3 class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6">
-                                {formatNumber(rivers.number, lang)} {rivers.title}
+                                {rivers.number}&nbsp; {rivers.title}
                             </h3>
                         </div>
 
                         <!-- Image Container 1: Triyuga Khola -->
                         <div class="mb-6">
-                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
-                                <span class="text-zinc-500 font-serif">[Image: Triyuga Khola]</span>
-                            </div>
+                            <img 
+                                src="/images/chapter-6/त्रियुगा खोला.png" 
+                                alt={lang === "ne" ? "त्रियुगा खोला" : "Triyuga Khola"}
+                                class="w-full h-auto rounded-lg shadow-lg"
+                            />
                             <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
                                 {lang === "ne" ? "त्रियुगा खोला" : "Triyuga Khola"}
                             </p>
@@ -102,9 +108,11 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
 
                         <!-- Image Container 2: Sundarpur Pokhari -->
                         <div class="mb-6">
-                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
-                                <span class="text-zinc-500 font-serif">[Image: Sundarpur Pokhari]</span>
-                            </div>
+                            <img 
+                                src="/images/chapter-6/सुन्दरपुर पोखरी.png" 
+                                alt={lang === "ne" ? "सुन्दरपुर पोखरी" : "Sundarpur Pokhari"}
+                                class="w-full h-auto rounded-lg shadow-lg"
+                            />
                             <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
                                 {lang === "ne" ? "सुन्दरपुर पोखरी" : "Sundarpur Pokhari"}
                             </p>
@@ -112,9 +120,11 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
 
                         <!-- Image Container 3: Duvar Khola -->
                         <div class="mb-10">
-                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
-                                <span class="text-zinc-500 font-serif">[Image: Duvar Khola]</span>
-                            </div>
+                            <img 
+                                src="/images/chapter-6/दुवार खोला.png" 
+                                alt={lang === "ne" ? "दुवार खोला" : "Duvar Khola"}
+                                class="w-full h-auto rounded-lg shadow-lg"
+                            />
                             <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
                                 {lang === "ne" ? "दुवार खोला" : "Duvar Khola"}
                             </p>
@@ -164,9 +174,11 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
                     <div class="w-full">
                         <!-- Image Container 4: Pokhari -->
                         <div class="mb-6">
-                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
-                                <span class="text-zinc-500 font-serif">[Image: Pokhari]</span>
-                            </div>
+                            <img 
+                                src="/images/chapter-6/हात्ती खोरे पोखरी.png" 
+                                alt={lang === "ne" ? "हात्ती खोरे पोखरी" : "Hatti Khore Pokhari"}
+                                class="w-full h-auto rounded-lg shadow-lg"
+                            />
                             <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
                                 {lang === "ne" ? "हात्ती खोरे पोखरी" : "Pokhari"}
                             </p>
@@ -174,9 +186,11 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
 
                         <!-- Image Container 5 -->
                         <div class="mb-6">
-                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
-                                <span class="text-zinc-500 font-serif">[Image Placeholder]</span>
-                            </div>
+                            <img 
+                                src="/images/chapter-6/थान पोखरी.png" 
+                                alt={lang === "ne" ? "थान पोखरी" : "Than Pokhari"}
+                                class="w-full h-auto rounded-lg shadow-lg"
+                            />
                             <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
                                 {lang === "ne" ? "थान पोखरी" : "[Image Title]"}
                             </p>
@@ -184,9 +198,11 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
 
                         <!-- Image Container 6: Sukuna Pokhari -->
                         <div class="mb-6">
-                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
-                                <span class="text-zinc-500 font-serif">[Image: Sukuna Pokhari]</span>
-                            </div>
+                            <img 
+                                src="/images/chapter-6/सुकना पोखरी.png" 
+                                alt={lang === "ne" ? "सुकना पोखरी" : "Sukuna Pokhari"}
+                                class="w-full h-auto rounded-lg shadow-lg"
+                            />
                             <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
                                 {lang === "ne" ? "सुकना पोखरी" : "Sukuna Pokhari"}
                             </p>
@@ -194,9 +210,11 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
 
                         <!-- Image Container 7: Map -->
                         <div class="mb-6">
-                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
-                                <span class="text-zinc-500 font-serif">[Image: Map]</span>
-                            </div>
+                            <img 
+                                src="/images/chapter-6/Map Image 8.png" 
+                                alt={lang === "ne" ? "नक्सा नं. ८" : "Map No. 8"}
+                                class="w-full h-auto rounded-lg shadow-lg"
+                            />
                             <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
                                 {lang === "ne" ? "नक्सा नं. ८: नगरपालिकाको नदी तथा खोला सञ्जाल नक्सा" : "Map No. 8: River and Stream Network Map of Municipality"}
                             </p>
@@ -204,9 +222,11 @@ const rivers = (await loadChapterSection(6, "rivers", lang)) as RiversSection;
 
                         <!-- Image Container 8: Bhutiya Daha -->
                         <div class="mb-10">
-                            <div class="w-full h-64 md:h-96 bg-zinc-900/50 rounded-lg flex items-center justify-center border border-[#f2e25d]/10">
-                                <span class="text-zinc-500 font-serif">[Image: Bhutiya Daha]</span>
-                            </div>
+                            <img 
+                                src="/images/chapter-6/भुतीया दह देबदार खोला.png" 
+                                alt={lang === "ne" ? "भुतीया दह देबदार खोला" : "Bhutiya Daha Debdar Khola"}
+                                class="w-full h-auto rounded-lg shadow-lg"
+                            />
                             <p class="text-center font-bold text-zinc-100 font-serif text-lg mt-3">
                                 {lang === "ne" ? "भुतीया दह देबदार खोला" : "Bhutiya Daha Debdar Khola"}
                             </p>
