@@ -4,28 +4,33 @@
     "images": [
         {
             "id": "img-1",
-            "caption": "Data Collection Activity",
-            "placeholder": "Data Collection Photo 1"
+            "caption": "Schedule 1",
+            "placeholder": "Data Collection Photo 1",
+            "src": "/images/annexures-images/अनुसूची 1.png"
         },
         {
             "id": "img-2",
-            "caption": "Field Inspection",
-            "placeholder": "Data Collection Photo 2"
+            "caption": "Schedule 2",
+            "placeholder": "Data Collection Photo 2",
+            "src": "/images/annexures-images/अनुसूची 2.png"
         },
         {
             "id": "img-3",
-            "caption": "Technical Survey",
-            "placeholder": "Data Collection Photo 3"
+            "caption": "Schedule 3",
+            "placeholder": "Data Collection Photo 3",
+            "src": "/images/annexures-images/अनुसूची 3.png"
         },
         {
             "id": "img-4",
-            "caption": "Stakeholder Discussion",
-            "placeholder": "Data Collection Photo 4"
+            "caption": "Schedule 4",
+            "placeholder": "Data Collection Photo 4",
+            "src": "/images/annexures-images/अनुसूची 4.png"
         },
         {
             "id": "img-5",
-            "caption": "Final Stage of Digital Profile Preparation",
-            "placeholder": "Data Collection Photo 5"
+            "caption": "Schedule 5",
+            "placeholder": "Data Collection Photo 5",
+            "src": "/images/annexures-images/अनुसूची 5.png"
         }
     ]
 }

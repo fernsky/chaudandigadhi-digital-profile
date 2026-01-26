@@ -4,28 +4,33 @@
     "images": [
         {
             "id": "img-1",
-            "caption": "तथ्याङ्क संकलन कार्य",
-            "placeholder": "Data Collection Photo 1"
+            "caption": "अनुसूची १",
+            "placeholder": "Data Collection Photo 1",
+            "src": "/images/annexures-images/अनुसूची 1.png"
         },
         {
             "id": "img-2",
-            "caption": "स्थलगत निरीक्षण",
-            "placeholder": "Data Collection Photo 2"
+            "caption": "अनुसूची २",
+            "placeholder": "Data Collection Photo 2",
+            "src": "/images/annexures-images/अनुसूची 2.png"
         },
         {
             "id": "img-3",
-            "caption": "प्राविधिक सर्वेक्षण",
-            "placeholder": "Data Collection Photo 3"
+            "caption": "अनुसूची ३",
+            "placeholder": "Data Collection Photo 3",
+            "src": "/images/annexures-images/अनुसूची 3.png"
         },
         {
             "id": "img-4",
-            "caption": "सरोकारवालासँगको छलफल",
-            "placeholder": "Data Collection Photo 4"
+            "caption": "अनुसूची ४",
+            "placeholder": "Data Collection Photo 4",
+            "src": "/images/annexures-images/अनुसूची 4.png"
         },
         {
             "id": "img-5",
-            "caption": "डिजिटल प्रोफाइल निर्माणको अन्तिम चरण",
-            "placeholder": "Data Collection Photo 5"
+            "caption": "अनुसूची ५",
+            "placeholder": "Data Collection Photo 5",
+            "src": "/images/annexures-images/अनुसूची 5.png"
         }
     ]
 }

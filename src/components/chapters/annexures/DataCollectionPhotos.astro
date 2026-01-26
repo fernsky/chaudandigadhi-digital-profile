@@ -11,7 +11,7 @@ const { lang } = Astro.props;
 const data = await loadChapterSection(
     "annexures",
     "data-collection-photos",
-    lang
+    lang,
 );
 
 interface ImageData {
@@ -29,49 +29,74 @@ interface SectionData {
 const typedData = data as unknown as SectionData;
 ---
 
-<div id="data-collection-photos" class="scroll-mt-32 space-y-12 mb-16 pt-8 border-t border-white/5">
+<div
+    id="data-collection-photos"
+    class="scroll-mt-32 space-y-12 mb-16 pt-8 border-t border-white/5"
+>
     <div>
         <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-8">
-            <span class="text-[#f2e25d]">{formatNumber(typedData.id, lang)}</span>: {typedData.title}
+            <span class="text-[#f2e25d]"
+                >{formatNumber(typedData.id, lang)}</span
+            >: {typedData.title}
         </h2>
     </div>
 
     <div class="flex flex-col gap-12">
-        {typedData.images.map((image: any) => (
-            <div class="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 p-4 transition-all hover:bg-white/10 hover:border-[#f2e25d]/30">
-                <div class="aspect-video w-full relative overflow-hidden rounded-xl bg-zinc-900/50 flex items-center justify-center border border-white/5">
-                    <!-- Placeholder for actual image -->
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="text-zinc-500 font-serif italic flex flex-col items-center gap-4">
-                            <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#f2e25d]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
+        {
+            typedData.images.map((image: any) => (
+                <div class="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 p-4 transition-all hover:bg-white/10 hover:border-[#f2e25d]/30">
+                    <div
+                        class={`w-full relative overflow-hidden rounded-xl bg-zinc-900/50 border border-white/5 ${image.src ? "" : "aspect-video flex items-center justify-center"}`}
+                    >
+                        {image.src ? (
+                            <img
+                                src={image.src}
+                                alt={image.caption}
+                                class="w-full h-auto"
+                            />
+                        ) : (
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-zinc-500 font-serif italic flex flex-col items-center gap-4">
+                                    <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-8 w-8 text-[#f2e25d]"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="1.5"
+                                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <span class="text-lg">
+                                        {image.placeholder}
+                                    </span>
+                                </div>
                             </div>
-                            <span class="text-lg">{image.placeholder}</span>
-                        </div>
+                        )}
                     </div>
                 </div>
-                
-                <div class="mt-4 flex items-center justify-between px-2">
-                    <p class="text-xl font-serif text-white/90 font-medium">
-                        {image.caption}
-                    </p>
-                    <div class="h-px flex-1 mx-6 bg-gradient-to-r from-[#f2e25d]/20 to-transparent"></div>
-                    <span class="text-sm font-serif text-[#f2e25d]/60 uppercase tracking-widest">{formatNumber(image.id, lang)}</span>
-                </div>
-            </div>
-        ))}
+            ))
+        }
     </div>
 </div>
 
 <style>
     /* Premium hover effects */
     .group::before {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at center, rgba(242, 226, 93, 0.03) 0%, transparent 70%);
+        background: radial-gradient(
+            circle at center,
+            rgba(242, 226, 93, 0.03) 0%,
+            transparent 70%
+        );
         opacity: 0;
         transition: opacity 0.5s ease;
     }
