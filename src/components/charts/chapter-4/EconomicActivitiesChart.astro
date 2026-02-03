@@ -70,11 +70,7 @@ const groups = chartData.map((d) => d.sector);
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
         // X axis
-        const x = d3
-            .scaleBand()
-            .domain(groups)
-            .range([0, width])
-            .padding([0.2]);
+        const x = d3.scaleBand().domain(groups).range([0, width]).padding(0.2);
 
         svg.append("g")
             .attr("transform", `translate(0, ${height})`)
@@ -89,7 +85,7 @@ const groups = chartData.map((d) => d.sector);
         // Y axis
         const y = d3
             .scaleLinear()
-            .domain([0, d3.max(data, (d: any) => d.total) || 100])
+            .domain([0, (d3.max(data, (d: any) => d.total) as any) || 100])
             .range([height, 0]);
 
         svg.append("g")
@@ -149,14 +145,14 @@ const groups = chartData.map((d) => d.sector);
             .attr("x", 0)
             .attr("width", 19)
             .attr("height", 19)
-            .attr("fill", (d) => color(d) as string);
+            .attr("fill", (d) => color(d as any) as string);
 
         legend
             .append("text")
             .attr("x", 24)
             .attr("y", 9.5)
             .attr("dy", "0.32em")
-            .text((d) => d)
+            .text((d) => d as string)
             .style("fill", "#e4e4e7") // zinc-200
             .style("font-family", "Noto Serif Devanagari");
     }

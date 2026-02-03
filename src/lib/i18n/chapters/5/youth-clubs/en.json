@@ -1,0 +1,18 @@
+{
+    "subsectionId": "youth-clubs",
+    "title": "5.4.2 Details of Youth Clubs",
+    "tableTitle": "Table No. 55: Details of Youth Clubs and Sports Clubs in the Municipality",
+    "headers": [
+        "SN",
+        "Name of Youth Club and Sports Club",
+        "Ward No"
+    ],
+    "rows": [
+        [
+            "1",
+            "Sirjana Youth Club",
+            "3"
+        ]
+    ],
+    "source": "Source: Office of the Municipal Executive"
+}

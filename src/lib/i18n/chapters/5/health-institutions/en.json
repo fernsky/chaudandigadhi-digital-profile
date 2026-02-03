@@ -1,0 +1,86 @@
+{
+    "subsectionId": "health-institutions",
+    "title": "5.2.1 Details of Health Institutions",
+    "tableTitle": "Table No. 44: Details of Health Institutions in the Municipality",
+    "headers": {
+        "sn": "SN",
+        "name": "Name of Health Institution",
+        "location": "Address",
+        "service": "Service"
+    },
+    "data": [
+        {
+            "sn": "1.",
+            "name": "Basic Municipal Hospital",
+            "location": "Chau.Mun.– 7",
+            "service": "Emergency/OPD/Warding"
+        },
+        {
+            "sn": "2.",
+            "name": "Health Post Basaha",
+            "location": "Chau.Mun.– 4",
+            "service": "OPD/Warding"
+        },
+        {
+            "sn": "3.",
+            "name": "Health Post Chaudandi",
+            "location": "Chau.Mun.– 1",
+            "service": "OPD/ ANC"
+        },
+        {
+            "sn": "4.",
+            "name": "Health Post Sindhipur",
+            "location": "Chau.Mun.– 8",
+            "service": "OPD/Warding"
+        },
+        {
+            "sn": "5.",
+            "name": "Health Post Sundarpur",
+            "location": "Chau.Mun.– 5",
+            "service": "OPD/Warding"
+        },
+        {
+            "sn": "6.",
+            "name": "Health Post Hadiya",
+            "location": "Chau.Mun.– 9",
+            "service": "OPD/Warding"
+        },
+        {
+            "sn": "7.",
+            "name": "Basic Health Center Amsal",
+            "location": "Chau.Mun.– 3",
+            "service": "OPD/ ANC"
+        },
+        {
+            "sn": "8.",
+            "name": "Basic Health Center Madiwas",
+            "location": "Chau.Mun.– 2",
+            "service": "OPD/ ANC"
+        },
+        {
+            "sn": "9.",
+            "name": "Basic Health Center Siwani",
+            "location": "Chau.Mun.– 6",
+            "service": "OPD/ ANC"
+        },
+        {
+            "sn": "10.",
+            "name": "Basic Health Center Siwai",
+            "location": "Chau.Mun.– 5",
+            "service": "OPD/ ANC"
+        },
+        {
+            "sn": "11.",
+            "name": "Basic Health Center Hadiya",
+            "location": "Chau.Mun.– 10",
+            "service": "OPD/ ANC"
+        },
+        {
+            "sn": "12.",
+            "name": "Basic Health Center Khairaha",
+            "location": "Chau.Mun.– 10",
+            "service": "OPD/ ANC"
+        }
+    ],
+    "source": "Source: Municipal Health Branch"
+}

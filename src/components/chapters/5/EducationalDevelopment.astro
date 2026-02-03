@@ -1,0 +1,544 @@
+---
+import { loadChapterSection } from "../../../lib/i18n/chapter-loader";
+import { formatNumber } from "../../../lib/i18n/formatters";
+import type { Language } from "../../../lib/i18n";
+import LiteracyBarChart from "../../charts/chapter-5/LiteracyBarChart.astro";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const overviewContent = await loadChapterSection(5, "education-overview", lang);
+const literacyContent = await loadChapterSection(
+    5,
+    "literacy-statistics",
+    lang,
+);
+
+if (!overviewContent || !literacyContent) {
+    throw new Error("Education content not found");
+}
+
+// Helper to safely format numbers or return the string as-is
+const safeFormatNumber = (value: any, lang: Language) => {
+    if (value === undefined || value === null) return "";
+    // If it's already a string that's not numeric (like "जम्मा" or "Total"), return as-is
+    if (
+        typeof value === "string" &&
+        isNaN(
+            parseFloat(
+                value
+                    .replace(/,/g, "")
+                    .replace(
+                        /[०-९]/g,
+                        (d) => "0123456789"["०१२३४५६७८९".indexOf(d)],
+                    ),
+            ),
+        )
+    ) {
+        return value;
+    }
+    return formatNumber(value, lang);
+};
+---
+
+<section
+    id="education-overview"
+    class="relative bg-[#050505] py-8 md:py-12 scroll-mt-24"
+>
+    <div class="container mx-auto px-8">
+        <div class="w-full">
+            <!-- Section Header -->
+            <div class="mb-8">
+                <h2
+                    class="font-serif text-2xl md:text-3xl font-medium text-zinc-100 mb-6"
+                >
+                    {overviewContent.title}
+                </h2>
+            </div>
+
+            <!-- Content Paragraphs -->
+            <div class="space-y-6 mb-8">
+                {
+                    overviewContent.paragraphs.map((para: string) => (
+                        <p class="text-zinc-300 font-serif text-base md:text-lg leading-relaxed">
+                            {para}
+                        </p>
+                    ))
+                }
+            </div>
+
+            <!-- Image Container 1 -->
+            <div class="mb-8 rounded-xl overflow-hidden border border-zinc-800">
+                <img
+                    src="/images/chapter-5/शैक्षिक तथा मानव संसाधन विकास.png"
+                    alt={lang === "ne"
+                        ? "शैक्षिक तथा मानव संसाधन विकास"
+                        : "Educational and Human Resource Development"}
+                    class="w-full h-auto object-cover"
+                />
+            </div>
+
+            <!-- Image Container 2 (Map Image 7) -->
+            <div class="mb-4 rounded-xl overflow-hidden border border-zinc-800">
+                <img
+                    src="/images/chapter-5/Map Image 7.png"
+                    alt={lang === "ne"
+                        ? "शिक्षा क्षेत्र नक्शा"
+                        : "Education Sector Map"}
+                    class="w-full h-auto object-cover"
+                />
+            </div>
+
+            <!-- Map Caption -->
+            <p class="text-center text-zinc-400 font-serif text-sm mb-12">
+                {overviewContent.mapCaption}
+            </p>
+
+            <!-- Literacy Statistics Sub-section -->
+            <div id="literacy-statistics" class="scroll-mt-24 space-y-8">
+                <h3
+                    class="font-serif text-xl md:text-2xl text-zinc-100 font-medium"
+                >
+                    {literacyContent.title}
+                </h3>
+
+                <h4 class="font-serif text-lg md:text-xl text-zinc-200">
+                    {literacyContent.tableNumber}
+                    {literacyContent.tableTitle}
+                </h4>
+
+                <!-- Table 40: Literacy Statistics -->
+                <div class="overflow-x-auto rounded-lg border border-zinc-800">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-zinc-700">
+                                <th
+                                    class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                >
+                                    {lang === "ne" ? "वडा" : "Ward"}
+                                </th>
+                                <th
+                                    class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                >
+                                    {lang === "ne" ? "लिङ्ग" : "Gender"}
+                                </th>
+                                <th
+                                    class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                >
+                                    {
+                                        lang === "ne"
+                                            ? "पढ्न लेख्न जान्नेको संख्या"
+                                            : "Can Read and Write"
+                                    }
+                                </th>
+                                <th
+                                    class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                >
+                                    {
+                                        lang === "ne"
+                                            ? "पढ्न मात्र जान्नेको संख्या"
+                                            : "Can Only Read"
+                                    }
+                                </th>
+                                <th
+                                    class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                >
+                                    {
+                                        lang === "ne"
+                                            ? "पढ्न र लेख्न नजान्नेको संख्या"
+                                            : "Cannot Read or Write"
+                                    }
+                                </th>
+                                <th
+                                    class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                >
+                                    {
+                                        lang === "ne"
+                                            ? "उल्लेख नभएको"
+                                            : "Not Mentioned"
+                                    }
+                                </th>
+                                <th
+                                    class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300"
+                                >
+                                    {lang === "ne" ? "जम्मा" : "Total"}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                literacyContent.tableData.map(
+                                    (row: any, index: number) => {
+                                        const isTotal =
+                                            row.ward === "जम्मा" ||
+                                            row.ward === "Total";
+                                        const isPercentage =
+                                            index ===
+                                                literacyContent.tableData
+                                                    .length -
+                                                    1 &&
+                                            literacyContent.percentageRow;
+                                        const rowClass = isTotal
+                                            ? "bg-zinc-900/50 border-t-2 border-zinc-600"
+                                            : isPercentage
+                                              ? "bg-zinc-900/30"
+                                              : "hover:bg-zinc-900/30 transition-colors";
+
+                                        // Show ward cell only for जम्मा/Total gender row
+                                        const showWardCell =
+                                            row.gender === "जम्मा" ||
+                                            row.gender === "Total";
+
+                                        return (
+                                            <tr
+                                                class={`${rowClass} border-b border-zinc-800 hover:bg-zinc-800/30 transition-colors`}
+                                            >
+                                                {showWardCell && (
+                                                    <td
+                                                        rowspan="3"
+                                                        class={`py-2 px-3 font-serif text-sm md:text-base text-zinc-300 text-center border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                    >
+                                                        {safeFormatNumber(
+                                                            row.ward,
+                                                            lang,
+                                                        )}
+                                                    </td>
+                                                )}
+                                                <td
+                                                    class={`py-2 px-3 font-serif text-sm md:text-base text-zinc-300 text-center border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                >
+                                                    {row.gender}
+                                                </td>
+                                                <td
+                                                    class={`text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                >
+                                                    {formatNumber(
+                                                        row.literate,
+                                                        lang,
+                                                    )}
+                                                </td>
+                                                <td
+                                                    class={`text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                >
+                                                    {formatNumber(
+                                                        row.onlyRead,
+                                                        lang,
+                                                    )}
+                                                </td>
+                                                <td
+                                                    class={`text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                >
+                                                    {formatNumber(
+                                                        row.illiterate,
+                                                        lang,
+                                                    )}
+                                                </td>
+                                                <td
+                                                    class={`text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                >
+                                                    {formatNumber(
+                                                        row.notMentioned,
+                                                        lang,
+                                                    )}
+                                                </td>
+                                                <td
+                                                    class={`text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-300 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                >
+                                                    {formatNumber(
+                                                        row.total,
+                                                        lang,
+                                                    )}
+                                                </td>
+                                            </tr>
+                                        );
+                                    },
+                                )
+                            }
+                            <!-- Percentage Row -->
+                            <tr class="bg-zinc-900/30">
+                                <td
+                                    colspan="2"
+                                    class="py-2 px-3 font-serif text-sm md:text-base text-zinc-200 text-center border-r border-zinc-800"
+                                >
+                                    {lang === "ne" ? "प्रतिशत" : "Percentage"}
+                                </td>
+                                <td
+                                    class="text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-200 border-r border-zinc-800"
+                                >
+                                    {literacyContent.percentageRow.literate}
+                                </td>
+                                <td
+                                    class="text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-200 border-r border-zinc-800"
+                                >
+                                    {literacyContent.percentageRow.onlyRead}
+                                </td>
+                                <td
+                                    class="text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-200 border-r border-zinc-800"
+                                >
+                                    {literacyContent.percentageRow.illiterate}
+                                </td>
+                                <td
+                                    class="text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-200 border-r border-zinc-800"
+                                >
+                                    {literacyContent.percentageRow.notMentioned}
+                                </td>
+                                <td
+                                    class="text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-200"
+                                >
+                                    {literacyContent.percentageRow.total}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Source -->
+                <p class="text-sm text-zinc-400 font-serif italic">
+                    {literacyContent.source}
+                </p>
+
+                <!-- Paragraph after table -->
+                <p
+                    class="text-zinc-300 font-serif text-base md:text-lg leading-relaxed"
+                >
+                    {literacyContent.paragraph1}
+                </p>
+
+                <!-- Chart -->
+                <div class="my-8">
+                    <LiteracyBarChart lang={lang} />
+                </div>
+
+                <!-- Formal Education Section -->
+                <div class="space-y-6 mt-12">
+                    <p
+                        class="text-zinc-300 font-serif text-base md:text-lg leading-relaxed font-medium"
+                    >
+                        {literacyContent.paragraph2}
+                    </p>
+
+                    <p
+                        class="text-zinc-300 font-serif text-base md:text-lg leading-relaxed"
+                    >
+                        {literacyContent.paragraph3}
+                    </p>
+
+                    <h4 class="font-serif text-lg md:text-xl text-zinc-200">
+                        {literacyContent.formalEducationTableNumber}
+                        {literacyContent.formalEducationTableTitle}
+                    </h4>
+
+                    <!-- Table 41: Formal Education -->
+                    <div
+                        class="overflow-x-auto rounded-lg border border-zinc-800"
+                    >
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="border-b border-zinc-700">
+                                    <th
+                                        class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                    >
+                                        {lang === "ne" ? "वडा" : "Ward"}
+                                    </th>
+                                    <th
+                                        class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                    >
+                                        {lang === "ne" ? "लिङ्ग" : "Gender"}
+                                    </th>
+                                    <th
+                                        class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                    >
+                                        {
+                                            lang === "ne"
+                                                ? "हाल विद्यालय/ कलेज गएको"
+                                                : "Currently Attending School/College"
+                                        }
+                                    </th>
+                                    <th
+                                        class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                    >
+                                        {
+                                            lang === "ne"
+                                                ? "पहिला विद्यालय/ कलेज गएको"
+                                                : "Previously Attended"
+                                        }
+                                    </th>
+                                    <th
+                                        class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                    >
+                                        {
+                                            lang === "ne"
+                                                ? "कहिले स्कुल/कलेज नगएको"
+                                                : "Never Attended"
+                                        }
+                                    </th>
+                                    <th
+                                        class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800"
+                                    >
+                                        {
+                                            lang === "ne"
+                                                ? "उल्लेख नभएको"
+                                                : "Not Mentioned"
+                                        }
+                                    </th>
+                                    <th
+                                        class="text-center py-3 px-3 font-serif text-sm md:text-base text-zinc-300"
+                                    >
+                                        {lang === "ne" ? "जम्मा" : "Total"}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    literacyContent.formalEducationTableData.map(
+                                        (row: any) => {
+                                            const isTotal =
+                                                row.ward === "जम्मा" ||
+                                                row.ward === "Total";
+                                            const rowClass = isTotal
+                                                ? "bg-zinc-900/50 border-t-2 border-zinc-600"
+                                                : "hover:bg-zinc-900/30 transition-colors";
+
+                                            // Show ward cell only for जम्मा/Total gender row
+                                            const showWardCell =
+                                                row.gender === "जम्मा" ||
+                                                row.gender === "Total";
+
+                                            return (
+                                                <tr
+                                                    class={`${rowClass} border-b border-zinc-800 hover:bg-zinc-800/30 transition-colors`}
+                                                >
+                                                    {showWardCell && (
+                                                        <td
+                                                            rowspan="3"
+                                                            class={`py-2 px-3 font-serif text-sm md:text-base text-zinc-300 text-center border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                        >
+                                                            {safeFormatNumber(
+                                                                row.ward,
+                                                                lang,
+                                                            )}
+                                                        </td>
+                                                    )}
+                                                    <td
+                                                        class={`py-2 px-3 font-serif text-sm md:text-base text-zinc-300 text-center border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                    >
+                                                        {row.gender}
+                                                    </td>
+                                                    <td
+                                                        class={`text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                    >
+                                                        {formatNumber(
+                                                            row.currentlyAttending,
+                                                            lang,
+                                                        )}
+                                                    </td>
+                                                    <td
+                                                        class={`text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                    >
+                                                        {formatNumber(
+                                                            row.previouslyAttended,
+                                                            lang,
+                                                        )}
+                                                    </td>
+                                                    <td
+                                                        class={`text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                    >
+                                                        {formatNumber(
+                                                            row.neverAttended,
+                                                            lang,
+                                                        )}
+                                                    </td>
+                                                    <td
+                                                        class={`text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-300 border-r border-zinc-800 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                    >
+                                                        {formatNumber(
+                                                            row.notMentioned,
+                                                            lang,
+                                                        )}
+                                                    </td>
+                                                    <td
+                                                        class={`text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-300 ${isTotal ? "font-bold text-zinc-100" : ""}`}
+                                                    >
+                                                        {formatNumber(
+                                                            row.total,
+                                                            lang,
+                                                        )}
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )
+                                }
+                                <!-- Percentage Row -->
+                                <tr class="bg-zinc-900/30">
+                                    <td
+                                        colspan="2"
+                                        class="py-2 px-3 font-serif text-sm md:text-base text-zinc-200 text-center border-r border-zinc-800"
+                                    >
+                                        {
+                                            lang === "ne"
+                                                ? "प्रतिशत"
+                                                : "Percentage"
+                                        }
+                                    </td>
+                                    <td
+                                        class="text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-200 border-r border-zinc-800"
+                                    >
+                                        {
+                                            literacyContent
+                                                .formalEducationPercentage
+                                                .currentlyAttending
+                                        }
+                                    </td>
+                                    <td
+                                        class="text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-200 border-r border-zinc-800"
+                                    >
+                                        {
+                                            literacyContent
+                                                .formalEducationPercentage
+                                                .previouslyAttended
+                                        }
+                                    </td>
+                                    <td
+                                        class="text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-200 border-r border-zinc-800"
+                                    >
+                                        {
+                                            literacyContent
+                                                .formalEducationPercentage
+                                                .neverAttended
+                                        }
+                                    </td>
+                                    <td
+                                        class="text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-200 border-r border-zinc-800"
+                                    >
+                                        {
+                                            literacyContent
+                                                .formalEducationPercentage
+                                                .notMentioned
+                                        }
+                                    </td>
+                                    <td
+                                        class="text-right py-2 px-3 font-serif text-sm md:text-base text-zinc-200"
+                                    >
+                                        {
+                                            literacyContent
+                                                .formalEducationPercentage.total
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Source -->
+                    <p class="text-sm text-zinc-400 font-serif italic">
+                        {literacyContent.formalEducationSource}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,41 @@
+{
+    "subsectionId": "immunization-safe-motherhood",
+    "title": "5.2.2 Immunization Services and Safe Motherhood Details",
+    "subtitleA": "a) Immunization Details",
+    "contentA": "Children are the builders of the future. For this, they need to be healthy and disease-free. In childhood, they must be given BCG once, DPT three times, Measles once, Polio and Vitamin in prescribed amounts. For children, all five vaccines must be given regularly and in full doses. The Government of Nepal has placed the National Immunization Program at a high priority. The immunization program is an effective effort in the health sector carried out in a low-cost and economical manner. The immunization program has significantly helped in reducing child mortality and preventing various diseases. This has helped in achieving the Sustainable Development Goal of reducing child mortality (MDG-4).",
+    "tableTitle": "Table No. 45: Immunization Details",
+    "headers": {
+        "sn": "SN",
+        "indicators": "Indicators",
+        "col1": "Shravan 2079 / Ashad 80",
+        "col2": "Shravan 2080 / Ashad 81",
+        "col3": "Shravan 2081 / Ashad 82"
+    },
+    "tableData": [
+        {
+            "sn": "1",
+            "indicator": "% of 1 year children immunized with rota2",
+            "col1": "76.38",
+            "col2": "82.87",
+            "col3": "72.33"
+        },
+        {
+            "sn": "2",
+            "indicator": "% of children 1 year imminized with DPT-HepB-Hib3",
+            "col1": "81.51",
+            "col2": "81.49",
+            "col3": "73.49"
+        },
+        {
+            "sn": "3",
+            "indicator": "% of children 1 year immunized with DPT-HepB-Hib1",
+            "col1": "80.7",
+            "col2": "81.06",
+            "col3": "74.77"
+        }
+    ],
+    "source": "Source: Municipal Executive Office",
+    "contentB": "Fatal diseases that can occur during childhood and adulthood such as Tuberculosis, Diphtheria, Pertussis, Tetanus, Hepatitis B, Influenza Type B, Polio, Pneumonia, Measles, Rubella and Japanese Encephalitis must be vaccinated against compulsorily in a phased manner on time. These vaccines are respectively BCG, DPT, OPV, PCV, IPV, MR, JE / ID. Thus, vaccinating on time is an effective way to control child mortality by being free from the risk of major diseases with limited investment.",
+    "subtitleC": "b) Details of Safe Motherhood Status",
+    "contentC": "If children cannot be cared for and looked after from when they are in the womb and after birth, they are at risk of being infected by various diseases. While in the womb, the health of children depends primarily on the mother's age, nutrition, rest, consumption of alcohol and tobacco products, etc. For a child to be born healthy, a pregnant woman must have regular health check-ups at least four times and must regularly consume necessary vaccines (T.T.) and iron, vitamin tablets. Since becoming pregnant at a young age causes harm to the health of both the mother and the infant, the government has legally set the minimum age for marriage at 20 years. However, 17 percent of adolescents become pregnant or mothers between the ages of 15 and 19 (Nepal Demographic and Health Survey, 2011). The government is conducting community-based programs for safe motherhood and newborn health through the Department of Health Services."
+}

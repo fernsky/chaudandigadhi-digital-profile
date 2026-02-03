@@ -1,0 +1,570 @@
+---
+import type { Language } from "../../../lib/i18n";
+import ne from "../../../lib/i18n/chapters/5/schools-institutions/ne.json";
+import en from "../../../lib/i18n/chapters/5/schools-institutions/en.json";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = lang === "ne" ? ne : en;
+
+// Helper to check if key exists
+const hasCommunitySchools = t.communitySchools && t.communitySchools.length > 0;
+const hasInstitutionalSchools =
+    t.institutionalSchools && t.institutionalSchools.length > 0;
+const hasCommunityChildDev =
+    t.communityChildDevelopment && t.communityChildDevelopment.length > 0;
+const hasInstitutionalChildDev =
+    t.institutionalChildDevelopment &&
+    t.institutionalChildDevelopment.length > 0;
+const hasCommunitySchoolsStudents =
+    t.communitySchoolsStudents && t.communitySchoolsStudents.length > 0;
+
+// Number formatter for Nepali
+const formatNumber = (num: number | string | undefined) => {
+    if (num === undefined || num === null) return "0";
+    if (num === "") return "-";
+    const str = num.toString();
+    if (lang === "en") return str;
+    return str.replace(/[0-9]/g, (d) => "०१२३४५६७८९"[parseInt(d)]);
+};
+
+// Translations for table headers
+const headers = {
+    ne: {
+        sn: "क्र.सं.",
+        schoolName: "विद्यालयको नाम",
+        location: "स्थान",
+        students: "विद्यार्थी संख्या",
+        ward: "वडा नं.",
+        female: "छात्रा",
+        male: "छात्र",
+        other: "अन्य",
+        total: "जम्मा",
+        ecd: "बाल विकास केन्द्र",
+        class1_5: "कक्षा १-५",
+        class6_8: "कक्षा ६-८",
+        class9_10: "कक्षा ९-१०",
+        class11_12: "कक्षा ११-१२",
+        f: "छात्रा",
+        m: "छात्र",
+        t: "जम्मा",
+    },
+    en: {
+        sn: "SN",
+        schoolName: "School Name",
+        location: "Location",
+        students: "Students",
+        ward: "Ward No.",
+        female: "Female",
+        male: "Male",
+        other: "Other",
+        total: "Total",
+        ecd: "ECD",
+        class1_5: "Class 1-5",
+        class6_8: "Class 6-8",
+        class9_10: "Class 9-10",
+        class11_12: "Class 11-12",
+        f: "F",
+        m: "M",
+        t: "T",
+    },
+};
+
+const h = lang === "ne" ? headers.ne : headers.en;
+---
+
+<section
+    id={t.subsectionId}
+    class="relative py-20 bg-[#0a0a0a] border-t border-white/5"
+>
+    <div class="container mx-auto px-8 relative z-10">
+        <!-- Main Title -->
+        <h2 class="text-2xl md:text-3xl font-serif text-white/90 mb-12">
+            {t.title}
+        </h2>
+
+        <!-- a) Community Schools -->
+        {
+            hasCommunitySchools && (
+                <div class="mb-16">
+                    <h3 class="text-xl font-serif text-white/80 mb-6">
+                        {t.communitySchoolsTitle}
+                    </h3>
+                    <div class="rounded-lg overflow-hidden border border-zinc-800">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-base text-left text-zinc-100">
+                                <thead class="border-b border-zinc-700">
+                                    <tr>
+                                        <th class="px-4 py-3 border-r border-zinc-800 last:border-r-0 font-serif font-medium text-zinc-300">
+                                            {h.sn}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 last:border-r-0 font-serif font-medium text-zinc-300">
+                                            {h.schoolName}
+                                        </th>
+                                        <th class="px-4 py-3 font-serif font-medium text-zinc-300">
+                                            {h.location}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-transparent">
+                                    {t.communitySchools.map((school) => (
+                                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                            <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                {school.sn}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-zinc-800 font-medium text-white">
+                                                {school.name}
+                                            </td>
+                                            <td class="px-4 py-3 text-zinc-300">
+                                                {school.location}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+        {
+            hasInstitutionalSchools && (
+                <div class="mb-16">
+                    <h3 class="text-xl font-serif text-white/80 mb-6">
+                        {t.institutionalSchoolsTitle}
+                    </h3>
+                    <div class="rounded-lg overflow-hidden border border-zinc-800">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-base text-left text-zinc-100">
+                                <thead class="border-b border-zinc-700">
+                                    <tr>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.sn}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.schoolName}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.location}
+                                        </th>
+                                        <th class="px-4 py-3 font-serif font-medium text-zinc-300">
+                                            {h.students}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-transparent">
+                                    {t.institutionalSchools.map((school) => (
+                                        <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                            <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                {school.sn}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-zinc-800 font-medium text-white">
+                                                {school.name}
+                                            </td>
+                                            <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                {school.location}
+                                            </td>
+                                            <td class="px-4 py-3 text-zinc-300">
+                                                {formatNumber(school.students)}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+        <!-- c) Community Child Development -->
+        {
+            hasCommunityChildDev && (
+                <div class="mb-16">
+                    <h3 class="text-xl font-serif text-white/80 mb-6">
+                        {t.childDevelopmentTitle}
+                    </h3>
+                    <div class="rounded-lg overflow-hidden border border-zinc-800">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-base text-left text-zinc-100">
+                                <thead class="border-b border-zinc-700">
+                                    <tr>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.sn}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.ward}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.schoolName}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.female}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.male}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.other}
+                                        </th>
+                                        <th class="px-4 py-3 font-serif font-medium text-zinc-300">
+                                            {h.total}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-transparent">
+                                    {t.communityChildDevelopment.map(
+                                        (center) => (
+                                            <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                                <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                    {center.sn}
+                                                </td>
+                                                <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                    {formatNumber(center.ward)}
+                                                </td>
+                                                <td class="px-4 py-3 border-r border-zinc-800 font-medium text-white">
+                                                    {center.name}
+                                                </td>
+                                                <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                    {formatNumber(
+                                                        center.female,
+                                                    )}
+                                                </td>
+                                                <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                    {formatNumber(center.male)}
+                                                </td>
+                                                <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                    {formatNumber(center.other)}
+                                                </td>
+                                                <td class="px-4 py-3 font-bold text-white">
+                                                    {formatNumber(center.total)}
+                                                </td>
+                                            </tr>
+                                        ),
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+        <!-- d) Institutional Child Development -->
+        {
+            hasInstitutionalChildDev && (
+                <div class="mb-16">
+                    <h3 class="text-xl font-serif text-white/80 mb-6">
+                        {t.institutionalChildDevelopmentTitle}
+                    </h3>
+                    <div class="rounded-lg overflow-hidden border border-zinc-800">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-base text-left text-zinc-100">
+                                <thead class="border-b border-zinc-700">
+                                    <tr>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.sn}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.ward}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.schoolName}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.female}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.male}
+                                        </th>
+                                        <th class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300">
+                                            {h.other}
+                                        </th>
+                                        <th class="px-4 py-3 font-serif font-medium text-zinc-300">
+                                            {h.total}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-transparent">
+                                    {t.institutionalChildDevelopment.map(
+                                        (center) => (
+                                            <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                                <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                    {center.sn}
+                                                </td>
+                                                <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                    {formatNumber(center.ward)}
+                                                </td>
+                                                <td class="px-4 py-3 border-r border-zinc-800 font-medium text-white">
+                                                    {center.name}
+                                                </td>
+                                                <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                    {formatNumber(
+                                                        center.female,
+                                                    )}
+                                                </td>
+                                                <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                    {formatNumber(center.male)}
+                                                </td>
+                                                <td class="px-4 py-3 border-r border-zinc-800 text-zinc-300">
+                                                    {formatNumber(center.other)}
+                                                </td>
+                                                <td class="px-4 py-3 font-bold text-white">
+                                                    {formatNumber(center.total)}
+                                                </td>
+                                            </tr>
+                                        ),
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+        <!-- e) Community Schools Students (Complex) -->
+        {
+            hasCommunitySchoolsStudents && (
+                <div class="mb-16">
+                    <h3 class="text-xl font-serif text-white/80 mb-6">
+                        {t.communitySchoolsStudentsTitle}
+                    </h3>
+                    <div class="rounded-lg overflow-hidden border border-zinc-800">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-zinc-100 border-collapse">
+                                <thead class="border-b border-zinc-700">
+                                    <tr>
+                                        <th
+                                            rowspan="2"
+                                            class="px-3 py-2 border-r border-zinc-800 border-b border-b-zinc-800 font-serif font-medium text-zinc-300"
+                                        >
+                                            {h.sn}
+                                        </th>
+                                        <th
+                                            rowspan="2"
+                                            class="px-3 py-2 border-r border-zinc-800 border-b border-b-zinc-800 font-serif font-medium text-zinc-300"
+                                        >
+                                            {h.schoolName}
+                                        </th>
+                                        <th
+                                            colspan="3"
+                                            class="px-2 py-1 text-center border-r border-zinc-800 border-b border-b-zinc-800 font-serif font-medium text-zinc-300"
+                                        >
+                                            {h.ecd}
+                                        </th>
+                                        <th
+                                            colspan="3"
+                                            class="px-2 py-1 text-center border-r border-zinc-800 border-b border-b-zinc-800 font-serif font-medium text-zinc-300"
+                                        >
+                                            {h.class1_5}
+                                        </th>
+                                        <th
+                                            colspan="3"
+                                            class="px-2 py-1 text-center border-r border-zinc-800 border-b border-b-zinc-800 font-serif font-medium text-zinc-300"
+                                        >
+                                            {h.class6_8}
+                                        </th>
+                                        <th
+                                            colspan="3"
+                                            class="px-2 py-1 text-center border-r border-zinc-800 border-b border-b-zinc-800 font-serif font-medium text-zinc-300"
+                                        >
+                                            {h.class9_10}
+                                        </th>
+                                        <th
+                                            colspan="3"
+                                            class="px-2 py-1 text-center border-r border-zinc-800 border-b border-b-zinc-800 font-serif font-medium text-zinc-300"
+                                        >
+                                            {h.class11_12}
+                                        </th>
+                                        <th
+                                            colspan="3"
+                                            class="px-2 py-1 text-center border-b border-b-zinc-800 font-serif font-medium text-zinc-300"
+                                        >
+                                            {h.total}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.f}
+                                        </th>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.m}
+                                        </th>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.t}
+                                        </th>
+
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.f}
+                                        </th>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.m}
+                                        </th>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.t}
+                                        </th>
+
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.f}
+                                        </th>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.m}
+                                        </th>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.t}
+                                        </th>
+
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.f}
+                                        </th>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.m}
+                                        </th>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.t}
+                                        </th>
+
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.f}
+                                        </th>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.m}
+                                        </th>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.t}
+                                        </th>
+
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.f}
+                                        </th>
+                                        <th class="px-2 py-1 border-r border-zinc-800 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.m}
+                                        </th>
+                                        <th class="px-2 py-1 text-center text-xs font-serif font-medium text-zinc-400">
+                                            {h.t}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-transparent">
+                                    {t.communitySchoolsStudents.map(
+                                        (school) => (
+                                            <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                                <td class="px-3 py-2 whitespace-nowrap text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(school.sn)}
+                                                </td>
+                                                <td class="px-3 py-2 font-medium text-white border-r border-zinc-800 text-xs">
+                                                    {school.name}
+                                                </td>
+
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.ecd?.f,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.ecd?.m,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-white font-bold border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.ecd?.t,
+                                                    )}
+                                                </td>
+
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c1_5?.f,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c1_5?.m,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-white font-bold border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c1_5?.t,
+                                                    )}
+                                                </td>
+
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c6_8?.f,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c6_8?.m,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-white font-bold border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c6_8?.t,
+                                                    )}
+                                                </td>
+
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c9_10?.f,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c9_10?.m,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-white font-bold border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c9_10?.t,
+                                                    )}
+                                                </td>
+
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c11_12?.f,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c11_12?.m,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-white font-bold border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.c11_12?.t,
+                                                    )}
+                                                </td>
+
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.total?.f,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-zinc-300 border-r border-zinc-800 text-xs">
+                                                    {formatNumber(
+                                                        school.total?.m,
+                                                    )}
+                                                </td>
+                                                <td class="px-2 py-2 text-center text-white font-bold text-xs">
+                                                    {formatNumber(
+                                                        school.total?.t,
+                                                    )}
+                                                </td>
+                                            </tr>
+                                        ),
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    </div>
+</section>

@@ -1,0 +1,63 @@
+{
+    "subsectionId": "married-unmarried-details",
+    "title": "5.2.6 Details of Married and Unmarried Men and Women",
+    "tableTitle": "Table No. 50: Details of Married and Unmarried Men and Women",
+    "headers": [
+        "SN",
+        "Marital Status",
+        "Male",
+        "Female",
+        "Total",
+        "Percentage"
+    ],
+    "rows": [
+        [
+            "1.",
+            "Unmarried",
+            "7953",
+            "6845",
+            "14798",
+            "33.24"
+        ],
+        [
+            "2.",
+            "Married",
+            "12021",
+            "15252",
+            "27273",
+            "61.27"
+        ],
+        [
+            "3.",
+            "Single (Widower/Widow)",
+            "455",
+            "1720",
+            "2175",
+            "4.89"
+        ],
+        [
+            "4.",
+            "Divorced",
+            "27",
+            "37",
+            "64",
+            "0.14"
+        ],
+        [
+            "5.",
+            "Separated",
+            "90",
+            "116",
+            "206",
+            "0.46"
+        ]
+    ],
+    "totalRow": [
+        "Total",
+        "20546",
+        "23970",
+        "44516",
+        "100"
+    ],
+    "source": "Source: National Census, 2078"
+}

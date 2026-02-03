@@ -1,0 +1,42 @@
+{
+    "sectionId": "security",
+    "title": "5.6 Details of Peace and Security",
+    "content": [
+        "As mentioned in the constitution, the state should be able to make citizens feel safe. It is the responsibility of the state to provide civil security to the citizens of every nation. Citizens should represent safe feeling in their state. Civil society also has an equally important role to play in making this effective.",
+        "Criminal and extra-social activities such as theft and robbery in the municipality are found to be resolved through these security agencies. It seems that hardly any unpleasant incident has been registered in this municipality throughout the year. Locals say that incidents of petty quarrels, beatings, disputes over boundaries, theft, robbery, fraud, and domestic violence occur occasionally in the municipality. Security agencies have been established in Ward No. 2, Ward No. 4, Ward No. 5, Ward No. 6 and Ward No. 10 within this municipality, the detailed description of which is presented in the table below."
+    ],
+    "tableTitle": "Table No. 58: Details of Major Security Agencies in the Municipality",
+    "headers": [
+        "SN",
+        "Name of Security Agency",
+        "Location"
+    ],
+    "rows": [
+        [
+            "1",
+            "Area Police Office",
+            "Beltar Ward No 6 and Siwahi Ward No. 5"
+        ],
+        [
+            "2",
+            "Armed Police Force",
+            "Beltar Ward No. 6"
+        ],
+        [
+            "3",
+            "Police Station",
+            "Hadiya Ward No. 10"
+        ],
+        [
+            "4",
+            "Police Station",
+            "Barshe Danda and Basaha Ward No. 4"
+        ],
+        [
+            "5",
+            "Police Station",
+            "Madibas Ward No. 2"
+        ]
+    ],
+    "source": "Source: Office of the Municipal Executive"
+}

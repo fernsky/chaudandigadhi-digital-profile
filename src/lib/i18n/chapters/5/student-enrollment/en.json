@@ -1,0 +1,231 @@
+{
+    "sectionTitle": "5.1.3 Details of Students Studying in Schools",
+    "tableTitle": "Table No. 42: Details of Students Studying in Schools of Municipality",
+    "tableData": [
+        {
+            "sn": "1",
+            "name": "Basic School Siwai Belwa",
+            "students": 146
+        },
+        {
+            "sn": "2",
+            "name": "Basic School Kheraha",
+            "students": 54
+        },
+        {
+            "sn": "3",
+            "name": "Ideal Basic School Agraha",
+            "students": 32
+        },
+        {
+            "sn": "4",
+            "name": "Balmukhi Basic School Ajagar",
+            "students": 84
+        },
+        {
+            "sn": "5",
+            "name": "Baljyoti Basic School Badelpani",
+            "students": 11
+        },
+        {
+            "sn": "6",
+            "name": "Basic School Gangau",
+            "students": 121
+        },
+        {
+            "sn": "7",
+            "name": "Belka Basic School Hatisar",
+            "students": 18
+        },
+        {
+            "sn": "8",
+            "name": "Shimsen Ideal Basic School Devdhar",
+            "students": 97
+        },
+        {
+            "sn": "9",
+            "name": "Buddha Janata Pri. School Gangate",
+            "students": 78
+        },
+        {
+            "sn": "10",
+            "name": "Gausaikanya Basic School Simaltar",
+            "students": 64
+        },
+        {
+            "sn": "11",
+            "name": "Jarbaidhari Janata Basic School Ranitar",
+            "students": 139
+        },
+        {
+            "sn": "12",
+            "name": "Jatyajna Secondary School Ajjungare",
+            "students": 243
+        },
+        {
+            "sn": "13",
+            "name": "Janajyoti Basic School Panchwari Tole",
+            "students": 43
+        },
+        {
+            "sn": "14",
+            "name": "Janajyoti Basic School Amalchauri",
+            "students": 200
+        },
+        {
+            "sn": "15",
+            "name": "Janakalyan Basic School Hatisar",
+            "students": 117
+        },
+        {
+            "sn": "16",
+            "name": "Janasewa Basic School Sawali Tole",
+            "students": 16
+        },
+        {
+            "sn": "17",
+            "name": "Janata Ideal Secondary School Kalikhola",
+            "students": 229
+        },
+        {
+            "sn": "18",
+            "name": "Janata Secondary School Hadiya",
+            "students": 962
+        },
+        {
+            "sn": "19",
+            "name": "Janata Secondary School Lokentar",
+            "students": 441
+        },
+        {
+            "sn": "20",
+            "name": "Janata Basic School Chhunguwa",
+            "students": 22
+        },
+        {
+            "sn": "21",
+            "name": "Ushkalabati Pri. School Phali tar",
+            "students": 84
+        },
+        {
+            "sn": "22",
+            "name": "Jyoti Secondary School Beltar",
+            "students": 1168
+        },
+        {
+            "sn": "23",
+            "name": "Kalika Secondary School Siwani",
+            "students": 246
+        },
+        {
+            "sn": "24",
+            "name": "Kodedevi Basic School Jhorpata",
+            "students": 194
+        },
+        {
+            "sn": "25",
+            "name": "Kokan Basic School Dekachauri",
+            "students": 78
+        },
+        {
+            "sn": "26",
+            "name": "Lokmarghi Secondary School Khairakhos",
+            "students": 192
+        },
+        {
+            "sn": "27",
+            "name": "Madaratna Bishwalyah Kuran Pri. School Sipai",
+            "students": 50
+        },
+        {
+            "sn": "28",
+            "name": "Mahadebdhar Basic School Dewaha",
+            "students": 157
+        },
+        {
+            "sn": "29",
+            "name": "Padmani Basic School Beltar",
+            "students": 101
+        },
+        {
+            "sn": "30",
+            "name": "Raktakala Pri. School Mugare",
+            "students": 24
+        },
+        {
+            "sn": "31",
+            "name": "Saranath Basic School Bhutke",
+            "students": 131
+        },
+        {
+            "sn": "32",
+            "name": "Sagarnath Secondary School Bholeni",
+            "students": 234
+        },
+        {
+            "sn": "33",
+            "name": "Sarada Basic School Siltipur",
+            "students": 64
+        },
+        {
+            "sn": "34",
+            "name": "Saraswati Secondary School Saba",
+            "students": 195
+        },
+        {
+            "sn": "35",
+            "name": "Sarada Secondary School Karahare",
+            "students": 203
+        },
+        {
+            "sn": "36",
+            "name": "Shree Bhanawati Secondary School Musultibha",
+            "students": 263
+        },
+        {
+            "sn": "37",
+            "name": "Shree Jarbikas Secondary School Bibha",
+            "students": 164
+        },
+        {
+            "sn": "38",
+            "name": "Shree Narad Ideal Secondary School Barshenda",
+            "students": 597
+        },
+        {
+            "sn": "39",
+            "name": "Shree Secondary School Arupal",
+            "students": 318
+        },
+        {
+            "sn": "40",
+            "name": "Shree Secondary School Sipai",
+            "students": 458
+        },
+        {
+            "sn": "41",
+            "name": "Shree Shiv Secondary School Sipai Sundarpur",
+            "students": 244
+        },
+        {
+            "sn": "42",
+            "name": "Shree Dhanpokhari Secondary School Jwamire",
+            "students": 344
+        },
+        {
+            "sn": "43",
+            "name": "Siukali Basic School Bhire",
+            "students": 107
+        },
+        {
+            "sn": "44",
+            "name": "Siddeshwari Secondary School Musultibha",
+            "students": 292
+        },
+        {
+            "sn": "45",
+            "name": "Siddevi Secondary School Mardibas",
+            "students": 373
+        }
+    ]
+}

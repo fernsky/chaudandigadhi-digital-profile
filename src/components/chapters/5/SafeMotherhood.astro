@@ -1,0 +1,298 @@
+---
+import type { Language } from "../../../lib/i18n";
+import ne from "../../../lib/i18n/chapters/5/safe-motherhood/ne.json";
+import en from "../../../lib/i18n/chapters/5/safe-motherhood/en.json";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = lang === "ne" ? ne : en;
+---
+
+<section
+    id={t.subsectionId}
+    class="relative py-20 bg-[#0a0a0a] border-t border-white/5"
+>
+    <div class="container mx-auto px-8 relative z-10">
+        <!-- Main Title -->
+        <h2 class="text-2xl md:text-3xl font-serif text-white/90 mb-12">
+            {t.title}
+        </h2>
+
+        <!-- Part A: Family Planning -->
+        <div class="mb-20">
+            <h3 class="text-xl font-serif text-white/80 mb-6">
+                {t.intro.title}
+            </h3>
+            <p class="text-lg text-zinc-300 leading-relaxed text-justify mb-8">
+                {t.intro.description}
+            </p>
+
+            <!-- FP Table -->
+            <div class="mb-8">
+                <h4 class="text-lg font-serif text-white/80 mb-6 text-center">
+                    {t.fpTable.title}
+                </h4>
+                <div class="rounded-lg overflow-hidden border border-zinc-800">
+                    <div class="overflow-x-auto">
+                        <table
+                            class="w-full text-sm text-center text-zinc-100 border-collapse"
+                        >
+                            <thead class="bg-lime-600/90 text-white">
+                                <tr>
+                                    <th
+                                        rowspan="2"
+                                        class="px-4 py-2 border-r border-white/20 align-middle"
+                                    >
+                                        {t.fpTable.headers.method}
+                                    </th>
+                                    <th
+                                        colspan="2"
+                                        class="px-4 py-2 border-r border-b border-white/20"
+                                    >
+                                        {t.fpTable.headers.newUsers}
+                                    </th>
+                                    <th
+                                        rowspan="2"
+                                        class="px-4 py-2 border-r border-white/20 align-middle"
+                                    >
+                                        {t.fpTable.headers.currentUsers}
+                                    </th>
+                                    <th
+                                        rowspan="2"
+                                        class="px-4 py-2 border-r border-white/20 align-middle"
+                                    >
+                                        {t.fpTable.headers.irregular}
+                                    </th>
+                                    <th
+                                        colspan="2"
+                                        class="px-4 py-2 border-b border-white/20"
+                                    >
+                                        {t.fpTable.headers.distribution}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th
+                                        class="px-4 py-2 border-r border-white/20"
+                                    >
+                                        {t.fpTable.headers.ageUnder20}
+                                    </th>
+                                    <th
+                                        class="px-4 py-2 border-r border-white/20"
+                                    >
+                                        {t.fpTable.headers.ageOver20}
+                                    </th>
+                                    <th
+                                        class="px-4 py-2 border-r border-white/20"
+                                    >
+                                        {t.fpTable.headers.unit}
+                                    </th>
+                                    <th class="px-4 py-2">
+                                        {t.fpTable.headers.quantity}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    t.fpTable.data.map((row, index) => (
+                                        <tr
+                                            class={`border-b border-zinc-800 ${index % 2 === 0 ? "bg-zinc-900/30" : "bg-transparent"} hover:bg-zinc-800/50 transition-colors`}
+                                        >
+                                            <td class="px-4 py-3 text-left font-medium text-white border-r border-zinc-800">
+                                                {row.method}
+                                            </td>
+                                            <td class="px-4 py-3 text-zinc-300 border-r border-zinc-800">
+                                                {row.u20}
+                                            </td>
+                                            <td class="px-4 py-3 text-zinc-300 border-r border-zinc-800">
+                                                {row.o20}
+                                            </td>
+                                            <td class="px-4 py-3 text-zinc-300 border-r border-zinc-800">
+                                                {row.current}
+                                            </td>
+                                            <td class="px-4 py-3 text-zinc-300 border-r border-zinc-800">
+                                                {row.irregular}
+                                            </td>
+                                            <td class="px-4 py-3 text-zinc-300 border-r border-zinc-800">
+                                                {row.unit}
+                                            </td>
+                                            <td class="px-4 py-3 text-zinc-300">
+                                                {row.qty}
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Part B: Child Birth (Table 48) -->
+        <div class="mb-20">
+            <h3 class="text-xl font-serif text-white/80 mb-6">
+                {t.childBirth.subTitle}
+            </h3>
+
+            <div class="mb-8">
+                <h4 class="text-lg font-serif text-white/80 mb-6 text-center">
+                    {t.childBirth.tableTitle}
+                </h4>
+                <div class="rounded-lg overflow-hidden border border-zinc-800">
+                    <div class="overflow-x-auto">
+                        <table
+                            class="w-full text-sm text-center text-zinc-100 border-collapse"
+                        >
+                            <thead class="bg-orange-500/90 text-white">
+                                <tr>
+                                    <th
+                                        rowspan="2"
+                                        class="px-4 py-2 border-r border-white/20 align-middle"
+                                    >
+                                        {t.childBirth.headers.gender}
+                                    </th>
+                                    <th
+                                        colspan="7"
+                                        class="px-4 py-2 border-r border-b border-white/20"
+                                    >
+                                        {t.childBirth.headers.ageGroup}
+                                    </th>
+                                    <th
+                                        rowspan="2"
+                                        class="px-4 py-2 align-middle"
+                                    >
+                                        {t.childBirth.headers.total}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    {
+                                        t.childBirth.headers.ages.map((age) => (
+                                            <th class="px-2 py-2 border-r border-white/20 text-xs whitespace-nowrap">
+                                                {age}
+                                            </th>
+                                        ))
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    t.childBirth.sections.map((section) => (
+                                        <>
+                                            <tr class="bg-orange-900/40 text-orange-200 font-bold">
+                                                <td
+                                                    colspan="9"
+                                                    class="px-4 py-2 border-b border-orange-800/50"
+                                                >
+                                                    {section.title}
+                                                </td>
+                                            </tr>
+                                            {section.rows.map((row, idx) => (
+                                                <tr
+                                                    class={`border-b border-zinc-800 ${idx % 2 === 0 ? "bg-zinc-900/20" : "bg-transparent"} hover:bg-zinc-800/50 transition-colors`}
+                                                >
+                                                    <td class="px-4 py-3 text-left font-medium text-white border-r border-zinc-800">
+                                                        {row.label}
+                                                    </td>
+                                                    {row.data.map((cell) => (
+                                                        <td class="px-2 py-3 text-zinc-300 border-r border-zinc-800">
+                                                            {cell}
+                                                        </td>
+                                                    ))}
+                                                </tr>
+                                            ))}
+                                        </>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-lg text-zinc-300 leading-relaxed text-justify mb-8">
+                {t.childBirth.analysis}
+            </p>
+        </div>
+
+        <!-- Part C: First Birth Age (Table 49) -->
+        <div class="mb-12">
+            <h3 class="text-xl font-serif text-white/80 mb-6">
+                {t.firstBirth.subTitle}
+            </h3>
+
+            <p
+                class="text-lg text-zinc-300 leading-relaxed text-justify mb-8 whitespace-pre-line"
+            >
+                {t.firstBirth.description}
+            </p>
+
+            <div class="mb-8">
+                <h4 class="text-lg font-serif text-white/80 mb-6 text-center">
+                    {t.firstBirth.tableTitle}
+                </h4>
+                <div class="rounded-lg overflow-hidden border border-zinc-800">
+                    <div class="overflow-x-auto">
+                        <table
+                            class="w-full text-sm text-center text-zinc-100 border-collapse"
+                        >
+                            <thead class="bg-blue-600/90 text-white">
+                                <tr>
+                                    <th
+                                        colspan="9"
+                                        class="px-4 py-2 border-b border-white/20 font-bold text-lg"
+                                    >
+                                        {t.firstBirth.titleHeader}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th
+                                        class="px-4 py-2 border-r border-white/20 w-48"
+                                    >
+                                        {t.firstBirth.headers.kids}
+                                    </th>
+                                    {
+                                        t.firstBirth.headers.ageGroups.map(
+                                            (group) => (
+                                                <th class="px-2 py-2 border-r border-white/20 text-xs">
+                                                    {group}
+                                                </th>
+                                            ),
+                                        )
+                                    }
+                                    <th class="px-4 py-2 w-32">
+                                        {t.firstBirth.headers.total}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    t.firstBirth.rows.map((row, index) => (
+                                        <tr
+                                            class={`border-b border-zinc-800 ${row.isTotal ? "bg-blue-900/30 font-bold text-blue-100" : index % 2 === 0 ? "bg-zinc-900/30" : "bg-transparent"} hover:bg-zinc-800/50 transition-colors`}
+                                        >
+                                            <td class="px-4 py-3 text-left border-r border-zinc-800">
+                                                {row.label}
+                                            </td>
+                                            {row.data.map((cell) => (
+                                                <td class="px-2 py-3 border-r border-zinc-800">
+                                                    {cell}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-lg text-zinc-300 leading-relaxed text-justify mb-8">
+                {t.firstBirth.analysis}
+            </p>
+        </div>
+    </div>
+</section>

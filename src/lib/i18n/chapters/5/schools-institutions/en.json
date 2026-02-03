@@ -1,0 +1,1051 @@
+{
+    "subsectionId": "schools-institutions",
+    "title": "5.1.2 Educational Institutions/Schools and Student Details by Level",
+    "chartTitle": "Literacy Status of Population Above 15 Years",
+    "chartData": [
+        {
+            "ward": "1",
+            "currentlyAttending": 805,
+            "previouslyAttended": 402,
+            "neverAttended": 122,
+            "notMentioned": 0
+        },
+        {
+            "ward": "2",
+            "currentlyAttending": 1300,
+            "previouslyAttended": 472,
+            "neverAttended": 78,
+            "notMentioned": 0
+        },
+        {
+            "ward": "3",
+            "currentlyAttending": 1000,
+            "previouslyAttended": 325,
+            "neverAttended": 33,
+            "notMentioned": 1
+        },
+        {
+            "ward": "4",
+            "currentlyAttending": 1500,
+            "previouslyAttended": 475,
+            "neverAttended": 60,
+            "notMentioned": 0
+        },
+        {
+            "ward": "5",
+            "currentlyAttending": 1300,
+            "previouslyAttended": 468,
+            "neverAttended": 120,
+            "notMentioned": 0
+        },
+        {
+            "ward": "6",
+            "currentlyAttending": 1300,
+            "previouslyAttended": 320,
+            "neverAttended": 78,
+            "notMentioned": 0
+        },
+        {
+            "ward": "7",
+            "currentlyAttending": 1400,
+            "previouslyAttended": 339,
+            "neverAttended": 25,
+            "notMentioned": 0
+        },
+        {
+            "ward": "8",
+            "currentlyAttending": 1000,
+            "previouslyAttended": 351,
+            "neverAttended": 21,
+            "notMentioned": 0
+        },
+        {
+            "ward": "9",
+            "currentlyAttending": 1900,
+            "previouslyAttended": 500,
+            "neverAttended": 91,
+            "notMentioned": 0
+        },
+        {
+            "ward": "10",
+            "currentlyAttending": 1100,
+            "previouslyAttended": 317,
+            "neverAttended": 57,
+            "notMentioned": 0
+        }
+    ],
+    "communitySchoolsTitle": "a) Details of Community Schools",
+    "communitySchools": [
+        {
+            "sn": "1.",
+            "name": "Basic School Siwai Belwa",
+            "location": "Chaudandigadhi–5"
+        },
+        {
+            "sn": "2.",
+            "name": "Basic School Kheraha",
+            "location": "Chaudandigadhi–10"
+        },
+        {
+            "sn": "3.",
+            "name": "Ideal Basic School Agraha",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "4.",
+            "name": "Balmukhi Basic School Ajagar",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "5.",
+            "name": "Baljyoti Basic School Badelpani",
+            "location": "Chaudandigadhi–3"
+        },
+        {
+            "sn": "6.",
+            "name": "Basic School Gangau",
+            "location": "Chaudandigadhi–1"
+        },
+        {
+            "sn": "7.",
+            "name": "Belka Basic School Hatisar",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "8.",
+            "name": "Shimsen Ideal Basic School Devdhar",
+            "location": "Chaudandigadhi–10"
+        },
+        {
+            "sn": "9.",
+            "name": "Buddha Janata Pri. School Gangate",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "10.",
+            "name": "Gausaikanya Basic School Simaltar",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "11.",
+            "name": "Jarbaidhari Janata Basic School Ranitar",
+            "location": "Chaudandigadhi–1"
+        },
+        {
+            "sn": "12.",
+            "name": "Jatyajna Secondary School Ajjungare",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "13.",
+            "name": "Janajyoti Basic School Panchwari Tole",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "14.",
+            "name": "Janajyoti Basic School Amalchauri",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "15.",
+            "name": "Janakalyan Basic School Hatisar",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "16.",
+            "name": "Janasewa Basic School Sawali Tole",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "17.",
+            "name": "Janata Ideal Secondary School Kalikhola",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "18.",
+            "name": "Janata Secondary School Hadiya",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "19.",
+            "name": "Janata Secondary School Lokentar",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "20.",
+            "name": "Janata Basic School Chhunguwa",
+            "location": "Chaudandigadhi–1"
+        },
+        {
+            "sn": "21.",
+            "name": "Ushkalabati Pri. School Phali tar",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "22.",
+            "name": "Jyoti Secondary School Beltar",
+            "location": "Chaudandigadhi–6"
+        },
+        {
+            "sn": "23.",
+            "name": "Kalika Secondary School Siwani",
+            "location": "Chaudandigadhi–6"
+        },
+        {
+            "sn": "24.",
+            "name": "Kodedevi Basic School Jhorpata",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "25.",
+            "name": "Kokan Basic School Dekachauri",
+            "location": "Chaudandigadhi–5"
+        },
+        {
+            "sn": "26.",
+            "name": "Lokmarghi Secondary School Khairakhos",
+            "location": "Chaudandigadhi–10"
+        },
+        {
+            "sn": "27.",
+            "name": "Madaratna Bishwalyah Kuran Pri. School Sipai",
+            "location": "Chaudandigadhi–5"
+        },
+        {
+            "sn": "28.",
+            "name": "Mahadebdhar Basic School Dewaha",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "29.",
+            "name": "Padmani Basic School Beltar",
+            "location": "Chaudandigadhi–7"
+        },
+        {
+            "sn": "30.",
+            "name": "Raktakala Pri. School Mugare",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "31.",
+            "name": "Saranath Basic School Bhutke",
+            "location": "Chaudandigadhi–3"
+        },
+        {
+            "sn": "32.",
+            "name": "Sagarnath Secondary School Bholeni",
+            "location": "Chaudandigadhi–3"
+        },
+        {
+            "sn": "33.",
+            "name": "Sarada Basic School Siltipur",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "34.",
+            "name": "Saraswati Secondary School Saba",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "35.",
+            "name": "Sarada Secondary School Karahare",
+            "location": "Chaudandigadhi–1"
+        },
+        {
+            "sn": "36.",
+            "name": "Shree Bhanawati Secondary School Musultibha",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "37.",
+            "name": "Shree Jarbikas Secondary School Bibha",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "38.",
+            "name": "Shree Narad Ideal Secondary School Barshenda",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "39.",
+            "name": "Shree Secondary School Arupal",
+            "location": "Chaudandigadhi–3"
+        },
+        {
+            "sn": "40.",
+            "name": "Shree Secondary School Sipai",
+            "location": "Chaudandigadhi–5"
+        },
+        {
+            "sn": "41.",
+            "name": "Shree Shiv Secondary School Sipai Sundarpur",
+            "location": "Chaudandigadhi–5"
+        },
+        {
+            "sn": "42.",
+            "name": "Shree Dhanpokhari Secondary School Jwamire",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "43.",
+            "name": "Siukali Basic School Bhire",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "44.",
+            "name": "Siddeshwari Secondary School Musultibha",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "45.",
+            "name": "Siddevi Secondary School Mardibas",
+            "location": "Chaudandigadhi–2"
+        }
+    ],
+    "institutionalSchoolsTitle": "b) Details of Institutional Schools",
+    "institutionalSchools": [
+        {
+            "sn": "1.",
+            "name": "Balvikas Montessori School",
+            "location": "Chaudandigadhi–7",
+            "students": 38
+        },
+        {
+            "sn": "2.",
+            "name": "Beria Kids Pre School",
+            "location": "Chaudandigadhi–4",
+            "students": 54
+        },
+        {
+            "sn": "3.",
+            "name": "Bhumi Chetan English School Beltar",
+            "location": "Chaudandigadhi–7",
+            "students": 182
+        },
+        {
+            "sn": "4.",
+            "name": "Bright Future Academy Chaudandigadhi",
+            "location": "Chaudandigadhi–3",
+            "students": 919
+        },
+        {
+            "sn": "5.",
+            "name": "Bright Future National English Boarding School (0–8)",
+            "location": "Chaudandigadhi–8",
+            "students": 755
+        },
+        {
+            "sn": "6.",
+            "name": "Buddha Niketan English Boarding School",
+            "location": "Chaudandigadhi–4",
+            "students": 920
+        },
+        {
+            "sn": "7.",
+            "name": "Buddharatnawa Vidya Niketan",
+            "location": "Chaudandigadhi–9",
+            "students": 281
+        },
+        {
+            "sn": "8.",
+            "name": "Chando Bright Future English Boarding School",
+            "location": "Chaudandigadhi–9",
+            "students": 922
+        },
+        {
+            "sn": "9.",
+            "name": "Deurali English Boarding School Siswani",
+            "location": "Chaudandigadhi–6",
+            "students": 202
+        },
+        {
+            "sn": "10.",
+            "name": "Eric English Boarding School",
+            "location": "Chaudandigadhi–2",
+            "students": 55
+        },
+        {
+            "sn": "11.",
+            "name": "Kanchanjangha English Boarding School Beltar",
+            "location": "Chaudandigadhi–7",
+            "students": 276
+        },
+        {
+            "sn": "12.",
+            "name": "Marigold Academy Beltar",
+            "location": "Chaudandigadhi–7",
+            "students": 202
+        },
+        {
+            "sn": "13.",
+            "name": "Moti Memorial English Boarding School Barshenda",
+            "location": "Chaudandigadhi–4",
+            "students": 542
+        },
+        {
+            "sn": "14.",
+            "name": "Newton Academy",
+            "location": "Chaudandigadhi–2",
+            "students": 263
+        },
+        {
+            "sn": "15.",
+            "name": "Pavin Memorial Basic English Boarding School",
+            "location": "Chaudandigadhi–4",
+            "students": 235
+        },
+        {
+            "sn": "16.",
+            "name": "Purushad Academy",
+            "location": "Chaudandigadhi–7",
+            "students": 349
+        },
+        {
+            "sn": "17.",
+            "name": "Puma English Boarding School",
+            "location": "Chaudandigadhi–6",
+            "students": 559
+        },
+        {
+            "sn": "18.",
+            "name": "Sagarnath Chekpreddy English Boarding School",
+            "location": "Chaudandigadhi–7",
+            "students": 725
+        },
+        {
+            "sn": "19.",
+            "name": "Sukdev Memorial Academy",
+            "location": "Chaudandigadhi–5",
+            "students": 964
+        },
+        {
+            "sn": "20.",
+            "name": "Sudarshan English Boarding School",
+            "location": "Chaudandigadhi–10",
+            "students": 474
+        },
+        {
+            "sn": "21.",
+            "name": "Trishuli English Boarding School",
+            "location": "Chaudandigadhi–9",
+            "students": 556
+        },
+        {
+            "sn": "22.",
+            "name": "Vidya Public English Boarding School Hadiya",
+            "location": "Chaudandigadhi–10",
+            "students": 956
+        }
+    ],
+    "childDevelopmentTitle": "c) Details of Community Child Development Centers",
+    "communityChildDevelopment": [
+        {
+            "sn": "1",
+            "ward": "5",
+            "name": "Basic School Siwai",
+            "female": 11,
+            "male": 15,
+            "other": 0,
+            "total": 26
+        },
+        {
+            "sn": "2",
+            "ward": "10",
+            "name": "Basic School Kheraha",
+            "female": 12,
+            "male": 11,
+            "other": 0,
+            "total": 23
+        },
+        {
+            "sn": "3",
+            "ward": "8",
+            "name": "Ideal Basic School",
+            "female": 2,
+            "male": 6,
+            "other": 0,
+            "total": 8
+        },
+        {
+            "sn": "4",
+            "ward": "9",
+            "name": "Balmukhi Basic School",
+            "female": 9,
+            "male": 6,
+            "other": 0,
+            "total": 15
+        },
+        {
+            "sn": "5",
+            "ward": "3",
+            "name": "Baljyoti Basic School",
+            "female": 9,
+            "male": 6,
+            "other": 0,
+            "total": 15
+        },
+        {
+            "sn": "6",
+            "ward": "1",
+            "name": "Basic School",
+            "female": 4,
+            "male": 12,
+            "other": 0,
+            "total": 16
+        },
+        {
+            "sn": "7",
+            "ward": "2",
+            "name": "Belka Basic School",
+            "female": 5,
+            "male": 5,
+            "other": 0,
+            "total": 10
+        },
+        {
+            "sn": "8",
+            "ward": "10",
+            "name": "Bhimsen Ideal Basic School",
+            "female": 6,
+            "male": 8,
+            "other": 0,
+            "total": 14
+        },
+        {
+            "sn": "9",
+            "ward": "2",
+            "name": "Buddha Janata Pri. School",
+            "female": 25,
+            "male": 15,
+            "other": 0,
+            "total": 40
+        },
+        {
+            "sn": "10",
+            "ward": "8",
+            "name": "Gaurikanya Basic School",
+            "female": 5,
+            "male": 8,
+            "other": 0,
+            "total": 13
+        },
+        {
+            "sn": "11",
+            "ward": "1",
+            "name": "Jaleshwor Janata Basic School",
+            "female": 5,
+            "male": 6,
+            "other": 0,
+            "total": 11
+        },
+        {
+            "sn": "12",
+            "ward": "4",
+            "name": "Jalpajana Secondary School",
+            "female": 6,
+            "male": 16,
+            "other": 0,
+            "total": 22
+        },
+        {
+            "sn": "13",
+            "ward": "9",
+            "name": "Janajyoti Basic School",
+            "female": 12,
+            "male": 7,
+            "other": 0,
+            "total": 19
+        },
+        {
+            "sn": "14",
+            "ward": "4",
+            "name": "Janajyoti Basic School Amalchauri",
+            "female": 14,
+            "male": 11,
+            "other": 0,
+            "total": 25
+        },
+        {
+            "sn": "15",
+            "ward": "3",
+            "name": "Janakalyan Basic School",
+            "female": 16,
+            "male": 13,
+            "other": 0,
+            "total": 29
+        },
+        {
+            "sn": "16",
+            "ward": "4",
+            "name": "Janasewa Basic School",
+            "female": 9,
+            "male": 10,
+            "other": 0,
+            "total": 19
+        },
+        {
+            "sn": "17",
+            "ward": "4",
+            "name": "Janata Ideal Secondary School",
+            "female": 4,
+            "male": 2,
+            "other": 0,
+            "total": 6
+        },
+        {
+            "sn": "18",
+            "ward": "9",
+            "name": "Janata Secondary School",
+            "female": 50,
+            "male": 45,
+            "other": 0,
+            "total": 95
+        },
+        {
+            "sn": "19",
+            "ward": "8",
+            "name": "Janata Secondary School",
+            "female": 16,
+            "male": 13,
+            "other": 0,
+            "total": 29
+        },
+        {
+            "sn": "20",
+            "ward": "1",
+            "name": "Janata Basic School Chhuila",
+            "female": 6,
+            "male": 9,
+            "other": 0,
+            "total": 15
+        },
+        {
+            "sn": "21",
+            "ward": "8",
+            "name": "Jayakaladevi Pri. School Kalitar",
+            "female": 15,
+            "male": 9,
+            "other": 0,
+            "total": 24
+        },
+        {
+            "sn": "22",
+            "ward": "6",
+            "name": "Jyoti Secondary School",
+            "female": 29,
+            "male": 26,
+            "other": 0,
+            "total": 55
+        },
+        {
+            "sn": "23",
+            "ward": "6",
+            "name": "Kalika Secondary School",
+            "female": 9,
+            "male": 4,
+            "other": 0,
+            "total": 13
+        },
+        {
+            "sn": "24",
+            "ward": "2",
+            "name": "Kauvaidevi Basic School",
+            "female": 23,
+            "male": 24,
+            "other": 0,
+            "total": 47
+        },
+        {
+            "sn": "25",
+            "ward": "5",
+            "name": "Kokan Basic School",
+            "female": 7,
+            "male": 9,
+            "other": 0,
+            "total": 16
+        },
+        {
+            "sn": "26",
+            "ward": "10",
+            "name": "Lauwagadhi Secondary School",
+            "female": 7,
+            "male": 8,
+            "other": 0,
+            "total": 15
+        },
+        {
+            "sn": "27",
+            "ward": "5",
+            "name": "Madrasa Bismillah Kuran Pri. School",
+            "female": 5,
+            "male": 6,
+            "other": 0,
+            "total": 11
+        },
+        {
+            "sn": "28",
+            "ward": "4",
+            "name": "Mahadeveshwor Basic School Basaha",
+            "female": 6,
+            "male": 8,
+            "other": 0,
+            "total": 14
+        },
+        {
+            "sn": "29",
+            "ward": "7",
+            "name": "Panchami Basic School",
+            "female": 7,
+            "male": 3,
+            "other": 0,
+            "total": 10
+        },
+        {
+            "sn": "30",
+            "ward": "2",
+            "name": "Raktamala Pri. School Sudhare",
+            "female": 9,
+            "male": 9,
+            "other": 0,
+            "total": 18
+        },
+        {
+            "sn": "31",
+            "ward": "7",
+            "name": "Sagarmatha Basic School",
+            "female": 11,
+            "male": 8,
+            "other": 0,
+            "total": 19
+        },
+        {
+            "sn": "32",
+            "ward": "3",
+            "name": "Sagarmatha Secondary School",
+            "female": 8,
+            "male": 4,
+            "other": 1,
+            "total": 13
+        },
+        {
+            "sn": "33",
+            "ward": "8",
+            "name": "Sarada Basic School",
+            "female": 4,
+            "male": 9,
+            "other": 0,
+            "total": 13
+        },
+        {
+            "sn": "34",
+            "ward": "8",
+            "name": "Saraswati Secondary School",
+            "female": 1,
+            "male": 6,
+            "other": 0,
+            "total": 7
+        },
+        {
+            "sn": "35",
+            "ward": "1",
+            "name": "Sarada Secondary School",
+            "female": 8,
+            "male": 6,
+            "other": 0,
+            "total": 14
+        },
+        {
+            "sn": "36",
+            "ward": "9",
+            "name": "Shree Bhagawati Secondary School",
+            "female": 14,
+            "male": 13,
+            "other": 0,
+            "total": 27
+        },
+        {
+            "sn": "37",
+            "ward": "9",
+            "name": "Shree Janabikas Secondary School",
+            "female": 13,
+            "male": 9,
+            "other": 0,
+            "total": 22
+        },
+        {
+            "sn": "38",
+            "ward": "4",
+            "name": "Shree Narad Ideal Secondary School",
+            "female": 3,
+            "male": 4,
+            "other": 0,
+            "total": 7
+        },
+        {
+            "sn": "39",
+            "ward": "3",
+            "name": "Shree Secondary School Ampal",
+            "female": 7,
+            "male": 6,
+            "other": 0,
+            "total": 13
+        },
+        {
+            "sn": "40",
+            "ward": "5",
+            "name": "Shree Secondary School Siwai",
+            "female": 34,
+            "male": 20,
+            "other": 0,
+            "total": 54
+        },
+        {
+            "sn": "41",
+            "ward": "5",
+            "name": "Shree Shiv Secondary School",
+            "female": 24,
+            "male": 13,
+            "other": 0,
+            "total": 37
+        },
+        {
+            "sn": "42",
+            "ward": "9",
+            "name": "Shree Thanpokhari Secondary School",
+            "female": 8,
+            "male": 11,
+            "other": 0,
+            "total": 19
+        },
+        {
+            "sn": "43",
+            "ward": "2",
+            "name": "Siddhakali Basic School",
+            "female": 20,
+            "male": 10,
+            "other": 0,
+            "total": 30
+        },
+        {
+            "sn": "44",
+            "ward": "9",
+            "name": "Siddheshwori Secondary School",
+            "female": 16,
+            "male": 10,
+            "other": 0,
+            "total": 26
+        },
+        {
+            "sn": "45",
+            "ward": "2",
+            "name": "Simhadevi Secondary School",
+            "female": 5,
+            "male": 10,
+            "other": 0,
+            "total": 15
+        }
+    ],
+    "institutionalChildDevelopmentTitle": "d) Details of Institutional Child Development Centers",
+    "institutionalChildDevelopment": [
+        {
+            "sn": "1",
+            "ward": "7",
+            "name": "Balwatika Vidya Niketan School",
+            "female": 19,
+            "male": 16,
+            "other": 0,
+            "total": 35
+        },
+        {
+            "sn": "2",
+            "ward": "7",
+            "name": "Bhupu Sainik English School Beltar",
+            "female": 19,
+            "male": 31,
+            "other": 0,
+            "total": 50
+        },
+        {
+            "sn": "3",
+            "ward": "3",
+            "name": "Bright Future Academy Chaudandigadhi-3",
+            "female": 19,
+            "male": 17,
+            "other": 0,
+            "total": 36
+        },
+        {
+            "sn": "4",
+            "ward": "8",
+            "name": "Bright Future National English Boarding School (0–8)",
+            "female": 10,
+            "male": 10,
+            "other": 0,
+            "total": 20
+        },
+        {
+            "sn": "5",
+            "ward": "4",
+            "name": "Buddha Niketan English Boarding School",
+            "female": 18,
+            "male": 26,
+            "other": 0,
+            "total": 44
+        },
+        {
+            "sn": "6",
+            "ward": "9",
+            "name": "Buddharalal Vidya Niketan",
+            "female": 34,
+            "male": 49,
+            "other": 0,
+            "total": 83
+        },
+        {
+            "sn": "7",
+            "ward": "9",
+            "name": "Chandi Bright Future English Boarding School",
+            "female": 29,
+            "male": 34,
+            "other": 0,
+            "total": 63
+        },
+        {
+            "sn": "8",
+            "ward": "6",
+            "name": "Deurali English Boarding School Siswani",
+            "female": 21,
+            "male": 23,
+            "other": 0,
+            "total": 44
+        },
+        {
+            "sn": "9",
+            "ward": "9",
+            "name": "Atic English Boarding School",
+            "female": 30,
+            "male": 39,
+            "other": 0,
+            "total": 69
+        },
+        {
+            "sn": "10",
+            "ward": "7",
+            "name": "Kanchanjangha English Boarding School Beltar",
+            "female": 17,
+            "male": 38,
+            "other": 0,
+            "total": 55
+        },
+        {
+            "sn": "11",
+            "ward": "7",
+            "name": "Marigold Academy Beltar",
+            "female": 15,
+            "male": 32,
+            "other": 0,
+            "total": 47
+        },
+        {
+            "sn": "12",
+            "ward": "4",
+            "name": "Mother Blessing English Boarding School Basaha",
+            "female": 16,
+            "male": 18,
+            "other": 0,
+            "total": 34
+        },
+        {
+            "sn": "13",
+            "ward": "4",
+            "name": "Moti Memorial English Boarding School Barshenda",
+            "female": 45,
+            "male": 40,
+            "other": 0,
+            "total": 85
+        },
+        {
+            "sn": "14",
+            "ward": "2",
+            "name": "Newton Academy",
+            "female": 0,
+            "male": 0,
+            "other": 0,
+            "total": 0
+        },
+        {
+            "sn": "15",
+            "ward": "4",
+            "name": "Pavitra Memorial Basic English Boarding School",
+            "female": 25,
+            "male": 37,
+            "other": 0,
+            "total": 62
+        },
+        {
+            "sn": "16",
+            "ward": "7",
+            "name": "Puruhang Academy",
+            "female": 42,
+            "male": 44,
+            "other": 0,
+            "total": 86
+        },
+        {
+            "sn": "17",
+            "ward": "6",
+            "name": "Puma English Boarding School",
+            "female": 34,
+            "male": 57,
+            "other": 0,
+            "total": 91
+        },
+        {
+            "sn": "18",
+            "ward": "7",
+            "name": "Sagarmatha Secondary English Boarding School",
+            "female": 31,
+            "male": 63,
+            "other": 0,
+            "total": 94
+        },
+        {
+            "sn": "19",
+            "ward": "5",
+            "name": "Sukdev Memorial Academy",
+            "female": 37,
+            "male": 42,
+            "other": 0,
+            "total": 79
+        },
+        {
+            "sn": "20",
+            "ward": "10",
+            "name": "Sudarshan English Boarding School",
+            "female": 32,
+            "male": 40,
+            "other": 0,
+            "total": 72
+        },
+        {
+            "sn": "21",
+            "ward": "9",
+            "name": "Trishakti English Boarding School",
+            "female": 22,
+            "male": 42,
+            "other": 0,
+            "total": 64
+        },
+        {
+            "sn": "22",
+            "ward": "10",
+            "name": "Triyuga Public English Boarding School Hadiya",
+            "female": 25,
+            "male": 25,
+            "other": 0,
+            "total": 50
+        }
+    ],
+    "communitySchoolsStudentsTitle": "e) Community Schools and Student Details",
+    "communitySchoolsStudents": []
+}

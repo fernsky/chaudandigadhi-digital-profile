@@ -11,6 +11,9 @@ import type { Language } from "./index";
  * @returns Formatted string.
  */
 export const formatNumber = (val: string | number, lang: Language, decimals = 0) => {
+    // Handle undefined/null values
+    if (val === undefined || val === null) return "0";
+
     const nepaliToEnglish = (str: string) =>
         str.replace(/[०१२३४५६७८९]/g, (d) => "0123456789"["०१२३४५६७८९".indexOf(d)]);
 
@@ -23,7 +26,7 @@ export const formatNumber = (val: string | number, lang: Language, decimals = 0)
         num = val;
     }
 
-    if (isNaN(num)) return val.toString();
+    if (isNaN(num)) return typeof val === "string" ? val : "0";
 
     const formatted = num.toLocaleString("en-US", {
         minimumFractionDigits: decimals,

@@ -1,0 +1,142 @@
+{
+    "subsectionId": "toilet-usage",
+    "title": "5.3.2 Toilet Usage Status",
+    "content": "In many remote urban settlements, people still defecate in water sources and open places. For a civilized society, this practice is a symbol of incivility. Disposal of excreta in open areas allows germs to enter human body through food, water and breathing. Therefore, construction of toilets in every house is a mandatory requirement. Nowadays, the government and various non-governmental organizations are prioritizing toilet construction. Private houses and public places must have toilets with handwashing water. In case families from poor communities cannot build toilets themselves, the government, especially the local government, has to provide subsidies for toilet construction.",
+    "tableTitle": "Table No. 52: Details of households based on type of toilet used",
+    "tableAnalysis": "Among the total households in the municipality, 64.87 percent use Pit Latrine, 29.04 percent use Flush (Septic Tank), 2.83 percent use Flush (Public Sewer), 0.54 percent use Community Toilet and 2.72 percent do not use toilets and defecate in open places. Detailed ward-wise description is mentioned in the table.",
+    "headers": [
+        "Ward No.",
+        "Flush (Public Sewer)",
+        "Flush (Septic Tank)",
+        "Pit Latrine",
+        "Community Toilet",
+        "No Toilet",
+        "Total"
+    ],
+    "rows": [
+        [
+            "1",
+            "20",
+            "265",
+            "443",
+            "2",
+            "43",
+            "773"
+        ],
+        [
+            "2",
+            "108",
+            "607",
+            "407",
+            "4",
+            "18",
+            "1144"
+        ],
+        [
+            "3",
+            "3",
+            "337",
+            "647",
+            "1",
+            "12",
+            "1000"
+        ],
+        [
+            "4",
+            "16",
+            "329",
+            "1258",
+            "23",
+            "42",
+            "1668"
+        ],
+        [
+            "5",
+            "23",
+            "407",
+            "1029",
+            "8",
+            "56",
+            "1523"
+        ],
+        [
+            "6",
+            "14",
+            "401",
+            "912",
+            "6",
+            "19",
+            "1352"
+        ],
+        [
+            "7",
+            "65",
+            "613",
+            "716",
+            "3",
+            "30",
+            "1427"
+        ],
+        [
+            "8",
+            "28",
+            "23",
+            "759",
+            "8",
+            "43",
+            "861"
+        ],
+        [
+            "9",
+            "65",
+            "472",
+            "1197",
+            "9",
+            "63",
+            "1806"
+        ],
+        [
+            "10",
+            "17",
+            "235",
+            "873",
+            "5",
+            "19",
+            "1149"
+        ]
+    ],
+    "totalRow": [
+        "Total",
+        "359",
+        "3689",
+        "8241",
+        "69",
+        "345",
+        "12703"
+    ],
+    "percentRow": [
+        "Percentage",
+        "2.83",
+        "29.04",
+        "64.87",
+        "0.54",
+        "2.72",
+        "100"
+    ],
+    "source": "Source: National Census, 2078",
+    "chartTitle": "Details of households based on type of toilet used",
+    "chartLabels": [
+        "Flush (Public Sewer)",
+        "Flush (Septic Tank)",
+        "Pit Latrine",
+        "Community Toilet",
+        "No Toilet"
+    ],
+    "chartData": [
+        359,
+        3689,
+        8241,
+        69,
+        345
+    ]
+}
