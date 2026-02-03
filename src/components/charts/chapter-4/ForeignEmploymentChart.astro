@@ -67,7 +67,7 @@ const chartData = [...data].sort((a, b) => b.value - a.value);
         // Y axis
         const y = d3
             .scaleLinear()
-            .domain([0, d3.max(data, (d: any) => d.value) || 100])
+            .domain([0, (d3.max(data, (d: any) => d.value) as any) || 100])
             .range([height, 0]);
 
         svg.append("g")

@@ -1,0 +1,97 @@
+---
+import type { Language } from "../../../lib/i18n";
+import ne from "../../../lib/i18n/chapters/5/health-institutions/ne.json";
+import en from "../../../lib/i18n/chapters/5/health-institutions/en.json";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = lang === "ne" ? ne : en;
+
+// Number formatter for Nepali
+const formatNumber = (num: number | string | undefined) => {
+    if (num === undefined || num === null) return "0";
+    if (num === "") return "-";
+    const str = num.toString();
+    if (lang === "en") return str;
+    return str.replace(/[0-9]/g, (d) => "०१२३४५६७८९"[parseInt(d)]);
+};
+---
+
+<section
+    id={t.subsectionId}
+    class="relative py-20 bg-[#0a0a0a] border-t border-white/5"
+>
+    <div class="container mx-auto px-8 relative z-10">
+        <!-- Section Title -->
+        <h2 class="text-2xl md:text-3xl font-serif text-white/90 mb-12">
+            {t.title}
+        </h2>
+
+        <!-- Table -->
+        <div class="mb-8">
+            <h3 class="text-lg font-serif text-white/80 mb-6">
+                {t.tableTitle}
+            </h3>
+            <div class="rounded-lg overflow-hidden border border-zinc-800">
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full text-sm text-left text-zinc-100 border-collapse"
+                    >
+                        <thead class="bg-blue-900/40">
+                            <tr>
+                                <th
+                                    class="px-4 py-3 font-serif font-medium text-white border-r border-white/10 w-16 text-center"
+                                >
+                                    {t.headers.sn}
+                                </th>
+                                <th
+                                    class="px-4 py-3 font-serif font-medium text-white border-r border-white/10"
+                                >
+                                    {t.headers.name}
+                                </th>
+                                <th
+                                    class="px-4 py-3 font-serif font-medium text-white border-r border-white/10"
+                                >
+                                    {t.headers.location}
+                                </th>
+                                <th
+                                    class="px-4 py-3 font-serif font-medium text-white"
+                                >
+                                    {t.headers.service}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                t.data.map((row, index) => (
+                                    <tr
+                                        class={`border-b border-zinc-800 ${index % 2 === 0 ? "bg-zinc-900/30" : "bg-transparent"} hover:bg-zinc-800/50 transition-colors`}
+                                    >
+                                        <td class="px-4 py-3 text-center text-zinc-300 border-r border-zinc-800">
+                                            {row.sn}
+                                        </td>
+                                        <td class="px-4 py-3 font-medium text-white border-r border-zinc-800">
+                                            {row.name}
+                                        </td>
+                                        <td class="px-4 py-3 text-zinc-300 border-r border-zinc-800">
+                                            {row.location}
+                                        </td>
+                                        <td class="px-4 py-3 text-zinc-300">
+                                            {row.service}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p class="text-sm text-zinc-400 mt-2 text-right italic">
+                {t.source}
+            </p>
+        </div>
+    </div>
+</section>

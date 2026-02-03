@@ -1,0 +1,81 @@
+---
+import type { Language } from "../../../lib/i18n";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const navItems = [
+    {
+        id: "education-overview",
+        label: lang === "ne" ? "शैक्षिक विकास" : "Educational Development",
+    },
+    {
+        id: "schools-institutions",
+        label: lang === "ne" ? "विद्यालय/संस्था" : "Schools/Institutions",
+    },
+    {
+        id: "student-enrollment",
+        label: lang === "ne" ? "विद्यार्थी भर्ना" : "Student Enrollment",
+    },
+    {
+        id: "teacher-details",
+        label: lang === "ne" ? "शिक्षक विवरण" : "Teacher Details",
+    },
+];
+---
+
+<nav
+    class="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-white/10 py-4 mb-8"
+>
+    <div class="container mx-auto px-8">
+        <ul
+            class="flex flex-wrap gap-4 md:gap-8 items-center justify-center md:justify-start"
+        >
+            {
+                navItems.map((item) => (
+                    <li>
+                        <a
+                            href={`#${item.id}`}
+                            class="text-sm md:text-base text-zinc-400 hover:text-[#c6d5a3] transition-colors font-serif whitespace-nowrap"
+                        >
+                            {item.label}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</nav>
+
+<script>
+    // Add active state on scroll
+    const observerOptions = {
+        root: null,
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute("id");
+                document.querySelectorAll("nav a").forEach((link) => {
+                    if (link.getAttribute("href") === `#${id}`) {
+                        link.classList.add("text-[#c6d5a3]", "font-medium");
+                        link.classList.remove("text-zinc-400");
+                    } else {
+                        link.classList.remove("text-[#c6d5a3]", "font-medium");
+                        link.classList.add("text-zinc-400");
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll("section[id]").forEach((section) => {
+        observer.observe(section);
+    });
+</script>

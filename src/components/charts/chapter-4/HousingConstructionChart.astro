@@ -24,15 +24,9 @@ const chartData = [...data].sort((a, b) => b.value - a.value);
         '[id^="housing-const-chart-"]',
     );
 
-    containers.forEach((container) => {
-        // We need a way to pass specific data to EACH chart instance.
-        // Astro scripts run once per page.
-        // We need to associate data with the unique ID.
-        // Let's use the pattern from other charts: wrap in a component that handles its own data via dataset.
-    });
+    containers.forEach((container) => {});
 </script>
 
-<!-- Refactored approach for multiple instances -->
 <div class="chart-wrapper">
     <div class="chart-container w-full h-[300px] md:h-[400px]"></div>
     <div class="chart-data hidden" data-chart={JSON.stringify(chartData)}></div>
@@ -90,7 +84,7 @@ const chartData = [...data].sort((a, b) => b.value - a.value);
         // Y axis
         const y = d3
             .scaleLinear()
-            .domain([0, d3.max(data, (d: any) => d.value) || 100])
+            .domain([0, (d3.max(data, (d: any) => d.value) as any) || 100])
             .range([height, 0]);
 
         svg.append("g")

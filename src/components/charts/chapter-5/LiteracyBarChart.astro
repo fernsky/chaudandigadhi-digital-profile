@@ -1,0 +1,331 @@
+---
+import type { Language } from "../../../lib/i18n";
+import { formatNumber } from "../../../lib/i18n/formatters";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const chartData = {
+    male: {
+        literate: 19499,
+        onlyRead: 46,
+        illiterate: 3472,
+        notMentioned: 0,
+    },
+    female: {
+        literate: 18946,
+        onlyRead: 72,
+        illiterate: 7441,
+        notMentioned: 1,
+    },
+};
+---
+
+<div class="w-full bg-[#0a0a0a] border border-[#f2e25d]/10 p-6 rounded-lg">
+    <h4 class="text-zinc-100 font-serif text-lg md:text-xl mb-6 text-center">
+        {
+            lang === "ne"
+                ? "५ वर्ष वा सो भन्दा माथिल्लो उमेर समूहका जनसंख्याको वडागत साक्षरता"
+                : "Ward-wise Literacy of Population Aged 5 Years and Above"
+        }
+    </h4>
+    <div class="w-full">
+        <svg
+            id="literacy-chart"
+            class="w-full"
+            style="background: transparent;"
+        >
+            <!-- Literacy Chart -->
+        </svg>
+    </div>
+</div>
+
+<script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+<script define:vars={{ chartData, lang }}>
+    function initLiteracyChart() {
+        const observeChart = (id, renderFn) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.innerHTML = ""; // Clear
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            renderFn();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.2 },
+            );
+            observer.observe(el);
+        };
+
+        observeChart("literacy-chart", renderLiteracyChart);
+    }
+
+    function renderLiteracyChart() {
+        const svgEl = document.getElementById("literacy-chart");
+        if (!svgEl) return;
+
+        // Helper function to format numbers based on lang
+        const formatNum = (num) => {
+            if (lang === "ne") {
+                const nepaliDigits = [
+                    "०",
+                    "१",
+                    "२",
+                    "३",
+                    "४",
+                    "५",
+                    "६",
+                    "७",
+                    "८",
+                    "९",
+                ];
+                return num
+                    .toString()
+                    .split("")
+                    .map((d) =>
+                        d === "," ? "," : nepaliDigits[parseInt(d)] || d,
+                    )
+                    .join("");
+            }
+            return num.toLocaleString();
+        };
+
+        const data = [
+            {
+                gender: lang === "ne" ? "पुरुष" : "Male",
+                literate: chartData.male.literate,
+                onlyRead: chartData.male.onlyRead,
+                illiterate: chartData.male.illiterate,
+            },
+            {
+                gender: lang === "ne" ? "महिला" : "Female",
+                literate: chartData.female.literate,
+                onlyRead: chartData.female.onlyRead,
+                illiterate: chartData.female.illiterate,
+            },
+        ];
+
+        const margin = { top: 40, right: 40, bottom: 80, left: 80 };
+        const width = 700;
+        const height = 400;
+        const chartWidth = width - margin.left - margin.right;
+        const chartHeight = height - margin.top - margin.bottom;
+
+        const svg = d3.select(svgEl).attr("viewBox", `0 0 ${width} ${height}`);
+
+        const g = svg
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Scales
+        const x0 = d3
+            .scaleBand()
+            .domain(data.map((d) => d.gender))
+            .rangeRound([0, chartWidth])
+            .paddingInner(0.2);
+
+        const x1 = d3
+            .scaleBand()
+            .domain(["literate", "onlyRead", "illiterate"])
+            .rangeRound([0, x0.bandwidth()])
+            .padding(0.05);
+
+        const y = d3
+            .scaleLinear()
+            .domain([
+                0,
+                d3.max(data, (d) => Math.max(d.literate, d.illiterate)),
+            ])
+            .nice()
+            .rangeRound([chartHeight, 0]);
+
+        // Colors - using yellowish theme
+        const colors = {
+            literate: "#f2e25d", // Yellow (primary)
+            onlyRead: "#a1a1aa", // Gray
+            illiterate: "#71717a", // Darker gray
+        };
+
+        // X Axis
+        g.append("g")
+            .attr("transform", `translate(0,${chartHeight})`)
+            .call(d3.axisBottom(x0))
+            .selectAll("text")
+            .attr("fill", "#e4e4e7")
+            .attr("font-family", "serif")
+            .attr("font-size", "14");
+
+        g.select(".domain").attr("stroke", "#3f3f46");
+        g.selectAll(".tick line").attr("stroke", "#3f3f46");
+
+        // Y Axis
+        g.append("g")
+            .call(
+                d3
+                    .axisLeft(y)
+                    .ticks(8)
+                    .tickFormat((d) => formatNum(d)),
+            )
+            .selectAll("text")
+            .attr("fill", "#e4e4e7")
+            .attr("font-family", "serif")
+            .attr("font-size", "12");
+
+        g.select(".domain").attr("stroke", "#3f3f46");
+        g.selectAll(".tick line").attr("stroke", "#3f3f46");
+
+        // Grid lines
+        g.selectAll(".grid-line")
+            .data(y.ticks(8))
+            .enter()
+            .append("line")
+            .attr("class", "grid-line")
+            .attr("x1", 0)
+            .attr("x2", chartWidth)
+            .attr("y1", (d) => y(d))
+            .attr("y2", (d) => y(d))
+            .attr("stroke", "#27272a")
+            .attr("stroke-dasharray", "2,2")
+            .attr("opacity", 0.5);
+
+        // Create tooltip
+        const tooltip = d3
+            .select("body")
+            .append("div")
+            .attr("class", "d3-tooltip")
+            .style("position", "absolute")
+            .style("background", "rgba(10, 10, 10, 0.95)")
+            .style("border", "1px solid #f2e25d")
+            .style("padding", "12px")
+            .style("border-radius", "8px")
+            .style("pointer-events", "none")
+            .style("opacity", 0)
+            .style("font-family", "serif")
+            .style("color", "#e4e4e7")
+            .style("font-size", "14px")
+            .style("z-index", "1000");
+
+        // Labels
+        const labels = {
+            literate: lang === "ne" ? "पढ्न लेख्न जान्नेको संख्या" : "Literate",
+            onlyRead:
+                lang === "ne" ? "पढ्न मात्र जान्नेको संख्या" : "Only Read",
+            illiterate:
+                lang === "ne" ? "पढ्न र लेख्न नजान्नेको संख्या" : "Illiterate",
+        };
+
+        // Bars
+        const genderGroups = g
+            .selectAll(".gender-group")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("transform", (d) => `translate(${x0(d.gender)},0)`);
+
+        ["literate", "onlyRead", "illiterate"].forEach((key) => {
+            genderGroups
+                .append("rect")
+                .attr("x", x1(key))
+                .attr("width", x1.bandwidth())
+                .attr("fill", colors[key])
+                .attr("y", chartHeight)
+                .attr("height", 0)
+                .attr("rx", 4)
+                .on("mouseover", function (event, d) {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr("opacity", 0.8)
+                        .attr("filter", "brightness(1.2)");
+
+                    tooltip
+                        .style("opacity", 1)
+                        .html(
+                            `
+                            <div style="font-weight: bold; margin-bottom: 4px; color: #f2e25d;">${d.gender}</div>
+                            <div style="margin-bottom: 2px;">${labels[key]}</div>
+                            <div style="color: ${colors[key]}; font-size: 16px; font-weight: bold;">${formatNum(d[key])}</div>
+                        `,
+                        )
+                        .style("left", event.pageX + 10 + "px")
+                        .style("top", event.pageY - 28 + "px");
+                })
+                .on("mouseout", function () {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr("opacity", 1)
+                        .attr("filter", "brightness(1)");
+
+                    tooltip.style("opacity", 0);
+                })
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 100)
+                .attr("y", (d) => y(d[key]))
+                .attr("height", (d) => chartHeight - y(d[key]));
+        });
+
+        // Legend
+        const legend = g
+            .append("g")
+            .attr("transform", `translate(0, ${chartHeight + 50})`);
+
+        const legendItems = [
+            { key: "literate", label: labels.literate, color: colors.literate },
+            { key: "onlyRead", label: labels.onlyRead, color: colors.onlyRead },
+            {
+                key: "illiterate",
+                label: labels.illiterate,
+                color: colors.illiterate,
+            },
+        ];
+
+        const legendSpacing = chartWidth / legendItems.length;
+
+        legendItems.forEach((item, i) => {
+            const legendG = legend
+                .append("g")
+                .attr("transform", `translate(${i * legendSpacing}, 0)`);
+
+            legendG
+                .append("rect")
+                .attr("width", 16)
+                .attr("height", 16)
+                .attr("fill", item.color)
+                .attr("rx", 3);
+
+            legendG
+                .append("text")
+                .attr("x", 24)
+                .attr("y", 13)
+                .attr("fill", "#e4e4e7")
+                .attr("font-family", "serif")
+                .attr("font-size", "12")
+                .text(item.label);
+        });
+    }
+
+    if (document.readyState === "complete") {
+        initLiteracyChart();
+    } else {
+        window.addEventListener("load", initLiteracyChart);
+    }
+    document.addEventListener("astro:page-load", initLiteracyChart);
+</script>
+
+<style>
+    .d3-tooltip {
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.3),
+            0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    }
+</style>

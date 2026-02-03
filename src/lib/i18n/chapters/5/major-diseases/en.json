@@ -1,0 +1,53 @@
+{
+    "subsectionId": "major-diseases",
+    "title": "5.2.4 Details of Major Diseases and Treatment",
+    "content": "The details of the top 10 major health problems seen recently according to the number of patients registered in the OPD of health institutions under this municipality are mentioned in the table below.",
+    "tableTitle": "Table No. 47: Details of Top 10 Major Health Problems",
+    "headers": {
+        "sn": "SN",
+        "disease": "Major Diseases"
+    },
+    "tableData": [
+        {
+            "sn": "1.",
+            "disease": "Gastritis"
+        },
+        {
+            "sn": "2.",
+            "disease": "URTI"
+        },
+        {
+            "sn": "3.",
+            "disease": "LRTI"
+        },
+        {
+            "sn": "4.",
+            "disease": "Fever"
+        },
+        {
+            "sn": "5.",
+            "disease": "Headache"
+        },
+        {
+            "sn": "6.",
+            "disease": "PID"
+        },
+        {
+            "sn": "7.",
+            "disease": "Cancer"
+        },
+        {
+            "sn": "8.",
+            "disease": "Heart Disease"
+        },
+        {
+            "sn": "9.",
+            "disease": "Chronic Kidney Disease"
+        },
+        {
+            "sn": "10.",
+            "disease": "Spinal Injruries"
+        }
+    ],
+    "source": "Source: Municipal Executive Office"
+}

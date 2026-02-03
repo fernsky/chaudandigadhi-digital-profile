@@ -1,0 +1,420 @@
+{
+    "subsectionId": "safe-motherhood",
+    "title": "5.2.5 Safe Motherhood",
+    "intro": {
+        "title": "a) Family Planning",
+        "description": "Research conducted by various organizations on the benefits of family planning has proven that it plays a significant role in improving the health of mothers, children, and newborns. It also helps in gender equality, women's education, and growth and development. Therefore, with the aim of providing quality family planning services, the reproductive health program and family planning program have been expanded since 1991 to hospitals, health posts, basic health centers, and urban clinics, and services are being provided through female community health volunteers. The details of family planning programs in the municipality are presented in the table."
+    },
+    "fpTable": {
+        "title": "Details related to Family Planning",
+        "headers": {
+            "method": "Temporary Method",
+            "newUsers": "New Users",
+            "ageUnder20": "20 Years",
+            "ageOver20": "20 Years",
+            "currentUsers": "Currently Using",
+            "irregular": "Irregular in Service",
+            "distribution": "Method Distribution",
+            "unit": "Unit",
+            "quantity": "Quantity"
+        },
+        "data": [
+            {
+                "method": "Condom",
+                "u20": "",
+                "o20": "",
+                "current": "",
+                "irregular": "",
+                "unit": "Pcs",
+                "qty": "25215"
+            },
+            {
+                "method": "Emergency Contraceptive Pill",
+                "u20": "1",
+                "o20": "3",
+                "current": "",
+                "irregular": "",
+                "unit": "Dose",
+                "qty": "4"
+            },
+            {
+                "method": "Pills",
+                "u20": "9",
+                "o20": "277",
+                "current": "3220",
+                "irregular": "265",
+                "unit": "Cycle",
+                "qty": "3163"
+            },
+            {
+                "method": "Depo",
+                "u20": "12",
+                "o20": "213",
+                "current": "4765",
+                "irregular": "830",
+                "unit": "Dose",
+                "qty": "1361"
+            },
+            {
+                "method": "Sayana Press",
+                "u20": "",
+                "o20": "",
+                "current": "",
+                "irregular": "",
+                "unit": "Dose",
+                "qty": ""
+            },
+            {
+                "method": "IUCD",
+                "u20": "",
+                "o20": "",
+                "current": "1491",
+                "irregular": "39",
+                "unit": "Set",
+                "qty": ""
+            },
+            {
+                "method": "Implant",
+                "u20": "1",
+                "o20": "54",
+                "current": "8725",
+                "irregular": "150",
+                "unit": "Set",
+                "qty": "68"
+            }
+        ]
+    },
+    "childBirth": {
+        "subTitle": "b) Details of children born, living and dead based on child's gender and mother's age group",
+        "tableTitle": "Table No. 48: Details of children born, living and dead based on child's gender and mother's age group",
+        "headers": {
+            "gender": "Gender",
+            "ageGroup": "Mother's Age Group",
+            "ages": [
+                "15-19",
+                "20-24",
+                "25-29",
+                "30-34",
+                "35-39",
+                "40-44",
+                "45-49"
+            ],
+            "total": "Total"
+        },
+        "sections": [
+            {
+                "title": "Total Children Born",
+                "rows": [
+                    {
+                        "label": "Son",
+                        "data": [
+                            "131",
+                            "764",
+                            "1655",
+                            "1985",
+                            "2333",
+                            "2310",
+                            "2035",
+                            "11213"
+                        ]
+                    },
+                    {
+                        "label": "Daughter",
+                        "data": [
+                            "108",
+                            "772",
+                            "1497",
+                            "1951",
+                            "2131",
+                            "2173",
+                            "1934",
+                            "10566"
+                        ]
+                    },
+                    {
+                        "label": "Total",
+                        "data": [
+                            "239",
+                            "1536",
+                            "3152",
+                            "3936",
+                            "4464",
+                            "4483",
+                            "3969",
+                            "21779"
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Children Living Till Date",
+                "rows": [
+                    {
+                        "label": "Son",
+                        "data": [
+                            "126",
+                            "745",
+                            "1613",
+                            "1937",
+                            "2247",
+                            "2219",
+                            "1931",
+                            "10818"
+                        ]
+                    },
+                    {
+                        "label": "Daughter",
+                        "data": [
+                            "108",
+                            "761",
+                            "1475",
+                            "1922",
+                            "2071",
+                            "2114",
+                            "1876",
+                            "10327"
+                        ]
+                    },
+                    {
+                        "label": "Total",
+                        "data": [
+                            "234",
+                            "1506",
+                            "3088",
+                            "3859",
+                            "4318",
+                            "4333",
+                            "3807",
+                            "21145"
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Deceased Children",
+                "rows": [
+                    {
+                        "label": "Son",
+                        "data": [
+                            "5",
+                            "19",
+                            "42",
+                            "48",
+                            "86",
+                            "91",
+                            "104",
+                            "395"
+                        ]
+                    },
+                    {
+                        "label": "Daughter",
+                        "data": [
+                            "0",
+                            "11",
+                            "22",
+                            "29",
+                            "60",
+                            "59",
+                            "58",
+                            "239"
+                        ]
+                    },
+                    {
+                        "label": "Total",
+                        "data": [
+                            "5",
+                            "30",
+                            "64",
+                            "77",
+                            "146",
+                            "150",
+                            "162",
+                            "634"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "analysis": "Out of a total of 21,779 children born alive in the last 12 months to women aged 15 to 49 years in the municipality, the number of surviving children till date is 21,145. Similarly, the number of children who died during the same period is 634, the detailed description of which according to gender is presented in the table."
+    },
+    "firstBirth": {
+        "subTitle": "c) Details of mother's age at first birth",
+        "description": "From the legal and reproductive health perspective, becoming a mother at the age of 20 or less is considered illegal and risky from the perspective of both maternal and child health. Conception and giving birth in a state of physical, mental, and economic immaturity carries a high risk of birthing an immature, underweight, physically and intellectually disabled infant on the one hand, and on the other hand, due to lack of adequate information on subjects like pregnancy care, mother and child care, nutrition, sanitation, there is a possibility that both mother and infant may fall victim to various types of infections.\n\nNepal has achieved remarkable progress in the field of maternal and child health between the Millennium Development Goals 2000-2015. Considering 1990 as the base year, child mortality under 5 years of age (per thousand) has dropped to 38 by 2015 from 108 deaths per 1000 live births in Nepal. Similarly, considering 1990 as the base year, maternal mortality (per one hundred thousand) has dropped to 258 by 2015 from 850, and statistics show that the proportion of women giving birth from trained health workers has reached 55.6 percent (Nepal and the Millennium Development Goals Final Status Report, 2000- 2015). Looking at this, signs of positive impact in the overall field of maternal and child health are being seen in the municipality.",
+        "tableTitle": "Table No. 49: Population of women according to number of children born alive till date by married women of 15-49 age group",
+        "headers": {
+            "kids": "Children currently alive",
+            "ageGroups": [
+                "15-19 Years",
+                "20-24 Years",
+                "25-29 Years",
+                "30-34 Years",
+                "35-39 Years",
+                "40-44 Years",
+                "45-49 Years"
+            ],
+            "total": "Total Married Women"
+        },
+        "titleHeader": "Mother's Age at First Birth",
+        "rows": [
+            {
+                "label": "No Child",
+                "data": [
+                    "199",
+                    "443",
+                    "256",
+                    "129",
+                    "76",
+                    "82",
+                    "103",
+                    "1288"
+                ]
+            },
+            {
+                "label": "1 Child",
+                "data": [
+                    "188",
+                    "840",
+                    "851",
+                    "532",
+                    "274",
+                    "190",
+                    "121",
+                    "2996"
+                ]
+            },
+            {
+                "label": "2 Children",
+                "data": [
+                    "22",
+                    "290",
+                    "778",
+                    "950",
+                    "871",
+                    "618",
+                    "332",
+                    "3861"
+                ]
+            },
+            {
+                "label": "3 Children",
+                "data": [
+                    "1",
+                    "32",
+                    "171",
+                    "325",
+                    "446",
+                    "483",
+                    "383",
+                    "1841"
+                ]
+            },
+            {
+                "label": "4 Children",
+                "data": [
+                    "1",
+                    "5",
+                    "50",
+                    "87",
+                    "163",
+                    "208",
+                    "199",
+                    "713"
+                ]
+            },
+            {
+                "label": "5 Children",
+                "data": [
+                    "0",
+                    "0",
+                    "4",
+                    "29",
+                    "58",
+                    "96",
+                    "127",
+                    "314"
+                ]
+            },
+            {
+                "label": "6 Children",
+                "data": [
+                    "0",
+                    "0",
+                    "2",
+                    "6",
+                    "17",
+                    "31",
+                    "53",
+                    "109"
+                ]
+            },
+            {
+                "label": "7 Children",
+                "data": [
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "6",
+                    "11",
+                    "28",
+                    "45"
+                ]
+            },
+            {
+                "label": "8 Children",
+                "data": [
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "3",
+                    "3",
+                    "4",
+                    "10"
+                ]
+            },
+            {
+                "label": "More than 9 Children",
+                "data": [
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "1",
+                    "6",
+                    "7"
+                ]
+            },
+            {
+                "label": "Total",
+                "data": [
+                    "411",
+                    "1610",
+                    "2112",
+                    "2058",
+                    "1914",
+                    "1723",
+                    "1356",
+                    "11184"
+                ],
+                "isTotal": true
+            },
+            {
+                "label": "Percentage",
+                "data": [
+                    "3.67",
+                    "14.40",
+                    "18.88",
+                    "18.40",
+                    "17.11",
+                    "15.41",
+                    "12.12",
+                    "100"
+                ],
+                "isTotal": true
+            }
+        ],
+        "analysis": "Out of total 11,184 women in the municipality, 411, i.e., 3.67 percent women seem to have given birth to their first child between 15-19 years. Similarly, 1,610 i.e., 14.40 percent women at 20-24 years age, 2,112 i.e., 18.88 percent women at 25-29 years age and 2,058 i.e., 18.40 percent women seem to have become mothers at 30-34 years age, while the number of those becoming mothers for the first time above 35-39 years is total 1,914 i.e., 17.11 percent. Similarly, women of 40-44 years are 1,723 i.e., 15.41 percent, while 1,356 i.e., 12.12 percent women of 45-49 years have given birth to their first child."
+    }
+}

@@ -1,0 +1,626 @@
+{
+    "subsectionId": "literacy-statistics",
+    "title": "५.१.१ पाँच वर्ष माथिको जनसंख्याको साक्षरता",
+    "tableNumber": "तालिका नं. ४०:",
+    "tableTitle": "५ वर्ष वा सो भन्दा माथिल्लो उमेर समूहका जनसंख्याको वडागत साक्षरताको विवरण",
+    "tableData": [
+        {
+            "ward": "१",
+            "gender": "जम्मा",
+            "literate": 2285,
+            "onlyRead": 1,
+            "illiterate": 868,
+            "notMentioned": 0,
+            "total": 3154
+        },
+        {
+            "ward": "१",
+            "gender": "पुरुष",
+            "literate": 1210,
+            "onlyRead": 1,
+            "illiterate": 337,
+            "notMentioned": 0,
+            "total": 1548
+        },
+        {
+            "ward": "१",
+            "gender": "महिला",
+            "literate": 1075,
+            "onlyRead": 0,
+            "illiterate": 531,
+            "notMentioned": 0,
+            "total": 1606
+        },
+        {
+            "ward": "२",
+            "gender": "जम्मा",
+            "literate": 3551,
+            "onlyRead": 21,
+            "illiterate": 1115,
+            "notMentioned": 1,
+            "total": 4688
+        },
+        {
+            "ward": "२",
+            "gender": "पुरुष",
+            "literate": 1975,
+            "onlyRead": 4,
+            "illiterate": 365,
+            "notMentioned": 0,
+            "total": 2144
+        },
+        {
+            "ward": "२",
+            "gender": "महिला",
+            "literate": 1576,
+            "onlyRead": 17,
+            "illiterate": 750,
+            "notMentioned": 1,
+            "total": 2344
+        },
+        {
+            "ward": "३",
+            "gender": "जम्मा",
+            "literate": 2931,
+            "onlyRead": 10,
+            "illiterate": 757,
+            "notMentioned": 0,
+            "total": 3698
+        },
+        {
+            "ward": "३",
+            "gender": "पुरुष",
+            "literate": 1442,
+            "onlyRead": 4,
+            "illiterate": 258,
+            "notMentioned": 0,
+            "total": 1704
+        },
+        {
+            "ward": "३",
+            "gender": "महिला",
+            "literate": 1489,
+            "onlyRead": 6,
+            "illiterate": 499,
+            "notMentioned": 0,
+            "total": 1994
+        },
+        {
+            "ward": "४",
+            "gender": "जम्मा",
+            "literate": 5146,
+            "onlyRead": 23,
+            "illiterate": 1255,
+            "notMentioned": 0,
+            "total": 6424
+        },
+        {
+            "ward": "४",
+            "gender": "पुरुष",
+            "literate": 2557,
+            "onlyRead": 8,
+            "illiterate": 294,
+            "notMentioned": 0,
+            "total": 2859
+        },
+        {
+            "ward": "४",
+            "gender": "महिला",
+            "literate": 2589,
+            "onlyRead": 15,
+            "illiterate": 961,
+            "notMentioned": 0,
+            "total": 3565
+        },
+        {
+            "ward": "५",
+            "gender": "जम्मा",
+            "literate": 4325,
+            "onlyRead": 6,
+            "illiterate": 1483,
+            "notMentioned": 0,
+            "total": 5814
+        },
+        {
+            "ward": "५",
+            "gender": "पुरुष",
+            "literate": 2224,
+            "onlyRead": 4,
+            "illiterate": 485,
+            "notMentioned": 0,
+            "total": 2713
+        },
+        {
+            "ward": "५",
+            "gender": "महिला",
+            "literate": 2101,
+            "onlyRead": 2,
+            "illiterate": 998,
+            "notMentioned": 0,
+            "total": 3101
+        },
+        {
+            "ward": "६",
+            "gender": "जम्मा",
+            "literate": 4245,
+            "onlyRead": 3,
+            "illiterate": 903,
+            "notMentioned": 0,
+            "total": 5151
+        },
+        {
+            "ward": "६",
+            "gender": "पुरुष",
+            "literate": 2125,
+            "onlyRead": 2,
+            "illiterate": 252,
+            "notMentioned": 0,
+            "total": 2379
+        },
+        {
+            "ward": "६",
+            "gender": "महिला",
+            "literate": 2120,
+            "onlyRead": 1,
+            "illiterate": 651,
+            "notMentioned": 0,
+            "total": 2772
+        },
+        {
+            "ward": "७",
+            "gender": "जम्मा",
+            "literate": 4762,
+            "onlyRead": 25,
+            "illiterate": 906,
+            "notMentioned": 0,
+            "total": 5693
+        },
+        {
+            "ward": "७",
+            "gender": "पुरुष",
+            "literate": 2412,
+            "onlyRead": 11,
+            "illiterate": 217,
+            "notMentioned": 0,
+            "total": 2670
+        },
+        {
+            "ward": "७",
+            "gender": "महिला",
+            "literate": 2350,
+            "onlyRead": 14,
+            "illiterate": 659,
+            "notMentioned": 0,
+            "total": 3023
+        },
+        {
+            "ward": "८",
+            "gender": "जम्मा",
+            "literate": 2628,
+            "onlyRead": 5,
+            "illiterate": 684,
+            "notMentioned": 0,
+            "total": 3917
+        },
+        {
+            "ward": "८",
+            "gender": "पुरुष",
+            "literate": 1347,
+            "onlyRead": 2,
+            "illiterate": 304,
+            "notMentioned": 0,
+            "total": 1653
+        },
+        {
+            "ward": "८",
+            "gender": "महिला",
+            "literate": 1281,
+            "onlyRead": 3,
+            "illiterate": 580,
+            "notMentioned": 0,
+            "total": 1844
+        },
+        {
+            "ward": "९",
+            "gender": "जम्मा",
+            "literate": 5203,
+            "onlyRead": 18,
+            "illiterate": 1737,
+            "notMentioned": 0,
+            "total": 6958
+        },
+        {
+            "ward": "९",
+            "gender": "पुरुष",
+            "literate": 2691,
+            "onlyRead": 8,
+            "illiterate": 539,
+            "notMentioned": 0,
+            "total": 3238
+        },
+        {
+            "ward": "९",
+            "gender": "महिला",
+            "literate": 2509,
+            "onlyRead": 8,
+            "illiterate": 1206,
+            "notMentioned": 0,
+            "total": 3723
+        },
+        {
+            "ward": "१०",
+            "gender": "जम्मा",
+            "literate": 3369,
+            "onlyRead": 6,
+            "illiterate": 1025,
+            "notMentioned": 0,
+            "total": 4392
+        },
+        {
+            "ward": "१०",
+            "gender": "पुरुष",
+            "literate": 1713,
+            "onlyRead": 2,
+            "illiterate": 299,
+            "notMentioned": 0,
+            "total": 2014
+        },
+        {
+            "ward": "१०",
+            "gender": "महिला",
+            "literate": 1656,
+            "onlyRead": 6,
+            "illiterate": 726,
+            "notMentioned": 0,
+            "total": 2378
+        },
+        {
+            "ward": "जम्मा",
+            "gender": "जम्मा",
+            "literate": 19499,
+            "onlyRead": 46,
+            "illiterate": 3472,
+            "notMentioned": 0,
+            "total": 23017
+        },
+        {
+            "ward": "जम्मा",
+            "gender": "पुरुष",
+            "literate": 18946,
+            "onlyRead": 72,
+            "illiterate": 7441,
+            "notMentioned": 1,
+            "total": 26460
+        },
+        {
+            "ward": "जम्मा",
+            "gender": "महिला",
+            "literate": 38445,
+            "onlyRead": 118,
+            "illiterate": 10913,
+            "notMentioned": 1,
+            "total": 49477
+        }
+    ],
+    "percentageRow": {
+        "literate": "७७.७०",
+        "onlyRead": "०.२४",
+        "illiterate": "२२.०६",
+        "notMentioned": "०.००",
+        "total": "१००"
+    },
+    "source": "स्रोत: राष्ट्रिय जनगणना, २०७८",
+    "paragraph1": "साक्षरताले पढ्न र लेख्न सक्ने सीपभन्दा माथि समग्र मानव विकास सूचकलाई इंगित गर्दछ । नगरपालिकामा ५ वर्ष वा सो भन्दा माथिको उमेर समूहका कुल ४९,४७७ जनसंख्या मध्ये ३८,४४५ अर्थात् ७७.७० प्रतिशत साक्षर रहेका छन् । पालिकामा पढ्न मात्र सक्ने साक्षर जनसंख्या ११८ जना अर्थात ०.२४ प्रतिशत छन् भने पढ्ने र लेख्न नजान्ने (दुवै सिप नभएका अर्थात निरक्षर) जनसंख्या १०,९१३ अर्थात २२.०६ प्रतिशत रहेको छ । जसको वडागत विस्तृत विवरण तालिकामा उल्लेख गरिएको छ ।",
+    "chartTitle": "५ वर्ष वा सो भन्दा माथिल्लो उमेर समूहका जनसंख्याको वडागत साक्षरता",
+    "paragraph2": "क) औपचारिक शिक्षाको आधारमा जनसंख्याको साक्षरताको स्थिति",
+    "paragraph3": "युनेस्कोले सन् १९५६ मा सामान्य पढ्न, लेख्न र दैनिक जीवनमा आइपर्ने गणितीय जोड घटाउ गर्न सक्ने व्यक्ति साक्षर भएको मानिने भनी परिभाषा गरेको थियो । नेपालले पनि यसै परिभाषालाई आधार मानेर साक्षरता अभियान सञ्चालन गरिरहेको छ । यस नगरपालिकामा रहेका ५ वर्ष देखि २५ वर्ष सम्मका कुल जनसंख्या मध्ये १२,१०५ अर्थात ७२.९३ प्रतिशत हाल विद्यालय तथा कलेज गइरहेका, ३,७८३ जना अर्थात २२.९६ प्रतिशत जनसंख्या पहिला विद्यालय तथा कलेज गएका र ६७५ जना अर्थात ४.१० प्रतिशत कहिले पनि स्कुल तथा कलेज औपचारिक शिक्षा हाँसिल नगरेको पाउन सकिन्छ । जसको विस्तृत विवरण तलको तालिकामा प्रस्तुत गरिएको छ ।",
+    "formalEducationTableNumber": "तालिका नं. ४१:",
+    "formalEducationTableTitle": "औपचारिक शिक्षाको जनसंख्याको साक्षरताको स्थिति",
+    "formalEducationTableData": [
+        {
+            "ward": "१",
+            "gender": "जम्मा",
+            "currentlyAttending": 805,
+            "previouslyAttended": 402,
+            "neverAttended": 122,
+            "notMentioned": 0,
+            "total": 1329
+        },
+        {
+            "ward": "१",
+            "gender": "पुरुष",
+            "currentlyAttending": 405,
+            "previouslyAttended": 260,
+            "neverAttended": 65,
+            "notMentioned": 0,
+            "total": 670
+        },
+        {
+            "ward": "१",
+            "gender": "महिला",
+            "currentlyAttending": 400,
+            "previouslyAttended": 202,
+            "neverAttended": 57,
+            "notMentioned": 0,
+            "total": 659
+        },
+        {
+            "ward": "२",
+            "gender": "जम्मा",
+            "currentlyAttending": 1200,
+            "previouslyAttended": 472,
+            "neverAttended": 78,
+            "notMentioned": 0,
+            "total": 1750
+        },
+        {
+            "ward": "२",
+            "gender": "पुरुष",
+            "currentlyAttending": 563,
+            "previouslyAttended": 239,
+            "neverAttended": 32,
+            "notMentioned": 0,
+            "total": 834
+        },
+        {
+            "ward": "२",
+            "gender": "महिला",
+            "currentlyAttending": 637,
+            "previouslyAttended": 232,
+            "neverAttended": 46,
+            "notMentioned": 0,
+            "total": 918
+        },
+        {
+            "ward": "३",
+            "gender": "जम्मा",
+            "currentlyAttending": 942,
+            "previouslyAttended": 325,
+            "neverAttended": 33,
+            "notMentioned": 1,
+            "total": 1300
+        },
+        {
+            "ward": "३",
+            "gender": "पुरुष",
+            "currentlyAttending": 463,
+            "previouslyAttended": 98,
+            "neverAttended": 15,
+            "notMentioned": 0,
+            "total": 577
+        },
+        {
+            "ward": "३",
+            "gender": "महिला",
+            "currentlyAttending": 489,
+            "previouslyAttended": 165,
+            "neverAttended": 17,
+            "notMentioned": 0,
+            "total": 673
+        },
+        {
+            "ward": "४",
+            "gender": "जम्मा",
+            "currentlyAttending": 1482,
+            "previouslyAttended": 575,
+            "neverAttended": 60,
+            "notMentioned": 0,
+            "total": 2024
+        },
+        {
+            "ward": "४",
+            "gender": "पुरुष",
+            "currentlyAttending": 757,
+            "previouslyAttended": 207,
+            "neverAttended": 28,
+            "notMentioned": 0,
+            "total": 983
+        },
+        {
+            "ward": "४",
+            "gender": "महिला",
+            "currentlyAttending": 725,
+            "previouslyAttended": 269,
+            "neverAttended": 32,
+            "notMentioned": 0,
+            "total": 1042
+        },
+        {
+            "ward": "५",
+            "gender": "जम्मा",
+            "currentlyAttending": 1682,
+            "previouslyAttended": 468,
+            "neverAttended": 120,
+            "notMentioned": 0,
+            "total": 1869
+        },
+        {
+            "ward": "५",
+            "gender": "पुरुष",
+            "currentlyAttending": 824,
+            "previouslyAttended": 220,
+            "neverAttended": 62,
+            "notMentioned": 0,
+            "total": 923
+        },
+        {
+            "ward": "५",
+            "gender": "महिला",
+            "currentlyAttending": 858,
+            "previouslyAttended": 248,
+            "neverAttended": 78,
+            "notMentioned": 0,
+            "total": 947
+        },
+        {
+            "ward": "६",
+            "gender": "जम्मा",
+            "currentlyAttending": 1279,
+            "previouslyAttended": 430,
+            "neverAttended": 78,
+            "notMentioned": 0,
+            "total": 1567
+        },
+        {
+            "ward": "६",
+            "gender": "पुरुष",
+            "currentlyAttending": 652,
+            "previouslyAttended": 235,
+            "neverAttended": 40,
+            "notMentioned": 0,
+            "total": 827
+        },
+        {
+            "ward": "६",
+            "gender": "महिला",
+            "currentlyAttending": 627,
+            "previouslyAttended": 164,
+            "neverAttended": 10,
+            "notMentioned": 0,
+            "total": 844
+        },
+        {
+            "ward": "७",
+            "gender": "जम्मा",
+            "currentlyAttending": 1763,
+            "previouslyAttended": 339,
+            "neverAttended": 25,
+            "notMentioned": 0,
+            "total": 1726
+        },
+        {
+            "ward": "७",
+            "gender": "पुरुष",
+            "currentlyAttending": 771,
+            "previouslyAttended": 151,
+            "neverAttended": 15,
+            "notMentioned": 0,
+            "total": 888
+        },
+        {
+            "ward": "७",
+            "gender": "महिला",
+            "currentlyAttended": 520,
+            "previouslyAttended": 145,
+            "neverAttended": 10,
+            "notMentioned": 0,
+            "total": 844
+        },
+        {
+            "ward": "८",
+            "gender": "जम्मा",
+            "currentlyAttending": 964,
+            "previouslyAttended": 351,
+            "neverAttended": 21,
+            "notMentioned": 0,
+            "total": 1337
+        },
+        {
+            "ward": "८",
+            "gender": "पुरुष",
+            "currentlyAttending": 455,
+            "previouslyAttended": 184,
+            "neverAttended": 14,
+            "notMentioned": 0,
+            "total": 702
+        },
+        {
+            "ward": "८",
+            "gender": "महिला",
+            "currentlyAttending": 507,
+            "previouslyAttended": 168,
+            "neverAttended": 10,
+            "notMentioned": 0,
+            "total": 644
+        },
+        {
+            "ward": "९",
+            "gender": "जम्मा",
+            "currentlyAttending": 1922,
+            "previouslyAttended": 305,
+            "neverAttended": 91,
+            "notMentioned": 0,
+            "total": 2129
+        },
+        {
+            "ward": "९",
+            "gender": "पुरुष",
+            "currentlyAttending": 455,
+            "previouslyAttended": 115,
+            "neverAttended": 39,
+            "notMentioned": 0,
+            "total": 980
+        },
+        {
+            "ward": "९",
+            "gender": "महिला",
+            "currentlyAttending": 507,
+            "previouslyAttended": 145,
+            "neverAttended": 52,
+            "notMentioned": 0,
+            "total": 1149
+        },
+        {
+            "ward": "१०",
+            "gender": "जम्मा",
+            "currentlyAttending": 1139,
+            "previouslyAttended": 317,
+            "neverAttended": 57,
+            "notMentioned": 0,
+            "total": 1399
+        },
+        {
+            "ward": "१०",
+            "gender": "पुरुष",
+            "currentlyAttending": 578,
+            "previouslyAttended": 141,
+            "neverAttended": 23,
+            "notMentioned": 0,
+            "total": 634
+        },
+        {
+            "ward": "१०",
+            "gender": "महिला",
+            "currentlyAttending": 543,
+            "previouslyAttended": 145,
+            "neverAttended": 23,
+            "notMentioned": 0,
+            "total": 777
+        },
+        {
+            "ward": "जम्मा",
+            "gender": "जम्मा",
+            "currentlyAttending": 12075,
+            "previouslyAttended": 3783,
+            "neverAttended": 675,
+            "notMentioned": 1,
+            "total": 16307
+        },
+        {
+            "ward": "जम्मा",
+            "gender": "पुरुष",
+            "currentlyAttending": 6020,
+            "previouslyAttended": 1784,
+            "neverAttended": 321,
+            "notMentioned": 1,
+            "total": 8040
+        },
+        {
+            "ward": "जम्मा",
+            "gender": "महिला",
+            "currentlyAttending": 6055,
+            "previouslyAttended": 2058,
+            "neverAttended": 354,
+            "notMentioned": 0,
+            "total": 8364
+        }
+    ],
+    "formalEducationPercentage": {
+        "currentlyAttending": "७२.९३",
+        "previouslyAttended": "२२.९६",
+        "neverAttended": "४.१०",
+        "notMentioned": "०.०१",
+        "total": "१००"
+    },
+    "formalEducationSource": "स्रोत: राष्ट्रिय जनगणना, २०७८"
+}

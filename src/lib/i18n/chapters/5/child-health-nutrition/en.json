@@ -1,0 +1,57 @@
+{
+    "subsectionId": "child-health-nutrition",
+    "title": "5.2.3 Child Health and Malnutrition Status",
+    "content": "The nutritional status of any place can be easily estimated by looking at the children of that place. Nourished children can be seen as an indicator of the social and economic development of any place. The government has also prioritized nutrition and has been regularly estimating child growth for children under 5 years of age. Even the Convention on the Rights of the Child, 1989, mentions that children must be protected from neglect, indifference, negligence, abuse, violence etc. and their right to food and nutrition must be ensured. The Constitution of Nepal (2072) has also placed food sovereignty as a fundamental right. Since health and nutrition are the first important needs of human life and other development activities of the nation cannot be effective without healthy citizens, public health study becomes an important part of the planning process. In this municipality, based on the national policy and program, the Child Nutrition Allowance provided by the Government of Nepal is being effectively monitored to improve nutrition, and arrangements are being made to improve the nutrition of children, and programs like the Multi-sectoral Nutrition Program are being conducted effectively by taking lessons from the past. Apart from this, national and international organizations are also working to carry out activities related to health and nutrition.",
+    "tableTitle": "Table No. 46: Child Health and Malnutrition Status",
+    "headers": {
+        "sn": "Indicators",
+        "col1": "Shravan 2079 / Ashad 80",
+        "col2": "Shravan 2080 / Ashad 81",
+        "col3": "Shravan 2081 / Ashad 82"
+    },
+    "tableData": [
+        {
+            "indicator": "Percentage of children aged 0-11 months registered for growth monitoring",
+            "col1": "90",
+            "col2": "86",
+            "col3": "72"
+        },
+        {
+            "indicator": "Average visit for growth nonitoring 0-23 months children",
+            "col1": "7.01",
+            "col2": "7.26",
+            "col3": "7.66"
+        },
+        {
+            "indicator": "Percentage of postpartum women who received Vitamin A supplementation",
+            "col1": "105",
+            "col2": "97",
+            "col3": "102"
+        },
+        {
+            "indicator": "Percentage of women who received 180 days supply of Iron Folic Acid during pregnancy",
+            "col1": "56",
+            "col2": "49",
+            "col3": "50"
+        },
+        {
+            "indicator": "Percentage of postpartum women who received 45 days supply of IFA",
+            "col1": "34",
+            "col2": "26",
+            "col3": "21"
+        },
+        {
+            "indicator": "Number of Adeolescent girls received Iron and Folic acid (13 weeks)",
+            "col1": "0",
+            "col2": "0",
+            "col3": "1"
+        },
+        {
+            "indicator": "Number of Adelescent girls received Iron and Folic acid (26 weeks)",
+            "col1": "0",
+            "col2": "0",
+            "col3": "1"
+        }
+    ],
+    "source": "Source: Municipal Executive Office"
+}

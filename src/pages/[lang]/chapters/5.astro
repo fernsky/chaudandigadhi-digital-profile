@@ -4,6 +4,33 @@ import { ArrowLeft, ArrowRight } from "lucide-astro";
 import type { Language } from "../../../lib/i18n";
 
 import ChapterHero from "../../../components/chapters/5/ChapterHero.astro";
+import EducationalDevelopment from "../../../components/chapters/5/EducationalDevelopment.astro";
+import SchoolsInstitutions from "../../../components/chapters/5/SchoolsInstitutions.astro";
+import InstitutionalSchoolsStudents from "../../../components/chapters/5/InstitutionalSchoolsStudents.astro";
+import StudentEnrollment from "../../../components/chapters/5/StudentEnrollment.astro";
+import TeacherDetails from "../../../components/chapters/5/TeacherDetails.astro";
+import InternetFacilities from "../../../components/chapters/5/InternetFacilities.astro";
+import EducationalQuality from "../../../components/chapters/5/EducationalQuality.astro";
+import ChildFriendlyEducation from "../../../components/chapters/5/ChildFriendlyEducation.astro";
+import HealthNutrition from "../../../components/chapters/5/HealthNutrition.astro";
+import HealthInstitutions from "../../../components/chapters/5/HealthInstitutions.astro";
+import ImmunizationSafeMotherhood from "../../../components/chapters/5/ImmunizationSafeMotherhood.astro";
+import ChildHealthNutrition from "../../../components/chapters/5/ChildHealthNutrition.astro";
+import MajorDiseases from "../../../components/chapters/5/MajorDiseases.astro";
+import SafeMotherhood from "../../../components/chapters/5/SafeMotherhood.astro";
+import MarriedUnmarriedDetails from "../../../components/chapters/5/MarriedUnmarriedDetails.astro";
+import WaterSanitation from "../../../components/chapters/5/WaterSanitation.astro";
+import WaterSourceDetails from "../../../components/chapters/5/WaterSourceDetails.astro";
+import ToiletUsage from "../../../components/chapters/5/ToiletUsage.astro";
+import PublicToilets from "../../../components/chapters/5/PublicToilets.astro";
+import WasteManagement from "../../../components/chapters/5/WasteManagement.astro";
+import SewerageLandfill from "../../../components/chapters/5/SewerageLandfill.astro";
+import ChildrenState from "../../../components/chapters/5/ChildrenState.astro";
+import YouthSports from "../../../components/chapters/5/YouthSports.astro";
+import YouthClubs from "../../../components/chapters/5/YouthClubs.astro";
+import CulturePublicPlaces from "../../../components/chapters/5/CulturePublicPlaces.astro";
+import CultureFestivals from "../../../components/chapters/5/CultureFestivals.astro";
+import Security from "../../../components/chapters/5/Security.astro";
 
 export async function getStaticPaths() {
     return [{ params: { lang: "ne" } }, { params: { lang: "en" } }];
@@ -23,7 +50,37 @@ const description =
     <!-- Chapter Hero -->
     <ChapterHero lang={lang} />
 
-    <!-- Content removed for redo -->
+    <!-- 5.1 Education and Human Resource Development -->
+    <EducationalDevelopment lang={lang} />
+    <SchoolsInstitutions lang={lang} />
+    <InstitutionalSchoolsStudents lang={lang} />
+    <StudentEnrollment lang={lang} />
+    <TeacherDetails lang={lang} />
+    <InternetFacilities lang={lang} />
+    <EducationalQuality lang={lang} />
+    <ChildFriendlyEducation lang={lang} />
+
+    <!-- 5.2 Health and Nutrition -->
+    <HealthNutrition lang={lang} />
+    <HealthInstitutions lang={lang} />
+    <ImmunizationSafeMotherhood lang={lang} />
+    <ChildHealthNutrition lang={lang} />
+    <MajorDiseases lang={lang} />
+    <SafeMotherhood lang={lang} />
+    <MarriedUnmarriedDetails lang={lang} />
+    <WaterSanitation lang={lang} />
+    <WaterSourceDetails lang={lang} />
+    <ToiletUsage lang={lang} />
+    <PublicToilets lang={lang} />
+    <WasteManagement lang={lang} />
+    <SewerageLandfill lang={lang} />
+    <ChildrenState lang={lang} />
+    <YouthSports lang={lang} />
+    <YouthClubs lang={lang} />
+    <CulturePublicPlaces lang={lang} />
+    <CultureFestivals lang={lang} />
+    <Security lang={lang} />
+
     <!-- Chapter Navigation -->
     <section
         class="relative bg-[#050505] py-8 md:py-12 border-t border-zinc-900"

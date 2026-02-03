@@ -1,0 +1,121 @@
+---
+import type { Language } from "../../../lib/i18n";
+import ne from "../../../lib/i18n/chapters/5/water-source/ne.json";
+import en from "../../../lib/i18n/chapters/5/water-source/en.json";
+import D3PieChart from "../../charts/D3PieChart.astro";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = lang === "ne" ? ne : en;
+
+const pieColors = [
+    "#3b82f6", // Pipe Inside
+    "#f97316", // Pipe Outside
+    "#ef4444", // Tubewell
+    "#1e3a8a", // Covered Well
+    "#fbbf24", // Uncovered Well
+    "#10b981", // Spout
+    "#1d4ed8", // River
+    "#7f1d1d", // Jar
+    "#64748b", // Other
+];
+---
+
+<section
+    id={t.subsectionId}
+    class="relative py-20 bg-[#0a0a0a] border-t border-white/5"
+>
+    <div class="container mx-auto px-8 relative z-10">
+        <h2 class="text-2xl md:text-3xl font-serif text-white/90 mb-8">
+            {t.title}
+        </h2>
+
+        <!-- Table 51 -->
+        <div class="mb-12">
+            <h3 class="text-lg font-serif text-white/80 mb-6 text-center">
+                {t.tableTitle}
+            </h3>
+            <div class="rounded-lg overflow-hidden border border-zinc-800 mb-8">
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full text-sm text-center text-zinc-100 border-collapse"
+                    >
+                        <thead class="bg-blue-600/90 text-white">
+                            <tr>
+                                {
+                                    t.headers.map((header) => (
+                                        <th class="px-2 py-3 font-serif font-medium border-r border-white/20 whitespace-nowrap">
+                                            {header}
+                                        </th>
+                                    ))
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                t.rows.map((row, index) => (
+                                    <tr
+                                        class={`border-b border-zinc-800 ${index % 2 === 0 ? "bg-zinc-900/30" : "bg-transparent"} hover:bg-zinc-800/50 transition-colors`}
+                                    >
+                                        {row.map((cell, idx) => (
+                                            <td
+                                                class={`px-2 py-3 border-r border-zinc-800 ${idx === 0 ? "font-bold" : ""}`}
+                                            >
+                                                {cell}
+                                            </td>
+                                        ))}
+                                    </tr>
+                                ))
+                            }
+                            <tr class="bg-blue-900/40 font-bold text-blue-100">
+                                {
+                                    t.totalRow.map((cell) => (
+                                        <td class="px-2 py-3 border-r border-zinc-800">
+                                            {cell}
+                                        </td>
+                                    ))
+                                }
+                            </tr>
+                            <tr class="bg-blue-950/30 font-bold text-blue-200">
+                                {
+                                    t.percentRow.map((cell) => (
+                                        <td class="px-2 py-3 border-r border-zinc-800">
+                                            {cell}
+                                        </td>
+                                    ))
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <p class="text-lg text-zinc-300 leading-relaxed text-justify mb-2">
+                {t.content}
+            </p>
+            <p class="text-sm text-zinc-400 mt-2 text-right italic mb-8">
+                {t.source}
+            </p>
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="mb-12">
+            <D3PieChart
+                id="water-source-pie"
+                title={t.chartTitle}
+                labels={t.chartLabels}
+                data={t.chartData}
+                lang={lang}
+                colors={pieColors}
+            />
+        </div>
+
+        <!-- SDG Paragraph -->
+        <p class="text-lg text-zinc-300 leading-relaxed text-justify mt-8">
+            {t.sdgContent}
+        </p>
+    </div>
+</section>

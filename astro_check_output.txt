@@ -1,0 +1,587 @@
+[2m11:25:42[22m [34m[content][39m Syncing content
+[2m11:25:42[22m [34m[content][39m Synced content
+[2m11:25:42[22m [34m[types][39m Generated [2m48ms[22m
+[2m11:25:42[22m [34m[check][39m Getting diagnostics for Astro files in D:\Ninja Infosys Projects\chaudandigadhi-digital-profile...
+[96msrc/components/chapters/1/Background.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/1/LegalFramework.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/1/Objectives.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/1/PreparationStages.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/1/PreparationSubsections.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/2/CulturalExcellence.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/2/DevelopmentPotential.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/2/DomesticProduction.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/2/GeographicLocation.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/2/HistoricalBackground.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/2/HumanDevelopmentIndex.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/2/NaturalResources.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/2/PoliticalStructure.astro[0m:[93m145[0m:[93m57[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m145[0m                             content.tableData.map((row, index) => (
+[7m   [0m [93m                                                        ~~~~~[0m
+
+[96msrc/components/chapters/2/TerrainConditions.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/2/TerrainSubsections.astro[0m:[93m76[0m:[93m90[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m76[0m                             {subsections["terrain-slope"].categories.map((category: any, index: number) => (
+[7m  [0m [93m                                                                                         ~~~~~[0m
+[96msrc/components/chapters/2/TerrainSubsections.astro[0m:[93m13[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'locale' is declared but its value is never read.
+
+[7m13[0m const locale = lang === "ne" ? "ne-NP" : "en-US";
+[7m  [0m [93m      ~~~~~~[0m
+
+[96msrc/components/chapters/3/DisabilityDistribution.astro[0m:[93m396[0m:[93m50[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m396[0m                 .on("mouseout", function (event, d) {
+[7m   [0m [93m                                                 ~[0m
+[96msrc/components/chapters/3/DisabilityDistribution.astro[0m:[93m396[0m:[93m43[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m396[0m                 .on("mouseout", function (event, d) {
+[7m   [0m [93m                                          ~~~~~[0m
+[96msrc/components/chapters/3/DisabilityDistribution.astro[0m:[93m383[0m:[93m99[0m - [93mwarning[0m[90m ts(2568): [0mProperty 'value' may not exist on type 'number | { valueOf(): number; }'. Did you mean 'valueOf'?
+  Property 'value' does not exist on type 'number'.
+
+[7m383[0m                                 ${lang === "ne" ? "प्रतिशत" : "Percentage"}: ${formatValue(d.data.value, 1)}%
+[7m   [0m [93m                                                                                                  ~~~~~[0m
+[96msrc/components/chapters/3/DisabilityDistribution.astro[0m:[93m324[0m:[93m33[0m - [93mwarning[0m[90m ts(2568): [0mProperty 'value' may not exist on type 'number | { valueOf(): number; }'. Did you mean 'valueOf'?
+  Property 'value' does not exist on type 'number'.
+
+[7m324[0m                 .value((d) => d.value)
+[7m   [0m [93m                                ~~~~~[0m
+[96msrc/components/chapters/3/DisabilityDistribution.astro[0m:[93m258[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m258[0m <script define:vars={{ chartData: content.chartData, lang }}>
+[7m   [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/3/EconomicActiveDistribution.astro[0m:[93m700[0m:[93m38[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m700[0m                 .style("font-size", (d) => (width < 600 ? "10px" : "14px"))
+[7m   [0m [93m                                     ~[0m
+[96msrc/components/chapters/3/EconomicActiveDistribution.astro[0m:[93m549[0m:[93m50[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m549[0m                 .on("mouseout", function (event, d) {
+[7m   [0m [93m                                                 ~[0m
+[96msrc/components/chapters/3/EconomicActiveDistribution.astro[0m:[93m549[0m:[93m43[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m549[0m                 .on("mouseout", function (event, d) {
+[7m   [0m [93m                                          ~~~~~[0m
+[96msrc/components/chapters/3/EconomicActiveDistribution.astro[0m:[93m536[0m:[93m95[0m - [93mwarning[0m[90m ts(2568): [0mProperty 'value' may not exist on type 'number | { valueOf(): number; }'. Did you mean 'valueOf'?
+  Property 'value' does not exist on type 'number'.
+
+[7m536[0m                             ${lang === "ne" ? "प्रतिशत" : "Percentage"}: ${formatValue(d.data.value, 1)}%
+[7m   [0m [93m                                                                                              ~~~~~[0m
+[96msrc/components/chapters/3/EconomicActiveDistribution.astro[0m:[93m512[0m:[93m35[0m - [93mwarning[0m[90m ts(6133): [0m'i' is declared but its value is never read.
+
+[7m512[0m                 .attr("fill", (d, i) => color(d.data.label))
+[7m   [0m [93m                                  ~[0m
+[96msrc/components/chapters/3/EconomicActiveDistribution.astro[0m:[93m495[0m:[93m33[0m - [93mwarning[0m[90m ts(2568): [0mProperty 'value' may not exist on type 'number | { valueOf(): number; }'. Did you mean 'valueOf'?
+  Property 'value' does not exist on type 'number'.
+
+[7m495[0m                 .value((d) => d.value)
+[7m   [0m [93m                                ~~~~~[0m
+[96msrc/components/chapters/3/EconomicActiveDistribution.astro[0m:[93m444[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m444[0m <script define:vars={{ pieData, barData, lang }}>
+[7m   [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/3/EthnicityDistribution.astro[0m:[93m202[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m202[0m <script define:vars={{ chartData, lang }}>
+[7m   [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/3/HouseholdDetails.astro[0m:[93m295[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m295[0m <script define:vars={{ cleanChartData, lang }}>
+[7m   [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/3/HouseholdHead.astro[0m:[93m384[0m:[93m21[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m384[0m             .delay((d, i) => i * 100)
+[7m   [0m [93m                    ~[0m
+[96msrc/components/chapters/3/HouseholdHead.astro[0m:[93m215[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m215[0m <script define:vars={{ chartData, lang }}>
+[7m   [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/3/LanguageDistribution.astro[0m:[93m258[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m258[0m <script define:vars={{ cleanChartData, lang }}>
+[7m   [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/3/MigrationDetails.astro[0m:[93m652[0m:[93m35[0m - [93mwarning[0m[90m ts(6133): [0m'i' is declared but its value is never read.
+
+[7m652[0m             chartData.forEach((d, i) => {
+[7m   [0m [93m                                  ~[0m
+[96msrc/components/chapters/3/MigrationDetails.astro[0m:[93m589[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m589[0m <script define:vars={{ chartData: birthplace.chartData, lang }}>
+[7m   [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/3/ReligionDistribution.astro[0m:[93m306[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m306[0m <script define:vars={{ content, lang }}>
+[7m   [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/3/SocialSecurity.astro[0m:[93m11[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'locale' is declared but its value is never read.
+
+[7m11[0m const locale = lang === "ne" ? "ne-NP" : "en-US";
+[7m  [0m [93m      ~~~~~~[0m
+
+[96msrc/components/chapters/3/VitalEvents.astro[0m:[93m10[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'locale' is declared but its value is never read.
+
+[7m10[0m const locale = lang === "ne" ? "ne-NP" : "en-US";
+[7m  [0m [93m      ~~~~~~[0m
+[96msrc/components/chapters/3/VitalEvents.astro[0m:[93m1423[0m:[93m99[0m - [93mwarning[0m[90m ts(2568): [0mProperty 'value' may not exist on type 'number | { valueOf(): number; }'. Did you mean 'valueOf'?
+  Property 'value' does not exist on type 'number'.
+
+[7m1423[0m                                 ${lang === "ne" ? "प्रतिशत" : "Percentage"}: ${formatValue(d.data.value, 2)}%
+[7m    [0m [93m                                                                                                  ~~~~~[0m
+[96msrc/components/chapters/3/VitalEvents.astro[0m:[93m1422[0m:[93m112[0m - [93mwarning[0m[90m ts(2568): [0mProperty 'value' may not exist on type 'number | { valueOf(): number; }'. Did you mean 'valueOf'?
+  Property 'value' does not exist on type 'number'.
+
+[7m1422[0m                                 ${lang === "ne" ? "संख्या" : "Count"}: ${formatValue(d.data.rawValue || d.data.value)}<br/>
+[7m    [0m [93m                                                                                                               ~~~~~[0m
+[96msrc/components/chapters/3/VitalEvents.astro[0m:[93m1384[0m:[93m33[0m - [93mwarning[0m[90m ts(2568): [0mProperty 'value' may not exist on type 'number | { valueOf(): number; }'. Did you mean 'valueOf'?
+  Property 'value' does not exist on type 'number'.
+
+[7m1384[0m                 .value((d) => d.value)
+[7m    [0m [93m                                ~~~~~[0m
+[96msrc/components/chapters/3/VitalEvents.astro[0m:[93m1297[0m:[93m25[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m1297[0m                 .delay((d, i) => i * 200)
+[7m    [0m [93m                        ~[0m
+[96msrc/components/chapters/3/VitalEvents.astro[0m:[93m1171[0m:[93m99[0m - [93mwarning[0m[90m ts(2568): [0mProperty 'value' may not exist on type 'number | { valueOf(): number; }'. Did you mean 'valueOf'?
+  Property 'value' does not exist on type 'number'.
+
+[7m1171[0m                                 ${lang === "ne" ? "प्रतिशत" : "Percentage"}: ${formatValue(d.data.value, 2)}%
+[7m    [0m [93m                                                                                                  ~~~~~[0m
+[96msrc/components/chapters/3/VitalEvents.astro[0m:[93m1137[0m:[93m19[0m - [93mwarning[0m[90m ts(6133): [0m'outerArc' is declared but its value is never read.
+
+[7m1137[0m             const outerArc = d3
+[7m    [0m [93m                  ~~~~~~~~[0m
+[96msrc/components/chapters/3/VitalEvents.astro[0m:[93m1131[0m:[93m33[0m - [93mwarning[0m[90m ts(2568): [0mProperty 'value' may not exist on type 'number | { valueOf(): number; }'. Did you mean 'valueOf'?
+  Property 'value' does not exist on type 'number'.
+
+[7m1131[0m                 .value((d) => d.value)
+[7m    [0m [93m                                ~~~~~[0m
+[96msrc/components/chapters/3/VitalEvents.astro[0m:[93m1112[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'midAngle' is declared but its value is never read.
+
+[7m1112[0m         const midAngle = (d) => d.startAngle + (d.endAngle - d.startAngle) / 2;
+[7m    [0m [93m              ~~~~~~~~[0m
+[96msrc/components/chapters/3/VitalEvents.astro[0m:[93m1089[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'locale' is declared but its value is never read.
+
+[7m1089[0m         const locale = lang === "ne" ? "ne-NP" : "en-US";
+[7m    [0m [93m              ~~~~~~[0m
+[96msrc/components/chapters/3/VitalEvents.astro[0m:[93m1081[0m:[93m5[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m1081[0m     define:vars={{
+[7m    [0m [93m    ~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/4/EconomicActivities.astro[0m:[93m167[0m:[93m56[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m167[0m                                             (row: any, index: number) => (
+[7m   [0m [93m                                                       ~~~~~[0m
+
+[96msrc/components/chapters/4/EconomicOverview.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/5/EducationalDevelopment.astro[0m:[93m401[0m:[93m52[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m401[0m                                         (row: any, index: number) => {
+[7m   [0m [93m                                                   ~~~~~[0m
+
+[96msrc/components/chapters/5/InstitutionalSchoolsStudents.astro[0m:[93m198[0m:[93m53[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m198[0m                                 t.data.map((school, index) => (
+[7m   [0m [93m                                                    ~~~~~[0m
+
+[96msrc/components/chapters/5/SchoolsInstitutions.astro[0m:[93m460[0m:[93m50[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m460[0m                                         (school, index) => (
+[7m   [0m [93m                                                 ~~~~~[0m
+[96msrc/components/chapters/5/SchoolsInstitutions.astro[0m:[93m299[0m:[93m50[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m299[0m                                         (center, index) => (
+[7m   [0m [93m                                                 ~~~~~[0m
+[96msrc/components/chapters/5/SchoolsInstitutions.astro[0m:[93m226[0m:[93m50[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m226[0m                                         (center, index) => (
+[7m   [0m [93m                                                 ~~~~~[0m
+[96msrc/components/chapters/5/SchoolsInstitutions.astro[0m:[93m162[0m:[93m50[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m162[0m                                         (school, index) => (
+[7m   [0m [93m                                                 ~~~~~[0m
+[96msrc/components/chapters/5/SchoolsInstitutions.astro[0m:[93m113[0m:[93m70[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m113[0m                                     {t.communitySchools.map((school, index) => (
+[7m   [0m [93m                                                                     ~~~~~[0m
+
+[96msrc/components/chapters/5/StudentEnrollment.astro[0m:[93m64[0m:[93m58[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m64[0m                                 t.tableData.map((school, index) => (
+[7m  [0m [93m                                                         ~~~~~[0m
+
+[96msrc/components/chapters/5/TeacherDetails.astro[0m:[93m169[0m:[93m65[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m169[0m                                 t.sections.otherStaff.map((row, index) => (
+[7m   [0m [93m                                                                ~~~~~[0m
+[96msrc/components/chapters/5/TeacherDetails.astro[0m:[93m120[0m:[93m63[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m120[0m                                 t.sections.teachers.map((row, index) => (
+[7m   [0m [93m                                                              ~~~~~[0m
+
+[96msrc/components/chapters/8/OrganizationResource.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/chapters/8/ServiceManagement.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/charts/D3BarChart.astro[0m:[93m189[0m:[93m33[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m189[0m                         .delay((d, i) => i * 100);
+[7m   [0m [93m                                ~[0m
+[96msrc/components/charts/D3BarChart.astro[0m:[93m137[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'bars' is declared but its value is never read.
+
+[7m137[0m         const bars = svg
+[7m   [0m [93m              ~~~~[0m
+
+[96msrc/components/charts/D3PieChart.astro[0m:[93m290[0m:[93m38[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m290[0m                             .filter((d, idx) => idx === i)
+[7m   [0m [93m                                     ~[0m
+[96msrc/components/charts/D3PieChart.astro[0m:[93m282[0m:[93m38[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m282[0m                             .filter((d, idx) => idx === i)
+[7m   [0m [93m                                     ~[0m
+[96msrc/components/charts/D3PieChart.astro[0m:[93m177[0m:[93m28[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m177[0m             .attr("fill", (d, i) => colorScale(labels[i]))
+[7m   [0m [93m                           ~[0m
+[96msrc/components/charts/D3PieChart.astro[0m:[93m171[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'paths' is declared but its value is never read.
+
+[7m171[0m         const paths = svg
+[7m   [0m [93m              ~~~~~[0m
+[96msrc/components/charts/D3PieChart.astro[0m:[93m132[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'outerArc' is declared but its value is never read.
+
+[7m132[0m         const outerArc = d3
+[7m   [0m [93m              ~~~~~~~~[0m
+
+[96msrc/components/charts/chapter-2/SlopeDistributionChart.astro[0m:[93m19[0m:[93m6[0m - [93mwarning[0m[90m ts(6196): [0m'SlopeData' is declared but never used.
+
+[7m19[0m type SlopeData = {
+[7m  [0m [93m     ~~~~~~~~~[0m
+
+[96msrc/components/charts/chapter-3/EconomicActivityChart.astro[0m:[93m246[0m:[93m29[0m - [93mwarning[0m[90m ts(2568): [0mProperty 'value' may not exist on type 'number | { valueOf(): number; }'. Did you mean 'valueOf'?
+  Property 'value' does not exist on type 'number'.
+
+[7m246[0m             .value((d) => d.value)
+[7m   [0m [93m                            ~~~~~[0m
+[96msrc/components/charts/chapter-3/EconomicActivityChart.astro[0m:[93m236[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'radius' is declared but its value is never read.
+
+[7m236[0m         const radius = 50;
+[7m   [0m [93m              ~~~~~~[0m
+[96msrc/components/charts/chapter-3/EconomicActivityChart.astro[0m:[93m120[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m120[0m <script define:vars={{ table13Data, table14Data }}>
+[7m   [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/charts/chapter-3/MigrationCharts.astro[0m:[93m138[0m:[93m23[0m - [93mwarning[0m[90m ts(6133): [0m'item' is declared but its value is never read.
+
+[7m138[0m         data.forEach((item, index) => {
+[7m   [0m [93m                      ~~~~[0m
+[96msrc/components/charts/chapter-3/MigrationCharts.astro[0m:[93m126[0m:[93m28[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m126[0m             .attr("fill", (d, i) => colors[i % colors.length])
+[7m   [0m [93m                           ~[0m
+[96msrc/components/charts/chapter-3/MigrationCharts.astro[0m:[93m97[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'radius' is declared but its value is never read.
+
+[7m97[0m         const radius = Math.min(width, height) / 2;
+[7m  [0m [93m              ~~~~~~[0m
+[96msrc/components/charts/chapter-3/MigrationCharts.astro[0m:[93m87[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m87[0m <script define:vars={{ data }}>
+[7m  [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/charts/chapter-3/PersonalEventsChart.astro[0m:[93m64[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m64[0m <script define:vars={{ data: chartData }}>
+[7m  [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/charts/chapter-3/PopulationPyramidChart.astro[0m:[93m77[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m77[0m <script define:vars={{ data, lang }}>
+[7m  [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/charts/chapter-3/SocialSecurityChart.astro[0m:[93m53[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m53[0m <script define:vars={{ data: chartData }}>
+[7m  [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/charts/chapter-4/EconomicActivitiesChart.astro[0m:[93m159[0m:[93m19[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(this: SVGTextElement, d: unknown) => unknown' is not assignable to parameter of type 'string | number | boolean | ValueFn<SVGTextElement, unknown, string | number | boolean | null> | null'.
+  Type '(this: SVGTextElement, d: unknown) => unknown' is not assignable to type 'ValueFn<SVGTextElement, unknown, string | number | boolean | null>'.
+    Type 'unknown' is not assignable to type 'string | number | boolean | null'.
+
+[7m159[0m             .text((d) => d)
+[7m   [0m [91m                  ~~~~~~~~[0m
+[96msrc/components/charts/chapter-4/EconomicActivitiesChart.astro[0m:[93m152[0m:[93m40[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'unknown' is not assignable to parameter of type 'string'.
+
+[7m152[0m             .attr("fill", (d) => color(d) as string);
+[7m   [0m [91m                                       ~[0m
+[96msrc/components/charts/chapter-4/EconomicActivitiesChart.astro[0m:[93m92[0m:[93m21[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(string | number)[]' is not assignable to parameter of type 'Iterable<NumberValue>'.
+  The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+    Type 'IteratorResult<string | number, undefined>' is not assignable to type 'IteratorResult<NumberValue, any>'.
+      Type 'IteratorYieldResult<string | number>' is not assignable to type 'IteratorResult<NumberValue, any>'.
+        Type 'IteratorYieldResult<string | number>' is not assignable to type 'IteratorYieldResult<NumberValue>'.
+          Type 'string | number' is not assignable to type 'NumberValue'.
+            Type 'string' is not assignable to type 'NumberValue'.
+
+[7m92[0m             .domain([0, d3.max(data, (d: any) => d.total) || 100])
+[7m  [0m [91m                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/charts/chapter-4/EconomicActivitiesChart.astro[0m:[93m77[0m:[93m22[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'number[]' is not assignable to parameter of type 'number'.
+
+[7m77[0m             .padding([0.2]);
+[7m  [0m [91m                     ~~~~~[0m
+[96msrc/components/charts/chapter-4/EconomicActivitiesChart.astro[0m:[93m145[0m:[93m33[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m145[0m             .attr("transform", (d, i) => `translate(${width + 10},${i * 20})`);
+[7m   [0m [93m                                ~[0m
+[96msrc/components/charts/chapter-4/EconomicActivitiesChart.astro[0m:[93m128[0m:[93m47[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m128[0m             .on("mouseover", function (event, d) {
+[7m   [0m [93m                                              ~[0m
+[96msrc/components/charts/chapter-4/EconomicActivitiesChart.astro[0m:[93m128[0m:[93m40[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m128[0m             .on("mouseover", function (event, d) {
+[7m   [0m [93m                                       ~~~~~[0m
+
+[96msrc/components/charts/chapter-4/ForeignEmploymentChart.astro[0m:[93m70[0m:[93m21[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(string | number)[]' is not assignable to parameter of type 'Iterable<NumberValue>'.
+  The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+    Type 'IteratorResult<string | number, undefined>' is not assignable to type 'IteratorResult<NumberValue, any>'.
+      Type 'IteratorYieldResult<string | number>' is not assignable to type 'IteratorResult<NumberValue, any>'.
+        Type 'IteratorYieldResult<string | number>' is not assignable to type 'IteratorYieldResult<NumberValue>'.
+          Type 'string | number' is not assignable to type 'NumberValue'.
+            Type 'string' is not assignable to type 'NumberValue'.
+
+[7m70[0m             .domain([0, d3.max(data, (d: any) => d.value) || 100])
+[7m  [0m [91m                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/charts/chapter-4/ForeignEmploymentChart.astro[0m:[93m93[0m:[93m47[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m93[0m             .on("mouseover", function (event, d) {
+[7m  [0m [93m                                              ~[0m
+[96msrc/components/charts/chapter-4/ForeignEmploymentChart.astro[0m:[93m93[0m:[93m40[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m93[0m             .on("mouseover", function (event, d) {
+[7m  [0m [93m                                       ~~~~~[0m
+
+[96msrc/components/charts/chapter-4/HousingConstructionChart.astro[0m:[93m15[0m:[93m59[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m15[0m     id={`housing-const-chart-${Math.random().toString(36).substr(2, 9)}`}
+[7m  [0m [93m                                                          ~~~~~~[0m
+[96msrc/components/charts/chapter-4/HousingConstructionChart.astro[0m:[93m93[0m:[93m21[0m - [91merror[0m[90m ts(2345): [0mArgument of type '(string | number)[]' is not assignable to parameter of type 'Iterable<NumberValue>'.
+  The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+    Type 'IteratorResult<string | number, undefined>' is not assignable to type 'IteratorResult<NumberValue, any>'.
+      Type 'IteratorYieldResult<string | number>' is not assignable to type 'IteratorResult<NumberValue, any>'.
+        Type 'IteratorYieldResult<string | number>' is not assignable to type 'IteratorYieldResult<NumberValue>'.
+          Type 'string | number' is not assignable to type 'NumberValue'.
+            Type 'string' is not assignable to type 'NumberValue'.
+
+[7m93[0m             .domain([0, d3.max(data, (d: any) => d.value) || 100])
+[7m  [0m [91m                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/charts/chapter-4/HousingConstructionChart.astro[0m:[93m27[0m:[93m25[0m - [93mwarning[0m[90m ts(6133): [0m'container' is declared but its value is never read.
+
+[7m27[0m     containers.forEach((container) => {
+[7m  [0m [93m                        ~~~~~~~~~[0m
+[96msrc/components/charts/chapter-4/HousingConstructionChart.astro[0m:[93m20[0m:[93m5[0m - [93mwarning[0m[90m ts(6133): [0m'd3' is declared but its value is never read.
+
+[7m20[0m     import * as d3 from "d3";
+[7m  [0m [93m    ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/charts/chapter-4/HousingOwnershipChart.astro[0m:[93m93[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'legend' is declared but its value is never read.
+
+[7m93[0m         const legend = svg
+[7m  [0m [93m              ~~~~~~[0m
+[96msrc/components/charts/chapter-4/HousingOwnershipChart.astro[0m:[93m71[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'outerArc' is declared but its value is never read.
+
+[7m71[0m         const outerArc = d3
+[7m  [0m [93m              ~~~~~~~~[0m
+
+[96msrc/components/charts/chapter-5/LiteracyBarChart.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'formatNumber' is declared but its value is never read.
+
+[7m3[0m import { formatNumber } from "../../../lib/i18n/formatters";
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/charts/chapter-5/LiteracyBarChart.astro[0m:[93m267[0m:[93m25[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m267[0m                 .delay((d, i) => i * 100)
+[7m   [0m [93m                        ~[0m
+[96msrc/components/charts/chapter-5/LiteracyBarChart.astro[0m:[93m47[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m47[0m <script define:vars={{ chartData, lang }}>
+[7m  [0m [93m        ~~~~~~~~~~~[0m
+
+[96msrc/components/maps/LeafletMap.astro[0m:[93m81[0m:[93m34[0m - [93mwarning[0m[90m ts(6133): [0m'feature' is declared but its value is never read.
+
+[7m81[0m                 style: function (feature) {
+[7m  [0m [93m                                 ~~~~~~~[0m
+
+[96msrc/components/navigation/Header.astro[0m:[93m218[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'isHomePage' is declared but its value is never read.
+
+[7m218[0m   const isHomePage = window.location.pathname.endsWith("/"); // Simple check, might need robust logic if languages are strictly /ne/ or /en/
+[7m   [0m [93m        ~~~~~~~~~~[0m
+
+[96msrc/components/seo/SEOHead.astro[0m:[93m66[0m:[93m3[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m66[0m   type="application/ld+json"
+[7m  [0m [93m  ~~~~[0m
+
+[96msrc/pages/[lang]/_components/PopulationMap.astro[0m:[93m256[0m:[93m41[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m256[0m             .on("mouseleave", function (event, d) {
+[7m   [0m [93m                                        ~~~~~[0m
+[96msrc/pages/[lang]/_components/PopulationMap.astro[0m:[93m210[0m:[93m23[0m - [93mwarning[0m[90m ts(6133): [0m'currentColor' is declared but its value is never read.
+
+[7m210[0m                 const currentColor = colorScale(d.properties.total_population);
+[7m   [0m [93m                      ~~~~~~~~~~~~[0m
+[96msrc/pages/[lang]/_components/PopulationMap.astro[0m:[93m209[0m:[93m41[0m - [93mwarning[0m[90m ts(6133): [0m'event' is declared but its value is never read.
+
+[7m209[0m             .on("mouseenter", function (event, d) {
+[7m   [0m [93m                                        ~~~~~[0m
+[96msrc/pages/[lang]/_components/PopulationMap.astro[0m:[93m199[0m:[93m25[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m199[0m                 .delay((d, i) => i * 180 + 1500)
+[7m   [0m [93m                        ~[0m
+[96msrc/pages/[lang]/_components/PopulationMap.astro[0m:[93m165[0m:[93m25[0m - [93mwarning[0m[90m ts(6133): [0m'd' is declared but its value is never read.
+
+[7m165[0m                 .delay((d, i) => i * 150)
+[7m   [0m [93m                        ~[0m
+
+[96msrc/pages/[lang]/chapters/3.astro[0m:[93m32[0m:[93m11[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m32[0m const t = await getTranslations(lang as keyof typeof languages);
+[7m  [0m [93m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+Result (127 files): 
+- 6 errors
+- 0 warnings
+- 102 hints
+

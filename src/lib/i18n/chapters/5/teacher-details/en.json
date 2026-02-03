@@ -1,0 +1,25 @@
+{
+    "title": "5.1.4 Teacher and Educational Workforce Details",
+    "tableTitle": "Table No. 43: Details of Teacher and Educational Workforce of Municipality",
+    "sections": {
+        "teachers": [
+            {"level": "Primary Level", "perm": {"1":4, "2":42, "3":69}, "cont": 10, "perm_cont_total": 125, "rahat": 52, "grand_total": 177},
+            {"level": "Lower Secondary Level", "perm": {"1":0, "2":3, "3":24}, "cont": 3, "perm_cont_total": 30, "rahat": 48, "grand_total": 78},
+            {"level": "Secondary Level", "perm": {"1":1, "2":2, "3":20}, "cont": 1, "perm_cont_total": 24, "rahat": 19, "grand_total": 43},
+            {"level": "Higher Secondary Level", "perm": {"1":0, "2":0, "3":0}, "cont": 26, "perm_cont_total": 26, "rahat": 0, "grand_total": 26},
+            {"level": "Instructor", "perm": {"1":0, "2":0, "3":0}, "cont": 8, "perm_cont_total": 8, "rahat": 0, "grand_total": 8},
+            {"level": "Total", "perm": {"1":5, "2":47, "3":113}, "cont": 48, "perm_cont_total": 213, "rahat": 119, "grand_total": 332}
+        ],
+        "otherStaff": [
+            {"name": "ECD Facilitator", "total": 50},
+            {"name": "ECD Facilitator (Municipality)", "total": 7},
+            {"name": "Community Mobilizer", "total": 4},
+            {"name": "School Account Assistant", "total": 19},
+            {"name": "School Staff", "total": 46},
+            {"name": "Resource Class Aaya", "total": 3},
+            {"name": "School Nurse", "total": 2},
+            {"name": "Federal Grant", "total": 27},
+            {"name": "Total Staff in Municipality", "total": 490}
+        ]
+    }
+}

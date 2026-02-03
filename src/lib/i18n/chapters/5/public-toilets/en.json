@@ -1,0 +1,57 @@
+{
+    "subsectionId": "public-toilets",
+    "title": "5.3.3 Details of Public Toilets",
+    "content": "Private houses and public places must have toilets with handwashing water. In case families from poor communities cannot build toilets themselves, the local government has to provide subsidies for toilet construction. Public toilets have been constructed in various places to make the home courtyards, roads, markets and public areas of this municipality clean. The Tole Health Committee and the Municipality must play an important role in keeping public toilets clean. By charging a fee for using public toilets, money can be spent on cleaning and management of toilets. In addition to keeping home courtyards, markets and roads clean, it can also support the municipality's revenue. Although there are not enough public toilets in this municipality, the details of existing public toilets are mentioned in the table.",
+    "tableTitle": "Table No. 53: Details regarding public toilets",
+    "headers": [
+        "SN",
+        "Location of Toilet",
+        "Ward No.",
+        "Number"
+    ],
+    "rows": [
+        [
+            "1",
+            "Barshe Danda and Shanibare",
+            "4",
+            "2"
+        ],
+        [
+            "2",
+            "Sundarpur (Ward premises road and Shivalaya Park)",
+            "5",
+            "2"
+        ],
+        [
+            "3",
+            "Beltar Buspark and Kauwakhoj",
+            "6",
+            "2"
+        ],
+        [
+            "4",
+            "Charghare, Ranitar and Gadhi",
+            "1",
+            "3"
+        ],
+        [
+            "5",
+            "Bandel Pani and Bhorleni",
+            "3",
+            "2"
+        ],
+        [
+            "6",
+            "Jyamire",
+            "9",
+            "1"
+        ],
+        [
+            "7",
+            "Hadiya",
+            "10",
+            "1"
+        ]
+    ],
+    "source": "Source: Office of the Municipal Executive"
+}

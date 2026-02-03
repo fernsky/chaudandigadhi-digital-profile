@@ -388,148 +388,148 @@
       "sections": [
         {
           "id": "5.1",
-          "title": "Education and Human Resource Development",
-          "slug": "education"
+          "title": "5.1 Education and Human Resource Development",
+          "slug": "education-overview"
         },
         {
           "id": "5.1.1",
-          "title": "Literacy",
-          "slug": "literacy"
+          "title": "5.1.1 Literacy of Population Aged Five Years and Above",
+          "slug": "literacy-statistics"
         },
         {
           "id": "5.1.2",
-          "title": "Schools and Students by Level",
-          "slug": "schools"
+          "title": "5.1.2 Educational Institutions/Schools and Student Details by Level",
+          "slug": "schools-institutions"
         },
         {
           "id": "5.1.3",
-          "title": "Student Enrollment",
-          "slug": "students"
+          "title": "5.1.3 Details of Students Studying in Schools",
+          "slug": "student-enrollment"
         },
         {
           "id": "5.1.4",
-          "title": "Teachers and Educational Staff",
-          "slug": "teachers"
+          "title": "5.1.4 Teachers and Educational Human Resources Details",
+          "slug": "teacher-details"
         },
         {
           "id": "5.1.5",
-          "title": "Model Schools with Internet",
-          "slug": "model-schools"
+          "title": "5.1.5 Details of Schools with Model and Internet Facilities",
+          "slug": "internet-facilities"
         },
         {
           "id": "5.1.6",
-          "title": "Education Quality",
-          "slug": "education-quality"
+          "title": "5.1.6 Details Related to Educational Quality",
+          "slug": "educational-quality"
         },
         {
           "id": "5.1.7",
-          "title": "Child-Friendly Education",
+          "title": "5.1.7 Details Related to Child-Friendly Education",
           "slug": "child-friendly-education"
         },
         {
           "id": "5.2",
-          "title": "Health and Nutrition",
+          "title": "5.2 Health and Nutrition",
           "slug": "health-nutrition"
         },
         {
           "id": "5.2.1",
-          "title": "Health Institutions",
+          "title": "5.2.1 Details of Health Institutions",
           "slug": "health-institutions"
         },
         {
           "id": "5.2.2",
-          "title": "Immunization Services",
-          "slug": "immunization"
+          "title": "5.2.2 Immunization Services and Safe Motherhood Details",
+          "slug": "immunization-safe-motherhood"
         },
         {
           "id": "5.2.3",
-          "title": "Child Health and Malnutrition",
-          "slug": "child-health"
+          "title": "5.2.3 Child Health and Malnutrition Status",
+          "slug": "child-health-nutrition"
         },
         {
           "id": "5.2.4",
-          "title": "Major Diseases and Treatment",
-          "slug": "diseases"
+          "title": "5.2.4 Details of Major Diseases and Treatment",
+          "slug": "major-diseases"
         },
         {
           "id": "5.2.5",
-          "title": "Safe Motherhood",
+          "title": "5.2.5 Safe Motherhood",
           "slug": "safe-motherhood"
         },
         {
           "id": "5.2.6",
-          "title": "Marital Status",
-          "slug": "marital-status"
+          "title": "5.2.6 Details of Married and Unmarried Men and Women",
+          "slug": "married-unmarried-details"
         },
         {
           "id": "5.3",
-          "title": "Water and Sanitation",
+          "title": "5.3 Water and Sanitation",
           "slug": "water-sanitation"
         },
         {
           "id": "5.3.1",
-          "title": "Water Sources",
-          "slug": "water-sources"
+          "title": "5.3.1 Water Source Details",
+          "slug": "water-source-details"
         },
         {
           "id": "5.3.2",
-          "title": "Toilet Usage",
-          "slug": "toilets"
+          "title": "5.3.2 Toilet Usage Status",
+          "slug": "toilet-usage"
         },
         {
           "id": "5.3.3",
-          "title": "Public Toilets",
+          "title": "5.3.3 Details of Public Toilets",
           "slug": "public-toilets"
         },
         {
           "id": "5.3.4",
-          "title": "Waste Management",
+          "title": "5.3.4 Details of Households regarding Waste Management",
           "slug": "waste-management"
         },
         {
           "id": "5.3.5",
-          "title": "Drainage and Landfill Sites",
-          "slug": "drainage-landfill"
+          "title": "5.3.5 Status of Sewerage and Landfill Site",
+          "slug": "sewerage-landfill"
         },
         {
           "id": "5.3.6",
-          "title": "Homeless Children",
-          "slug": "homeless-children"
+          "title": "5.3.6 Status of Children without Families",
+          "slug": "children-state"
         },
         {
           "id": "5.4",
-          "title": "Youth and Sports",
+          "title": "5.4 Youth, Sports and Entertainment",
           "slug": "youth-sports"
         },
         {
           "id": "5.4.1",
-          "title": "Sports and Recreation Facilities",
-          "slug": "sports-recreation"
+          "title": "5.4.1 Details regarding Sports Fields, Parks, Picnic Spots",
+          "slug": "sports-fields"
         },
         {
           "id": "5.4.2",
-          "title": "Youth Clubs",
+          "title": "5.4.2 Details of Youth Clubs",
           "slug": "youth-clubs"
         },
         {
           "id": "5.5",
-          "title": "Art, Language and Culture",
-          "slug": "art-culture"
+          "title": "5.5 Art, Language and Culture",
+          "slug": "culture"
         },
         {
           "id": "5.5.1",
-          "title": "Public Places and Rest Areas",
+          "title": "5.5.1 Public Places, Pati, Pauwa and Chautara",
           "slug": "public-places"
         },
         {
           "id": "5.5.2",
-          "title": "Local Festivals and Fairs",
-          "slug": "festivals"
+          "title": "5.5.2 Details of Local Festivals, Jatras and Melas",
+          "slug": "culture-festivals"
         },
         {
           "id": "5.6",
-          "title": "Peace and Security",
-          "slug": "peace-security"
+          "title": "5.6 Details of Peace and Security",
+          "slug": "security"
         }
       ]
     },

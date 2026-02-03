@@ -1,0 +1,365 @@
+{
+    "communitySchoolsTitle": "a) Details of Community Schools",
+    "communitySchools": [
+        {
+            "sn": "1.",
+            "name": "Basic School Siwai Belwa",
+            "location": "Chaudandigadhi–5"
+        },
+        {
+            "sn": "2.",
+            "name": "Basic School Kheraha",
+            "location": "Chaudandigadhi–10"
+        },
+        {
+            "sn": "3.",
+            "name": "Ideal Basic School Agraha",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "4.",
+            "name": "Balmukhi Basic School Ajagar",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "5.",
+            "name": "Baljyoti Basic School Badelpani",
+            "location": "Chaudandigadhi–3"
+        },
+        {
+            "sn": "6.",
+            "name": "Basic School Gangau",
+            "location": "Chaudandigadhi–1"
+        },
+        {
+            "sn": "7.",
+            "name": "Belka Basic School Hatisar",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "8.",
+            "name": "Shimsen Ideal Basic School Devdhar",
+            "location": "Chaudandigadhi–10"
+        },
+        {
+            "sn": "9.",
+            "name": "Buddha Janata Pri. School Gangate",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "10.",
+            "name": "Gausaikanya Basic School Simaltar",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "11.",
+            "name": "Jarbaidhari Janata Basic School Ranitar",
+            "location": "Chaudandigadhi–1"
+        },
+        {
+            "sn": "12.",
+            "name": "Jatyajna Secondary School Ajjungare",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "13.",
+            "name": "Janajyoti Basic School Panchwari Tole",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "14.",
+            "name": "Janajyoti Basic School Amalchauri",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "15.",
+            "name": "Janakalyan Basic School Hatisar",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "16.",
+            "name": "Janasewa Basic School Sawali Tole",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "17.",
+            "name": "Janata Ideal Secondary School Kalikhola",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "18.",
+            "name": "Janata Secondary School Hadiya",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "19.",
+            "name": "Janata Secondary School Lokentar",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "20.",
+            "name": "Janata Basic School Chhunguwa",
+            "location": "Chaudandigadhi–1"
+        },
+        {
+            "sn": "21.",
+            "name": "Ushkalabati Pri. School Phali tar",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "22.",
+            "name": "Jyoti Secondary School Beltar",
+            "location": "Chaudandigadhi–6"
+        },
+        {
+            "sn": "23.",
+            "name": "Kalika Secondary School Siwani",
+            "location": "Chaudandigadhi–6"
+        },
+        {
+            "sn": "24.",
+            "name": "Kodedevi Basic School Jhorpata",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "25.",
+            "name": "Kokan Basic School Dekachauri",
+            "location": "Chaudandigadhi–5"
+        },
+        {
+            "sn": "26.",
+            "name": "Lokmarghi Secondary School Khairakhos",
+            "location": "Chaudandigadhi–10"
+        },
+        {
+            "sn": "27.",
+            "name": "Madaratna Bishwalyah Kuran Pri. School Sipai",
+            "location": "Chaudandigadhi–5"
+        },
+        {
+            "sn": "28.",
+            "name": "Mahadebdhar Basic School Dewaha",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "29.",
+            "name": "Padmani Basic School Beltar",
+            "location": "Chaudandigadhi–7"
+        },
+        {
+            "sn": "30.",
+            "name": "Raktakala Pri. School Mugare",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "31.",
+            "name": "Saranath Basic School Bhutke",
+            "location": "Chaudandigadhi–3"
+        },
+        {
+            "sn": "32.",
+            "name": "Sagarnath Secondary School Bholeni",
+            "location": "Chaudandigadhi–3"
+        },
+        {
+            "sn": "33.",
+            "name": "Sarada Basic School Siltipur",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "34.",
+            "name": "Saraswati Secondary School Saba",
+            "location": "Chaudandigadhi–8"
+        },
+        {
+            "sn": "35.",
+            "name": "Sarada Secondary School Karahare",
+            "location": "Chaudandigadhi–1"
+        },
+        {
+            "sn": "36.",
+            "name": "Shree Bhanawati Secondary School Musultibha",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "37.",
+            "name": "Shree Jarbikas Secondary School Bibha",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "38.",
+            "name": "Shree Narad Ideal Secondary School Barshenda",
+            "location": "Chaudandigadhi–4"
+        },
+        {
+            "sn": "39.",
+            "name": "Shree Secondary School Arupal",
+            "location": "Chaudandigadhi–3"
+        },
+        {
+            "sn": "40.",
+            "name": "Shree Secondary School Sipai",
+            "location": "Chaudandigadhi–5"
+        },
+        {
+            "sn": "41.",
+            "name": "Shree Shiv Secondary School Sipai Sundarpur",
+            "location": "Chaudandigadhi–5"
+        },
+        {
+            "sn": "42.",
+            "name": "Shree Dhanpokhari Secondary School Jwamire",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "43.",
+            "name": "Siukali Basic School Bhire",
+            "location": "Chaudandigadhi–2"
+        },
+        {
+            "sn": "44.",
+            "name": "Siddeshwari Secondary School Musultibha",
+            "location": "Chaudandigadhi–9"
+        },
+        {
+            "sn": "45.",
+            "name": "Siddevi Secondary School Mardibas",
+            "location": "Chaudandigadhi–2"
+        }
+    ],
+    "institutionalSchoolsTitle": "b) Details of Institutional Schools",
+    "institutionalSchools": [
+        {
+            "sn": "1.",
+            "name": "Balvikas Montessori School",
+            "location": "Chaudandigadhi–7",
+            "students": 38
+        },
+        {
+            "sn": "2.",
+            "name": "Beria Kids Pre School",
+            "location": "Chaudandigadhi–4",
+            "students": 54
+        },
+        {
+            "sn": "3.",
+            "name": "Bhumi Chetan English School Beltar",
+            "location": "Chaudandigadhi–7",
+            "students": 182
+        },
+        {
+            "sn": "4.",
+            "name": "Bright Future Academy Chaudandigadhi",
+            "location": "Chaudandigadhi–3",
+            "students": 919
+        },
+        {
+            "sn": "5.",
+            "name": "Bright Future National English Boarding School (0–8)",
+            "location": "Chaudandigadhi–8",
+            "students": 755
+        },
+        {
+            "sn": "6.",
+            "name": "Buddha Niketan English Boarding School",
+            "location": "Chaudandigadhi–4",
+            "students": 920
+        },
+        {
+            "sn": "7.",
+            "name": "Buddharatnawa Vidya Niketan",
+            "location": "Chaudandigadhi–9",
+            "students": 281
+        },
+        {
+            "sn": "8.",
+            "name": "Chando Bright Future English Boarding School",
+            "location": "Chaudandigadhi–9",
+            "students": 922
+        },
+        {
+            "sn": "9.",
+            "name": "Deurali English Boarding School Siswani",
+            "location": "Chaudandigadhi–6",
+            "students": 202
+        },
+        {
+            "sn": "10.",
+            "name": "Eric English Boarding School",
+            "location": "Chaudandigadhi–2",
+            "students": 55
+        },
+        {
+            "sn": "11.",
+            "name": "Kanchanjangha English Boarding School Beltar",
+            "location": "Chaudandigadhi–7",
+            "students": 276
+        },
+        {
+            "sn": "12.",
+            "name": "Marigold Academy Beltar",
+            "location": "Chaudandigadhi–7",
+            "students": 202
+        },
+        {
+            "sn": "13.",
+            "name": "Moti Memorial English Boarding School Barshenda",
+            "location": "Chaudandigadhi–4",
+            "students": 542
+        },
+        {
+            "sn": "14.",
+            "name": "Newton Academy",
+            "location": "Chaudandigadhi–2",
+            "students": 263
+        },
+        {
+            "sn": "15.",
+            "name": "Pavin Memorial Basic English Boarding School",
+            "location": "Chaudandigadhi–4",
+            "students": 235
+        },
+        {
+            "sn": "16.",
+            "name": "Purushad Academy",
+            "location": "Chaudandigadhi–7",
+            "students": 349
+        },
+        {
+            "sn": "17.",
+            "name": "Puma English Boarding School",
+            "location": "Chaudandigadhi–6",
+            "students": 559
+        },
+        {
+            "sn": "18.",
+            "name": "Sagarnath Chekpreddy English Boarding School",
+            "location": "Chaudandigadhi–7",
+            "students": 725
+        },
+        {
+            "sn": "19.",
+            "name": "Sukdev Memorial Academy",
+            "location": "Chaudandigadhi–5",
+            "students": 964
+        },
+        {
+            "sn": "20.",
+            "name": "Sudarshan English Boarding School",
+            "location": "Chaudandigadhi–10",
+            "students": 474
+        },
+        {
+            "sn": "21.",
+            "name": "Trishuli English Boarding School",
+            "location": "Chaudandigadhi–9",
+            "students": 556
+        },
+        {
+            "sn": "22.",
+            "name": "Vidya Public English Boarding School Hadiya",
+            "location": "Chaudandigadhi–10",
+            "students": 956
+        }
+    ]
+}

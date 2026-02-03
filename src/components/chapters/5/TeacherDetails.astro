@@ -1,0 +1,199 @@
+---
+import type { Language } from "../../../lib/i18n";
+import ne from "../../../lib/i18n/chapters/5/teacher-details/ne.json";
+import en from "../../../lib/i18n/chapters/5/teacher-details/en.json";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = lang === "ne" ? ne : en;
+
+// Number formatter for Nepali
+const formatNumber = (num: number | string | undefined) => {
+    if (num === undefined || num === null) return "0";
+    if (num === "") return "-";
+    const str = num.toString();
+    if (lang === "en") return str;
+    return str.replace(/[0-9]/g, (d) => "०१२३४५६७८९"[parseInt(d)]);
+};
+
+const h =
+    lang === "ne"
+        ? {
+              level: "तह र श्रेणी",
+              perm: "स्थायी",
+              p1: "प्रथम",
+              p2: "द्धितिय",
+              p3: "तृतीय",
+              cont: "करार",
+              total: "जम्मा",
+              rahat: "राहत",
+              other: "अन्य कर्मचारीहरु",
+              source: "स्रोतः नगर कार्यपालिकाको कार्यालय",
+          }
+        : {
+              level: "Level / Class",
+              perm: "Permanent",
+              p1: "1st",
+              p2: "2nd",
+              p3: "3rd",
+              cont: "Contract",
+              total: "Total",
+              rahat: "Rahat",
+              other: "Other Employees",
+              source: "Source: Municipal Executive Office",
+          };
+---
+
+<section
+    id="teacher-details"
+    class="relative py-20 bg-[#0a0a0a] border-t border-zinc-800"
+>
+    <div class="container mx-auto px-8 relative z-10">
+        <!-- Main Title -->
+        <h2 class="text-2xl md:text-3xl font-serif text-white/90 mb-8">
+            {t.title}
+        </h2>
+
+        <div class="mb-16">
+            <h3 class="text-xl font-serif text-white/80 mb-6">
+                {t.tableTitle}
+            </h3>
+            <div class="rounded-lg overflow-hidden border border-zinc-800">
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full text-base text-left text-zinc-100 border-collapse"
+                    >
+                        <thead class="border-b border-zinc-700">
+                            <tr>
+                                <th
+                                    rowspan="2"
+                                    class="px-4 py-3 border-r border-zinc-800 font-serif font-medium text-zinc-300"
+                                    >{h.level}</th
+                                >
+                                <th
+                                    colspan="3"
+                                    class="px-4 py-2 border-r border-zinc-800 text-center font-serif font-medium text-zinc-300"
+                                    >{h.perm}</th
+                                >
+                                <th
+                                    rowspan="2"
+                                    class="px-4 py-3 border-r border-zinc-800 text-center font-serif font-medium text-zinc-300"
+                                    >{h.cont}</th
+                                >
+                                <th
+                                    rowspan="2"
+                                    class="px-4 py-3 border-r border-zinc-800 text-center font-serif font-medium text-zinc-300"
+                                    >{h.total}</th
+                                >
+                                <th
+                                    rowspan="2"
+                                    class="px-4 py-3 border-r border-zinc-800 text-center font-serif font-medium text-zinc-300"
+                                    >{h.rahat}</th
+                                >
+                                <th
+                                    rowspan="2"
+                                    class="px-4 py-3 text-center font-serif font-medium text-zinc-300"
+                                    >{h.total}</th
+                                >
+                            </tr>
+                            <tr>
+                                <th
+                                    class="px-4 py-2 border-r border-zinc-800 text-center text-sm font-serif font-medium text-zinc-400"
+                                    >{h.p1}</th
+                                >
+                                <th
+                                    class="px-4 py-2 border-r border-zinc-800 text-center text-sm font-serif font-medium text-zinc-400"
+                                    >{h.p2}</th
+                                >
+                                <th
+                                    class="px-4 py-2 border-r border-zinc-800 text-center text-sm font-serif font-medium text-zinc-400"
+                                    >{h.p3}</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* Teachers Section */}
+                            {
+                                t.sections.teachers.map((row) => (
+                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                        <td class="px-4 py-3 border-r border-zinc-800 text-white font-serif text-sm">
+                                            {row.level}
+                                        </td>
+                                        <td class="px-4 py-3 border-r border-zinc-800 text-center text-zinc-300 font-serif text-sm">
+                                            {formatNumber(row.perm[1])}
+                                        </td>
+                                        <td class="px-4 py-3 border-r border-zinc-800 text-center text-zinc-300 font-serif text-sm">
+                                            {formatNumber(row.perm[2])}
+                                        </td>
+                                        <td class="px-4 py-3 border-r border-zinc-800 text-center text-zinc-300 font-serif text-sm">
+                                            {formatNumber(row.perm[3])}
+                                        </td>
+                                        <td class="px-4 py-3 border-r border-zinc-800 text-center text-zinc-300 font-serif text-sm">
+                                            {formatNumber(row.cont)}
+                                        </td>
+                                        <td class="px-4 py-3 border-r border-zinc-800 text-center text-zinc-300 font-serif text-sm">
+                                            {formatNumber(row.perm_cont_total)}
+                                        </td>
+                                        <td class="px-4 py-3 border-r border-zinc-800 text-center text-zinc-300 font-serif text-sm">
+                                            {formatNumber(row.rahat)}
+                                        </td>
+                                        <td class="px-4 py-3 text-center font-bold text-white font-serif text-sm">
+                                            {formatNumber(row.grand_total)}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+
+                            {/* Other Employees Header */}
+                            <tr class="bg-zinc-900/30 border-b border-zinc-800">
+                                <td
+                                    colspan="8"
+                                    class="px-4 py-2 font-bold text-zinc-200 border-b border-zinc-800 text-center font-serif"
+                                >
+                                    {h.other}
+                                </td>
+                            </tr>
+                            <tr class="bg-zinc-900/30 border-b border-zinc-800">
+                                <td colspan="7"></td>
+                                <td
+                                    class="px-4 py-2 font-bold text-zinc-200 border-b border-zinc-800 text-center font-serif"
+                                    >{h.total}</td
+                                >
+                            </tr>
+
+                            {/* Other Staff Section */}
+                            {
+                                t.sections.otherStaff.map((row) => (
+                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                        <td class="px-4 py-3 border-r border-zinc-800 text-white font-serif text-sm">
+                                            {row.name}
+                                        </td>
+                                        <td class="px-4 py-3 border-r border-zinc-800" />
+                                        <td class="px-4 py-3 border-r border-zinc-800" />
+                                        <td class="px-4 py-3 border-r border-zinc-800" />
+                                        <td class="px-4 py-3 border-r border-zinc-800" />
+                                        <td class="px-4 py-3 border-r border-zinc-800 text-center text-zinc-300 font-serif text-sm">
+                                            {row.name === "संघिय अनुदान"
+                                                ? formatNumber(row.total)
+                                                : ""}
+                                        </td>
+                                        <td class="px-4 py-3 border-r border-zinc-800" />
+                                        <td class="px-4 py-3 text-center font-bold text-white font-serif text-sm">
+                                            {formatNumber(row.total)}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bg-zinc-900/50 px-4 py-2 text-right">
+                    <p class="text-sm text-zinc-400 italic">{h.source}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

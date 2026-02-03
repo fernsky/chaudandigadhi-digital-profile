@@ -1,0 +1,84 @@
+---
+import type { Language } from "../../../lib/i18n";
+import ne from "../../../lib/i18n/chapters/5/student-enrollment/ne.json";
+import en from "../../../lib/i18n/chapters/5/student-enrollment/en.json";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = lang === "ne" ? ne : en;
+
+// Number formatter for Nepali
+const formatNumber = (num: number | string | undefined) => {
+    if (num === undefined || num === null) return "0";
+    if (num === "") return "-";
+    const str = num.toString();
+    if (lang === "en") return str;
+    return str.replace(/[0-9]/g, (d) => "०१२३४५६७८९"[parseInt(d)]);
+};
+
+const h =
+    lang === "ne"
+        ? { sn: "क्र.सं.", name: "विद्यालयको नाम", stud: "विद्यार्थी संख्या" }
+        : { sn: "SN", name: "School Name", stud: "Student Count" };
+---
+
+<section
+    id="student-enrollment"
+    class="relative py-20 bg-[#0a0a0a] border-t border-white/5"
+>
+    <div class="container mx-auto px-8 relative z-10">
+        <!-- Section Title -->
+        <h2 class="text-2xl md:text-3xl font-serif text-white/90 mb-8">
+            {t.sectionTitle}
+        </h2>
+
+        <!-- Table 42 -->
+        <div class="mb-16">
+            <h3 class="text-xl font-serif text-white/80 mb-6">
+                {t.tableTitle}
+            </h3>
+            <div class="rounded-lg overflow-hidden border border-zinc-800">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-base text-left text-zinc-100">
+                        <thead class="border-b border-zinc-700">
+                            <tr>
+                                <th
+                                    class="px-6 py-4 border-r border-zinc-800 w-16 text-center font-serif font-medium text-zinc-300"
+                                    >{h.sn}</th
+                                >
+                                <th
+                                    class="px-6 py-4 border-r border-zinc-800 font-serif font-medium text-zinc-300"
+                                    >{h.name}</th
+                                >
+                                <th
+                                    class="px-6 py-4 text-center font-serif font-medium text-zinc-300"
+                                    >{h.stud}</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                t.tableData.map((school) => (
+                                    <tr class="border-b border-zinc-800 hover:bg-zinc-900/30 transition-colors">
+                                        <td class="px-6 py-4 border-r border-zinc-800 text-center text-zinc-300">
+                                            {formatNumber(school.sn)}
+                                        </td>
+                                        <td class="px-6 py-4 border-r border-zinc-800 font-medium text-white">
+                                            {school.name}
+                                        </td>
+                                        <td class="px-6 py-4 text-center font-bold text-white">
+                                            {formatNumber(school.students)}
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,626 @@
+{
+    "subsectionId": "literacy-statistics",
+    "title": "5.1.1 Literacy of Population Aged Five Years and Above",
+    "tableNumber": "Table No. 40:",
+    "tableTitle": "Details of Literacy of Population Aged 5 Years and Above by Ward",
+    "tableData": [
+        {
+            "ward": "1",
+            "gender": "Total",
+            "literate": 2285,
+            "onlyRead": 1,
+            "illiterate": 868,
+            "notMentioned": 0,
+            "total": 3154
+        },
+        {
+            "ward": "1",
+            "gender": "Male",
+            "literate": 1210,
+            "onlyRead": 1,
+            "illiterate": 337,
+            "notMentioned": 0,
+            "total": 1548
+        },
+        {
+            "ward": "1",
+            "gender": "Female",
+            "literate": 1075,
+            "onlyRead": 0,
+            "illiterate": 531,
+            "notMentioned": 0,
+            "total": 1606
+        },
+        {
+            "ward": "2",
+            "gender": "Total",
+            "literate": 3551,
+            "onlyRead": 21,
+            "illiterate": 1115,
+            "notMentioned": 1,
+            "total": 4688
+        },
+        {
+            "ward": "2",
+            "gender": "Male",
+            "literate": 1975,
+            "onlyRead": 4,
+            "illiterate": 365,
+            "notMentioned": 0,
+            "total": 2144
+        },
+        {
+            "ward": "2",
+            "gender": "Female",
+            "literate": 1576,
+            "onlyRead": 17,
+            "illiterate": 750,
+            "notMentioned": 1,
+            "total": 2344
+        },
+        {
+            "ward": "3",
+            "gender": "Total",
+            "literate": 2931,
+            "onlyRead": 10,
+            "illiterate": 757,
+            "notMentioned": 0,
+            "total": 3698
+        },
+        {
+            "ward": "3",
+            "gender": "Male",
+            "literate": 1442,
+            "onlyRead": 4,
+            "illiterate": 258,
+            "notMentioned": 0,
+            "total": 1704
+        },
+        {
+            "ward": "3",
+            "gender": "Female",
+            "literate": 1489,
+            "onlyRead": 6,
+            "illiterate": 499,
+            "notMentioned": 0,
+            "total": 1994
+        },
+        {
+            "ward": "4",
+            "gender": "Total",
+            "literate": 5146,
+            "onlyRead": 23,
+            "illiterate": 1255,
+            "notMentioned": 0,
+            "total": 6424
+        },
+        {
+            "ward": "4",
+            "gender": "Male",
+            "literate": 2557,
+            "onlyRead": 8,
+            "illiterate": 294,
+            "notMentioned": 0,
+            "total": 2859
+        },
+        {
+            "ward": "4",
+            "gender": "Female",
+            "literate": 2589,
+            "onlyRead": 15,
+            "illiterate": 961,
+            "notMentioned": 0,
+            "total": 3565
+        },
+        {
+            "ward": "5",
+            "gender": "Total",
+            "literate": 4325,
+            "onlyRead": 6,
+            "illiterate": 1483,
+            "notMentioned": 0,
+            "total": 5814
+        },
+        {
+            "ward": "5",
+            "gender": "Male",
+            "literate": 2224,
+            "onlyRead": 4,
+            "illiterate": 485,
+            "notMentioned": 0,
+            "total": 2713
+        },
+        {
+            "ward": "5",
+            "gender": "Female",
+            "literate": 2101,
+            "onlyRead": 2,
+            "illiterate": 998,
+            "notMentioned": 0,
+            "total": 3101
+        },
+        {
+            "ward": "6",
+            "gender": "Total",
+            "literate": 4245,
+            "onlyRead": 3,
+            "illiterate": 903,
+            "notMentioned": 0,
+            "total": 5151
+        },
+        {
+            "ward": "6",
+            "gender": "Male",
+            "literate": 2125,
+            "onlyRead": 2,
+            "illiterate": 252,
+            "notMentioned": 0,
+            "total": 2379
+        },
+        {
+            "ward": "6",
+            "gender": "Female",
+            "literate": 2120,
+            "onlyRead": 1,
+            "illiterate": 651,
+            "notMentioned": 0,
+            "total": 2772
+        },
+        {
+            "ward": "7",
+            "gender": "Total",
+            "literate": 4762,
+            "onlyRead": 25,
+            "illiterate": 906,
+            "notMentioned": 0,
+            "total": 5693
+        },
+        {
+            "ward": "7",
+            "gender": "Male",
+            "literate": 2412,
+            "onlyRead": 11,
+            "illiterate": 217,
+            "notMentioned": 0,
+            "total": 2670
+        },
+        {
+            "ward": "7",
+            "gender": "Female",
+            "literate": 2350,
+            "onlyRead": 14,
+            "illiterate": 659,
+            "notMentioned": 0,
+            "total": 3023
+        },
+        {
+            "ward": "8",
+            "gender": "Total",
+            "literate": 2628,
+            "onlyRead": 5,
+            "illiterate": 684,
+            "notMentioned": 0,
+            "total": 3917
+        },
+        {
+            "ward": "8",
+            "gender": "Male",
+            "literate": 1347,
+            "onlyRead": 2,
+            "illiterate": 304,
+            "notMentioned": 0,
+            "total": 1653
+        },
+        {
+            "ward": "8",
+            "gender": "Female",
+            "literate": 1281,
+            "onlyRead": 3,
+            "illiterate": 580,
+            "notMentioned": 0,
+            "total": 1844
+        },
+        {
+            "ward": "9",
+            "gender": "Total",
+            "literate": 5203,
+            "onlyRead": 18,
+            "illiterate": 1737,
+            "notMentioned": 0,
+            "total": 6958
+        },
+        {
+            "ward": "9",
+            "gender": "Male",
+            "literate": 2691,
+            "onlyRead": 8,
+            "illiterate": 539,
+            "notMentioned": 0,
+            "total": 3238
+        },
+        {
+            "ward": "9",
+            "gender": "Female",
+            "literate": 2509,
+            "onlyRead": 8,
+            "illiterate": 1206,
+            "notMentioned": 0,
+            "total": 3723
+        },
+        {
+            "ward": "10",
+            "gender": "Total",
+            "literate": 3369,
+            "onlyRead": 6,
+            "illiterate": 1025,
+            "notMentioned": 0,
+            "total": 4392
+        },
+        {
+            "ward": "10",
+            "gender": "Male",
+            "literate": 1713,
+            "onlyRead": 2,
+            "illiterate": 299,
+            "notMentioned": 0,
+            "total": 2014
+        },
+        {
+            "ward": "10",
+            "gender": "Female",
+            "literate": 1656,
+            "onlyRead": 6,
+            "illiterate": 726,
+            "notMentioned": 0,
+            "total": 2378
+        },
+        {
+            "ward": "Total",
+            "gender": "Total",
+            "literate": 19499,
+            "onlyRead": 46,
+            "illiterate": 3472,
+            "notMentioned": 0,
+            "total": 23017
+        },
+        {
+            "ward": "Total",
+            "gender": "Male",
+            "literate": 18946,
+            "onlyRead": 72,
+            "illiterate": 7441,
+            "notMentioned": 1,
+            "total": 26460
+        },
+        {
+            "ward": "Total",
+            "gender": "Female",
+            "literate": 38445,
+            "onlyRead": 118,
+            "illiterate": 10913,
+            "notMentioned": 1,
+            "total": 49477
+        }
+    ],
+    "percentageRow": {
+        "literate": "77.70",
+        "onlyRead": "0.24",
+        "illiterate": "22.06",
+        "notMentioned": "0.00",
+        "total": "100"
+    },
+    "source": "Source: National Census, 2078",
+    "paragraph1": "Literacy indicates the overall human development index beyond the ability to read and write. Out of a total population of 49,477 aged 5 years and above in the municipality, 38,445, i.e., 77.70 percent, are literate. The literate population that can only read is 118, i.e., 0.24 percent, while the population that can neither read nor write (both skills lacking, i.e., illiterate) is 10,913, i.e., 22.06 percent. Detailed ward-wise details are mentioned in the table.",
+    "chartTitle": "Ward-wise Literacy of Population Aged 5 Years and Above",
+    "paragraph2": "a) Literacy Status of Population Based on Formal Education",
+    "paragraph3": "UNESCO defined in 1956 that a person who can generally read, write, and perform basic mathematical addition and subtraction in daily life is considered literate. Nepal is also conducting a literacy campaign based on this definition. Out of the total population aged 5 to 25 years in this municipality, 12,105, i.e., 72.93 percent, are currently attending school and college, 3,783, i.e., 22.96 percent, have previously attended school and college, and 675, i.e., 4.10 percent, have never received formal education in school or college. Detailed details are presented in the table below.",
+    "formalEducationTableNumber": "Table No. 41:",
+    "formalEducationTableTitle": "Literacy Status of Population Based on Formal Education",
+    "formalEducationTableData": [
+        {
+            "ward": "1",
+            "gender": "Total",
+            "currentlyAttending": 805,
+            "previouslyAttended": 402,
+            "neverAttended": 122,
+            "notMentioned": 0,
+            "total": 1329
+        },
+        {
+            "ward": "1",
+            "gender": "Male",
+            "currentlyAttending": 405,
+            "previouslyAttended": 260,
+            "neverAttended": 65,
+            "notMentioned": 0,
+            "total": 670
+        },
+        {
+            "ward": "1",
+            "gender": "Female",
+            "currentlyAttending": 400,
+            "previouslyAttended": 202,
+            "neverAttended": 57,
+            "notMentioned": 0,
+            "total": 659
+        },
+        {
+            "ward": "2",
+            "gender": "Total",
+            "currentlyAttending": 1200,
+            "previouslyAttended": 472,
+            "neverAttended": 78,
+            "notMentioned": 0,
+            "total": 1750
+        },
+        {
+            "ward": "2",
+            "gender": "Male",
+            "currentlyAttending": 563,
+            "previouslyAttended": 239,
+            "neverAttended": 32,
+            "notMentioned": 0,
+            "total": 834
+        },
+        {
+            "ward": "2",
+            "gender": "Female",
+            "currentlyAttending": 637,
+            "previouslyAttended": 232,
+            "neverAttended": 46,
+            "notMentioned": 0,
+            "total": 918
+        },
+        {
+            "ward": "3",
+            "gender": "Total",
+            "currentlyAttending": 942,
+            "previouslyAttended": 325,
+            "neverAttended": 33,
+            "notMentioned": 1,
+            "total": 1300
+        },
+        {
+            "ward": "3",
+            "gender": "Male",
+            "currentlyAttending": 463,
+            "previouslyAttended": 98,
+            "neverAttended": 15,
+            "notMentioned": 0,
+            "total": 577
+        },
+        {
+            "ward": "3",
+            "gender": "Female",
+            "currentlyAttending": 489,
+            "previouslyAttended": 165,
+            "neverAttended": 17,
+            "notMentioned": 0,
+            "total": 673
+        },
+        {
+            "ward": "4",
+            "gender": "Total",
+            "currentlyAttending": 1482,
+            "previouslyAttended": 575,
+            "neverAttended": 60,
+            "notMentioned": 0,
+            "total": 2024
+        },
+        {
+            "ward": "4",
+            "gender": "Male",
+            "currentlyAttending": 757,
+            "previouslyAttended": 207,
+            "neverAttended": 28,
+            "notMentioned": 0,
+            "total": 983
+        },
+        {
+            "ward": "4",
+            "gender": "Female",
+            "currentlyAttending": 725,
+            "previouslyAttended": 269,
+            "neverAttended": 32,
+            "notMentioned": 0,
+            "total": 1042
+        },
+        {
+            "ward": "5",
+            "gender": "Total",
+            "currentlyAttending": 1682,
+            "previouslyAttended": 468,
+            "neverAttended": 120,
+            "notMentioned": 0,
+            "total": 1869
+        },
+        {
+            "ward": "5",
+            "gender": "Male",
+            "currentlyAttending": 824,
+            "previouslyAttended": 220,
+            "neverAttended": 62,
+            "notMentioned": 0,
+            "total": 923
+        },
+        {
+            "ward": "5",
+            "gender": "Female",
+            "currentlyAttending": 858,
+            "previouslyAttended": 248,
+            "neverAttended": 78,
+            "notMentioned": 0,
+            "total": 947
+        },
+        {
+            "ward": "6",
+            "gender": "Total",
+            "currentlyAttending": 1279,
+            "previouslyAttended": 430,
+            "neverAttended": 78,
+            "notMentioned": 0,
+            "total": 1567
+        },
+        {
+            "ward": "6",
+            "gender": "Male",
+            "currentlyAttending": 652,
+            "previouslyAttended": 235,
+            "neverAttended": 40,
+            "notMentioned": 0,
+            "total": 827
+        },
+        {
+            "ward": "6",
+            "gender": "Female",
+            "currentlyAttending": 627,
+            "previouslyAttended": 164,
+            "neverAttended": 10,
+            "notMentioned": 0,
+            "total": 844
+        },
+        {
+            "ward": "7",
+            "gender": "Total",
+            "currentlyAttending": 1763,
+            "previouslyAttended": 339,
+            "neverAttended": 25,
+            "notMentioned": 0,
+            "total": 1726
+        },
+        {
+            "ward": "7",
+            "gender": "Male",
+            "currentlyAttending": 771,
+            "previouslyAttended": 151,
+            "neverAttended": 15,
+            "notMentioned": 0,
+            "total": 888
+        },
+        {
+            "ward": "7",
+            "gender": "Female",
+            "currentlyAttended": 520,
+            "previouslyAttended": 145,
+            "neverAttended": 10,
+            "notMentioned": 0,
+            "total": 844
+        },
+        {
+            "ward": "8",
+            "gender": "Total",
+            "currentlyAttending": 964,
+            "previouslyAttended": 351,
+            "neverAttended": 21,
+            "notMentioned": 0,
+            "total": 1337
+        },
+        {
+            "ward": "8",
+            "gender": "Male",
+            "currentlyAttending": 455,
+            "previouslyAttended": 184,
+            "neverAttended": 14,
+            "notMentioned": 0,
+            "total": 702
+        },
+        {
+            "ward": "8",
+            "gender": "Female",
+            "currentlyAttending": 507,
+            "previouslyAttended": 168,
+            "neverAttended": 10,
+            "notMentioned": 0,
+            "total": 644
+        },
+        {
+            "ward": "9",
+            "gender": "Total",
+            "currentlyAttending": 1922,
+            "previouslyAttended": 305,
+            "neverAttended": 91,
+            "notMentioned": 0,
+            "total": 2129
+        },
+        {
+            "ward": "9",
+            "gender": "Male",
+            "currentlyAttending": 455,
+            "previouslyAttended": 115,
+            "neverAttended": 39,
+            "notMentioned": 0,
+            "total": 980
+        },
+        {
+            "ward": "9",
+            "gender": "Female",
+            "currentlyAttending": 507,
+            "previouslyAttended": 145,
+            "neverAttended": 52,
+            "notMentioned": 0,
+            "total": 1149
+        },
+        {
+            "ward": "10",
+            "gender": "Total",
+            "currentlyAttending": 1139,
+            "previouslyAttended": 317,
+            "neverAttended": 57,
+            "notMentioned": 0,
+            "total": 1399
+        },
+        {
+            "ward": "10",
+            "gender": "Male",
+            "currentlyAttending": 578,
+            "previouslyAttended": 141,
+            "neverAttended": 23,
+            "notMentioned": 0,
+            "total": 634
+        },
+        {
+            "ward": "10",
+            "gender": "Female",
+            "currentlyAttending": 543,
+            "previouslyAttended": 145,
+            "neverAttended": 23,
+            "notMentioned": 0,
+            "total": 777
+        },
+        {
+            "ward": "Total",
+            "gender": "Total",
+            "currentlyAttending": 12075,
+            "previouslyAttended": 3783,
+            "neverAttended": 675,
+            "notMentioned": 1,
+            "total": 16307
+        },
+        {
+            "ward": "Total",
+            "gender": "Male",
+            "currentlyAttending": 6020,
+            "previouslyAttended": 1784,
+            "neverAttended": 321,
+            "notMentioned": 1,
+            "total": 8040
+        },
+        {
+            "ward": "Total",
+            "gender": "Female",
+            "currentlyAttending": 6055,
+            "previouslyAttended": 2058,
+            "neverAttended": 354,
+            "notMentioned": 0,
+            "total": 8364
+        }
+    ],
+    "formalEducationPercentage": {
+        "currentlyAttending": "72.93",
+        "previouslyAttended": "22.96",
+        "neverAttended": "4.10",
+        "notMentioned": "0.01",
+        "total": "100"
+    },
+    "formalEducationSource": "Source: National Census, 2078"
+}

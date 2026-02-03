@@ -1,0 +1,177 @@
+---
+import type { Language } from "../../../lib/i18n";
+import ne from "../../../lib/i18n/chapters/5/youth-sports/ne.json";
+import en from "../../../lib/i18n/chapters/5/youth-sports/en.json";
+
+interface Props {
+    lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = lang === "ne" ? ne : en;
+---
+
+<section
+    id={t.sectionId}
+    class="relative py-20 bg-[#0a0a0a] border-t border-white/5"
+>
+    <div class="container mx-auto px-8 relative z-10">
+        <h2 class="text-2xl md:text-3xl font-serif text-white/90 mb-12">
+            {t.title}
+        </h2>
+
+        <div id={t.subsectionId}>
+            <h3
+                class="text-xl md:text-2xl font-serif text-white/80 mb-8 border-l-4 border-lime-600 pl-4"
+            >
+                {t.subtitle}
+            </h3>
+
+            <!-- Bhorleni Playground Image Block -->
+            <div class="mb-8">
+                <div
+                    class="w-full h-auto bg-zinc-900/50 rounded-lg border border-zinc-800 flex items-center justify-center mb-4 relative overflow-hidden group"
+                >
+                    <img
+                        src="/images/chapter-5/भर्लेनी खेलमैदान.png"
+                        alt={t.bhorlenPlayground}
+                        class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                </div>
+                <p class="text-center font-bold text-white mb-8">
+                    {t.bhorlenPlayground}
+                </p>
+            </div>
+
+            <!-- Bhorleni Picnic Spot Image Block -->
+            <div class="mb-8">
+                <div
+                    class="w-full h-auto bg-zinc-900/50 rounded-lg border border-zinc-800 flex items-center justify-center mb-4 relative overflow-hidden group"
+                >
+                    <img
+                        src="/images/chapter-5/भर्लेनी पिकनिक स्पट.png"
+                        alt={t.bhorleniPicnic}
+                        class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                </div>
+                <p class="text-center font-bold text-white mb-8">
+                    {t.bhorleniPicnic}
+                </p>
+            </div>
+
+            <p class="text-lg text-zinc-300 leading-relaxed text-justify mb-12">
+                {t.content1}
+            </p>
+
+            <!-- Sundarpur Playground Image Block -->
+            <div class="mb-8">
+                <div
+                    class="w-full h-auto bg-zinc-900/50 rounded-lg border border-zinc-800 flex items-center justify-center mb-4 relative overflow-hidden group"
+                >
+                    <img
+                        src="/images/chapter-5/सुन्दरपुर खेल मैदान.png"
+                        alt={t.sundarpurPlayground}
+                        class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                </div>
+                <p class="text-center font-bold text-white mb-8">
+                    {t.sundarpurPlayground}
+                </p>
+            </div>
+
+            <!-- Duwar Playground Image Block -->
+            <div class="mb-8">
+                <div
+                    class="w-full h-auto bg-zinc-900/50 rounded-lg border border-zinc-800 flex items-center justify-center mb-4 relative overflow-hidden group"
+                >
+                    <img
+                        src="/images/chapter-5/दुवार खेल मैदान.png"
+                        alt={t.duwarPlayground}
+                        class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                </div>
+                <p class="text-center font-bold text-white mb-8">
+                    {t.duwarPlayground}
+                </p>
+            </div>
+
+            <p class="text-lg text-zinc-300 leading-relaxed text-justify mb-12">
+                {t.content2}
+            </p>
+
+            <!-- Table 54 (Green) -->
+            <div class="mb-12 w-full">
+                <h3 class="text-lg font-serif text-white/80 mb-6 text-center">
+                    {t.tableTitle}
+                </h3>
+                <div
+                    class="rounded-lg overflow-hidden border border-zinc-800 mb-8"
+                >
+                    <div class="overflow-x-auto">
+                        <table
+                            class="w-full text-sm text-center text-zinc-100 border-collapse"
+                        >
+                            <thead class="bg-lime-600/90 text-white">
+                                <tr>
+                                    {
+                                        t.headers.map((header) => (
+                                            <th class="px-4 py-3 font-serif font-medium border-r border-white/20 whitespace-nowrap">
+                                                {header}
+                                            </th>
+                                        ))
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    t.rows.map((row, index) => (
+                                        <tr
+                                            class={`border-b border-zinc-800 ${index % 2 === 0 ? "bg-zinc-900/30" : "bg-transparent"} hover:bg-zinc-800/50 transition-colors`}
+                                        >
+                                            <td class="px-4 py-3 text-zinc-300 font-medium border-r border-zinc-800">
+                                                {row[0]}
+                                            </td>
+                                            <td class="px-4 py-3 text-left font-medium text-white border-r border-zinc-800">
+                                                {row[1]}
+                                            </td>
+                                            <td class="px-4 py-3 text-zinc-300 border-r border-zinc-800">
+                                                {row[2]}
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <p class="text-sm text-zinc-400 mt-2 text-right italic mb-12">
+                    {t.source}
+                </p>
+            </div>
+
+            <!-- Hattikhore Park Image Block -->
+            <div class="mb-8">
+                <div
+                    class="w-full h-auto bg-zinc-900/50 rounded-lg border border-zinc-800 flex items-center justify-center mb-4 relative overflow-hidden group"
+                >
+                    <img
+                        src="/images/chapter-5/हत्तिखोरे पार्क.png"
+                        alt={t.hatikhorePark}
+                        class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                </div>
+                <p class="text-center font-bold text-white mb-8">
+                    {t.hatikhorePark}
+                </p>
+            </div>
+
+            {
+                t.content3.map((paragraph) => (
+                    <p class="text-lg text-zinc-300 leading-relaxed text-justify mb-6">
+                        {paragraph}
+                    </p>
+                ))
+            }
+        </div>
+    </div>
+</section>
