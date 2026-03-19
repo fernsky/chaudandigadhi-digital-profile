@@ -30,18 +30,18 @@ const nePath = getLanguagePath("ne");
 const enPath = getLanguagePath("en");
 ---
 
-<div class="language-switcher font-serif text-white">
+<div class="language-switcher font-serif">
   <a
     href={nePath}
-    class={`lang-link ${lang === "ne" ? "active pointer-events-none" : "opacity-70 hover:opacity-100"}`}
+    class={`lang-link ${lang === "ne" ? "active pointer-events-none" : "inactive"}`}
     aria-label="Switch to Nepali"
   >
     ने
   </a>
-  <span class="opacity-40 mx-1">|</span>
+  <span class="separator">|</span>
   <a
     href={enPath}
-    class={`lang-link ${lang === "en" ? "active pointer-events-none" : "opacity-70 hover:opacity-100"}`}
+    class={`lang-link ${lang === "en" ? "active pointer-events-none" : "inactive"}`}
     aria-label="Switch to English"
   >
     En
@@ -61,8 +61,31 @@ const enPath = getLanguagePath("en");
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  .active {
+  /* Dark mode colors (default) */
+  .lang-link.active {
     font-weight: 700;
-    opacity: 1;
+    color: #f4f4f5; /* AAA compliant white */
+  }
+
+  .lang-link.inactive {
+    color: #e4e4e7; /* AAA compliant light gray */
+  }
+
+  .separator {
+    color: #e4e4e7; /* AAA compliant */
+    margin: 0 0.25rem;
+  }
+
+  /* Light mode colors */
+  html.light-mode .lang-link.active {
+    color: #0a0a0a; /* AAA compliant black */
+  }
+
+  html.light-mode .lang-link.inactive {
+    color: #404040; /* AAA compliant dark gray */
+  }
+
+  html.light-mode .separator {
+    color: #404040; /* AAA compliant */
   }
 </style>
