@@ -14,15 +14,15 @@
     <!-- Tooltip -->
     <div
         id="map-tooltip"
-        class="absolute pointer-events-none opacity-0 bg-[#0a0a0a]/80 text-white px-5 py-4 rounded-2xl border border-[#f2e25d]/20 backdrop-blur-2xl text-sm transition-all duration-300 z-50 shadow-2xl"
+        class="absolute pointer-events-none opacity-0 px-5 py-4 rounded-2xl backdrop-blur-2xl text-sm transition-all duration-300 z-50 shadow-2xl map-tooltip"
         style="box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);"
     >
         <div
-            class="font-bold text-xl mb-2 text-[#f2e25d]"
+            class="font-bold text-xl mb-2 tooltip-ward-name"
             data-label="ward-name"
         >
         </div>
-        <div class="text-zinc-300 text-base" data-label="population"></div>
+        <div class="tooltip-population text-base" data-label="population"></div>
     </div>
 </div>
 
@@ -154,60 +154,11 @@
 
         console.log("Ward paths created:", wards.size());
 
-        // Animation Logic
-        function runAnimation() {
-            console.log("🎬 Running animation...");
-
-            // Animate shadows first
-            shadows
-                .transition()
-                .duration(800)
-                .delay((d, i) => i * 150)
-                .attr("opacity", 1);
-
-            wards.each(function (d, i) {
-                const node = this as SVGPathElement;
-                const length = node.getTotalLength();
-                const wardColor = colorScale(d.properties.total_population);
-
-                select(node)
-                    .attr("stroke-dasharray", length)
-                    .attr("stroke-dashoffset", length)
-                    .attr("stroke", "rgba(255, 255, 255, 1.0)") // High-contrast white stroke animation
-                    .attr("stroke-width", 8.0)
-                    .transition()
-                    .duration(2000)
-                    .delay(i * 180)
-                    .ease(easeCubicOut)
-                    .attr("stroke-dashoffset", 0)
-                    .transition()
-                    .delay(500)
-                    .duration(1500)
-                    .attr("fill", wardColor)
-                    .attr(
-                        "fill-opacity",
-                        opacityScale(d.properties.total_population),
-                    ) // Population-based transparency!
-                    .attr("stroke", "rgba(255, 255, 255, 0.9)") // Final Ultra-Thick White borders
-                    .attr("stroke-width", 8.0);
-            });
-
-            // Animate outer glow
-            outerGlow
-                .transition()
-                .duration(1000)
-                .delay((d, i) => i * 180 + 1500)
-                .attr("opacity", 0.6)
-                .on("end", enableInteractions); // Re-enable interactions after glow animation
-        }
-
-        // Enable interactions after animation is complete
-        function enableInteractions() {
-            g.selectAll(".ward-path").style("pointer-events", "all");
-        }
+        // Event Listeners - Attached immediately
         wards
             .on("mouseenter", function (event, d) {
-                const currentColor = colorScale(d.properties.total_population);
+                console.log("Mouse enter:", d.properties.name_en);
+
                 const wardIndex = wardsGeoJSON.features.indexOf(d);
 
                 // Enhance the ward
@@ -236,8 +187,10 @@
                     .attr("opacity", 1)
                     .attr("stroke-width", 12);
 
+                // Show Tooltip
+                tooltip.style("opacity", 1).style("display", "block"); // Ensure it's not hidden
+
                 tooltip
-                    .style("opacity", 1)
                     .select('[data-label="ward-name"]')
                     .text(d.properties.name_en || d.properties.name_ne);
 
@@ -248,7 +201,12 @@
                     );
             })
             .on("mousemove", function (event) {
-                const [x, y] = [event.pageX, event.pageY];
+                // simple tooltip positioning
+                // Get container bounds to handle scroll/offset
+                const containerRect = container.getBoundingClientRect();
+                const x = event.clientX - containerRect.left;
+                const y = event.clientY - containerRect.top;
+
                 tooltip
                     .style("left", x + 20 + "px")
                     .style("top", y - 20 + "px");
@@ -281,6 +239,63 @@
 
                 tooltip.style("opacity", 0);
             });
+
+        // Enable interactions after animation is complete
+        function enableInteractions() {
+            console.log("🎯 Enabling interactions (pointer-events: all)");
+            // Ensure we select the nodes correctly
+            g.selectAll(".ward-path").style("pointer-events", "all");
+        }
+
+        // Animation Logic
+        function runAnimation() {
+            console.log("🎬 Running animation...");
+
+            // Animate shadows first
+            shadows
+                .transition()
+                .duration(800)
+                .delay((d, i) => i * 150)
+                .attr("opacity", 1);
+
+            wards.each(function (d, i) {
+                const node = this as SVGPathElement;
+                const length = node.getTotalLength();
+                const wardColor = colorScale(d.properties.total_population);
+
+                select(node)
+                    .attr("stroke-dasharray", length)
+                    .attr("stroke-dashoffset", length)
+                    .attr("stroke", "rgba(255, 255, 255, 1.0)")
+                    .attr("stroke-width", 8.0)
+                    .transition()
+                    .duration(2000)
+                    .delay(i * 180)
+                    .ease(easeCubicOut)
+                    .attr("stroke-dashoffset", 0)
+                    .transition()
+                    .delay(500)
+                    .duration(1500)
+                    .attr("fill", wardColor)
+                    .attr(
+                        "fill-opacity",
+                        opacityScale(d.properties.total_population),
+                    )
+                    .attr("stroke", "rgba(255, 255, 255, 0.9)")
+                    .attr("stroke-width", 8.0);
+            });
+
+            // Animate outer glow
+            outerGlow
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 180 + 1500)
+                .attr("opacity", 0.6)
+                .on("end", enableInteractions); // Helper trigger
+
+            // FORCE enable interactions after 3.5 seconds in case transition callback fails
+            setTimeout(enableInteractions, 3500);
+        }
 
         // Scroll Trigger
         const observer = new IntersectionObserver(
@@ -324,5 +339,34 @@
 
     .ward-path {
         transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Tooltip Dark Mode Styles */
+    .map-tooltip {
+        background-color: rgba(10, 10, 10, 0.95);
+        border: 1px solid rgba(242, 226, 93, 0.3);
+    }
+
+    .tooltip-ward-name {
+        color: #f2e25d; /* Gold color - AAA compliant */
+    }
+
+    .tooltip-population {
+        color: #e4e4e7; /* AAA compliant light gray */
+    }
+
+    /* Tooltip Light Mode Styles */
+    html.light-mode .map-tooltip {
+        background-color: rgba(255, 255, 255, 0.98);
+        border: 1px solid rgba(212, 160, 23, 0.4);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15) !important;
+    }
+
+    html.light-mode .tooltip-ward-name {
+        color: #b8860b; /* Dark gold - AAA compliant */
+    }
+
+    html.light-mode .tooltip-population {
+        color: #0a0a0a; /* Dark text - AAA compliant */
     }
 </style>
